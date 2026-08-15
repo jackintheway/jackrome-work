@@ -62,6 +62,11 @@ Rules for the image itself:
 
 Always pair `target="_blank"` with `rel="noopener"`. Without it the opened page gets a handle on the page that opened it through `window.opener`, which it can use to redirect the original tab somewhere else. Modern browsers imply this, but stating it costs nothing and does not depend on the visitor's browser being current.
 
+## Location and dates (standing rules)
+
+- **Location is "Maryland", never "Frederick".** Applies to visible copy, meta descriptions, and share card text.
+- **No year anywhere on `jackrome.work`.** No copyright line, no "2026" in the footer. A dated footer starts aging the site the moment the year turns, and it earns nothing. `ai.jackrome.work` keeps its year, because there the date is doing real work: it says how current the AI work is.
+
 ## Other standing page requirements
 
 - Every image has real `alt` text, or `alt=""` if it is purely decorative.

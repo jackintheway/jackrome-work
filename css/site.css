@@ -200,6 +200,14 @@ a.footer-line:hover { color: var(--ws-yellow); }
 .prose { max-width: 68ch; }
 .prose > p:last-child { margin-bottom: 0; }
 
+/* For a short block of standalone claims rather than flowing prose.
+   Each sentence carries more weight, so it is set larger and in the
+   full-strength text colour. */
+.prose-lg p {
+  font-size: var(--fs-body-lg);
+  color: var(--text-strong);
+}
+
 /* The opening paragraph of a block, set larger to carry the weight. */
 .lead {
   font-size: var(--fs-body-lg);
@@ -261,12 +269,18 @@ a.footer-line:hover { color: var(--ws-yellow); }
 }
 
 /* The answering button: same shape, quieter fill, for the second
-   choice in a pair so the two do not compete. */
+   choice in a pair so the two do not compete. Used on the orange
+   hero, where an orange button would vanish into its own ground. */
 .btn-secondary {
   background: var(--surface-card);
   color: var(--text-strong);
 }
 .btn-secondary:hover { color: var(--text-strong); }
+
+/* Colour variants for a pair of buttons that lead somewhere genuinely
+   different, rather than one leading and one following. */
+.btn-green  { background: var(--ws-green); }
+.btn-yellow { background: var(--ws-yellow); }
 
 .btn-row {
   display: flex;
@@ -274,6 +288,11 @@ a.footer-line:hover { color: var(--ws-yellow); }
   gap: var(--space-4);
   margin-top: var(--space-6);
 }
+
+/* A button carries a hard offset shadow below and to the right of it,
+   which sits outside its box. Anything following immediately collides
+   with that shadow, so give it room. */
+.btn-row + * { margin-top: var(--space-7); }
 
 /* ============================================================
    HERO SPLIT
@@ -412,23 +431,48 @@ a.footer-line:hover { color: var(--ws-yellow); }
 }
 
 /* ============================================================
-   CTA BAND
-   Yellow answers the orange hero. The design system uses yellow as
-   the balancing accent, so it carries a moment like this without
-   competing with the top of the page.
+   CARD TINTS
+   Flat colour fills for any card. Black text holds on all three of
+   these, which is the design system's rule, so only the muted greys
+   inside a card need lifting to black to stay legible on colour.
+
+   Blue is the exception: it is the one fill dark enough to need
+   white text, which the system already names as text-on-blue.
    ============================================================ */
-.cta-band {
-  background: var(--bg-accent);
-  border: var(--rule-heavy);
-  box-shadow: var(--elevation-card);
-  padding: var(--space-7) var(--space-6);
-  text-align: center;
+.card-yellow { background: var(--ws-yellow); }
+.card-salmon { background: var(--ws-salmon); }
+.card-green  { background: var(--ws-green); }
+
+.card-yellow .offer-for, .card-salmon .offer-for, .card-green .offer-for,
+.card-yellow .offer-link, .card-salmon .offer-link, .card-green .offer-link {
+  color: var(--text-strong);
 }
-.cta-band-title {
+.card-yellow .offer-link:hover,
+.card-salmon .offer-link:hover,
+.card-green .offer-link:hover {
+  color: var(--text-strong);
+  border-bottom-color: var(--ws-black);
+}
+
+.card-blue {
+  background: var(--ws-blue);
+  color: var(--text-on-blue);
+}
+/* base.css sets strong to text-strong, which is black. On blue that
+   disappears, so it is restored here rather than left to inherit. */
+.card-blue strong { color: var(--text-on-blue); }
+
+/* ============================================================
+   THE ASK
+   A closing question and a button, in the open. It was a filled
+   band, which turned the page's loudest moment into another box on
+   a page that already had plenty.
+   ============================================================ */
+.ask-title {
   font-size: var(--fs-h3);
   margin: 0 0 var(--space-5);
 }
-.cta-band .btn-row { justify-content: center; margin-top: 0; }
+.ask .btn-row { margin-top: 0; }
 
 /* ============================================================
    TESTIMONIALS
