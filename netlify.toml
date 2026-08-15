@@ -55,6 +55,15 @@
 # Working notes and project instructions are not part of the site.
 # force is required: without it a real file at this path wins over the
 # redirect rule, and the markdown gets served as plain text.
+#
+# Every markdown file in the repo root needs a rule here. Netlify's
+# splat only matches a trailing path segment, so there is no pattern
+# that covers "*.md" and they have to be listed. Add to this list when
+# a new one lands beside the HTML.
+#
+# This is tidiness, not secrecy. The repo is public, so anything here
+# is readable on GitHub either way. The point is that these are not
+# pages and should not answer on the site.
 [[redirects]]
   from = "/CLAUDE.md"
   to = "/"
@@ -63,6 +72,18 @@
 
 [[redirects]]
   from = "/INVENTORY.md"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/COPY.md"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/README.md"
   to = "/"
   status = 302
   force = true
