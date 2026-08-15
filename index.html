@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Jack Rome | Technology help for people it wasn't built for</title>
+  <title>Jack Rome | Technology Enablement Consultant</title>
   <meta name="description" content="Jack Rome helps organizations, teams, and individuals use technology that wasn't built with them in mind. AI enablement, one-on-one guidance, and creative production from Maryland.">
   <link rel="canonical" href="https://jackrome.work/">
 
@@ -12,9 +12,10 @@
        tags and nothing else, so a page without them shares as a bare URL.
        og:image must be absolute: scrapers do not resolve relative paths.
 
-       TODO(og): the card at this path is not generated yet. It gets built
-       from HTML in tools/og/ so it inherits the design system. Its own
-       card, not one shared across the site. -->
+       Cards are generated from tools/og/, not drawn by hand, so they
+       inherit the design system. Each page has its own: the Squarespace
+       site shared one image across nine pages and every link previewed
+       identically. Regenerate with ./tools/og/render.sh -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Jack Rome">
   <meta property="og:url" content="https://jackrome.work/">
@@ -171,7 +172,9 @@
     <span class="footer-line">Jack Rome &middot; Maryland</span>
     <span class="footer-links">
       <a class="footer-line" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Reach out</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
       <a class="footer-line" href="/creative-portfolio">Creative work</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
       <a class="footer-line" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
     </span>
   </footer>

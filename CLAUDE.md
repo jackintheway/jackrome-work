@@ -51,7 +51,7 @@ Rules for the image itself:
 
 - **1200x630.** Every platform crops to this ratio.
 - **Readable at 300px wide.** That is its actual size in a message thread. Type must be huge. If it only reads at full size it has failed.
-- **Generated from HTML, not drawn by hand**, so it inherits the design system and stays editable. `../ai-work-portfolio/tools/og/` has the working pattern and the headless Chrome render command.
+- **Generated from HTML, not drawn by hand**, so it inherits the design system and stays editable. Sources are in `tools/og/`, one file per page. Run `./tools/og/render.sh` from the repo root to rebuild them all; it verifies each is exactly 1200x630 and fails loudly if not. See `tools/og/README.md` before adding one.
 - **Its own image per page, not one shared card.** `jackrome.work` currently uses one image across nine pages, so every link previews identically. Do not repeat that.
 
 ## External links open in a new window (standing rule)
