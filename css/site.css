@@ -144,13 +144,20 @@
 /* ---- Section headers: title, rule, optional count ---- */
 .section-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-4);
   margin-bottom: var(--space-6);
 }
 .section-title { margin: 0; }
+
+/* The rule fills whatever space the heading leaves. min-width is what
+   stops it collapsing into a stray dash beside a long heading on a
+   narrow screen: below that it wraps to its own line and runs full
+   width, which reads as deliberate rather than broken. */
 .section-rule {
   flex: 1;
+  min-width: 64px;
   height: var(--border-heavy);
   background: var(--outline);
 }
@@ -183,6 +190,87 @@
 }
 a.footer-line { text-decoration: none; }
 a.footer-line:hover { color: var(--ws-yellow); }
+
+/* ============================================================
+   PROSE
+   A readable measure is the whole job here. Long-form text sits in
+   a narrower column than the page container, because line length
+   drives readability far more than font size does.
+   ============================================================ */
+.prose { max-width: 68ch; }
+.prose > p:last-child { margin-bottom: 0; }
+
+/* The opening paragraph of a block, set larger to carry the weight. */
+.lead {
+  font-size: var(--fs-body-lg);
+  color: var(--text-strong);
+}
+
+/* A stack of prose blocks with air between them. */
+.section { margin-bottom: var(--space-9); }
+.section:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   CALLOUT
+   A passage lifted out of the flow. Deeper paper, heavy outline,
+   and the hard offset shadow that the design system uses instead
+   of a blur to signal depth.
+   ============================================================ */
+.callout {
+  background: var(--bg-sunken);
+  border: var(--rule-heavy);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-6);
+  max-width: var(--container-narrow);
+}
+.callout > p:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   BUTTONS
+   Flat fill, heavy black outline, hard offset shadow. Hover lifts
+   toward the light and press collapses the shadow, so the depth
+   reads as physical rather than as a glow.
+   ============================================================ */
+.btn {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-small);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: var(--space-3) var(--space-5);
+  border: var(--rule);
+  background: var(--bg-brand);
+  color: var(--text-on-brand);
+  box-shadow: var(--pop-black);
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.btn:hover {
+  color: var(--text-on-brand);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--ws-black);
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--ws-black);
+}
+
+/* The answering button: same shape, quieter fill, for the second
+   choice in a pair so the two do not compete. */
+.btn-secondary {
+  background: var(--surface-card);
+  color: var(--text-strong);
+}
+.btn-secondary:hover { color: var(--text-strong); }
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
 
 /* ============================================================
    RESPONSIVE
