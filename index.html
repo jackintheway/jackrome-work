@@ -4,59 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- TODO(copy): title and description are placeholders pending Jack's
-       review. They are user-facing and they are what search engines read. -->
-  <title>Jack Rome</title>
-  <meta name="description" content="Jack Rome builds AI tools and creative work from Frederick, Maryland.">
+  <title>Jack Rome | Technology help for people it wasn't built for</title>
+  <meta name="description" content="Jack Rome helps organizations, teams, and individuals use technology that wasn't built with them in mind. AI enablement, one-on-one guidance, and creative production from Frederick, Maryland.">
   <link rel="canonical" href="https://jackrome.work/">
 
   <!-- Link previews. iMessage, Slack, LinkedIn and the rest all read these
        tags and nothing else, so a page without them shares as a bare URL.
        og:image must be absolute: scrapers do not resolve relative paths.
 
-       TODO(og): the image at this path does not exist yet. It gets
-       generated from HTML in tools/og/ so it inherits the design system.
-       Every page gets its own card, not one shared across the site. The
-       Squarespace version reused one image on nine pages. -->
+       TODO(og): the card at this path is not generated yet. It gets built
+       from HTML in tools/og/ so it inherits the design system. Its own
+       card, not one shared across the site. -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Jack Rome">
   <meta property="og:url" content="https://jackrome.work/">
-  <meta property="og:title" content="Jack Rome">
-  <meta property="og:description" content="Jack Rome builds AI tools and creative work from Frederick, Maryland.">
+  <meta property="og:title" content="Hi, I'm Jack.">
+  <meta property="og:description" content="I help people use technology that wasn't built with them in mind.">
   <meta property="og:image" content="https://jackrome.work/assets/img/og-home.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Jack Rome.">
+  <meta property="og:image:alt" content="Jack Rome. I help people use technology that wasn't built with them in mind.">
 
-  <!-- summary_large_image gives the full-width banner. Plain "summary" is
-       the small square thumbnail, which is what the Squarespace site
-       still uses on every page. -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jack Rome">
-  <meta name="twitter:description" content="Jack Rome builds AI tools and creative work from Frederick, Maryland.">
+  <meta name="twitter:title" content="Hi, I'm Jack.">
+  <meta name="twitter:description" content="I help people use technology that wasn't built with them in mind.">
   <meta name="twitter:image" content="https://jackrome.work/assets/img/og-home.png">
 
-  <!-- The same puzzle mark the AI portfolio uses. One favicon across both
-       properties, so a visitor with tabs open from each sees one identity
-       rather than two. -->
   <link rel="icon" type="image/svg+xml" href="assets/puzzle-single.svg">
-
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- NAV
-       Static markup, repeated per page, on purpose. Four links that
-       change almost never do not need a render function, and a nav built
-       in JS is one crawlers may not follow and one that flashes on load.
-       The data-array pattern is for content that repeats and grows, like
-       the releases on the creative portfolio. Not for this.
-
-       aria-current="page" marks the current page for screen readers, and
-       site.css gives it a visible underline for everyone else. -->
   <nav class="site-nav" aria-label="Main">
     <a class="nav-mark" href="/">Jack Rome</a>
     <div class="nav-links">
@@ -64,44 +45,139 @@
       <a class="nav-link" href="/about">About</a>
       <a class="nav-link" href="/ai-enablement">AI Enablement</a>
       <a class="nav-link" href="/creative-portfolio">Creative</a>
-      <a class="nav-link is-external" href="https://ai.jackrome.work">AI Portfolio</a>
+      <a class="nav-link is-external" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO
+       The portrait is a circular crop carrying its own black ring, with
+       the corners outside the circle transparent, so it sits on the
+       orange without needing a container around it.
+
+       TODO(asset): this image is a CDN derivative, not the original. Jack
+       needs to export the full-resolution file from the Squarespace asset
+       manager, which needs his login. It also wants proper compression:
+       684KB is heavy for a hero. -->
   <header class="hero">
-    <div class="hero-inner">
-      <!-- TODO(copy): every string in this hero is a placeholder. The real
-           copy comes off the live Squarespace site, which INVENTORY.md
-           does not capture. Pulling it is the next step. -->
-      <p class="hero-eyebrow ws-overline">Jack Rome &middot; Frederick, Maryland</p>
-      <h1 class="hero-title">Placeholder headline</h1>
-      <p class="hero-sub">Placeholder subheading. Replace with the real positioning copy from the live site before this page goes anywhere near a deploy.</p>
+    <div class="hero-inner hero-split">
+      <div>
+        <p class="hero-eyebrow ws-overline">Jack Rome &middot; Frederick, Maryland</p>
+        <h1 class="hero-title">Hi, I'm Jack. I help people use technology that wasn't built with them in mind.</h1>
+        <p class="hero-sub">New technology arrives faster than anyone gets taught to use it. I close that gap for organizations, teams, and individuals so that no one's left behind.</p>
+        <div class="btn-row">
+          <a class="btn btn-secondary" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Let's chat</a>
+        </div>
+      </div>
+      <img class="hero-portrait" src="assets/img/jack-outside-2023.webp"
+           width="750" height="750"
+           alt="Jack Rome, standing outdoors and smiling."
+           fetchpriority="high">
     </div>
   </header>
 
   <main class="page" id="main">
 
-    <section aria-labelledby="scaffoldTitle">
+    <!-- HOW I CAN HELP
+         Three offers, written as static markup rather than rendered from
+         a data array. Three fixed services on the site's most important
+         page do not repay the indirection, and the content stays visible
+         in the file and in the HTML source. -->
+    <section class="section" aria-labelledby="helpTitle">
       <div class="section-header">
-        <h2 class="section-title" id="scaffoldTitle">Scaffold</h2>
+        <h2 class="section-title" id="helpTitle">How I can help</h2>
         <div class="section-rule" aria-hidden="true"></div>
       </div>
-      <!-- TODO(copy): this section is a standing marker that the page is
-           structural only. Delete it once the real sections land. -->
-      <p>This page is the structural scaffold for the rebuild. Tokens, typeface, nav, page shell, and footer are wired and rendering. The copy is not here yet.</p>
-      <p>Four pages are in scope: this one, About, AI Enablement, and the Creative Portfolio.</p>
+
+      <div class="offer-grid">
+
+        <article class="offer-card">
+          <p class="offer-for ws-overline">For teams and organizations</p>
+          <h3 class="offer-title">Enablement &amp; systems</h3>
+          <p class="offer-body">AI adoption, workflow design, and training: I build systems your team can run without me, then teach them well enough that you shouldn't need to call.</p>
+          <a class="offer-link" href="/ai-enablement">How I work with AI &rarr;</a>
+        </article>
+
+        <article class="offer-card">
+          <p class="offer-for ws-overline">For individuals</p>
+          <h3 class="offer-title">One-on-one guidance</h3>
+          <p class="offer-body">Whether your website, a new piece of software, or an AI tool everyone says you should be using, there's no jargon and no rushing through the process.</p>
+          <a class="offer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Get in touch &rarr;</a>
+        </article>
+
+        <article class="offer-card">
+          <p class="offer-for ws-overline">For anyone making something</p>
+          <h3 class="offer-title">Creative &amp; production</h3>
+          <p class="offer-body">I support your project with over a decade of experience in video and audio production, virtual events, website creation, creative direction, and more.</p>
+          <a class="offer-link" href="/creative-portfolio">See the work &rarr;</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- THE CATCH-ALL
+         For the visitor who did not see themselves in any of the three
+         cards above. Yellow answers the orange hero. -->
+    <section class="section">
+      <div class="cta-band">
+        <h2 class="cta-band-title">Not sure what you need help with?</h2>
+        <div class="btn-row">
+          <a class="btn" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Contact me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT CLIENTS SAY -->
+    <section class="section" aria-labelledby="clientsTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="clientsTitle">What clients say</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="testimonial-grid">
+
+        <figure class="testimonial">
+          <blockquote class="testimonial-quote">Jack is very adept at helping me become more tech savvy. He is also able to help me think through problems and offer options to resolve them. His calm nature combined with his intelligence and people skills are a great combination.</blockquote>
+          <figcaption>
+            <span class="testimonial-who">Maureen Quinn</span>
+            <span class="testimonial-role">Business Owner and <a href="https://handsonhealthacupuncture.com" target="_blank" rel="noopener">Acupuncturist</a></span>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial">
+          <blockquote class="testimonial-quote">With unwavering reliability, Jack consistently delivers projects on time and within budget. His professional demeanor and reassuring presence make him a trusted figure for webinars, earning admiration from all. Jack not only takes pride in his work but also fosters inclusivity, respect, and a genuine niceness towards people, bringing a unique blend of competence and compassion to every task.</blockquote>
+          <figcaption>
+            <span class="testimonial-who">Jane Radford</span>
+            <span class="testimonial-role">Director of Education at <a href="https://www.acmg.net/" target="_blank" rel="noopener">ACMG</a></span>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial">
+          <blockquote class="testimonial-quote">Jack was instrumental in improving my business website. He designed an online platform for my yoga classes, enabling me to continue generating income even while on extended leave. Jack took the time to understand my vision and translated it into a website that perfectly represents my brand.</blockquote>
+          <figcaption>
+            <span class="testimonial-who">DeAnna Houston</span>
+            <span class="testimonial-role">Business Owner and Yoga Instructor</span>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial">
+          <blockquote class="testimonial-quote">Jack assisted with podcasting, graphic design, and community management. The work he did for us was absolutely top notch. Jack has the ability to connect with people in an authentic and caring way, and that trait is present in every interaction.</blockquote>
+          <figcaption>
+            <span class="testimonial-who">Seth Power</span>
+            <span class="testimonial-role">CEO at <a href="https://www.linkedin.com/in/seth-power-a50519b4/" target="_blank" rel="noopener">Grouped</a></span>
+          </figcaption>
+        </figure>
+
+      </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <span class="footer-line">Jack Rome &middot; Frederick, Maryland &middot; 2026</span>
     <span class="footer-links">
       <a class="footer-line" href="/ai-enablement">Work with me</a>
       <a class="footer-line" href="/creative-portfolio">Creative work</a>
-      <a class="footer-line" href="https://ai.jackrome.work">AI Portfolio</a>
+      <a class="footer-line" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
     </span>
   </footer>
 

@@ -273,6 +273,143 @@ a.footer-line:hover { color: var(--ws-yellow); }
 }
 
 /* ============================================================
+   HERO SPLIT
+   Text and a cutout portrait side by side. The portrait has a
+   transparent background, so it sits straight on the orange with no
+   frame around it.
+   ============================================================ */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+.hero-portrait {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  justify-self: center;
+}
+
+/* One column before the two get too cramped to read. The text keeps
+   its source order and leads; the portrait follows it. */
+@media (max-width: 860px) {
+  .hero-split { grid-template-columns: 1fr; gap: var(--space-6); }
+  .hero-portrait { max-width: 260px; justify-self: start; }
+}
+
+/* ============================================================
+   OFFER CARDS
+   auto-fit means the row reflows on its own as the viewport narrows,
+   three across down to one, with no breakpoint doing the work.
+   ============================================================ */
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+  gap: var(--space-5);
+}
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-card);
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-5);
+}
+.offer-for {
+  color: var(--text-muted);
+  margin: 0 0 var(--space-2);
+}
+.offer-title {
+  font-size: var(--fs-h4);
+  margin: 0 0 var(--space-3);
+}
+/* flex-grow on the body pushes every card's link to the same baseline,
+   so a short card and a long one still line up along the bottom. */
+.offer-body { flex: 1; margin-bottom: var(--space-5); }
+.offer-link {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-small);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--link);
+  align-self: flex-start;
+  border-bottom: var(--border) solid transparent;
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.offer-link:hover {
+  color: var(--ws-orange-deep);
+  border-bottom-color: var(--ws-orange);
+}
+
+/* ============================================================
+   CTA BAND
+   Yellow answers the orange hero. The design system uses yellow as
+   the balancing accent, so it carries a moment like this without
+   competing with the top of the page.
+   ============================================================ */
+.cta-band {
+  background: var(--bg-accent);
+  border: var(--rule-heavy);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-7) var(--space-6);
+  text-align: center;
+}
+.cta-band-title {
+  font-size: var(--fs-h3);
+  margin: 0 0 var(--space-5);
+}
+.cta-band .btn-row { justify-content: center; margin-top: 0; }
+
+/* ============================================================
+   TESTIMONIALS
+   Serif for the quote. The design system carries a serif voice and
+   this is the one place on the page where another person is
+   speaking, so the change of face does real work.
+   ============================================================ */
+/* Two across at full width rather than three. There are four quotes, and
+   a three-column grid leaves one stranded alone on a second row. The
+   wider minimum also gives the longer quotes a sane line count. */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  gap: var(--space-5);
+}
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-card);
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-5);
+  margin: 0;
+}
+.testimonial-quote {
+  flex: 1;
+  font-family: var(--font-serif);
+  font-size: var(--fs-body-lg);
+  color: var(--text-body);
+  margin: 0 0 var(--space-5);
+  quotes: "\201C" "\201D";
+}
+.testimonial-quote::before { content: open-quote; }
+.testimonial-quote::after { content: close-quote; }
+.testimonial-who {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  color: var(--text-strong);
+}
+.testimonial-role {
+  display: block;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+/* ============================================================
    RESPONSIVE
    The requirement is 390px with no horizontal scroll. The type
    scale is the only thing that genuinely breaks that, so it is
