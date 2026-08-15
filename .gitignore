@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Per-machine Claude Code permissions, not shared config.
+.claude/settings.local.json
+
+# Verification harnesses are written and deleted inside a session.
+_verify-harness.html
+_peek.html
+_measure.html
+_*.tmp
+
+# Source material, kept on The Key and never shipped.
+#
+# Squarespace exports come out as full-resolution originals and the
+# audio masters are lossless. Both are the things to keep, and both
+# are far too large for a repo that Netlify redeploys on every push.
+# What ships is the web-sized derivative in assets/, committed.
+_source/
