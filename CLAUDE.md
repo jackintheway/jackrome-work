@@ -84,7 +84,26 @@ A domain is served by one host at a time. While DNS points at Squarespace, the o
 
 ---
 
+## Build order (approved 2026-08-15)
+
+**About, then Home, then AI Enablement, then Creative Portfolio.**
+
+About goes first because it has the strongest copy, it is a single column with no repeating content, and it proves the whole chain end to end: page shell, nav state, share image, deploy. Home and AI Enablement are the same pattern with card arrays on top. The creative portfolio is last on purpose, because it is the only one that is not a rebuild.
+
+## Calendly is the conversion path (approved 2026-08-15)
+
+Booking a call is the named primary conversion for the whole site, decided deliberately rather than inherited from Squarespace. Every page carries a route to it. Treat it as a real dependency: one URL, `https://calendly.com/jackintheway/chat-with-jack-rome`, kept in one place rather than hand-typed into five pages.
+
+---
+
 ## Decisions: creative portfolio (approved 2026-08-15)
+
+**This page is a revamp, not a rebuild.** Everything else in this project ports existing copy across. This one does not. The live page is a reference for *what creative material exists*, not for structure, order, or presentation. Do not treat `COPY.md`'s creative portfolio section as a spec to reproduce.
+
+It gets the same care `ai.jackrome.work` got: its own thinking about what the page is for, what a visitor should feel, and how the work is framed. The live version is a grid of untitled artwork with no writing on it at all, which is the actual gap. There is a lot more available here than the current page does.
+
+Two things have to come from Jack before it can be built: the real release list (the live page predates Feivel Speaks and RACE DAY), and what each piece of work actually is.
+
 
 **Music plays through our own audio player, with a Spotify link alongside.**
 
