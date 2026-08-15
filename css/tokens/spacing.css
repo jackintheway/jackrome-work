@@ -1,0 +1,60 @@
+/* ============================================================
+   WAYSPACE — Spacing, borders, radii, shadows
+   The outline is structural. Depth is faked with hard, blur-less
+   offset shadows — usually yellow under orange, black everywhere
+   else — echoing the extruded 3D of the wordmark.
+   ============================================================ */
+:root {
+  /* ---- Spacing scale (4px base) ---- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---- Borders — the heavy black outline is the brand ---- */
+  --border-hair:   2px;
+  --border:        3px;
+  --border-heavy:  4px;
+  --border-mega:   6px;
+  --outline-color: var(--ws-black);
+  --rule:          var(--border) solid var(--outline-color);
+  --rule-heavy:    var(--border-heavy) solid var(--outline-color);
+
+  /* ---- Corner radii — geometric, lightly softened ---- */
+  --radius-0: 0;
+  --radius-sm: 6px;
+  --radius:    12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+  --radius-blob: 42% 58% 60% 40% / 45% 45% 55% 55%; /* organic, DELUXE-leaning */
+
+  /* ---- Hard offset shadows (no blur) = the 3D pop ---- */
+  --pop-yellow:   4px 4px 0 0 var(--ws-yellow);
+  --pop-yellow-lg:6px 6px 0 0 var(--ws-yellow);
+  --pop-black:    4px 4px 0 0 var(--ws-black);
+  --pop-black-sm: 3px 3px 0 0 var(--ws-black);
+  --pop-blue:     4px 4px 0 0 var(--ws-blue);
+  --pop-orange:   4px 4px 0 0 var(--ws-orange);
+
+  /* card rests on a black hard shadow; pressed states collapse it */
+  --elevation-card:    5px 5px 0 0 var(--ws-black);
+  --elevation-raised:  8px 8px 0 0 var(--ws-black);
+
+  /* ---- Motion — snappy, a touch of bounce, never floaty ---- */
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1); /* @kind other */
+  --dur-fast: 110ms; /* @kind other */
+  --dur:      180ms; /* @kind other */
+
+  /* ---- Layout ---- */
+  --container: 1200px;
+  --container-narrow: 780px;
+}

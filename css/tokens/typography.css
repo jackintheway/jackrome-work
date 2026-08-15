@@ -1,0 +1,44 @@
+/* ============================================================
+   WAYSPACE — Typography tokens
+   Galvji leads the headings (heavy, with a hint of outline).
+   Avenir Next carries sans body; Big Caslon the serif voice;
+   Blastula is the stylized display serif for rare big moments.
+   ============================================================ */
+:root {
+  /* ---- Families (bundled face → system fallback → generic) ---- */
+  --font-heading: "Galvji", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  --font-sans:    "AvenirNext", "Avenir", "Segoe UI", system-ui, sans-serif;
+  --font-serif:   "BigCaslon", "Big Caslon", Georgia, "Times New Roman", serif;
+  --font-display: "Blastula", "Playfair Display", Georgia, serif;
+
+  /* ---- Weights ---- */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium:  600; /* @kind font */
+  --fw-bold:    700; /* @kind font */
+  --fw-black:   800; /* @kind font */
+
+  /* ---- Type scale (1.25 major-third-ish, display jumps harder) ---- */
+  --fs-display: 84px;
+  --fs-h1:      56px;
+  --fs-h2:      40px;
+  --fs-h3:      28px;
+  --fs-h4:      22px;
+  --fs-body-lg: 19px;
+  --fs-body:    16px;
+  --fs-small:   14px;
+  --fs-caption: 12px;
+  --fs-overline: 12px;
+
+  /* ---- Line heights ---- */
+  --lh-tight:   1.02; /* @kind other */
+  --lh-snug:    1.18; /* @kind other */
+  --lh-body:    1.55; /* @kind other */
+
+  /* ---- Letter spacing ---- */
+  --ls-display: -0.02em;
+  --ls-heading: -0.01em;
+  --ls-overline: 0.18em;   /* the all-caps spaced label, as on the album spine */
+
+  /* ---- Heading outline feel (echoes the logo's 2pt stroke) ---- */
+  --heading-stroke: 0.4px var(--ws-black);
+}

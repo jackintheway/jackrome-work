@@ -1,0 +1,65 @@
+/* ============================================================
+   WAYSPACE — Color tokens
+   Bold, flat, high-contrast. Orange leads, yellow balances,
+   blue answers, black outlines everything.
+   ============================================================ */
+:root {
+  /* ---- Core palette (raw) ---- */
+  --ws-orange:  #f77b0b;   /* primary */
+  --ws-blue:    #2769c9;   /* secondary */
+  --ws-green:   #72b272;   /* supporting */
+  --ws-yellow:  #efdf4d;   /* tertiary / the balancing accent */
+  --ws-salmon:  #e89c82;   /* accent ground */
+  --ws-brown:   #632c1f;   /* earth accent */
+  --ws-grey:    #636363;   /* stone / muted */
+  --ws-black:   #000000;   /* text + outlines */
+  --ws-white:   #ffffff;
+
+  /* ---- Warm neutral grounds (paper) ---- */
+  --ws-paper:     #f5ecd6;  /* default light ground */
+  --ws-paper-2:   #ece0c2;  /* deeper paper / inset */
+  --ws-paper-3:   #e2d3ad;  /* deepest paper / wells */
+
+  /* ---- Functional shades (hover / press / depth) ---- */
+  --ws-orange-deep: #d8650a;
+  --ws-orange-dim:  #c25a08;
+  --ws-orange-soft: #fbb069;
+  --ws-blue-deep:   #1d4f9c;
+  --ws-blue-soft:   #7aa6e3;
+  --ws-yellow-deep: #d8c63a;
+  --ws-green-deep:  #549154;
+  --ws-salmon-deep: #d97f63;
+
+  /* ---- Semantic aliases ---- */
+  --bg-base:        var(--ws-paper);
+  --bg-sunken:      var(--ws-paper-2);
+  --bg-well:        var(--ws-paper-3);
+  --bg-brand:       var(--ws-orange);   /* orange foreground field */
+  --bg-brand-alt:   var(--ws-blue);     /* blue answering field */
+  --bg-accent:      var(--ws-yellow);
+
+  --surface-card:   var(--ws-white);
+  --surface-raised: var(--ws-yellow);   /* yellow = the 3D / raised accent under orange */
+
+  --text-strong:    var(--ws-black);    /* bold black on light grounds — the rule */
+  --text-body:      #1a1206;            /* near-black warm */
+  --text-muted:     var(--ws-grey);
+  --text-on-brand:  var(--ws-black);    /* black text holds even on orange */
+  --text-on-blue:   var(--ws-white);
+  --text-inverse:   var(--ws-white);
+
+  --outline:        var(--ws-black);
+  --link:           var(--ws-blue-deep);
+
+  /* ---- Status (kept in-palette) ---- */
+  --status-go:      var(--ws-green);
+  --status-warn:    var(--ws-yellow);
+  --status-stop:    var(--ws-orange-deep);
+  --status-info:    var(--ws-blue);
+
+  /* ---- Subject-based grounds (from the art rules) ---- */
+  --subject-plant:    var(--ws-green);
+  --subject-stone:    var(--ws-grey);
+  --subject-water:    var(--ws-blue);
+  --subject-earth:    var(--ws-brown);
+}

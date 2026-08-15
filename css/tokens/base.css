@@ -1,0 +1,65 @@
+/* ============================================================
+   WAYSPACE — Base element defaults
+   Sensible, on-brand starting styles. Bold black text on warm
+   paper; headings in Galvji; generous body leading.
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg-base);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  color: var(--text-strong);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-heading);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-h1); line-height: var(--lh-tight); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+
+p { margin: 0 0 var(--space-4); text-wrap: pretty; }
+
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+a:hover { color: var(--ws-orange-deep); }
+
+strong, b { font-weight: var(--fw-bold); color: var(--text-strong); }
+
+small { font-size: var(--fs-small); }
+
+hr { border: none; border-top: var(--rule); margin: var(--space-6) 0; }
+
+::selection { background: var(--ws-yellow); color: var(--ws-black); }
+
+/* ---- Helper text styles ---- */
+.ws-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+  color: var(--text-strong);
+  font-weight: 400;
+}
+.ws-overline {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-strong);
+}
+.ws-serif { font-family: var(--font-serif); }
