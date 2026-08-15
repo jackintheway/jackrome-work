@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- TODO(copy): title and description are placeholders pending Jack's
+       review. They are user-facing and they are what search engines read. -->
+  <title>Jack Rome</title>
+  <meta name="description" content="Jack Rome builds AI tools and creative work from Frederick, Maryland.">
+  <link rel="canonical" href="https://jackrome.work/">
+
+  <!-- Link previews. iMessage, Slack, LinkedIn and the rest all read these
+       tags and nothing else, so a page without them shares as a bare URL.
+       og:image must be absolute: scrapers do not resolve relative paths.
+
+       TODO(og): the image at this path does not exist yet. It gets
+       generated from HTML in tools/og/ so it inherits the design system.
+       Every page gets its own card, not one shared across the site. The
+       Squarespace version reused one image on nine pages. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jack Rome">
+  <meta property="og:url" content="https://jackrome.work/">
+  <meta property="og:title" content="Jack Rome">
+  <meta property="og:description" content="Jack Rome builds AI tools and creative work from Frederick, Maryland.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-home.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jack Rome.">
+
+  <!-- summary_large_image gives the full-width banner. Plain "summary" is
+       the small square thumbnail, which is what the Squarespace site
+       still uses on every page. -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jack Rome">
+  <meta name="twitter:description" content="Jack Rome builds AI tools and creative work from Frederick, Maryland.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-home.png">
+
+  <!-- TODO(asset): no favicon yet. The AI portfolio uses a puzzle mark;
+       the main site needs its own. -->
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- NAV
+       Static markup, repeated per page, on purpose. Four links that
+       change almost never do not need a render function, and a nav built
+       in JS is one crawlers may not follow and one that flashes on load.
+       The data-array pattern is for content that repeats and grows, like
+       the releases on the creative portfolio. Not for this.
+
+       aria-current="page" marks the current page for screen readers, and
+       site.css gives it a visible underline for everyone else. -->
+  <nav class="site-nav" aria-label="Main">
+    <a class="nav-mark" href="/">Jack Rome</a>
+    <div class="nav-links">
+      <a class="nav-link" href="/" aria-current="page">Home</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/ai-enablement">AI Enablement</a>
+      <a class="nav-link" href="/creative-portfolio">Creative</a>
+      <a class="nav-link is-external" href="https://ai.jackrome.work">AI Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <!-- TODO(copy): every string in this hero is a placeholder. The real
+           copy comes off the live Squarespace site, which INVENTORY.md
+           does not capture. Pulling it is the next step. -->
+      <p class="hero-eyebrow ws-overline">Jack Rome &middot; Frederick, Maryland</p>
+      <h1 class="hero-title">Placeholder headline</h1>
+      <p class="hero-sub">Placeholder subheading. Replace with the real positioning copy from the live site before this page goes anywhere near a deploy.</p>
+    </div>
+  </header>
+
+  <main class="page" id="main">
+
+    <section aria-labelledby="scaffoldTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="scaffoldTitle">Scaffold</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <!-- TODO(copy): this section is a standing marker that the page is
+           structural only. Delete it once the real sections land. -->
+      <p>This page is the structural scaffold for the rebuild. Tokens, typeface, nav, page shell, and footer are wired and rendering. The copy is not here yet.</p>
+      <p>Four pages are in scope: this one, About, AI Enablement, and the Creative Portfolio.</p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span class="footer-line">Jack Rome &middot; Frederick, Maryland &middot; 2026</span>
+    <span class="footer-links">
+      <a class="footer-line" href="/ai-enablement">Work with me</a>
+      <a class="footer-line" href="/creative-portfolio">Creative work</a>
+      <a class="footer-line" href="https://ai.jackrome.work">AI Portfolio</a>
+    </span>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+# Deploy config lives here rather than only in the Netlify UI, so the
+# settings travel with the repo and can be reviewed in a diff.
+#
+# There is no build step. The site is static HTML, CSS and vanilla JS,
+# so Netlify publishes the repo root as-is.
+
+[build]
+  publish = "."
+  command = ""
+
+# Filenames whose contents never change can be cached hard.
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Audio is large and static once published. Cached hard so a visitor
+# who plays a track twice only pays for it once.
+[[headers]]
+  for = "/assets/audio/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML stays short-lived so edits show up.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "frame-ancestors 'self'"
+
+# Squarespace answered both / and /home. Anything saved or linked
+# against /home keeps working.
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+# Vanity path for print, talks, and email signatures.
+[[redirects]]
+  from = "/ai"
+  to = "https://ai.jackrome.work"
+  status = 301
+
+# Working notes and project instructions are not part of the site.
+# force is required: without it a real file at this path wins over the
+# redirect rule, and the markdown gets served as plain text.
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/INVENTORY.md"
+  to = "/"
+  status = 302
+  force = true
+
+# NOT YET HANDLED, and deliberately so. /toolbox, /store and /blog are
+# still served by Squarespace and are out of scope for this build. They
+# stop existing the moment DNS moves here, so each needs a rule above
+# before the cutover. See the cutover note in CLAUDE.md.
