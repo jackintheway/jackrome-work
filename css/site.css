@@ -431,38 +431,6 @@ a.footer-line:hover { color: var(--ws-yellow); }
 }
 
 /* ============================================================
-   CARD TINTS
-   Flat colour fills for any card. Black text holds on all three of
-   these, which is the design system's rule, so only the muted greys
-   inside a card need lifting to black to stay legible on colour.
-
-   Blue is the exception: it is the one fill dark enough to need
-   white text, which the system already names as text-on-blue.
-   ============================================================ */
-.card-yellow { background: var(--ws-yellow); }
-.card-salmon { background: var(--ws-salmon); }
-.card-green  { background: var(--ws-green); }
-
-.card-yellow .offer-for, .card-salmon .offer-for, .card-green .offer-for,
-.card-yellow .offer-link, .card-salmon .offer-link, .card-green .offer-link {
-  color: var(--text-strong);
-}
-.card-yellow .offer-link:hover,
-.card-salmon .offer-link:hover,
-.card-green .offer-link:hover {
-  color: var(--text-strong);
-  border-bottom-color: var(--ws-black);
-}
-
-.card-blue {
-  background: var(--ws-blue);
-  color: var(--text-on-blue);
-}
-/* base.css sets strong to text-strong, which is black. On blue that
-   disappears, so it is restored here rather than left to inherit. */
-.card-blue strong { color: var(--text-on-blue); }
-
-/* ============================================================
    THE ASK
    A closing question and a button, in the open. It was a filled
    band, which turned the page's loudest moment into another box on
@@ -501,6 +469,7 @@ a.footer-line:hover { color: var(--ws-yellow); }
   flex: 1;
   font-family: var(--font-serif);
   font-size: var(--fs-body-lg);
+  font-weight: var(--fw-medium);
   color: var(--text-body);
   margin: 0 0 var(--space-5);
   quotes: "\201C" "\201D";
@@ -517,6 +486,38 @@ a.footer-line:hover { color: var(--ws-yellow); }
   font-size: var(--fs-small);
   color: var(--text-muted);
 }
+
+/* ============================================================
+   CARD TINTS
+   Deliberately last of the component blocks. A tint and a component
+   background are both single-class selectors, so the one written
+   later wins. Defined earlier, these silently lost to .testimonial
+   and the card stayed white with no error anywhere. Anything added
+   below this line that sets its own background will beat them.
+   ============================================================ */
+.card-yellow { background: var(--ws-yellow); }
+.card-salmon { background: var(--ws-salmon); }
+.card-green  { background: var(--ws-green); }
+
+.card-yellow .offer-for, .card-salmon .offer-for, .card-green .offer-for,
+.card-yellow .offer-link, .card-salmon .offer-link, .card-green .offer-link {
+  color: var(--text-strong);
+}
+.card-yellow .offer-link:hover,
+.card-salmon .offer-link:hover,
+.card-green .offer-link:hover {
+  color: var(--text-strong);
+  border-bottom-color: var(--ws-black);
+}
+
+.card-blue {
+  background: var(--ws-blue);
+  color: var(--text-on-blue);
+}
+/* base.css sets strong to text-strong, which is black. On blue that
+   disappears, so it is restored here rather than left to inherit. */
+.card-blue strong { color: var(--text-on-blue); }
+
 
 /* ============================================================
    RESPONSIVE
