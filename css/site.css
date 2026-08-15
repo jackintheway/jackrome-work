@@ -1,0 +1,217 @@
+/* ============================================================
+   JACKROME.WORK : component styles
+
+   Every value here traces to a token in css/tokens/. No colors,
+   sizes, shadows, or timings invented outside the system.
+
+   This file holds the chrome that every page shares: the skip link,
+   the nav, the page shell, and the footer. Page-specific sections
+   go below the shared blocks, each under its own banner comment.
+   ============================================================ */
+
+/* ---- Skip link ----
+   Hidden until focused. A keyboard visitor should not have to tab
+   through the whole nav on every page to reach the content. */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: calc(var(--space-4) * -6);
+  z-index: 100;
+  background: var(--ws-yellow);
+  color: var(--ws-black);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  padding: var(--space-3) var(--space-4);
+  border: var(--rule);
+  text-decoration: none;
+  transition: top var(--dur) var(--ease-out);
+}
+.skip-link:focus { top: var(--space-4); }
+
+/* ---- Global focus state ----
+   One visible ring everywhere, rather than per-component styling
+   that quietly gets forgotten on the next new component. */
+:focus-visible {
+  outline: var(--border) solid var(--ws-blue);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   NAV
+   Sticky, paper ground, heavy black underline. Four links plus the
+   doorway out to the AI portfolio. At narrow widths the row wraps
+   rather than collapsing into a menu: five items fit, and a
+   hamburger would hide the site's whole structure to save nothing.
+   ============================================================ */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3) var(--space-5);
+  background: var(--bg-base);
+  border-bottom: var(--border-mega) solid var(--outline);
+  padding: var(--space-4) var(--space-5);
+}
+
+.nav-mark {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-h4);
+  letter-spacing: var(--ls-heading);
+  color: var(--text-strong);
+  text-decoration: none;
+  margin-right: auto;
+}
+.nav-mark:hover { color: var(--ws-orange-deep); }
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+}
+
+.nav-link {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-strong);
+  text-decoration: none;
+  padding-bottom: var(--space-1);
+  border-bottom: var(--border) solid transparent;
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.nav-link:hover {
+  color: var(--ws-orange-deep);
+  border-bottom-color: var(--ws-orange);
+}
+
+/* The page you are already on. aria-current does the work for screen
+   readers; this makes it visible for everyone else. */
+.nav-link[aria-current="page"] {
+  color: var(--ws-orange-deep);
+  border-bottom-color: var(--ws-black);
+}
+
+/* The doorway to ai.jackrome.work. Marked as leaving this site. */
+.nav-link.is-external::after {
+  content: "\00a0\2197";
+  font-weight: var(--fw-regular);
+}
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
+.page {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-5) var(--space-9);
+}
+.page-narrow { max-width: var(--container-narrow); }
+
+/* ---- Hero: orange leads ---- */
+.hero {
+  background: var(--bg-brand);
+  border-bottom: var(--border-mega) solid var(--outline);
+  padding: var(--space-8) var(--space-5);
+}
+.hero-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  color: var(--text-on-brand);
+  margin: 0 0 var(--space-4);
+}
+.hero-title {
+  font-size: var(--fs-h1);
+  color: var(--text-on-brand);
+  margin: 0 0 var(--space-5);
+}
+.hero-sub {
+  font-size: var(--fs-body-lg);
+  color: var(--text-on-brand);
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* ---- Section headers: title, rule, optional count ---- */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.section-title { margin: 0; }
+.section-rule {
+  flex: 1;
+  height: var(--border-heavy);
+  background: var(--outline);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--ws-black);
+  color: var(--ws-paper);
+  border-top: var(--border-mega) solid var(--outline);
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+.footer-line {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--ws-paper);
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
+}
+a.footer-line { text-decoration: none; }
+a.footer-line:hover { color: var(--ws-yellow); }
+
+/* ============================================================
+   RESPONSIVE
+   The requirement is 390px with no horizontal scroll. The type
+   scale is the only thing that genuinely breaks that, so it is
+   the only thing that changes.
+   ============================================================ */
+@media (max-width: 640px) {
+  :root {
+    --fs-h1: 38px;
+    --fs-h2: 30px;
+    --fs-h3: 24px;
+    --fs-body-lg: 17px;
+  }
+  .hero { padding: var(--space-7) var(--space-4); }
+  .page { padding: var(--space-6) var(--space-4) var(--space-8); }
+  .site-nav { padding: var(--space-3) var(--space-4); }
+}
+
+/* ============================================================
+   MOTION
+   Every transition on this site is decoration. Someone who has
+   asked their system for less motion gets none of it.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

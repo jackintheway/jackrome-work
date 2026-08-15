@@ -1,0 +1,25 @@
+/* ============================================================
+   JACKROME.WORK : global entry point
+
+   This is the only stylesheet a page links. Everything else is
+   pulled in from here, in an order that matters:
+
+     1. tokens/   copied verbatim from the Wayspace design system,
+                  which is the styling source of truth. Do not edit
+                  these files. If a value needs to change, change it
+                  in the design system and re-copy, or override it
+                  further down this chain.
+     2. fonts.css ships Archivo and overrides the two family tokens.
+                  Loads after the tokens so its override wins.
+     3. site.css  this site's own components, built only from tokens.
+
+   The design system's own fonts.css is deliberately not shipped: its
+   bundled faces are licensed for Jack's use, not for redistribution
+   to every visitor.
+   ============================================================ */
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/spacing.css";
+@import "tokens/base.css";
+@import "fonts.css";
+@import "site.css";

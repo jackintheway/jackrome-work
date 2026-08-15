@@ -1,0 +1,35 @@
+/* ============================================================
+   JACKROME.WORK : shipped webfont
+
+   Archivo, self-hosted. It replaces Ballinger, the face the
+   Squarespace site used, which is a commercial licence scoped to
+   Squarespace hosting and cannot travel here. Archivo is the closest
+   freely licensed grotesque, under the SIL Open Font License. The
+   licence text ships beside the file at assets/fonts/OFL.txt.
+
+   This is the same face the AI portfolio adopted, on purpose. The
+   two sites are one universe and a visitor crossing between them
+   should not feel a change of typeface.
+
+   One variable file covers every weight for the latin subset, so
+   this is a single 34KB request served from our own origin. No CDN
+   and no third-party request.
+
+   The design system stacks stay behind Archivo as the fallback, so
+   losing the file degrades rather than breaks.
+   ============================================================ */
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/archivo-variable-latin.woff2") format("woff2");
+}
+
+/* Overrides the two family tokens. The vendored token files in
+   css/tokens/ stay verbatim; the change lives here instead. */
+:root {
+  --font-heading: "Archivo", "Galvji", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  --font-sans:    "Archivo", "AvenirNext", "Avenir", "Segoe UI", system-ui, sans-serif;
+}
