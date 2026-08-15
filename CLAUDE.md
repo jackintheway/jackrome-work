@@ -54,6 +54,14 @@ Rules for the image itself:
 - **Generated from HTML, not drawn by hand**, so it inherits the design system and stays editable. `../ai-work-portfolio/tools/og/` has the working pattern and the headless Chrome render command.
 - **Its own image per page, not one shared card.** `jackrome.work` currently uses one image across nine pages, so every link previews identically. Do not repeat that.
 
+## External links open in a new window (standing rule)
+
+**Any link leaving `jackrome.work` opens in a new tab. Links staying on `jackrome.work` do not.**
+
+`ai.jackrome.work` counts as leaving, for now. So does Calendly, YouTube, a client's site, and anything else off-domain. This applies to hyperlinked text and buttons alike.
+
+Always pair `target="_blank"` with `rel="noopener"`. Without it the opened page gets a handle on the page that opened it through `window.opener`, which it can use to redirect the original tab somewhere else. Modern browsers imply this, but stating it costs nothing and does not depend on the visitor's browser being current.
+
 ## Other standing page requirements
 
 - Every image has real `alt` text, or `alt=""` if it is purely decorative.
