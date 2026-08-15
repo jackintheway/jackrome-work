@@ -175,7 +175,11 @@
   justify-content: space-between;
   gap: var(--space-3) var(--space-5);
 }
-.footer-line {
+/* The identity line and the nav were the same colour at the same size in
+   the same caps, so the footer read as one run of text with an arbitrary
+   gap in it. Colour is what separates them now: paper says who and where,
+   yellow says this is somewhere you can go. */
+.footer-line, .footer-link {
   font-family: var(--font-heading);
   font-weight: var(--fw-bold);
   font-size: var(--fs-caption);
@@ -190,13 +194,33 @@
   gap: var(--space-2) var(--space-3);
 }
 
+/* The underline is there at rest rather than arriving on hover. Most of
+   the people who reach this footer are on a phone, where hover never
+   happens, so a hover-only affordance is invisible to them. It rests in
+   the deeper yellow so it reads as a quiet baseline and not a heavy rule.
+
+   Hover and focus move to orange, matching how the nav behaves up top.
+   The bright orange rather than orange-deep: this ground is black, and
+   orange-deep goes muddy against it. */
+.footer-link {
+  color: var(--ws-yellow);
+  text-decoration: none;
+  padding-bottom: var(--space-1);
+  border-bottom: var(--border-hair) solid var(--ws-yellow-deep);
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--ws-orange);
+  border-bottom-color: var(--ws-orange);
+}
+
 /* Real elements rather than a CSS ::before, because a ::before on a
    link becomes part of that link's accessible name: a screen reader
    would announce "dot creative work". These are marked aria-hidden so
    they are seen and not heard. */
 .footer-dot { opacity: 0.55; }
-a.footer-line { text-decoration: none; }
-a.footer-line:hover { color: var(--ws-yellow); }
 
 /* ============================================================
    PROSE
@@ -321,6 +345,13 @@ a.footer-line:hover { color: var(--ws-yellow); }
   justify-self: center;
 }
 
+/* The portrait is written first in the HTML so that the phone layout can
+   float it, and a float only moves what follows it. Placing both children
+   explicitly puts the copy back on the left here, because grid places by
+   these rules and not by source order. */
+.hero-copy     { grid-column: 1; grid-row: 1; }
+.hero-portrait { grid-column: 2; grid-row: 1; }
+
 /* The site's frame for a photo: circular crop, heavy outline, and the
    same hard offset shadow the cards use.
 
@@ -337,11 +368,47 @@ a.footer-line:hover { color: var(--ws-yellow); }
   box-shadow: var(--elevation-card);
 }
 
-/* One column before the two get too cramped to read. The text keeps
-   its source order and leads; the portrait follows it. */
+/* TABLET: one column before the two get too cramped to read. The copy
+   leads and the portrait follows, which means overriding the explicit
+   placement above rather than relying on source order. */
 @media (max-width: 860px) {
   .hero-split { grid-template-columns: 1fr; gap: var(--space-6); }
-  .hero-portrait { max-width: 260px; justify-self: start; }
+  .hero-copy     { grid-column: 1; grid-row: 1; }
+  .hero-portrait { grid-column: 1; grid-row: 2; max-width: 260px; justify-self: start; }
+}
+
+/* PHONE: the portrait comes up beside the headline instead of sitting
+   below the whole hero.
+
+   Stacked, the photo landed under the headline, the paragraph and the
+   button, which on a phone put it a full screen below the fold. Nobody
+   scrolling past the fold was meeting Jack's face at all.
+
+   A float rather than a second grid column, and this is the whole reason
+   the layout changed. In a grid the headline would be locked into a
+   narrow column for its full height, leaving a tall block of empty
+   orange under a small circle. A float only holds the lines it actually
+   sits beside: the headline wraps around the portrait and then reclaims
+   the full width underneath it. shape-outside is what makes the wrap
+   follow the circle instead of its square box.
+
+   text-wrap: balance is off here on purpose. It evens out line lengths
+   across a block, which is right for a headline in the open and wrong
+   next to a float, where the lines are meant to be uneven. */
+@media (max-width: 640px) {
+  .hero-split { display: block; }
+  .hero-portrait {
+    float: right;
+    width: 38%;
+    max-width: 145px;
+    margin: var(--space-1) 0 var(--space-4) var(--space-4);
+    shape-outside: circle(50%);
+    shape-margin: 8px;
+  }
+  .hero-title { text-wrap: pretty; }
+  /* The button carries a hard offset shadow to its right, so it needs
+     to be clear of the portrait rather than merely beside it. */
+  .hero .btn-row { clear: right; }
 }
 
 /* ============================================================
@@ -534,7 +601,10 @@ a.footer-line:hover { color: var(--ws-yellow); }
    ============================================================ */
 @media (max-width: 640px) {
   :root {
-    --fs-h1: 38px;
+    /* 33 rather than 38. The only h1 on any page is the hero title, and
+       at 38 it wrapped to five or six characters a line beside the
+       portrait and ate the entire first screen on its own. */
+    --fs-h1: 33px;
     --fs-h2: 30px;
     --fs-h3: 24px;
     --fs-body-lg: 17px;

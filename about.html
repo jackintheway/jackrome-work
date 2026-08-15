@@ -58,17 +58,19 @@
 
        Same split as the home page, so the two heroes read as one system.
        The circle, ring and shadow are CSS, not baked into the file, so
-       both portraits stay plain JPEGs. -->
+       both portraits stay plain JPEGs. The portrait sits before the copy
+       in the source so it can float on a phone; see the note on the home
+       page hero for why. -->
   <header class="hero">
     <div class="hero-inner hero-split">
-      <div>
-        <p class="hero-eyebrow ws-overline">About</p>
-        <h1 class="hero-title">I've spent my career on the bridge between people and the systems they're expected to use.</h1>
-      </div>
       <img class="hero-portrait framed" src="assets/img/jack-2025.jpg"
            width="750" height="750"
            alt="Jack Rome, smiling, wearing glasses and a black collared shirt."
            fetchpriority="high">
+      <div class="hero-copy">
+        <p class="hero-eyebrow ws-overline">About</p>
+        <h1 class="hero-title">I've spent my career on the bridge between people and the systems they're expected to use.</h1>
+      </div>
     </div>
   </header>
 
@@ -133,11 +135,11 @@
   <footer class="site-footer">
     <span class="footer-line">Jack Rome &middot; Maryland</span>
     <span class="footer-links">
-      <a class="footer-line" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Reach out</a>
+      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Reach out</a>
       <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
-      <a class="footer-line" href="/creative-portfolio">Creative work</a>
+      <a class="footer-link" href="/creative-portfolio">Creative work</a>
       <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
-      <a class="footer-line" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
+      <a class="footer-link" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
     </span>
   </footer>
 

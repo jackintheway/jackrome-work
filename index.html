@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Jack Rome | Technology Enablement Consultant</title>
+  <title>Jack Rome | Technology Enablement</title>
   <meta name="description" content="Jack Rome helps organizations, teams, and individuals use technology that wasn't built with them in mind. AI enablement, one-on-one guidance, and creative production from Maryland.">
   <link rel="canonical" href="https://jackrome.work/">
 
@@ -55,20 +55,25 @@
        was saying the same thing twice.
 
        The portrait is a plain JPEG framed by CSS, which took it from
-       984KB to 228KB for the identical result. -->
+       984KB to 228KB for the identical result.
+
+       The portrait sits before the copy in the source. On a phone it
+       floats and the headline wraps around it, and a float can only
+       push what comes after it. On every wider screen the grid puts it
+       back on the right, because grid placement ignores source order. -->
   <header class="hero">
     <div class="hero-inner hero-split">
-      <div>
+      <img class="hero-portrait framed" src="assets/img/jack-outside-2023.jpg"
+           width="750" height="750"
+           alt="Jack Rome, standing outdoors and smiling."
+           fetchpriority="high">
+      <div class="hero-copy">
         <h1 class="hero-title">Hi, I'm Jack. I help people use technology that wasn't built with them in mind.</h1>
         <p class="hero-sub">New technology arrives faster than anyone gets taught to use it. I close that gap for organizations, teams, and individuals so that no one's left behind.</p>
         <div class="btn-row">
           <a class="btn btn-secondary" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Let's chat</a>
         </div>
       </div>
-      <img class="hero-portrait framed" src="assets/img/jack-outside-2023.jpg"
-           width="750" height="750"
-           alt="Jack Rome, standing outdoors and smiling."
-           fetchpriority="high">
     </div>
   </header>
 
@@ -171,11 +176,11 @@
   <footer class="site-footer">
     <span class="footer-line">Jack Rome &middot; Maryland</span>
     <span class="footer-links">
-      <a class="footer-line" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Reach out</a>
+      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Reach out</a>
       <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
-      <a class="footer-line" href="/creative-portfolio">Creative work</a>
+      <a class="footer-link" href="/creative-portfolio">Creative work</a>
       <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
-      <a class="footer-line" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
+      <a class="footer-link" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
     </span>
   </footer>
 
