@@ -216,12 +216,15 @@ a.footer-line:hover { color: var(--ws-yellow); }
    and the hard offset shadow that the design system uses instead
    of a blur to signal depth.
    ============================================================ */
+/* No max-width of its own: it fills whatever column it is dropped into.
+   Inside .page-narrow that is 780px, inside .page it is the full 1200.
+   Pinning it to 780px left it stranded against dead space on the wider
+   pages. The prose inside keeps its own measure regardless. */
 .callout {
   background: var(--bg-sunken);
   border: var(--rule-heavy);
   box-shadow: var(--elevation-card);
   padding: var(--space-6);
-  max-width: var(--container-narrow);
 }
 .callout > p:last-child { margin-bottom: 0; }
 
@@ -292,6 +295,22 @@ a.footer-line:hover { color: var(--ws-yellow); }
   justify-self: center;
 }
 
+/* The site's frame for a photo: circular crop, heavy outline, and the
+   same hard offset shadow the cards use.
+
+   Done here rather than baked into the image file, which costs less on
+   every count. A baked circle needs transparent corners, which forces
+   PNG, and PNG stores a photograph badly. The two portraits on this
+   site prove it: the baked one is 984KB at 750px, the CSS-framed one is
+   69KB at the same size. This also keeps the border and shadow as
+   design tokens, so changing them is an edit here rather than a
+   re-export of every photo. */
+.framed {
+  border-radius: 50%;
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+}
+
 /* One column before the two get too cramped to read. The text keeps
    its source order and leads; the portrait follows it. */
 @media (max-width: 860px) {
@@ -344,6 +363,52 @@ a.footer-line:hover { color: var(--ws-yellow); }
 .offer-link:hover {
   color: var(--ws-orange-deep);
   border-bottom-color: var(--ws-orange);
+}
+
+/* ============================================================
+   SECTION INTRO
+   A line of setup under a section heading. :has() pulls the heading's
+   own bottom margin in when one follows, so the two read as a pair
+   rather than as two separated blocks.
+   ============================================================ */
+.section-intro {
+  font-size: var(--fs-body-lg);
+  color: var(--text-strong);
+  max-width: 62ch;
+  margin: 0 0 var(--space-6);
+}
+.section-header:has(+ .section-intro) { margin-bottom: var(--space-4); }
+
+/* ============================================================
+   STATEMENT CARDS
+   A card holding one claim, with no title and nowhere to click. Same
+   shell as the offer cards so the page reads as one system.
+   ============================================================ */
+.statement-card {
+  background: var(--surface-card);
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-5);
+}
+.statement-card p { margin: 0; }
+.statement-card strong { display: block; margin-bottom: var(--space-2); }
+
+/* ============================================================
+   STORY
+   A short narrative told in beats, one line per paragraph. Set larger
+   than body text and tight within a line, so the space between the
+   beats is what carries the pacing. The closing line lands in bold.
+   ============================================================ */
+.story { max-width: var(--container-narrow); }
+.story p {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  color: var(--text-strong);
+  margin: 0 0 var(--space-5);
+}
+.story p:last-of-type {
+  font-weight: var(--fw-bold);
+  margin-bottom: 0;
 }
 
 /* ============================================================

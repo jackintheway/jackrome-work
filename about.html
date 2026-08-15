@@ -53,11 +53,21 @@
        The thesis line is the h1 rather than the word "About". It is the
        most useful sentence on the page, and it is what a search result
        and a screen reader's heading list will show. "About" carries in
-       the eyebrow, the nav state, and the title tag. -->
+       the eyebrow, the nav state, and the title tag.
+
+       Same split as the home page, so the two heroes read as one system.
+       The frame here is CSS rather than baked into the file, which is
+       why this photo is 69KB and the home page's is 984KB. -->
   <header class="hero">
-    <div class="hero-inner">
-      <p class="hero-eyebrow ws-overline">About</p>
-      <h1 class="hero-title">I've spent my career on the bridge between people and the systems they're expected to use.</h1>
+    <div class="hero-inner hero-split">
+      <div>
+        <p class="hero-eyebrow ws-overline">About</p>
+        <h1 class="hero-title">I've spent my career on the bridge between people and the systems they're expected to use.</h1>
+      </div>
+      <img class="hero-portrait framed" src="assets/img/jack-2025.jpg"
+           width="750" height="750"
+           alt="Jack Rome, smiling, wearing glasses and a black collared shirt."
+           fetchpriority="high">
     </div>
   </header>
 
@@ -66,7 +76,7 @@
     <!-- WHAT I DO NOW -->
     <section class="section">
       <div class="prose">
-        <p class="lead">At <a href="https://fuelcycle.com/" target="_blank" rel="noopener">Fuel Cycle</a> I manage enterprise accounts for an AI-powered market research platform. I spend most of my day translating between clients and the people who built the product. I also build internal tools and workflows for my own team, which is where most of my AI work started.</p>
+        <p>At <a href="https://fuelcycle.com/" target="_blank" rel="noopener">Fuel Cycle</a> I manage enterprise accounts for an AI-powered market research platform. I spend most of my day translating between clients and the people who built the product. I also build internal tools and workflows for my own team, which is where most of my AI work started.</p>
         <p>I've been freelancing since 2016 and never stopped: websites, events, video editing, podcast production, graphic design, and pretty much any digital work that's helpful. Nearly all of it referred, and much of it for nonprofits and small teams working past their capacity.</p>
         <p>I also support web events for the <a href="https://acim.org/" target="_blank" rel="noopener">Foundation for Inner Peace</a>, the publisher of A Course in Miracles.</p>
         <p>Across all of my work, when someone has something they need to bring forth and something technical is in the way, I'm the person who moves it.</p>
