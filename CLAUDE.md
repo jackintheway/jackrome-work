@@ -4,13 +4,47 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 
 ---
 
-## Status: building
+## Status: three of four pages built and deployed to staging
 
 **The build started 2026-08-15 on Jack's go.** All four blocking decisions are settled and recorded below.
 
-`INVENTORY.md` is the crawl of the live site. Read it before scoping anything. It has every URL, every embed ID, the image manifest, and eight real metadata problems on the current site.
+| | |
+|---|---|
+| Repo | `github.com/jackintheway/jackrome-work` |
+| Staging | `https://jackrome-work.netlify.app` |
+| Production | Still Squarespace. DNS untouched. |
 
-Nothing is live. `jackrome.work` still points at Squarespace and stays there until Jack calls the cutover.
+Built, deployed, and verified: `/`, `/about`, `/ai-enablement`. Tokens, Archivo, nav, footer, share cards, redirects, and headers are all in place and confirmed against the live deploy.
+
+`INVENTORY.md` is the crawl of the old Squarespace site. `COPY.md` is the copy pulled from it on 2026-08-15, and is the source for the three built pages. Once a page is built its HTML is the source of truth, not `COPY.md`.
+
+**Nothing is public.** `jackrome.work` stays on Squarespace until Jack calls the cutover.
+
+---
+
+## Where the next session picks up
+
+**The creative portfolio, and it starts with Jack, not with code.** It is the last page and the only one that is a revamp rather than a port. See the creative portfolio decisions below before scoping anything.
+
+Jack plans to bring:
+
+- The real release list. The live page predates Feivel Speaks and RACE DAY.
+- Actual files and embeddable links, assembled by him.
+- Material from **Wayspace**, his Obsidian vault at `~/Obsidian/Wayspace`, which holds a lot of lyrics. Expect a session that reads from the vault and works on copy.
+
+Two things to hold when the vault comes up:
+
+- The vault has its own `CLAUDE.md` at its root that governs behaviour inside it. Read that on arrival rather than assuming this file applies.
+- **`~/Obsidian/Wayspace/Compost/` is the only permitted write destination in the vault.** Everything else there is read-only.
+
+The page needs writing before it needs building. The live version is a grid of untitled artwork with no copy on it at all, and that gap is the actual work.
+
+### Open items, none blocking
+
+- `/creative-portfolio` 404s. The nav and two buttons already point at it.
+- One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
+- `assets/img/jack-ventnor-2026.jpg` ships but is unused.
+- The orphaned Squarespace pages still need a call before DNS moves. See the cutover note below.
 
 ---
 
