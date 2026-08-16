@@ -368,21 +368,14 @@
   box-shadow: var(--elevation-card);
 }
 
-/* TABLET: one column before the two get too cramped to read. The copy
-   leads and the portrait follows, which means overriding the explicit
-   placement above rather than relying on source order. */
-@media (max-width: 860px) {
-  .hero-split { grid-template-columns: 1fr; gap: var(--space-6); }
-  .hero-copy     { grid-column: 1; grid-row: 1; }
-  .hero-portrait { grid-column: 1; grid-row: 2; max-width: 260px; justify-self: start; }
-}
-
-/* PHONE: the portrait comes up beside the headline instead of sitting
-   below the whole hero.
+/* BELOW THE SPLIT: the portrait comes up beside the headline instead of
+   sitting below the whole hero.
 
    Stacked, the photo landed under the headline, the paragraph and the
-   button, which on a phone put it a full screen below the fold. Nobody
-   scrolling past the fold was meeting Jack's face at all.
+   button, which put it a full screen below the fold. Nobody scrolling
+   past the fold was meeting Jack's face at all. That was worst on a
+   phone held upright and still wrong in landscape, so one rule covers
+   the whole range rather than the grid returning partway up.
 
    A float rather than a second grid column, and this is the whole reason
    the layout changed. In a grid the headline would be locked into a
@@ -392,16 +385,20 @@
    the full width underneath it. shape-outside is what makes the wrap
    follow the circle instead of its square box.
 
+   The circle is sized as a share of the hero rather than a fixed width,
+   so it grows with the room it is given: about 145px on a phone upright,
+   capped at 240 before the desktop split takes over.
+
    text-wrap: balance is off here on purpose. It evens out line lengths
    across a block, which is right for a headline in the open and wrong
    next to a float, where the lines are meant to be uneven. */
-@media (max-width: 640px) {
+@media (max-width: 860px) {
   .hero-split { display: block; }
   .hero-portrait {
     float: right;
-    width: 38%;
-    max-width: 145px;
-    margin: var(--space-1) 0 var(--space-4) var(--space-4);
+    width: 39%;
+    max-width: 240px;
+    margin: var(--space-1) 0 var(--space-4) var(--space-5);
     shape-outside: circle(50%);
     shape-margin: 8px;
   }
@@ -599,6 +596,13 @@
    scale is the only thing that genuinely breaks that, so it is
    the only thing that changes.
    ============================================================ */
+/* The headline steps down wherever the portrait floats beside it, so this
+   boundary is the same 860 the hero layout uses. Left at the full 56, the
+   lines wrapping past the circle came out three or four words long. */
+@media (max-width: 860px) {
+  :root { --fs-h1: 44px; }
+}
+
 @media (max-width: 640px) {
   :root {
     /* 33 rather than 38. The only h1 on any page is the hero title, and
