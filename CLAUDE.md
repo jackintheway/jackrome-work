@@ -20,6 +20,23 @@ Built, deployed, and verified: `/`, `/about`, `/ai-enablement`. Tokens, Archivo,
 
 **Nothing is public.** `jackrome.work` stays on Squarespace until Jack calls the cutover.
 
+### There is now a deadline: 2026-09-15
+
+**Jack's Squarespace website subscription renews 2026-09-15.** He intends to cancel
+rather than let it renew, which means everything here has to be built, shipped, and
+cut over before that date. As of 2026-08-18 that is about four weeks.
+
+**Target the DNS cutover for roughly 2026-09-01, not 2026-09-15.** The standing rule is
+that Squarespace stays alive for a while after cutover as rollback. Cutting over two
+weeks early buys that rollback window inside a term Jack has already paid for, at no
+extra cost. Cutting over on the 15th spends the safety net instead of using it.
+
+Turning off auto-renew is safe to do immediately and does not take the site down: a
+Squarespace site normally serves until the end of its paid term. Worth confirming in
+their billing panel, but if it holds, doing it early removes any chance of the date
+slipping past unnoticed. Then the only remaining risk is schedule, not an accidental
+charge.
+
 ---
 
 ## Where the next session picks up
@@ -206,6 +223,20 @@ The four questions that were blocking the build. All settled. Do not reopen them
 A domain is served by one host at a time. While DNS points at Squarespace, the orphaned pages keep working untouched, which is why decision 3 is free right now. The moment DNS points at Netlify, Squarespace stops answering for `jackrome.work` and `/toolbox` and `/blog` go with it. So each one needs a call at cutover: rebuild it, redirect it in `netlify.toml`, or let it 404 deliberately. Raise this before the DNS change, not after.
 
 `/creative-portfolio` needs a call at the same time. It was a live URL on Squarespace, so it wants a 301 in `netlify.toml`, most likely to `/wayspace`.
+
+**With the 2026-09-15 deadline in place, these are critical path, not cleanup.** Four
+things have to be settled before DNS moves, and three of them are decisions rather than
+code:
+
+1. `/production` built.
+2. `/wayspace` built.
+3. `/toolbox` and `/blog`: rebuild, redirect, or deliberate 404. **Decide early.** If
+   `/toolbox` gets rebuilt it is a whole additional page, which is real scope against a
+   four week clock. Raise it with Jack before the build starts, not during.
+4. `/creative-portfolio` 301 added to `netlify.toml`.
+
+Also allow time for DNS propagation and for Netlify to provision the TLS certificate
+after the nameserver change. Do not schedule the cutover for the last day available.
 
 ---
 
