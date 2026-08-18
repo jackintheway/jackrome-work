@@ -118,7 +118,7 @@ three HTML files and nothing else.
 - `/creative-portfolio` 404s. The nav and two buttons already point at it. **Note:** if the scope question above resolves toward two pages, this path and those links change, so do not fix the 404 by building a page until that lands.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
 - `assets/img/jack-ventnor-2026.jpg` ships but is unused.
-- The orphaned Squarespace pages still need a call before DNS moves. See the cutover note below.
+- The orphaned Squarespace pages still need a call before DNS moves. `/toolbox` and `/blog` only. See the cutover note below.
 
 ---
 
@@ -193,7 +193,9 @@ The four questions that were blocking the build. All settled. Do not reopen them
 
 2. **Editing workflow: same as the AI portfolio.** Edit a file, commit, push. Jack chose this knowingly and wants it as a learning surface, not just a shipping mechanism. It is additive: it does not remove his ability to use Squarespace, and he can let Squarespace go whenever he is ready. Teach as you go when a git or web pattern comes up for the first time.
 
-3. **Orphaned pages: left in place, not migrated.** `/toolbox`, `/store`, and `/blog` stay on Squarespace and are out of scope for this build. Jack may want `/toolbox` brought over once the core site is done. See the cutover note below, because "leave them there" has an expiry date.
+3. **Orphaned pages: left in place, not migrated.** `/toolbox` and `/blog` stay on Squarespace and are out of scope for this build. Jack may want `/toolbox` brought over once the core site is done. See the cutover note below, because "leave them there" has an expiry date.
+
+   **Corrected 2026-08-18:** `/store` was on this list and should not have been. It already returns 404 on the live site. Jack's only store is a Fourthwall that `wayspace.store` redirects to, and that arrangement continues independently of anything here. So the cutover has two orphans to decide, not three.
 
 4. **Blog: not carrying over.** No blog in this build. If Jack starts writing at volume he would reach for Substack rather than hand-authored pages.
 
@@ -201,7 +203,9 @@ The four questions that were blocking the build. All settled. Do not reopen them
 
 ### The cutover note (deferred, not decided)
 
-A domain is served by one host at a time. While DNS points at Squarespace, the orphaned pages keep working untouched, which is why decision 3 is free right now. The moment DNS points at Netlify, Squarespace stops answering for `jackrome.work` and `/toolbox`, `/store`, and `/blog` go with it. So each one needs a call at cutover: rebuild it, redirect it in `netlify.toml`, or let it 404 deliberately. Raise this before the DNS change, not after.
+A domain is served by one host at a time. While DNS points at Squarespace, the orphaned pages keep working untouched, which is why decision 3 is free right now. The moment DNS points at Netlify, Squarespace stops answering for `jackrome.work` and `/toolbox` and `/blog` go with it. So each one needs a call at cutover: rebuild it, redirect it in `netlify.toml`, or let it 404 deliberately. Raise this before the DNS change, not after.
+
+`/creative-portfolio` needs a call at the same time. It was a live URL on Squarespace, so it wants a 301 in `netlify.toml`, most likely to `/wayspace`.
 
 ---
 
@@ -244,6 +248,69 @@ Open before this page gets built: which tracks (not whole albums), where clean m
 Video embeds on this page still use the facade pattern. That rule is unchanged.
 
 ---
+
+## Hosting, billing, and how often we deploy (settled 2026-08-18)
+
+**A production deploy costs real money. Preview locally by default and push in batches.**
+
+Netlify bills in credits, one pool per team, and the team here is `Wayspace`. Both
+`jackrome-work` and `../ai-work-portfolio/` draw from the same pool, so a busy day on
+one spends the other's budget too.
+
+| | |
+|---|---|
+| Production deploy | 15 credits |
+| Bandwidth | 20 credits per GB |
+| Web requests | 2 credits per 10k |
+| Free plan | 300 credits/month, so about 20 deploys |
+| Personal plan | $9/month, 1,000 credits |
+
+On 2026-08-17 the free tier ran dry after three days of building, deploys paused, and
+the team dropped onto operational credits. Those are the reserve that keeps published
+sites answering; they cannot be spent on builds, and **if they run out too, live sites
+serve a "Site not available" page.** That put `ai.jackrome.work` at real risk, which is
+what forced the plan decision.
+
+**Decision: Netlify Personal at $9/month.** Not Pro. Rollover credits sound useful but
+need a Pro plan at 5,000 credits or higher, and Pro's base tier is 3,000, so $20 does
+not buy rollover. Revisit only if deploy volume is consistently near the ceiling.
+
+### Preview locally, deploy deliberately
+
+`netlify.toml` sets `publish = "."` and `command = ""`. **There is no build step.**
+Netlify copies the folder to a CDN. So a deploy is never required to look at a change.
+
+```
+cd /Volumes/Key/workspace/claude-code-projects/jackrome-work-migration
+python3 -m http.server 8000
+```
+
+Two things local preview does not reproduce, and they are the only reasons to spend a
+deploy on checking something:
+
+- **Clean URLs.** Netlify serves `/about` from `about.html`. The local server does not,
+  so it is `/about.html` there.
+- **Nothing in `netlify.toml` applies locally.** Redirects, headers, and anything a link
+  preview scraper needs to see still require a real deploy to verify.
+
+`git commit` is free and stays frequent, per the user-level rule. `git push` is what
+triggers the build and costs the 15 credits. Committing often and pushing in batches
+satisfies both.
+
+## The Squarespace relationship (settled 2026-08-18)
+
+**The domain bill and the website bill are separate, and only one of them is going away.**
+
+`jackrome.work` is registered through Squarespace on Tucows, their registrar backend,
+and Squarespace serves its DNS (`ns01-04.squarespacedns.com`).
+
+- **Domains stay at Squarespace indefinitely.** Jack's call, made deliberately, not a
+  loose end. He likes the platform, wants it available for building the old-fashioned
+  way if he ever wants to, and wants somewhere to show clients who ask about Squarespace.
+  Do not propose a registrar transfer as cleanup.
+- **The website subscription is what eventually gets cancelled**, and not yet. It stays
+  on through the DNS cutover and for a while after, until everything built here has been
+  live long enough to trust. Revisit then, not before.
 
 ## Known facts, so they are not rediscovered
 
