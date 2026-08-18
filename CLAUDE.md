@@ -301,9 +301,18 @@ Verified live, not read off the dashboard:
 
 ### What this means for the cutover
 
-**Those four 301s are a Squarespace website feature.** They die with the site on
-2026-09-15, not with the domains. So four domains that currently land on Jack's site
-will stop landing anywhere unless each is repointed at Netlify.
+**The four 301s most likely die with the site on 2026-09-15.** The dashboard labels
+`jackintheway.me`, `jackintheway.store`, and `wayspace.store` with an explicit
+"Forwards to" line and labels the other five with nothing, which reads as forwarding
+being a domain-level feature and the rest being domains *connected to a site*. Jack has
+real evidence that forwarding survives cancellation: the three Fourthwall forwards are
+attached to his old `jackintheway.net` site, which he cancelled a while ago, and they
+still work.
+
+That evidence covers the forwards. It does not cover the four connected domains, which
+hang off the very site being cancelled. Treat them as dying until proven otherwise.
+Either way the fix is the same, so this does not need resolving in advance, only
+verifying after.
 
 The fix is Netlify **domain aliases**: add all five to the site, set `jackrome.work` as
 primary, and Netlify redirects the aliases to it. Same behaviour Squarespace is
@@ -312,20 +321,40 @@ changes plus propagation, not one.
 
 ### Open questions, all with a 2026-09-15 deadline
 
-1. **`jackintheway.net` shows a mail icon in the Squarespace domains panel.** Something
-   email-shaped is attached to it. Confirm what, and confirm it survives cancelling the
-   *website* subscription. Email breaking is far worse than a website breaking, so this
-   gets checked before anything else.
-2. **Do the three Fourthwall forwards survive?** Domain forwarding is normally a domain
-   product feature rather than a website feature, so it should. But `wayspace.store` is
-   Jack's live store link and stays in service indefinitely, so confirm rather than
-   assume.
+1. ~~The mail icon on `jackintheway.net`.~~ **Closed 2026-08-18.** A `jack@jackintheway.net`
+   address Jack set up around 2020 and no longer uses, still forwarding to
+   `jackintheway@gmail.com`. Not on the critical path.
+2. ~~Do the Fourthwall forwards survive?~~ **Closed 2026-08-18.** They already survive a
+   cancelled site: they hang off the old `jackintheway.net` site, cancelled a while back,
+   and still resolve. `wayspace.store` is safe.
 3. **`jackintheway.work` renews 2026-09-07**, about three weeks out and before the site
-   goes down. It is a duplicate pointing at the same place as four other domains. Worth
-   a deliberate keep-or-drop rather than an automatic renewal.
-4. **Dashboard says `jackintheway.me` forwards to `bio.site/jackintheway`, but it
-   actually lands on Fourthwall.** Minor, but the panel and reality disagree, so one of
-   them is stale.
+   goes down. It is a duplicate pointing at the same place as four other domains. Jack
+   is leaning keep, not decided.
+4. ~~The `jackintheway.me` discrepancy.~~ **Closed 2026-08-18.** It does forward to
+   `bio.site/jackintheway` correctly. The dashboard thumbnail showing the store is
+   stale, the forward is not.
+
+### bio.site and Wayspace, an open question (raised 2026-08-18)
+
+`bio.site/jackintheway` is Jack's de facto music and video home, and his link-in-bio.
+It became that when he cancelled the old `jackintheway.net` site. `jackintheway.me`
+forwards to it, and the About page links to it.
+
+Jack raised whether Wayspace replaces it, or whether bio.site stays as a lobby in front
+of Wayspace for his creator and musician self. Not decided, and it does not block the
+build. But it wants holding during the gathering session, because **the Wayspace landing
+as described is structurally a link-in-bio already**: floating puzzle pieces that each
+route somewhere, over a plain clickable list of the same destinations. That is what a
+link-in-bio does, in Jack's own hands rather than a template.
+
+If Wayspace absorbs the job, the music room needs the streaming links carried prominently
+(Spotify, Apple Music, wherever else), because sending someone to a stream is most of what
+a music link-in-bio is for. That is a room-list consideration, so it belongs in the
+gathering session and not after it.
+
+The argument for keeping bio.site: it is zero maintenance and loads instantly on a bad
+phone connection off an Instagram tap, which is the actual context. Wayspace will be
+heavier than that by design.
 
 ## Hosting, billing, and how often we deploy (settled 2026-08-18)
 
