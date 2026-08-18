@@ -175,16 +175,30 @@
 
   </main>
 
+  <!-- FOOTER
+       Contact only. Every page of the site is in the nav up top, so a
+       partial list of them down here was a worse version of that nav:
+       not complete enough to be a site map, and redundant where it
+       overlapped. The footer answers "how do I reach you" instead, which
+       is the question people actually scroll to the bottom to ask.
+
+       The mailto deliberately has no target="_blank". It hands off to a
+       mail client rather than loading a page, so a new tab would open,
+       find nothing to render, and sit there empty. -->
   <footer class="site-footer">
-    <span class="footer-line">Jack Rome &middot; Maryland</span>
+    <span class="footer-identity">
+      <span class="footer-line">Jack Rome</span>
+      <span class="footer-line footer-sub">Technology enablement</span>
+      <span class="footer-line footer-sub">Maryland</span>
+    </span>
     <span class="footer-links">
-      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Reach out</a>
+      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
       <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
-      <a class="footer-link" href="/production">Production</a>
+      <a class="footer-link" href="mailto:jackintheway@gmail.com?subject=Inquiry%20for%20Jack%20Rome">Reach out</a>
       <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
-      <a class="footer-link" href="/wayspace">Wayspace</a>
+      <a class="footer-link" href="https://www.linkedin.com/in/jackrome/" target="_blank" rel="noopener">Connect</a>
       <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
-      <a class="footer-link" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
+      <a class="footer-link" href="https://www.youtube.com/@jackintheway" target="_blank" rel="noopener">Watch</a>
     </span>
   </footer>
 

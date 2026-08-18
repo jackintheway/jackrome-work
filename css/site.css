@@ -173,6 +173,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  /* The identity is a three-line stack now and the links are one row, so
+     without this the two sides stretch to equal height and the links
+     float in the middle of nothing. Top aligned, "Jack Rome" and "Book a
+     call" sit on the same line. */
+  align-items: flex-start;
   gap: var(--space-3) var(--space-5);
 }
 /* The identity line and the nav were the same colour at the same size in
@@ -187,6 +192,18 @@
   text-transform: uppercase;
   color: var(--ws-paper);
 }
+/* Name, what he does, where he is. Stacked rather than run together with
+   dots, because three things separated by dots reads as a list of links
+   even when none of them are. */
+.footer-identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+/* The name carries full paper. The two lines under it step back so the
+   block has a head instead of three equal shouts. */
+.footer-sub { opacity: 0.72; }
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
