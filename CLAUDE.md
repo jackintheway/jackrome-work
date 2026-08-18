@@ -280,6 +280,53 @@ Video embeds on this page still use the facade pattern. That rule is unchanged.
 
 ---
 
+## The domains (mapped 2026-08-18)
+
+**The cutover is five domains, not one.** All eight of Jack's domains are registered at
+Squarespace and are staying there. Auto-renew on the *website* subscription was
+cancelled 2026-08-18; the site serves until 2026-09-15.
+
+Verified live, not read off the dashboard:
+
+| Domain | Resolves to | Renews |
+|---|---|---|
+| `jackrome.work` | the Squarespace site (primary) | 2027-06-29 |
+| `jack-rome.com` | 301 to `jackrome.work` | 2027-07-27 |
+| `jackintheway.net` | 301 to `jackrome.work` | 2027-05-02 |
+| `jackintheway.work` | 301 to `jackrome.work` | **2026-09-07** |
+| `jackrome.me` | 301 to `jackrome.work` | 2027-05-16 |
+| `jackintheway.me` | forwards to Fourthwall | 2027-06-10 |
+| `jackintheway.store` | forwards to Fourthwall | 2027-08-05 |
+| `wayspace.store` | forwards to Fourthwall | 2027-08-05 |
+
+### What this means for the cutover
+
+**Those four 301s are a Squarespace website feature.** They die with the site on
+2026-09-15, not with the domains. So four domains that currently land on Jack's site
+will stop landing anywhere unless each is repointed at Netlify.
+
+The fix is Netlify **domain aliases**: add all five to the site, set `jackrome.work` as
+primary, and Netlify redirects the aliases to it. Same behaviour Squarespace is
+providing now. Each alias needs its DNS pointed at Netlify, so budget time for five DNS
+changes plus propagation, not one.
+
+### Open questions, all with a 2026-09-15 deadline
+
+1. **`jackintheway.net` shows a mail icon in the Squarespace domains panel.** Something
+   email-shaped is attached to it. Confirm what, and confirm it survives cancelling the
+   *website* subscription. Email breaking is far worse than a website breaking, so this
+   gets checked before anything else.
+2. **Do the three Fourthwall forwards survive?** Domain forwarding is normally a domain
+   product feature rather than a website feature, so it should. But `wayspace.store` is
+   Jack's live store link and stays in service indefinitely, so confirm rather than
+   assume.
+3. **`jackintheway.work` renews 2026-09-07**, about three weeks out and before the site
+   goes down. It is a duplicate pointing at the same place as four other domains. Worth
+   a deliberate keep-or-drop rather than an automatic renewal.
+4. **Dashboard says `jackintheway.me` forwards to `bio.site/jackintheway`, but it
+   actually lands on Fourthwall.** Minor, but the panel and reality disagree, so one of
+   them is stale.
+
 ## Hosting, billing, and how often we deploy (settled 2026-08-18)
 
 **A production deploy costs real money. Preview locally by default and push in batches.**
