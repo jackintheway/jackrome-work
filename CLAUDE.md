@@ -84,6 +84,27 @@ The third home card ("Creative & production", the one about a decade of video, a
 - **On `wayspace.work`:** the question that decides it is redirect versus separate site. Recommendation is redirect to `jackrome.work/wayspace`, so Jack gets a domain he can say out loud without forking the design system, the link previews, and the maintenance. Whether he owns the domain is still unknown.
 - **On "hand-made, no AI":** strongest line on the page and the one most likely to be misread, since it sits a few clicks from a portfolio whose thesis is AI enablement. It is not a contradiction, but it only reads that way if framed as discernment ("I know what this tool is for, and it isn't this") rather than purity. Be precise about what the claim covers, because someone will ask.
 
+### Staged on 2026-08-18: the two-doorway wiring, names not yet approved
+
+Jack came back leaning toward the two-page shape and asked to see it staged so he
+could look at it. The links and labels are now wired for it across all three built
+pages. **The names are a proposal, not a decision, and both destinations still 404.**
+
+| | Service doorway | Proof doorway |
+|---|---|---|
+| URL | `/production` | `/wayspace` |
+| Nav label | Production | Wayspace |
+| Reached from | Home card 3 ("Creative & production") | About page button ("See my creative work") |
+
+Nav order is now Home, About, AI Enablement, Production, AI Portfolio, Wayspace, so
+the two services sit together and the two proofs sit together. The footer carries
+both. Home card 3's link text changed from "See the work" to "How I work on projects",
+which reads as a service the way card 1's "How I work with AI" does. The About button
+copy is unchanged on purpose: it explains the destination that the nav only names.
+
+If Jack settles on different names or URLs, this is a find-and-replace across the
+three HTML files and nothing else.
+
 ### Still needed from Jack before anything gets built
 
 1. The room list. Four to six pieces.
