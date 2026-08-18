@@ -26,6 +26,8 @@ Built, deployed, and verified: `/`, `/about`, `/ai-enablement`. Tokens, Archivo,
 
 **The creative portfolio, and it starts with Jack, not with code.** It is the last page and the only one that is a revamp rather than a port. See the creative portfolio decisions below before scoping anything.
 
+**Read the open scope question first.** As of 2026-08-17 the shape of this page is genuinely unsettled, in a productive way, and scoping it as one page would be scoping the wrong thing. See "The open scope question" immediately below.
+
 Jack plans to bring:
 
 - The real release list. The live page predates Feivel Speaks and RACE DAY.
@@ -39,9 +41,60 @@ Two things to hold when the vault comes up:
 
 The page needs writing before it needs building. The live version is a grid of untitled artwork with no copy on it at all, and that gap is the actual work.
 
-### Open items, none blocking
+---
 
-- `/creative-portfolio` 404s. The nav and two buttons already point at it.
+## The open scope question (raised 2026-08-17, not decided)
+
+**Nothing here is settled. Jack is sleeping on it and will come back to it.** Do not treat any of it as an approved decision, and do not start building against it. It is written down so a night's sleep and a context window do not cost him the thinking.
+
+### What happened
+
+Jack brought a set of ideas for turning the creative portfolio into **Wayspace**, a house for his own creative work rather than a conventional portfolio page. Partway through he noticed the problem himself: the creative production work he does for clients does not belong in that house. It is a service, and Wayspace is a body of work. He asked whether that means two things rather than one.
+
+### The frame that came out of it
+
+The site already makes this split everywhere except here.
+
+| | Service doorway | Proof doorway |
+|---|---|---|
+| Where it lives | The three home page cards | The two About page buttons |
+| Who it is for | Someone deciding whether to hire him | Someone deciding who he is |
+| AI | `/ai-enablement` | `ai.jackrome.work` |
+| Creative | **missing** | Wayspace, unbuilt |
+
+The third home card ("Creative & production", the one about a decade of video, audio, virtual events, website creation, and creative direction) is unambiguously a service offer, and it currently points at `/creative-portfolio`. So the single page has been trying to be a service page and a body of work at the same time. That is why Wayspace fit beautifully right up until the client production work walked in.
+
+**The likely shape, if the frame holds:** a creative production service page that the third home card points at, sibling to `/ai-enablement`, plus Wayspace as a separate house reached from the About page button the way the AI portfolio is. That would make this one missing page plus the thing Jack is actually excited about, rather than two competing ideas. The puzzle pieces stay clean because the client production work was never one of them.
+
+### Jack's Wayspace ideas, as he described them
+
+- More than a typical portfolio. "An entire house of creative work for me, not just a portfolio."
+- Landing: "Welcome to" with the Wayspace logo underneath, then "the home of Jack's creative work."
+- Below that, **puzzle pieces**: not assembled, clearly fitting together, and gently **floating**. Each piece is a section of the house and opens or navigates to it. A plain clickable list of the same destinations sits at the bottom.
+- A piece for **websites** that includes "this one" and talks about the design system he has cultivated since 2020.
+- A piece for **designs**, drawing on `wayspace.store`, framed as hand-made in the sense that no AI was used for them.
+- URL, undecided: `jackrome.work/wayspace`, or `/creative`, or `/portfolio`, or `wayspace.work` pointing at one of them.
+
+### What was raised back, and still stands
+
+- **"Each piece goes to a different page" is in tension with the music player decision below.** The approved design has audio in a persistent bottom bar that survives navigation. A real page navigation unmounts it. Three ways out: music becomes one self-contained room with the player living in it (recommended), the rooms become in-page views so nothing navigates, or audio stops on room change. Decide this before building either one.
+- **The number of pieces is a design constraint, so the room list comes before the visual.** Four to six reads as a puzzle. Nine reads as a menu in costume. A rough list already overflows: music, designs, websites, video and YouTube, podcast production, speaking, writing and lyrics.
+- **Pieces that visibly interlock have to be drawn as one puzzle and then pulled apart**, or the tabs will not match. That is more work than N independent shapes and it is the right way.
+- **Build the bottom list first, then float the pieces over it.** The list is the real navigation: crawlable, keyboard reachable, and still there if the SVG never loads. Motion respects `prefers-reduced-motion`, which is already a standing rule on this site.
+- **On `wayspace.work`:** the question that decides it is redirect versus separate site. Recommendation is redirect to `jackrome.work/wayspace`, so Jack gets a domain he can say out loud without forking the design system, the link previews, and the maintenance. Whether he owns the domain is still unknown.
+- **On "hand-made, no AI":** strongest line on the page and the one most likely to be misread, since it sits a few clicks from a portfolio whose thesis is AI enablement. It is not a contradiction, but it only reads that way if framed as discernment ("I know what this tool is for, and it isn't this") rather than purity. Be precise about what the claim covers, because someone will ask.
+
+### Still needed from Jack before anything gets built
+
+1. The room list. Four to six pieces.
+2. Whether he owns `wayspace.work`, or it is still to buy.
+3. The real release list, outstanding since day one.
+
+---
+
+## Open items, none blocking
+
+- `/creative-portfolio` 404s. The nav and two buttons already point at it. **Note:** if the scope question above resolves toward two pages, this path and those links change, so do not fix the 404 by building a page until that lands.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
 - `assets/img/jack-ventnor-2026.jpg` ships but is unused.
 - The orphaned Squarespace pages still need a call before DNS moves. See the cutover note below.
@@ -144,6 +197,8 @@ Booking a call is the named primary conversion for the whole site, decided delib
 ---
 
 ## Decisions: creative portfolio (approved 2026-08-15)
+
+> **Read "The open scope question" above before acting on anything in this section.** These decisions were made when the creative portfolio was assumed to be a single page. On 2026-08-17 that assumption came into question, and whether this is one page or two is unresolved. Everything below still holds for whichever page ends up carrying the creative work itself. What is no longer certain is that one page carries all of it.
 
 **This page is a revamp, not a rebuild.** Everything else in this project ports existing copy across. This one does not. The live page is a reference for *what creative material exists*, not for structure, order, or presentation. Do not treat `COPY.md`'s creative portfolio section as a spec to reproduce.
 
