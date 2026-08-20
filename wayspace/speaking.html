@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Speaking | Wayspace | Jack Rome</title>
+  <meta name="description" content="Speaking by Jack Rome. Talks given, and events hosted, including work with the Foundation for Inner Peace.">
+  <link rel="canonical" href="https://jackrome.work/wayspace/speaking">
+
+  <!-- Link previews. Card source is in tools/og/, rebuilt with
+       ./tools/og/render.sh -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jack Rome">
+  <meta property="og:url" content="https://jackrome.work/wayspace/speaking">
+  <meta property="og:title" content="Speaking | Wayspace">
+  <meta property="og:description" content="Talks given, and events hosted.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-wayspace-speaking.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Speaking, a room in Wayspace. Talks given, and events hosted.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Speaking | Wayspace">
+  <meta name="twitter:description" content="Talks given, and events hosted.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-wayspace-speaking.png">
+
+  <!-- Root-relative: this page sits one level down from the repo root
+       and the four pages above it do not. -->
+  <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- defer so the parser is never blocked. The script waits on
+       DOMContentLoaded anyway, and it renders into a mount point that
+       has to exist before it runs. -->
+  <script src="/js/wayspace.js" defer></script>
+</head>
+<!-- The room's colour is set once, here. Every component in
+     css/wayspace.css reads it through the --room custom property
+     rather than naming a colour, so this class is the only thing
+     that knows which room this is. -->
+<body class="room-speaking">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main">
+    <a class="nav-mark" href="/">Jack Rome</a>
+    <div class="nav-links">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/ai-enablement">AI Enablement</a>
+      <a class="nav-link" href="/production">Production</a>
+      <a class="nav-link is-external" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
+      <a class="nav-link" href="/wayspace">Wayspace</a>
+    </div>
+  </nav>
+
+  <!-- ROOM SWITCHER
+       So moving between rooms never costs a trip back to the landing.
+       The site nav above deliberately does not mark Wayspace as the
+       current page here: it names the house this room is in, not this
+       page, and aria-current="page" means this exact page. The
+       switcher carries it instead. -->
+  <nav class="room-switcher" aria-label="Wayspace rooms">
+    <a class="room-switch-home" href="/wayspace">Wayspace</a>
+    <div class="room-switch-links">
+        <a class="room-switch-link" href="/wayspace/music">Music</a>
+        <a class="room-switch-link" href="/wayspace/video">Video</a>
+        <a class="room-switch-link" href="/wayspace/design">Design</a>
+        <a class="room-switch-link" href="/wayspace/podcasts">Podcasts</a>
+        <a class="room-switch-link" href="/wayspace/speaking" aria-current="page">Speaking</a>
+        <a class="room-switch-link" href="/wayspace/writing">Writing</a>
+    </div>
+  </nav>
+
+  <header class="room-hero">
+    <div class="room-hero-inner">
+      <p class="room-hero-eyebrow ws-overline">Wayspace</p>
+      <h1 class="room-hero-title">Speaking</h1>
+      <!-- TODO(copy): functional, not Jack's voice. Wants a pass with
+           the jacks-voice skill once the room has real work in it. -->
+      <p class="room-hero-sub">Talks given, and events hosted.</p>
+    </div>
+  </header>
+
+  <!-- Narrow measure. This room renders a list rather than a grid, and
+       a list of short titles and dates stretched across the full 1200px
+       container reads as a table with most of its columns missing. The
+       grid rooms keep the full width, because a grid actually uses it. -->
+  <main class="page page-narrow" id="main">
+
+    <section class="section" aria-labelledby="roomTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="roomTitle">Talks and events</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <!-- Rendered from the SPEAKING array in js/wayspace.js.
+           Adding real work is adding an object there, not editing
+           this markup. Empty the array and the room renders its
+           written empty state instead. -->
+      <ul class="entry-list" id="speakingList"></ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-identity">
+      <span class="footer-line">Jack Rome</span>
+      <span class="footer-line footer-sub">Technology, made human</span>
+      <span class="footer-line footer-sub">Maryland</span>
+    </span>
+    <span class="footer-links">
+      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="mailto:jackintheway@gmail.com?subject=Inquiry%20for%20Jack%20Rome">Reach out</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.linkedin.com/in/jackrome/" target="_blank" rel="noopener">Connect</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.youtube.com/@jackintheway" target="_blank" rel="noopener">Watch</a>
+    </span>
+  </footer>
+
+</body>
+</html>

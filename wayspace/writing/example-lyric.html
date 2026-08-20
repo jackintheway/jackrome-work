@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Example Lyric | Writing | Wayspace | Jack Rome</title>
+  <meta name="description" content="The template for a lyric page in Wayspace: the words, and the track they belong to, on one page.">
+  <link rel="canonical" href="https://jackrome.work/wayspace/writing/example-lyric">
+
+  <!-- This page is the template rather than a finished lyric, so it
+       shares the Writing room's share card instead of carrying its
+       own. A real lyric page gets its own: see tools/og/README.md. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Jack Rome">
+  <meta property="og:url" content="https://jackrome.work/wayspace/writing/example-lyric">
+  <meta property="og:title" content="Example Lyric | Wayspace">
+  <meta property="og:description" content="The words, and the track they belong to, on one page.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-wayspace-writing.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Writing, a room in Wayspace. Lyrics, each on its own page with the track it belongs to, and prose.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Example Lyric | Wayspace">
+  <meta name="twitter:description" content="The words, and the track they belong to, on one page.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-wayspace-writing.png">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<!-- A lyric page belongs to the Writing room and carries its colour,
+     so arriving here does not feel like leaving. -->
+<body class="room-writing">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main">
+    <a class="nav-mark" href="/">Jack Rome</a>
+    <div class="nav-links">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/ai-enablement">AI Enablement</a>
+      <a class="nav-link" href="/production">Production</a>
+      <a class="nav-link is-external" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
+      <a class="nav-link" href="/wayspace">Wayspace</a>
+    </div>
+  </nav>
+
+  <!-- Writing carries no aria-current here. This is a page inside
+       that room, not the room itself, and aria-current="page" means
+       this exact page. The breadcrumb below is what says where we
+       are standing. -->
+  <nav class="room-switcher" aria-label="Wayspace rooms">
+    <a class="room-switch-home" href="/wayspace">Wayspace</a>
+    <div class="room-switch-links">
+      <a class="room-switch-link" href="/wayspace/music">Music</a>
+      <a class="room-switch-link" href="/wayspace/video">Video</a>
+      <a class="room-switch-link" href="/wayspace/design">Design</a>
+      <a class="room-switch-link" href="/wayspace/podcasts">Podcasts</a>
+      <a class="room-switch-link" href="/wayspace/speaking">Speaking</a>
+      <a class="room-switch-link" href="/wayspace/writing">Writing</a>
+    </div>
+  </nav>
+
+  <header class="room-hero">
+    <div class="room-hero-inner">
+      <p class="room-hero-eyebrow ws-overline">Wayspace &middot; Writing</p>
+      <h1 class="room-hero-title">Example Lyric</h1>
+      <p class="room-hero-sub">The release it belongs to, and the year.</p>
+    </div>
+  </header>
+
+  <main class="page page-narrow" id="main">
+
+    <!-- THE TEMPLATE
+         This page exists to establish the shape a lyric page takes,
+         not to publish a lyric. The words below are scaffolding and
+         are marked as such. Copy this file, change the title, the
+         canonical, the audio source and the words, and delete the
+         placeholder flag and this comment. -->
+    <section class="section">
+      <span class="flag-placeholder">Placeholder</span>
+
+      <!-- THE TRACK
+           A lyric page carries its own player rather than reaching
+           for the one in the Music room. That is the whole reason
+           audio never has to survive a page navigation on this site:
+           each page that needs sound owns its own.
+
+           preload="none" so a visitor who came to read the words
+           pays nothing for audio they may never press play on.
+
+           Native controls, same as the Music room. They are keyboard
+           operable and screen reader labelled already, and a custom
+           transport should not be designed against a file that does
+           not exist yet. -->
+      <div class="track-player">
+        <span class="player-label">The track</span>
+        <audio controls preload="none" aria-label="Example Lyric"></audio>
+      </div>
+
+      <div class="lyric-sheet">
+        <p class="lyric-section">Verse</p>
+        <!-- White space is preserved by CSS here, so these line breaks
+             are the ones that render. A lyric's line breaks are its
+             form and cannot be left for the browser to decide. -->
+        <p class="lyric-body">The first line sits here.
+And the second one under it.
+The break between them is the shape,
+so the words are written the way they are sung.</p>
+
+        <p class="lyric-section">Chorus</p>
+        <p class="lyric-body">A chorus goes here.
+Its lines land where they land.</p>
+      </div>
+
+      <p class="crossref lyric-crossref">
+        <a href="/wayspace/music">The release lives in Music</a>
+      </p>
+    </section>
+
+    <div class="btn-row">
+      <a class="btn" href="/wayspace/writing">&larr; Back to Writing</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-identity">
+      <span class="footer-line">Jack Rome</span>
+      <span class="footer-line footer-sub">Technology, made human</span>
+      <span class="footer-line footer-sub">Maryland</span>
+    </span>
+    <span class="footer-links">
+      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="mailto:jackintheway@gmail.com?subject=Inquiry%20for%20Jack%20Rome">Reach out</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.linkedin.com/in/jackrome/" target="_blank" rel="noopener">Connect</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.youtube.com/@jackintheway" target="_blank" rel="noopener">Watch</a>
+    </span>
+  </footer>
+
+</body>
+</html>

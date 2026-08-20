@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wayspace | Jack Rome</title>
+  <meta name="description" content="The home of Jack Rome's creative work. Six rooms: music, video, design, podcasts, speaking, and writing.">
+  <link rel="canonical" href="https://jackrome.work/wayspace">
+
+  <!-- Link previews. Same rule as every other page on this site: og
+       tags or the link shares as a bare URL. Card source is in
+       tools/og/, regenerated with ./tools/og/render.sh -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jack Rome">
+  <meta property="og:url" content="https://jackrome.work/wayspace">
+  <meta property="og:title" content="Wayspace">
+  <meta property="og:description" content="The home of Jack Rome's creative work. Music, video, design, podcasts, speaking, and writing.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-wayspace.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Wayspace. The home of Jack Rome's creative work.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wayspace">
+  <meta name="twitter:description" content="The home of Jack Rome's creative work. Music, video, design, podcasts, speaking, and writing.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-wayspace.png">
+
+  <!-- Root-relative rather than relative, because this page sits one
+       level down from the repo root and the four pages above it do
+       not. Netlify and the local python server both serve from the
+       root, so one form works in both places. -->
+  <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main">
+    <a class="nav-mark" href="/">Jack Rome</a>
+    <div class="nav-links">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/ai-enablement">AI Enablement</a>
+      <a class="nav-link" href="/production">Production</a>
+      <a class="nav-link is-external" href="https://ai.jackrome.work" target="_blank" rel="noopener">AI Portfolio</a>
+      <a class="nav-link" href="/wayspace" aria-current="page">Wayspace</a>
+    </div>
+  </nav>
+
+  <!-- HERO
+       The sentence runs through the logo: "Welcome to" above it,
+       "the home of Jack's creative work" below. So the h1 opens in
+       lower case on purpose. It is not a fragment, it is the second
+       half of a line the wordmark sits inside.
+
+       Paper ground rather than the orange the rest of the site's
+       heroes use. The wordmark contains orange, and on an orange
+       field it would lose those shapes. The design system shows the
+       mark on blue, paper and salmon, and never on orange. -->
+  <header class="ws-hero">
+    <div class="ws-hero-inner">
+      <p class="ws-welcome">Welcome to</p>
+      <img class="ws-wordmark" src="/assets/img/wayspace-straight.svg"
+           alt="Wayspace" width="2710" height="449" fetchpriority="high">
+      <h1 class="ws-hero-title">the home of Jack's creative work.</h1>
+    </div>
+  </header>
+
+  <main class="page page-narrow" id="main">
+
+    <!-- THE ROOMS
+         Six pieces, one per form the work shows up in.
+
+         This list is the real navigation and it stays the real
+         navigation. When the floating puzzle pieces get drawn they
+         layer over this rather than replacing it: an SVG that fails
+         to load would otherwise leave a visitor with no way into any
+         room at all.
+
+         Each room carries a colour, shown here as a swatch and used
+         again as that room's hero. The colour is learned here and
+         recognised on arrival, so the map is already coded before
+         any puzzle art exists.
+
+         TODO(copy): the one-line descriptions are functional, not
+         Jack's voice. They want a pass with the jacks-voice skill. -->
+    <section class="section" aria-labelledby="roomsTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="roomsTitle">The rooms</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <ul class="room-list">
+        <li class="room-item is-music">
+          <a class="room-link" href="/wayspace/music">
+            <span class="room-swatch" aria-hidden="true"></span>
+            <span>
+              <span class="room-name">Music</span>
+              <span class="room-what">Releases, and where to hear them.</span>
+            </span>
+            <span class="room-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li class="room-item is-video">
+          <a class="room-link" href="/wayspace/video">
+            <span class="room-swatch" aria-hidden="true"></span>
+            <span>
+              <span class="room-name">Video</span>
+              <span class="room-what">Anything that lives as video, including live performance.</span>
+            </span>
+            <span class="room-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li class="room-item is-design">
+          <a class="room-link" href="/wayspace/design">
+            <span class="room-swatch" aria-hidden="true"></span>
+            <span>
+              <span class="room-name">Design</span>
+              <span class="room-what">Flyers, merch, and cover art.</span>
+            </span>
+            <span class="room-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li class="room-item is-podcasts">
+          <a class="room-link" href="/wayspace/podcasts">
+            <span class="room-swatch" aria-hidden="true"></span>
+            <span>
+              <span class="room-name">Podcasts</span>
+              <span class="room-what">Shows hosted, joined, and produced for other people.</span>
+            </span>
+            <span class="room-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li class="room-item is-speaking">
+          <a class="room-link" href="/wayspace/speaking">
+            <span class="room-swatch" aria-hidden="true"></span>
+            <span>
+              <span class="room-name">Speaking</span>
+              <span class="room-what">Talks given, and events hosted.</span>
+            </span>
+            <span class="room-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li class="room-item is-writing">
+          <a class="room-link" href="/wayspace/writing">
+            <span class="room-swatch" aria-hidden="true"></span>
+            <span>
+              <span class="room-name">Writing</span>
+              <span class="room-what">Lyrics, each with the track it belongs to, and prose.</span>
+            </span>
+            <span class="room-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- THE OTHER DOORWAY
+         Wayspace is the proof doorway: it says who Jack is. Someone
+         can land here wanting the service instead, and this is the
+         one place on the page that answers them, quietly, on the way
+         out rather than on the way in. -->
+    <section class="section" aria-labelledby="hireTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="hireTitle">Looking to work together?</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose">
+        <!-- TODO(copy): Jack's voice. This is placeholder framing. -->
+        <p>This house holds the work Jack makes for himself. The creative work he does for other people lives on its own page.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn" href="/production">See how I work on projects &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-identity">
+      <span class="footer-line">Jack Rome</span>
+      <span class="footer-line footer-sub">Technology, made human</span>
+      <span class="footer-line footer-sub">Maryland</span>
+    </span>
+    <span class="footer-links">
+      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="mailto:jackintheway@gmail.com?subject=Inquiry%20for%20Jack%20Rome">Reach out</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.linkedin.com/in/jackrome/" target="_blank" rel="noopener">Connect</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.youtube.com/@jackintheway" target="_blank" rel="noopener">Watch</a>
+    </span>
+  </footer>
+
+</body>
+</html>
