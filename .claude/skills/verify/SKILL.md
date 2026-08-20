@@ -13,15 +13,37 @@ site asserts.
 
 ## What this site is, for verification purposes
 
-Three built pages, `/`, `/about`, `/ai-enablement`, and **zero
-JavaScript**. No script tag appears in any page. So there are no
-filters, no modal, and no click behaviour to drive. The interaction
-surface is nav links and focus states.
+Eleven built pages. Four at the root (`/`, `/about`,
+`/ai-enablement`, and the Wayspace landing), six Wayspace rooms, and
+one lyric page under Writing.
 
-That makes this site lopsided compared to `../ai-work-portfolio/`: the
-local motion is mostly rendering, and **most of the real verification
-is post-deploy**, because redirects, headers, and clean URLs come from
-`netlify.toml` and exist only on Netlify.
+**The four root pages carry zero JavaScript.** No script tag appears in
+any of them, so there is nothing to drive there but nav links and
+focus states.
+
+**Everything under `/wayspace` runs `js/wayspace.js`** and this changed
+on 2026-08-20. Each room's contents render from an array at
+`DOMContentLoaded`, so a screenshot taken too early catches an empty
+mount and looks broken when it is not. Use `--virtual-time-budget`, and
+in a harness give the iframe a beat after `onload` before measuring.
+
+Three behaviours only exist in that script and are worth driving in a
+harness after any change to it:
+
+- **A room renders its array.** Assert the mount has children, not just
+  that the page loaded. A thrown error leaves an empty `<ul>` and a
+  200.
+- **The facade does not contact YouTube until clicked.** Assert the
+  video page ships zero iframes on load, then click one and read the
+  `src` it built. That standing rule is only enforced by this script.
+- **The player is a room, not a page.** A cover's Play button swaps the
+  source on `#roomAudio` and updates `#playerNow`, and a disabled
+  button does nothing at all. Audio deliberately never survives a
+  navigation, so there is no cross-page state to test.
+
+Post-deploy still carries most of the weight, because redirects,
+headers, and clean URLs come from `netlify.toml` and exist only on
+Netlify.
 
 Staging is `https://jackrome-work.netlify.app`. Production is still
 Squarespace until the DNS cutover.
@@ -34,7 +56,18 @@ Serve on 8642 per `verify-site`, then screenshot each page:
 
 ```
 /index.html   /about.html   /ai-enablement.html
+/wayspace/index.html
+/wayspace/music.html      /wayspace/video.html     /wayspace/design.html
+/wayspace/podcasts.html   /wayspace/speaking.html
+/wayspace/writing/index.html
+/wayspace/writing/example-lyric.html
 ```
+
+Writing is `wayspace/writing/index.html` rather than
+`wayspace/writing.html` on purpose. The lyric pages live under
+`/wayspace/writing/`, and a `writing.html` file beside a `writing/`
+directory leaves Netlify to decide which answers `/wayspace/writing`.
+An index file inside the directory removes the question.
 
 Local paths carry the `.html`. The clean URLs are a Netlify behaviour
 and are checked in the post-deploy sweep, not here.
@@ -154,10 +187,25 @@ a rule pattern is matching more than it should.
 
 ### 404s that are correct
 
-**`/production`, `/wayspace`, and `/creative-portfolio` return 404 on
-purpose.** The first two are linked from the nav and footer of all
-three pages and have not been built. The third is the old Squarespace
-path and still needs a 301 in `netlify.toml` before cutover.
+**`/production` and `/creative-portfolio` return 404 on purpose.** The
+first is linked from the nav and footer of every page and has not been
+built. The second is the old Squarespace path and still needs a 301 in
+`netlify.toml` before cutover.
 
-Report them as known, not as failures. Once either page ships, move it
-into the reachability sweep above and delete it from this list.
+Report them as known, not as failures. Once `/production` ships, move
+it into the reachability sweep above and delete it from this list.
+
+**`/wayspace` came off this list on 2026-08-20.** Add these to the
+reachability sweep on the next deploy, and read the clean URLs
+carefully: this is the first part of the site with a nested path, so
+`/wayspace/writing` resolving is the check that proves the directory
+form works the way the flat pages do.
+
+```
+/wayspace  /wayspace/music  /wayspace/video  /wayspace/design
+/wayspace/podcasts  /wayspace/speaking  /wayspace/writing
+/wayspace/writing/example-lyric
+/css/wayspace.css  /js/wayspace.js
+/assets/img/wayspace-straight.svg
+/assets/img/og-wayspace.png
+```

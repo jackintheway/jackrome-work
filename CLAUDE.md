@@ -4,7 +4,7 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 
 ---
 
-## Status: three of four pages built and deployed to staging
+## Status: the site is built. Wayspace shipped as skeletons on 2026-08-20
 
 **The build started 2026-08-15 on Jack's go.** All four blocking decisions are settled and recorded below.
 
@@ -15,6 +15,8 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 | Production | Still Squarespace. DNS untouched. |
 
 Built, deployed, and verified: `/`, `/about`, `/ai-enablement`. Tokens, Archivo, nav, footer, share cards, redirects, and headers are all in place and confirmed against the live deploy.
+
+Built locally and **not yet deployed**: `/wayspace` and its six rooms. See "Wayspace, built" below. `/production` is the one page still unbuilt.
 
 `INVENTORY.md` is the crawl of the old Squarespace site. `COPY.md` is the copy pulled from it on 2026-08-15, and is the source for the three built pages. Once a page is built its HTML is the source of truth, not `COPY.md`.
 
@@ -41,98 +43,136 @@ charge.
 
 ## Where the next session picks up
 
-**The creative portfolio, and it starts with Jack, not with code.** It is the last page and the only one that is a revamp rather than a port. See the creative portfolio decisions below before scoping anything.
+Two things, in this order.
 
-**Read the open scope question first.** As of 2026-08-17 the shape of this page is genuinely unsettled, in a productive way, and scoping it as one page would be scoping the wrong thing. See "The open scope question" immediately below.
+**1. `/production`, the service doorway.** The last unbuilt page and the only one
+still 404ing behind a link that exists. It is the sibling to `/ai-enablement`: what
+the third home card ("Creative & production") has been pointing at since 2026-08-18.
+It sells creative production as a service, so it is a service page and not a body of
+work. Copy for it does not exist yet.
 
-Jack plans to bring:
-
-- The real release list. The live page predates Feivel Speaks and RACE DAY.
-- Actual files and embeddable links, assembled by him.
-- Material from **Wayspace**, his Obsidian vault at `~/Obsidian/Wayspace`, which holds a lot of lyrics. Expect a session that reads from the vault and works on copy.
+**2. Filling the Wayspace rooms.** Jack is gathering. Every room renders from an
+array in `js/wayspace.js` and adding real work is adding an object there, never
+editing markup. What is still needed from him is unchanged: the real release list,
+actual files and embeddable links, and material from Wayspace, his Obsidian vault at
+`~/Obsidian/Wayspace`, which holds a lot of the lyrics.
 
 Two things to hold when the vault comes up:
 
-- The vault has its own `CLAUDE.md` at its root that governs behaviour inside it. Read that on arrival rather than assuming this file applies.
-- **`~/Obsidian/Wayspace/Compost/` is the only permitted write destination in the vault.** Everything else there is read-only.
+- The vault has its own `CLAUDE.md` at its root that governs behaviour inside it.
+  Read that on arrival rather than assuming this file applies.
+- **`~/Obsidian/Wayspace/Compost/` is the only permitted write destination in the
+  vault.** Everything else there is read-only.
 
-The page needs writing before it needs building. The live version is a grid of untitled artwork with no copy on it at all, and that gap is the actual work.
+The rooms still need writing before they need more building. Every room hero and the
+landing carry a `TODO(copy)` marking a functional line that wants Jack's voice.
+Load the `jacks-voice` skill before drafting any of them.
 
 ---
 
-## The open scope question (raised 2026-08-17, not decided)
+## Wayspace, built (2026-08-20)
 
-**Nothing here is settled. Jack is sleeping on it and will come back to it.** Do not treat any of it as an approved decision, and do not start building against it. It is written down so a night's sleep and a context window do not cost him the thinking.
-
-### What happened
-
-Jack brought a set of ideas for turning the creative portfolio into **Wayspace**, a house for his own creative work rather than a conventional portfolio page. Partway through he noticed the problem himself: the creative production work he does for clients does not belong in that house. It is a service, and Wayspace is a body of work. He asked whether that means two things rather than one.
-
-### The frame that came out of it
-
-The site already makes this split everywhere except here.
+**The open scope question that stood here from 2026-08-17 is closed.** The two-page
+shape held, Jack named the six rooms, and the house is built as skeletons: real
+containers, deliberately almost empty, so he can see where each piece of work goes as
+he gathers it.
 
 | | Service doorway | Proof doorway |
 |---|---|---|
-| Where it lives | The three home page cards | The two About page buttons |
-| Who it is for | Someone deciding whether to hire him | Someone deciding who he is |
-| AI | `/ai-enablement` | `ai.jackrome.work` |
-| Creative | **missing** | Wayspace, unbuilt |
-
-The third home card ("Creative & production", the one about a decade of video, audio, virtual events, website creation, and creative direction) is unambiguously a service offer, and it currently points at `/creative-portfolio`. So the single page has been trying to be a service page and a body of work at the same time. That is why Wayspace fit beautifully right up until the client production work walked in.
-
-**The likely shape, if the frame holds:** a creative production service page that the third home card points at, sibling to `/ai-enablement`, plus Wayspace as a separate house reached from the About page button the way the AI portfolio is. That would make this one missing page plus the thing Jack is actually excited about, rather than two competing ideas. The puzzle pieces stay clean because the client production work was never one of them.
-
-### Jack's Wayspace ideas, as he described them
-
-- More than a typical portfolio. "An entire house of creative work for me, not just a portfolio."
-- Landing: "Welcome to" with the Wayspace logo underneath, then "the home of Jack's creative work."
-- Below that, **puzzle pieces**: not assembled, clearly fitting together, and gently **floating**. Each piece is a section of the house and opens or navigates to it. A plain clickable list of the same destinations sits at the bottom.
-- A piece for **websites** that includes "this one" and talks about the design system he has cultivated since 2020.
-- A piece for **designs**, drawing on `wayspace.store`, framed as hand-made in the sense that no AI was used for them.
-- URL, undecided: `jackrome.work/wayspace`, or `/creative`, or `/portfolio`, or `wayspace.work` pointing at one of them.
-
-### What was raised back, and still stands
-
-- **"Each piece goes to a different page" is in tension with the music player decision below.** The approved design has audio in a persistent bottom bar that survives navigation. A real page navigation unmounts it. Three ways out: music becomes one self-contained room with the player living in it (recommended), the rooms become in-page views so nothing navigates, or audio stops on room change. Decide this before building either one.
-- **The number of pieces is a design constraint, so the room list comes before the visual.** Four to six reads as a puzzle. Nine reads as a menu in costume. A rough list already overflows: music, designs, websites, video and YouTube, podcast production, speaking, writing and lyrics.
-- **Pieces that visibly interlock have to be drawn as one puzzle and then pulled apart**, or the tabs will not match. That is more work than N independent shapes and it is the right way.
-- **Build the bottom list first, then float the pieces over it.** The list is the real navigation: crawlable, keyboard reachable, and still there if the SVG never loads. Motion respects `prefers-reduced-motion`, which is already a standing rule on this site.
-- **On `wayspace.work`:** the question that decides it is redirect versus separate site. Recommendation is redirect to `jackrome.work/wayspace`, so Jack gets a domain he can say out loud without forking the design system, the link previews, and the maintenance. Whether he owns the domain is still unknown.
-- **On "hand-made, no AI":** strongest line on the page and the one most likely to be misread, since it sits a few clicks from a portfolio whose thesis is AI enablement. It is not a contradiction, but it only reads that way if framed as discernment ("I know what this tool is for, and it isn't this") rather than purity. Be precise about what the claim covers, because someone will ask.
-
-### Staged on 2026-08-18: the two-doorway wiring, names not yet approved
-
-Jack came back leaning toward the two-page shape and asked to see it staged so he
-could look at it. The links and labels are now wired for it across all three built
-pages. **The names are a proposal, not a decision, and both destinations still 404.**
-
-| | Service doorway | Proof doorway |
-|---|---|---|
-| URL | `/production` | `/wayspace` |
+| URL | `/production` (still unbuilt) | `/wayspace` (built) |
 | Nav label | Production | Wayspace |
 | Reached from | Home card 3 ("Creative & production") | About page button ("See my creative work") |
 
-Nav order is now Home, About, AI Enablement, Production, AI Portfolio, Wayspace, so
-the two services sit together and the two proofs sit together. The footer carries
-both. Home card 3's link text changed from "See the work" to "How I work on projects",
-which reads as a service the way card 1's "How I work with AI" does. The About button
-copy is unchanged on purpose: it explains the destination that the nav only names.
+### The six rooms
 
-If Jack settles on different names or URLs, this is a find-and-replace across the
-three HTML files and nothing else.
+Each is a **form Jack's creative work shows up in**. That is the organising principle
+and it is what resolves the overlap: a podcast that also exists as video is filed by
+the form it primarily lives in, and the other room points across at it.
 
-### Still needed from Jack before anything gets built
+| Room | Colour | Holds |
+|---|---|---|
+| Music | orange | Releases, streaming links, the room's player |
+| Video | blue | Anything whose form is video, including live performance |
+| Design | yellow | Flyers, merch, cover art |
+| Podcasts | green | Shows hosted, joined, and produced for other people |
+| Speaking | salmon | Talks given, events hosted |
+| Writing | brown | Lyrics, each with its own page and track, plus prose |
 
-1. The room list. Four to six pieces.
-2. Whether he owns `wayspace.work`, or it is still to buy.
-3. The real release list, outstanding since day one.
+**The colour is structural, not decoration.** A room announces its colour as a swatch
+on the landing list, wears it as its hero, and carries it on its share card. So the
+map is learned by colour before any puzzle art exists, and when the pieces get drawn
+they are already coded. It is set once per page as `--room` on the `<body>`; every
+component in `css/wayspace.css` reads that property rather than naming a colour.
+
+### Decisions made on 2026-08-20, with Jack
+
+1. **Lyrics live in Writing, not Music.** Music stays the listening room. Every lyric
+   gets its own page carrying the track it belongs to.
+2. **Websites moved to `/production`.** It was one of Jack's original Wayspace pieces,
+   but building a website is a service someone hires him for, so it belongs on the
+   service page. This is what kept the room list at six.
+3. **List first, puzzle art later.** The landing ships the plain clickable list of six
+   rooms. The floating interlocking pieces layer over it in a later pass and never
+   replace it.
+4. **The straight wordmark on the landing**, on paper. Not orange: the wordmark
+   contains orange and would lose those shapes. The design system shows the mark on
+   blue, paper and salmon, never orange, and that holds for the share card too.
+
+### The audio conflict is settled
+
+The old note here warned that a persistent player bar cannot survive a real page
+navigation, and six rooms means six pages. Putting lyrics in Writing settled it:
+**audio never crosses a page boundary.** Music owns the room player; each lyric page
+owns its own single track. No session storage, no single-page app, nothing to carry.
+
+Native `<audio controls>` for now, on purpose. They are keyboard operable and screen
+reader labelled already, and a custom transport should not be designed against audio
+that does not exist yet.
+
+### How the rooms are built
+
+- `wayspace/index.html` plus `wayspace/{music,video,design,podcasts,speaking}.html`,
+  and `wayspace/writing/index.html` with `example-lyric.html` beside it.
+- **Writing is a directory, not a flat file.** A `writing.html` sitting beside a
+  `writing/` directory leaves Netlify to decide which answers `/wayspace/writing`. An
+  index inside the directory removes the question. Any room that later grows child
+  pages should move the same way.
+- Pages here link `/css/styles.css` **root-relative**, because they sit a level down
+  and the four root pages do not.
+- `css/wayspace.css` imports last from `css/styles.css`. `js/wayspace.js` is the
+  first JavaScript on this site.
+- Content lives in six arrays in `js/wayspace.js`, through pure render functions, the
+  same pattern `../ai-work-portfolio/js/app.js` proved. **Adding work is adding an
+  object, not editing markup.** An entry flagged `placeholder: true` renders a striped
+  tag and disables its controls; an emptied array renders that room's written empty
+  state.
+- Any item in any room may carry `crossRef: { text, href }`. That is Jack's puzzle
+  image made structural: the pieces keep real borders, and the picture crosses them.
+
+### Still open on Wayspace
+
+1. The real release list, outstanding since day one, plus which tracks, where clean
+   masters come from, and a check of the distribution agreement before any audio is
+   self-hosted.
+2. Whether Jack owns `wayspace.work`. Recommendation unchanged: redirect it to
+   `jackrome.work/wayspace` rather than fork the design system.
+3. Whether Wayspace replaces `bio.site/jackintheway` or sits behind it. Worth watching
+   as the Music room fills, since the streaming links row is most of what a music
+   link-in-bio does.
+4. **The Podcasts and Video rooms will hold work `/production` also sells.** Not a
+   contradiction, but the two must not read as copies. The room frames the work as
+   something Jack made; `/production` frames it as something a client can hire. Hold
+   this when `/production` gets written.
+5. The floating puzzle art. Drawn as one puzzle and pulled apart so the tabs match,
+   layered over the list, respecting `prefers-reduced-motion`.
 
 ---
 
 ## Open items, none blocking
 
-- `/creative-portfolio` 404s. The nav and two buttons already point at it. **Note:** if the scope question above resolves toward two pages, this path and those links change, so do not fix the 404 by building a page until that lands.
+- `/creative-portfolio` 404s and now wants a 301 to `/wayspace` in `netlify.toml` at cutover. The scope question resolved toward two pages, so this path has a successor.
+- `/production` 404s. Linked from the nav and footer of every page including the eight new ones.
+- Wayspace is built but **not deployed**. Nothing under `/wayspace` has been checked against Netlify's clean URLs, and the nested path is new territory for this site. Verify `/wayspace/writing` on the first deploy that carries it.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
 - `assets/img/jack-ventnor-2026.jpg` ships but is unused.
 - The orphaned Squarespace pages still need a call before DNS moves. `/toolbox` and `/blog` only. See the cutover note below.
@@ -217,6 +257,9 @@ The four questions that were blocking the build. All settled. Do not reopen them
 4. **Blog: not carrying over.** No blog in this build. If Jack starts writing at volume he would reach for Substack rather than hand-authored pages.
 
 **Scope that follows from these:** four pages. `/`, `/about`, `/ai-enablement`, `/creative-portfolio`.
+
+**Revised 2026-08-20.** The fourth page became two doorways, and the proof doorway
+became a house of eight pages. Current scope is eleven built pages plus `/production`.
 
 ### The cutover note (deferred, not decided)
 
