@@ -83,8 +83,13 @@ const VIDEO = [
 
 /* ============================================================
    DESIGN
-   Flyers, merch, cover art. Still images, so no facade and no
-   player: the work is the file.
+   Cover art, logos, flyers, merch, and the design system. Mostly
+   still images, so no facade and no player: the work is the file.
+
+   The design system lives here rather than in a room of its own,
+   because it is design work and this is where its company is. A
+   website built out of it is a piece of design in this room, not a
+   separate discipline.
    ============================================================ */
 const DESIGN = [
   {
@@ -99,6 +104,13 @@ const DESIGN = [
     meta: "What it was for, and when",
     image: null,
     note: "",
+    placeholder: true
+  },
+  {
+    title: "The Wayspace design system",
+    meta: "Cultivated since 2020, and still running",
+    image: null,
+    note: "The colour, type, spacing and outlines every page of this site is built from, including the one you are reading. It is a piece of design work, so it lives in this room rather than in a section about websites.",
     placeholder: true
   }
 ];
@@ -478,7 +490,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderRoom("designGrid", DESIGN, designCard,
     "No design here yet",
-    ["Flyers, merch and cover art land here."]);
+    ["Cover art, logos, flyers, merch, and the design system all land here."]);
 
   renderRoom("podcastList", PODCASTS, podcastEntry,
     "No episodes here yet",

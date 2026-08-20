@@ -93,7 +93,7 @@ the form it primarily lives in, and the other room points across at it.
 |---|---|---|
 | Music | orange | Releases, streaming links, the room's player |
 | Video | blue | Anything whose form is video, including live performance |
-| Design | yellow | Flyers, merch, cover art |
+| Design | yellow | Cover art, logos, flyers, merch, and the design system |
 | Podcasts | green | Shows hosted, joined, and produced for other people |
 | Speaking | salmon | Talks given, events hosted |
 | Writing | brown | Lyrics, each with its own page and track, plus prose |
@@ -108,9 +108,16 @@ component in `css/wayspace.css` reads that property rather than naming a colour.
 
 1. **Lyrics live in Writing, not Music.** Music stays the listening room. Every lyric
    gets its own page carrying the track it belongs to.
-2. **Websites moved to `/production`.** It was one of Jack's original Wayspace pieces,
-   but building a website is a service someone hires him for, so it belongs on the
-   service page. This is what kept the room list at six.
+2. **Websites is not a room, and the design system lives in Design.** Building a
+   website for someone is a service, so that work belongs on `/production`. But the
+   design system is not website work, and Jack was clear about this: it is design
+   work, and Design is where its company is. That room will hold a great deal of
+   cover art, logos, and visual work, and the system belongs among them.
+
+   A website built out of the system, including this one, is a piece of design in
+   that room rather than evidence of a separate discipline. This is what kept the
+   room list at six, and it is a better answer than filing the system under a
+   service page would have been.
 3. **List first, puzzle art later.** The landing ships the plain clickable list of six
    rooms. The floating interlocking pieces layer over it in a later pass and never
    replace it.
