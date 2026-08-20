@@ -138,12 +138,22 @@ that does not exist yet.
 
 ### How the rooms are built
 
-- `wayspace/index.html` plus `wayspace/{music,video,design,podcasts,speaking}.html`,
-  and `wayspace/writing/index.html` with `example-lyric.html` beside it.
-- **Writing is a directory, not a flat file.** A `writing.html` sitting beside a
-  `writing/` directory leaves Netlify to decide which answers `/wayspace/writing`. An
-  index inside the directory removes the question. Any room that later grows child
-  pages should move the same way.
+- `wayspace.html` at the repo root, plus
+  `wayspace/{music,video,design,podcasts,speaking,writing}.html`, and
+  `wayspace/writing/example-lyric.html`.
+- **No directory carries an index.html, and that is deliberate.** Measured against the
+  live deploy on 2026-08-20: Netlify answers a directory index with a **301 to a
+  trailing slash**, so `wayspace/index.html` made `/wayspace` redirect to
+  `/wayspace/` on every visit. The Wayspace link is in the nav of every page on the
+  site, so that was a redirect on every click, and the canonical tag pointed at a URL
+  that redirected.
+
+  A flat `.html` file one level up serves the same path at 200 with no redirect. The
+  ambiguity that argued for an index in the first place (which file answers
+  `/wayspace/writing` when both `writing.html` and `writing/index.html` exist) does
+  not arise, because the directory has no index to compete. **Any room that grows
+  child pages follows this shape:** `room.html` beside a `room/` directory that
+  contains only the children.
 - Pages here link `/css/styles.css` **root-relative**, because they sit a level down
   and the four root pages do not.
 - `css/wayspace.css` imports last from `css/styles.css`. `js/wayspace.js` is the

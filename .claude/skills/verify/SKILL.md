@@ -56,18 +56,20 @@ Serve on 8642 per `verify-site`, then screenshot each page:
 
 ```
 /index.html   /about.html   /ai-enablement.html
-/wayspace/index.html
+/wayspace.html
 /wayspace/music.html      /wayspace/video.html     /wayspace/design.html
-/wayspace/podcasts.html   /wayspace/speaking.html
-/wayspace/writing/index.html
+/wayspace/podcasts.html   /wayspace/speaking.html  /wayspace/writing.html
 /wayspace/writing/example-lyric.html
 ```
 
-Writing is `wayspace/writing/index.html` rather than
-`wayspace/writing.html` on purpose. The lyric pages live under
-`/wayspace/writing/`, and a `writing.html` file beside a `writing/`
-directory leaves Netlify to decide which answers `/wayspace/writing`.
-An index file inside the directory removes the question.
+**No directory here holds an index.html.** Measured on 2026-08-20:
+Netlify answers a directory index with a 301 to a trailing slash, and
+the Wayspace link is in the nav of every page, so an index file cost a
+redirect on every click and left the canonical pointing at a URL that
+redirected. A flat `.html` one level up serves the same path at 200.
+
+When checking a new nested page, read the **unfollowed** status. `-L`
+hides exactly this: a 301 chain resolves to 200 and looks perfect.
 
 Local paths carry the `.html`. The clean URLs are a Netlify behaviour
 and are checked in the post-deploy sweep, not here.
