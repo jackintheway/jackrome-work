@@ -70,25 +70,12 @@ Three that fail silently and are worth reading every time:
 - `twitter:card` is `summary_large_image`, not `summary`.
 - Each page names its **own** share image, not a shared one.
 
-## External links open in a new window
+## Shipped-content rules
 
-Standing rule: anything leaving `jackrome.work` gets
-`target="_blank"` paired with `rel="noopener"`. `ai.jackrome.work`
-counts as leaving. This finds any anchor missing either:
-
-```bash
-grep -ohE '<a [^>]*href="https?://[^"]*"[^>]*>' *.html | while read -r a; do
-  case "$a" in *'target="_blank"'*) t=ok;; *) t=NO-TARGET;; esac
-  case "$a" in *noopener*) r=ok;; *) r=NO-REL;; esac
-  [ "$t$r" = "okok" ] || echo "$t $r :: $a"
-done
-```
-
-Silence is a pass. All external anchors complied as of 2026-08-19.
-
-Note: this is a shipped-content rule rather than a rendering check, so
-if the content-rule checker gets built as its own skill, this moves
-there. It lives here for now because nothing else checks it.
+The content rules (em dashes, Maryland not Frederick, no year in the
+footer, external links opening in a new window, alt text) moved to the
+`check-copy` skill in this repo on 2026-08-19. Run that alongside this
+one after a copy change. This file stays about whether the site works.
 
 ---
 
