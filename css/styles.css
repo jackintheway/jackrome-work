@@ -12,6 +12,12 @@
      2. fonts.css ships Archivo and overrides the two family tokens.
                   Loads after the tokens so its override wins.
      3. site.css  this site's own components, built only from tokens.
+     4. wayspace.css  the Wayspace rooms. Its own file because the house
+                  has components no other page uses (the room list, the
+                  cover grid, the player bar, the lyric page) and
+                  site.css is already the shared chrome for everything.
+                  Loads last, so a Wayspace page can lean on a shared
+                  component and adjust it without touching site.css.
 
    The design system's own fonts.css is deliberately not shipped: its
    bundled faces are licensed for Jack's use, not for redistribution
@@ -23,3 +29,4 @@
 @import "tokens/base.css";
 @import "fonts.css";
 @import "site.css";
+@import "wayspace.css";

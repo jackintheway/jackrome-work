@@ -1,0 +1,782 @@
+/* ============================================================
+   WAYSPACE : the house
+
+   Six rooms, each a form Jack's creative work shows up in. These
+   components are used only under /wayspace, which is why they are
+   here rather than in site.css. That file is the chrome every page
+   of jackrome.work shares; this one is a place inside it.
+
+   Loaded last in css/styles.css, so anything here can lean on a
+   shared component and adjust it without editing site.css.
+
+   THE COLOUR SYSTEM
+   Each room owns one colour from the palette. The room announces it
+   on the landing list, and the same colour greets you on arrival as
+   the room's hero. So a visitor learns the map by colour before the
+   puzzle art ever gets drawn, and when it does, the pieces are
+   already coded.
+
+   The colour is carried in a custom property, --room, set once per
+   room on the <body>. Every component below reads it rather than
+   naming a colour, so a room's palette is one line to change and
+   nothing here has to know which room it is rendering.
+   ============================================================ */
+
+/* ---- The six rooms ----
+   --room       the ground
+   --room-ink   the text that survives on it
+
+   Brown and blue are the two grounds too dark for the black the rest
+   of the site uses, so those two carry paper. Orange is deliberately
+   absent from the landing: the wordmark itself contains orange, so
+   the mark would lose half its shapes on an orange ground. The design
+   system shows the mark on blue, paper and salmon, and never on
+   orange. The landing honours that and sits on paper. */
+body.room-music    { --room: var(--ws-orange); --room-ink: var(--ws-black); }
+body.room-video    { --room: var(--ws-blue);   --room-ink: var(--ws-paper); }
+body.room-design   { --room: var(--ws-yellow); --room-ink: var(--ws-black); }
+body.room-podcasts { --room: var(--ws-green);  --room-ink: var(--ws-black); }
+body.room-speaking { --room: var(--ws-salmon); --room-ink: var(--ws-black); }
+body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
+
+/* ============================================================
+   LANDING HERO
+   Paper rather than the orange every other hero on this site uses,
+   because the wordmark has to be the loudest thing here and it
+   carries its own colour. An orange ground would fight it and eat
+   its orange shapes.
+   ============================================================ */
+.ws-hero {
+  background: var(--bg-base);
+  border-bottom: var(--border-mega) solid var(--outline);
+  padding: var(--space-8) var(--space-5);
+  text-align: center;
+}
+.ws-hero-inner {
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+}
+
+/* "Welcome to" is set as a spoken line rather than a label, so it
+   reads as someone greeting you at a door. It is deliberately not
+   the h1: the h1 is the sentence underneath, which is the one that
+   says what this place is. */
+.ws-welcome {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  letter-spacing: var(--ls-heading);
+  color: var(--text-strong);
+  margin: 0 0 var(--space-5);
+}
+
+/* Sized as a share of its column with a ceiling, so it fills a phone
+   without overwhelming a desktop. It is an <img> and not inlined SVG
+   on purpose: it is a fixed piece of brand art, not something the
+   page recolours, so it can be cached as its own file. */
+.ws-wordmark {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin: 0 auto var(--space-6);
+}
+
+.ws-hero-title {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  color: var(--text-strong);
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* ============================================================
+   ROOM LIST
+   The real navigation of the house. Plain anchors with real text:
+   crawlable, keyboard reachable, and still standing if the puzzle
+   art never loads.
+
+   When the floating puzzle pieces arrive they layer over this. They
+   do not replace it. An SVG that fails leaves a visitor with no way
+   into any room, and there is no version of that worth shipping.
+   ============================================================ */
+.room-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--rule-heavy);
+}
+.room-item { border-bottom: var(--rule-heavy); }
+
+/* The whole row is the target, not just the room name. A small link
+   inside a large row is a needle to hit on a phone. */
+.room-link {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-4);
+  text-decoration: none;
+  color: var(--text-body);
+  transition: background-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+
+/* Hover floods the row with the room's own colour, which is the
+   same colour waiting on the other side of the click. The swatch is
+   what teaches that before anyone hovers. */
+.room-link:hover,
+.room-link:focus-visible {
+  background: var(--room);
+  color: var(--room-ink);
+}
+.room-link:hover .room-name,
+.room-link:focus-visible .room-name,
+.room-link:hover .room-what,
+.room-link:focus-visible .room-what { color: var(--room-ink); }
+
+/* Each row sets its own colour, so everything above stays generic. */
+.room-item.is-music    { --room: var(--ws-orange); --room-ink: var(--ws-black); }
+.room-item.is-video    { --room: var(--ws-blue);   --room-ink: var(--ws-paper); }
+.room-item.is-design   { --room: var(--ws-yellow); --room-ink: var(--ws-black); }
+.room-item.is-podcasts { --room: var(--ws-green);  --room-ink: var(--ws-black); }
+.room-item.is-speaking { --room: var(--ws-salmon); --room-ink: var(--ws-black); }
+.room-item.is-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
+
+/* A solid block of the room's colour. Decorative: the room's name is
+   right beside it in text, so this is marked aria-hidden and adds
+   nothing for a screen reader. Colour is never the only signal. */
+.room-swatch {
+  width: var(--space-6);
+  height: var(--space-6);
+  background: var(--room);
+  border: var(--rule);
+}
+
+/* Both are spans inside the row's middle cell rather than a heading
+   and a paragraph, because the row is one link and a heading nested
+   in a link is a heading a screen reader cannot navigate to. They
+   need blockifying by hand: a span is inline, and vertical margin on
+   an inline element is ignored, so the two would sit on one line. */
+.room-name {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-h3);
+  letter-spacing: var(--ls-heading);
+  color: var(--text-strong);
+  margin: 0 0 var(--space-1);
+  line-height: var(--lh-snug);
+}
+.room-what {
+  display: block;
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  margin: 0;
+}
+.room-arrow {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.room-link:hover .room-arrow,
+.room-link:focus-visible .room-arrow { transform: translateX(4px); }
+
+/* ============================================================
+   ROOM SWITCHER
+   The sub-nav that sits under the site nav on every room page, so
+   moving between rooms never costs a trip back to the landing.
+
+   Deeper paper than the site nav above it, which is what separates
+   two stacked navigation bars without adding a third rule.
+   ============================================================ */
+.room-switcher {
+  background: var(--bg-sunken);
+  border-bottom: var(--rule-heavy);
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+}
+.room-switch-home {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-strong);
+  text-decoration: none;
+  margin-right: auto;
+}
+.room-switch-home:hover { color: var(--ws-orange-deep); }
+
+.room-switch-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-4);
+}
+.room-switch-link {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-strong);
+  text-decoration: none;
+  padding-bottom: var(--space-1);
+  border-bottom: var(--border) solid transparent;
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.room-switch-link:hover {
+  color: var(--ws-orange-deep);
+  border-bottom-color: var(--ws-orange);
+}
+/* The room you are standing in, filled with that room's own colour,
+   which is the same colour filling the hero directly below it. */
+.room-switch-link[aria-current="page"] {
+  background: var(--room);
+  color: var(--room-ink);
+  padding: var(--space-1) var(--space-2);
+  border: var(--rule-hair) solid var(--outline);
+}
+
+/* ============================================================
+   ROOM HERO
+   Same shape as the site's heroes, filled with the room's colour
+   instead of the site's orange.
+   ============================================================ */
+.room-hero {
+  background: var(--room);
+  border-bottom: var(--border-mega) solid var(--outline);
+  padding: var(--space-8) var(--space-5);
+}
+.room-hero-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.room-hero-eyebrow {
+  color: var(--room-ink);
+  margin: 0 0 var(--space-4);
+  opacity: 0.8;
+}
+.room-hero-title {
+  font-size: var(--fs-h1);
+  color: var(--room-ink);
+  margin: 0 0 var(--space-5);
+}
+.room-hero-sub {
+  font-size: var(--fs-body-lg);
+  color: var(--room-ink);
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* ============================================================
+   WORK GRID
+   Covers, thumbnails and artwork. Same auto-fit approach as the
+   offer cards on the rest of the site: the row reflows on its own
+   as the viewport narrows, with no breakpoint doing the work.
+   ============================================================ */
+/* The max track is capped rather than left at 1fr. With 1fr, auto-fit
+   stretches whatever is there to fill the row, so a room holding two
+   items rendered two cards half the page wide with cover art to match.
+   Capped, a card stays a card and a sparse room reads as a sparse room
+   instead of a broken one. justify-content keeps the short row packed
+   left rather than centred, so it lines up with the heading above it. */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 340px));
+  justify-content: start;
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.work-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-card);
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+}
+/* The image runs to the card's edge rather than sitting inside
+   padding, so cover art reads as cover art and not as an illustration
+   of one. The rule underneath is what keeps the card's outline
+   continuous across the join. */
+.work-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-bottom: var(--rule);
+  background: var(--bg-well);
+}
+.work-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+}
+.work-title {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-h4);
+  letter-spacing: var(--ls-heading);
+  color: var(--text-strong);
+  margin: 0 0 var(--space-2);
+  line-height: var(--lh-snug);
+}
+.work-meta {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  margin: 0 0 var(--space-4);
+}
+.work-note { margin: 0 0 var(--space-4); }
+/* Pushes whatever closes the card to a shared baseline, so a short
+   card and a long one still line up along the bottom of the row. */
+.work-foot { margin-top: auto; }
+
+/* ---- Streaming links ----
+   A music room that cannot send someone to Spotify is missing most of
+   what a music page is for. These sit in the open on every release
+   rather than behind a click. */
+.stream-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+}
+.stream-link {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-strong);
+  background: var(--bg-sunken);
+  border: var(--rule-hair) solid var(--outline);
+  padding: var(--space-1) var(--space-2);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.stream-link:hover {
+  background: var(--ws-yellow);
+  color: var(--text-strong);
+}
+
+/* ---- The play control on a cover ----
+   A real <button>, because it acts on this page rather than going
+   anywhere. Anything that navigates is an <a>, anything that changes
+   the page is a <button>, and screen readers and keyboards both
+   depend on that line being held. */
+.play-btn {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-small);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-on-brand);
+  background: var(--ws-orange);
+  border: var(--rule);
+  box-shadow: var(--pop-black-sm);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.play-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 0 var(--ws-black);
+}
+.play-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 0 var(--ws-black);
+}
+.play-btn[disabled] {
+  background: var(--bg-well);
+  color: var(--text-muted);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   EMBED FACADE
+   Standing rule on this site: ship a static thumbnail and swap in
+   the real iframe only when a visitor asks for it. Nothing is
+   requested from YouTube until then, so the page costs a visitor
+   nothing in requests or tracking just for existing.
+   ============================================================ */
+.facade {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: none;
+  border-bottom: var(--rule);
+  background: var(--bg-well);
+  cursor: pointer;
+  overflow: hidden;
+}
+.facade img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* The play badge. Centred over the thumbnail, in the site's own
+   flat-fill-and-heavy-outline language rather than YouTube's. */
+.facade-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  background: var(--ws-orange);
+  border: var(--rule);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--pop-black);
+  color: var(--ws-black);
+  font-size: var(--fs-h4);
+  transition: transform var(--dur-fast) var(--ease-pop);
+}
+.facade:hover .facade-play { transform: translate(-50%, -50%) scale(1.08); }
+/* Once swapped, the iframe fills the same box the thumbnail held, so
+   the card does not jump when the video loads. */
+.facade iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ============================================================
+   ENTRY LIST
+   Podcasts, talks and writing. A list rather than a grid, because
+   these carry a title, a role and a date that all want reading, and
+   a grid of squares would starve every one of them.
+   ============================================================ */
+.entry-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.entry {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-5);
+  background: var(--surface-card);
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-5);
+}
+.entry-art {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border: var(--rule);
+  background: var(--bg-well);
+}
+.entry-body { min-width: 0; }
+.entry-title {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-h4);
+  letter-spacing: var(--ls-heading);
+  color: var(--text-strong);
+  margin: 0 0 var(--space-2);
+  line-height: var(--lh-snug);
+}
+.entry-title a { color: var(--text-strong); text-decoration-color: var(--ws-orange); }
+.entry-title a:hover { color: var(--ws-orange-deep); }
+.entry-meta {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  margin: 0 0 var(--space-3);
+}
+.entry-note { margin: 0 0 var(--space-3); }
+.entry-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---- Role tag ----
+   Host, guest, or producer. This is the field that lets a show that
+   is not Jack's own sit naturally beside one that is, without the
+   page having to explain the difference in prose every time. */
+.role-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-strong);
+  background: var(--ws-yellow);
+  border: var(--rule-hair) solid var(--outline);
+  padding: 2px var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+/* ============================================================
+   CROSS REFERENCE
+   The puzzle image made structural. The pieces have real borders,
+   but the picture crosses them: a live performance is video by form
+   and music by nature, and a lyric belongs to a release it is not
+   filed under.
+
+   So any item can point at where else it lives. Quiet on purpose.
+   It is a doorway between rooms, not a second title.
+   ============================================================ */
+.crossref {
+  display: inline-block;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  margin: 0;
+}
+.crossref a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+}
+.crossref::before {
+  content: "\21B3\00a0";
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   PLAYER BAR
+   The music room's player. It lives in this room and nowhere else,
+   which is what settles the conflict noted in CLAUDE.md: a bar that
+   survives navigation is impossible across six real pages, so audio
+   simply never crosses a page boundary. Music owns the release
+   player; each lyric page owns its own single track.
+
+   Sticky rather than fixed, so it parks at the bottom of the
+   viewport while there is page left and then comes to rest above
+   the footer rather than covering it.
+
+   Native controls on purpose. They are keyboard operable, screen
+   reader labelled, and understood by every visitor already. A custom
+   transport is a real project and it should not be built against
+   placeholder audio.
+   ============================================================ */
+.player-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  background: var(--ws-black);
+  border-top: var(--border-mega) solid var(--outline);
+  /* The footer below is also black with a black rule on top, so when
+     the bar stops being sticky and comes to rest above it the two read
+     as one undifferentiated block. Yellow is the accent this site
+     already uses on black, in the footer links, so the seam is visible
+     without introducing a colour the footer does not know. */
+  border-bottom: var(--border) solid var(--ws-yellow-deep);
+  padding: var(--space-4) var(--space-5);
+}
+.player-label {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--ws-yellow);
+}
+.player-now {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-small);
+  color: var(--ws-paper);
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+}
+.player-bar audio {
+  width: min(420px, 100%);
+  height: 40px;
+}
+
+/* ============================================================
+   LYRIC PAGE
+   A single lyric with its own track. Set in the design system's
+   serif voice: this is the one kind of page on the site that is
+   read the way a poem is read rather than scanned, and the change
+   of face is what says so.
+   ============================================================ */
+.lyric-sheet { max-width: 56ch; }
+/* pre-line keeps the line breaks the lyric was written with while
+   still collapsing the indentation of the HTML around it. A lyric's
+   line breaks are the form, so they cannot be left to the browser. */
+.lyric-body {
+  font-family: var(--font-serif);
+  font-size: var(--fs-body-lg);
+  line-height: 1.7;
+  color: var(--text-body);
+  white-space: pre-line;
+  margin: 0;
+}
+.lyric-section {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: var(--space-6) 0 var(--space-3);
+}
+.lyric-section:first-child { margin-top: 0; }
+
+/* The single-track player that sits with the lyric. Same native
+   controls as the room bar, in paper rather than the bar's black. */
+.track-player {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  background: var(--bg-sunken);
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+.track-player audio { width: min(380px, 100%); height: 40px; }
+
+/* The lyric sheet ends flush against its last line, so a cross
+   reference straight underneath reads as another line of the song.
+   This is the gap that separates the words from the doorway out. */
+.lyric-crossref { margin-top: var(--space-5); }
+
+/* ============================================================
+   EMPTY STATE
+   What a room says while it is still empty.
+
+   The dashed outline is the one deliberate break from the site's
+   heavy solid rule, and it is temporary. Solid says finished; dashed
+   says a thing goes here and has not arrived yet. Every one of these
+   disappears as Jack fills the room.
+   ============================================================ */
+.empty-state {
+  border: var(--border) dashed var(--text-muted);
+  background: var(--bg-sunken);
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+}
+.empty-state p {
+  max-width: 52ch;
+  margin: 0 auto;
+  color: var(--text-muted);
+}
+.empty-state p + p { margin-top: var(--space-3); }
+.empty-title {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-h4);
+  color: var(--text-strong);
+  margin: 0 0 var(--space-3);
+}
+
+/* ---- Placeholder flag ----
+   Marks an entry that is standing in to show the shape of the
+   container, so nothing invented is ever mistaken for real work.
+   These come out as the real material lands. */
+.flag-placeholder {
+  display: inline-block;
+  /* .work-body is a flex column, and a flex item stretches across the
+     cross axis unless told otherwise, which ran this stripe the full
+     width of the card. It should be the width of its own word. */
+  align-self: flex-start;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-strong);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--ws-yellow) 0 8px,
+    var(--ws-yellow-deep) 8px 16px
+  );
+  border: var(--rule-hair) solid var(--outline);
+  padding: 2px var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+/* ============================================================
+   PLACEHOLDER TILES
+   Where an image will go but has not arrived. Striped paper rather
+   than a flat grey box, and labelled with what belongs there, so an
+   unfilled room still explains its own shape instead of looking
+   broken.
+
+   These are rendered aria-hidden, because a screen reader gains
+   nothing from a description of a picture that does not exist. The
+   card's own text carries everything that is actually known.
+   ============================================================ */
+.is-placeholder {
+  display: grid;
+  place-items: center;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--bg-sunken) 0 10px,
+    var(--bg-well) 10px 20px
+  );
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  text-align: center;
+}
+/* The facade is a <button> in its real form, so its placeholder has
+   to unset the affordances that came with that shell. Nothing here
+   is clickable yet and it should not look as though it is. */
+.facade.is-placeholder {
+  cursor: default;
+  border-bottom: var(--rule);
+}
+
+/* ============================================================
+   RESPONSIVE
+   The requirement is 390px with no horizontal scroll.
+   ============================================================ */
+@media (max-width: 640px) {
+  /* The arrow is decoration, and at this width it is competing with
+     the room name for the row. The swatch stays, because it is what
+     teaches the colour code, but it shrinks. */
+  .room-link {
+    grid-template-columns: auto 1fr;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-2);
+  }
+  .room-arrow { display: none; }
+  .room-swatch { width: var(--space-5); height: var(--space-5); }
+
+  /* Art above the text rather than beside it. At 390px a 96px square
+     in a side column leaves the title about twelve characters. */
+  .entry { grid-template-columns: 1fr; gap: var(--space-4); }
+
+  .ws-hero { padding: var(--space-7) var(--space-4); }
+  .room-hero { padding: var(--space-7) var(--space-4); }
+  .room-switcher { padding: var(--space-3) var(--space-4); }
+  .player-bar { padding: var(--space-3) var(--space-4); }
+}
