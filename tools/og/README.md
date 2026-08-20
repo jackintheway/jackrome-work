@@ -9,6 +9,28 @@ One card per page. The Squarespace site shared a single image across nine pages,
 | `card-home.html` | `assets/img/og-home.png` | `/` |
 | `card-about.html` | `assets/img/og-about.png` | `/about` |
 | `card-ai-enablement.html` | `assets/img/og-ai-enablement.png` | `/ai-enablement` |
+| `card-wayspace.html` | `assets/img/og-wayspace.png` | `/wayspace` |
+| `card-wayspace-music.html` | `assets/img/og-wayspace-music.png` | `/wayspace/music` |
+| `card-wayspace-video.html` | `assets/img/og-wayspace-video.png` | `/wayspace/video` |
+| `card-wayspace-design.html` | `assets/img/og-wayspace-design.png` | `/wayspace/design` |
+| `card-wayspace-podcasts.html` | `assets/img/og-wayspace-podcasts.png` | `/wayspace/podcasts` |
+| `card-wayspace-speaking.html` | `assets/img/og-wayspace-speaking.png` | `/wayspace/speaking` |
+| `card-wayspace-writing.html` | `assets/img/og-wayspace-writing.png` | `/wayspace/writing`, and the lyric pages under it |
+
+## The Wayspace set
+
+The six room cards are one family: same layout, one short word, and the
+room's own colour as the ground. The colour is not decoration. It is the
+same colour that room wears on the landing list and in its hero, so a
+link previewed in a message already matches the room it opens.
+
+The title's hard offset shadow changes per room, because a yellow offset
+that pops against orange disappears against yellow. Grounds too dark for
+black type (blue and brown) carry paper type instead.
+
+The landing card leads with the wordmark rather than a title, on paper.
+The wordmark contains orange, so an orange ground would eat those shapes.
+The design system shows the mark on blue, paper and salmon, never orange.
 
 ## Regenerating
 

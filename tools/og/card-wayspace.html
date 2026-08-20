@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  /* box-sizing is required here. These files link colors.css and
+     fonts.css but not base.css, which is where the site's global
+     border-box rule lives. Without it the 14px border pushes the card
+     past 1200x630 and the render clips with no error. */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { width: 1200px; height: 630px; overflow: hidden; }
+  .card {
+    position: relative;
+    width: 1200px; height: 630px;
+    background: var(--ws-paper);
+    border: 14px solid var(--ws-black);
+    padding: 62px 72px;
+    font-family: var(--font-heading);
+    overflow: hidden;
+  }
+  .content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: space-between;
+    height: 100%;
+  }
+  .eyebrow {
+    font-size: 25px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ws-black); margin: 0;
+  }
+  /* The wordmark is the title here. Sized to fill the card's measure,
+     which is what keeps it readable at the roughly 300px wide this
+     renders at in a message thread. */
+  .wordmark { display: block; width: 1000px; margin: 0; }
+  .foot {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-top: 7px solid var(--ws-black); padding-top: 26px;
+  }
+  .url { font-size: 38px; font-weight: 900; color: var(--ws-black); letter-spacing: -0.01em; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="content">
+      <p class="eyebrow">Welcome to</p>
+      <img class="wordmark" src="../../assets/img/wayspace-straight.svg" alt="">
+      <div class="foot">
+        <span class="url">jackrome.work/wayspace</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
