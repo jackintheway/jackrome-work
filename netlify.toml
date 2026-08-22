@@ -88,6 +88,12 @@
   status = 302
   force = true
 
+[[redirects]]
+  from = "/MOTION.md"
+  to = "/"
+  status = 302
+  force = true
+
 # NOT YET HANDLED, and deliberately so. /toolbox, /store and /blog are
 # still served by Squarespace and are out of scope for this build. They
 # stop existing the moment DNS moves here, so each needs a rule above

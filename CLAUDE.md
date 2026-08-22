@@ -185,6 +185,11 @@ that does not exist yet.
 5. The floating puzzle art. Drawn as one puzzle and pulled apart so the tabs match,
    layered over the list, respecting `prefers-reduced-motion`.
 
+   **The motion question around this is decided. See `MOTION.md`.** In short: the
+   site's register is calm and stays calm, scroll-linked motion is admitted here and
+   nowhere else, and none of it happens before the cutover. Read that file before
+   proposing anything animated, and do not reopen it from scratch.
+
 ---
 
 ## Open items, none blocking
@@ -195,6 +200,12 @@ that does not exist yet.
 - ~~Wayspace clean URLs unverified.~~ **Closed 2026-08-22.** Checked against the live staging deploy: `/wayspace`, `/wayspace/writing`, `/wayspace/music`, and `/wayspace/writing/example-lyric` all answer 200 with no redirect. The trailing-slash forms 301 back to the clean URLs, which makes the clean form canonical. The `room.html` beside a `room/` directory pattern holds for nested paths.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
 - `assets/img/jack-ventnor-2026.jpg` ships but is unused.
+- **`/ai` breaks at cutover.** `netlify.toml` sends it to `https://ai.jackrome.work`,
+  which this file records as taken offline 2026-08-21. Checked 2026-08-22: it is
+  still answering, with a Squarespace 302 on to `/ai-enablement`. So the vanity path
+  works today through a two hop chain whose middle hop dies with the Squarespace
+  subscription on 2026-09-15. Make it a direct 301 to `/ai-enablement`. Cheap fix,
+  and it is on the cutover path rather than in cleanup.
 - The orphaned Squarespace pages still need a call before DNS moves. `/toolbox` and `/blog` only. See the cutover note below.
 
 ---
