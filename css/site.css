@@ -38,10 +38,19 @@
 
 /* ============================================================
    NAV
-   Sticky, paper ground, heavy black underline. Four links plus the
-   doorway out to the AI portfolio. At narrow widths the row wraps
-   rather than collapsing into a menu: five items fit, and a
-   hamburger would hide the site's whole structure to save nothing.
+   Sticky, paper ground, heavy black underline.
+
+   This used to wrap rather than collapse, on the reasoning that five
+   items fit at narrow widths and a hamburger would hide the site's
+   structure to save nothing. That held at five. It stopped holding at
+   six: measured at 390px on 2026-08-22, the labels need 533px against
+   358px of room, so they wrapped to two rows and the nav took 135px,
+   about 15% of a phone screen, before any content.
+
+   So below 860px it collapses to a button. The panel shows every link
+   rather than nesting them behind a second tap, which keeps the
+   original objection answered: the structure is one tap away, not
+   hidden. Above 860px nothing changed and the row never wraps.
    ============================================================ */
 .site-nav {
   position: sticky;
@@ -99,10 +108,100 @@
   border-bottom-color: var(--ws-black);
 }
 
-/* The doorway to ai.jackrome.work. Marked as leaving this site. */
+/* Marked as leaving this site. Contact is the only one now. */
 .nav-link.is-external::after {
   content: "\00a0\2197";
   font-weight: var(--fw-regular);
+}
+
+/* ---- Grouped links ----
+   "Services" is a label for the panel only. display:contents lets the
+   two links flow into the flex row on desktop as though the wrapper
+   were not there, so one piece of markup serves both layouts. */
+.nav-group { display: contents; }
+.nav-group-label { display: none; }
+
+/* ---- The toggle ----
+   Hidden above the breakpoint, where the row fits on its own. */
+.nav-toggle { display: none; }
+
+@media (max-width: 860px) {
+  .site-nav {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .nav-toggle-bar {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--text-strong);
+    transition: transform var(--dur-fast) var(--ease-out),
+                opacity var(--dur-fast) var(--ease-out);
+  }
+  /* Three bars fold into a cross. The middle one leaves rather than
+     rotating, so the two that remain meet cleanly. */
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* The panel hangs off the sticky nav, which is a positioned element
+     and therefore already the containing block it needs. */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    background: var(--bg-base);
+    border-bottom: var(--border-mega) solid var(--outline);
+    padding: var(--space-5);
+  }
+  .nav-links.is-open { display: flex; }
+
+  .nav-link { font-size: var(--fs-body); }
+
+  .nav-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  .nav-group-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-caption);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: var(--ws-orange-deep);
+  }
+  .nav-group .nav-link { padding-left: var(--space-4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle-bar { transition: none; }
 }
 
 /* ============================================================

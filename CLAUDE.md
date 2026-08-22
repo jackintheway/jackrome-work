@@ -190,7 +190,7 @@ that does not exist yet.
 ## Open items, none blocking
 
 - `/creative-portfolio` 404s and now wants a 301 to `/wayspace` in `netlify.toml` at cutover. The scope question resolved toward two pages, so this path has a successor.
-- `/production` 404s. Linked from the nav and footer of every page including the eight new ones.
+- `/production` 404s. Linked from the nav of every page, plus the green home card and a button on `/wayspace`. Still the one unbuilt page.
 - `/ai-portfolio` is built but **not deployed**. Its share card renders and the page passes `check-copy` and the 390px check locally.
 - ~~Wayspace clean URLs unverified.~~ **Closed 2026-08-22.** Checked against the live staging deploy: `/wayspace`, `/wayspace/writing`, `/wayspace/music`, and `/wayspace/writing/example-lyric` all answer 200 with no redirect. The trailing-slash forms 301 back to the clean URLs, which makes the clean form canonical. The `room.html` beside a `room/` directory pattern holds for nested paths.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
@@ -228,6 +228,48 @@ The reasoning behind the selection is recorded outside this repo, in
 **The old portfolio repo is `../ai-work-portfolio/`, it is private, and nothing
 publishes from it.** It stays useful as a design reference and as an archive. Read
 it; do not copy content out of it onto this site.
+
+---
+
+## The nav (restructured 2026-08-22)
+
+Six items, one row on desktop, a button below 860px.
+
+**Home was dropped.** The wordmark already links to `/`, so "Home" was a
+duplicate of the thing sitting beside it. On `/` the wordmark carries
+`aria-current="page"` instead.
+
+**Contact was added**, pointing at Calendly. It is the site's named conversion
+path and it was previously reachable only from the hero, the footer, and one
+home card. It leaves the domain, so it carries `is-external`, `target`, and
+`rel="noopener"` like any other outbound link.
+
+**The order is About, AI Enablement, Production, AI Portfolio, Wayspace,
+Contact.** AI Enablement and Production are wrapped in a `.nav-group` that is
+`display: contents` on desktop, so the two links flow into the row as though
+the wrapper were not there. Below the breakpoint the wrapper becomes a column
+with a "Services" label above it. One piece of markup, two layouts, and no
+second set of links that could drift out of sync with the first.
+
+**The page stayed `/production` rather than becoming `/studio`.** Studio was
+tried and reverted the same day. A studio is a place and Jack does not have
+one, and its sibling `/ai-enablement` is named for an activity, so naming this
+one for a place broke the parallel inside a group headed "Services". The green
+home card also already says "Creative & production", so card, label, and URL
+now all use one word.
+
+**The hamburger reversed an earlier decision, and the premise is why.** The nav
+comment in `css/site.css` argued against collapsing, on the grounds that five
+items fit at narrow widths and a menu would hide the structure to save nothing.
+That was true at five. Measured at 390px on 2026-08-22 with six: the labels need
+533px against 358px of room, so they wrapped to two rows and the nav took 135px,
+about 15% of a phone screen, before any content. It is 74px now. The original
+objection is answered by the panel showing every link rather than nesting any of
+them behind a second tap.
+
+`js/nav.js` is loaded on all twelve pages and handles the button, Escape,
+outside clicks, and clearing the open class when the window widens past the
+breakpoint. Any nav change is a twelve-file edit, so it is worth doing once.
 
 ---
 

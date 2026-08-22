@@ -41,13 +41,21 @@
 
   <nav class="site-nav" aria-label="Main">
     <a class="nav-mark" href="/">Jack Rome</a>
-    <div class="nav-links">
-      <a class="nav-link" href="/">Home</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
       <a class="nav-link" href="/about">About</a>
-      <a class="nav-link" href="/ai-enablement" aria-current="page">AI Enablement</a>
-      <a class="nav-link" href="/production">Production</a>
+      <div class="nav-group">
+        <span class="nav-group-label">Services</span>
+        <a class="nav-link" href="/ai-enablement" aria-current="page">AI Enablement</a>
+        <a class="nav-link" href="/production">Production</a>
+      </div>
       <a class="nav-link" href="/ai-portfolio">AI Portfolio</a>
       <a class="nav-link" href="/wayspace">Wayspace</a>
+      <a class="nav-link is-external" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Contact</a>
     </div>
   </nav>
 
@@ -202,5 +210,6 @@
     </span>
   </footer>
 
+  <script src="/js/nav.js" defer></script>
 </body>
 </html>
