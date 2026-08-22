@@ -16,7 +16,7 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 
 Built, deployed, and verified: `/`, `/about`, `/ai-enablement`. Tokens, Archivo, nav, footer, share cards, redirects, and headers are all in place and confirmed against the live deploy.
 
-Built locally and **not yet deployed**: `/wayspace` and its six rooms, and `/ai-portfolio`. See "Wayspace, built" and "The AI portfolio page" below. `/production` is the one page still unbuilt.
+Deployed and verified 2026-08-22: `/wayspace` and its six rooms, including the nested `/wayspace/writing/example-lyric`. Built locally and **not yet deployed**: `/ai-portfolio`. See "Wayspace, built" and "The AI portfolio page" below. `/production` is the one page still unbuilt.
 
 `INVENTORY.md` is the crawl of the old Squarespace site. `COPY.md` is the copy pulled from it on 2026-08-15, and is the source for the three built pages. Once a page is built its HTML is the source of truth, not `COPY.md`.
 
@@ -192,7 +192,7 @@ that does not exist yet.
 - `/creative-portfolio` 404s and now wants a 301 to `/wayspace` in `netlify.toml` at cutover. The scope question resolved toward two pages, so this path has a successor.
 - `/production` 404s. Linked from the nav and footer of every page including the eight new ones.
 - `/ai-portfolio` is built but **not deployed**. Its share card renders and the page passes `check-copy` and the 390px check locally.
-- Wayspace is built but **not deployed**. Nothing under `/wayspace` has been checked against Netlify's clean URLs, and the nested path is new territory for this site. Verify `/wayspace/writing` on the first deploy that carries it.
+- ~~Wayspace clean URLs unverified.~~ **Closed 2026-08-22.** Checked against the live staging deploy: `/wayspace`, `/wayspace/writing`, `/wayspace/music`, and `/wayspace/writing/example-lyric` all answer 200 with no redirect. The trailing-slash forms 301 back to the clean URLs, which makes the clean form canonical. The `room.html` beside a `room/` directory pattern holds for nested paths.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
 - `assets/img/jack-ventnor-2026.jpg` ships but is unused.
 - The orphaned Squarespace pages still need a call before DNS moves. `/toolbox` and `/blog` only. See the cutover note below.
