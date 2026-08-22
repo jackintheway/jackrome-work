@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  /* box-sizing is required here. These files link colors.css and
+     fonts.css but not base.css, which is where the site's global
+     border-box rule lives. Without it the 14px border pushes the card
+     past 1200x630 and the render clips with no error. */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { width: 1200px; height: 630px; overflow: hidden; }
+  .card {
+    position: relative;
+    width: 1200px; height: 630px;
+    background: var(--ws-green);
+    border: 14px solid var(--ws-black);
+    padding: 62px 72px;
+    font-family: var(--font-heading);
+    overflow: hidden;
+  }
+  /* Upper right, clear of the footer rule and of the title's measure. */
+  .puzzle {
+    position: absolute;
+    width: 344px;
+    right: 56px; top: 118px;
+    transform: rotate(-7deg);
+  }
+  .content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: space-between;
+    height: 100%;
+  }
+  .eyebrow {
+    font-size: 25px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ws-black); margin: 0;
+  }
+  .title {
+    font-size: 78px; font-weight: 900; line-height: 0.92;
+    letter-spacing: -0.03em; color: var(--ws-black);
+    text-shadow: 7px 7px 0 var(--ws-yellow);
+    margin: 0; max-width: 700px;
+  }
+  .foot {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-top: 7px solid var(--ws-black); padding-top: 26px;
+  }
+  .url { font-size: 38px; font-weight: 900; color: var(--ws-black); letter-spacing: -0.01em; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="puzzle" src="../../assets/puzzle-single.svg" alt="">
+    <div class="content">
+      <p class="eyebrow">Jack Rome &middot; Maryland</p>
+      <h1 class="title">Built to stop and ask.</h1>
+      <div class="foot">
+        <span class="url">jackrome.work/ai-portfolio</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

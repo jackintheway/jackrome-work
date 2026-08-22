@@ -16,11 +16,13 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 
 Built, deployed, and verified: `/`, `/about`, `/ai-enablement`. Tokens, Archivo, nav, footer, share cards, redirects, and headers are all in place and confirmed against the live deploy.
 
-Built locally and **not yet deployed**: `/wayspace` and its six rooms. See "Wayspace, built" below. `/production` is the one page still unbuilt.
+Built locally and **not yet deployed**: `/wayspace` and its six rooms, and `/ai-portfolio`. See "Wayspace, built" and "The AI portfolio page" below. `/production` is the one page still unbuilt.
 
 `INVENTORY.md` is the crawl of the old Squarespace site. `COPY.md` is the copy pulled from it on 2026-08-15, and is the source for the three built pages. Once a page is built its HTML is the source of truth, not `COPY.md`.
 
-**Nothing is public.** `jackrome.work` stays on Squarespace until Jack calls the cutover.
+**The live site is not public yet.** `jackrome.work` stays on Squarespace until Jack calls the cutover.
+
+**The repo, however, is public.** `github.com/jackintheway/jackrome-work` is readable by anyone, verified 2026-08-21. So a push publishes the source even though it does not publish the site, and anything written into a file here (including this one) is public the moment it lands. Keep private reasoning in `~/.claude/plans/` or another place outside the repo.
 
 ### There is now a deadline: 2026-09-15
 
@@ -189,10 +191,43 @@ that does not exist yet.
 
 - `/creative-portfolio` 404s and now wants a 301 to `/wayspace` in `netlify.toml` at cutover. The scope question resolved toward two pages, so this path has a successor.
 - `/production` 404s. Linked from the nav and footer of every page including the eight new ones.
+- `/ai-portfolio` is built but **not deployed**. Its share card renders and the page passes `check-copy` and the 390px check locally.
 - Wayspace is built but **not deployed**. Nothing under `/wayspace` has been checked against Netlify's clean URLs, and the nested path is new territory for this site. Verify `/wayspace/writing` on the first deploy that carries it.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
 - `assets/img/jack-ventnor-2026.jpg` ships but is unused.
 - The orphaned Squarespace pages still need a call before DNS moves. `/toolbox` and `/blog` only. See the cutover note below.
+
+---
+
+## The AI portfolio page (built 2026-08-21)
+
+`/ai-portfolio` replaces the separate `ai.jackrome.work` site, which was taken
+offline on 2026-08-21. It lives here rather than in its own repo, so the AI work
+is a page of `jackrome.work` like any other.
+
+**The link repoint went with it.** Thirteen references to `https://ai.jackrome.work`
+across eleven files now point at `/ai-portfolio` and are no longer external, so
+they dropped `is-external`, `target="_blank"`, and `rel="noopener"`. Two of those
+were content CTAs rather than nav: "See my work" in `ai-enablement.html` and "See
+my AI work" in `about.html`. Both had been sending visitors to a host that
+redirects back to `/ai-enablement`, so on the enablement page the button returned
+the reader to the page they were already on.
+
+**What the page argues.** Not a catalogue of tools. It argues a way of building:
+read first and change nothing, show the person, wait to be told, and never write
+where you were not invited. That is the claim `ai-enablement.html` already makes
+under "What I won't do" ("everything I build has a human approval step if you want
+it"), so this page exists to be the receipt for it. The "What they refuse to do"
+section quotes the tools' own files.
+
+**The set of tools shown is settled, and was chosen deliberately.** Do not add a
+tool to this page, and do not name one that is not already on it, without Jack.
+The reasoning behind the selection is recorded outside this repo, in
+`~/.claude/plans/`. It is not written down here on purpose.
+
+**The old portfolio repo is `../ai-work-portfolio/`, it is private, and nothing
+publishes from it.** It stays useful as a design reference and as an archive. Read
+it; do not copy content out of it onto this site.
 
 ---
 
@@ -240,14 +275,14 @@ Rules for the image itself:
 
 **Any link leaving `jackrome.work` opens in a new tab. Links staying on `jackrome.work` do not.**
 
-`ai.jackrome.work` counts as leaving, for now. So does Calendly, YouTube, a client's site, and anything else off-domain. This applies to hyperlinked text and buttons alike.
+Calendly, YouTube, a client's site, and anything else off-domain all count as leaving. `ai.jackrome.work` no longer appears anywhere on this site: as of 2026-08-21 every link that pointed there points at the internal `/ai-portfolio` instead. This applies to hyperlinked text and buttons alike.
 
 Always pair `target="_blank"` with `rel="noopener"`. Without it the opened page gets a handle on the page that opened it through `window.opener`, which it can use to redirect the original tab somewhere else. Modern browsers imply this, but stating it costs nothing and does not depend on the visitor's browser being current.
 
 ## Location and dates (standing rules)
 
 - **Location is "Maryland", never "Frederick".** Applies to visible copy, meta descriptions, and share card text.
-- **No year anywhere on `jackrome.work`.** No copyright line, no "2026" in the footer. A dated footer starts aging the site the moment the year turns, and it earns nothing. `ai.jackrome.work` keeps its year, because there the date is doing real work: it says how current the AI work is.
+- **No year anywhere on `jackrome.work`.** No copyright line, no "2026" in the footer. A dated footer starts aging the site the moment the year turns, and it earns nothing. The old `ai.jackrome.work` carried a year, because there the date was doing real work. That site is gone, so the rule now has no exception.
 
 ## Other standing page requirements
 
@@ -276,7 +311,8 @@ The four questions that were blocking the build. All settled. Do not reopen them
 **Scope that follows from these:** four pages. `/`, `/about`, `/ai-enablement`, `/creative-portfolio`.
 
 **Revised 2026-08-20.** The fourth page became two doorways, and the proof doorway
-became a house of eight pages. Current scope is eleven built pages plus `/production`.
+became a house of eight pages, and `/ai-portfolio` was added on 2026-08-21. Current
+scope is twelve built pages plus `/production`.
 
 ### The cutover note (deferred, not decided)
 
