@@ -200,12 +200,10 @@ that does not exist yet.
 - ~~Wayspace clean URLs unverified.~~ **Closed 2026-08-22.** Checked against the live staging deploy: `/wayspace`, `/wayspace/writing`, `/wayspace/music`, and `/wayspace/writing/example-lyric` all answer 200 with no redirect. The trailing-slash forms 301 back to the clean URLs, which makes the clean form canonical. The `room.html` beside a `room/` directory pattern holds for nested paths.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
 - `assets/img/jack-ventnor-2026.jpg` ships but is unused.
-- **`/ai` breaks at cutover.** `netlify.toml` sends it to `https://ai.jackrome.work`,
-  which this file records as taken offline 2026-08-21. Checked 2026-08-22: it is
-  still answering, with a Squarespace 302 on to `/ai-enablement`. So the vanity path
-  works today through a two hop chain whose middle hop dies with the Squarespace
-  subscription on 2026-09-15. Make it a direct 301 to `/ai-enablement`. Cheap fix,
-  and it is on the cutover path rather than in cleanup.
+- ~~**`/ai` breaks at cutover.**~~ **Fixed 2026-08-22.** `netlify.toml` now 301s
+  `/ai` straight to `/ai-enablement` instead of out to `ai.jackrome.work`, so the
+  vanity path no longer depends on a Squarespace hop that dies on 2026-09-15.
+  Ships with the `/production` deploy.
 - The orphaned Squarespace pages still need a call before DNS moves. `/toolbox` and `/blog` only. See the cutover note below.
 
 ---
@@ -295,6 +293,57 @@ The sibling project `../ai-work-portfolio/` is the proven pattern and the design
 - Deployed to Netlify from GitHub, config in `netlify.toml` so settings travel with the repo.
 - Self-hosted fonts, no CDN, no third-party requests.
 - Tokens come from `../wayspace-design-system/`, which is the source of truth for color, type, spacing, and borders.
+
+---
+
+## What the visitor must believe (settled 2026-08-22, with Jack)
+
+`MOTION.md` flagged that this file recorded many decisions about the site and never
+the one sentence underneath them: what does someone believe when they leave. Asked
+of `/production` first, because it is the unbuilt page. Jack's answer was not about
+`/production`. It is site-wide, and it governs `/`, `/about`, `/ai-enablement`, and
+`/production` alike.
+
+**In Jack's words, so it does not degrade into a paraphrase:**
+
+> Wow, I would be safe working with him. Working with tech people can feel cold and
+> I feel like this guy is gonna be warm. Working with technology can feel risky and
+> scary and I feel like this guy is gonna be really caring and encouraging and not
+> rush me. And also, wow, he actually does everything I would probably need, and if
+> he can't do something I would need he would know how to figure it out or how to
+> get me the help that I would need.
+
+### The order is the decision
+
+Safety first, capability second. That is the part to get right, because the
+instinctive way to write a service page reverses it: lead with what you can do, hope
+warmth comes across. Here, competence is the second beat. It reassures someone who
+has already decided they are not going to be made to feel stupid.
+
+### What follows from it
+
+- **Name the fear rather than out-promising it.** The visitor arriving here has been
+  made to feel cold, rushed, or stupid by technology before. Copy that acknowledges
+  that lands better than copy claiming to be the best.
+- **Do not rush the reader.** "Not rush me" is about pacing, and pacing is a
+  property of the writing and the whitespace, not a claim to make. A page that
+  hurries contradicts its own sentence.
+- **Honesty about limits is part of the pitch.** "If he can't do something he would
+  know how to figure it out or get me the help I need" is a promise about character,
+  not coverage. Do not write around it or replace it with false completeness. It is
+  more persuasive than claiming to do everything.
+- **Breadth gets shown, never boasted.** Every client item in `_source/client-work/`
+  carries three or four roles at once: hosting, recording, tech checks, editing,
+  and on the 5.5 hour livestream, montages cut from submitted footage. The `roles: []`
+  field on each `/production` entry makes that argument ten times without the page
+  ever asserting it.
+
+### It agrees with the register decision, which is a good sign
+
+`MOTION.md` settled the site's register independently as calm, spacious, and
+trust-building, reasoning from the medium. This sentence arrives at the same place
+reasoning from the visitor. Two different questions, one answer. Where a proposed
+change would satisfy one and not the other, the change is wrong.
 
 ---
 

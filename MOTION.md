@@ -198,5 +198,6 @@ Revisit after the cutover holds.
    thing that moves.
 3. **Are the visualizer cuts a reference or a source?** If the Premiere project still
    has the layers separated, the assets may already exist.
-4. The one-sentence belief per page, unanswered for every page. Start with
-   `/production`.
+4. ~~The one-sentence belief per page.~~ **Answered 2026-08-22.** Jack's answer
+   was site-wide rather than per page, and it is recorded in `CLAUDE.md` under
+   "What the visitor must believe." Short form: safety first, capability second.

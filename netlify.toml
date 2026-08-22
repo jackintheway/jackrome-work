@@ -47,9 +47,14 @@
   status = 301
 
 # Vanity path for print, talks, and email signatures.
+#
+# Points straight at the page rather than out to ai.jackrome.work. That
+# subdomain still answers today, but only by 302ing on to this same page
+# from Squarespace, and that middle hop dies with the subscription on
+# 2026-09-15. A direct 301 removes the dependency and one round trip.
 [[redirects]]
   from = "/ai"
-  to = "https://ai.jackrome.work"
+  to = "/ai-enablement"
   status = 301
 
 # Working notes and project instructions are not part of the site.
