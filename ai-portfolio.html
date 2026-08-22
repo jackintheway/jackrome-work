@@ -131,21 +131,21 @@
 
       <div class="prose">
         <h3>Map-maker</h3>
-        <p>You have a pile. Files, pages, transcripts, a folder nobody has opened in a year. Map-maker reads all of it and gives you one place to read it from, in whatever format you want: a web page, a Word doc, a PDF, a deck.</p>
-        <p>The part I care about is that it doesn't cut you off from your own material. Every statement on the map carries a coordinate back to where it came from, precise enough to act on: a filename and a heading, a page number, a timestamp. You read the consolidated view, hit something you need to be sure about, and go straight to the exact spot in the source.</p>
-        <p>Where a line pulls several sources together and has no single origin, it says so. You can always tell what came from your material and what was added to connect it.</p>
+        <p>Say you've got a pile of material. Files, pages, transcripts, a folder nobody has opened in a year. Map-maker reads all of it and gives you one place to read it from, in whatever format you want: a web page, a Word doc, a PDF, a deck.</p>
+        <p>The part I care about is that it doesn't cut you off from your own material. Every statement on the map carries a coordinate back to where it came from, precise enough to act on: a filename and a heading, a page number, a timestamp. So you read the consolidated view, hit something you want to be sure about, and go straight to the exact spot in the source.</p>
+        <p>Where a line pulls a few sources together and doesn't have one origin, it says so, so you can always tell what came from your material and what got added to connect it.</p>
 
         <h3>Handoff</h3>
-        <p>Long pieces of work outlive a single sitting. Handoff writes the note that lets the next session pick up without losing what this one learned: what was decided, what was ruled out and why, what is still open, and the one next thing to do.</p>
-        <p>It checks its own claims against the files before writing them down, because notes like this go stale and nobody notices until they've acted on one. It also marks which lines are verified and which are just the last session's read, so an assumption can't get laundered into a fact three sessions later.</p>
+        <p>A long piece of work usually doesn't finish in one sitting. Handoff writes the note that lets the next session pick up without losing what this one learned: what got decided, what got ruled out and why, what's still open, and the one next thing to do.</p>
+        <p>It checks its own claims against the files before it writes them down, because notes like this go stale and nobody notices until they've already acted on one. It also marks which lines are verified and which are just the last session's read, so an assumption can't get laundered into a fact three sessions later.</p>
 
         <h3>Ingest-transcript</h3>
-        <p>Anyone publishing long recorded conversations has the same problem: someone has to get through a two hour transcript and decide what to cut before it ships. This reads the whole thing and hands back one timestamped report. What has to come out because a speaker asked for it on the record. What's worth listening to again before deciding. The standout lines worth pulling as clips. And any passage where someone recited from a published text long enough to earn a quote card on screen.</p>
-        <p>It asks one question before it starts: what comes before this transcript in the finished file, and how long does it run. Every time it reports is then offset to match the editor's timeline instead of the transcript's. Without that, someone does the arithmetic by hand for every entry, which is worse than getting no timestamps at all.</p>
-        <p>It began as a tool I built for a nonprofit I work with, narrowed to the one text they quote from constantly. Generalizing it was the obvious move once I saw it working, because a podcast host quoting four different books has the harder version of the same problem. Either way the person cutting the video still makes every call about what happens to it.</p>
+        <p>Anyone publishing long recorded conversations runs into the same thing, which is that somebody has to get through a two hour transcript and decide what to cut before it ships. This reads the whole thing and hands back one timestamped report covering what has to come out because a speaker asked for it on the record, what's worth listening to again before deciding, the standout lines worth pulling as clips, and any passage where someone recited from a published text long enough to earn a quote card on screen.</p>
+        <p>It asks one question before it starts, which is what comes before this transcript in the finished file and how long that runs. Every time it reports is offset to match the editor's timeline instead of the transcript's. Without that, somebody does the arithmetic by hand for every entry, which is worse than getting no timestamps at all.</p>
+        <p>It started as a tool I built for a nonprofit I work with, narrowed to the one text they quote from constantly. Generalizing it was the obvious move once I saw it working, because a podcast host quoting four different books has the harder version of the same problem. Either way the person cutting the video still makes every call about what happens to it.</p>
 
         <h3>Save points</h3>
-        <p>I'm not a professional developer, and version control is the most useful thing I've learned that most people never get near, because the tooling assumes you already speak it.</p>
+        <p>I'm not a professional developer, and version control is one of the most useful things I've picked up. Most people never get near it, because the tooling assumes you already speak the language.</p>
         <p>This wraps it in plain language. It tells me what changed since last time in ordinary words, proposes a description, and commits when I say yes. Anything that could lose work gets explained in full before it runs, and it teaches me one small thing per session when there's a natural opening.</p>
       </div>
     </section>
@@ -175,22 +175,20 @@
       </div>
     </section>
 
-    <!-- THE HONEST LIMIT
-         Said out loud rather than left for a reader to notice. The
-         callout is the one lifted moment on the page. -->
-    <section class="section" aria-labelledby="limitTitle">
+    <!-- THE VALUE OF CURATION
+         The close of the argument. Curation is the thing being sold, and
+         the fact that these were built for one person is the evidence
+         for it rather than a caveat about it. -->
+    <section class="section" aria-labelledby="curationTitle">
       <div class="section-header">
-        <h2 class="section-title" id="limitTitle">The honest limit</h2>
+        <h2 class="section-title" id="curationTitle">The value of curation</h2>
         <div class="section-rule" aria-hidden="true"></div>
       </div>
 
-      <div class="prose">
-        <p>Most of these were built for one user, which is me. I knew exactly who would read every output and what it would cost if a tool got it wrong, which is why the boundaries are drawn where they are.</p>
-        <p>That's a limitation of a portfolio like this, so I'd rather say it than have you find it. The two most recent tools were built for other people, and they're the ones I'd point at first.</p>
-      </div>
-
       <div class="prose prose-lg">
-        <p>Knowing exactly who a tool is for, and what it would cost them if it went wrong, is most of the work, and it's the part that doesn't survive when someone hands you a generic solution.</p>
+        <p>Knowing exactly who a tool is for, and what it would cost them if it went wrong, is most of what makes enablement work.</p>
+        <p>Tools that a whole team can use, or anyone who comes across them, are worth building too. They don't have to be generic to reach that many people, and I'd argue they work better when they aren't.</p>
+        <p>Mine started with one person, which is me, and that's an honest place for curation to start.</p>
       </div>
     </section>
 
