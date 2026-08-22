@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>AI Portfolio | Jack Rome</title>
-  <meta name="description" content="Thirteen AI tools Jack Rome built for his own work, and what they show about how he builds: read first, show the person, wait to be told, and never write where you were not invited.">
+  <meta name="description" content="Fourteen AI tools Jack Rome built for his own work, and what they show about how he builds: read first, show the person, wait to be told, and never write where you were not invited.">
   <link rel="canonical" href="https://jackrome.work/ai-portfolio">
 
   <!-- Link previews. Same rules as every other page: og:image absolute,
@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="Jack Rome">
   <meta property="og:url" content="https://jackrome.work/ai-portfolio">
   <meta property="og:title" content="Built to stop and ask.">
-  <meta property="og:description" content="Thirteen AI tools I built for my own work. What they have in common is where they stop.">
+  <meta property="og:description" content="Fourteen AI tools I built for my own work. What they have in common is where they stop.">
   <meta property="og:image" content="https://jackrome.work/assets/img/og-ai-portfolio.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Built to stop and ask.">
-  <meta name="twitter:description" content="Thirteen AI tools I built for my own work. What they have in common is where they stop.">
+  <meta name="twitter:description" content="Fourteen AI tools I built for my own work. What they have in common is where they stop.">
   <meta name="twitter:image" content="https://jackrome.work/assets/img/og-ai-portfolio.png">
 
   <link rel="icon" type="image/svg+xml" href="assets/puzzle-single.svg">
@@ -51,7 +51,7 @@
     <div class="hero-inner">
       <p class="hero-eyebrow ws-overline">AI Portfolio</p>
       <h1 class="hero-title">Built to stop and ask.</h1>
-      <p class="hero-sub">Thirteen AI tools I built for my own work over the past year. What they have in common is where they stop.</p>
+      <p class="hero-sub">Fourteen AI tools I built for my own work over the past year. What they have in common is where they stop.</p>
       <div class="btn-row">
         <a class="btn btn-secondary" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
       </div>
@@ -75,6 +75,7 @@
       <div class="prose prose-lg">
         <p>Every one of them follows the same shape, and I didn't set out to follow it. I kept arriving at it, because I was building for someone whose work I couldn't afford to damage.</p>
         <p>Most teams I talk to have the same worry about AI, and it isn't about capability. They're afraid of finding out afterward that something went out in their name that they never approved.</p>
+        <p>Not all of these were my idea. One came from pointing at a year of project history and asking what was worth building, which turned up a set of checks I had been doing by hand every time and never written down. Asking that question is a habit worth having.</p>
       </div>
 
       <div class="callout story">
@@ -147,9 +148,10 @@
         <p>Long pieces of work outlive a single sitting. Handoff writes the note that lets the next session pick up without losing what this one learned: what was decided, what was ruled out and why, what is still open, and the one next thing to do.</p>
         <p>It checks its own claims against the files before writing them down, because notes like this go stale quietly and nobody notices until they've acted on one. It also marks which lines are verified and which are just the last session's read, so an assumption can't get laundered into a fact three sessions later.</p>
 
-        <h3>A transcript review tool, built for a nonprofit</h3>
-        <p>A small nonprofit records long conversations and publishes them as video. Someone has to watch each recording and decide what to cut before it ships, which is slow and easy to get wrong.</p>
-        <p>This reads the transcript and hands back a decision-ready pass: the things that clearly have to go, the things worth listening to again before deciding, and the moments that would work well as an on-screen quote. It asks one question first, about the length of the intro, so every timestamp it reports matches the clock in the editor rather than the clock in the transcript. That detail is the difference between a useful list and a list someone has to convert by hand.</p>
+        <h3>Ingest-transcript</h3>
+        <p>Anyone publishing long recorded conversations has the same problem: someone has to get through a two hour transcript and decide what to cut before it ships. This reads the whole thing and hands back one timestamped report. What has to come out because a speaker asked for it on the record. What's worth listening to again before deciding. The standout lines worth pulling as clips. And any passage where someone recited from a published text long enough to earn a quote card on screen.</p>
+        <p>It asks one question before it starts: what comes before this transcript in the finished file, and how long does it run. Every time it reports is then offset to match the editor's timeline instead of the transcript's. Without that, someone does the arithmetic by hand for every entry, which is worse than getting no timestamps at all.</p>
+        <p>It began as a tool I built for a nonprofit I work with, narrowed to the one text they quote from constantly. Generalizing it was the obvious move once I saw it working, because a podcast host quoting four different books has the harder version of the same problem.</p>
         <p>It doesn't decide anything. The editor does.</p>
 
         <h3>Save points</h3>
@@ -179,6 +181,7 @@
         <p><strong>An annotation layer</strong> that adds structure and cross-references to raw text without altering a word of it.</p>
         <p><strong>A conversation archiver</strong> that records both halves of a dialogue with an AI, and cross-references only my words. The record belongs to both of us. The map belongs to me.</p>
         <p><strong>A reading tool for outside sources</strong> that returns what's useful, what doesn't fit, and where the source and I actually disagree, on the theory that friction is more useful than agreement.</p>
+        <p><strong>A verification tool</strong> holding the checks that catch what a browser hides: a stylesheet returning the wrong content type, an import that 404s without breaking the page, a phone-width test that was never actually testing a phone. This is the one I didn't think of.</p>
       </div>
     </section>
 
