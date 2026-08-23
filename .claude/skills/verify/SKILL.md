@@ -185,13 +185,36 @@ for p in /home /ai /CLAUDE.md /INVENTORY.md /COPY.md /README.md; do
 done
 ```
 
-Expected: `/home` 301 to `/`, `/ai` 301 to `https://ai.jackrome.work/`,
-and each markdown file 302 to `/`. The markdown rules use `force`,
+Expected: `/home` 301 to `/`, `/ai` 301 to `/ai-enablement`, and each
+markdown file 302 to `/`.
+
+**`/ai` points at the page, not at the subdomain.** This line used to
+expect `https://ai.jackrome.work/` and that is stale. `netlify.toml`
+explains the change: the subdomain still answers, but only by 302ing on
+to this same page from Squarespace, and that hop dies with the
+subscription on 2026-09-15. A direct 301 drops the dependency and a
+round trip. Confirmed live 2026-08-23. The markdown rules use `force`,
 without which the real file wins and the markdown gets served as text.
 Verified working 2026-08-19.
 
 Add a line here whenever a new markdown file lands in the repo root.
 Netlify's splat does not cover `*.md`, so each one needs its own rule.
+`MOTION.md` has one and it is confirmed live.
+
+### Cache headers, and the trap in them
+
+`netlify.toml` caches `/assets/fonts/*`, `/assets/audio/*`,
+`/assets/img/*` and now `/assets/video/*` for a year, immutable.
+Everything else, CSS and JS included, is `max-age=0, must-revalidate`,
+which is deliberate: nothing here is fingerprinted, so an edit has to be
+able to show up.
+
+**A new top-level directory under `assets/` gets no caching until a rule
+names it.** This bit on 2026-08-23: `/assets/video/` was created for the
+Design room's tool clips and matched none of the three existing rules,
+so 2.7 MB came back `max-age=0` and was refetched on every visit. Check
+`cache-control` on any asset type the site has not served before, not
+just that the file answers 200.
 
 ### Headers
 

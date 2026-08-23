@@ -21,6 +21,15 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# The Design room's tool pack clips. Same reasoning as audio, and the
+# rule is needed because /assets/video/ is its own top-level directory:
+# the img, audio and fonts rules above do not reach it, so without this
+# the six clips came back max-age=0 and were refetched on every visit.
+[[headers]]
+  for = "/assets/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 [[headers]]
   for = "/assets/img/*"
   [headers.values]
