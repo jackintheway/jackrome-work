@@ -40,7 +40,7 @@ const WORK = [
     title: "Light The World: Celebrating 50 Years of A Course in Miracles",
     client: "Foundation for Inner Peace",
     clientUrl: "https://acim.org",
-    meta: "Livestream celebration, 5.5 hours",
+    meta: "Livestream celebration, October 2025, 5.5 hours",
     roles: ["Hosting", "Tech direction", "Recording", "Editing"],
     thumb: "/assets/img/production/fip-celebration.jpg",
     youtubeId: "ntcikZDwRhE",
@@ -60,7 +60,7 @@ const WORK = [
     title: "Meet The Speaker: Loch Kelly",
     client: "Center for Awakening",
     clientUrl: null,
-    meta: "Interview",
+    meta: "Interview, 2024",
     roles: ["Hosting", "Tech direction", "Recording", "Editing"],
     thumb: "/assets/img/production/loch-kelly.jpg",
     youtubeId: "L5fvkzVFvvc",
@@ -70,24 +70,26 @@ const WORK = [
     title: "Interview with the Awakening Mind film makers",
     client: "Awakening Mind Films",
     clientUrl: null,
-    meta: "Panel interview, three guests",
+    meta: "Panel interview, 2024, three guests",
     roles: ["Hosting", "Tech direction", "Recording", "Editing"],
     thumb: "/assets/img/production/awakening-mind-films.jpg",
     youtubeId: "yDMLz98yCPE",
     note: "Bill Free, Leif Heimbold and Daniel Schmidt, on one call."
   },
   {
-    /* TODO(jack): who is this one for? Filed under client-work, but
-       the client is not named anywhere in the source material, so the
-       card currently carries the medium alone. */
     title: "Crossing the Bridge",
-    client: null,
+    client: "Tribly",
     clientUrl: null,
-    meta: "Podcast series, on Spotify",
+    meta: "Podcast series, 2023",
     roles: ["Hosting", "Recording", "Editing"],
+    /* Square cover art, not a 16:9 still. It sits contained on a dark
+       ground rather than cropped to fill: a centre crop would cut the
+       "powered by Tribly" line off the bottom, and a sleeve shown whole
+       reads as a podcast rather than as a video that failed to load. */
     thumb: null,
     youtubeId: null,
     tile: "Podcast",
+    tileArt: "/assets/img/production/crossing-the-bridge.jpg",
     externalUrl: "https://open.spotify.com/show/05E8kMGjWNOmRdK183o3s2",
     externalLabel: "Listen on Spotify",
     note: ""
@@ -96,7 +98,7 @@ const WORK = [
     title: "What is Tribly? Collection walkthrough",
     client: "Tribly",
     clientUrl: null,
-    meta: "Product walkthrough",
+    meta: "Product walkthrough, 2023",
     roles: ["Hosting", "Recording", "Editing"],
     thumb: "/assets/img/production/tribly-walkthrough.jpg",
     youtubeId: "7BUpglBYMOM",
@@ -106,7 +108,7 @@ const WORK = [
     title: "Take A Turn At the Wheel",
     client: "Potters Guild of Frederick",
     clientUrl: null,
-    meta: "Class recap",
+    meta: "Class recap, 2023",
     roles: ["Filming", "Editing"],
     thumb: "/assets/img/production/potters-guild-ceramics.jpg",
     youtubeId: "lD3_WKIqr98",
@@ -181,7 +183,11 @@ function workCard(item) {
          <img src="${escapeHtml(item.thumb)}" alt="" loading="lazy" width="640" height="360">
          <span class="facade-play" aria-hidden="true">&#9654;</span>
        </button>`
-    : `<div class="work-tile" aria-hidden="true">${escapeHtml(item.tile)}</div>`;
+    : item.tileArt
+      ? `<div class="work-tile has-art">
+           <img src="${escapeHtml(item.tileArt)}" alt="" loading="lazy" width="640" height="640">
+         </div>`
+      : `<div class="work-tile" aria-hidden="true">${escapeHtml(item.tile)}</div>`;
 
   const out = item.externalUrl
     ? `<div class="work-foot">

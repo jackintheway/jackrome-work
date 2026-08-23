@@ -241,7 +241,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   background: var(--room);
   color: var(--room-ink);
   padding: var(--space-1) var(--space-2);
-  border: var(--rule-hair) solid var(--outline);
+  border: var(--border-hair) solid var(--outline);
 }
 
 /* ============================================================
@@ -361,7 +361,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   text-decoration: none;
   color: var(--text-strong);
   background: var(--bg-sunken);
-  border: var(--rule-hair) solid var(--outline);
+  border: var(--border-hair) solid var(--outline);
   padding: var(--space-1) var(--space-2);
   transition: background-color var(--dur-fast) var(--ease-out);
 }
@@ -533,6 +533,29 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 
    Deliberately not `.is-placeholder`: that is the hatched "nothing
    here yet" treatment, and this work exists. */
+/* A square sleeve inside the 16:9 slot. Both dimensions are pinned to
+   the box with object-fit doing the letterboxing, rather than the
+   obvious height:100%/width:auto. That version overflowed at 390px:
+   the base tile is a centred grid, its track sizes to its item, so a
+   640px cover grew the track to 640 and max-width:100% then measured
+   against that instead of against the card.
+
+   Contained rather than cropped, because a centre crop cuts the
+   "powered by Tribly" line off the bottom of the sleeve. Black ground
+   so the artwork keeps its own colour. */
+.work-tile.has-art {
+  display: block;
+  background: var(--ws-black);
+  padding: 0;
+  overflow: hidden;
+}
+.work-tile.has-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .work-tile {
   display: grid;
   place-items: center;
@@ -572,13 +595,14 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   display: inline-block;
   font-family: var(--font-heading);
   font-weight: var(--fw-bold);
-  font-size: var(--fs-overline);
-  letter-spacing: var(--ls-overline);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-strong);
-  background: var(--ws-yellow);
-  border: var(--rule-hair) solid var(--outline);
-  padding: 2px var(--space-2);
+  background: var(--surface-card);
+  border: var(--border-hair) solid var(--outline);
+  border-radius: var(--radius-pill);
+  padding: 2px var(--space-3);
   margin-bottom: var(--space-3);
 }
 
@@ -764,7 +788,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
     var(--ws-yellow) 0 8px,
     var(--ws-yellow-deep) 8px 16px
   );
-  border: var(--rule-hair) solid var(--outline);
+  border: var(--border-hair) solid var(--outline);
   padding: 2px var(--space-2);
   margin-bottom: var(--space-3);
 }
