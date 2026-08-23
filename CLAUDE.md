@@ -269,19 +269,34 @@ could carry a player on those two pages.
 
 ## A note on the lyrics themselves
 
-**Salt is masked, at Jack's instruction, 2026-08-23.** All 30 instances
-of the word in `wayspace/writing/salt.html` render as `f*ck` and `F*ck`.
-His reasoning: he stands by the song and it stays on the site, but he
-does not want that many uncensored uses on a public page.
+**One word is masked, everywhere, and seven pages carry a notice.**
+Settled with Jack 2026-08-23.
 
-**This masking has to be reapplied if the page is ever regenerated**
-from `_source/music/wayspace-album-metadata/salt.json`. The source is
-the record and is deliberately left uncensored. Only the published page
-is masked.
+All 40 instances of that word across 7 songs render as `f*ck` / `F*ck`.
+Salt is 30 of the 40; the other six songs have one to four each. The
+seven pages also open with:
 
-**Do not extend this to other lyrics without asking.** It is a specific
-decision about one song, not a policy. `extra.html` carries one instance
-and is untouched, flagged to Jack 2026-08-23.
+> This song contains explicit language.
+
+**Both, not one or the other.** The notice is what stops a reader being
+surprised. The masking is what Jack wanted for the page itself.
+
+**The notice is not a gate, deliberately.** A blur-and-reveal was
+considered and rejected: the words stay in the document either way, so
+a screen reader still reads them, a search engine still indexes them,
+and view-source still shows them. It would produce the appearance of
+protection rather than the fact of it, and cost JavaScript on 62 pages
+to do so. A plain line is honest.
+
+**Sources are left uncensored on purpose.** `_source/` is the record.
+Only published pages are masked, so **any regeneration must reapply
+both the masking and the notice**. The rule: mask `\b[Ff]uck` inside
+`.lyric-body` only, and add the notice to any page where it appears.
+
+Watch the pattern when checking. `[Ff]\*?uck` does **not** match
+`f*ck`, because the `u` is the character that was replaced. It missed
+Salt on the first pass and left that page without its notice. Use
+`[Ff]\*?u?ck` to catch both forms.
 
 Nothing else gets sanitised. A lyric otherwise publishes as written.
 

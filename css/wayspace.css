@@ -779,6 +779,25 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   white-space: pre-line;
   margin: 0;
 }
+/* ---- Content notice ----
+   Sits above the lyric so a reader knows before they read, which is
+   the whole job. Deliberately not a gate: blurring the words would
+   still leave them in the document for a screen reader, a search
+   engine and view-source, which is the appearance of protection
+   rather than the fact of it. A plain line is honest and needs no
+   JavaScript on 62 pages. */
+.lyric-notice {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-left: var(--rule);
+  padding-left: var(--space-3);
+  margin: 0 0 var(--space-5);
+}
+
 /* Two stanzas in a row need a gap between them. The template always
    put a section label above each block, and that label's margin was
    doing the separating. The album lyrics carry no verse and chorus
