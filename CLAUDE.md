@@ -16,7 +16,7 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 
 Built, deployed, and verified: `/`, `/about`, `/ai-enablement`. Tokens, Archivo, nav, footer, share cards, redirects, and headers are all in place and confirmed against the live deploy.
 
-Deployed and verified 2026-08-22: `/wayspace` and its six rooms, including the nested `/wayspace/writing/example-lyric`. Built locally and **not yet deployed**: `/ai-portfolio` and `/production`. See "Wayspace, built", "The AI portfolio page", and "The production page" below. **Every page in scope is now built.**
+Deployed and verified 2026-08-22: `/wayspace` and its six rooms, including a nested lyric page. Built locally and **not yet deployed**: `/ai-portfolio` and `/production`. See "Wayspace, built", "The AI portfolio page", and "The production page" below. **Every page in scope is now built.**
 
 `INVENTORY.md` is the crawl of the old Squarespace site. `COPY.md` is the copy pulled from it on 2026-08-15, and is the source for the three built pages. Once a page is built its HTML is the source of truth, not `COPY.md`.
 
@@ -142,7 +142,7 @@ that does not exist yet.
 
 - `wayspace.html` at the repo root, plus
   `wayspace/{music,video,design,podcasts,speaking,writing}.html`, and
-  `wayspace/writing/example-lyric.html`.
+  the 62 lyric pages in `wayspace/writing/`.
 - **No directory carries an index.html, and that is deliberate.** Measured against the
   live deploy on 2026-08-20: Netlify answers a directory index with a **301 to a
   trailing slash**, so `wayspace/index.html` made `/wayspace` redirect to
@@ -463,7 +463,7 @@ of this site, so nothing about the store is on the cutover path. Revisit after.
 - `/creative-portfolio` 404s and now wants a 301 to `/wayspace` in `netlify.toml` at cutover. The scope question resolved toward two pages, so this path has a successor.
 - ~~`/production` 404s.~~ **Built 2026-08-22, not yet deployed.** It is linked from the nav of every page, the green home card, and a button on `/wayspace`, so it 404s from all of them until the next push.
 - `/ai-portfolio` is built but **not deployed**. Its share card renders and the page passes `check-copy` and the 390px check locally.
-- ~~Wayspace clean URLs unverified.~~ **Closed 2026-08-22.** Checked against the live staging deploy: `/wayspace`, `/wayspace/writing`, `/wayspace/music`, and `/wayspace/writing/example-lyric` all answer 200 with no redirect. The trailing-slash forms 301 back to the clean URLs, which makes the clean form canonical. The `room.html` beside a `room/` directory pattern holds for nested paths.
+- ~~Wayspace clean URLs unverified.~~ **Closed 2026-08-22.** Checked against the live staging deploy: `/wayspace`, `/wayspace/writing`, `/wayspace/music`, and a nested lyric page all answer 200 with no redirect. The trailing-slash forms 301 back to the clean URLs, which makes the clean form canonical. The `room.html` beside a `room/` directory pattern holds for nested paths.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
 - `assets/img/jack-ventnor-2026.jpg` ships but is unused.
 - ~~**`/ai` breaks at cutover.**~~ **Fixed 2026-08-22.** `netlify.toml` now 301s
