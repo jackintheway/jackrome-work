@@ -33,24 +33,211 @@
    which is most of what a music page is for.
    ============================================================ */
 const MUSIC = [
+
+  /* Twenty releases, newest first. Dates come from the iTunes Search
+     API against Jack's Apple artist id, which returns the full
+     discography; Spotify's pages render client side and carry no date.
+     That lookup lists 53 releases against these 20, which is the
+     curation working rather than a gap.
+
+     Spotify is the only stream link on purpose. It is where plays
+     count, and one destination reads as a decision where two read as
+     indecision. SoundCloud URLs for five of these are recorded in
+     _source/music/STREAMS.md if that ever changes.
+
+     COLLABORATIONS NAME THE OTHER PEOPLE, in `format`. Per Jack: a
+     title is just the title, except where the work is shared, and
+     then the people belong on the card.
+
+     THREE CARDS CARRY AUDIO. The room's player is a sampler, not a
+     catalogue: everything else is `track: null` and sends people to
+     Spotify. Hosting the discography would be maintaining a worse
+     Spotify, and the plays would count for nothing.
+
+     COVERS: six come from Jack's 3000x3000 originals, the rest from
+     Spotify at 640. Both are derived down to 640 here, which covers a
+     340px card at 2x. A modal showing a cover large would need the
+     originals again. */
+
   {
-    title: "A release goes here",
-    year: "Year",
-    format: "Album, EP or single",
-    cover: null,
-    streams: [],
-    track: null,
-    crossRef: { text: "Lyrics live in Writing", href: "/wayspace/writing" },
-    placeholder: true
+    title: "Race Day",
+    year: "2026",
+    format: "Release",
+    cover: "/assets/img/wayspace/music/race-day.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/0gLDBYIG7S9ZykGjMKEwPY" }],
+    track: { src: "/assets/audio/race-day.mp3", title: "Race Day" },
+    crossRef: null
   },
   {
-    title: "And another here",
-    year: "Year",
-    format: "Album, EP or single",
-    cover: null,
-    streams: [],
+    title: "Feivel Speaks (Deluxe)",
+    year: "2025",
+    format: "Album",
+    cover: "/assets/img/wayspace/music/feivel-speaks-deluxe.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/6P9hhxcT0jzRPf6fsyoyDj" }],
+    track: { src: "/assets/audio/all-that-i-do.mp3", title: "All that I Do" },
+    crossRef: null
+  },
+  {
+    title: "Feivel Speaks",
+    year: "2024",
+    format: "Album",
+    cover: "/assets/img/wayspace/music/feivel-speaks.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/43LSqY2k5sk7KDWkEW0MJk" }],
+    track: { src: "/assets/audio/safe.mp3", title: "Safe" },
+    crossRef: { text: "Lyrics live in Writing", href: "/wayspace/writing" }
+  },
+  {
+    title: "Wayspace (Deluxe)",
+    year: "2023",
+    format: "Album",
+    cover: "/assets/img/wayspace/music/wayspace-deluxe.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/0TKnaG1hX3415Nxo5fndFI" }],
     track: null,
-    placeholder: true
+    crossRef: null
+  },
+  {
+    title: "Mystery",
+    year: "2023",
+    format: "Foster Family single",
+    cover: "/assets/img/wayspace/music/mystery.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/track/2L61W1CSb0kdpOaWhHjQxs" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Moment",
+    year: "2023",
+    format: "Single with Fabrizio and Tally Schwenk",
+    cover: "/assets/img/wayspace/music/moment.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/track/0Ssx0NtfdOUHGXLkaDn7SC" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Wayspace",
+    year: "2022",
+    format: "Album",
+    cover: "/assets/img/wayspace/music/wayspace.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/5U1K4wDc75208yey9abs9w" }],
+    track: null,
+    crossRef: { text: "Lyrics live in Writing", href: "/wayspace/writing" }
+  },
+  {
+    title: "You'll Be Alright",
+    year: "2022",
+    format: "Foster Family single",
+    cover: "/assets/img/wayspace/music/youll-be-alright.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/23S89nP8gShFp8FsRVFCNO" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "All I Need",
+    year: "2022",
+    format: "Foster Family single",
+    cover: "/assets/img/wayspace/music/all-i-need.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/track/4k2gNNveiUrhPHotKqxpbe" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Jackpot",
+    year: "2021",
+    format: "Project",
+    cover: "/assets/img/wayspace/music/jackpot.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/2CRVwExrlmn5IMi9r6YneJ" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "The Edge",
+    year: "2021",
+    format: "Single with Fabrizio and Tally Schwenk",
+    cover: "/assets/img/wayspace/music/the-edge.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/3l2dj34tBf6PNXs21Sf8Ap" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "You Got Me",
+    year: "2021",
+    format: "Single with Tally Schwenk",
+    cover: "/assets/img/wayspace/music/you-got-me.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/track/37hZXFQf83H1y9AY8oG1Yv" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Answers",
+    year: "2020",
+    format: "Foster Family single",
+    cover: "/assets/img/wayspace/music/answers.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/1QZlxvOcteSvxf0qFe41hh" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Get Lost",
+    year: "2020",
+    format: "Project",
+    cover: "/assets/img/wayspace/music/get-lost.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/7sqogG98sE4hlZ7iUVX3Fc" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Feel",
+    year: "2020",
+    format: "Single with Fabrizio and Josh Grant",
+    cover: "/assets/img/wayspace/music/feel.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/track/0W9rnVegGPAXohPhdX4ka4" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Only Human (Stripped)",
+    year: "2020",
+    format: "Single",
+    cover: "/assets/img/wayspace/music/only-human-stripped.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/track/6CJyf3hEzhWe4I0n89O5EL" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Light of Dawn",
+    year: "2020",
+    format: "Single with Noah Kenton",
+    cover: "/assets/img/wayspace/music/light-of-dawn.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/track/6hbUnD55sC6vFmDytOX2pr" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Looking For More",
+    year: "2019",
+    format: "Single with Fabrizio",
+    cover: "/assets/img/wayspace/music/looking-for-more.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/track/5t8TgdshDTDhEDyKzD6TyS" }],
+    track: null,
+    crossRef: null
+  },
+  {
+    title: "Jahny",
+    year: "2019",
+    format: "Project",
+    cover: "/assets/img/wayspace/music/jahny.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/6RxQiKUC2chQkqFmNUzWP5" }],
+    track: null,
+    crossRef: { text: "Full stream in Video", href: "/wayspace/video" }
+  },
+  {
+    title: "So Much For So Long",
+    year: "2018",
+    format: "Project",
+    cover: "/assets/img/wayspace/music/so-much-for-so-long.jpg",
+    streams: [{ name: "Spotify", href: "https://open.spotify.com/album/78jxFTbCQYcEuoO41cHCl1" }],
+    track: null,
+    crossRef: { text: "Previews in Video", href: "/wayspace/video" }
   }
 ];
 
@@ -81,7 +268,10 @@ const VIDEO = [
 
   {
     title: "Live at The Pocket, DC",
-    meta: "Live performance, 2023",
+    /* 2022, the year of the show, not 2023 when the video went up.
+       Jack's call. For a recap the performance date is the true one,
+       and this is the room's one case where they differ by a year. */
+    meta: "Live performance, 2022",
     thumb: "/assets/img/wayspace/video/wayspace-album-release-show.jpg",
     youtubeId: "7aSk3jFGKwM",
     note: "Headline performance to celebrate the Wayspace album release.",
