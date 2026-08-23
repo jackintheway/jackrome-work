@@ -1078,14 +1078,15 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 /* ---- The singles row ----
    Smaller than the tool row: there are ten of these and they are
    supporting evidence for the cover above them, not the subject. */
-/* Capped narrower than the container so ten covers land as five and
-   five rather than seven and a stray three. The cap is doing the same
-   job a column count would, without hard-coding one. */
+/* Capped narrower than the container so the twelve covers land as six
+   and six. The cap is doing the same job a column count would, without
+   hard-coding one: at 940px a seventh track will not fit, and auto-fit
+   settles on six. */
 .singles-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(110px, 100%), 140px));
   justify-content: start;
-  max-width: 800px;
+  max-width: 940px;
   gap: var(--space-4);
   list-style: none;
   margin: 0;

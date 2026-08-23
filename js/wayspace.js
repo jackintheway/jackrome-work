@@ -435,16 +435,22 @@ const TOOLS = [
 ];
 
 /* ---- The lineage, step two: the Wayspace singles (2022) ----
-   Ten of the twelve. Welcome Back and What Have I Done have no cover
-   file in _source/cover-artwork/, so the row shows what exists rather
-   than standing in placeholders for two.
+   All twelve, in track order. Welcome Back and What Have I Done were
+   missing from _source/cover-artwork/ when this room was built on
+   2026-08-23 and Jack added them the same day, so the row is complete
+   and the copy above it can say twelve and mean it.
+
+   Track order, not newest first. These are an album's sequence and
+   the sequence is a fact about the work.
 
    Each links to its lyric page in the Writing room, which is the
    crossRef principle applied without a crossRef field: the picture
    crosses the border, the border stays real. */
 const SINGLES = [
+  { slug: "welcome-back",      title: "Welcome Back" },
   { slug: "how-it-ends",       title: "How It Ends" },
   { slug: "extra",             title: "Extra" },
+  { slug: "what-have-i-done",  title: "What Have I Done" },
   { slug: "did-you-forget",    title: "Did You Forget" },
   { slug: "salt",              title: "Salt" },
   { slug: "little-things",     title: "Little Things" },

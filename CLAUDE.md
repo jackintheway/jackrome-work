@@ -337,9 +337,12 @@ helmets are on **Little Things**, the hoverboard is on **Try**, and the petal
 detector is on a tripod on **Did You Forget**. His words: "I incorporated those
 so there would be easter eggs in the future."
 
-**The page names two and stops.** Naming one reads as coincidence, naming two
-teaches a reader to look, and naming all of them spends something Jack put there
-to be found later. Do not turn this into a complete list.
+**The page names none of them.** A first pass named two, on the reasoning that
+one reads as coincidence and two teaches a reader to look. Jack overruled it on
+2026-08-23 and he was right: a named egg is not an egg. The page now says only
+that pieces of the pack are hiding across the covers and that he is not saying
+where. **Do not name any of them on the page.** The list above is here so a
+future session recognises them, not so it can publish them.
 
 **Two Little Things covers exist and only one is right for this room.**
 `little-things.jpg` is the album-set cover, the one with the helmets, and it is
@@ -402,8 +405,11 @@ feed the spine, `DESIGN` feeds the grid. Adding work is still adding an object.
 - **`fit: "contain"` exists because this is the only room holding art that is
   not square.** A show flyer is portrait and a wordmark is wide, and the 1:1
   crop the other rooms use cuts the top off one and slices the other in half.
-- The ten single covers link into the Writing room, one per lyric page. That is
-  the `crossRef` principle without a `crossRef` field.
+- The twelve single covers link into the Writing room, one per lyric page. That
+  is the `crossRef` principle without a `crossRef` field. They run in **track
+  order**, not newest first like the flyers, because an album's sequence is a
+  fact about the work. Welcome Back and What Have I Done were missing from
+  `_source/cover-artwork/` during the build and Jack added them the same day.
 
 ### The assets, and what they cost
 
