@@ -234,13 +234,30 @@ have no release to link to.
 
 ## A note on the lyrics themselves
 
-Several carry explicit language. Salt is the clearest case. This is
-Jack's work and it publishes as written; do not sanitise a lyric.
+**Salt is masked, at Jack's instruction, 2026-08-23.** All 30 instances
+of the word in `wayspace/writing/salt.html` render as `f*ck` and `F*ck`.
+His reasoning: he stands by the song and it stays on the site, but he
+does not want that many uncensored uses on a public page.
 
-Worth holding rather than acting on: `jackrome.work` also carries
-`/production` and `/ai-enablement`, which sell to nonprofits and to the
-Foundation for Inner Peace, and the nav puts both one click from these
-pages. Raised with Jack 2026-08-23. His call, and no change was made.
+**This masking has to be reapplied if the page is ever regenerated**
+from `_source/music/wayspace-album-metadata/salt.json`. The source is
+the record and is deliberately left uncensored. Only the published page
+is masked.
+
+**Do not extend this to other lyrics without asking.** It is a specific
+decision about one song, not a policy. `extra.html` carries one instance
+and is untouched, flagged to Jack 2026-08-23.
+
+Nothing else gets sanitised. A lyric otherwise publishes as written.
+
+Worth holding: `jackrome.work` also carries `/production` and
+`/ai-enablement`, which sell to nonprofits and to the Foundation for
+Inner Peace, and the nav puts both one click from these pages.
+
+**Two transcription typos in Salt**, inherited from the metadata export
+rather than introduced here: "Iknow" and "Iwas", both missing a space.
+They are in the source JSON too. Jack's to fix, since they are his
+words.
 
 ---
 
