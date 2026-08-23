@@ -329,6 +329,25 @@ podcast cover (2023), and this site, labelled **Now** rather than 2026. The
 "no year" rule exists because a date ages a page as soon as the year turns. A
 year on a 2021 artifact does not age. A year on the current one does.
 
+### The tools are hidden in the album covers, on purpose
+
+Confirmed by Jack on 2026-08-23, and it is the detail that makes the lineage
+checkable rather than asserted. The boombox is on the cover for **Salt**, two
+helmets are on **Little Things**, the hoverboard is on **Try**, and the petal
+detector is on a tripod on **Did You Forget**. His words: "I incorporated those
+so there would be easter eggs in the future."
+
+**The page names two and stops.** Naming one reads as coincidence, naming two
+teaches a reader to look, and naming all of them spends something Jack put there
+to be found later. Do not turn this into a complete list.
+
+**Two Little Things covers exist and only one is right for this room.**
+`little-things.jpg` is the album-set cover, the one with the helmets, and it is
+what ships. `little-things-cover-artwork.jpg` is the single release version,
+butterflies and the flower spiral, and belongs to Music if anywhere. `try.jpg`
+and `try-cover-final.jpg` are the same split: the album-set Try has the
+hoverboard, the single release is a photographic swirl.
+
 ### The "hand-made, no AI" line was retired, not deferred
 
 `wayspace/design.html` carried a `TODO(copy)` asking for that framing and
@@ -397,11 +416,16 @@ survives the downscale. Sources are 1920x1920 at about 6 MB each in
 
 ### Still open in this room
 
-- **The flyers carry no year.** Twelve show flyers ship with a title and a form
-  ("Show flyer") and nothing else. The source files are dated 2018 to 2022 and
-  are probably right, but a file's modification date is not an event date and
-  this site should not print one as if it were. Ask Jack and fill them in. The
-  `TODO(facts)` in `js/wayspace.js` says the same thing.
+- ~~**The flyers carry no year.**~~ **Closed 2026-08-23.** Jack renamed the
+  source files with years from memory, then corrected himself and said to use
+  the file dates instead. Three differ between the two: Howard Theatre and the
+  holiday show are 2018 rather than 2019, and Pie Shop is 2021 rather than 2022.
+  The venue detail he added in the same rename is his and stays, so the flyers
+  now carry venue and year and run newest first.
+
+  **`flyer-video-headliner-weekof-2018.mp4` is still not in the room.** It is a
+  motion flyer, 20 MB, and the only piece of that set that is not a still. It
+  would need the same encode the tool clips got.
 - **Merch is named in the room's description and is not in it.** See the merch
   store pin below.
 - **A lightbox on cover art was anticipated and not built.**

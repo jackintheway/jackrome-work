@@ -461,10 +461,14 @@ const SINGLES = [
    slice a wordmark in half, so these render whole on the card's
    ground instead.
 
-   TODO(facts): the flyers carry no year. The dates on the source
-   files run 2018 to 2022 and are probably right, but a file's
-   modification date is not a claim this site should print as an event
-   date. Jack has these in his head. Ask him and fill them in. */
+   The flyer years come from the source files' modification dates,
+   confirmed by Jack on 2026-08-23. He renamed the files with years
+   from memory first, then corrected himself and said to use the file
+   dates instead. Three differ between the two: Howard Theatre and the
+   holiday show are 2018 rather than 2019, and Pie Shop is 2021 rather
+   than 2022. The venue detail in his filenames is his and stays.
+
+   Flyers run newest first, the same order the Music room uses. */
 const DESIGN = [
   {
     title: "The puzzle logo family",
@@ -491,16 +495,48 @@ const DESIGN = [
     crossRef: { text: "Hear the album in Music", href: "/wayspace/music" }
   },
   {
-    title: "Howard Theatre",
-    meta: "Show flyer",
-    image: "/assets/img/wayspace/design/flyers/howard-theatre.jpg",
+    title: "The Pocket",
+    meta: "Show flyer, Wayspace, 2022",
+    image: "/assets/img/wayspace/design/flyers/wayspace-show-the-pocket.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Livestream release party",
+    meta: "Release flyer, 2022",
+    image: "/assets/img/wayspace/design/flyers/livestream-release-party.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Pie Shop",
+    meta: "Show flyer, DC, 2021",
+    image: "/assets/img/wayspace/design/flyers/pie-shop.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Bluebyrd",
+    meta: "Show flyer, Songbyrd, DC, 2020",
+    image: "/assets/img/wayspace/design/flyers/bluebyrd-at-songbyrd.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Speak Your Truth",
+    meta: "Event flyer, 2019",
+    image: "/assets/img/wayspace/design/flyers/speak-your-truth.jpg",
     fit: "contain",
     note: "",
     crossRef: null
   },
   {
     title: "Baltimore Soundstage",
-    meta: "Show flyer",
+    meta: "Show flyer, 2019",
     image: "/assets/img/wayspace/design/flyers/baltimore-soundstage.jpg",
     fit: "contain",
     note: "",
@@ -508,64 +544,32 @@ const DESIGN = [
   },
   {
     title: "Wu-Tang show",
-    meta: "Show flyer, one of three versions",
+    meta: "Show flyer, 2018, one of three versions",
     image: "/assets/img/wayspace/design/flyers/wutang-show-a.jpg",
     fit: "contain",
     note: "",
     crossRef: null
   },
   {
-    title: "Songbyrd",
-    meta: "Show flyer, Bluebyrd",
-    image: "/assets/img/wayspace/design/flyers/bluebyrd-at-songbyrd.jpg",
+    title: "Holiday performance",
+    meta: "Show flyer, Songbyrd, DC, 2018",
+    image: "/assets/img/wayspace/design/flyers/holiday-performance.jpg",
     fit: "contain",
     note: "",
     crossRef: null
   },
   {
-    title: "Pie Shop",
-    meta: "Show flyer",
-    image: "/assets/img/wayspace/design/flyers/pie-shop.jpg",
-    fit: "contain",
-    note: "",
-    crossRef: null
-  },
-  {
-    title: "The Pocket",
-    meta: "Show flyer, Wayspace",
-    image: "/assets/img/wayspace/design/flyers/wayspace-show-the-pocket.jpg",
+    title: "Howard Theatre",
+    meta: "Show flyer, DC, 2018",
+    image: "/assets/img/wayspace/design/flyers/howard-theatre.jpg",
     fit: "contain",
     note: "",
     crossRef: null
   },
   {
     title: "So Much For So Long",
-    meta: "Listening party flyer",
+    meta: "Listening party flyer, 2018",
     image: "/assets/img/wayspace/design/flyers/so-much-for-so-long-listening-party.jpg",
-    fit: "contain",
-    note: "",
-    crossRef: null
-  },
-  {
-    title: "Speak Your Truth",
-    meta: "Event flyer",
-    image: "/assets/img/wayspace/design/flyers/speak-your-truth.jpg",
-    fit: "contain",
-    note: "",
-    crossRef: null
-  },
-  {
-    title: "Livestream release party",
-    meta: "Release flyer",
-    image: "/assets/img/wayspace/design/flyers/livestream-release-party.jpg",
-    fit: "contain",
-    note: "",
-    crossRef: null
-  },
-  {
-    title: "Holiday performance",
-    meta: "Show flyer",
-    image: "/assets/img/wayspace/design/flyers/holiday-performance.jpg",
     fit: "contain",
     note: "",
     crossRef: null
