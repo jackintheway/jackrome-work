@@ -28,6 +28,34 @@ grep -rn '—' . --exclude-dir=.git --exclude-dir=_source \
 searching for, in the line above. Without it the check reports itself,
 forever, which is the exact failure it exists to avoid.
 
+**Lyric pages are an exception, and the only one.** As of 2026-08-23
+three em dashes stand inside song lyrics: `choose-again`, `poof`, and
+`strawberry-sauce-all-the-same`. The rule governs copy written for this
+site. A lyric is quoted work, and repunctuating one to satisfy a house
+style would be editing Jack's art. They stay.
+
+Checking this needs more than a line filter. `.lyric-body` is
+`white-space: pre-line`, so a lyric runs across many lines inside one
+paragraph and the line carrying the dash does not carry the class.
+Grepping for the class and inverting it misses every one of them.
+
+```bash
+python3 - <<'EOF'
+import pathlib, re
+bad = []
+for f in pathlib.Path(".").rglob("*.html"):
+    if any(x in f.parts for x in (".git", "_source")): continue
+    t = f.read_text(errors="ignore")
+    outside = re.sub(r'<p class="lyric-body">.*?</p>', "", t, flags=re.S)
+    if "\u2014" in outside: bad.append(str(f))
+print("\n".join(bad) or "clean")
+EOF
+```
+
+A hit on a lyric page **outside** a `lyric-body` paragraph is a real
+failure: it means annotation or generated copy has leaked in, not that
+Jack wrote a dash.
+
 **The `tokens` exclusion is the whole design of this check.** Without
 it, it reports 10 hits that are all correct and will never be fixed,
 all in `css/tokens/`, vendored verbatim from the Wayspace design

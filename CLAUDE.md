@@ -222,13 +222,48 @@ rather than a text with a video attached. Titles are the published ones
 with hashtags stripped: a hashtag is a distribution tactic, not part of
 the writing.
 
+### The other fifty came from Obsidian, and needed real parsing
+
+Built 2026-08-23. `_source/writing/lyrics/` holds 53 files, three of
+which duplicate Wayspace tracks, so fifty pages. **62 lyric pages in
+total now**, plus the fourteen shorts.
+
+Three things in those files are vault furniture rather than song, and
+all three reached a public page before being caught:
+
+1. **Vault annotation.** 44 of the 53 end with a `---` rule and then
+   `**Claude's Commentary**` or `**Notes worth creating from this
+   entry:**`, left by earlier delivery runs. These rendered as closing
+   verses. Anything from that marker down is cut.
+2. **Front matter inside the body.** 30 files repeat title, written,
+   released and album as the opening lines of the body as well as in
+   the YAML above it. That rendered as the first verse.
+3. **`[[wikilinks]]`**, in all fifty. They point at vault notes that do
+   not exist on this site, so they are flattened to their text.
+   `[[a|b]]` keeps `b`. Bare `#tag` lines go entirely.
+
+**Any future import from the vault must do all three.** The generator
+is not kept as a script, so this is the record of what it had to do.
+
+**Em dashes in lyrics stay.** Three do: `choose-again`, `poof`, and
+`strawberry-sauce-all-the-same`. The house rule governs copy written
+for this site; a lyric is quoted work and repunctuating one would be
+editing Jack's art. `check-copy` carries the exception and a check that
+handles it, which needs to read inside `.lyric-body` rather than grep
+by line: those paragraphs are `white-space: pre-line`, so a lyric runs
+across many lines inside one element and the line with the dash does
+not carry the class.
+
+**Unreleased songs have pages.** Per the room rules a lyric does not
+need a release to earn one. Those carry the year written instead, and
+have nothing to link across to.
+
 ### Still to do here
 
-The other 41 lyric files in `_source/writing/lyrics/` are unbuilt. Nine
-are Feivel Speaks, which has audio in `assets/audio/` for two tracks and
-a Lyrics button already pointing at this room. The rest are a mix,
-including unreleased songs, which belong here per the room rules and
-have no release to link to.
+Only the twelve Wayspace lyrics carry a lyric video and Jack's per
+track note. The other fifty have neither, because their sources do not
+hold one. Feivel Speaks has audio in `assets/audio/` for two tracks and
+could carry a player on those two pages.
 
 ---
 

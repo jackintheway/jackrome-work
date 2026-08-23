@@ -558,50 +558,217 @@ const SPEAKING = [
    ============================================================ */
 const WRITING = [
 
-  /* Twelve lyrics, then fourteen shorts.
+  /* Sixty-two lyrics, then fourteen shorts.
 
-     THE LYRICS ARE THE WAYSPACE ALBUM, all twelve tracks, each on its
-     own page. The words came from the album metadata in
-     _source/music/wayspace-album-metadata/, which also carries BPM,
-     key, credits and Jack's own note on each track. That is why these
-     twelve came first: they are the only set where the lyric, the
-     release and a lyric video all already exist.
+     EVERY LYRIC HAS ITS OWN PAGE. Twelve come from the Wayspace album
+     metadata, which carries BPM, key, credits and Jack's note per
+     track, and those twelve also link out to their lyric video. The
+     other fifty come from the Obsidian files in
+     _source/writing/lyrics/.
 
-     Every lyric page links out to its lyric video and across to the
-     release in Music. Those twelve videos are deliberately not in the
-     Video room. Twelve near identical cards from one album would bury
-     the rest of that room, and a lyric video belongs beside its words.
+     Those fifty needed real parsing rather than a pass-through. Thirty
+     of them carry a front matter block inside the body as well as
+     above it (title, written, released, album), which rendered as the
+     opening verse on the first attempt. All fifty use [[wikilinks]],
+     which point at vault notes that do not exist on this site, so they
+     are flattened to their text. Bare #tag lines go entirely.
 
-     THE SHORTS ARE WRITING DELIVERED AS VIDEO. No page of their own,
-     because the piece is the video rather than a text with a video
-     attached. Titles are the published ones with hashtags stripped: a
-     hashtag is a distribution tactic, not part of the writing.
+     UNRELEASED SONGS BELONG HERE. Per the room rules, a lyric does not
+     need a release to earn a page. Those carry the year they were
+     written instead of a release, and have nothing to link across to.
 
-     Newest first, like every other room. */
+     Sorted newest first by release date, falling back to the year
+     written, like every other room.
+
+     THE SHORTS ARE WRITING DELIVERED AS VIDEO, with no page of their
+     own, because the piece is the video rather than a text with a
+     video attached. */
 
   {
-    title: "Welcome Back",
+    title: "Inflamed",
     kind: "Lyric",
-    meta: "Wayspace · 2022 · Track 1",
-    href: "/wayspace/writing/welcome-back",
+    meta: "Written 2026",
+    href: "/wayspace/writing/inflamed",
     note: "",
     crossRef: null,
     watchHref: null
   },
   {
-    title: "How It Ends",
+    title: "Race Day",
     kind: "Lyric",
-    meta: "Wayspace · 2022 · Track 2",
-    href: "/wayspace/writing/how-it-ends",
+    meta: "Released 2026",
+    href: "/wayspace/writing/race-day",
     note: "",
     crossRef: null,
     watchHref: null
   },
   {
-    title: "Extra",
+    title: "Your Sun",
     kind: "Lyric",
-    meta: "Wayspace · 2022 · Track 3",
-    href: "/wayspace/writing/extra",
+    meta: "Released 2026",
+    href: "/wayspace/writing/your-sun",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "The Help",
+    kind: "Lyric",
+    meta: "Written 2026",
+    href: "/wayspace/writing/the-help",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Trix",
+    kind: "Lyric",
+    meta: "Written 2025",
+    href: "/wayspace/writing/trix",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "The Best",
+    kind: "Lyric",
+    meta: "Released 2025",
+    href: "/wayspace/writing/the-best",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Still Distracted",
+    kind: "Lyric",
+    meta: "Released 2025",
+    href: "/wayspace/writing/still-distracted",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Drop The Gun",
+    kind: "Lyric",
+    meta: "Released 2025",
+    href: "/wayspace/writing/drop-the-gun",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Thank God I Found You",
+    kind: "Lyric",
+    meta: "Released 2024",
+    href: "/wayspace/writing/thank-god-i-found-you",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Son Screen",
+    kind: "Lyric",
+    meta: "Released 2024",
+    href: "/wayspace/writing/son-screen",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Innocent",
+    kind: "Lyric",
+    meta: "Released 2024",
+    href: "/wayspace/writing/innocent",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Ribbons",
+    kind: "Lyric",
+    meta: "Released 2024",
+    href: "/wayspace/writing/ribbons",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "The Wasp",
+    kind: "Lyric",
+    meta: "Feivel Speaks · Written 2024",
+    href: "/wayspace/writing/the-wasp",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "All That I Do",
+    kind: "Lyric",
+    meta: "Feivel Speaks · Written 2024",
+    href: "/wayspace/writing/all-that-i-do",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "One More Time",
+    kind: "Lyric",
+    meta: "Feivel Speaks · Written 2024",
+    href: "/wayspace/writing/one-more-time",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Feivel Speaks",
+    kind: "Lyric",
+    meta: "Feivel Speaks · Written 2024",
+    href: "/wayspace/writing/feivel-speaks",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Safe",
+    kind: "Lyric",
+    meta: "Feivel Speaks · Written 2024",
+    href: "/wayspace/writing/safe",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Poof!",
+    kind: "Lyric",
+    meta: "Feivel Speaks · Written 2024",
+    href: "/wayspace/writing/poof",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Strawberry Sauce All The Same",
+    kind: "Lyric",
+    meta: "Written 2024",
+    href: "/wayspace/writing/strawberry-sauce-all-the-same",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Choose Again",
+    kind: "Lyric",
+    meta: "Written 2024",
+    href: "/wayspace/writing/choose-again",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "The End",
+    kind: "Lyric",
+    meta: "Released 2023",
+    href: "/wayspace/writing/the-end",
     note: "",
     crossRef: null,
     watchHref: null
@@ -616,10 +783,28 @@ const WRITING = [
     watchHref: null
   },
   {
-    title: "Did You Forget?",
+    title: "Welcome Back",
     kind: "Lyric",
-    meta: "Wayspace · 2022 · Track 5",
-    href: "/wayspace/writing/did-you-forget",
+    meta: "Wayspace · 2022 · Track 1",
+    href: "/wayspace/writing/welcome-back",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Try",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 10",
+    href: "/wayspace/writing/try",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Somewhere Somehow",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 12",
+    href: "/wayspace/writing/somewhere-somehow",
     note: "",
     crossRef: null,
     watchHref: null
@@ -643,10 +828,37 @@ const WRITING = [
     watchHref: null
   },
   {
+    title: "How It Ends",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 2",
+    href: "/wayspace/writing/how-it-ends",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
     title: "Grow",
     kind: "Lyric",
     meta: "Wayspace · 2022 · Track 8",
     href: "/wayspace/writing/grow",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Extra",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 3",
+    href: "/wayspace/writing/extra",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Did You Forget?",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 5",
+    href: "/wayspace/writing/did-you-forget",
     note: "",
     crossRef: null,
     watchHref: null
@@ -661,15 +873,6 @@ const WRITING = [
     watchHref: null
   },
   {
-    title: "Try",
-    kind: "Lyric",
-    meta: "Wayspace · 2022 · Track 10",
-    href: "/wayspace/writing/try",
-    note: "",
-    crossRef: null,
-    watchHref: null
-  },
-  {
     title: "All In My Head",
     kind: "Lyric",
     meta: "Wayspace · 2022 · Track 11",
@@ -679,10 +882,262 @@ const WRITING = [
     watchHref: null
   },
   {
-    title: "Somewhere Somehow",
+    title: "Nova",
     kind: "Lyric",
-    meta: "Wayspace · 2022 · Track 12",
-    href: "/wayspace/writing/somewhere-somehow",
+    meta: "Written 2021",
+    href: "/wayspace/writing/nova",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "\"Safe n Sound\"",
+    kind: "Lyric",
+    meta: "Released 2021",
+    href: "/wayspace/writing/safe-n-sound",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "\"Round n Round\"",
+    kind: "Lyric",
+    meta: "Released 2021",
+    href: "/wayspace/writing/round-n-round",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "\"Do Your Hear That\"",
+    kind: "Lyric",
+    meta: "Released 2021",
+    href: "/wayspace/writing/do-your-hear-that",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "\"Clarity\"",
+    kind: "Lyric",
+    meta: "Released 2021",
+    href: "/wayspace/writing/clarity",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "\"I was built for this place\"",
+    kind: "Lyric",
+    meta: "Released 2021",
+    href: "/wayspace/writing/i-was-built-for-this-place",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Doorway",
+    kind: "Lyric",
+    meta: "Written 2021",
+    href: "/wayspace/writing/doorway",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Quit",
+    kind: "Lyric",
+    meta: "Released 2020",
+    href: "/wayspace/writing/quit",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Offering",
+    kind: "Lyric",
+    meta: "Released 2020",
+    href: "/wayspace/writing/offering",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Feathers",
+    kind: "Lyric",
+    meta: "Written 2020",
+    href: "/wayspace/writing/feathers",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Puddles",
+    kind: "Lyric",
+    meta: "Released 2020",
+    href: "/wayspace/writing/puddles",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Our Boy",
+    kind: "Lyric",
+    meta: "Released 2020",
+    href: "/wayspace/writing/our-boy",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Only Human",
+    kind: "Lyric",
+    meta: "Released 2020",
+    href: "/wayspace/writing/only-human",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "I Hope You'll Change",
+    kind: "Lyric",
+    meta: "Released 2020",
+    href: "/wayspace/writing/i-hope-youll-change",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Don't Mind",
+    kind: "Lyric",
+    meta: "Released 2020",
+    href: "/wayspace/writing/dont-mind",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Bleed",
+    kind: "Lyric",
+    meta: "Released 2020",
+    href: "/wayspace/writing/bleed",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Surf",
+    kind: "Lyric",
+    meta: "Written 2020",
+    href: "/wayspace/writing/surf",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Spent The Night",
+    kind: "Lyric",
+    meta: "Written 2020",
+    href: "/wayspace/writing/spent-the-night",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Jump",
+    kind: "Lyric",
+    meta: "Written 2020",
+    href: "/wayspace/writing/jump",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "\"Places\"",
+    kind: "Lyric",
+    meta: "Released 2019",
+    href: "/wayspace/writing/places",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Headed Home",
+    kind: "Lyric",
+    meta: "Released 2019",
+    href: "/wayspace/writing/headed-home",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Way Out",
+    kind: "Lyric",
+    meta: "Released 2019",
+    href: "/wayspace/writing/way-out",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Sometimes",
+    kind: "Lyric",
+    meta: "Released 2019",
+    href: "/wayspace/writing/sometimes",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Probably",
+    kind: "Lyric",
+    meta: "Released 2019",
+    href: "/wayspace/writing/probably",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Its Not Enough",
+    kind: "Lyric",
+    meta: "Released 2019",
+    href: "/wayspace/writing/its-not-enough",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "I Wonder",
+    kind: "Lyric",
+    meta: "Released 2019",
+    href: "/wayspace/writing/i-wonder",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Easy",
+    kind: "Lyric",
+    meta: "Released 2019",
+    href: "/wayspace/writing/easy",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Drive",
+    kind: "Lyric",
+    meta: "Released 2019",
+    href: "/wayspace/writing/drive",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Orchard",
+    kind: "Lyric",
+    meta: "Lyric",
+    href: "/wayspace/writing/orchard",
     note: "",
     crossRef: null,
     watchHref: null
