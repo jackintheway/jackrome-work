@@ -216,9 +216,25 @@ Revisit after the cutover holds.
    and `Puzzle-Pieces-Trio`. It was drawn as one puzzle and pulled apart years ago.
    The site already ships two members of this family as `assets/img/wayspace-straight.svg`
    and `assets/puzzle-single.svg`. This is an export job, not an illustration job.
-2. **Do the six room pages get any motion, or only the landing?** The argument for
-   landing only is that the rooms are for looking at work, and the work should be the
-   thing that moves.
+2. ~~**Do the six room pages get any motion, or only the landing?**~~ **Partly
+   answered 2026-08-23.** The argument for landing only was that the rooms are for
+   looking at work, and the work should be the thing that moves. That is what
+   happened, and it turned out to draw the line somewhere more useful than
+   "landing only."
+
+   The Design room ships six five-second clips of the Wayspace tool pack that play
+   in place when a reader hovers one on a desktop or taps one on a phone, muted.
+   **A clip that starts because someone pointed at it is the reader asking**, which
+   is the same category as the Video room's YouTube facade and not what this file
+   bans. Jack was offered the version that starts on its own once it scrolls into
+   range, the way YouTube behaves on a phone, and chose against it.
+
+   So the line is not landing versus rooms. It is **the page performing versus the
+   reader asking.** A room may answer a reader. Only the landing performs, and only
+   after the cutover. See `CLAUDE.md`, "The Design room."
+
+   Still open under this: whether any room gets scroll-linked motion. Nothing does
+   today, and nothing should before the cutover.
 3. ~~**Are the visualizer cuts a reference or a source?**~~ **Answered 2026-08-22:
    source.** See the manifest above. Per Jack, `_source/design/the-wayspace-tool-pack/spaceboat/materials/`
    is the same mechanic with different graphics, so the technique is proven twice over

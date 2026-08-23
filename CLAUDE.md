@@ -311,6 +311,111 @@ words.
 
 ---
 
+## The Design room (built 2026-08-23)
+
+**Design is the one room that is a story before it is a grid, and that is Jack's
+decision, not a stylistic flourish.** Every other room is a heading and a
+`work-grid`. This one runs a narrative spine first, in order, then a grid holds
+whatever is not part of the chain.
+
+The chain, in Jack's words: the tool pack were early prototypes of the Wayspace
+design system, the cover artwork of Wayspace the album and all of the singles is
+what that evolved into, and that eventually became the design system for this
+website. He added the podcast cover late as the newest link, and called it the
+one mostly implemented on this site.
+
+Four steps ship: the tool pack (2021), Wayspace the album (2022), the Wayspace
+podcast cover (2023), and this site, labelled **Now** rather than 2026. The
+"no year" rule exists because a date ages a page as soon as the year turns. A
+year on a 2021 artifact does not age. A year on the current one does.
+
+### The "hand-made, no AI" line was retired, not deferred
+
+`wayspace/design.html` carried a `TODO(copy)` asking for that framing and
+warning it was the most easily misread sentence on the site. Asked directly on
+2026-08-23, Jack chose to leave the claim out:
+
+> we leave it out and say it without saying it because I crafted this design
+> system over the course of the last 10 years, with it really starting to show
+> sprouts in 2020 when the Wayspace name and color scheme started to come into
+> being. That shows that it was handmade because of how long I have been
+> working on it.
+
+So the room makes the point with dates and does not make it in a sentence. **Do
+not put the sentence back without asking him.** The TODO is gone from the page
+and this is what replaced it.
+
+### How the tool pack clips play
+
+Decided with Jack the same day: **hover on a desktop, tap on a phone, muted
+either way, playing in place.** Not in a modal, and with no play button sitting
+on top of the art. He asked for muting himself, so the attention stays on the
+drawing rather than six soundtracks.
+
+He was offered the fuller version he originally described, where a clip starts
+on its own once it scrolls into range on a phone, the way YouTube behaves, and
+chose against it.
+
+**Where this sits against `MOTION.md`:** that file bans scroll-linked motion
+before the cutover, and this is not that. A clip that starts because someone
+pointed at it is the reader asking, the same category as the Video room's
+YouTube facade. The version that would have crossed the line is the one that
+starts on its own. It is deliberately not built. `MOTION.md` open question 2 is
+now partly answered: a room page may respond to a reader, and still does not
+perform on its own.
+
+Under `prefers-reduced-motion` nothing starts on hover or focus, and the file is
+not even fetched. Clicking still plays. Motion is never imposed here, and it is
+not withheld either.
+
+### Three arrays, not one
+
+`js/wayspace.js` grew `TOOLS` and `SINGLES` alongside `DESIGN`. The first two
+feed the spine, `DESIGN` feeds the grid. Adding work is still adding an object.
+
+- **The clips carry no `src` in the markup.** `initToolClips` assigns it on
+  first activation, which is what makes `preload="none"` honest. A visitor who
+  never touches a tile never downloads the 2.7 MB.
+- **Posters come from each clip's own first frame**, pulled with `qlmanage`, not
+  from the tool pack's still PNGs. Two of those stills are a different
+  composition from the animation that shares their name, so a poster taken from
+  them would show one thing and play another.
+- **`fit: "contain"` exists because this is the only room holding art that is
+  not square.** A show flyer is portrait and a wordmark is wide, and the 1:1
+  crop the other rooms use cuts the top off one and slices the other in half.
+- The ten single covers link into the Writing room, one per lyric page. That is
+  the `crossRef` principle without a `crossRef` field.
+
+### The assets, and what they cost
+
+`assets/` went from 29 MB to about 36 MB. The clips are 2.7 MB, six five-second
+480x480 loops, encoded with `avconvert -p PresetMediumQuality` because there is
+no ffmpeg on this machine and that is the only preset with a bitrate low enough
+to put six clips on one page. The art is flat colour with heavy outlines, so it
+survives the downscale. Sources are 1920x1920 at about 6 MB each in
+`_source/design/the-wayspace-tool-pack/`.
+
+### Still open in this room
+
+- **The flyers carry no year.** Twelve show flyers ship with a title and a form
+  ("Show flyer") and nothing else. The source files are dated 2018 to 2022 and
+  are probably right, but a file's modification date is not an event date and
+  this site should not print one as if it were. Ask Jack and fill them in. The
+  `TODO(facts)` in `js/wayspace.js` says the same thing.
+- **Merch is named in the room's description and is not in it.** See the merch
+  store pin below.
+- **A lightbox on cover art was anticipated and not built.**
+  `_source/cover-artwork/spotify/README.md` records the reasoning from
+  2026-08-22: in Music a cover is a thumbnail capped at 340px, in Design it is
+  the work itself and that is what earns a modal. The Design derivatives are
+  already larger for this reason. Building it is a separate decision.
+- **The share card still says the old thing.** `og-wayspace-design.png` was
+  rendered against the room's previous one-line description. The visible hero
+  copy changed on 2026-08-23; the card did not. Rebuild it with
+  `./tools/og/render.sh` before the cutover.
+
+---
+
 ## Pinned for later: the merch store
 
 `https://wayspace-shop.fourthwall.com/` is Jack's store. Raised 2026-08-23 and

@@ -86,25 +86,115 @@
     <div class="room-hero-inner">
       <p class="room-hero-eyebrow ws-overline">Wayspace</p>
       <h1 class="room-hero-title">Design</h1>
-      <!-- TODO(copy): functional, not Jack's voice. Wants a pass with
-           the jacks-voice skill once the room has real work in it. -->
-      <p class="room-hero-sub">Cover art, logos, flyers, merch, and the design system this site is built from.</p>
+      <p class="room-hero-sub">How this design system got here, told in order, and the flyers, logos and covers made along the way.</p>
     </div>
   </header>
 
   <main class="page" id="main">
 
-    <section class="section" aria-labelledby="roomTitle">
+    <!-- THE LINEAGE
+         This room is shaped differently from the other five, on Jack's
+         instruction of 2026-08-23. The other rooms are a heading and a
+         grid. This one tells the story of the design system in order,
+         because the story is the work: the thing that proves it was
+         made by hand is how long it took.
+
+         That framing replaced an earlier TODO here, which asked for a
+         "hand-made, no AI" line and warned it was the most easily
+         misread sentence on the site. Jack's answer on 2026-08-23 was
+         to leave the claim out and let the dates carry it. Do not put
+         the sentence back without asking him first. -->
+    <section class="section" aria-labelledby="lineageTitle">
       <div class="section-header">
-        <h2 class="section-title" id="roomTitle">Work</h2>
+        <h2 class="section-title" id="lineageTitle">How this came to look like this</h2>
         <div class="section-rule" aria-hidden="true"></div>
       </div>
-      <!-- TODO(copy): the "hand-made, no AI" framing belongs in this room
-           and is the single most easily misread line on the site, sitting a
-           few clicks from a portfolio whose thesis is AI enablement. It
-           reads as discernment ("I know what this tool is for, and it is not
-           this"), never as purity, and it has to be precise about what the
-           claim covers. Do not draft it without Jack. See CLAUDE.md. -->
+      <p class="section-intro">I have been drawing this for about ten years. It started showing sprouts in 2020, when the name Wayspace and the colours arrived at the same time, and the outline has barely moved since. Here it is in order. Each one came out of the one before it.</p>
+
+      <ol class="lineage">
+
+        <li class="step">
+          <p class="step-when ws-overline">2021</p>
+          <h3 class="step-title">The tool pack</h3>
+          <div class="step-copy">
+            <p>Six objects, each one standing for a quality. I drew them and animated them.</p>
+            <p>They were prototypes. The outline, the flat fill and the colours this site runs on were worked out here first, on a boombox and a pair of goggles.</p>
+          </div>
+          <!-- Rendered from TOOLS in js/wayspace.js. The clips are
+               wired up by initToolClips, not by anything here. -->
+          <ul class="tool-row" id="toolRow"></ul>
+          <p class="step-aside">Point at one to play it. On a phone, tap.</p>
+        </li>
+
+        <li class="step">
+          <p class="step-when ws-overline">2022</p>
+          <h3 class="step-title">Wayspace, the album</h3>
+          <div class="step-copy">
+            <p>Twelve tracks, twelve covers, and one image they all belong to.</p>
+            <p>The boombox turns up again on the cover for Salt. That is the clearest evidence I have that the tools became the album.</p>
+          </div>
+          <figure class="step-figure">
+            <img class="step-art" src="/assets/img/wayspace/design/wayspace-album.jpg"
+                 alt="The Wayspace album cover. Two green figures with large eyes flank a blue spire, a bridge crosses a river below, and a yellow flower carries the Wayspace wordmark at the centre."
+                 loading="lazy" width="900" height="900">
+            <figcaption class="step-caption">The cover was drawn in separate planes, which is why it can come apart.</figcaption>
+          </figure>
+          <!-- Rendered from SINGLES in js/wayspace.js. Ten of the
+               twelve: two have no cover file in _source. -->
+          <ul class="singles-row" id="singlesRow"></ul>
+        </li>
+
+        <li class="step">
+          <p class="step-when ws-overline">2023</p>
+          <h3 class="step-title">The Wayspace podcast cover</h3>
+          <div class="step-copy">
+            <p>The puzzle pieces come forward, the wordmark gets built out of the same blocks, and the ground goes flat blue.</p>
+            <p>This is the most recent one, and it is where most of what you are looking at right now came from.</p>
+          </div>
+          <figure class="step-figure">
+            <img class="step-art" src="/assets/img/wayspace/design/wayspace-podcast.jpg"
+                 alt="The Wayspace podcast cover. Six orange and yellow puzzle pieces surround the Wayspace wordmark on a flat blue ground."
+                 loading="lazy" width="900" height="900">
+          </figure>
+        </li>
+
+        <li class="step">
+          <!-- "Now" rather than 2026 on purpose. The standing rule in
+               CLAUDE.md is no year anywhere on this site, and its
+               reason is that a date starts aging the page the moment
+               the year turns. A year on a 2021 artifact does not age.
+               A year on the current one does. -->
+          <p class="step-when ws-overline">Now</p>
+          <h3 class="step-title">This site</h3>
+          <div class="step-copy">
+            <p>Six colours, one outline weight, Archivo set heavy, and a lot of squares.</p>
+            <p>It runs on tokens, so every colour has a name and every page reads the same file. The swatches below come straight out of that file.</p>
+          </div>
+          <!-- Static markup rather than an array, because these are not
+               entries. Each swatch paints itself with the same custom
+               property the rest of the site uses, so if a token changes
+               in ../wayspace-design-system/ and gets copied down, this
+               row changes with it and cannot drift. -->
+          <ul class="swatch-row">
+            <li class="swatch" style="--chip: var(--ws-orange)"><span class="swatch-chip" aria-hidden="true"></span><span class="swatch-name">Orange</span></li>
+            <li class="swatch" style="--chip: var(--ws-blue)"><span class="swatch-chip" aria-hidden="true"></span><span class="swatch-name">Blue</span></li>
+            <li class="swatch" style="--chip: var(--ws-yellow)"><span class="swatch-chip" aria-hidden="true"></span><span class="swatch-name">Yellow</span></li>
+            <li class="swatch" style="--chip: var(--ws-green)"><span class="swatch-chip" aria-hidden="true"></span><span class="swatch-name">Green</span></li>
+            <li class="swatch" style="--chip: var(--ws-salmon)"><span class="swatch-chip" aria-hidden="true"></span><span class="swatch-name">Salmon</span></li>
+            <li class="swatch" style="--chip: var(--ws-brown)"><span class="swatch-chip" aria-hidden="true"></span><span class="swatch-name">Brown</span></li>
+            <li class="swatch" style="--chip: var(--ws-paper)"><span class="swatch-chip" aria-hidden="true"></span><span class="swatch-name">Paper</span></li>
+          </ul>
+        </li>
+
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="roomTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="roomTitle">Other design work</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <p class="section-intro">Logos and show flyers, going back to before Wayspace had a name.</p>
 
       <!-- Rendered from the DESIGN array in js/wayspace.js.
            Adding real work is adding an object there, not editing

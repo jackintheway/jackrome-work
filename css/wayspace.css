@@ -928,6 +928,239 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 }
 
 /* ============================================================
+   THE DESIGN ROOM'S LINEAGE
+
+   Design is the one room that is a story before it is a grid. Jack's
+   instruction on 2026-08-23: the tool pack were prototypes of this
+   system, the album and single covers are what they became, and the
+   podcast cover is what that became, ending at the page you are
+   reading. So the room runs an ordered list of steps first, and the
+   work grid holds whatever is not part of that chain.
+
+   An <ol> rather than a set of sections, because the order is the
+   argument. A screen reader announcing "list, four items" is telling
+   the reader something true about the page.
+   ============================================================ */
+.lineage {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* The rule between steps is the join in the chain, so it belongs
+   between them and not after the last one. */
+.step + .step {
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: var(--rule);
+}
+.step-when {
+  color: var(--text-muted);
+  margin: 0 0 var(--space-2);
+}
+.step-title {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-h3);
+  letter-spacing: var(--ls-heading);
+  color: var(--text-strong);
+  margin: 0 0 var(--space-4);
+  line-height: var(--lh-snug);
+}
+/* Measure is capped here and nowhere else in the room. The rows below
+   run the full container because they are pictures; this is prose and
+   wants a line a person can track. */
+.step-copy {
+  max-width: 62ch;
+  margin: 0 0 var(--space-6);
+}
+.step-copy p { margin: 0 0 var(--space-4); }
+.step-copy p:last-child { margin-bottom: 0; }
+
+/* The one instructional line in the room. The tiles carry no play
+   button by Jack's instruction, so something has to say they move. */
+.step-aside {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  margin: var(--space-4) 0 0;
+}
+
+.step-figure {
+  margin: 0 0 var(--space-6);
+  max-width: 560px;
+}
+.step-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+  background: var(--bg-well);
+}
+.step-caption {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  margin: var(--space-4) 0 0;
+  max-width: 52ch;
+}
+
+/* ---- The tool pack row ----
+   Six squares. auto-fit with a cap rather than a fixed six-column
+   grid, so the row becomes three and three on a tablet and two and
+   two on a phone without a breakpoint doing the work. Same approach
+   as .work-grid, smaller track. */
+/* 170px, not 180. The page's content box is 1152px at the container's
+   1200px cap, and six 180px tracks with five 24px gaps come to 1200,
+   which wrapped the sixth tool onto a line of its own. Six is the set
+   and the set should read as one row. */
+.tool-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 170px));
+  justify-content: start;
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tool { margin: 0; }
+
+/* A button, because activating it changes this page. The still and
+   the clip are stacked in the same grid cell rather than positioned
+   absolutely, so the button sizes itself off the image and nothing
+   has to know the height in advance. */
+.tool-tile {
+  display: grid;
+  width: 100%;
+  padding: 0;
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+  background: var(--bg-well);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.tool-still,
+.tool-clip {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+/* The clip sits over the still and is invisible until it plays. It
+   keeps its box either way, so nothing reflows when it appears. */
+.tool-clip {
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+.tool-tile.is-playing .tool-clip { opacity: 1; }
+
+.tool-tile:hover,
+.tool-tile:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--elevation-raised);
+}
+.tool-name {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-small);
+  color: var(--text-strong);
+  margin: var(--space-3) 0 0;
+}
+.tool-quality {
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  margin: var(--space-1) 0 0;
+}
+
+/* ---- The singles row ----
+   Smaller than the tool row: there are ten of these and they are
+   supporting evidence for the cover above them, not the subject. */
+/* Capped narrower than the container so ten covers land as five and
+   five rather than seven and a stray three. The cap is doing the same
+   job a column count would, without hard-coding one. */
+.singles-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(110px, 100%), 140px));
+  justify-content: start;
+  max-width: 800px;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.single { margin: 0; }
+.single-link {
+  display: block;
+  text-decoration: none;
+  color: var(--text-strong);
+}
+.single-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: var(--rule);
+  box-shadow: var(--pop-black-sm);
+  background: var(--bg-well);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.single-link:hover .single-cover,
+.single-link:focus-visible .single-cover {
+  transform: translate(-2px, -2px);
+}
+.single-title {
+  display: block;
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+}
+.single-link:hover .single-title { color: var(--text-strong); }
+
+/* ---- The live swatches ----
+   Each chip paints itself from --chip, set inline on the <li> to a
+   token. So this row cannot drift from the palette: it is reading the
+   same file every other colour on the site reads. */
+.swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.swatch { text-align: center; }
+.swatch-chip {
+  display: block;
+  width: var(--space-8);
+  height: var(--space-8);
+  background: var(--chip);
+  border: var(--rule);
+  box-shadow: var(--pop-black-sm);
+}
+.swatch-name {
+  display: block;
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  margin-top: var(--space-3);
+}
+
+/* ---- Contained artwork in the work grid ----
+   Design is the only room whose grid holds things that are not
+   square. A show flyer is portrait and a wordmark is wide, and the
+   1:1 crop the other rooms use would cut the top off one and slice
+   the other in half. The card's box stays square, which is what keeps
+   the grid aligned; the art sits inside it whole. */
+.work-cover.is-contain {
+  object-fit: contain;
+  background: var(--bg-well);
+  padding: var(--space-4);
+}
+
+/* ============================================================
    RESPONSIVE
    The requirement is 390px with no horizontal scroll.
    ============================================================ */
@@ -946,6 +1179,12 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   /* Art above the text rather than beside it. At 390px a 96px square
      in a side column leaves the title about twelve characters. */
   .entry { grid-template-columns: 1fr; gap: var(--space-4); }
+
+  /* Two up rather than one. These are square and small, so a single
+     column would make a 320px boombox and a very long page. */
+  .tool-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .singles-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .step + .step { margin-top: var(--space-7); padding-top: var(--space-7); }
 
   .ws-hero { padding: var(--space-7) var(--space-4); }
   .room-hero { padding: var(--space-7) var(--space-4); }

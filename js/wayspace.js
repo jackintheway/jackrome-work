@@ -408,28 +408,167 @@ const VIDEO = [
    because it is design work and this is where its company is. A
    website built out of it is a piece of design in this room, not a
    separate discipline.
+
+   This room is shaped differently from the other five. Jack's
+   instruction on 2026-08-23 was that Design tells the story of how
+   the system got here, in order, so the page runs a narrative spine
+   first and the grid holds whatever is not part of that lineage.
+   Three arrays feed it: TOOLS and SINGLES for the spine, DESIGN for
+   the grid.
    ============================================================ */
+
+/* ---- The lineage, step one: the tool pack (2021) ----
+   Six objects, each standing for a quality. The names and the
+   qualities are Jack's, taken from the filenames in the mp3s/ and
+   wavs/ folders of the pack, not invented here.
+
+   Each tile ships a still and a five second clip. The clip carries no
+   src in the markup: initToolClips sets it on first activation, so a
+   visitor who never touches one never downloads 2.7 MB. */
+const TOOLS = [
+  { slug: "boombox",        title: "Boombox",        quality: "Expression" },
+  { slug: "goggles",        title: "Goggles",        quality: "Clear seeing" },
+  { slug: "helmet",         title: "Helmet",         quality: "Durability" },
+  { slug: "hoverboard",     title: "Hoverboard",     quality: "Balance" },
+  { slug: "petal-detector", title: "Petal Detector", quality: "Discernment" },
+  { slug: "spaceboat",      title: "Spaceboat",      quality: "Movement" }
+];
+
+/* ---- The lineage, step two: the Wayspace singles (2022) ----
+   Ten of the twelve. Welcome Back and What Have I Done have no cover
+   file in _source/cover-artwork/, so the row shows what exists rather
+   than standing in placeholders for two.
+
+   Each links to its lyric page in the Writing room, which is the
+   crossRef principle applied without a crossRef field: the picture
+   crosses the border, the border stays real. */
+const SINGLES = [
+  { slug: "how-it-ends",       title: "How It Ends" },
+  { slug: "extra",             title: "Extra" },
+  { slug: "did-you-forget",    title: "Did You Forget" },
+  { slug: "salt",              title: "Salt" },
+  { slug: "little-things",     title: "Little Things" },
+  { slug: "grow",              title: "Grow" },
+  { slug: "body-and-the-beast", title: "Body and the Beast" },
+  { slug: "try",               title: "Try" },
+  { slug: "all-in-my-head",    title: "All In My Head" },
+  { slug: "somewhere-somehow", title: "Somewhere Somehow" }
+];
+
+/* ---- The grid: everything that is not the lineage ----
+   `fit: "contain"` is here because posters are portrait and logos are
+   wide. The default 1:1 cover crop would cut the top off a flyer and
+   slice a wordmark in half, so these render whole on the card's
+   ground instead.
+
+   TODO(facts): the flyers carry no year. The dates on the source
+   files run 2018 to 2022 and are probably right, but a file's
+   modification date is not a claim this site should print as an event
+   date. Jack has these in his head. Ask him and fill them in. */
 const DESIGN = [
   {
-    title: "A flyer, a shirt, or a cover",
-    meta: "What it was for, and when",
-    image: null,
-    note: "",
-    placeholder: true
+    title: "The puzzle logo family",
+    meta: "Drawn as one puzzle, then pulled apart",
+    image: "/assets/img/wayspace/design/logos/puzzle-pieces-trio.png",
+    fit: "contain",
+    note: "One shape cut into pieces whose tabs still match. It exists as an Illustrator master and exports in black and white, flat colour and gradient. Two of its members are already load bearing on this site: the wordmark on the Wayspace landing, and the single piece in the browser tab.",
+    crossRef: null
   },
   {
-    title: "Another piece here",
-    meta: "What it was for, and when",
-    image: null,
-    note: "",
-    placeholder: true
+    title: "Jackintheway",
+    meta: "The flower logo",
+    image: "/assets/img/wayspace/design/logos/jackintheway-flower.png",
+    fit: "contain",
+    note: "The name before Wayspace was the name. The flower and the spiral behind it both show up again at the centre of the Wayspace album cover, carrying the wordmark.",
+    crossRef: null
   },
   {
-    title: "The Wayspace design system",
-    meta: "Cultivated since 2020, and still running",
-    image: null,
-    note: "The colour, type, spacing and outlines every page of this site is built from, including the one you are reading. It is a piece of design work, so it lives in this room rather than in a section about websites.",
-    placeholder: true
+    title: "Feivel Speaks",
+    meta: "Album logo",
+    image: "/assets/img/wayspace/design/logos/feivel-speaks.png",
+    fit: "contain",
+    note: "",
+    crossRef: { text: "Hear the album in Music", href: "/wayspace/music" }
+  },
+  {
+    title: "Howard Theatre",
+    meta: "Show flyer",
+    image: "/assets/img/wayspace/design/flyers/howard-theatre.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Baltimore Soundstage",
+    meta: "Show flyer",
+    image: "/assets/img/wayspace/design/flyers/baltimore-soundstage.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: { text: "The set is in Video", href: "/wayspace/video" }
+  },
+  {
+    title: "Wu-Tang show",
+    meta: "Show flyer, one of three versions",
+    image: "/assets/img/wayspace/design/flyers/wutang-show-a.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Songbyrd",
+    meta: "Show flyer, Bluebyrd",
+    image: "/assets/img/wayspace/design/flyers/bluebyrd-at-songbyrd.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Pie Shop",
+    meta: "Show flyer",
+    image: "/assets/img/wayspace/design/flyers/pie-shop.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "The Pocket",
+    meta: "Show flyer, Wayspace",
+    image: "/assets/img/wayspace/design/flyers/wayspace-show-the-pocket.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "So Much For So Long",
+    meta: "Listening party flyer",
+    image: "/assets/img/wayspace/design/flyers/so-much-for-so-long-listening-party.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Speak Your Truth",
+    meta: "Event flyer",
+    image: "/assets/img/wayspace/design/flyers/speak-your-truth.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Livestream release party",
+    meta: "Release flyer",
+    image: "/assets/img/wayspace/design/flyers/livestream-release-party.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Holiday performance",
+    meta: "Show flyer",
+    image: "/assets/img/wayspace/design/flyers/holiday-performance.jpg",
+    fit: "contain",
+    note: "",
+    crossRef: null
   }
 ];
 
@@ -1407,9 +1546,14 @@ function videoCard(item) {
   `;
 }
 
+/* A poster is portrait and a wordmark is wide. Both would be cut by
+   the 1:1 crop every other room's cover uses, so an item can ask to be
+   contained instead. The box stays square either way, which is what
+   keeps the grid a grid. */
 function designCard(item) {
+  const fit = item.fit === "contain" ? " is-contain" : "";
   const art = item.image
-    ? `<img class="work-cover" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy" width="600" height="600">`
+    ? `<img class="work-cover${fit}" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy" width="600" height="600">`
     : placeholderTile("work-cover", "Artwork");
 
   return `
@@ -1422,6 +1566,53 @@ function designCard(item) {
         ${item.note ? `<p class="work-note">${escapeHtml(item.note)}</p>` : ""}
         <div class="work-foot">${crossRef(item)}</div>
       </div>
+    </li>
+  `;
+}
+
+/* ---- The tool pack tiles ----
+   A real <button>, because activating one changes this page rather
+   than going anywhere. The <video> ships with no src at all: putting
+   the file in a data attribute and assigning it on first activation
+   is what makes preload="none" honest. A src set in markup still
+   costs a request on some browsers even when preload says otherwise.
+
+   muted is on the element rather than left to script, per Jack on
+   2026-08-23: the clips have their own audio and six of them talking
+   at once would bury the thing you came to look at.
+
+   The still underneath is what a visitor sees until they ask for
+   more, and it is what they see again the moment they leave. alt is
+   empty because the name and the quality are printed directly below
+   in text a screen reader already reaches. */
+function toolTile(item) {
+  return `
+    <li class="tool">
+      <button class="tool-tile" type="button"
+              data-clip="/assets/video/tools/${escapeHtml(item.slug)}.mp4"
+              aria-label="Play the ${escapeHtml(item.title)} animation">
+        <img class="tool-still" src="/assets/img/wayspace/design/tools/${escapeHtml(item.slug)}.jpg"
+             alt="" loading="lazy" width="640" height="640">
+        <video class="tool-clip" muted loop playsinline preload="none"
+               aria-hidden="true" tabindex="-1"></video>
+      </button>
+      <p class="tool-name">${escapeHtml(item.title)}</p>
+      <p class="tool-quality">${escapeHtml(item.quality)}</p>
+    </li>
+  `;
+}
+
+/* Each single cover is a doorway to its lyric page, which is why this
+   is an <a> and the tool tile is a <button>. Same room, two different
+   jobs, and the element says which. */
+function singleCover(item) {
+  return `
+    <li class="single">
+      <a class="single-link" href="/wayspace/writing/${escapeHtml(item.slug)}">
+        <img class="single-cover" src="/assets/img/wayspace/design/singles/${escapeHtml(item.slug)}.jpg"
+             alt="Cover art for ${escapeHtml(item.title)}" loading="lazy" width="640" height="640">
+        <span class="single-title">${escapeHtml(item.title)}</span>
+      </a>
     </li>
   `;
 }
@@ -1578,6 +1769,90 @@ function initFacades() {
 }
 
 /* ============================================================
+   The tool pack clips
+
+   Decided with Jack on 2026-08-23: hover on a desktop, tap on a
+   phone, muted either way, and it plays where it sits rather than in
+   a modal or behind a button covering the art.
+
+   Where this sits against MOTION.md: that file bans scroll-linked
+   motion before the cutover, and this is not that. A clip that starts
+   because someone pointed at it is the reader asking, the same
+   category as the Video room's facade. The version that would have
+   crossed the line is the one that starts on its own when it scrolls
+   into view, and that is deliberately not built. Jack was offered it
+   and chose this.
+
+   Three states worth naming, because each is a real device:
+   - hover and a fine pointer: enter plays, leave pauses and rewinds
+   - keyboard: focus is intent, so it behaves like hover
+   - touch, or no hover: tap toggles, and it keeps playing until
+     tapped again, because there is no "leave" event to catch
+
+   Under prefers-reduced-motion nothing plays on hover or focus at
+   all. The clip is still reachable by clicking, because the rule is
+   that motion is never imposed, not that it is withheld.
+   ============================================================ */
+function initToolClips() {
+  const row = document.getElementById("toolRow");
+  if (!row) return;
+
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* First activation is where the file is fetched. Until then the
+     <video> has no source and costs nothing. */
+  function start(tile) {
+    const video = tile.querySelector(".tool-clip");
+    if (!video) return;
+    if (!video.getAttribute("src")) video.setAttribute("src", tile.dataset.clip);
+    tile.classList.add("is-playing");
+    video.play().catch(() => {
+      /* Blocked or missing. The still is already showing, so the tile
+         reads correctly with no clip. Drop back to it. */
+      tile.classList.remove("is-playing");
+    });
+  }
+
+  function stop(tile) {
+    const video = tile.querySelector(".tool-clip");
+    tile.classList.remove("is-playing");
+    if (!video) return;
+    video.pause();
+    /* Rewind so the next hover opens on the same frame as the still,
+       rather than resuming mid-gesture. */
+    if (video.currentTime) video.currentTime = 0;
+  }
+
+  row.addEventListener("click", (e) => {
+    const tile = e.target.closest(".tool-tile");
+    if (!tile) return;
+    tile.classList.contains("is-playing") ? stop(tile) : start(tile);
+  });
+
+  if (canHover && !calm) {
+    row.addEventListener("mouseover", (e) => {
+      const tile = e.target.closest(".tool-tile");
+      if (tile && !tile.classList.contains("is-playing")) start(tile);
+    });
+    row.addEventListener("mouseout", (e) => {
+      const tile = e.target.closest(".tool-tile");
+      /* relatedTarget inside the same tile is a move between the
+         still and the clip, not a departure. */
+      if (tile && !tile.contains(e.relatedTarget)) stop(tile);
+    });
+    row.addEventListener("focusin", (e) => {
+      const tile = e.target.closest(".tool-tile");
+      if (tile) start(tile);
+    });
+    row.addEventListener("focusout", (e) => {
+      const tile = e.target.closest(".tool-tile");
+      if (tile && !tile.contains(e.relatedTarget)) stop(tile);
+    });
+  }
+}
+
+/* ============================================================
    Boot
    ============================================================ */
 
@@ -1589,6 +1864,13 @@ document.addEventListener("DOMContentLoaded", () => {
   renderRoom("videoGrid", VIDEO, videoCard,
     "No video here yet",
     ["Anything whose form is video lands here, including live performance."]);
+
+  /* Design's two lineage rows, rendered before its grid. They mount
+     into the narrative section rather than the work section, so an
+     empty state here would be wrong: the story is the page, and a
+     story missing its middle is a bug, not a sparse room. */
+  renderRoom("toolRow", TOOLS, toolTile, "", []);
+  renderRoom("singlesRow", SINGLES, singleCover, "", []);
 
   renderRoom("designGrid", DESIGN, designCard,
     "No design here yet",
@@ -1608,4 +1890,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initPlayer();
   initFacades();
+  initToolClips();
 });
