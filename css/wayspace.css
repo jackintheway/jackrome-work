@@ -404,6 +404,18 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
    Still an <a>, because it navigates. The rule above still holds:
    anything that goes somewhere is a link, anything that changes this
    page is a button. Only the paint is shared. */
+/* ---- Listen button ----
+   Leaves the site, so it is black rather than any room's colour. The
+   room palette means "somewhere else in Wayspace"; black means "off
+   this site entirely", which is a distinction worth keeping now that
+   two of the three controls on a card are links. */
+.listen-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--ws-black);
+  color: var(--ws-paper);
+}
+
 .crossref-btn {
   display: inline-block;
   text-decoration: none;
@@ -418,6 +430,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .crossref-btn.to-speaking { --to-room: var(--ws-salmon); --to-room-ink: var(--ws-black); }
 
 .play-btn,
+.listen-btn,
 .crossref-btn {
   /* One of these is a <button> and the other an <a>, and they resolve
      line-height differently: the button came out 44px tall against the
@@ -441,11 +454,13 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   background: var(--ws-orange);
 }
 .play-btn:hover,
+.listen-btn:hover,
 .crossref-btn:hover {
   transform: translate(-2px, -2px);
   box-shadow: 5px 5px 0 0 var(--ws-black);
 }
 .play-btn:active,
+.listen-btn:active,
 .crossref-btn:active {
   transform: translate(1px, 1px);
   box-shadow: 1px 1px 0 0 var(--ws-black);

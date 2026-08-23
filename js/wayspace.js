@@ -650,12 +650,23 @@ function musicCard(item) {
 
      Where the release goes instead: see the note in music.html. */
 
-  /* No cleared audio means no working button. Disabled rather than
-     hidden, so the control is visibly part of the card and the room
-     reads as built rather than half-drawn. */
+  /* Play is the room's own player: it loads the file into the bar at
+     the bottom and never leaves the page. Only three releases have
+     cleared audio, so most cards do not get one. A disabled button
+     stood here before and made fourteen cards look broken.
+
+     Listen is the way out to Spotify, and every card carries one. That
+     is the difference between the two controls, and it is why they are
+     both here rather than one standing in for the other: hearing a
+     track in the room and going to where the plays count are different
+     things a visitor might want. */
   const play = item.track
     ? `<button class="play-btn" data-src="${escapeHtml(item.track.src)}" data-title="${escapeHtml(item.track.title)}">Play</button>`
-    : `<button class="play-btn" disabled>No audio yet</button>`;
+    : "";
+
+  const listen = item.streams.length
+    ? `<a class="listen-btn" href="${escapeHtml(item.streams[0].href)}" target="_blank" rel="noopener">Listen</a>`
+    : "";
 
   return `
     <li class="work-card">
@@ -666,6 +677,7 @@ function musicCard(item) {
         <p class="work-meta">${escapeHtml(item.format)} &middot; ${escapeHtml(item.year)}</p>
         <div class="work-foot">
           ${play}
+          ${listen}
           ${crossBtn(item)}
         </div>
       </div>
