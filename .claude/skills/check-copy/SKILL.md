@@ -41,17 +41,21 @@ it in the design system and re-copy. Never edit them in place.
 ## 2. Location is Maryland, never Frederick
 
 ```bash
-grep -rn 'Frederick' *.html
+grep -rn 'Frederick' *.html tools/og/ js/*.js | grep -v 'Potters Guild of Frederick'
 ```
 
-Applies to visible copy, meta descriptions, and share card text, so
-check the OG sources too when one changes:
+The rule is about **how Jack's own location is described**, so a client
+whose registered name contains the word is not a violation of it.
 
-```bash
-grep -rn 'Frederick' tools/og/
-```
+**Potters Guild of Frederick is excluded and must never be flagged.**
+It is a client's actual organisation name, carried on three entries in
+`js/production.js`, and it cannot be rewritten without misnaming them.
+Nothing about it describes where Jack is.
 
-Verified 2026-08-19: nothing in either.
+Verified 2026-08-22: with that exclusion the check returns nothing
+across pages, share cards, and the render scripts. Note the search now
+covers `js/` too: `/production` builds its cards from an array, so copy
+that reaches a visitor no longer lives only in HTML.
 
 ## 3. No year in the footer
 
@@ -104,6 +108,9 @@ Verified 2026-08-19: nothing missing.
 ---
 
 ## What is approved and must never be flagged
+
+**"Potters Guild of Frederick" in `js/production.js` is a client name
+and stays.** See check 2 above for the reasoning.
 
 **"Fuel Cycle" in `about.html` and `COPY.md` is correct and stays.** It
 is Jack's own bio, linked to `fuelcycle.com`, and it is there by his

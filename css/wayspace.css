@@ -519,6 +519,55 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
    Host, guest, or producer. This is the field that lets a show that
    is not Jack's own sit naturally beside one that is, without the
    page having to explain the difference in prose every time. */
+/* ---- Work tile ----
+   Not every piece of client work is a video. /production carries a
+   podcast that lives on Spotify and a client website that is simply
+   live on the web, and both belong beside the video work rather than
+   in a section of their own.
+
+   Without a tile those two cards collapse to their text and break the
+   grid's rhythm, which reads as something failing to load. This gives
+   them the same 16:9 block the facade occupies, in solid colour with
+   the medium named, so the row keeps its shape and the difference
+   looks deliberate.
+
+   Deliberately not `.is-placeholder`: that is the hatched "nothing
+   here yet" treatment, and this work exists. */
+.work-tile {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-bottom: var(--rule);
+  background: var(--ws-blue);
+  color: var(--text-on-blue);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+}
+
+/* ---- Role row ----
+   /production reuses the work card from this file, and stacks a row
+   of role tags above each title: hosting, tech direction, recording,
+   editing. A wrapper rather than bare inline-blocks, because several
+   tags per card need to wrap as a group and keep an even gap when
+   they do. The tags carry the argument that page makes about scope,
+   so they sit above the title where they get read first.
+
+   The tag's own margin-bottom is zeroed here: the gap below the row
+   belongs to the row, otherwise a wrapped second line doubles it. */
+.work-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.work-roles .role-tag {
+  margin-bottom: 0;
+}
+
 .role-tag {
   display: inline-block;
   font-family: var(--font-heading);

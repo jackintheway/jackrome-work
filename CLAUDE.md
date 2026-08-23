@@ -16,7 +16,7 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 
 Built, deployed, and verified: `/`, `/about`, `/ai-enablement`. Tokens, Archivo, nav, footer, share cards, redirects, and headers are all in place and confirmed against the live deploy.
 
-Deployed and verified 2026-08-22: `/wayspace` and its six rooms, including the nested `/wayspace/writing/example-lyric`. Built locally and **not yet deployed**: `/ai-portfolio`. See "Wayspace, built" and "The AI portfolio page" below. `/production` is the one page still unbuilt.
+Deployed and verified 2026-08-22: `/wayspace` and its six rooms, including the nested `/wayspace/writing/example-lyric`. Built locally and **not yet deployed**: `/ai-portfolio` and `/production`. See "Wayspace, built", "The AI portfolio page", and "The production page" below. **Every page in scope is now built.**
 
 `INVENTORY.md` is the crawl of the old Squarespace site. `COPY.md` is the copy pulled from it on 2026-08-15, and is the source for the three built pages. Once a page is built its HTML is the source of truth, not `COPY.md`.
 
@@ -195,7 +195,7 @@ that does not exist yet.
 ## Open items, none blocking
 
 - `/creative-portfolio` 404s and now wants a 301 to `/wayspace` in `netlify.toml` at cutover. The scope question resolved toward two pages, so this path has a successor.
-- `/production` 404s. Linked from the nav of every page, plus the green home card and a button on `/wayspace`. Still the one unbuilt page.
+- ~~`/production` 404s.~~ **Built 2026-08-22, not yet deployed.** It is linked from the nav of every page, the green home card, and a button on `/wayspace`, so it 404s from all of them until the next push.
 - `/ai-portfolio` is built but **not deployed**. Its share card renders and the page passes `check-copy` and the 390px check locally.
 - ~~Wayspace clean URLs unverified.~~ **Closed 2026-08-22.** Checked against the live staging deploy: `/wayspace`, `/wayspace/writing`, `/wayspace/music`, and `/wayspace/writing/example-lyric` all answer 200 with no redirect. The trailing-slash forms 301 back to the clean URLs, which makes the clean form canonical. The `room.html` beside a `room/` directory pattern holds for nested paths.
 - One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
@@ -237,6 +237,45 @@ The reasoning behind the selection is recorded outside this repo, in
 **The old portfolio repo is `../ai-work-portfolio/`, it is private, and nothing
 publishes from it.** It stays useful as a design reference and as an archive. Read
 it; do not copy content out of it onto this site.
+
+---
+
+## The production page (built 2026-08-22)
+
+The service doorway, sibling to `/ai-enablement`, and the last page in scope.
+
+**It is built on the belief sentence above.** Safety leads, capability follows.
+The hero is Jack's own line from `/about` ("when someone has something they need to
+bring forth and something technical is in the way, I'm the person who moves it"),
+and "How I work" closes on the promise about limits rather than a claim of
+completeness.
+
+**The work is data-driven, in `js/production.js`.** Ten entries, each carrying
+`roles: []`, rendered through pure functions into the `work-card` component that
+`css/wayspace.css` already provides. Adding a piece is adding an object.
+
+**The roles are the argument.** Per Jack, every hosted piece was also tech-checked,
+recorded, and edited by him, and the 50th anniversary livestream included montages
+cut from submitted footage. Thirty role tags across ten cards make the case for
+scope without the page ever claiming it. That is why the field is structural and
+not decoration, and why a new entry must carry its roles.
+
+**Two entries are not video**, so they render a solid `work-tile` naming the medium
+instead of a facade, and link out. Client work is not all video. Without the tile
+those cards collapse and the grid reads as something failing to load.
+
+**Clients are named**, per the decision recorded above. The facade rule holds: eight
+thumbnails ship as static images from `assets/img/production/`, pulled from YouTube
+at build time, and no iframe exists until a visitor clicks.
+
+Verified locally 2026-08-22 with a harness: 390px with no horizontal overflow, ten
+cards rendered, thirty role tags, zero iframes before click, the right video id
+built on click, both outbound links carrying `rel="noopener"`, and one
+`aria-current`. `check-copy` passes.
+
+**One open question in the file**, marked `TODO(jack)`: the Crossing the Bridge
+podcast is filed under client work but no client is named in the source material,
+so that card currently carries the medium alone.
 
 ---
 
