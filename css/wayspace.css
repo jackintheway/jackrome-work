@@ -348,7 +348,15 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .work-note { margin: 0 0 var(--space-4); }
 /* Pushes whatever closes the card to a shared baseline, so a short
    card and a long one still line up along the bottom of the row. */
-.work-foot { margin-top: auto; }
+/* A row now that it holds two buttons rather than a button and a text
+   link. wrap so a narrow card stacks them instead of overflowing. */
+.work-foot {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
 
 /* ---- Streaming links ----
    A music room that cannot send someone to Spotify is missing most of
@@ -385,14 +393,42 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
    anywhere. Anything that navigates is an <a>, anything that changes
    the page is a <button>, and screen readers and keyboards both
    depend on that line being held. */
-.play-btn {
+/* ---- Cross-room button ----
+   A crossRef in the Music room is a doorway to another room, and Jack
+   wanted it to carry the same weight as Play rather than sitting under
+   it as a text link. Same shape, different colour, and the colour is
+   the destination room's own: brown for Writing, blue for Video. The
+   site already teaches colour as room across seven pages, so the
+   button says where it goes before the label is read.
+
+   Still an <a>, because it navigates. The rule above still holds:
+   anything that goes somewhere is a link, anything that changes this
+   page is a button. Only the paint is shared. */
+.crossref-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--to-room, var(--ws-brown));
+  color: var(--to-room-ink, var(--ws-paper));
+}
+.crossref-btn.to-writing  { --to-room: var(--ws-brown);  --to-room-ink: var(--ws-paper); }
+.crossref-btn.to-video    { --to-room: var(--ws-blue);   --to-room-ink: var(--ws-paper); }
+.crossref-btn.to-music    { --to-room: var(--ws-orange); --to-room-ink: var(--ws-black); }
+.crossref-btn.to-design   { --to-room: var(--ws-yellow); --to-room-ink: var(--ws-black); }
+.crossref-btn.to-podcasts { --to-room: var(--ws-green);  --to-room-ink: var(--ws-black); }
+.crossref-btn.to-speaking { --to-room: var(--ws-salmon); --to-room-ink: var(--ws-black); }
+
+.play-btn,
+.crossref-btn {
+  /* One of these is a <button> and the other an <a>, and they resolve
+     line-height differently: the button came out 44px tall against the
+     link's 37 on identical padding. Pinning it makes the two agree, so
+     a row of them sits on one baseline. */
+  line-height: 1.2;
   font-family: var(--font-heading);
   font-weight: var(--fw-bold);
   font-size: var(--fs-small);
   letter-spacing: var(--ls-overline);
   text-transform: uppercase;
-  color: var(--text-on-brand);
-  background: var(--ws-orange);
   border: var(--rule);
   box-shadow: var(--pop-black-sm);
   padding: var(--space-2) var(--space-4);
@@ -400,11 +436,17 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   transition: transform var(--dur-fast) var(--ease-out),
               box-shadow var(--dur-fast) var(--ease-out);
 }
-.play-btn:hover {
+.play-btn {
+  color: var(--text-on-brand);
+  background: var(--ws-orange);
+}
+.play-btn:hover,
+.crossref-btn:hover {
   transform: translate(-2px, -2px);
   box-shadow: 5px 5px 0 0 var(--ws-black);
 }
-.play-btn:active {
+.play-btn:active,
+.crossref-btn:active {
   transform: translate(1px, 1px);
   box-shadow: 1px 1px 0 0 var(--ws-black);
 }

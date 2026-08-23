@@ -84,7 +84,7 @@ const MUSIC = [
     cover: "/assets/img/wayspace/music/feivel-speaks.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/43LSqY2k5sk7KDWkEW0MJk" }],
     track: { src: "/assets/audio/safe.mp3", title: "Safe" },
-    crossRef: { text: "Lyrics live in Writing", href: "/wayspace/writing" }
+    crossRef: { text: "Lyrics", href: "/wayspace/writing", room: "writing" }
   },
   {
     title: "Wayspace (Deluxe)",
@@ -120,7 +120,7 @@ const MUSIC = [
     cover: "/assets/img/wayspace/music/wayspace.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/5U1K4wDc75208yey9abs9w" }],
     track: null,
-    crossRef: { text: "Lyrics live in Writing", href: "/wayspace/writing" }
+    crossRef: { text: "Lyrics", href: "/wayspace/writing", room: "writing" }
   },
   {
     title: "You'll Be Alright",
@@ -228,7 +228,7 @@ const MUSIC = [
     cover: "/assets/img/wayspace/music/jahny.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/6RxQiKUC2chQkqFmNUzWP5" }],
     track: null,
-    crossRef: { text: "Full stream in Video", href: "/wayspace/video" }
+    crossRef: { text: "Watch", href: "/wayspace/video", room: "video" }
   },
   {
     title: "So Much For So Long",
@@ -237,7 +237,7 @@ const MUSIC = [
     cover: "/assets/img/wayspace/music/so-much-for-so-long.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/78jxFTbCQYcEuoO41cHCl1" }],
     track: null,
-    crossRef: { text: "Previews in Video", href: "/wayspace/video" }
+    crossRef: { text: "Watch", href: "/wayspace/video", room: "video" }
   }
 ];
 
@@ -627,16 +627,28 @@ function emptyState(mount, title, lines) {
    Card shapes
    ============================================================ */
 
+/* The Music room's crossRef, as a button rather than a text link.
+   Other rooms keep the quieter text version; this one sits in a row
+   with Play and needs the same weight. `room` picks the destination
+   room's colour. */
+function crossBtn(item) {
+  if (!item.crossRef) return "";
+  const room = item.crossRef.room ? ` to-${escapeHtml(item.crossRef.room)}` : "";
+  return `<a class="crossref-btn${room}" href="${escapeHtml(item.crossRef.href)}">${escapeHtml(item.crossRef.text)}</a>`;
+}
+
 function musicCard(item) {
   const cover = item.cover
     ? `<img class="work-cover" src="${escapeHtml(item.cover)}" alt="Cover art for ${escapeHtml(item.title)}" loading="lazy" width="600" height="600">`
     : placeholderTile("work-cover", "Cover art");
 
-  const streams = item.streams.length
-    ? `<ul class="stream-links">${item.streams.map(s =>
-        `<li><a class="stream-link" href="${escapeHtml(s.href)}" target="_blank" rel="noopener">${escapeHtml(s.name)}</a></li>`
-      ).join("")}</ul>`
-    : "";
+  /* The per-release service tag is gone. Every release links to the
+     same place, so twenty cards each stamped SPOTIFY was repeating one
+     fact twenty times. The `streams` data stays in the array: it is
+     still the record of where each release lives, and putting the tags
+     back is a render change rather than a re-gathering.
+
+     Where the release goes instead: see the note in music.html. */
 
   /* No cleared audio means no working button. Disabled rather than
      hidden, so the control is visibly part of the card and the room
@@ -653,9 +665,8 @@ function musicCard(item) {
         <h3 class="work-title">${escapeHtml(item.title)}</h3>
         <p class="work-meta">${escapeHtml(item.format)} &middot; ${escapeHtml(item.year)}</p>
         <div class="work-foot">
-          ${streams}
           ${play}
-          ${crossRef(item)}
+          ${crossBtn(item)}
         </div>
       </div>
     </li>
