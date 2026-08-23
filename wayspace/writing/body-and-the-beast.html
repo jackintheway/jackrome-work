@@ -78,6 +78,21 @@
     <section class="section">
       <p class="entry-note">A testament to the suffering caused by the overturning of Roe v Wade. I envision a world of reproductive freedom and empowerment for YOU. This song was written by Jackintheway and produced by Fabrizio and Jackintheway.</p>
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="2386803417"
+              data-title="Body &amp; the Beast (with Fabrizio)"
+              aria-label="Play Body &amp; the Beast (with Fabrizio) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/body-and-the-beast.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 3:48</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">I don’t know what to say
 But I’m here for you anyway
@@ -185,5 +200,6 @@ I will imagine you at peace</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

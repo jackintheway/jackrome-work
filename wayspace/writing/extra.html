@@ -79,6 +79,21 @@
       <p class="entry-note">You know those days when you wake up with all the stress of the day before? This song was written by Jackintheway and produced by sensu, Dean Emerson, nanimal and 3astman.</p>
 
       <p class="lyric-notice">This song contains explicit language.</p>
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="2386803372"
+              data-title="Extra (Prod. sensu, Dead Emerson &amp; nanimal)"
+              aria-label="Play Extra (Prod. sensu, Dead Emerson &amp; nanimal) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/extra.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:12</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">I wake up and I’m at home
 But I don’t wanna feel today
@@ -159,5 +174,6 @@ All I find is extra weight</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

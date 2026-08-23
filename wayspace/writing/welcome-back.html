@@ -78,6 +78,21 @@
     <section class="section">
       <p class="entry-note">Welcome back to Wayspace. So glad to have you with us. This is the first of twelve puzzle pieces that come together to unlock Wayspace. What does that mean? Let&#x27;s find out together.</p>
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="2386803360"
+              data-title="Welcome Back"
+              aria-label="Play Welcome Back on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/welcome-back.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 0:43</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">We are now reaching optimal altitude</p>
         <p class="lyric-body">Please put your body, mind &amp; soul in the upright position</p>
@@ -117,5 +132,6 @@
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

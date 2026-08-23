@@ -78,9 +78,15 @@
     <section class="section">
 
       <p class="lyric-notice">This song contains explicit language.</p>
-      <!-- The listen bar. A facade: nothing reaches SoundCloud until
-           this is pressed, and the artwork is self hosted so the page
-           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <!-- Two listen bars, not one. Ribbons exists as a 2:52 cut and
+           a 4:11 extended cut, and the lyric sheet below holds the
+           words to the extended one, so both belong here. Per Jack,
+           2026-08-23.
+
+           The first is the plain version and keeps the room's usual
+           lead. The second names itself, because two bars reading
+           "Click play to listen" would not tell a reader which is
+           which. js/lyric-audio.js lets only one play at a time. -->
       <button class="listen-bar" type="button"
               data-track="1968885083"
               data-title="Ribbons"
@@ -89,6 +95,18 @@
         <span class="listen-text">
           <span class="listen-lead">Click play to listen</span>
           <span class="listen-meta">SoundCloud &middot; 2:52</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
+      <button class="listen-bar" type="button"
+              data-track="2386805394"
+              data-title="Ribbons (Me &amp; You)"
+              aria-label="Play the extended version, Ribbons (Me and You), on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/ribbons-extended.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Or the extended version</span>
+          <span class="listen-meta">SoundCloud &middot; Ribbons (Me &amp; You) &middot; 4:11</span>
         </span>
         <span class="listen-play" aria-hidden="true">&#9654;</span>
       </button>

@@ -78,6 +78,21 @@
     <section class="section">
       <p class="entry-note">The depths of fear, shame, and guilt. It can feel like uncovering realization, but it&#x27;s not. It&#x27;s just misunderstanding of the light inherent to our existence. The song was written by Jackintheway and produced by Fabrizio and Jake Vicious.</p>
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="2386803348"
+              data-title="What Have I Done?  (with Fabrizio &amp; Jake Vicious)"
+              aria-label="Play What Have I Done?  (with Fabrizio &amp; Jake Vicious) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/what-have-i-done.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 3:21</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">I still think about the early nights
 I still think about me wide awake
@@ -214,5 +229,6 @@ Oh what have I done?</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

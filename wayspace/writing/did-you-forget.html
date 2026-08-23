@@ -78,6 +78,21 @@
     <section class="section">
       <p class="entry-note">Did you forget who you are? Did you forget why you&#x27;re here? Did you forget that you are God in human clothing? Did you forget that you&#x27;re here to enjoy this heavenly world? Forreal! Crazy right?! This song was written by Jackintheway and produced by Fabrizio.</p>
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="2386803351"
+              data-title="Did You Forget? (with Fabrizio)"
+              aria-label="Play Did You Forget? (with Fabrizio) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/did-you-forget.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:14</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">Did you forget who you are?
 Well let me tell you a secret
@@ -159,5 +174,6 @@ Can you feel what’s right?</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

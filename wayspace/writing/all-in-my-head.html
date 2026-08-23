@@ -78,6 +78,21 @@
     <section class="section">
       <p class="entry-note">A special, full album version of &quot;In My Head&quot; with amazing re-imagination from Fabrizio. After all the suffering, it is a RELIEF that it was all in my head. Nothing to fear. Just love. This song was written by Jackintheway and produced by Fabrizio.</p>
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="2386803402"
+              data-title="All In My Head (with Fabrizio)"
+              aria-label="Play All In My Head (with Fabrizio) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/all-in-my-head.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:10</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">It was all in my head
 It was all in my head
@@ -156,5 +171,6 @@ Is the power behind all the pain you been on</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

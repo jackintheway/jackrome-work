@@ -34,13 +34,35 @@
    The page carries its own data on the button. There is no array of
    62 entries to keep in sync with 62 files: each page describes its
    own track, so the page and its data cannot drift apart.
+
+   A PAGE MAY CARRY MORE THAN ONE BAR. Ribbons exists as a 2:52 cut and
+   a 4:11 extended cut, and its lyric sheet holds the words to the
+   extended one, so both belong on the page. Per Jack, 2026-08-23.
+
+   Only one of them plays at a time. Pressing the second bar puts the
+   first back the way it was and starts the second, so two recordings
+   of the same song can never talk over each other. That is the whole
+   reason this keeps a clone of each bar rather than throwing the
+   markup away when it swaps.
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const bar = document.querySelector(".listen-bar");
-  if (!bar) return;
+  const bars = [...document.querySelectorAll(".listen-bar")];
+  if (!bars.length) return;
 
-  bar.addEventListener("click", () => {
+  /* Each slot remembers the bar it started as, so pressing a sibling
+     can put it back. `el` is whatever is standing there right now:
+     the bar, or the player that replaced it. */
+  const slots = bars.map(bar => ({ bar, el: bar }));
+
+  function reset(slot) {
+    if (slot.el === slot.bar) return;
+    slot.el.replaceWith(slot.bar);
+    slot.el = slot.bar;
+  }
+
+  function play(slot) {
+    const bar = slot.bar;
     const frame = document.createElement("iframe");
 
     /* auto_play is true because the visitor has just pressed play.
@@ -74,6 +96,19 @@ document.addEventListener("DOMContentLoaded", () => {
     frame.title = bar.dataset.title + " on SoundCloud";
     frame.className = "listen-player";
 
-    bar.replaceWith(frame);
+    slot.el.replaceWith(frame);
+    slot.el = frame;
+  }
+
+  /* Delegated from the document rather than bound to each bar, because
+     a bar that gets put back is the same node but its listener would
+     have to be rebound on every restore otherwise. */
+  document.addEventListener("click", (e) => {
+    const bar = e.target.closest(".listen-bar");
+    if (!bar) return;
+    const slot = slots.find(s => s.bar === bar);
+    if (!slot) return;
+    slots.forEach(o => { if (o !== slot) reset(o); });
+    play(slot);
   });
 });

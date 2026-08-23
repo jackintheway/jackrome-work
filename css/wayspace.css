@@ -1189,6 +1189,11 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   transition: transform var(--dur-fast) var(--ease-out),
               box-shadow var(--dur-fast) var(--ease-out);
 }
+/* Two bars on one page are a pair, so they sit closer to each other
+   than the pair sits to the lyric underneath. Ribbons is the only page
+   that has two today. */
+.listen-bar + .listen-bar { margin-top: calc(var(--space-7) * -1 + var(--space-3)); }
+
 .listen-bar:hover,
 .listen-bar:focus-visible {
   transform: translate(-2px, -2px);

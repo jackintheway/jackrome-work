@@ -469,8 +469,8 @@ Widget parameters, all confirmed live: `color=#000000` per Jack,
 `show_teaser=false` which together are what answer "no auto-play after", and
 `show_comments=false`.
 
-**The thumbnail is self hosted** at `/assets/img/wayspace/writing/`, 32 files at
-128px for 244 KB total. It has to be: pulling it from SoundCloud's CDN would
+**The thumbnail is self hosted** at `/assets/img/wayspace/writing/`, 49 files at
+128px for 416 KB total. It has to be: pulling it from SoundCloud's CDN would
 contact a third party on page load, which is exactly what the facade exists to
 prevent.
 
@@ -498,16 +498,23 @@ releases in `_source/music/STREAMS.md`.
 
 | | Count | What ships |
 |---|---|---|
-| On SoundCloud | **32** | The listen bar, full playback |
-| Spotify only, no SoundCloud | **16** | **Nothing yet. Jack's decision.** |
+| On SoundCloud | **48** | The listen bar, full playback |
 | Nowhere | **14** | An `Unreleased` flag in the hero |
 
-**The 16 are the open question.** Fifteen are the Wayspace album and its deluxe;
-the odd ones out are RACE DAY, Still Distracted, Thank God I Found You, The Best
-and Drop The Gun. The clean fix is Jack uploading those to SoundCloud, which
-makes one mechanic serve the whole site. The alternatives are a "Listen on
-Spotify" link that leaves the site, or a preview embed that pretends to be a
-player. **Do not ship the preview embed.**
+**The 16 that were Spotify-only are closed.** Jack uploaded them on 2026-08-23,
+which was the clean fix and means one mechanic now serves every playable page:
+`soundcloud.com/jackintheway/sets/wayspace` (24 tracks), the four missing Feivel
+Speaks Deluxe tracks, and RACE DAY. The Spotify preview embed was never shipped
+and should not be. He skipped the 25th Wayspace deluxe track, a demo of
+Somewhere Somehow, on purpose.
+
+**Album tracks are pinned to the album's own upload, not matched by title.**
+Several songs exist on SoundCloud twice, once as an older standalone upload and
+again inside a 2026-08-23 album set. A title match alone sent `little-things`
+and `try` at the older uploads. The playlist at
+`https://soundcloud.com/jackintheway/sets/{set}` carries an ordered list of
+track ids in its `__sc_hydration` payload, and pinning from that is what makes
+the lyric page play the version the page is actually about.
 
 Track lists for every Spotify release, including per-track IDs, can be pulled
 from `https://open.spotify.com/embed/album/{id}` which carries a `__NEXT_DATA__`
@@ -515,13 +522,32 @@ JSON payload with a `trackList`. No API key needed. The Wayspace deluxe carries
 25 tracks and is where `Saw` and `Blurry` come from, which explains those two
 loose covers in `_source/cover-artwork/`.
 
+### Ribbons carries two bars
+
+Confirmed by Jack on 2026-08-23: Ribbons exists as a 2:52 cut and a 4:11
+extended cut called **Ribbons (Me & You)**, and the lyric sheet on the page
+holds the words to the extended one. So both belong there.
+
+The first bar keeps the room's usual "Click play to listen". The second reads
+"Or the extended version" and names itself in the meta line, because two bars
+with identical leads would not tell a reader which is which.
+
+**Only one plays at a time.** Pressing the second bar puts the first back the
+way it was before starting the second, which is why `js/lyric-audio.js` keeps a
+clone of every bar rather than discarding the markup when it swaps. Two
+recordings of the same song talking over each other would be the obvious bug
+here and it is tested against.
+
+An automatic title match sent this page at the extended cut, because it is
+longer and the tie-breaker preferred length. The page says "Released 2024" and
+the extended cut was uploaded in 2026, so the pin is explicit now.
+
 ### Two auto-picked versions worth Jack's eye
 
-Where a title matched more than one SoundCloud upload the longer, non-demo
-version won. That chose **Only Human (Stripped)** over Only Human (Prod.
-Fabrizio), and **Safe & Sound (Reprise)** over Safe & Sound (Prod. kojo a. &
-Nicky Quinn). Both are guesses and either can be swapped by changing one
-`data-track` attribute on the page.
+Where a title still matches more than one upload the longer, non-demo version
+wins. That chose **Only Human (Stripped)** over Only Human (Prod. Fabrizio), and
+**Safe & Sound (Reprise)** over Safe & Sound (Prod. kojo a. & Nicky Quinn). Both
+are guesses and either can be swapped by changing one `data-track` attribute.
 
 ### Nine tracks are ad supported
 

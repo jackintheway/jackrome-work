@@ -78,6 +78,21 @@
     <section class="section">
       <p class="entry-note">Yeah we might do this, that, and the other thing. But the divine one within is always there, ready to welcome us to the love that&#x27;s waiting for us. This song was written by Jackintheway and Nikko Miles and was produced by Josh Grant.</p>
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="2386803399"
+              data-title="Grow (with Nikko Miles &amp; JGRANTBEATS)"
+              aria-label="Play Grow (with Nikko Miles &amp; JGRANTBEATS) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/grow.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 3:07</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">We go
 And we move
@@ -203,5 +218,6 @@ If you want</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>
