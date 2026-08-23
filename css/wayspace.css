@@ -310,6 +310,16 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .work-cover {
   display: block;
   width: 100%;
+  /* height:auto is load-bearing. The img carries width="600"
+     height="600" attributes so the browser can reserve the space
+     before the file arrives, and those attributes are presentational
+     hints that apply wherever author CSS leaves the property alone.
+     Without this line the hint set height to a flat 600px, both
+     dimensions were then specified, aspect-ratio was ignored, and
+     covers rendered 334x600 instead of square. Squares only came back
+     once the room held real artwork, because a placeholder tile has
+     no attributes to leak. Design uses this class too. */
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-bottom: var(--rule);

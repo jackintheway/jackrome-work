@@ -41,6 +41,23 @@ harness after any change to it:
   button does nothing at all. Audio deliberately never survives a
   navigation, so there is no cross-page state to test.
 
+- **Cover art is square, measured not assumed.** Assert
+  `width === height` on every `.work-cover`, at more than one viewport.
+  On 2026-08-23 they rendered 334x600 in Music while every other check
+  passed, including one asserting the covers loaded. The images carry
+  `width="600" height="600"` attributes so the browser can reserve
+  space before the file arrives; those are presentational hints, they
+  apply wherever author CSS leaves the property alone, and `.work-cover`
+  set width but not height. Both dimensions then counted as specified
+  and `aspect-ratio: 1 / 1` was ignored. `height: auto` is the fix and
+  is load-bearing.
+
+  The reason this survived the build: a placeholder tile is a `<div>`
+  with no attributes to leak, so the bug could not appear until the
+  room held real artwork. Design uses the same class, so it inherits
+  both the bug and the fix. **An image that loads is not an image that
+  is the right shape.** Assert geometry.
+
 Post-deploy still carries most of the weight, because redirects,
 headers, and clean URLs come from `netlify.toml` and exist only on
 Netlify.
