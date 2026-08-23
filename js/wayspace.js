@@ -61,23 +61,146 @@ const MUSIC = [
    when a visitor clicks, so YouTube is contacted at no other time.
    ============================================================ */
 const VIDEO = [
+
+  /* ---- Live performance ----
+     Video by form, music by nature. Filed here, with Music pointing
+     across, per the rule that a piece lives in the room of the form
+     it primarily takes. */
   {
-    title: "A video goes here",
-    meta: "What it is, and when",
-    thumb: null,
-    youtubeId: null,
+    title: "Supporting Wu-Tang at The Anthem",
+    meta: "Live performance, recap",
+    thumb: "/assets/img/wayspace/video/supporting-wu-tang-in-dc.jpg",
+    youtubeId: "xR7jo4R13iw",
     note: "",
-    crossRef: null,
-    placeholder: true
+    crossRef: { text: "The music is in Music", href: "/wayspace/music" }
   },
   {
-    title: "The 2022 Wayspace show",
-    meta: "Live performance",
-    thumb: null,
-    youtubeId: null,
-    note: "A live set is video by form and music by nature. It is filed here, and the Music room points across at it.",
-    crossRef: { text: "Also reached from Music", href: "/wayspace/music" },
-    placeholder: true
+    title: "Live at The Pocket, DC",
+    meta: "Wayspace album release show",
+    thumb: "/assets/img/wayspace/video/wayspace-album-release-show.jpg",
+    youtubeId: "7aSk3jFGKwM",
+    note: "The night the album came out.",
+    crossRef: { text: "Wayspace is in Music", href: "/wayspace/music" }
+  },
+  {
+    title: "Somewhere Somehow, at Sofar Washington",
+    meta: "Live session",
+    thumb: "/assets/img/wayspace/video/somewhere-somehow-at-sofar-sounds.jpg",
+    youtubeId: "cJBdDMDlxO0",
+    note: "",
+    crossRef: { text: "Lyrics are in Writing", href: "/wayspace/writing" }
+  },
+  {
+    title: "Headlining Baltimore Soundstage",
+    meta: "Live performance, recap",
+    thumb: "/assets/img/wayspace/video/headlining-baltimore-soundstage.jpg",
+    youtubeId: "X75WjyZtvpg",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Supporting Dumbfoundead at Soundstage",
+    meta: "Live performance, recap",
+    thumb: "/assets/img/wayspace/video/supporting-dumbfoundead-at-soundstage.jpg",
+    youtubeId: "hWz2W-lfp4M",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "First headlining show, sold out",
+    meta: "Live performance, recap",
+    thumb: "/assets/img/wayspace/video/first-headlining-show-sold-out.jpg",
+    youtubeId: "Fmub_hieutE",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Drexel Spring Jam",
+    meta: "Live performance, recap",
+    thumb: "/assets/img/wayspace/video/drexel-spring-jam.jpg",
+    youtubeId: "MdSYaaxTHAc",
+    note: "",
+    crossRef: null
+  },
+
+  /* ---- Music video ----
+     Artist prefixes are stripped from the published titles. Seven of
+     these went out as "Jahn Rome" and the rest as "Jackintheway", and
+     a room that is already Jack's does not need either name repeated
+     on every card. */
+  {
+    title: "I Wonder",
+    meta: "Music video",
+    thumb: "/assets/img/wayspace/video/i-wonder-music-video.jpg",
+    youtubeId: "ZgWYWtpDihQ",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Issues",
+    meta: "Music video",
+    thumb: "/assets/img/wayspace/video/issues-music-video.jpg",
+    youtubeId: "tlPH-ESOkcw",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Ready For More",
+    meta: "Music video",
+    thumb: "/assets/img/wayspace/video/ready-for-more-music-video.jpg",
+    youtubeId: "CZPfM8Ab-RE",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "In My Head",
+    meta: "Music video, vertical",
+    thumb: "/assets/img/wayspace/video/in-my-head-music-video.jpg",
+    youtubeId: "gmTUaUwfmkU",
+    note: "",
+    crossRef: { text: "On Wayspace, in Music", href: "/wayspace/music" }
+  },
+  {
+    title: "Raindrops",
+    meta: "Lyric video",
+    thumb: "/assets/img/wayspace/video/raindrops-lyric-video.jpg",
+    youtubeId: "NCgeeNG8KtI",
+    note: "",
+    crossRef: { text: "Lyrics are in Writing", href: "/wayspace/writing" }
+  },
+  {
+    title: "I Hope You'll Change",
+    meta: "Audio visualiser",
+    thumb: "/assets/img/wayspace/video/i-hope-youll-change-audio-visualizer.jpg",
+    youtubeId: "OMFNBe0LYbg",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Jahny",
+    meta: "Full EP stream, with lyrics",
+    thumb: "/assets/img/wayspace/video/jahny-full-album-visualizer-with-lyrics.jpg",
+    youtubeId: "N171NTRWvTc",
+    note: "The whole EP in one sitting, lyrics on screen.",
+    crossRef: { text: "Jahny is in Music", href: "/wayspace/music" }
+  },
+  {
+    title: "So Much For So Long",
+    meta: "Previews",
+    thumb: "/assets/img/wayspace/video/so-much-for-so-long-visualizer.jpg",
+    youtubeId: "34e8A5bchlc",
+    note: "",
+    crossRef: { text: "The release is in Music", href: "/wayspace/music" }
+  },
+
+  /* ---- Documentary ---- */
+  {
+    title: "Nocturnal: The Making of 24 Hours",
+    meta: "Documentary",
+    thumb: "/assets/img/wayspace/video/nocturnal-documentary.jpg",
+    youtubeId: "BZl5AH71kZM",
+    note: "",
+    crossRef: null
   }
 ];
 
