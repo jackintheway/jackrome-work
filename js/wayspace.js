@@ -62,143 +62,148 @@ const MUSIC = [
    ============================================================ */
 const VIDEO = [
 
-  /* ---- Live performance ----
-     Video by form, music by nature. Filed here, with Music pointing
-     across, per the rule that a piece lives in the room of the form
-     it primarily takes. */
-  {
-    title: "Supporting Wu-Tang at The Anthem",
-    meta: "Live performance, recap",
-    thumb: "/assets/img/wayspace/video/supporting-wu-tang-in-dc.jpg",
-    youtubeId: "xR7jo4R13iw",
-    note: "",
-    crossRef: { text: "The music is in Music", href: "/wayspace/music" }
-  },
+  /* Ordered newest first, by YouTube upload date scraped from each
+     watch page (oembed does not carry it). The dates live alongside
+     the titles in _source/video-titles.json for all 47 videos, so a
+     later room can reuse them without another pass.
+
+     One caveat worth holding: for a recap, the upload date is when
+     the video went up, not when the show happened. They are usually
+     close. The Pocket show is the exception, posted a year after the
+     album it celebrates.
+
+     Artist prefixes are stripped. Seven of these went out under Jahn
+     Rome, the moniker before Jackintheway. Per Jack: leave it out,
+     but do not correct it anywhere it still stands. Titles are just
+     the song titles. Where a piece is a collaboration the other
+     names belong on the card, which applies in Music rather than
+     here, since nothing in this room is one. */
+
   {
     title: "Live at The Pocket, DC",
-    meta: "Wayspace album release show",
+    meta: "Live performance, 2023",
     thumb: "/assets/img/wayspace/video/wayspace-album-release-show.jpg",
     youtubeId: "7aSk3jFGKwM",
-    note: "The night the album came out.",
+    note: "Headline performance to celebrate the Wayspace album release.",
     crossRef: { text: "Wayspace is in Music", href: "/wayspace/music" }
   },
   {
     title: "Somewhere Somehow, at Sofar Washington",
-    meta: "Live session",
+    meta: "Live session, 2022",
     thumb: "/assets/img/wayspace/video/somewhere-somehow-at-sofar-sounds.jpg",
     youtubeId: "cJBdDMDlxO0",
     note: "",
     crossRef: { text: "Lyrics are in Writing", href: "/wayspace/writing" }
   },
   {
-    title: "Headlining Baltimore Soundstage",
-    meta: "Live performance, recap",
-    thumb: "/assets/img/wayspace/video/headlining-baltimore-soundstage.jpg",
-    youtubeId: "X75WjyZtvpg",
-    note: "",
-    crossRef: null
-  },
-  {
-    title: "Supporting Dumbfoundead at Soundstage",
-    meta: "Live performance, recap",
-    thumb: "/assets/img/wayspace/video/supporting-dumbfoundead-at-soundstage.jpg",
-    youtubeId: "hWz2W-lfp4M",
-    note: "",
-    crossRef: null
-  },
-  {
-    title: "First headlining show, sold out",
-    meta: "Live performance, recap",
-    thumb: "/assets/img/wayspace/video/first-headlining-show-sold-out.jpg",
-    youtubeId: "Fmub_hieutE",
-    note: "",
-    crossRef: null
-  },
-  {
-    title: "Drexel Spring Jam",
-    meta: "Live performance, recap",
-    thumb: "/assets/img/wayspace/video/drexel-spring-jam.jpg",
-    youtubeId: "MdSYaaxTHAc",
-    note: "",
-    crossRef: null
-  },
-
-  /* ---- Music video ----
-     Artist prefixes are stripped from the published titles. Seven of
-     these went out as "Jahn Rome" and the rest as "Jackintheway", and
-     a room that is already Jack's does not need either name repeated
-     on every card. */
-  {
-    title: "I Wonder",
-    meta: "Music video",
-    thumb: "/assets/img/wayspace/video/i-wonder-music-video.jpg",
-    youtubeId: "ZgWYWtpDihQ",
-    note: "",
-    crossRef: null
-  },
-  {
-    title: "Issues",
-    meta: "Music video",
-    thumb: "/assets/img/wayspace/video/issues-music-video.jpg",
-    youtubeId: "tlPH-ESOkcw",
-    note: "",
-    crossRef: null
-  },
-  {
-    title: "Ready For More",
-    meta: "Music video",
-    thumb: "/assets/img/wayspace/video/ready-for-more-music-video.jpg",
-    youtubeId: "CZPfM8Ab-RE",
-    note: "",
-    crossRef: null
-  },
-  {
     title: "In My Head",
-    meta: "Music video, vertical",
+    meta: "Music video, 2022",
     thumb: "/assets/img/wayspace/video/in-my-head-music-video.jpg",
     youtubeId: "gmTUaUwfmkU",
     note: "",
     crossRef: { text: "On Wayspace, in Music", href: "/wayspace/music" }
   },
   {
-    title: "Raindrops",
-    meta: "Lyric video",
-    thumb: "/assets/img/wayspace/video/raindrops-lyric-video.jpg",
-    youtubeId: "NCgeeNG8KtI",
-    note: "",
-    crossRef: { text: "Lyrics are in Writing", href: "/wayspace/writing" }
-  },
-  {
     title: "I Hope You'll Change",
-    meta: "Audio visualiser",
+    meta: "Audio visualiser, 2020",
     thumb: "/assets/img/wayspace/video/i-hope-youll-change-audio-visualizer.jpg",
     youtubeId: "OMFNBe0LYbg",
     note: "",
     crossRef: null
   },
   {
+    title: "I Wonder",
+    meta: "Music video, 2019",
+    thumb: "/assets/img/wayspace/video/i-wonder-music-video.jpg",
+    youtubeId: "ZgWYWtpDihQ",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Headlining Baltimore Soundstage",
+    meta: "Live performance, 2019",
+    thumb: "/assets/img/wayspace/video/headlining-baltimore-soundstage.jpg",
+    youtubeId: "X75WjyZtvpg",
+    note: "",
+    crossRef: null
+  },
+  {
     title: "Jahny",
-    meta: "Full EP stream, with lyrics",
+    meta: "Full EP stream with lyrics, 2019",
     thumb: "/assets/img/wayspace/video/jahny-full-album-visualizer-with-lyrics.jpg",
     youtubeId: "N171NTRWvTc",
     note: "The whole EP in one sitting, lyrics on screen.",
     crossRef: { text: "Jahny is in Music", href: "/wayspace/music" }
   },
   {
+    title: "Raindrops",
+    meta: "Lyric video, 2018",
+    thumb: "/assets/img/wayspace/video/raindrops-lyric-video.jpg",
+    youtubeId: "NCgeeNG8KtI",
+    note: "",
+    crossRef: { text: "Lyrics are in Writing", href: "/wayspace/writing" }
+  },
+  {
+    title: "Supporting Wu-Tang at The Anthem",
+    meta: "Live performance, 2018",
+    thumb: "/assets/img/wayspace/video/supporting-wu-tang-in-dc.jpg",
+    youtubeId: "xR7jo4R13iw",
+    note: "",
+    crossRef: { text: "The music is in Music", href: "/wayspace/music" }
+  },
+  {
+    title: "Ready For More",
+    meta: "Music video, 2018",
+    thumb: "/assets/img/wayspace/video/ready-for-more-music-video.jpg",
+    youtubeId: "CZPfM8Ab-RE",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "First headlining show, sold out",
+    meta: "Live performance, 2018",
+    thumb: "/assets/img/wayspace/video/first-headlining-show-sold-out.jpg",
+    youtubeId: "Fmub_hieutE",
+    note: "",
+    crossRef: null
+  },
+  {
     title: "So Much For So Long",
-    meta: "Previews",
+    meta: "Previews, 2018",
     thumb: "/assets/img/wayspace/video/so-much-for-so-long-visualizer.jpg",
     youtubeId: "34e8A5bchlc",
     note: "",
     crossRef: { text: "The release is in Music", href: "/wayspace/music" }
   },
-
-  /* ---- Documentary ---- */
+  {
+    title: "Supporting Dumbfoundead at Soundstage",
+    meta: "Live performance, 2018",
+    thumb: "/assets/img/wayspace/video/supporting-dumbfoundead-at-soundstage.jpg",
+    youtubeId: "hWz2W-lfp4M",
+    note: "",
+    crossRef: null
+  },
   {
     title: "Nocturnal: The Making of 24 Hours",
-    meta: "Documentary",
+    meta: "Documentary, 2018",
     thumb: "/assets/img/wayspace/video/nocturnal-documentary.jpg",
     youtubeId: "BZl5AH71kZM",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Issues",
+    meta: "Music video, 2017",
+    thumb: "/assets/img/wayspace/video/issues-music-video.jpg",
+    youtubeId: "tlPH-ESOkcw",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "Drexel Spring Jam",
+    meta: "Live performance, 2016",
+    thumb: "/assets/img/wayspace/video/drexel-spring-jam.jpg",
+    youtubeId: "MdSYaaxTHAc",
     note: "",
     crossRef: null
   }
@@ -245,27 +250,84 @@ const DESIGN = [
    plainly rather than explained in prose on every entry.
    ============================================================ */
 const PODCASTS = [
+
+  /* WAYSPACE is Jack's own show, 45 episodes deep. These five are the
+     ones he pulled, newest first.
+
+     Episode links go to Apple Podcasts. The show is hosted on Anchor,
+     so its Spotify episode URLs resolve to creators.spotify.com, which
+     is the creator-facing page rather than somewhere to send a
+     listener. Apple's are clean, public, and open in a browser or an
+     app. Worth revisiting if Jack would rather be Spotify-first here
+     the way the Music room is.
+
+     Every episode also exists as video on the YouTube channel. Those
+     ids are in _source/video-titles.json if this room ever wants a
+     watch link beside the listen one. */
   {
-    title: "An episode goes here",
-    show: "The show it belongs to",
+    title: "These 8 Habits Made Me Creative Again",
+    show: "WAYSPACE",
     role: "Host",
-    date: "Date",
-    art: null,
-    listenHref: null,
+    date: "June 2025",
+    art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
+    listenHref: "https://podcasts.apple.com/us/podcast/these-8-habits-made-me-creative-again/id1571426340?i=1000712989433",
     note: "",
-    crossRef: null,
-    placeholder: true
+    crossRef: null
   },
   {
-    title: "A show that is not mine",
-    show: "Someone else's show",
-    role: "Producer",
-    date: "Date",
-    art: null,
-    listenHref: null,
-    note: "Work made for other people's shows belongs here too. The role tag is what keeps it clear whose show it is.",
-    crossRef: null,
-    placeholder: true
+    title: "5 Principles to Transform Your Relationships",
+    show: "WAYSPACE",
+    role: "Host",
+    date: "June 2025",
+    art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
+    listenHref: "https://podcasts.apple.com/us/podcast/5-principles-to-transform-your-relationships/id1571426340?i=1000712015973",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "How to Be a Peace Giver",
+    show: "WAYSPACE",
+    role: "Host",
+    date: "June 2025",
+    art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
+    listenHref: "https://podcasts.apple.com/us/podcast/how-to-be-a-peace-giver/id1571426340?i=1000710770592",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "The Five Question Test",
+    show: "WAYSPACE",
+    role: "Host",
+    date: "May 2025",
+    art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
+    listenHref: "https://podcasts.apple.com/us/podcast/the-five-question-test/id1571426340?i=1000707857432",
+    note: "",
+    crossRef: null
+  },
+  {
+    title: "The Anchor List: A Tool for Grounding",
+    show: "WAYSPACE",
+    role: "Host",
+    date: "April 2025",
+    art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
+    listenHref: "https://podcasts.apple.com/us/podcast/the-anchor-list-a-tool-for-grounding/id1571426340?i=1000702326515",
+    note: "",
+    crossRef: null
+  },
+
+  /* Someone else's show, which is exactly what the role tag is for.
+     Hosted for Tribly, and also on /production, where the same work is
+     framed as something a client can hire rather than something Jack
+     made. */
+  {
+    title: "Crossing The Bridge",
+    show: "Tribly",
+    role: "Host",
+    date: "2023",
+    art: "/assets/img/wayspace/podcasts/crossing-the-bridge.jpg",
+    listenHref: "https://open.spotify.com/show/05E8kMGjWNOmRdK183o3s2",
+    note: "Hosted, recorded and edited for Tribly.",
+    crossRef: { text: "Also on Production", href: "/production" }
   }
 ];
 
