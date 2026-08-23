@@ -192,6 +192,58 @@ that does not exist yet.
 
 ---
 
+## The Writing room and the lyric pages (built 2026-08-23)
+
+Twelve lyrics and fourteen shorts.
+
+**The lyrics are the Wayspace album, all twelve tracks, each on its own
+page** at `/wayspace/writing/{slug}`. The words came from
+`_source/music/wayspace-album-metadata/`, which also carries BPM, key,
+credits, ISRC and Jack's own note on each track. That is why this set
+came first: it is the only one where the lyric, the release and a lyric
+video all already exist.
+
+**The twelve lyric videos live on the lyric pages, not in Video.**
+Twelve near identical cards from one album would have buried the rest of
+that room, and a lyric video belongs beside its words. Each page links
+out to its video and across to the release in Music.
+
+**Each lyric page carries its own share card**, per the standing rule.
+`tools/og/card-lyric-*.html` generates them from one template: Writing's
+brown, the album cover, the track title. 24 cards render now.
+
+**Section labels do not exist in the source.** The template assumed a
+"Verse" or "Chorus" label above every block, and that label's margin was
+what separated stanzas. The album metadata has no such markers, so
+`.lyric-body + .lyric-body` now supplies the gap where no label does.
+
+**The shorts have no page of their own**, because the piece is the video
+rather than a text with a video attached. Titles are the published ones
+with hashtags stripped: a hashtag is a distribution tactic, not part of
+the writing.
+
+### Still to do here
+
+The other 41 lyric files in `_source/writing/lyrics/` are unbuilt. Nine
+are Feivel Speaks, which has audio in `assets/audio/` for two tracks and
+a Lyrics button already pointing at this room. The rest are a mix,
+including unreleased songs, which belong here per the room rules and
+have no release to link to.
+
+---
+
+## A note on the lyrics themselves
+
+Several carry explicit language. Salt is the clearest case. This is
+Jack's work and it publishes as written; do not sanitise a lyric.
+
+Worth holding rather than acting on: `jackrome.work` also carries
+`/production` and `/ai-enablement`, which sell to nonprofits and to the
+Foundation for Inner Peace, and the nav puts both one click from these
+pages. Raised with Jack 2026-08-23. His call, and no change was made.
+
+---
+
 ## Open items, none blocking
 
 - `/creative-portfolio` 404s and now wants a 301 to `/wayspace` in `netlify.toml` at cutover. The scope question resolved toward two pages, so this path has a successor.

@@ -779,6 +779,14 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   white-space: pre-line;
   margin: 0;
 }
+/* Two stanzas in a row need a gap between them. The template always
+   put a section label above each block, and that label's margin was
+   doing the separating. The album lyrics carry no verse and chorus
+   markers, so consecutive stanzas landed flush against each other and
+   a whole song read as one block. This puts the space back only where
+   there is no label to supply it. */
+.lyric-body + .lyric-body { margin-top: var(--space-5); }
+
 .lyric-section {
   font-family: var(--font-heading);
   font-weight: var(--fw-bold);

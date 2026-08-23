@@ -557,23 +557,261 @@ const SPEAKING = [
    its own page too, without the player.
    ============================================================ */
 const WRITING = [
+
+  /* Twelve lyrics, then fourteen shorts.
+
+     THE LYRICS ARE THE WAYSPACE ALBUM, all twelve tracks, each on its
+     own page. The words came from the album metadata in
+     _source/music/wayspace-album-metadata/, which also carries BPM,
+     key, credits and Jack's own note on each track. That is why these
+     twelve came first: they are the only set where the lyric, the
+     release and a lyric video all already exist.
+
+     Every lyric page links out to its lyric video and across to the
+     release in Music. Those twelve videos are deliberately not in the
+     Video room. Twelve near identical cards from one album would bury
+     the rest of that room, and a lyric video belongs beside its words.
+
+     THE SHORTS ARE WRITING DELIVERED AS VIDEO. No page of their own,
+     because the piece is the video rather than a text with a video
+     attached. Titles are the published ones with hashtags stripped: a
+     hashtag is a distribution tactic, not part of the writing.
+
+     Newest first, like every other room. */
+
   {
-    title: "A lyric goes here",
+    title: "Welcome Back",
     kind: "Lyric",
-    meta: "The release it belongs to",
-    href: "/wayspace/writing/example-lyric",
-    note: "Every lyric page carries the track it belongs to, so the words and the sound stay together.",
-    crossRef: { text: "The release lives in Music", href: "/wayspace/music" },
-    placeholder: true
+    meta: "Wayspace · 2022 · Track 1",
+    href: "/wayspace/writing/welcome-back",
+    note: "",
+    crossRef: null,
+    watchHref: null
   },
   {
-    title: "A piece of writing goes here",
-    kind: "Writing",
-    meta: "What it is, and when",
+    title: "How It Ends",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 2",
+    href: "/wayspace/writing/how-it-ends",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Extra",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 3",
+    href: "/wayspace/writing/extra",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "What Have I Done?",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 4",
+    href: "/wayspace/writing/what-have-i-done",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Did You Forget?",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 5",
+    href: "/wayspace/writing/did-you-forget",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Salt",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 6",
+    href: "/wayspace/writing/salt",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Little Things",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 7",
+    href: "/wayspace/writing/little-things",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Grow",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 8",
+    href: "/wayspace/writing/grow",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Body & The Beast",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 9",
+    href: "/wayspace/writing/body-and-the-beast",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Try",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 10",
+    href: "/wayspace/writing/try",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "All In My Head",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 11",
+    href: "/wayspace/writing/all-in-my-head",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "Somewhere Somehow",
+    kind: "Lyric",
+    meta: "Wayspace · 2022 · Track 12",
+    href: "/wayspace/writing/somewhere-somehow",
+    note: "",
+    crossRef: null,
+    watchHref: null
+  },
+  {
+    title: "You are safe with me",
+    kind: "Short",
+    meta: "Short video · 2023",
     href: null,
     note: "",
     crossRef: null,
-    placeholder: true
+    watchHref: "https://www.youtube.com/shorts/R5sqonZ1TJo"
+  },
+  {
+    title: "Your healing will heal others effortlessly",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/tI53UfuMBRw"
+  },
+  {
+    title: "How to remind yourself that you are safe",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/g2j0KVgxiSI"
+  },
+  {
+    title: "How to forgive someone",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/3bcM5qqiSk0"
+  },
+  {
+    title: "Why community is so important",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/H4anCmcUn4c"
+  },
+  {
+    title: "Stop tinkering during meditation",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/31cCbUfNFUA"
+  },
+  {
+    title: "One day you won’t need discipline",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/nmjMIbqmzAM"
+  },
+  {
+    title: "Make time your friend",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/_C-b1dG-2EM"
+  },
+  {
+    title: "When should you take advice?",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/81ZxYg-XmVA"
+  },
+  {
+    title: "This is devotional non-duality",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/SCm2mkMisck"
+  },
+  {
+    title: "How your keys are inside you",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/k4ifKXOWTXc"
+  },
+  {
+    title: "How to handle the gross parts of yourself",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/_EsHj3HlCeg"
+  },
+  {
+    title: "This is what you deserve",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/ikOiO346Gw8"
+  },
+  {
+    title: "A poem just for you",
+    kind: "Short",
+    meta: "Short video · 2023",
+    href: null,
+    note: "",
+    crossRef: null,
+    watchHref: "https://www.youtube.com/shorts/a71z3AvlQN0"
   }
 ];
 
@@ -664,8 +902,12 @@ function musicCard(item) {
     ? `<button class="play-btn" data-src="${escapeHtml(item.track.src)}" data-title="${escapeHtml(item.track.title)}">Play</button>`
     : "";
 
+  /* The label depends on whether Play is standing next to it. On its
+     own, "Listen" is the plain word for the only thing the card does.
+     Beside a Play button it would read as a second way to do the same
+     thing, so it names the destination instead: Spotify. Per Jack. */
   const listen = item.streams.length
-    ? `<a class="listen-btn" href="${escapeHtml(item.streams[0].href)}" target="_blank" rel="noopener">Listen</a>`
+    ? `<a class="listen-btn" href="${escapeHtml(item.streams[0].href)}" target="_blank" rel="noopener">${item.track ? "Spotify" : "Listen"}</a>`
     : "";
 
   return `
@@ -780,6 +1022,13 @@ function writingEntry(item) {
     ? `<a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a>`
     : escapeHtml(item.title);
 
+  /* A short has no page of its own, because the piece is the video
+     rather than a text with a video attached. Black, because it
+     leaves the site: the same rule as Listen in the Music room. */
+  const watch = item.watchHref
+    ? `<a class="listen-btn" href="${escapeHtml(item.watchHref)}" target="_blank" rel="noopener">Watch</a>`
+    : "";
+
   return `
     <li class="entry">
       <div class="entry-body">
@@ -788,7 +1037,7 @@ function writingEntry(item) {
         <h3 class="entry-title">${title}</h3>
         <p class="entry-meta">${escapeHtml(item.meta)}</p>
         ${item.note ? `<p class="entry-note">${escapeHtml(item.note)}</p>` : ""}
-        <div class="entry-actions">${crossRef(item)}</div>
+        <div class="entry-actions">${watch}${crossRef(item)}</div>
       </div>
     </li>
   `;
