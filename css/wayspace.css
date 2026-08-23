@@ -599,7 +599,12 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-strong);
-  background: var(--surface-card);
+  /* A step down from the white card behind it, so a row of tags reads
+     as a group of objects rather than as outlines drawn on the card.
+     --bg-sunken is the token that already means inset, and it keeps
+     the tags warm rather than grey. Uniform on purpose: the count is
+     the argument, so no tag competes with its neighbours. */
+  background: var(--bg-sunken);
   border: var(--border-hair) solid var(--outline);
   border-radius: var(--radius-pill);
   padding: 2px var(--space-3);
