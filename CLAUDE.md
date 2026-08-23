@@ -311,6 +311,18 @@ words.
 
 ---
 
+## Pinned for later: the merch store
+
+`https://wayspace-shop.fourthwall.com/` is Jack's store. Raised 2026-08-23 and
+deliberately parked. His words: "we can put a pin in this for CLAUDE.md to come
+back to, not even required for this build."
+
+Three domains already forward to Fourthwall (`jackintheway.me`,
+`jackintheway.store`, `wayspace.store`) and those forwards survive independently
+of this site, so nothing about the store is on the cutover path. Revisit after.
+
+---
+
 ## Open items, none blocking
 
 - `/creative-portfolio` 404s and now wants a 301 to `/wayspace` in `netlify.toml` at cutover. The scope question resolved toward two pages, so this path has a successor.
