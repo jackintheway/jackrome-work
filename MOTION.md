@@ -117,18 +117,39 @@ over the room list, respecting `prefers-reduced-motion`. That open item is where
 scroll-linked motion lives. Nothing new needs inventing to make room for it.
 
 **What makes this Jack's rather than borrowed: the artwork is already built in depth
-planes.** `_source/artwork/wayspace-cover.JPEG` separates cleanly into layers that
+planes.** `_source/cover-artwork/wayspace-cover.JPEG` separates cleanly into layers that
 already sit at different distances:
 
-| Plane | Contents |
+**Found 2026-08-22 at `_source/design/wayspace-animated-artwork-pieces/`.** The
+planes are not something to cut out of the cover. They already exist as separated
+PNGs, every one 1500x1500 with an alpha channel, all registered to the same canvas,
+so they stack directly with no alignment work.
+
+| File | Plane |
 |---|---|
-| Sky | The orange to yellow gradient. Furthest back, barely moves. |
-| Trees | The two green and yellow figures with eyes, flanking left and right. |
-| Spire | The blue central tower. |
-| Bridge | The curved blue and yellow span across the middle. |
-| Flower | The yellow bloom and the spiral carrying the wordmark. |
-| Water | The blue river and the buoys, nearest the viewer. |
-| Butterflies | Scattered across at least three different depths. |
+| `BACKGROUND.png` | Sky. Furthest back, barely moves. 3.7 MB, the only heavy one. |
+| `TREES.png` | The flanking figures with eyes. |
+| `RIVER&TREES.png` | Water and trees together. Overlaps `TREES.png`, so pick one. |
+| `BRIDGE.png` | The curved span across the middle. |
+| `SPIRAL.png` | The spiral carrying the wordmark. |
+| `FLOWER.png` | The yellow bloom. |
+| `WAYSPACE.png` | The wordmark itself, separate from the spiral. |
+| `JACK.png` | The figure. |
+| `SWIMMERS.png` | In the water. |
+| `BFLY-L1..L5`, `BFLY-R1..R4` | Nine butterflies, individually separated. |
+| `ALL-BUTTERFLIES.png` | All nine flattened, if they move as one. |
+
+Two notes against the earlier description in this file. There is no separate spire
+layer, so the blue tower is either part of `BACKGROUND.png` or is `SPIRAL.png`; check
+before building. And `SWIMMERS.png` and `JACK.png` were not in the original list, so
+there are more planes available than were planned for.
+
+Excluding the background the whole set is under 2 MB, which is cheap enough to ship
+every layer at full resolution.
+
+`SONG-ASSETS/` alongside it holds the twelve Wayspace track titles as 1500x1500
+transparent PNGs. Those belong to the visualizers rather than this piece, but they
+are the same mechanic and may be useful in the Music room.
 
 Jack has already animated exactly these planes, in Premiere, for the album
 visualizers: the spiral turning, the trees advancing, the water receding. So this is
@@ -188,16 +209,22 @@ Revisit after the cutover holds.
 
 ## Open questions
 
-1. **Is the puzzle art drawn fresh, or derived from the album cover?** `CLAUDE.md`
-   currently says drawn as one puzzle and pulled apart. The cover's existing planes
-   suggest a different piece of work, possibly a better one, since those layers are
-   already composed and already proven in the visualizers. Jack's call, and the two
-   answers lead to different asset work.
+1. ~~**Is the puzzle art drawn fresh, or derived from the album cover?**~~ **Answered
+   2026-08-22: neither.** The puzzle already exists as a finished logo family at
+   `_source/design/puzzle-logo-files/`: an Illustrator master, nine PSDs, and exports
+   in BW, flat colour, and gradient at four sizes each, including `Wayspace-3D-Pieces`
+   and `Puzzle-Pieces-Trio`. It was drawn as one puzzle and pulled apart years ago.
+   The site already ships two members of this family as `assets/img/wayspace-straight.svg`
+   and `assets/puzzle-single.svg`. This is an export job, not an illustration job.
 2. **Do the six room pages get any motion, or only the landing?** The argument for
    landing only is that the rooms are for looking at work, and the work should be the
    thing that moves.
-3. **Are the visualizer cuts a reference or a source?** If the Premiere project still
-   has the layers separated, the assets may already exist.
+3. ~~**Are the visualizer cuts a reference or a source?**~~ **Answered 2026-08-22:
+   source.** See the manifest above. Per Jack, `_source/design/the-wayspace-tool-pack/spaceboat/materials/`
+   is the same mechanic with different graphics, so the technique is proven twice over
+   in his own work. The Premiere project is not needed to build this: it holds timing
+   for a fixed timeline, and the web version is driven by scroll position instead. The
+   published visualizers are the reference for how far each plane should travel.
 4. ~~The one-sentence belief per page.~~ **Answered 2026-08-22.** Jack's answer
    was site-wide rather than per page, and it is recorded in `CLAUDE.md` under
    "What the visitor must believe." Short form: safety first, capability second.

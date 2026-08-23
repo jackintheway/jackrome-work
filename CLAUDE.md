@@ -347,6 +347,40 @@ change would satisfy one and not the other, the change is wrong.
 
 ---
 
+## The rooms are not one to one (settled 2026-08-22, with Jack)
+
+The instinct when building Wayspace is to assume a release appears in Music, its
+cover appears in Design, and its lyrics appear in Writing, all matching up. They do
+not, and building as though they do would either pad the rooms or hide good work.
+
+Per Jack, the three sets overlap but are independent:
+
+- **Some cover art is portfolio worthy for music the room should not feature.** The
+  design stands on its own even where the release does not belong on the site.
+- **Some releases belong in Music but their cover art is not design portfolio work.**
+  Those use the 640px Spotify pulls and never appear in Design.
+- **Some lyrics are from unreleased songs.** They still belong in Writing. There is
+  no release to link to and that is fine.
+
+So each room is curated on its own terms. `crossRef` connects entries where a real
+connection exists, rather than every room mirroring every other.
+
+Practical consequence for the build: do not generate a Design entry from a Music
+entry, or vice versa. Three separate arrays, populated by hand from what is actually
+good, and cross-referenced afterwards.
+
+### Client work can be named
+
+Settled 2026-08-22. Everything in `_source/client-work/` is public, published on
+YouTube or a live client site, with Jack either credited or under no agreement
+restricting him from claiming it. That explicitly includes the Foundation for Inner
+Peace material. So `/production` names clients: Foundation for Inner Peace, Potter's
+Guild of Frederick, Tribly, Awakening Mind Films, Center for Awakening, and Hands On
+Health Acupuncture. Named clients are the strongest proof a service page carries, and
+the links make the attribution self evident anyway.
+
+---
+
 ## Every page ships with link previews
 
 **Any page created in this project has Open Graph tags and its own share image. This is not optional and it is not a polish-pass item.**
