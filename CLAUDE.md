@@ -446,6 +446,104 @@ survives the downscale. Sources are 1920x1920 at about 6 MB each in
 
 ---
 
+## Audio on the lyric pages (built 2026-08-23)
+
+**Self hosting was ruled out first, and that is what made everything else
+possible.** Three MP3s already cost 20 MB of `assets/`, and `race-day.mp3` alone
+is 12 MB. Sixty-two playable lyric pages would be roughly 300 MB in a repo
+Netlify redeploys on every push. Jack: "the only way we would give every lyric
+page a way to play music would be hosting the music elsewhere, NOT in the repo."
+
+### The shape: a facade, then a SoundCloud player
+
+Chosen by Jack on 2026-08-23 after comparing four options in a real browser.
+An 88px bar under the hero saying **"Click play to listen"** with the service
+and duration under it, a 64px thumbnail, and a play glyph. Click it and the bar
+is replaced by the SoundCloud widget, already playing.
+
+**The whole bar is a `<button>`, so the text starts the song too.** Jack asked
+for that specifically.
+
+Widget parameters, all confirmed live: `color=#000000` per Jack,
+`auto_play=true` because the click is the gesture, `hide_related=true` and
+`show_teaser=false` which together are what answer "no auto-play after", and
+`show_comments=false`.
+
+**The thumbnail is self hosted** at `/assets/img/wayspace/writing/`, 32 files at
+128px for 244 KB total. It has to be: pulling it from SoundCloud's CDN would
+contact a third party on page load, which is exactly what the facade exists to
+prevent.
+
+### Two things Jack proposed that do not work, and what replaced them
+
+**The background tab.** His idea was to open the track on SoundCloud in a new
+tab while keeping the reader on the site, so the play button escaped embed
+constraints. Browsers do not permit it. `window.open` takes focus by design,
+because that is how popunder ads worked, and audio in a background tab is
+throttled regardless. **The facade delivers what the idea was reaching for**:
+nothing loads until they ask, and nobody leaves the page.
+
+**Spotify embeds for the Wayspace album.** Jack suggested these for the tracks
+SoundCloud does not have. A Spotify embed serves a **30 second preview** to a
+logged out visitor, and prints a "Preview" badge next to the title saying so.
+Most portfolio visitors are logged out. This is the same finding already
+recorded under "Decisions: creative portfolio" from 2026-08-15, reached
+independently a second time, and it fails Jack's own requirement that a person
+can play the full track.
+
+### Where the 62 lyric pages actually stand
+
+Measured 2026-08-23 against Jack's SoundCloud (74 tracks) and all 12 Spotify
+releases in `_source/music/STREAMS.md`.
+
+| | Count | What ships |
+|---|---|---|
+| On SoundCloud | **32** | The listen bar, full playback |
+| Spotify only, no SoundCloud | **16** | **Nothing yet. Jack's decision.** |
+| Nowhere | **14** | An `Unreleased` flag in the hero |
+
+**The 16 are the open question.** Fifteen are the Wayspace album and its deluxe;
+the odd ones out are RACE DAY, Still Distracted, Thank God I Found You, The Best
+and Drop The Gun. The clean fix is Jack uploading those to SoundCloud, which
+makes one mechanic serve the whole site. The alternatives are a "Listen on
+Spotify" link that leaves the site, or a preview embed that pretends to be a
+player. **Do not ship the preview embed.**
+
+Track lists for every Spotify release, including per-track IDs, can be pulled
+from `https://open.spotify.com/embed/album/{id}` which carries a `__NEXT_DATA__`
+JSON payload with a `trackList`. No API key needed. The Wayspace deluxe carries
+25 tracks and is where `Saw` and `Blurry` come from, which explains those two
+loose covers in `_source/cover-artwork/`.
+
+### Two auto-picked versions worth Jack's eye
+
+Where a title matched more than one SoundCloud upload the longer, non-demo
+version won. That chose **Only Human (Stripped)** over Only Human (Prod.
+Fabrizio), and **Safe & Sound (Reprise)** over Safe & Sound (Prod. kojo a. &
+Nicky Quinn). Both are guesses and either can be swapped by changing one
+`data-track` attribute on the page.
+
+### Nine tracks are ad supported
+
+`monetization_model: AD_SUPPORTED` on nine uploads, six of which have lyric
+pages: I Was Built For This Place, Little Things, Try, both Only Humans, and
+Headed Home. SoundCloud can run a pre-roll on those. Jack knows, opted in
+deliberately, and said to leave it: "That's okay. we leave it for now and I'll
+look into that later."
+
+### The typo
+
+`do-your-hear-that` shipped as a slug and as a visible title. Fixed to
+`do-you-hear-that` and "Do You Hear That?" across the page, the Writing array,
+the share card source and the rendered card, with a 301 in `netlify.toml` so the
+old path keeps working.
+
+**"The Help" and "Help?" are different songs.** Per Jack: Help? is a 2017 single
+that is not on the music page at all, and he may bring the 2017 tracks in later.
+The fuzzy matcher paired them and it was wrong. `the-help` is Unreleased.
+
+---
+
 ## Pinned for later: the merch store
 
 `https://wayspace-shop.fourthwall.com/` is Jack's store. Raised 2026-08-23 and

@@ -77,6 +77,21 @@
 
     <section class="section">
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="1968884987"
+              data-title="The Wasp"
+              aria-label="Play The Wasp on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/the-wasp.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 3:04</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">I came out of my mom with a blanket of anxious damaged thoughts
 Framed each situation I fought as a chance I&#x27;d separate and be lost
@@ -152,5 +167,6 @@ But right now I need to breathe</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

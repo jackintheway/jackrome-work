@@ -1058,10 +1058,10 @@ const WRITING = [
     watchHref: null
   },
   {
-    title: "\"Do Your Hear That\"",
+    title: "\"Do You Hear That?\"",
     kind: "Lyric",
     meta: "Released 2021",
-    href: "/wayspace/writing/do-your-hear-that",
+    href: "/wayspace/writing/do-you-hear-that",
     note: "",
     crossRef: null,
     watchHref: null

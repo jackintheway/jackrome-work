@@ -78,6 +78,21 @@
     <section class="section">
 
       <p class="lyric-notice">This song contains explicit language.</p>
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="1968885083"
+              data-title="Ribbons"
+              aria-label="Play Ribbons on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/ribbons.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:52</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">Lyrics:</p>
         <p class="lyric-body">I really felt cut to ribbons
@@ -195,5 +210,6 @@ Never noticing your Voice that was leading me back</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

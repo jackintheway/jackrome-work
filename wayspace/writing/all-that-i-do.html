@@ -77,6 +77,21 @@
 
     <section class="section">
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="1968884719"
+              data-title="All That I Do"
+              aria-label="Play All That I Do on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/all-that-i-do.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:27</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">Say what you feel you don&#x27;t gotta be distant
 I will apologize first then listen
@@ -178,5 +193,6 @@ It&#x27;s all that I do</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

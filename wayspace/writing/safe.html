@@ -77,6 +77,21 @@
 
     <section class="section">
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="1968884799"
+              data-title="Safe"
+              aria-label="Play Safe on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/safe.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 3:58</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">I saw Him I saw Him
 I saw Him I saw Him</p>
@@ -194,5 +209,6 @@ I think we got there already</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

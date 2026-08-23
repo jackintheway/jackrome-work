@@ -66,6 +66,15 @@
   to = "/ai-enablement"
   status = 301
 
+# A lyric page shipped with a typo in its slug: "do-your-hear-that"
+# rather than "do-you-hear-that". Fixed 2026-08-23. The old path was
+# live on staging, so it keeps working rather than 404ing at anyone who
+# saved it.
+[[redirects]]
+  from = "/wayspace/writing/do-your-hear-that"
+  to = "/wayspace/writing/do-you-hear-that"
+  status = 301
+
 # Working notes and project instructions are not part of the site.
 # force is required: without it a real file at this path wins over the
 # redirect rule, and the markdown gets served as plain text.

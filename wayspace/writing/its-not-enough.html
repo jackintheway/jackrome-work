@@ -77,6 +77,21 @@
 
     <section class="section">
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="558735096"
+              data-title="It&#x27;s Not Enough (Prod. Ibrahim &amp; Fabrizio)"
+              aria-label="Play It&#x27;s Not Enough (Prod. Ibrahim &amp; Fabrizio) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/its-not-enough.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 3:08</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">If validation’s what you seek, well then you got it from me
 I was taught to blame assault on someone’s outfit or she
@@ -158,5 +173,6 @@ Then it’s what you need</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

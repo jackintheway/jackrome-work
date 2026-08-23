@@ -77,6 +77,21 @@
 
     <section class="section">
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="1096780930"
+              data-title="Round &amp; Round"
+              aria-label="Play Round &amp; Round on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/round-n-round.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:15</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">It go round and round
 It go round and round</p>
@@ -148,5 +163,6 @@ It go round and round</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

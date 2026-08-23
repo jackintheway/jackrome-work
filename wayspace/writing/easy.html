@@ -77,6 +77,21 @@
 
     <section class="section">
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="558733743"
+              data-title="Easy (Prod. Tülpa, Fabrizio &amp; Jahn Rome)"
+              aria-label="Play Easy (Prod. Tülpa, Fabrizio &amp; Jahn Rome) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/easy.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:37</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">I know you&#x27;ve got your reasons
 I know you&#x27;re falling hard
@@ -151,5 +166,6 @@ I knew that it wouldn&#x27;t be easy, yeah</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

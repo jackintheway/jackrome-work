@@ -77,6 +77,21 @@
 
     <section class="section">
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="558732813"
+              data-title="Way Out (Prod. Fabrizio &amp; Jahn Rome)"
+              aria-label="Play Way Out (Prod. Fabrizio &amp; Jahn Rome) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/way-out.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:24</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">Now I don&#x27;t know what you want to be
 But it feels like you&#x27;re falling down
@@ -141,5 +156,6 @@ Maybe it&#x27;s because we didn&#x27;t move</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

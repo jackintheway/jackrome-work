@@ -78,6 +78,21 @@
     <section class="section">
       <p class="entry-note">It&#x27;s the little things. Slow down and pay attention. This song was written by Jackintheway and produced by sensu, nanimal, tiem and 3astman.</p>
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="949044484"
+              data-title="Little Things (Prod. sensu, nanimal &amp; tiem)"
+              aria-label="Play Little Things (Prod. sensu, nanimal &amp; tiem) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/little-things.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 3:08</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">You got me with the little things
 You got me even when I wasn’t seeing the signs
@@ -184,5 +199,6 @@ You got me even when I wasn’t seeing the signs</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

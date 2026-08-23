@@ -1162,6 +1162,103 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 }
 
 /* ============================================================
+   THE LYRIC PAGE'S LISTEN BAR
+
+   A facade, not a player. Nothing reaches SoundCloud until this is
+   pressed, and the artwork on it is self hosted for the same reason.
+   See js/lyric-audio.js for why this shape won over the alternatives.
+
+   Sized so it reads as a doorway to the song rather than as the
+   subject of the page. The lyric underneath is the subject.
+   ============================================================ */
+.listen-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 56ch;          /* the lyric sheet's measure, so they line up */
+  text-align: left;
+  font: inherit;
+  color: var(--text-strong);
+  background: var(--surface-card);
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-3);
+  margin: 0 0 var(--space-7);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.listen-bar:hover,
+.listen-bar:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--elevation-raised);
+}
+.listen-art {
+  width: 64px;
+  height: 64px;
+  display: block;
+  border: var(--border-hair) solid var(--outline);
+  background: var(--bg-well);
+  flex: none;
+}
+.listen-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);      /* the two lines were touching without this */
+  min-width: 0;
+}
+.listen-lead {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body);
+  line-height: var(--lh-snug);
+}
+.listen-meta {
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  line-height: var(--lh-snug);
+}
+/* Pushed to the far end and kept there. margin-left:auto rather than
+   a spacer element, so the row still collapses correctly at 390px. */
+.listen-play {
+  margin-left: auto;
+  flex: none;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0 var(--space-3);
+  color: var(--text-strong);
+}
+/* The widget that replaces the bar. Same measure, same margin, so the
+   page does not jump sideways when it swaps in. */
+.listen-player {
+  display: block;
+  width: 100%;
+  max-width: 56ch;
+  border: 0;
+  margin: 0 0 var(--space-7);
+}
+
+/* ---- Unreleased ----
+   Fourteen lyric pages have no recording on SoundCloud or Spotify.
+   Rather than leave a reader wondering where the song is, the page
+   says so. Yellow because it is a note about the work, not a warning
+   about it. */
+.flag-unreleased {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  background: var(--ws-yellow);
+  color: var(--ws-black);
+  border: var(--border-hair) solid var(--outline);
+  padding: var(--space-1) var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* ============================================================
    RESPONSIVE
    The requirement is 390px with no horizontal scroll.
    ============================================================ */
@@ -1186,6 +1283,12 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   .tool-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .singles-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .step + .step { margin-top: var(--space-7); padding-top: var(--space-7); }
+
+  /* The play glyph keeps its tap target but gives back the side
+     padding, which is what stops the two text lines from wrapping
+     into four on a narrow phone. */
+  .listen-play { padding: 0 var(--space-1); }
+  .listen-art { width: 56px; height: 56px; }
 
   .ws-hero { padding: var(--space-7) var(--space-4); }
   .room-hero { padding: var(--space-7) var(--space-4); }

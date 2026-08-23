@@ -78,6 +78,21 @@
     <section class="section">
 
       <p class="lyric-notice">This song contains explicit language.</p>
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="706262560"
+              data-title="Puddles (Prod. Josh Grant)"
+              aria-label="Play Puddles (Prod. Josh Grant) on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/puddles.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:08</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">If I ain’t there for my people, then what the f*ck am I worth?
 Sometimes I feel like my friendship is just a part of your curse
@@ -147,5 +162,6 @@ But I’ve seen you with meaning, I know</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>

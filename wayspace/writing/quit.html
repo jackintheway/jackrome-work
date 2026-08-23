@@ -77,6 +77,21 @@
 
     <section class="section">
 
+      <!-- The listen bar. A facade: nothing reaches SoundCloud until
+           this is pressed, and the artwork is self hosted so the page
+           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <button class="listen-bar" type="button"
+              data-track="892227526"
+              data-title="Quit (Prod. mosu) [demo]"
+              aria-label="Play Quit (Prod. mosu) [demo] on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/quit.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Click play to listen</span>
+          <span class="listen-meta">SoundCloud &middot; 2:18</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
       <div class="lyric-sheet">
         <p class="lyric-body">Maybe I’ll quit after this one
 Maybe I’ll leave after this one
@@ -155,5 +170,6 @@ If I could tell you I would but we’re just the parts in a play</p>
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/lyric-audio.js" defer></script>
 </body>
 </html>
