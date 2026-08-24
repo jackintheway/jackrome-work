@@ -542,12 +542,26 @@ An automatic title match sent this page at the extended cut, because it is
 longer and the tie-breaker preferred length. The page says "Released 2024" and
 the extended cut was uploaded in 2026, so the pin is explicit now.
 
-### Two auto-picked versions worth Jack's eye
+### Only Human carries two bars
 
-Where a title still matches more than one upload the longer, non-demo version
-wins. That chose **Only Human (Stripped)** over Only Human (Prod. Fabrizio), and
-**Safe & Sound (Reprise)** over Safe & Sound (Prod. kojo a. & Nicky Quinn). Both
-are guesses and either can be swapped by changing one `data-track` attribute.
+Same arrangement as Ribbons, and for the same reason. Jack on 2026-08-23: the
+original is the one credited to Fabrizio, and the stripped cut is the alternate,
+so both belong on the page. The first bar is **Only Human** (id `774148888`,
+3:49) with the room's usual lead. The second is **Only Human (Stripped)** (id
+`783771448`, 2:51), reading "Or the stripped version" and naming itself in the
+meta line.
+
+The producer credit is dropped from the visible copy on the first bar. It is a
+credit, not a version name, and the page only needs to tell a reader which of
+two recordings they are about to hear.
+
+### One auto-picked version still worth Jack's eye
+
+Where a title matches more than one upload and neither is in an album set, the
+longer non-demo version wins. That still chooses **Safe & Sound (Reprise)** over
+Safe & Sound (Prod. kojo a. & Nicky Quinn). It is a guess and can be swapped by
+changing one `data-track` attribute, or turned into a two-bar page like Ribbons
+and Only Human if both cuts should be there.
 
 ### Nine tracks are ad supported
 

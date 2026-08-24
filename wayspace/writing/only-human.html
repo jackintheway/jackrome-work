@@ -77,17 +77,37 @@
 
     <section class="section">
 
-      <!-- The listen bar. A facade: nothing reaches SoundCloud until
-           this is pressed, and the artwork is self hosted so the page
-           load contacts nobody. Wired up by js/lyric-audio.js. -->
+      <!-- Two listen bars, on Jack's instruction of 2026-08-23. The
+           original is the one credited to Fabrizio; the stripped cut is
+           the alternate. Same arrangement as ribbons.html: the first
+           keeps the room's usual lead, the second names itself, because
+           two bars reading "Click play to listen" would not tell a
+           reader which is which. js/lyric-audio.js lets only one play
+           at a time.
+
+           A facade: nothing reaches SoundCloud until a bar is pressed,
+           and the artwork is self hosted so the page load contacts
+           nobody. -->
       <button class="listen-bar" type="button"
               data-track="774148888"
-              data-title="Only Human (Prod. Fabrizio)"
-              aria-label="Play Only Human (Prod. Fabrizio) on SoundCloud">
+              data-title="Only Human"
+              aria-label="Play Only Human on SoundCloud">
         <img class="listen-art" src="/assets/img/wayspace/writing/only-human.jpg" alt="" width="64" height="64" loading="lazy">
         <span class="listen-text">
           <span class="listen-lead">Click play to listen</span>
           <span class="listen-meta">SoundCloud &middot; 3:49</span>
+        </span>
+        <span class="listen-play" aria-hidden="true">&#9654;</span>
+      </button>
+
+      <button class="listen-bar" type="button"
+              data-track="783771448"
+              data-title="Only Human (Stripped)"
+              aria-label="Play the stripped version, Only Human (Stripped), on SoundCloud">
+        <img class="listen-art" src="/assets/img/wayspace/writing/only-human-stripped.jpg" alt="" width="64" height="64" loading="lazy">
+        <span class="listen-text">
+          <span class="listen-lead">Or the stripped version</span>
+          <span class="listen-meta">SoundCloud &middot; Only Human (Stripped) &middot; 2:51</span>
         </span>
         <span class="listen-play" aria-hidden="true">&#9654;</span>
       </button>
