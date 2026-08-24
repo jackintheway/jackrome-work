@@ -563,34 +563,31 @@ Safe & Sound (Prod. kojo a. & Nicky Quinn). It is a guess and can be swapped by
 changing one `data-track` attribute, or turned into a two-bar page like Ribbons
 and Only Human if both cuts should be there.
 
-### Nine tracks are ad supported, and only three lyric pages can serve one
+### The ads are off (2026-08-23)
 
-`monetization_model: AD_SUPPORTED` on nine of Jack's 104 uploads: CRUNCHWRAP
-JACK, Freeze, Headed Home, I was built for this place, Little Things, Only Human
-(Prod. Fabrizio), Only Human (Stripped), Raindrops, Try.
+Jack turned monetization off after hearing a pre-roll on Only Human. **Nothing a
+visitor can reach on this site can serve an ad**, verified against the API across
+every path: all six Music room albums, both Music room singles, and all 48 lyric
+pages.
 
-**Three lyric pages can actually reach one:** `headed-home`,
-`i-was-built-for-this-place`, and `only-human`, which carries two of them.
-Little Things and Try came off that list as a side effect of pinning album
-tracks to the album: the album uploads are not monetized and the older
-standalone ones are.
+Two uploads are still `AD_SUPPORTED` and neither is reachable from here.
+CRUNCHWRAP JACK is in no wired playlist and has no lyric page. The standalone
+Little Things was orphaned when its lyric page moved to the album upload. They
+are findable on SoundCloud and nowhere on jackrome.work.
 
-Jack heard one on 2026-08-23, playing Only Human and then the stripped cut. No
-ad on the first, an ad on the second. **Both cuts are monetized**, so the ad was
-the track's setting rather than the sequence; SoundCloud decides when to
-actually serve one, which is why it reads as random.
+**How this works, so it is not relitigated.** Ads ride on per-track monetization,
+not on embedding. A search summary Jack found claimed ads cannot be disabled on
+embedded tracks; that is wrong as stated, and SoundCloud's own help centre says
+an embedded track carries an ad when its owner "is part of the revenue sharing
+level of our creator partner program **and has enabled ads on their content**,"
+disableable per track from the track's edit page. The API agreed before Jack
+touched anything: 9 of 104 uploads carried the flag, and if embeds served ads
+unconditionally it would not vary.
 
-**It is a switch on Jack's account, not something this site controls.** A search
-summary he found claimed ads cannot be disabled on embedded tracks. That is
-wrong as stated, and SoundCloud's own help centre says so: an embedded track
-carries an audio ad when its owner "is part of the revenue sharing level of our
-creator partner program **and has enabled ads on their content**," and
-monetization can be disabled per track from the track's edit page. The API data
-agrees, which is the stronger evidence: if embeds served ads unconditionally the
-flag would not vary across 104 uploads.
-
-So the choice is monetization or no ads, per track, and it is Jack's to make.
-Nothing in this repo changes either way.
+**If a new upload ever gets monetized, it can serve an ad.** The check is
+`monetization_model` on `api-v2.soundcloud.com/users/110417764/tracks`, held
+against the `sc` ids in `js/wayspace.js` and the `data-track` ids under
+`wayspace/writing/`.
 
 ### The typo
 
