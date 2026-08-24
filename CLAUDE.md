@@ -957,6 +957,16 @@ Three domains already forward to Fourthwall (`jackintheway.me`,
 `jackintheway.store`, `wayspace.store`) and those forwards survive independently
 of this site, so nothing about the store is on the cutover path. Revisit after.
 
+**A shape for the revisit, from Jack on 2026-08-24:** a section in the Wayspace
+lobby that links out to `wayspace.store` rather than a full room of its own. Still
+parked, but now with a direction rather than a blank pin.
+
+**Domain forwarding confirmed 2026-08-24:** it is `wayspace.store` that forwards to
+Fourthwall, not `jackintheway.me` as this section previously said. `jackintheway.me`
+actually forwards to bio.site; see the bio.site section above, which is where that
+domain's future is actually being decided. `jackintheway.store`'s target is still
+unconfirmed.
+
 ---
 
 ## Open items, none blocking
@@ -1407,6 +1417,19 @@ gathering session and not after it.
 The argument for keeping bio.site: it is zero maintenance and loads instantly on a bad
 phone connection off an Instagram tap, which is the actual context. Wayspace will be
 heavier than that by design.
+
+**Jack's own answer arrived 2026-08-24, not urgent, not for today:** replace bio.site
+with a page that lives on this site, and point `jackintheway.me` at it instead of at
+bio.site. That resolves the question above in Wayspace's favor without asking the
+whole house to carry the job: one page built for the fast, single-tap context
+bio.site exists for, rather than the landing or a room doing double duty.
+
+**Domain forwarding confirmed 2026-08-24, resolving the discrepancy this section used
+to flag:** `jackintheway.me` forwards to bio.site, and `jackintheway.net` already
+forwards to `jackrome.work` itself, not to bio.site. So only `.me` would need to move
+when this gets built; `.net` already points at the right house and would just need
+its target page to exist once the new page does. `jackintheway.store`'s target is
+still unconfirmed. Not scheduled. Revisit when there is room for it.
 
 ## Hosting, billing, and how often we deploy (settled 2026-08-18)
 

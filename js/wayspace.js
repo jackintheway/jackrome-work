@@ -2529,7 +2529,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderRoom("designGrid", DESIGN, designCard,
     "No design here yet",
-    ["Cover art, logos, flyers, merch, and the design system all land here."]);
+    ["Logos, flyers, covers, and the design system itself all land here."]);
 
   renderRoom("podcastList", PODCASTS, podcastEntry,
     "No episodes here yet",
