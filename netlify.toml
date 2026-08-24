@@ -139,7 +139,34 @@
   status = 302
   force = true
 
-# NOT YET HANDLED, and deliberately so. /toolbox, /store and /blog are
-# still served by Squarespace and are out of scope for this build. They
-# stop existing the moment DNS moves here, so each needs a rule above
-# before the cutover. See the cutover note in CLAUDE.md.
+# The creative portfolio was a live Squarespace URL. Per CLAUDE.md's
+# own working note, /wayspace is the closest thing this build has to a
+# successor: it is the proof doorway for Jack's creative work.
+[[redirects]]
+  from = "/creative-portfolio"
+  to = "/wayspace"
+  status = 301
+
+# /toolbox and /blog were both orphaned from Squarespace's own nav
+# (see INVENTORY.md), so nothing here links to either. Decided
+# 2026-08-24: redirect home rather than rebuild or 404, so anything
+# saved or linked against the old URLs still lands somewhere real.
+[[redirects]]
+  from = "/toolbox"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/"
+  status = 301
+
+# Catches the three posts and the auto-generated category page.
+[[redirects]]
+  from = "/blog/*"
+  to = "/"
+  status = 301
+
+# /store already 404s on the live Squarespace site (zero products,
+# corrected in CLAUDE.md decision 3), so it needs no rule here. Jack's
+# only store is the Fourthwall that wayspace.store forwards to.

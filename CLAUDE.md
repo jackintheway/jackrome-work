@@ -54,14 +54,13 @@ charge.
 The build is done. What's left is four small, genuinely open items, roughly in
 priority order given the 2026-09-01 cutover target:
 
-**1. `/toolbox` and `/blog` need a decision: rebuild, redirect, or deliberate 404.**
-Still undecided. See "The cutover note" below. This is critical path, not cleanup: if
-`/toolbox` gets rebuilt it is a whole additional page against a shrinking clock, so
-raise it with Jack before starting rather than assuming.
+~~**1. `/toolbox` and `/blog` need a decision.**~~ **Closed 2026-08-24, with Jack.**
+Redirect both home rather than rebuild or deliberate 404. `netlify.toml` now 301s
+`/toolbox`, `/blog`, and `/blog/*` (catching the three posts and the auto-generated
+category page) all to `/`. `/store` needed no rule; it already 404s on the live site.
 
-**2. `/creative-portfolio` still has no 301.** It was a live Squarespace URL, and
-`netlify.toml` doesn't redirect it yet. Most likely target is `/wayspace`, per the
-cutover note, but not yet added.
+~~**2. `/creative-portfolio` still has no 301.**~~ **Closed 2026-08-24.** `netlify.toml`
+now 301s it to `/wayspace`, per this file's own working note.
 
 **3. The Design room's share card is stale.** `og-wayspace-design.png` was rendered
 against the room's original one-line description. The visible hero copy has changed
