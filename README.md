@@ -2,7 +2,7 @@
 
 A custom rebuild of `jackrome.work`, replacing Squarespace. Static HTML, CSS, and vanilla JS on the Wayspace design system, deployed to Netlify.
 
-**Not live.** `jackrome.work` still points at Squarespace and stays there until the cutover is called. See `CLAUDE.md` for the cutover note, which is the one thing that has to be settled before DNS moves.
+**Live at `https://jackrome.work`** since 2026-08-24. See `CLAUDE.md` for how the cutover was done.
 
 ## Running it
 

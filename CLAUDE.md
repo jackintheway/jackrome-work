@@ -12,7 +12,58 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 |---|---|
 | Repo | `github.com/jackintheway/jackrome-work` |
 | Staging | `https://jackrome-work.netlify.app` |
-| Production | Still Squarespace. DNS untouched. |
+| Production | **`https://jackrome.work`, live on Netlify since 2026-08-24.** |
+
+### The cutover happened 2026-08-24
+
+`jackrome.work` left Squarespace. What was done, so the remaining four domains can
+follow the same path:
+
+**External DNS, not Netlify DNS.** Records changed at Squarespace rather than
+nameservers moved. The deciding factor was `jackintheway.net`, which carries live
+Google Workspace MX records: a nameserver move takes all of a domain's DNS with it, so
+MX has to be recreated by hand on the other side, and missing it breaks email with no
+error anywhere. Changing only A and CNAME leaves everything else untouched. Rollback is
+also cheaper: re-add one Squarespace preset.
+
+**Squarespace ships a Netlify preset**, which did the whole job. DNS panel → DNS Presets
+→ delete **Squarespace Defaults** (the trash icon removes `A @ → 198.49.23.144` and
+`CNAME www → ext-sq.squarespace.com` together), then Add Preset → Netlify, which asks
+only for the project name (`jackrome-work`) and writes both records correctly:
+
+| Type | Name | Data |
+|---|---|---|
+| A | `@` | `75.2.60.5` |
+| CNAME | `www` | `jackrome-work.netlify.app` |
+
+Delete the defaults **before** adding the Netlify preset. Two competing A records on the
+apex round-robin, so visitors would land on Squarespace or Netlify at random, which looks
+intermittent rather than broken and is much harder to diagnose.
+
+**Netlify wants an ALIAS record and Squarespace cannot make one.** Squarespace supports
+A, AAAA, CNAME, MX, TXT, SRV, NS and CAA only. So the fallback A record is the path, and
+Netlify's warning about losing CDN benefits is largely mitigated by `75.2.60.5` being an
+anycast address that still routes to the nearest edge.
+
+**The apex stays primary; `www` is not promoted.** Netlify recommends making
+`www.jackrome.work` primary. Declined: 73 files carry 292 absolute `https://jackrome.work`
+URLs across every canonical tag and `og:url`, so promoting `www` would point all of them
+at a hostname that 301s. That is the same class of bug already fixed once here, when
+`/wayspace` had an index file and its canonical pointed at a redirecting URL.
+
+**The thing that actually blocked go-live was not DNS.** The Netlify project was marked
+**Private**, which serves a 401 Edge Access gate on every request, on the custom domain
+*and* on `jackrome-work.netlify.app`. DNS was correct and the site was still invisible.
+The switch is "Make public" on the project page. **Check this first if a Netlify site
+answers 401 with a "Login Redirect" body.**
+
+Verified live the same day: all 13 in-scope paths 200, all 9 redirects 301 to the right
+targets, `www` 301s to the apex, HTTP 301s to HTTPS, the Let's Encrypt certificate is
+issued for `jackrome.work`, `og:image` loads at an absolute URL, and the three vanity
+subdomains still forward.
+
+**Squarespace stays alive as rollback until 2026-09-15.** Do not cancel the website
+subscription early. The four remaining domains still 301 through it and have not moved.
 
 Every page in scope is built, deployed, and has been iterated on since: `/`, `/about`,
 `/ai-enablement`, `/production`, `/ai-portfolio`, and `/wayspace` with all six rooms.
@@ -26,7 +77,7 @@ confirmed against the live deploy.
 
 `INVENTORY.md` is the crawl of the old Squarespace site. `COPY.md` is the copy pulled from it on 2026-08-15, and is the source for the three built pages. Once a page is built its HTML is the source of truth, not `COPY.md`.
 
-**The live site is not public yet.** `jackrome.work` stays on Squarespace until Jack calls the cutover.
+**The site is live.** `jackrome.work` moved to Netlify on 2026-08-24.
 
 **The repo, however, is public.** `github.com/jackintheway/jackrome-work` is readable by anyone, verified 2026-08-21. So a push publishes the source even though it does not publish the site, and anything written into a file here (including this one) is public the moment it lands. Keep private reasoning in `~/.claude/plans/` or another place outside the repo.
 
@@ -1449,6 +1500,32 @@ The fix is Netlify **domain aliases**: add all five to the site, set `jackrome.w
 primary, and Netlify redirects the aliases to it. Same behaviour Squarespace is
 providing now. Each alias needs its DNS pointed at Netlify, so budget time for five DNS
 changes plus propagation, not one.
+
+### Three vanity subdomains, found 2026-08-24 during the cutover
+
+Not in this file before, and not visible from outside: they only surfaced in
+Squarespace's DNS panel, under a **Squarespace Domain Forwarding** preset sitting
+beside the Squarespace Defaults one. All three are CNAMEs to `ext-sq.squarespace.com`
+that Squarespace's forwarding service answers with a 302.
+
+| Subdomain | Forwards to |
+|---|---|
+| `artifacts.jackrome.work` | a Claude artifact URL |
+| `profile.jackrome.work` | `linkedin.com/in/jackrome` |
+| `ai.jackrome.work` | `jackrome.work/ai-enablement` |
+
+**They are unaffected by the DNS cutover.** Deleting the Squarespace Defaults preset
+does not touch the forwarding preset, so all three kept working when the apex moved to
+Netlify.
+
+**They are on the 2026-09-15 clock.** The likely outcome is that they survive, since
+this is the same domain-level forwarding feature that outlived a cancelled site for the
+three Fourthwall forwards on `jackintheway.net`. So the job is to verify after
+cancellation, not to rebuild in advance. If they do die, Netlify can serve the same
+redirects: add each as a domain alias and write a host-scoped rule in `netlify.toml`.
+
+`ai.jackrome.work` is the least urgent of the three. `/ai` already 301s internally to
+`/ai-enablement`, so nothing on this site depends on the subdomain.
 
 ### Open questions, all with a 2026-09-15 deadline
 
