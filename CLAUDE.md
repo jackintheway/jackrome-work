@@ -1674,6 +1674,60 @@ and Squarespace serves its DNS (`ns01-04.squarespacedns.com`).
   on through the DNS cutover and for a while after, until everything built here has been
   live long enough to trust. Revisit then, not before.
 
+## The album clip is a 480px cut of a 1500px master (open, 2026-08-24)
+
+**Do this on the Mac mini.** It needs `ffmpeg`, and Homebrew is not installed on the
+Air. Checked `/opt/homebrew`, `/usr/local`, and `~/homebrew` on 2026-08-24: nothing.
+
+Jack noticed the Wayspace album cover on `/wayspace/design` going soft the moment the
+hover animation starts. Measured rather than guessed:
+
+| | |
+|---|---|
+| Tile renders at | 560 x 560 CSS px, so 1120 device px on a retina display |
+| Still behind it | 900 x 900, near enough to sharp |
+| Clip | **480 x 480**, upscaled **2.33x** |
+| Tool row clips | same 480px source, in 170px tiles, and they look fine |
+
+The six tool-pack clips are the control: identical resolution, no complaint, because
+they are displayed small. This is a scaling problem, not an encoding problem.
+
+**The 480 was never a decision.** Re-encoding the master with
+`avconvert --preset PresetMediumQuality` reproduces the shipped file's specs exactly:
+480x480, 1.09MB, 10 seconds. That preset caps at 480. The resolution came from a preset
+choice rather than from anyone deciding how big the clip should be.
+
+**The good pixels still exist.** `_source/design/wayspace-animated-artwork.mp4` is
+**1500 x 1500**, 42 seconds, 101MB. The shipped clip is a 10 second cut of it. Which 10
+seconds has not been determined and needs checking against the master before a re-cut.
+
+**Why `avconvert` cannot finish the job.** Its presets fit within their box preserving
+aspect, so a square source does come out square, but there is no bitrate control and the
+files are far too heavy for something that fires on hover:
+
+| Preset | Output | Size for 10s |
+|---|---|---|
+| `PresetMediumQuality` | 480x480 | 1.09MB (what shipped) |
+| `Preset640x480` | 640x640 | 5.36MB |
+| `Preset960x540` | 960x960 | 9.86MB |
+| `Preset1280x720` | 1280x1280 | 13.37MB |
+| `PresetHighestQuality` | 1500x1500 | 15.12MB |
+
+`ffmpeg` gets 1080x1080 at roughly 1.5 to 2.5MB, which is the version worth shipping.
+
+**Interim fix, shipped 2026-08-24.** `.tool-tile.is-cover` caps the tile at **400px**,
+down from 560, which brings the upscale to 1.67x. A compromise, not a fix: 240px would
+map the clip 1:1 and be genuinely crisp, but the album is the arrival in this lineage
+and 240 does not carry it.
+
+**When the clip is re-cut:** raise the cap in `css/wayspace.css` back to 560px, delete
+the explanatory comment above the rule, and trim the stopgap paragraph from the figure
+comment in `wayspace/design.html`.
+
+**Found alongside it:** `is-cover` had no CSS rule anywhere, despite the comment in
+`design.html` saying it controlled the size. The 560px came from `.step-figure`. The rule
+now exists, so the comment is true and there is one knob rather than a shared container.
+
 ## Known facts, so they are not rediscovered
 
 - **Squarespace has no content API.** Its developer APIs cover commerce only: orders, products, inventory, transactions. Content cannot be synced out, only moved by hand. There is no headless option.

@@ -1547,6 +1547,32 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 }
 .tool-tile.is-playing .tool-clip { opacity: 1; }
 
+/* ---- The album cover tile ----
+   is-cover is the one knob for this tile's size, which is what the
+   comment in design.html has always claimed. Until 2026-08-24 the
+   class carried no rule at all and the width came entirely from
+   .step-figure's 560px cap, so the knob named in the comment did
+   nothing and the tile was sized by a container shared with the two
+   flat images in this room.
+
+   400px, not 560. The clip is 480x480, so at 560 CSS px it was
+   upscaled 2.33x on a retina display and went soft the moment it
+   played, while the 900px still behind it stayed sharp. That gap is
+   what reads as bad resolution on hover: the still sets the
+   expectation and the clip cannot meet it. 400 brings the upscale to
+   1.67x.
+
+   This is a compromise and worth naming as one. 240px would map the
+   clip 1:1 and be genuinely crisp, but the album is the arrival in
+   this lineage and 240 does not carry that. The real fix is a bigger
+   clip rather than a smaller tile, and it is not blocked on anything
+   except tooling. See "The album clip is a 480px cut of a 1500px
+   master" in CLAUDE.md. When the clip is re-cut, this goes back to
+   560px and the comment above comes out. */
+.tool-tile.is-cover {
+  max-width: 400px;
+}
+
 .tool-tile:hover,
 .tool-tile:focus-visible {
   transform: translate(-2px, -2px);

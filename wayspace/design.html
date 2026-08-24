@@ -138,7 +138,14 @@
                same mechanic as the tool pack row below, reused rather
                than rebuilt. is-cover only changes the size; the
                still/clip crossfade and the hover/tap/reduced-motion
-               logic in initToolClips() are shared with the tool row. -->
+               logic in initToolClips() are shared with the tool row.
+
+               The clip here is 480x480 and the still is 900x900, so
+               the tile is capped at 400px to keep the upscale from
+               showing on hover. That cap is a stopgap for a small
+               video, not a design choice. Re-cut the clip from the
+               1500x1500 master and the cap comes off. Details in
+               CLAUDE.md. -->
           <figure class="step-figure">
             <button class="tool-tile is-cover" type="button"
                     data-clip="/assets/video/design/wayspace-album-animated.mp4"
