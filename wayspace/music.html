@@ -36,9 +36,9 @@
        has to exist before it runs. -->
   <script src="/js/wayspace.js" defer></script>
 </head>
-<!-- The room's colour is set once, here. Every component in
+<!-- The room's color is set once, here. Every component in
      css/wayspace.css reads it through the --room custom property
-     rather than naming a colour, so this class is the only thing
+     rather than naming a color, so this class is the only thing
      that knows which room this is. -->
 <body class="room-music">
 
@@ -73,12 +73,11 @@
   <nav class="room-switcher" aria-label="Wayspace rooms">
     <a class="room-switch-home" href="/wayspace">Wayspace</a>
     <div class="room-switch-links">
-        <a class="room-switch-link" href="/wayspace/music" aria-current="page">Music</a>
-        <a class="room-switch-link" href="/wayspace/video">Video</a>
-        <a class="room-switch-link" href="/wayspace/design">Design</a>
-        <a class="room-switch-link" href="/wayspace/podcasts">Podcasts</a>
-        <a class="room-switch-link" href="/wayspace/speaking">Speaking</a>
-        <a class="room-switch-link" href="/wayspace/writing">Writing</a>
+        <a class="room-switch-link is-music" href="/wayspace/music" aria-current="page">Music</a>
+        <a class="room-switch-link is-video" href="/wayspace/video">Video</a>
+        <a class="room-switch-link is-design" href="/wayspace/design">Design</a>
+        <a class="room-switch-link is-podcasts" href="/wayspace/podcasts">Podcasts</a>
+        <a class="room-switch-link is-writing" href="/wayspace/writing">Writing</a>
     </div>
   </nav>
 

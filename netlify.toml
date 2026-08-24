@@ -68,6 +68,16 @@
   to = "/wayspace/writing/do-you-hear-that"
   status = 301
 
+# Speaking came off the live site on 2026-08-23, per Jack: there is
+# nothing to put in it yet. The page is gone rather than standing
+# empty, and this catches anything already linked or bookmarked. The
+# SPEAKING array is still in js/wayspace.js and the share card is
+# still in tools/og/, so putting the room back is restoring one file.
+[[redirects]]
+  from = "/wayspace/speaking"
+  to = "/wayspace"
+  status = 301
+
 # Working notes and project instructions are not part of the site.
 # force is required: without it a real file at this path wins over the
 # redirect rule, and the markdown gets served as plain text.

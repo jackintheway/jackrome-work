@@ -9,16 +9,16 @@
    Loaded last in css/styles.css, so anything here can lean on a
    shared component and adjust it without editing site.css.
 
-   THE COLOUR SYSTEM
-   Each room owns one colour from the palette. The room announces it
-   on the landing list, and the same colour greets you on arrival as
-   the room's hero. So a visitor learns the map by colour before the
+   THE Color SYSTEM
+   Each room owns one color from the palette. The room announces it
+   on the landing list, and the same color greets you on arrival as
+   the room's hero. So a visitor learns the map by color before the
    puzzle art ever gets drawn, and when it does, the pieces are
    already coded.
 
-   The colour is carried in a custom property, --room, set once per
+   The color is carried in a custom property, --room, set once per
    room on the <body>. Every component below reads it rather than
-   naming a colour, so a room's palette is one line to change and
+   naming a color, so a room's palette is one line to change and
    nothing here has to know which room it is rendering.
    ============================================================ */
 
@@ -43,7 +43,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
    LANDING HERO
    Paper rather than the orange every other hero on this site uses,
    because the wordmark has to be the loudest thing here and it
-   carries its own colour. An orange ground would fight it and eat
+   carries its own color. An orange ground would fight it and eat
    its orange shapes.
    ============================================================ */
 .ws-hero {
@@ -73,7 +73,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 /* Sized as a share of its column with a ceiling, so it fills a phone
    without overwhelming a desktop. It is an <img> and not inlined SVG
    on purpose: it is a fixed piece of brand art, not something the
-   page recolours, so it can be cached as its own file. */
+   page recolors, so it can be cached as its own file. */
 .ws-wordmark {
   display: block;
   width: 100%;
@@ -122,8 +122,8 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
               color var(--dur-fast) var(--ease-out);
 }
 
-/* Hover floods the row with the room's own colour, which is the
-   same colour waiting on the other side of the click. The swatch is
+/* Hover floods the row with the room's own color, which is the
+   same color waiting on the other side of the click. The swatch is
    what teaches that before anyone hovers. */
 .room-link:hover,
 .room-link:focus-visible {
@@ -135,7 +135,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .room-link:hover .room-what,
 .room-link:focus-visible .room-what { color: var(--room-ink); }
 
-/* Each row sets its own colour, so everything above stays generic. */
+/* Each row sets its own color, so everything above stays generic. */
 .room-item.is-music    { --room: var(--ws-orange); --room-ink: var(--ws-black); }
 .room-item.is-video    { --room: var(--ws-blue);   --room-ink: var(--ws-paper); }
 .room-item.is-design   { --room: var(--ws-yellow); --room-ink: var(--ws-black); }
@@ -143,9 +143,9 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .room-item.is-speaking { --room: var(--ws-salmon); --room-ink: var(--ws-black); }
 .room-item.is-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 
-/* A solid block of the room's colour. Decorative: the room's name is
+/* A solid block of the room's color. Decorative: the room's name is
    right beside it in text, so this is marked aria-hidden and adds
-   nothing for a screen reader. Colour is never the only signal. */
+   nothing for a screen reader. Color is never the only signal. */
 .room-swatch {
   width: var(--space-6);
   height: var(--space-6);
@@ -231,12 +231,32 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   transition: color var(--dur-fast) var(--ease-out),
               border-color var(--dur-fast) var(--ease-out);
 }
-.room-switch-link:hover {
-  color: var(--ws-orange-deep);
-  border-bottom-color: var(--ws-orange);
+/* Each link hovers in the color of the room it goes to, so the
+   switcher teaches the map on the way through. Per Jack, 2026-08-23.
+   Orange for everything was the site's default link behaviour rather
+   than a decision, and it made six destinations look like one.
+
+   Two custom properties per room rather than one: the underline wants
+   the room's actual color, while the text needs a version dark enough
+   to stay readable on paper. Yellow and salmon in particular fail as
+   body text at their true value.
+
+   Brown has no -deep token and does not need one. It is already the
+   darkest of the six, so it hovers as itself. */
+.room-switch-link.is-music    { --switch: var(--ws-orange); --switch-ink: var(--ws-orange-deep); }
+.room-switch-link.is-video    { --switch: var(--ws-blue);   --switch-ink: var(--ws-blue-deep); }
+.room-switch-link.is-design   { --switch: var(--ws-yellow); --switch-ink: var(--ws-yellow-deep); }
+.room-switch-link.is-podcasts { --switch: var(--ws-green);  --switch-ink: var(--ws-green-deep); }
+.room-switch-link.is-speaking { --switch: var(--ws-salmon); --switch-ink: var(--ws-salmon-deep); }
+.room-switch-link.is-writing  { --switch: var(--ws-brown);  --switch-ink: var(--ws-brown); }
+
+.room-switch-link:hover,
+.room-switch-link:focus-visible {
+  color: var(--switch-ink, var(--ws-orange-deep));
+  border-bottom-color: var(--switch, var(--ws-orange));
 }
-/* The room you are standing in, filled with that room's own colour,
-   which is the same colour filling the hero directly below it. */
+/* The room you are standing in, filled with that room's own color,
+   which is the same color filling the hero directly below it. */
 .room-switch-link[aria-current="page"] {
   background: var(--room);
   color: var(--room-ink);
@@ -246,7 +266,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 
 /* ============================================================
    ROOM HERO
-   Same shape as the site's heroes, filled with the room's colour
+   Same shape as the site's heroes, filled with the room's color
    instead of the site's orange.
    ============================================================ */
 .room-hero {
@@ -388,6 +408,27 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   color: var(--text-strong);
 }
 
+/* Watch sits beside Listen on a podcast entry. It carries the room's
+   green rather than Listen's sunken grey, because one of the two acts
+   on this page and the other leaves for Apple, and that is the more
+   useful difference to show than which is primary. */
+.watch-btn {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ws-black);
+  background: var(--room, var(--ws-green));
+  border: var(--border-hair) solid var(--outline);
+  padding: var(--space-1) var(--space-2);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.watch-btn:hover,
+.watch-btn:focus-visible { transform: translate(-1px, -1px); }
+
 /* ---- The play control on a cover ----
    A real <button>, because it acts on this page rather than going
    anywhere. Anything that navigates is an <a>, anything that changes
@@ -396,16 +437,16 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 /* ---- Cross-room button ----
    A crossRef in the Music room is a doorway to another room, and Jack
    wanted it to carry the same weight as Play rather than sitting under
-   it as a text link. Same shape, different colour, and the colour is
+   it as a text link. Same shape, different color, and the color is
    the destination room's own: brown for Writing, blue for Video. The
-   site already teaches colour as room across seven pages, so the
+   site already teaches color as room across seven pages, so the
    button says where it goes before the label is read.
 
    Still an <a>, because it navigates. The rule above still holds:
    anything that goes somewhere is a link, anything that changes this
    page is a button. Only the paint is shared. */
 /* ---- Listen button ----
-   Leaves the site, so it is black rather than any room's colour. The
+   Leaves the site, so it is black rather than any room's color. The
    room palette means "somewhere else in Wayspace"; black means "off
    this site entirely", which is a distinction worth keeping now that
    two of the three controls on a card are links. */
@@ -483,7 +524,10 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  /* Per item, so the card is the shape of the video inside it. The
+     default is the room's usual sixteen by nine; In My Head is square
+     and asks for it. */
+  aspect-ratio: var(--facade-ratio, 16 / 9);
   padding: 0;
   border: none;
   border-bottom: var(--rule);
@@ -525,6 +569,200 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   width: 100%;
   height: 100%;
   border: none;
+}
+
+/* ============================================================
+   THE WRITING ROOM
+   Seventy six entries wanted a grid and some way through, per Jack on
+   2026-08-23. Filter by kind, jump by year, cards grouped under a
+   heading per year.
+   ============================================================ */
+.writing-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  margin: 0 0 var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: var(--border-hair) solid var(--outline);
+}
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.filter-btn {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--text-strong);
+  background: var(--surface-card);
+  border: var(--border-hair) solid var(--outline);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.filter-btn:hover { background: var(--bg-sunken); }
+/* The room's own brown, so the chosen filter matches the hero above
+   it rather than introducing a seventh color. */
+.filter-btn.is-on {
+  background: var(--room);
+  color: var(--room-ink);
+  border-color: var(--outline);
+}
+.filter-count {
+  font-size: 11px;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}
+.year-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+}
+.year-link {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  border-bottom: var(--border-hair) solid transparent;
+}
+.year-link:hover,
+.year-link:focus-visible {
+  color: var(--text-strong);
+  border-bottom-color: var(--room);
+}
+.filter-status {
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  margin: 0 0 var(--space-4);
+  min-height: 1.2em;
+}
+
+.writing-year { margin: 0 0 var(--space-7); }
+.writing-year[hidden] { display: none; }
+/* Sticky so the year stays legible while its own cards scroll past.
+   It is the only orientation on the page once you are deep in 2020. */
+.writing-year-title {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  letter-spacing: var(--ls-overline);
+  color: var(--text-strong);
+  background: var(--bg-base);
+  border-bottom: var(--border) solid var(--room);
+  margin: 0 0 var(--space-4);
+  padding: var(--space-2) 0;
+}
+.writing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.writing-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  background: var(--surface-card);
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-4);
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.writing-card[hidden] { display: none; }
+.writing-card:hover,
+.writing-card:focus-within {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--elevation-raised);
+}
+.writing-card-title {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body);
+  line-height: var(--lh-snug);
+  margin: 0;
+}
+.writing-card-title a { text-decoration: none; color: var(--text-strong); }
+.writing-card-title a:hover { color: var(--room); }
+.writing-card-meta {
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  margin: 0;
+}
+/* Pushed to the bottom so cards of different text lengths still line
+   their buttons up along one edge. */
+.writing-card .entry-actions { margin-top: auto; padding-top: var(--space-2); }
+
+/* ============================================================
+   WATCH IN PLACE
+   The dialog js/video-modal.js opens. Used by the shorts in Writing,
+   the episode videos in Podcasts, and the lyric pages that carry a
+   lyric video.
+   ============================================================ */
+.video-modal {
+  border: var(--rule);
+  box-shadow: var(--elevation-raised);
+  background: var(--ws-black);
+  padding: var(--space-4);
+  width: min(92vw, 1100px);
+  max-width: 92vw;
+  /* A short is portrait and can be taller than the viewport, so the
+     dialog is capped and the stage shrinks inside it rather than the
+     dialog growing past the screen. */
+  max-height: 92dvh;
+  overflow: visible;
+}
+.video-modal::backdrop {
+  background: rgb(0 0 0 / 0.72);
+}
+.video-close {
+  display: block;
+  margin: 0 0 var(--space-3) auto;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ws-black);
+  background: var(--ws-yellow);
+  border: var(--border-hair) solid var(--ws-black);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+}
+.video-stage {
+  aspect-ratio: var(--stage-ratio, 16 / 9);
+  /* Height first, so a portrait video is bounded by the viewport and
+     the width follows from the ratio. Without this a 9:16 short is
+     nearly three screens tall. */
+  max-height: calc(92dvh - 5rem);
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+  background: var(--bg-well);
+}
+.video-stage iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* ============================================================
@@ -594,7 +832,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 
    Without a tile those two cards collapse to their text and break the
    grid's rhythm, which reads as something failing to load. This gives
-   them the same 16:9 block the facade occupies, in solid colour with
+   them the same 16:9 block the facade occupies, in solid color with
    the medium named, so the row keeps its shape and the difference
    looks deliberate.
 
@@ -609,7 +847,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 
    Contained rather than cropped, because a centre crop cuts the
    "powered by Tribly" line off the bottom of the sleeve. Black ground
-   so the artwork keeps its own colour. */
+   so the artwork keeps its own color. */
 .work-tile.has-art {
   display: block;
   background: var(--ws-black);
@@ -734,7 +972,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
      the bar stops being sticky and comes to rest above it the two read
      as one undifferentiated block. Yellow is the accent this site
      already uses on black, in the footer links, so the seam is visible
-     without introducing a colour the footer does not know. */
+     without introducing a color the footer does not know. */
   border-bottom: var(--border) solid var(--ws-yellow-deep);
   padding: var(--space-4) var(--space-5);
 }
@@ -802,7 +1040,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .player-skip { display: inline-flex; gap: var(--space-2); flex: none; }
 .player-skip[hidden] { display: none; }
 
-/* The scrubber. Height and colour are set on both the WebKit and the
+/* The scrubber. Height and color are set on both the WebKit and the
    Firefox pseudo-elements: they cannot be combined into one rule,
    because either browser drops a whole selector list it does not
    recognise. */
@@ -845,7 +1083,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   flex: none;
 }
 /* The backlink SoundCloud's terms require. Yellow because that is the
-   colour a link already takes on black in the footer. */
+   color a link already takes on black in the footer. */
 .player-link {
   font-size: var(--fs-caption);
   color: var(--ws-yellow);
@@ -1235,7 +1473,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 /* ---- The live swatches ----
    Each chip paints itself from --chip, set inline on the <li> to a
    token. So this row cannot drift from the palette: it is reading the
-   same file every other colour on the site reads. */
+   same file every other color on the site reads. */
 .swatch-row {
   display: flex;
   flex-wrap: wrap;
@@ -1381,7 +1619,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 @media (max-width: 640px) {
   /* The arrow is decoration, and at this width it is competing with
      the room name for the row. The swatch stays, because it is what
-     teaches the colour code, but it shrinks. */
+     teaches the color code, but it shrinks. */
   .room-link {
     grid-template-columns: auto 1fr;
     gap: var(--space-4);

@@ -279,9 +279,9 @@
   align-items: flex-start;
   gap: var(--space-3) var(--space-5);
 }
-/* The identity line and the nav were the same colour at the same size in
+/* The identity line and the nav were the same color at the same size in
    the same caps, so the footer read as one run of text with an arbitrary
-   gap in it. Colour is what separates them now: paper says who and where,
+   gap in it. Color is what separates them now: paper says who and where,
    yellow says this is somewhere you can go. */
 .footer-line, .footer-link {
   font-family: var(--font-heading);
@@ -349,7 +349,7 @@
 
 /* For a short block of standalone claims rather than flowing prose.
    Each sentence carries more weight, so it is set larger and in the
-   full-strength text colour. */
+   full-strength text color. */
 .prose-lg p {
   font-size: var(--fs-body-lg);
   color: var(--text-strong);
@@ -424,7 +424,7 @@
 }
 .btn-secondary:hover { color: var(--text-strong); }
 
-/* Colour variants for a pair of buttons that lead somewhere genuinely
+/* Color variants for a pair of buttons that lead somewhere genuinely
    different, rather than one leading and one following. */
 .btn-green  { background: var(--ws-green); }
 .btn-yellow { background: var(--ws-yellow); }

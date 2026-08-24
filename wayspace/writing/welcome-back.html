@@ -27,7 +27,7 @@
   <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
-<!-- A lyric page belongs to the Writing room and carries its colour,
+<!-- A lyric page belongs to the Writing room and carries its color,
      so arriving here does not feel like leaving. -->
 <body class="room-writing">
 
@@ -56,12 +56,11 @@
   <nav class="room-switcher" aria-label="Wayspace rooms">
     <a class="room-switch-home" href="/wayspace">Wayspace</a>
     <div class="room-switch-links">
-      <a class="room-switch-link" href="/wayspace/music">Music</a>
-      <a class="room-switch-link" href="/wayspace/video">Video</a>
-      <a class="room-switch-link" href="/wayspace/design">Design</a>
-      <a class="room-switch-link" href="/wayspace/podcasts">Podcasts</a>
-      <a class="room-switch-link" href="/wayspace/speaking">Speaking</a>
-      <a class="room-switch-link" href="/wayspace/writing">Writing</a>
+      <a class="room-switch-link is-music" href="/wayspace/music">Music</a>
+      <a class="room-switch-link is-video" href="/wayspace/video">Video</a>
+      <a class="room-switch-link is-design" href="/wayspace/design">Design</a>
+      <a class="room-switch-link is-podcasts" href="/wayspace/podcasts">Podcasts</a>
+      <a class="room-switch-link is-writing" href="/wayspace/writing">Writing</a>
     </div>
   </nav>
 
@@ -103,8 +102,7 @@
       </div>
 
       <div class="btn-row">
-        <a class="listen-btn" href="https://www.youtube.com/watch?v=4h_cD3M00mw" target="_blank" rel="noopener">Watch the lyric video</a>
-        <a class="crossref-btn to-music" href="/wayspace/music">The release</a>
+        <button class="listen-btn" type="button" data-video="4h_cD3M00mw" data-ratio="16 / 9" data-video-title="Lyric video, lyric video">Watch the lyric video</button>
       </div>
     </section>
 
@@ -133,5 +131,6 @@
 
   <script src="/js/nav.js" defer></script>
   <script src="/js/lyric-audio.js" defer></script>
+  <script src="/js/video-modal.js" defer></script>
 </body>
 </html>

@@ -212,7 +212,7 @@ Revisit after the cutover holds.
 1. ~~**Is the puzzle art drawn fresh, or derived from the album cover?**~~ **Answered
    2026-08-22: neither.** The puzzle already exists as a finished logo family at
    `_source/design/puzzle-logo-files/`: an Illustrator master, nine PSDs, and exports
-   in BW, flat colour, and gradient at four sizes each, including `Wayspace-3D-Pieces`
+   in BW, flat color, and gradient at four sizes each, including `Wayspace-3D-Pieces`
    and `Puzzle-Pieces-Trio`. It was drawn as one puzzle and pulled apart years ago.
    The site already ships two members of this family as `assets/img/wayspace-straight.svg`
    and `assets/puzzle-single.svg`. This is an export job, not an illustration job.

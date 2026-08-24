@@ -306,6 +306,8 @@ const VIDEO = [
     meta: "Music video, 2022",
     thumb: "/assets/img/wayspace/video/in-my-head-music-video.jpg",
     youtubeId: "gmTUaUwfmkU",
+    /* The only square one in the room. Per Jack, 2026-08-23. */
+    ratio: "1 / 1",
     note: "",
     crossRef: { text: "On Wayspace, in Music", href: "/wayspace/music" }
   },
@@ -497,7 +499,7 @@ const DESIGN = [
     meta: "Drawn as one puzzle, then pulled apart",
     image: "/assets/img/wayspace/design/logos/puzzle-pieces-trio.png",
     fit: "contain",
-    note: "One shape cut into pieces whose tabs still match. It exists as an Illustrator master and exports in black and white, flat colour and gradient. Two of its members are already load bearing on this site: the wordmark on the Wayspace landing, and the single piece in the browser tab.",
+    note: "One shape cut into pieces whose tabs still match. It exists as an Illustrator master and exports in black and white, flat color and gradient. Two of its members are already load bearing on this site: the wordmark on the Wayspace landing, and the single piece in the browser tab.",
     crossRef: null
   },
   {
@@ -616,9 +618,13 @@ const PODCASTS = [
      app. Worth revisiting if Jack would rather be Spotify-first here
      the way the Music room is.
 
-     Every episode also exists as video on the YouTube channel. Those
-     ids are in _source/video-titles.json if this room ever wants a
-     watch link beside the listen one. */
+     EVERY EPISODE ALSO EXISTS AS VIDEO, and now carries it. Per Jack
+     on 2026-08-23 the room offers both, so `watchId` sits beside
+     `listenHref` and Watch opens over the page rather than sending
+     anyone to YouTube. Crossing The Bridge is audio only, so its
+     watchId is null and no button is drawn.
+
+     Ids came from _source/podcast/podcast-video/. */
   {
     title: "These 8 Habits Made Me Creative Again",
     show: "WAYSPACE",
@@ -626,6 +632,7 @@ const PODCASTS = [
     date: "June 2025",
     art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
     listenHref: "https://podcasts.apple.com/us/podcast/these-8-habits-made-me-creative-again/id1571426340?i=1000712989433",
+    watchId: "d4Qcts8V-cM",
     note: "",
     crossRef: null
   },
@@ -636,6 +643,7 @@ const PODCASTS = [
     date: "June 2025",
     art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
     listenHref: "https://podcasts.apple.com/us/podcast/5-principles-to-transform-your-relationships/id1571426340?i=1000712015973",
+    watchId: "2JZAF5l8mrA",
     note: "",
     crossRef: null
   },
@@ -646,6 +654,7 @@ const PODCASTS = [
     date: "June 2025",
     art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
     listenHref: "https://podcasts.apple.com/us/podcast/how-to-be-a-peace-giver/id1571426340?i=1000710770592",
+    watchId: "PiG2l283h68",
     note: "",
     crossRef: null
   },
@@ -656,6 +665,7 @@ const PODCASTS = [
     date: "May 2025",
     art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
     listenHref: "https://podcasts.apple.com/us/podcast/the-five-question-test/id1571426340?i=1000707857432",
+    watchId: "JqER4CwcBVw",
     note: "",
     crossRef: null
   },
@@ -666,14 +676,17 @@ const PODCASTS = [
     date: "April 2025",
     art: "/assets/img/wayspace/podcasts/wayspace-show.jpg",
     listenHref: "https://podcasts.apple.com/us/podcast/the-anchor-list-a-tool-for-grounding/id1571426340?i=1000702326515",
+    watchId: "KEpVkkXSlJ4",
     note: "",
     crossRef: null
   },
 
-  /* Someone else's show, which is exactly what the role tag is for.
-     Hosted for Tribly, and also on /production, where the same work is
-     framed as something a client can hire rather than something Jack
-     made. */
+  /* Client work, and the one entry here that was not made for Jack's
+     own show. Per Jack on 2026-08-23: it was his build, his scripting
+     and his hosting almost completely, as lead producer, with Tribly's
+     CEO closely involved. So the note says produced rather than only
+     hosted. It is also on /production, where the same work is framed
+     as something a client can hire rather than something he made. */
   {
     title: "Crossing The Bridge",
     show: "Tribly",
@@ -681,8 +694,9 @@ const PODCASTS = [
     date: "2023",
     art: "/assets/img/wayspace/podcasts/crossing-the-bridge.jpg",
     listenHref: "https://open.spotify.com/show/05E8kMGjWNOmRdK183o3s2",
-    note: "Hosted, recorded and edited for Tribly.",
-    crossRef: { text: "Also on Production", href: "/production" }
+    watchId: null,
+    note: "Built, scripted, hosted and produced for Tribly, as lead producer.",
+    crossRef: { text: "Also <em>in</em> Production", href: "/production", html: true }
   }
 ];
 
@@ -1458,7 +1472,15 @@ function placeholderFlag(item) {
 
 function crossRef(item) {
   if (!item.crossRef) return "";
-  return `<p class="crossref"><a href="${escapeHtml(item.crossRef.href)}">${escapeHtml(item.crossRef.text)}</a></p>`;
+  /* Escaped unless the entry opts out. One cross reference needs an
+     italic word inside it, "Also in Production", and escaping is the
+     right default for everything else: this text is authored in the
+     arrays above, but a rule that only holds while nobody pastes a
+     title with an ampersand in it is not a rule. */
+  const text = item.crossRef.html
+    ? item.crossRef.text
+    : escapeHtml(item.crossRef.text);
+  return `<p class="crossref"><a href="${escapeHtml(item.crossRef.href)}">${text}</a></p>`;
 }
 
 /* A tinted, labelled box standing where an image will go. Deliberately
@@ -1488,7 +1510,7 @@ function emptyState(mount, title, lines) {
 /* The Music room's crossRef, as a button rather than a text link.
    Other rooms keep the quieter text version; this one sits in a row
    with Play and needs the same weight. `room` picks the destination
-   room's colour. */
+   room's color. */
 function crossBtn(item) {
   if (!item.crossRef) return "";
   const room = item.crossRef.room ? ` to-${escapeHtml(item.crossRef.room)}` : "";
@@ -1555,9 +1577,21 @@ function videoCard(item) {
   /* The facade. A button rather than a div, because clicking it
      changes this page instead of going anywhere, and a keyboard user
      needs it to be reachable and pressable without any extra work. */
+  /* The card takes the video's own shape. Sixteen by nine unless the
+     entry says otherwise, and the one that says otherwise is In My
+     Head, which is square. Per Jack on 2026-08-23: a square video sat
+     pillarboxed in a wide box, so the thumbnail and the player
+     disagreed about what they were showing. The text below simply
+     moves down to accommodate, because the card is a column. */
+  const ratio = item.ratio || "16 / 9";
+  /* The intrinsic size hint has to agree with the box, or the browser
+     reserves the wrong height and the grid shifts as thumbnails load. */
+  const [rw, rh] = ratio.split("/").map(n => parseFloat(n));
+  const imgW = 640;
+  const imgH = Math.round(imgW * rh / rw);
   const facade = item.youtubeId
-    ? `<button class="facade" data-yt="${escapeHtml(item.youtubeId)}" aria-label="Play ${escapeHtml(item.title)}">
-         <img src="${escapeHtml(item.thumb)}" alt="" loading="lazy" width="640" height="360">
+    ? `<button class="facade" style="--facade-ratio: ${escapeHtml(ratio)}" data-yt="${escapeHtml(item.youtubeId)}" aria-label="Play ${escapeHtml(item.title)}">
+         <img src="${escapeHtml(item.thumb)}" alt="" loading="lazy" width="${imgW}" height="${imgH}">
          <span class="facade-play" aria-hidden="true">&#9654;</span>
        </button>`
     : placeholderTile("facade", "Video");
@@ -1656,6 +1690,13 @@ function podcastEntry(item) {
     ? `<a class="stream-link" href="${escapeHtml(item.listenHref)}" target="_blank" rel="noopener">Listen</a>`
     : "";
 
+  /* Watch and Listen are the same episode two ways, so Watch comes
+     first: it is the one that happens here. Listen leaves for Apple,
+     which is why it stays a link and stays black. */
+  const watch = item.watchId
+    ? `<button class="watch-btn" type="button" data-video="${escapeHtml(item.watchId)}" data-ratio="16 / 9" data-video-title="${escapeHtml(item.title)}">Watch</button>`
+    : "";
+
   return `
     <li class="entry">
       ${art}
@@ -1665,7 +1706,7 @@ function podcastEntry(item) {
         <h3 class="entry-title">${escapeHtml(item.title)}</h3>
         <p class="entry-meta">${escapeHtml(item.show)} &middot; ${escapeHtml(item.date)}</p>
         ${item.note ? `<p class="entry-note">${escapeHtml(item.note)}</p>` : ""}
-        <div class="entry-actions">${listen}${crossRef(item)}</div>
+        <div class="entry-actions">${watch}${listen}${crossRef(item)}</div>
       </div>
     </li>
   `;
@@ -1690,7 +1731,35 @@ function speakingEntry(item) {
   `;
 }
 
-function writingEntry(item) {
+/* ============================================================
+   THE WRITING ROOM
+
+   Seventy six entries, sixty two lyrics and fourteen shorts, spanning
+   2019 to 2026. As one flat list that is a column you scroll rather
+   than a room you navigate, which is what Jack asked to fix on
+   2026-08-23.
+
+   The shape now: filter by kind, jump by year, and a grid of cards
+   grouped under a heading per year. The controls are built from the
+   array rather than written into the page, so the counts and the year
+   links cannot drift away from what is actually rendered.
+
+   Filtering hides cards with a class rather than re-rendering, so a
+   year heading whose cards are all hidden has to be hidden too, or
+   the page fills with empty years. That is the one non obvious part.
+   ============================================================ */
+
+/* Undated entries sort last under their own heading. Orchard is the
+   only one today: it has no year because there is no release to date
+   it against. */
+const NO_YEAR = "Undated";
+
+function writingYear(item) {
+  const m = String(item.meta || "").match(/(?:19|20)\d\d/);
+  return m ? m[0] : NO_YEAR;
+}
+
+function writingCard(item) {
   /* A title is a link only when there is a page behind it. A link
      that goes nowhere is worse than plain text, because it promises
      something and then does not deliver it. */
@@ -1699,24 +1768,119 @@ function writingEntry(item) {
     : escapeHtml(item.title);
 
   /* A short has no page of its own, because the piece is the video
-     rather than a text with a video attached. Black, because it
-     leaves the site: the same rule as Listen in the Music room. */
-  const watch = item.watchHref
-    ? `<a class="listen-btn" href="${escapeHtml(item.watchHref)}" target="_blank" rel="noopener">Watch</a>`
+     rather than a text with a video attached.
+
+     It opens over the page rather than in a new window, per Jack on
+     2026-08-23, which is why this is a button and not a link: it
+     changes this page instead of going anywhere. js/video-modal.js
+     picks it up from data-video. Shorts are portrait, hence the
+     ratio; without it a 9:16 video sits letterboxed in a 16:9 box.
+
+     The id comes off watchHref rather than being stored twice, so the
+     array keeps one field and it stays the canonical link. */
+  const shortId = item.watchHref
+    ? (item.watchHref.match(/(?:shorts\/|v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/) || [])[1]
+    : null;
+  const watch = shortId
+    ? `<button class="listen-btn" type="button" data-video="${escapeHtml(shortId)}" data-ratio="9 / 16" data-video-title="${escapeHtml(item.title)}">Watch</button>`
     : "";
 
   return `
-    <li class="entry">
-      <div class="entry-body">
-        ${placeholderFlag(item)}
-        <span class="role-tag">${escapeHtml(item.kind)}</span>
-        <h3 class="entry-title">${title}</h3>
-        <p class="entry-meta">${escapeHtml(item.meta)}</p>
-        ${item.note ? `<p class="entry-note">${escapeHtml(item.note)}</p>` : ""}
-        <div class="entry-actions">${watch}${crossRef(item)}</div>
-      </div>
+    <li class="writing-card" data-kind="${escapeHtml(item.kind)}">
+      ${placeholderFlag(item)}
+      <span class="role-tag">${escapeHtml(item.kind)}</span>
+      <h4 class="writing-card-title">${title}</h4>
+      <p class="writing-card-meta">${escapeHtml(item.meta)}</p>
+      ${item.note ? `<p class="entry-note">${escapeHtml(item.note)}</p>` : ""}
+      ${watch || crossRef(item) ? `<div class="entry-actions">${watch}${crossRef(item)}</div>` : ""}
     </li>
   `;
+}
+
+function initWriting() {
+  const mount = document.getElementById("writingList");
+  if (!mount) return;
+
+  const filters = document.getElementById("writingFilters");
+  const yearNav = document.getElementById("writingYears");
+  const status = document.getElementById("writingStatus");
+
+  if (!WRITING.length) {
+    emptyState(mount, "Nothing here yet.",
+      ["Lyrics and prose will live in this room."]);
+    return;
+  }
+
+  /* Group by year, newest first, undated last. */
+  const groups = new Map();
+  WRITING.forEach(item => {
+    const y = writingYear(item);
+    if (!groups.has(y)) groups.set(y, []);
+    groups.get(y).push(item);
+  });
+  const years = [...groups.keys()].sort((a, b) => {
+    if (a === NO_YEAR) return 1;
+    if (b === NO_YEAR) return -1;
+    return Number(b) - Number(a);
+  });
+
+  mount.innerHTML = years.map(y => `
+    <section class="writing-year" id="year-${escapeHtml(y)}" aria-labelledby="year-h-${escapeHtml(y)}">
+      <h3 class="writing-year-title" id="year-h-${escapeHtml(y)}">${escapeHtml(y)}</h3>
+      <ul class="writing-grid">${groups.get(y).map(writingCard).join("")}</ul>
+    </section>
+  `).join("");
+
+  /* Kinds in the order they first appear, so the buttons follow the
+     array rather than an alphabet nobody asked for. */
+  const kinds = [];
+  WRITING.forEach(i => { if (!kinds.includes(i.kind)) kinds.push(i.kind); });
+
+  const label = k => k === "Lyric" ? "Lyrics" : k === "Short" ? "Shorts" : k;
+  const count = k => k === "all" ? WRITING.length : WRITING.filter(i => i.kind === k).length;
+
+  filters.innerHTML = ["all", ...kinds].map((k, n) => `
+    <button class="filter-btn${n === 0 ? " is-on" : ""}" type="button"
+            data-filter="${escapeHtml(k)}" aria-pressed="${n === 0}">
+      ${k === "all" ? "All" : escapeHtml(label(k))}
+      <span class="filter-count">${count(k)}</span>
+    </button>
+  `).join("");
+
+  function drawYears(kind) {
+    const shown = years.filter(y =>
+      kind === "all" || groups.get(y).some(i => i.kind === kind));
+    yearNav.innerHTML = shown.map(y =>
+      `<a class="year-link" href="#year-${escapeHtml(y)}">${escapeHtml(y)}</a>`).join("");
+  }
+  drawYears("all");
+
+  filters.addEventListener("click", (e) => {
+    const btn = e.target.closest(".filter-btn");
+    if (!btn) return;
+    const kind = btn.dataset.filter;
+
+    [...filters.querySelectorAll(".filter-btn")].forEach(b => {
+      const on = b === btn;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
+
+    [...mount.querySelectorAll(".writing-card")].forEach(card => {
+      card.hidden = kind !== "all" && card.dataset.kind !== kind;
+    });
+
+    /* A year whose cards are all hidden has to go too, or the page
+       fills with headings over nothing. */
+    [...mount.querySelectorAll(".writing-year")].forEach(sec => {
+      sec.hidden = ![...sec.querySelectorAll(".writing-card")].some(c => !c.hidden);
+    });
+
+    drawYears(kind);
+    status.textContent = kind === "all"
+      ? `Showing all ${WRITING.length} entries.`
+      : `Showing ${count(kind)} ${label(kind).toLowerCase()}.`;
+  });
 }
 
 /* ============================================================
@@ -2163,15 +2327,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderRoom("podcastList", PODCASTS, podcastEntry,
     "No episodes here yet",
-    ["Shows Jack hosts, appears on, and produces for other people all land here."]);
+    ["Shows Jack hosts and produces land here."]);
 
+  /* Speaking came off the live site on 2026-08-23. The array and this
+     call stay so the room is one file away from coming back, and the
+     call is a quiet no-op with no mount point to find. */
   renderRoom("speakingList", SPEAKING, speakingEntry,
     "No talks here yet",
     ["Talks and hosted events land here."]);
 
-  renderRoom("writingList", WRITING, writingEntry,
-    "Nothing written here yet",
-    ["Lyrics and prose land here. Each lyric gets its own page, with the track it belongs to."]);
+  /* Writing does not use renderRoom: it groups by year and draws its
+     own filters, so it owns its whole mount. */
+  initWriting();
 
   initPlayer();
   initFacades();

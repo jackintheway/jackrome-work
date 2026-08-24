@@ -20,8 +20,8 @@ One card per page. The Squarespace site shared a single image across nine pages,
 ## The Wayspace set
 
 The six room cards are one family: same layout, one short word, and the
-room's own colour as the ground. The colour is not decoration. It is the
-same colour that room wears on the landing list and in its hero, so a
+room's own color as the ground. The color is not decoration. It is the
+same color that room wears on the landing list and in its hero, so a
 link previewed in a message already matches the room it opens.
 
 The title's hard offset shadow changes per room, because a yellow offset

@@ -91,7 +91,7 @@ Each is a **form Jack's creative work shows up in**. That is the organising prin
 and it is what resolves the overlap: a podcast that also exists as video is filed by
 the form it primarily lives in, and the other room points across at it.
 
-| Room | Colour | Holds |
+| Room | Color | Holds |
 |---|---|---|
 | Music | orange | Releases, streaming links, the room's player |
 | Video | blue | Anything whose form is video, including live performance |
@@ -100,11 +100,11 @@ the form it primarily lives in, and the other room points across at it.
 | Speaking | salmon | Talks given, events hosted |
 | Writing | brown | Lyrics, each with its own page and track, plus prose |
 
-**The colour is structural, not decoration.** A room announces its colour as a swatch
+**The color is structural, not decoration.** A room announces its color as a swatch
 on the landing list, wears it as its hero, and carries it on its share card. So the
-map is learned by colour before any puzzle art exists, and when the pieces get drawn
+map is learned by color before any puzzle art exists, and when the pieces get drawn
 they are already coded. It is set once per page as `--room` on the `<body>`; every
-component in `css/wayspace.css` reads that property rather than naming a colour.
+component in `css/wayspace.css` reads that property rather than naming a color.
 
 ### Decisions made on 2026-08-20, with Jack
 
@@ -416,7 +416,7 @@ feed the spine, `DESIGN` feeds the grid. Adding work is still adding an object.
 `assets/` went from 29 MB to about 36 MB. The clips are 2.7 MB, six five-second
 480x480 loops, encoded with `avconvert -p PresetMediumQuality` because there is
 no ffmpeg on this machine and that is the only preset with a bitrate low enough
-to put six clips on one page. The art is flat colour with heavy outlines, so it
+to put six clips on one page. The art is flat color with heavy outlines, so it
 survives the downscale. Sources are 1920x1920 at about 6 MB each in
 `_source/design/the-wayspace-tool-pack/`.
 
@@ -703,6 +703,84 @@ than being read out of the DOM.
 Two assertions were also too loose at first and let real failures read as passes.
 Checking a title is "not the placeholder" passes on an error message. Assert the
 absence of the error text and the change in the backlink.
+
+---
+
+## The 2026-08-23 batch
+
+Twelve changes Jack asked for in one pass. The ones carrying a decision:
+
+**American spelling, site wide.** "colour" is now "color" everywhere, 126
+occurrences across 76 files. Nothing was an identifier; it was all prose.
+
+**The room switcher hovers in each room's own color.** Orange for all six was
+the site's default link behaviour rather than a decision, and it made six
+destinations look like one. Each link carries `is-<room>`, and the CSS sets two
+properties per room: the true color for the underline, and a `-deep` variant for
+the text, because yellow and salmon fail as body type at their true value. Brown
+has no `-deep` token and needs none.
+
+**Speaking came off the live site.** Nothing to put in it yet. The page is
+deleted rather than standing empty, `/wayspace/speaking` 301s to `/wayspace`,
+and the switcher and the landing grid both drop to five rooms. The `SPEAKING`
+array, its `renderRoom` call and the share card all stay, so restoring the room
+is restoring one file.
+
+**"The release" is gone from all 62 lyric pages.** Per Jack: "Back to Writing"
+is enough. Twelve of those pages also carry a lyric video, and their button row
+survived with the video button in it.
+
+**Watch happens on the page now, not in a new window.** `js/video-modal.js` is
+one `<dialog>` serving three surfaces that had the same problem: the fourteen
+shorts in Writing, the five episode videos in Podcasts, and the twelve lyric
+pages with a lyric video. `<dialog>` rather than a hand rolled overlay, because
+`showModal` gives the focus trap, Escape, the inert background and returned
+focus for free.
+
+The facade rule holds: nothing is requested from YouTube until Watch is pressed,
+and **closing removes the iframe rather than hiding it**, so a closed video is
+not still playing. That teardown fires on the `close` event, which is
+asynchronous, so a test that checks in the same tick as the click will report a
+failure that is not there.
+
+Shorts open portrait, everything else 16:9, from `data-ratio`.
+
+**Video cards take the shape of the video inside them.** `--facade-ratio` per
+item, defaulting to 16:9. In My Head is square and was sitting pillarboxed in a
+wide box, so its thumbnail was recropped square from the 640x480 source with
+YouTube's letterbox bars cut off, 364x364 native. YouTube has no `maxresdefault`
+for that id; `maxres1.jpg` exists at 1280x720 but is a mid-video frame of a
+television, not the character everyone recognises.
+
+**Writing is a grid grouped by year.** Seventy six entries in one column is
+something you scroll rather than navigate. Now: filter by kind, jump by year,
+cards under a heading per year, newest first. The controls are built from the
+array, counts included, so they cannot drift from what is rendered. Orchard has
+no year in its meta and sorts last under "Undated"; if it gets a date, that
+bucket disappears on its own.
+
+The non obvious part: filtering hides cards, so a year heading whose cards are
+all hidden has to be hidden too, or the page fills with empty years.
+
+**Podcasts carry both the watch and the listen.** Every episode of Jack's show
+also exists as video. Watch comes first because it happens here; Listen stays a
+black link because it leaves for Apple. Crossing The Bridge is audio only.
+
+**The Podcasts copy is Jack's.** "Shows hosted and produced by me. Conversations
+at the intersection of creativity, spirituality, and culture." The old line said
+"produced for other people", which had it backwards: this room is mostly his own
+show. Crossing The Bridge was client work for Tribly, and per Jack it was his
+build, his scripting and his hosting as lead producer, with their CEO closely
+involved, so the note says produced rather than only hosted.
+
+**The Design lineage copy is Jack's own, verbatim**, down to the italic on "in"
+and the one exclamation mark. Do not smooth it. The rest of that page had a
+jacks-voice pass the same day, which is why it moved to first person.
+
+One consequence worth knowing: "Point at one to play it. On a phone, tap." came
+out at Jack's request, so the tool clips are now an undiscoverable hover. The
+tiles carry no play glyph. If that reads as broken rather than as a reward, the
+fix is a cue on the tile rather than putting the sentence back.
 
 ---
 
