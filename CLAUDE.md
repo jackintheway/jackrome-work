@@ -113,10 +113,17 @@ category page) all to `/`. `/store` needed no rule; it already 404s on the live 
 ~~**2. `/creative-portfolio` still has no 301.**~~ **Closed 2026-08-24.** `netlify.toml`
 now 301s it to `/wayspace`, per this file's own working note.
 
-**3. The Design room's share card is stale.** `og-wayspace-design.png` was rendered
-against the room's original one-line description. The visible hero copy has changed
-twice since (2026-08-23, then again 2026-08-24), and the card never followed. Rebuild
-with `./tools/og/render.sh` before the cutover, once the room's copy has settled.
+~~**3. The Design room's share card is stale.**~~ **Wrong, and closed 2026-08-24.**
+Jack doubted it and was right. The card was never rendered from the room's one-line
+description: `tools/og/card-wayspace-design.html` carries only an eyebrow
+("Wayspace &middot; Jack Rome"), the single word "Design", and the URL. There is
+nothing in it that hero copy can make stale. Verified against the rendered PNG, which
+is 1200x630, live at 200, and reads at 300px. No rebuild needed.
+
+**The general shape of the mistake is worth keeping.** The six room cards are one
+word each, by design, so the type can run large. A note claiming one had drifted from
+prose it never contained was asserting a dependency that does not exist. Check the
+card source before believing a claim that a card is out of date.
 
 **0. `/case-studies/two-track-class-edit-automation` is built and not deployed.**
 Committed 2026-08-24, along with `js/case-studies.js`, a section on
@@ -512,10 +519,9 @@ survives the downscale. Sources are 1920x1920 at about 6 MB each in
   2026-08-22: in Music a cover is a thumbnail capped at 340px, in Design it is
   the work itself and that is what earns a modal. The Design derivatives are
   already larger for this reason. Building it is a separate decision.
-- **The share card still says the old thing.** `og-wayspace-design.png` was
-  rendered against the room's previous one-line description. The visible hero
-  copy changed on 2026-08-23; the card did not. Rebuild it with
-  `./tools/og/render.sh` before the cutover.
+- ~~**The share card still says the old thing.**~~ **Wrong, closed 2026-08-24.**
+  It never carried the description. The card is the eyebrow, the word "Design",
+  the puzzle mark and the URL, same as the other five rooms. Nothing to rebuild.
 
 ---
 
