@@ -829,6 +829,51 @@ site.
 
 ---
 
+## The Wayspace room switcher gets a mark, not text (2026-08-24)
+
+`.room-switch-home` used to be the word "Wayspace" as a plain link, on all 66
+pages carrying the switcher. Per Jack: a small version of the actual logo,
+sized to the strip, with the same hover motion the site's buttons already use.
+
+**The mark did not exist pre-built.** Two candidates were ruled out first:
+`assets/puzzle-single.svg` is the site-wide favicon, used on every page and
+not Wayspace-specific, so reusing it here would conflate site identity with
+room identity. `jackintheway-flower.png` is the music-persona mark, not the
+Wayspace one. The right image is the flower-and-spiral badge at the center of
+the Wayspace album cover, captioned in `wayspace/design.html` as "a yellow
+flower carries the Wayspace wordmark at the centre."
+
+**Built from its own transparent layers**, not cropped from the flattened
+album cover, so the mark stays flat-fill and transparent-background like
+everything else in the design system rather than carrying a gradient
+background it would need to sit on top of. `FLOWER.png`, `SPIRAL.png` and
+`WAYSPACE.png` in `_source/design/wayspace-animated-artwork-pieces/` share one
+1500x1500 canvas and the same registration. This machine has neither
+ImageMagick nor Pillow, so the three were stacked in a throwaway HTML page and
+composited by screenshotting it in headless Chrome, then cropped to the
+flower's true alpha bounding box (measured by hand-parsing the PNG, since
+`sips` cannot crop to an arbitrary offset without knowing it first) and
+downsized to `assets/img/wayspace/wayspace-mark.png`.
+
+The switcher link keeps the word "Wayspace" as its `aria-label` rather than
+visible text, `alt=""` on the image itself, and the same
+`transform: translate(-1px, -1px)` hover every other button on the site
+already uses rather than a new motion invented for one element.
+
+## The Wayspace lobby hero, blue: a live preview, not shipped
+
+Jack asked whether the "Welcome to WAYSPACE" hero should run on the room's own
+blue instead of paper, and asked to see it before deciding. Built as a scoped
+CSS override, `.ws-hero.is-blue-preview` in `css/wayspace.css`, not applied to
+`wayspace.html` itself: the rule exists in the stylesheet, unused, until Jack
+picks a direction. Screenshots at desktop and 390px went to him directly.
+
+The Video room already runs this exact blue with paper-colored text, which is
+why "would white text look weird" had an answer before this was even built:
+no, there is already a working example of it on the site.
+
+---
+
 ## Pinned for later: the merch store
 
 `https://wayspace-shop.fourthwall.com/` is Jack's store. Raised 2026-08-23 and
@@ -893,11 +938,22 @@ it; do not copy content out of it onto this site.
 
 The service doorway, sibling to `/ai-enablement`, and the last page in scope.
 
-**It is built on the belief sentence above.** Safety leads, capability follows.
-The hero is Jack's own line from `/about` ("when someone has something they need to
-bring forth and something technical is in the way, I'm the person who moves it"),
+**It is built on the belief sentence above.** Safety leads, capability follows,
 and "How I work" closes on the promise about limits rather than a claim of
 completeness.
+
+**The hero changed on 2026-08-24.** It used to share a line with `/about`
+("when someone has something they need to bring forth and something technical
+is in the way, I'm the person who moves it"). Jack's own read: that describes
+removing an obstacle, and what he actually does is find an answer and show the
+client how he found it, which is what creates momentum on their end, not a
+block getting cleared. Four rounds of auditioning against that correction
+landed somewhere simpler than any mechanism-focused line: **"Let's bring your
+next project to life."** The old line is cut from `/about` entirely rather
+than replaced, on Jack's own read that the mountain passage two paragraphs
+below it already makes the point, in language he had already written: "the
+person on the mountain slope with a hand down, showing you where to put your
+foot as you climb." 
 
 **The work is data-driven, in `js/production.js`.** Ten entries, each carrying
 `roles: []`, rendered through pure functions into the `work-card` component that

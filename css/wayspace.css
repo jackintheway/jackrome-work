@@ -52,6 +52,16 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   padding: var(--space-8) var(--space-5);
   text-align: center;
 }
+/* A preview only, per Jack on 2026-08-24: the lobby hero on its own
+   blue instead of paper, to see whether it wants more color. Not
+   applied to the live markup until he has seen it beside the current
+   version. The Video room already runs this exact blue with paper
+   text and reads cleanly, which is the precedent this is testing
+   against. Scoped to the hero only, not the token, so nothing else on
+   the page is affected either way this goes. */
+.ws-hero.is-blue-preview { background: var(--ws-blue); }
+.ws-hero.is-blue-preview .ws-welcome,
+.ws-hero.is-blue-preview .ws-hero-title { color: var(--ws-paper); }
 .ws-hero-inner {
   max-width: var(--container-narrow);
   margin: 0 auto;
@@ -200,17 +210,37 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   align-items: baseline;
   gap: var(--space-2) var(--space-5);
 }
+/* The Wayspace mark, replacing the plain text link, per Jack on
+   2026-08-24. Built from the album cover's own flower badge: the
+   individual FLOWER, SPIRAL and WAYSPACE layers in
+   _source/design/wayspace-animated-artwork-pieces/, composited and
+   cropped to assets/img/wayspace/wayspace-mark.png, since this machine
+   has neither ImageMagick nor Pillow to do it directly.
+
+   align-items on .room-switcher is baseline, which sizes text but not
+   an image, so the mark gets its own centering here rather than
+   sinking to the text baseline beside it.
+
+   The name survives as the aria-label rather than visible text, and
+   alt="" on the image itself: labelled once at the link, not twice. */
 .room-switch-home {
-  font-family: var(--font-heading);
-  font-weight: var(--fw-black);
-  font-size: var(--fs-caption);
-  letter-spacing: var(--ls-overline);
-  text-transform: uppercase;
-  color: var(--text-strong);
+  display: flex;
+  align-items: center;
   text-decoration: none;
   margin-right: auto;
 }
-.room-switch-home:hover { color: var(--ws-orange-deep); }
+.room-switch-mark {
+  display: block;
+  width: 32px;
+  height: 32px;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+/* The same small lift every other button on the site uses on hover,
+   rather than a new motion invented for this one element. */
+.room-switch-home:hover .room-switch-mark,
+.room-switch-home:focus-visible .room-switch-mark {
+  transform: translate(-1px, -1px);
+}
 
 .room-switch-links {
   display: flex;
