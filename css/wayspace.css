@@ -755,10 +755,121 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   min-width: 0;
   flex: 1;
 }
-.player-bar audio {
-  width: min(420px, 100%);
-  height: 40px;
+.player-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  min-width: 0;
+  flex: 1 1 16rem;
 }
+
+/* ---- The transport ----
+   These drive a SoundCloud widget that is never shown. See the note
+   over initPlayer in js/wayspace.js for why this room hides it and
+   the lyric pages do not. */
+.player-transport {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 2 1 22rem;
+  min-width: 0;
+}
+.player-btn {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ws-black);
+  background: var(--ws-yellow);
+  border: var(--border-hair) solid var(--ws-black);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  flex: none;
+}
+/* Skip is secondary to play, so it reads as paper on black rather
+   than taking the same yellow and competing with it. */
+.player-btn.is-quiet {
+  background: transparent;
+  color: var(--ws-paper);
+  border-color: var(--ws-paper);
+  padding: var(--space-2) var(--space-3);
+}
+.player-btn:hover,
+.player-btn:focus-visible { transform: translate(-1px, -1px); }
+
+.player-skip { display: inline-flex; gap: var(--space-2); flex: none; }
+.player-skip[hidden] { display: none; }
+
+/* The scrubber. Height and colour are set on both the WebKit and the
+   Firefox pseudo-elements: they cannot be combined into one rule,
+   because either browser drops a whole selector list it does not
+   recognise. */
+.player-seek {
+  flex: 1 1 auto;
+  min-width: 6rem;
+  height: 20px;
+  accent-color: var(--ws-yellow);
+  background: transparent;
+  cursor: pointer;
+}
+.player-seek::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--ws-paper);
+}
+.player-seek::-moz-range-track {
+  height: 4px;
+  background: var(--ws-paper);
+}
+.player-seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  background: var(--ws-yellow);
+  border: var(--border-hair) solid var(--ws-black);
+}
+.player-seek::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--ws-yellow);
+  border: var(--border-hair) solid var(--ws-black);
+  border-radius: 0;
+}
+.player-time {
+  font-size: var(--fs-caption);
+  color: var(--ws-paper);
+  font-variant-numeric: tabular-nums;
+  flex: none;
+}
+/* The backlink SoundCloud's terms require. Yellow because that is the
+   colour a link already takes on black in the footer. */
+.player-link {
+  font-size: var(--fs-caption);
+  color: var(--ws-yellow);
+  flex: none;
+}
+.player-link[hidden] { display: none; }
+
+.player-bar.is-loading .player-now::after {
+  content: " loading";
+  color: var(--ws-yellow);
+}
+
+/* The widget. Parked off screen rather than display:none or a zero
+   box, because a player with no box gets its media suspended in some
+   browsers. left rather than top so it can never be scrolled to. */
+#scHost {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  width: 320px;
+  height: 166px;
+  overflow: hidden;
+}
+#scHost iframe { border: 0; }
 
 /* ============================================================
    LYRIC PAGE
@@ -1299,4 +1410,15 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   .room-hero { padding: var(--space-7) var(--space-4); }
   .room-switcher { padding: var(--space-3) var(--space-4); }
   .player-bar { padding: var(--space-3) var(--space-4); }
+
+  /* The transport takes its own line under the title rather than
+     sharing one. At 390px the scrubber and the time were being
+     squeezed to the point where neither could be used. */
+  .player-head,
+  .player-transport { flex: 1 1 100%; }
+  .player-transport { gap: var(--space-2); }
+  .player-time { font-size: 11px; }
+  /* Last on the row and least urgent, so it wraps to its own line
+     before anything else has to give up width. */
+  .player-link { flex: 1 1 100%; }
 }

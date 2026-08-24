@@ -28,9 +28,15 @@
 /* ============================================================
    MUSIC
    Releases. cover: path under assets/img/, or null for a placeholder
-   tile. track: the file the room's player loads, or null while there
-   is no cleared audio to serve. streams: where to go listen properly,
-   which is most of what a music page is for.
+   tile. sc: what the room's player loads from SoundCloud, or null
+   where there is nothing to load. streams: where to go listen
+   properly, which is most of what a music page is for.
+
+   sc.kind is "track" or "playlist" and decides which SoundCloud API
+   path the widget URL is built against. sc.title is only the label
+   the bar shows while the widget is still loading: once a sound is
+   playing the player asks the widget for the real title, which is
+   what keeps an album's display correct as it advances.
    ============================================================ */
 const MUSIC = [
 
@@ -40,19 +46,29 @@ const MUSIC = [
      That lookup lists 53 releases against these 20, which is the
      curation working rather than a gap.
 
-     Spotify is the only stream link on purpose. It is where plays
+     Spotify is the only stream *link* on purpose. It is where plays
      count, and one destination reads as a decision where two read as
-     indecision. SoundCloud URLs for five of these are recorded in
-     _source/music/STREAMS.md if that ever changes.
+     indecision. That is a separate question from what the room's
+     player plays, which is SoundCloud and is never presented as a
+     second place to go.
 
      COLLABORATIONS NAME THE OTHER PEOPLE, in `format`. Per Jack: a
      title is just the title, except where the work is shared, and
      then the people belong on the card.
 
-     THREE CARDS CARRY AUDIO. The room's player is a sampler, not a
-     catalogue: everything else is `track: null` and sends people to
-     Spotify. Hosting the discography would be maintaining a worse
-     Spotify, and the plays would count for nothing.
+     EIGHT CARDS CARRY AUDIO, up from three when the room played self
+     hosted MP3s. The twelve without it are mostly collaborations and
+     features, which live on the other artists' SoundCloud accounts
+     rather than Jack's. That is normal and not a gap.
+
+     TWO CARDS COULD PLAY AND DELIBERATELY DO NOT. Wayspace (2022) is
+     the twelve track album and the only Wayspace set on SoundCloud is
+     the twenty four track deluxe, already wired to the card above it.
+     Feivel Speaks (2024) is the same shape: Jack extended
+     /sets/feivel-speaks to all fifteen tracks on 2026-08-23, which
+     made it the deluxe and left the standard album without a set of
+     its own. Per Jack: two buttons pointing at the same tracks are
+     two buttons doing one thing.
 
      COVERS: six come from Jack's 3000x3000 originals, the rest from
      Spotify at 640. Both are derived down to 640 here, which covers a
@@ -65,7 +81,7 @@ const MUSIC = [
     format: "Release",
     cover: "/assets/img/wayspace/music/race-day.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/0gLDBYIG7S9ZykGjMKEwPY" }],
-    track: { src: "/assets/audio/race-day.mp3", title: "Race Day" },
+    sc: { id: "2386806162", kind: "track", title: "RACE DAY" },
     crossRef: null
   },
   {
@@ -74,7 +90,7 @@ const MUSIC = [
     format: "Album",
     cover: "/assets/img/wayspace/music/feivel-speaks-deluxe.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/6P9hhxcT0jzRPf6fsyoyDj" }],
-    track: { src: "/assets/audio/all-that-i-do.mp3", title: "All that I Do" },
+    sc: { id: "1919548507", kind: "playlist", title: "Feivel Speaks (Deluxe)" },
     crossRef: null
   },
   {
@@ -83,7 +99,7 @@ const MUSIC = [
     format: "Album",
     cover: "/assets/img/wayspace/music/feivel-speaks.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/43LSqY2k5sk7KDWkEW0MJk" }],
-    track: { src: "/assets/audio/safe.mp3", title: "Safe" },
+    sc: null,
     crossRef: { text: "Lyrics", href: "/wayspace/writing", room: "writing" }
   },
   {
@@ -92,7 +108,7 @@ const MUSIC = [
     format: "Album",
     cover: "/assets/img/wayspace/music/wayspace-deluxe.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/0TKnaG1hX3415Nxo5fndFI" }],
-    track: null,
+    sc: { id: "2288049135", kind: "playlist", title: "Wayspace (Deluxe)" },
     crossRef: null
   },
   {
@@ -101,7 +117,7 @@ const MUSIC = [
     format: "Foster Family single",
     cover: "/assets/img/wayspace/music/mystery.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/track/2L61W1CSb0kdpOaWhHjQxs" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -110,7 +126,7 @@ const MUSIC = [
     format: "Single with Fabrizio and Tally Schwenk",
     cover: "/assets/img/wayspace/music/moment.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/track/0Ssx0NtfdOUHGXLkaDn7SC" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -119,7 +135,7 @@ const MUSIC = [
     format: "Album",
     cover: "/assets/img/wayspace/music/wayspace.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/5U1K4wDc75208yey9abs9w" }],
-    track: null,
+    sc: null,
     crossRef: { text: "Lyrics", href: "/wayspace/writing", room: "writing" }
   },
   {
@@ -128,7 +144,7 @@ const MUSIC = [
     format: "Foster Family single",
     cover: "/assets/img/wayspace/music/youll-be-alright.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/23S89nP8gShFp8FsRVFCNO" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -137,7 +153,7 @@ const MUSIC = [
     format: "Foster Family single",
     cover: "/assets/img/wayspace/music/all-i-need.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/track/4k2gNNveiUrhPHotKqxpbe" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -146,7 +162,7 @@ const MUSIC = [
     format: "Project",
     cover: "/assets/img/wayspace/music/jackpot.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/2CRVwExrlmn5IMi9r6YneJ" }],
-    track: null,
+    sc: { id: "1293914818", kind: "playlist", title: "Jackpot" },
     crossRef: null
   },
   {
@@ -155,7 +171,7 @@ const MUSIC = [
     format: "Single with Fabrizio and Tally Schwenk",
     cover: "/assets/img/wayspace/music/the-edge.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/3l2dj34tBf6PNXs21Sf8Ap" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -164,7 +180,7 @@ const MUSIC = [
     format: "Single with Tally Schwenk",
     cover: "/assets/img/wayspace/music/you-got-me.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/track/37hZXFQf83H1y9AY8oG1Yv" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -173,7 +189,7 @@ const MUSIC = [
     format: "Foster Family single",
     cover: "/assets/img/wayspace/music/answers.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/1QZlxvOcteSvxf0qFe41hh" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -182,7 +198,7 @@ const MUSIC = [
     format: "Project",
     cover: "/assets/img/wayspace/music/get-lost.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/7sqogG98sE4hlZ7iUVX3Fc" }],
-    track: null,
+    sc: { id: "1079576932", kind: "playlist", title: "Get Lost" },
     crossRef: null
   },
   {
@@ -191,7 +207,7 @@ const MUSIC = [
     format: "Single with Fabrizio and Josh Grant",
     cover: "/assets/img/wayspace/music/feel.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/track/0W9rnVegGPAXohPhdX4ka4" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -200,7 +216,7 @@ const MUSIC = [
     format: "Single",
     cover: "/assets/img/wayspace/music/only-human-stripped.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/track/6CJyf3hEzhWe4I0n89O5EL" }],
-    track: null,
+    sc: { id: "783771448", kind: "track", title: "Only Human (Stripped)" },
     crossRef: null
   },
   {
@@ -209,7 +225,7 @@ const MUSIC = [
     format: "Single with Noah Kenton",
     cover: "/assets/img/wayspace/music/light-of-dawn.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/track/6hbUnD55sC6vFmDytOX2pr" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -218,7 +234,7 @@ const MUSIC = [
     format: "Single with Fabrizio",
     cover: "/assets/img/wayspace/music/looking-for-more.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/track/5t8TgdshDTDhEDyKzD6TyS" }],
-    track: null,
+    sc: null,
     crossRef: null
   },
   {
@@ -227,7 +243,7 @@ const MUSIC = [
     format: "Project",
     cover: "/assets/img/wayspace/music/jahny.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/6RxQiKUC2chQkqFmNUzWP5" }],
-    track: null,
+    sc: { id: "685445952", kind: "playlist", title: "Jahny" },
     crossRef: { text: "Watch", href: "/wayspace/video", room: "video" }
   },
   {
@@ -236,7 +252,7 @@ const MUSIC = [
     format: "Project",
     cover: "/assets/img/wayspace/music/so-much-for-so-long.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/78jxFTbCQYcEuoO41cHCl1" }],
-    track: null,
+    sc: { id: "550795005", kind: "playlist", title: "So Much For So Long" },
     crossRef: { text: "Watch", href: "/wayspace/video", room: "video" }
   }
 ];
@@ -1492,18 +1508,22 @@ function musicCard(item) {
 
      Where the release goes instead: see the note in music.html. */
 
-  /* Play is the room's own player: it loads the file into the bar at
-     the bottom and never leaves the page. Only three releases have
-     cleared audio, so most cards do not get one. A disabled button
-     stood here before and made fourteen cards look broken.
+  /* Play is the room's own player: it loads the release into the bar
+     at the bottom and never leaves the page. Twelve cards do not get
+     one, because there is nothing on SoundCloud to load. A disabled
+     button stood here before and made those cards look broken.
 
      Listen is the way out to Spotify, and every card carries one. That
      is the difference between the two controls, and it is why they are
      both here rather than one standing in for the other: hearing a
      track in the room and going to where the plays count are different
-     things a visitor might want. */
-  const play = item.track
-    ? `<button class="play-btn" data-src="${escapeHtml(item.track.src)}" data-title="${escapeHtml(item.track.title)}">Play</button>`
+     things a visitor might want.
+
+     An album says so on the button. "Play album" sets the expectation
+     that pressing it starts a sequence rather than one song, which is
+     the one thing a visitor cannot tell from a cover. */
+  const play = item.sc
+    ? `<button class="play-btn" data-sc-id="${escapeHtml(item.sc.id)}" data-sc-kind="${escapeHtml(item.sc.kind)}" data-title="${escapeHtml(item.sc.title)}">${item.sc.kind === "playlist" ? "Play album" : "Play"}</button>`
     : "";
 
   /* The label depends on whether Play is standing next to it. On its
@@ -1511,7 +1531,7 @@ function musicCard(item) {
      Beside a Play button it would read as a second way to do the same
      thing, so it names the destination instead: Spotify. Per Jack. */
   const listen = item.streams.length
-    ? `<a class="listen-btn" href="${escapeHtml(item.streams[0].href)}" target="_blank" rel="noopener">${item.track ? "Spotify" : "Listen"}</a>`
+    ? `<a class="listen-btn" href="${escapeHtml(item.streams[0].href)}" target="_blank" rel="noopener">${item.sc ? "Spotify" : "Listen"}</a>`
     : "";
 
   return `
@@ -1719,36 +1739,291 @@ function renderRoom(mountId, items, cardFn, emptyTitle, emptyLines) {
 }
 
 /* ============================================================
-   The music room's player
+   THE MUSIC ROOM'S PLAYER
 
-   One <audio> element for the whole room. Every cover is a remote
-   control for it: clicking Play swaps the source rather than opening
-   a second player, so two tracks can never play over each other.
+   One player for the whole room. Every cover is a remote control for
+   it, so two releases can never play over each other.
 
-   This is where the conflict recorded in CLAUDE.md gets settled. A
-   player bar cannot survive a real page navigation, and the six
-   rooms are six real pages. So audio never crosses one. This bar
-   belongs to Music, and a lyric page carries its own single track.
+   It lives in this room and nowhere else. A bar that survives
+   navigation is impossible across six real pages, so the answer is
+   that audio never crosses one: Music owns this player, and each
+   lyric page under Writing owns its own single track.
+
+   WHAT CHANGED, 2026-08-23. This used to be a native <audio> element
+   loading MP3s out of assets/audio/. Three files cost 20 MB, which is
+   why only three of twenty cards had a Play button at all. It now
+   drives a SoundCloud widget that is never shown, through the Widget
+   API, so a release plays with no file in the repo and eight cards
+   carry a button.
+
+   The old note here said a custom transport should not be built
+   against audio that does not exist yet. That reason expired: the
+   catalogue is on SoundCloud now.
+
+   THE FACADE HOLDS. Nothing is requested from soundcloud.com until
+   someone presses Play, and that includes api.js itself, which is
+   injected on the first press rather than shipped in the page head.
+
+   WHY THE WIDGET IS HIDDEN RATHER THAN SHOWN. This room is a grid.
+   Revealing a 166px player inside a grid cell either shoves the
+   layout sideways or crushes the player into a space too small to
+   use. The lyric pages are the opposite shape, one song in one
+   column, and they show the real player on purpose. Considered for
+   this treatment on 2026-08-23 and deliberately left alone.
+
+   ATTRIBUTION IS PART OF THE DEAL, not decoration. SoundCloud's API
+   terms require a clearly visible backlink from the sound to its page
+   on soundcloud.com, and credit to SoundCloud as the source. The bar
+   carries both, and the link follows whatever is playing.
    ============================================================ */
+
+const SC_API = "https://w.soundcloud.com/player/api.js";
+
+/* Read once so the widget URL is built the same way in both places.
+   hide_related and show_teaser are what answer Jack's "no auto-play
+   after": SoundCloud otherwise runs a related-tracks grid and an end
+   card when a sound finishes. Same parameters js/lyric-audio.js uses. */
+function scWidgetUrl(id, kind) {
+  const p = new URLSearchParams({
+    url: "https://api.soundcloud.com/" + (kind === "playlist" ? "playlists/" : "tracks/") + id,
+    color: "#000000",
+    auto_play: "true",
+    hide_related: "true",
+    show_comments: "false",
+    show_user: "true",
+    show_reposts: "false",
+    show_teaser: "false",
+    visual: "false"
+  });
+  return "https://w.soundcloud.com/player/?" + p;
+}
+
+function scTime(ms) {
+  if (!isFinite(ms) || ms < 0) ms = 0;
+  const t = Math.floor(ms / 1000);
+  return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0");
+}
+
 function initPlayer() {
-  const audio = document.getElementById("roomAudio");
-  const now = document.getElementById("playerNow");
   const grid = document.getElementById("musicGrid");
-  if (!audio || !now || !grid) return;
+  const host = document.getElementById("scHost");
+  const bar = document.getElementById("playerBar");
+  if (!grid || !host || !bar) return;
+
+  const now = document.getElementById("playerNow");
+  const toggle = document.getElementById("playerToggle");
+  const seek = document.getElementById("playerSeek");
+  const time = document.getElementById("playerTime");
+  const link = document.getElementById("playerLink");
+  const skip = document.getElementById("playerSkip");
+
+  let widget = null;      /* the SC.Widget handle, once api.js has loaded */
+  let duration = 0;
+  let scrubbing = false;  /* while true, PLAY_PROGRESS must not fight the thumb */
+  let booting = false;    /* api.js is in flight; presses queue behind it */
+  let live = false;       /* this frame has reached READY */
+  let pending = null;     /* the press that arrived while it was */
+
+  /* Injected on first press, not on page load. Resolves for every
+     caller that arrives while it is still in flight, so pressing two
+     cards quickly cannot load the script twice. */
+  let apiLoading = null;
+  function loadApi() {
+    if (window.SC && window.SC.Widget) return Promise.resolve();
+    if (apiLoading) return apiLoading;
+    apiLoading = new Promise((resolve, reject) => {
+      const el = document.createElement("script");
+      el.src = SC_API;
+      el.onload = resolve;
+      el.onerror = reject;
+      document.head.appendChild(el);
+    });
+    return apiLoading;
+  }
+
+  function setState(playing) {
+    toggle.setAttribute("aria-pressed", playing ? "true" : "false");
+    toggle.textContent = playing ? "Pause" : "Play";
+  }
+
+  function fail(message) {
+    bar.classList.remove("is-loading");
+    bar.classList.add("is-live");
+    now.textContent = message;
+    setState(false);
+  }
+
+  /* Called on PLAY and whenever a playlist advances. Asking the widget
+     for the sound rather than trusting the button's label is what
+     keeps an album's title and its backlink correct track by track. */
+  function adopt() {
+    widget.getCurrentSound((sound) => {
+      if (!sound) return;
+      now.textContent = sound.title;
+      link.href = sound.permalink_url;
+      link.hidden = false;
+    });
+    widget.getDuration((ms) => {
+      duration = ms || 0;
+      seek.max = String(duration);
+      time.textContent = scTime(0) + " / " + scTime(duration);
+    });
+  }
+
+  function bind() {
+    const E = window.SC.Widget.Events;
+
+    widget.bind(E.READY, () => {
+      bar.classList.remove("is-loading");
+      bar.classList.add("is-live");
+      live = true;
+      /* Adopt here as well as on PLAY. If a browser refuses the
+         autoplay, PLAY never fires, and the backlink SoundCloud's
+         terms require would never appear. */
+      adopt();
+      /* A press that landed while api.js was still downloading. */
+      if (pending) { const p = pending; pending = null; start(p); }
+    });
+
+    widget.bind(E.PLAY, () => { setState(true); adopt(); });
+    widget.bind(E.PAUSE, () => setState(false));
+    widget.bind(E.FINISH, () => { setState(false); });
+
+    widget.bind(E.PLAY_PROGRESS, (e) => {
+      if (scrubbing) return;
+      const ms = e.currentPosition || 0;
+      seek.value = String(ms);
+      time.textContent = scTime(ms) + " / " + scTime(duration);
+    });
+
+    /* Only report an error that actually stopped something. The
+       widget emits ERROR during an ordinary load as well, and reacting
+       to that put a failure message over a track that went on to play
+       perfectly well. */
+    widget.bind(E.ERROR, () => {
+      if (!live) fail("That track would not load. Try Spotify instead.");
+    });
+  }
+
+  /* EVERY PRESS BUILDS A FRESH IFRAME, and the old one is thrown away.
+
+     The obvious design is one iframe reused across presses, swapping
+     sounds with widget.load(). It was built that way first and it does
+     not work: the first press plays, and every switch after it leaves
+     the widget dead. Measured on 2026-08-23 across all three cases,
+     track to album, album to track and track to track, and all three
+     failed identically while a first press of any of them succeeded.
+
+     Rebuilding costs a second iframe load per press. It buys back
+     something worth having anyway: destroying the old frame is what
+     stops the old audio, so two releases cannot overlap no matter what
+     the widget does.
+
+     api.js is fetched once and cached, so only the first press pays
+     for it. */
+  function build(url) {
+    /* Drop the previous player before starting the next. This is the
+       line that guarantees only one thing is ever playing. */
+    host.replaceChildren();
+    widget = null;
+    live = false;
+    bar.classList.add("is-loading");
+    /* Cleared as well as set, so a widget that never comes alive
+       cannot keep wearing the previous one's state. Leaving it on was
+       what hid a dead player behind a bar that looked fine. */
+    bar.classList.remove("is-live");
+
+    const frame = document.createElement("iframe");
+    frame.width = "320";
+    frame.height = "166";
+    frame.allow = "autoplay";
+    frame.title = "SoundCloud player";
+    frame.id = "scFrame";
+
+    /* ORDER: src, then into the document, then attach, then bind. All
+       four synchronous, and every step of it is load bearing.
+
+       src first because SC.Widget reads it when it attaches and throws
+       on an empty one.
+
+       IN THE DOCUMENT BEFORE ATTACHING, which is the counterintuitive
+       one. api.js looks up an existing widget by the iframe's
+       contentWindow: `var c = g(v(e)); return c && c.instance ? ...`.
+       A frame that is not in the document yet has a null
+       contentWindow, and so does a frame that was just removed. Attach
+       before appending and that lookup matches the destroyed frame's
+       stale record and hands back the dead widget, so every bind after
+       it goes nowhere. api.js never drops those records, so this gets
+       worse with each press rather than failing once.
+
+       There is no race in appending first. The iframe cannot load and
+       post a message until this task finishes, and bind() runs inside
+       it. The earlier READY miss came from an await between creating
+       the frame and binding, not from the order of these two lines. */
+    frame.src = url;
+    host.appendChild(frame);
+    widget = window.SC.Widget(frame);
+    bind();
+  }
+
+  function start(btn) {
+    const url = scWidgetUrl(btn.dataset.scId, btn.dataset.scKind);
+
+    now.textContent = btn.dataset.title;
+    skip.hidden = btn.dataset.scKind !== "playlist";
+    link.hidden = true;
+    seek.value = "0";
+    duration = 0;
+    time.textContent = "0:00 / 0:00";
+    setState(false);
+
+    /* API FIRST, THEN THE IFRAME. auto_play rides in the URL rather
+       than being a play() call, so the widget starts itself rather
+       than depending on a click gesture surviving a script load. */
+    if (window.SC && window.SC.Widget) { build(url); return; }
+
+    bar.classList.add("is-loading");
+    booting = true;
+    loadApi().then(() => {
+      booting = false;
+      build(url);
+      if (pending) { const p = pending; pending = null; start(p); }
+    }).catch(() => {
+      booting = false;
+      fail("The player could not load. Try Spotify instead.");
+    });
+  }
 
   grid.addEventListener("click", (e) => {
     const btn = e.target.closest(".play-btn");
-    if (!btn || btn.disabled) return;
+    if (!btn) return;
+    /* Pressed while api.js is still in flight: remember it and run it
+       once the script lands. Only the most recent press is kept,
+       because someone pressing three covers wants the third. */
+    if (booting) { pending = btn; return; }
+    start(btn);
+  });
 
-    audio.src = btn.dataset.src;
-    now.textContent = btn.dataset.title;
-    /* play() rejects if the browser blocks it or the file is missing.
-       Unhandled, that surfaces as a console error a visitor cannot act
-       on. Caught, the bar simply stays loaded and they can press the
-       native control themselves. */
-    audio.play().catch(() => {
-      now.textContent = btn.dataset.title + " (press play)";
-    });
+  toggle.addEventListener("click", () => { if (widget) widget.toggle(); });
+
+  skip.addEventListener("click", (e) => {
+    if (!widget) return;
+    if (e.target.closest("[data-skip=\"next\"]")) widget.next();
+    else if (e.target.closest("[data-skip=\"prev\"]")) widget.prev();
+  });
+
+  /* A range input rather than a styled div, so the scrubber is
+     keyboard operable and screen reader labelled without any work.
+     That is the one property the old native <audio> had that a
+     hand-rolled transport usually loses. */
+  seek.addEventListener("pointerdown", () => { scrubbing = true; });
+  seek.addEventListener("keydown", () => { scrubbing = true; });
+  seek.addEventListener("input", () => {
+    time.textContent = scTime(Number(seek.value)) + " / " + scTime(duration);
+  });
+  seek.addEventListener("change", () => {
+    scrubbing = false;
+    if (widget) widget.seekTo(Number(seek.value));
   });
 }
 

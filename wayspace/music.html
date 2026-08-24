@@ -110,8 +110,8 @@
   </main>
 
   <!-- THE PLAYER
-       One audio element for the whole room. Every cover is a remote
-       control for it, so two tracks can never play over each other.
+       One player for the whole room. Every cover is a remote control
+       for it, so two releases can never play over each other.
 
        It lives in this room and nowhere else. A bar that survives
        navigation is impossible across six real pages, so the answer
@@ -122,14 +122,53 @@
        viewport while there is page left and then comes to rest above
        the footer instead of covering it.
 
-       Native controls on purpose. They are keyboard operable and
-       screen reader labelled out of the box, and a custom transport
-       is a real project that should not be built against audio that
-       does not exist yet. -->
-  <section class="player-bar" aria-label="Music player">
-    <span class="player-label">Now playing</span>
-    <p class="player-now" id="playerNow">Nothing loaded yet</p>
-    <audio id="roomAudio" controls preload="none"></audio>
+       These controls drive a SoundCloud widget that is never shown.
+       The whole mechanism, and why this room hides the widget while
+       the lyric pages show it, is written up over initPlayer in
+       js/wayspace.js.
+
+       The scrubber is a range input rather than a styled div because
+       it is keyboard operable and screen reader labelled out of the
+       box. That is the property the native <audio> element that stood
+       here had, and it is the usual casualty of a hand-rolled
+       transport. -->
+  <section class="player-bar" id="playerBar" aria-label="Music player">
+
+    <div class="player-head">
+      <span class="player-label">Now playing</span>
+      <p class="player-now" id="playerNow">Nothing loaded yet</p>
+    </div>
+
+    <div class="player-transport">
+      <button class="player-btn" id="playerToggle" type="button" aria-pressed="false">Play</button>
+
+      <!-- Shown only while a playlist is loaded. A release that is one
+           track has nothing to skip to. -->
+      <span class="player-skip" id="playerSkip" hidden>
+        <button class="player-btn is-quiet" type="button" data-skip="prev" aria-label="Previous track">&#9664;&#9664;</button>
+        <button class="player-btn is-quiet" type="button" data-skip="next" aria-label="Next track">&#9654;&#9654;</button>
+      </span>
+
+      <input class="player-seek" id="playerSeek" type="range" min="0" max="0" value="0" step="1000" aria-label="Seek">
+      <span class="player-time" id="playerTime">0:00 / 0:00</span>
+
+      <!-- Required, not decorative. SoundCloud's API terms ask for a
+           clearly visible backlink from the sound to its page, and for
+           SoundCloud to be credited as the source. Hidden until
+           something is playing, because until then it points nowhere. -->
+      <a class="player-link" id="playerLink" href="#" target="_blank" rel="noopener" hidden>On SoundCloud</a>
+    </div>
+
+    <!-- The widget itself. Parked off screen rather than display:none
+         or a zero box: a player with no box gets its media suspended
+         in some browsers, which is how this approach usually breaks.
+         inert keeps it out of the tab order and off the accessibility
+         tree, since the controls above are the real interface.
+
+         Empty on purpose. The iframe is built on the first press, so
+         nothing reaches soundcloud.com until a visitor asks. -->
+    <div id="scHost" inert aria-hidden="true"></div>
+
   </section>
 
   <footer class="site-footer">
