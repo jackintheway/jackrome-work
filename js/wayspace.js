@@ -735,6 +735,43 @@ const SPEAKING = [
    carries the words and a player for that one track. Prose links to
    its own page too, without the player.
    ============================================================ */
+/* ---- The themes ----
+   Slug to the label a reader sees, in the order the filter draws them.
+   The labels live here and nowhere else, so a button cannot disagree
+   with a card's tag.
+
+   ASSIGNED BY HAND on 2026-08-24, reading all 75 pieces. Three sources,
+   because the material is not uniform: the frontmatter tags and
+   wikilinks in Jack's annotated notes for 52 of them, the NFT
+   `description` in _source/music/wayspace-album-metadata/ for the nine
+   Wayspace album tracks that came in without notes, and the title for
+   the fourteen shorts.
+
+   THE WIKILINKS COULD NOT DO THIS ALONE, which was the original idea.
+   154 distinct targets across the notes and 129 of them appear exactly
+   once, because they are note titles rather than tags: "a truly honest
+   life is silent", "fingers for the moon". The two most common are
+   Jack's own names. They seeded the vocabulary here and nothing more.
+
+   WHY EIGHT AND NOT SIX. Jack asked for around six, on the reasonable
+   worry that so many of these songs are about the same thing. Measured,
+   they are not: the largest theme covers 40% of the room, so every
+   filter still removes at least three fifths of it. Merging any pair
+   pushes toward half the catalogue, which is a label rather than a
+   filter. The one genuinely redundant pair is healing and love at 62%
+   overlap, and they stay apart because one is about a person's own
+   repair and the other is about someone else. */
+const THEMES = [
+  { slug: "healing",     label: "Healing" },
+  { slug: "surrender",   label: "Surrender" },
+  { slug: "awakening",   label: "Awakening" },
+  { slug: "ego",         label: "Ego" },
+  { slug: "love",        label: "Love" },
+  { slug: "forgiveness", label: "Forgiveness" },
+  { slug: "separation",  label: "Separation" },
+  { slug: "the-work",    label: "The work" }
+];
+
 const WRITING = [
 
   /* Sixty-two lyrics, then fourteen shorts.
@@ -770,6 +807,7 @@ const WRITING = [
     href: "/wayspace/writing/inflamed",
     note: "",
     crossRef: null,
+    themes: ["forgiveness", "separation", "surrender"],
     watchHref: null
   },
   {
@@ -779,6 +817,7 @@ const WRITING = [
     href: "/wayspace/writing/race-day",
     note: "",
     crossRef: null,
+    themes: ["forgiveness", "awakening", "surrender"],
     watchHref: null
   },
   {
@@ -788,6 +827,7 @@ const WRITING = [
     href: "/wayspace/writing/your-sun",
     note: "",
     crossRef: null,
+    themes: ["ego", "forgiveness", "awakening"],
     watchHref: null
   },
   {
@@ -797,6 +837,7 @@ const WRITING = [
     href: "/wayspace/writing/the-help",
     note: "",
     crossRef: null,
+    themes: ["ego", "healing", "surrender"],
     watchHref: null
   },
   {
@@ -806,6 +847,7 @@ const WRITING = [
     href: "/wayspace/writing/trix",
     note: "",
     crossRef: null,
+    themes: ["healing", "ego"],
     watchHref: null
   },
   {
@@ -815,6 +857,7 @@ const WRITING = [
     href: "/wayspace/writing/the-best",
     note: "",
     crossRef: null,
+    themes: ["separation", "awakening"],
     watchHref: null
   },
   {
@@ -824,6 +867,7 @@ const WRITING = [
     href: "/wayspace/writing/still-distracted",
     note: "",
     crossRef: null,
+    themes: ["ego", "forgiveness", "surrender"],
     watchHref: null
   },
   {
@@ -833,6 +877,7 @@ const WRITING = [
     href: "/wayspace/writing/drop-the-gun",
     note: "",
     crossRef: null,
+    themes: ["surrender", "healing", "awakening"],
     watchHref: null
   },
   {
@@ -842,6 +887,7 @@ const WRITING = [
     href: "/wayspace/writing/thank-god-i-found-you",
     note: "",
     crossRef: null,
+    themes: ["surrender", "forgiveness", "the-work"],
     watchHref: null
   },
   {
@@ -851,6 +897,7 @@ const WRITING = [
     href: "/wayspace/writing/son-screen",
     note: "",
     crossRef: null,
+    themes: ["surrender", "separation"],
     watchHref: null
   },
   {
@@ -860,6 +907,7 @@ const WRITING = [
     href: "/wayspace/writing/innocent",
     note: "",
     crossRef: null,
+    themes: ["forgiveness", "ego"],
     watchHref: null
   },
   {
@@ -869,6 +917,7 @@ const WRITING = [
     href: "/wayspace/writing/ribbons",
     note: "",
     crossRef: null,
+    themes: ["the-work", "forgiveness", "ego"],
     watchHref: null
   },
   {
@@ -878,6 +927,7 @@ const WRITING = [
     href: "/wayspace/writing/the-wasp",
     note: "",
     crossRef: null,
+    themes: ["separation", "healing", "ego"],
     watchHref: null
   },
   {
@@ -887,6 +937,7 @@ const WRITING = [
     href: "/wayspace/writing/all-that-i-do",
     note: "",
     crossRef: null,
+    themes: ["forgiveness", "the-work", "awakening"],
     watchHref: null
   },
   {
@@ -896,6 +947,7 @@ const WRITING = [
     href: "/wayspace/writing/one-more-time",
     note: "",
     crossRef: null,
+    themes: ["healing", "love"],
     watchHref: null
   },
   {
@@ -905,6 +957,7 @@ const WRITING = [
     href: "/wayspace/writing/feivel-speaks",
     note: "",
     crossRef: null,
+    themes: ["love", "healing", "awakening"],
     watchHref: null
   },
   {
@@ -914,6 +967,7 @@ const WRITING = [
     href: "/wayspace/writing/safe",
     note: "",
     crossRef: null,
+    themes: ["ego", "awakening", "healing"],
     watchHref: null
   },
   {
@@ -923,6 +977,7 @@ const WRITING = [
     href: "/wayspace/writing/poof",
     note: "",
     crossRef: null,
+    themes: ["ego", "separation", "healing"],
     watchHref: null
   },
   {
@@ -932,6 +987,7 @@ const WRITING = [
     href: "/wayspace/writing/strawberry-sauce-all-the-same",
     note: "",
     crossRef: null,
+    themes: ["separation", "awakening", "forgiveness"],
     watchHref: null
   },
   {
@@ -941,6 +997,7 @@ const WRITING = [
     href: "/wayspace/writing/choose-again",
     note: "",
     crossRef: null,
+    themes: ["forgiveness", "separation", "awakening", "surrender"],
     watchHref: null
   },
   {
@@ -950,6 +1007,7 @@ const WRITING = [
     href: "/wayspace/writing/the-end",
     note: "",
     crossRef: null,
+    themes: ["healing", "separation"],
     watchHref: null
   },
   {
@@ -959,6 +1017,7 @@ const WRITING = [
     href: "/wayspace/writing/what-have-i-done",
     note: "",
     crossRef: null,
+    themes: ["forgiveness", "healing"],
     watchHref: null
   },
   {
@@ -968,6 +1027,7 @@ const WRITING = [
     href: "/wayspace/writing/welcome-back",
     note: "",
     crossRef: null,
+    themes: ["separation", "awakening"],
     watchHref: null
   },
   {
@@ -977,6 +1037,7 @@ const WRITING = [
     href: "/wayspace/writing/try",
     note: "",
     crossRef: null,
+    themes: ["surrender", "the-work"],
     watchHref: null
   },
   {
@@ -986,6 +1047,7 @@ const WRITING = [
     href: "/wayspace/writing/somewhere-somehow",
     note: "",
     crossRef: null,
+    themes: ["surrender", "separation"],
     watchHref: null
   },
   {
@@ -995,6 +1057,7 @@ const WRITING = [
     href: "/wayspace/writing/salt",
     note: "",
     crossRef: null,
+    themes: ["healing", "forgiveness"],
     watchHref: null
   },
   {
@@ -1004,6 +1067,7 @@ const WRITING = [
     href: "/wayspace/writing/little-things",
     note: "",
     crossRef: null,
+    themes: ["ego", "awakening"],
     watchHref: null
   },
   {
@@ -1013,6 +1077,7 @@ const WRITING = [
     href: "/wayspace/writing/how-it-ends",
     note: "",
     crossRef: null,
+    themes: ["awakening", "separation"],
     watchHref: null
   },
   {
@@ -1022,6 +1087,7 @@ const WRITING = [
     href: "/wayspace/writing/grow",
     note: "",
     crossRef: null,
+    themes: ["awakening", "love", "surrender"],
     watchHref: null
   },
   {
@@ -1031,6 +1097,7 @@ const WRITING = [
     href: "/wayspace/writing/extra",
     note: "",
     crossRef: null,
+    themes: ["healing", "ego"],
     watchHref: null
   },
   {
@@ -1040,6 +1107,7 @@ const WRITING = [
     href: "/wayspace/writing/did-you-forget",
     note: "",
     crossRef: null,
+    themes: ["awakening", "separation"],
     watchHref: null
   },
   {
@@ -1049,6 +1117,7 @@ const WRITING = [
     href: "/wayspace/writing/body-and-the-beast",
     note: "",
     crossRef: null,
+    themes: ["healing", "love"],
     watchHref: null
   },
   {
@@ -1058,6 +1127,7 @@ const WRITING = [
     href: "/wayspace/writing/all-in-my-head",
     note: "",
     crossRef: null,
+    themes: ["forgiveness", "ego", "awakening"],
     watchHref: null
   },
   {
@@ -1067,6 +1137,7 @@ const WRITING = [
     href: "/wayspace/writing/nova",
     note: "",
     crossRef: null,
+    themes: ["forgiveness", "separation", "the-work"],
     watchHref: null
   },
   {
@@ -1076,6 +1147,7 @@ const WRITING = [
     href: "/wayspace/writing/safe-n-sound",
     note: "",
     crossRef: null,
+    themes: ["surrender", "healing"],
     watchHref: null
   },
   {
@@ -1085,6 +1157,7 @@ const WRITING = [
     href: "/wayspace/writing/round-n-round",
     note: "",
     crossRef: null,
+    themes: ["healing", "ego"],
     watchHref: null
   },
   {
@@ -1094,6 +1167,7 @@ const WRITING = [
     href: "/wayspace/writing/do-you-hear-that",
     note: "",
     crossRef: null,
+    themes: ["awakening", "separation"],
     watchHref: null
   },
   {
@@ -1103,6 +1177,7 @@ const WRITING = [
     href: "/wayspace/writing/clarity",
     note: "",
     crossRef: null,
+    themes: ["love", "ego"],
     watchHref: null
   },
   {
@@ -1112,6 +1187,7 @@ const WRITING = [
     href: "/wayspace/writing/i-was-built-for-this-place",
     note: "",
     crossRef: null,
+    themes: ["awakening", "surrender"],
     watchHref: null
   },
   {
@@ -1121,6 +1197,7 @@ const WRITING = [
     href: "/wayspace/writing/doorway",
     note: "",
     crossRef: null,
+    themes: ["ego", "surrender"],
     watchHref: null
   },
   {
@@ -1130,6 +1207,7 @@ const WRITING = [
     href: "/wayspace/writing/quit",
     note: "",
     crossRef: null,
+    themes: ["surrender", "ego"],
     watchHref: null
   },
   {
@@ -1139,6 +1217,7 @@ const WRITING = [
     href: "/wayspace/writing/offering",
     note: "",
     crossRef: null,
+    themes: ["surrender", "awakening"],
     watchHref: null
   },
   {
@@ -1148,6 +1227,7 @@ const WRITING = [
     href: "/wayspace/writing/feathers",
     note: "",
     crossRef: null,
+    themes: ["surrender", "awakening"],
     watchHref: null
   },
   {
@@ -1157,6 +1237,7 @@ const WRITING = [
     href: "/wayspace/writing/puddles",
     note: "",
     crossRef: null,
+    themes: ["love", "healing"],
     watchHref: null
   },
   {
@@ -1166,6 +1247,7 @@ const WRITING = [
     href: "/wayspace/writing/our-boy",
     note: "",
     crossRef: null,
+    themes: ["ego", "forgiveness"],
     watchHref: null
   },
   {
@@ -1175,6 +1257,7 @@ const WRITING = [
     href: "/wayspace/writing/only-human",
     note: "",
     crossRef: null,
+    themes: ["healing", "love"],
     watchHref: null
   },
   {
@@ -1184,6 +1267,7 @@ const WRITING = [
     href: "/wayspace/writing/i-hope-youll-change",
     note: "",
     crossRef: null,
+    themes: ["love", "ego"],
     watchHref: null
   },
   {
@@ -1193,6 +1277,7 @@ const WRITING = [
     href: "/wayspace/writing/dont-mind",
     note: "",
     crossRef: null,
+    themes: ["love", "healing"],
     watchHref: null
   },
   {
@@ -1202,6 +1287,7 @@ const WRITING = [
     href: "/wayspace/writing/bleed",
     note: "",
     crossRef: null,
+    themes: ["ego", "love"],
     watchHref: null
   },
   {
@@ -1211,6 +1297,7 @@ const WRITING = [
     href: "/wayspace/writing/surf",
     note: "",
     crossRef: null,
+    themes: ["surrender", "awakening"],
     watchHref: null
   },
   {
@@ -1220,6 +1307,7 @@ const WRITING = [
     href: "/wayspace/writing/spent-the-night",
     note: "",
     crossRef: null,
+    themes: ["surrender", "awakening"],
     watchHref: null
   },
   {
@@ -1229,6 +1317,7 @@ const WRITING = [
     href: "/wayspace/writing/jump",
     note: "",
     crossRef: null,
+    themes: ["awakening", "healing"],
     watchHref: null
   },
   {
@@ -1238,6 +1327,7 @@ const WRITING = [
     href: "/wayspace/writing/places",
     note: "",
     crossRef: null,
+    themes: ["love", "separation"],
     watchHref: null
   },
   {
@@ -1247,6 +1337,7 @@ const WRITING = [
     href: "/wayspace/writing/headed-home",
     note: "",
     crossRef: null,
+    themes: ["separation", "healing", "love"],
     watchHref: null
   },
   {
@@ -1256,6 +1347,7 @@ const WRITING = [
     href: "/wayspace/writing/way-out",
     note: "",
     crossRef: null,
+    themes: ["ego", "surrender"],
     watchHref: null
   },
   {
@@ -1265,6 +1357,7 @@ const WRITING = [
     href: "/wayspace/writing/sometimes",
     note: "",
     crossRef: null,
+    themes: ["healing", "love"],
     watchHref: null
   },
   {
@@ -1274,6 +1367,7 @@ const WRITING = [
     href: "/wayspace/writing/probably",
     note: "",
     crossRef: null,
+    themes: ["love", "healing"],
     watchHref: null
   },
   {
@@ -1283,6 +1377,7 @@ const WRITING = [
     href: "/wayspace/writing/its-not-enough",
     note: "",
     crossRef: null,
+    themes: ["healing", "love"],
     watchHref: null
   },
   {
@@ -1292,6 +1387,7 @@ const WRITING = [
     href: "/wayspace/writing/i-wonder",
     note: "",
     crossRef: null,
+    themes: ["love", "ego"],
     watchHref: null
   },
   {
@@ -1301,6 +1397,7 @@ const WRITING = [
     href: "/wayspace/writing/easy",
     note: "",
     crossRef: null,
+    themes: ["surrender", "healing"],
     watchHref: null
   },
   {
@@ -1310,15 +1407,7 @@ const WRITING = [
     href: "/wayspace/writing/drive",
     note: "",
     crossRef: null,
-    watchHref: null
-  },
-  {
-    title: "Orchard",
-    kind: "Lyric",
-    meta: "Lyric",
-    href: "/wayspace/writing/orchard",
-    note: "",
-    crossRef: null,
+    themes: ["ego", "healing"],
     watchHref: null
   },
   {
@@ -1328,6 +1417,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["love", "healing"],
     watchHref: "https://www.youtube.com/shorts/R5sqonZ1TJo"
   },
   {
@@ -1337,6 +1427,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["healing", "love"],
     watchHref: "https://www.youtube.com/shorts/tI53UfuMBRw"
   },
   {
@@ -1346,6 +1437,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["healing", "surrender"],
     watchHref: "https://www.youtube.com/shorts/g2j0KVgxiSI"
   },
   {
@@ -1355,6 +1447,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["forgiveness"],
     watchHref: "https://www.youtube.com/shorts/3bcM5qqiSk0"
   },
   {
@@ -1364,6 +1457,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["love", "healing"],
     watchHref: "https://www.youtube.com/shorts/H4anCmcUn4c"
   },
   {
@@ -1373,6 +1467,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["surrender", "awakening"],
     watchHref: "https://www.youtube.com/shorts/31cCbUfNFUA"
   },
   {
@@ -1382,6 +1477,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["surrender", "the-work"],
     watchHref: "https://www.youtube.com/shorts/nmjMIbqmzAM"
   },
   {
@@ -1391,6 +1487,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["surrender", "awakening"],
     watchHref: "https://www.youtube.com/shorts/_C-b1dG-2EM"
   },
   {
@@ -1400,6 +1497,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["ego", "surrender"],
     watchHref: "https://www.youtube.com/shorts/81ZxYg-XmVA"
   },
   {
@@ -1409,6 +1507,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["awakening", "surrender"],
     watchHref: "https://www.youtube.com/shorts/SCm2mkMisck"
   },
   {
@@ -1418,6 +1517,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["awakening", "ego"],
     watchHref: "https://www.youtube.com/shorts/k4ifKXOWTXc"
   },
   {
@@ -1427,6 +1527,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["forgiveness", "healing"],
     watchHref: "https://www.youtube.com/shorts/_EsHj3HlCeg"
   },
   {
@@ -1436,6 +1537,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["love", "forgiveness"],
     watchHref: "https://www.youtube.com/shorts/ikOiO346Gw8"
   },
   {
@@ -1445,6 +1547,7 @@ const WRITING = [
     href: null,
     note: "",
     crossRef: null,
+    themes: ["love", "the-work"],
     watchHref: "https://www.youtube.com/shorts/a71z3AvlQN0"
   }
 ];
@@ -1785,12 +1888,24 @@ function writingCard(item) {
     ? `<button class="listen-btn" type="button" data-video="${escapeHtml(shortId)}" data-ratio="9 / 16" data-video-title="${escapeHtml(item.title)}">Watch</button>`
     : "";
 
+  /* Themes on the card as well as in the filter, per Jack. A filtered
+     result otherwise gives no clue why each song is in it, and the
+     vocabulary is learned by seeing it rather than by being explained.
+     Labels come from THEMES so a tag cannot disagree with a button. */
+  const themes = (item.themes || []).length
+    ? `<ul class="theme-tags">${item.themes.map(t => {
+        const def = THEMES.find(x => x.slug === t);
+        return `<li class="theme-tag" data-theme="${escapeHtml(t)}">${escapeHtml(def ? def.label : t)}</li>`;
+      }).join("")}</ul>`
+    : "";
+
   return `
-    <li class="writing-card" data-kind="${escapeHtml(item.kind)}">
+    <li class="writing-card" data-kind="${escapeHtml(item.kind)}" data-themes="${escapeHtml((item.themes || []).join(" "))}">
       ${placeholderFlag(item)}
       <span class="role-tag">${escapeHtml(item.kind)}</span>
       <h4 class="writing-card-title">${title}</h4>
       <p class="writing-card-meta">${escapeHtml(item.meta)}</p>
+      ${themes}
       ${item.note ? `<p class="entry-note">${escapeHtml(item.note)}</p>` : ""}
       ${watch || crossRef(item) ? `<div class="entry-actions">${watch}${crossRef(item)}</div>` : ""}
     </li>
@@ -1802,8 +1917,10 @@ function initWriting() {
   if (!mount) return;
 
   const filters = document.getElementById("writingFilters");
+  const themeBar = document.getElementById("writingThemes");
   const yearNav = document.getElementById("writingYears");
   const status = document.getElementById("writingStatus");
+  const empty = document.getElementById("writingEmpty");
 
   if (!WRITING.length) {
     emptyState(mount, "Nothing here yet.",
@@ -1847,27 +1964,51 @@ function initWriting() {
     </button>
   `).join("");
 
-  function drawYears(kind) {
-    const shown = years.filter(y =>
-      kind === "all" || groups.get(y).some(i => i.kind === kind));
-    yearNav.innerHTML = shown.map(y =>
+  /* THE THEME ROW.
+     Multi-select, and selections widen rather than narrow: picking
+     Forgiveness and Healing shows everything touching either. Per Jack
+     on 2026-08-24. Forgiving of a reader who does not know the
+     vocabulary, and it can never return nothing on its own.
+
+     Kind and theme compose, though, so Shorts plus a theme no short
+     carries genuinely can return nothing. That is what the empty state
+     below exists for. */
+  const themeCount = t => WRITING.filter(i => (i.themes || []).includes(t)).length;
+
+  themeBar.innerHTML = THEMES.map(t => `
+    <button class="theme-btn" type="button" data-theme="${escapeHtml(t.slug)}" aria-pressed="false">
+      ${escapeHtml(t.label)}
+      <span class="filter-count">${themeCount(t.slug)}</span>
+    </button>
+  `).join("") + `
+    <button class="theme-clear" type="button" hidden>Clear themes</button>`;
+
+  const clearBtn = themeBar.querySelector(".theme-clear");
+
+  let kind = "all";
+  let picked = new Set();
+
+  function matches(card) {
+    if (kind !== "all" && card.dataset.kind !== kind) return false;
+    if (!picked.size) return true;
+    const has = (card.dataset.themes || "").split(" ");
+    return [...picked].some(t => has.includes(t));
+  }
+
+  function drawYears() {
+    const live = years.filter(y =>
+      [...mount.querySelectorAll(`#year-${CSS.escape(y)} .writing-card`)]
+        .some(c => !c.hidden));
+    yearNav.innerHTML = live.map(y =>
       `<a class="year-link" href="#year-${escapeHtml(y)}">${escapeHtml(y)}</a>`).join("");
   }
-  drawYears("all");
 
-  filters.addEventListener("click", (e) => {
-    const btn = e.target.closest(".filter-btn");
-    if (!btn) return;
-    const kind = btn.dataset.filter;
-
-    [...filters.querySelectorAll(".filter-btn")].forEach(b => {
-      const on = b === btn;
-      b.classList.toggle("is-on", on);
-      b.setAttribute("aria-pressed", String(on));
-    });
-
+  function apply() {
+    let shown = 0;
     [...mount.querySelectorAll(".writing-card")].forEach(card => {
-      card.hidden = kind !== "all" && card.dataset.kind !== kind;
+      const on = matches(card);
+      card.hidden = !on;
+      if (on) shown++;
     });
 
     /* A year whose cards are all hidden has to go too, or the page
@@ -1876,10 +2017,50 @@ function initWriting() {
       sec.hidden = ![...sec.querySelectorAll(".writing-card")].some(c => !c.hidden);
     });
 
-    drawYears(kind);
-    status.textContent = kind === "all"
-      ? `Showing all ${WRITING.length} entries.`
-      : `Showing ${count(kind)} ${label(kind).toLowerCase()}.`;
+    empty.hidden = shown > 0;
+    clearBtn.hidden = picked.size === 0;
+    drawYears();
+
+    const names = [...picked].map(t => (THEMES.find(x => x.slug === t) || {}).label).filter(Boolean);
+    const what = kind === "all" ? "entries" : label(kind).toLowerCase();
+    status.textContent = !shown
+      ? `No ${what} match those themes.`
+      : names.length
+        ? `Showing ${shown} ${what} in ${names.join(" or ")}.`
+        : `Showing ${shown} ${what}.`;
+  }
+  apply();
+
+  filters.addEventListener("click", (e) => {
+    const btn = e.target.closest(".filter-btn");
+    if (!btn) return;
+    kind = btn.dataset.filter;
+    [...filters.querySelectorAll(".filter-btn")].forEach(b => {
+      const on = b === btn;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
+    apply();
+  });
+
+  themeBar.addEventListener("click", (e) => {
+    if (e.target.closest(".theme-clear")) {
+      picked.clear();
+      [...themeBar.querySelectorAll(".theme-btn")].forEach(b => {
+        b.classList.remove("is-on");
+        b.setAttribute("aria-pressed", "false");
+      });
+      apply();
+      return;
+    }
+    const btn = e.target.closest(".theme-btn");
+    if (!btn) return;
+    const t = btn.dataset.theme;
+    const on = !picked.has(t);
+    if (on) picked.add(t); else picked.delete(t);
+    btn.classList.toggle("is-on", on);
+    btn.setAttribute("aria-pressed", String(on));
+    apply();
   });
 }
 
@@ -2213,7 +2394,25 @@ function initFacades() {
     frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
     frame.allowFullscreen = true;
 
-    facade.replaceWith(frame);
+    /* THE IFRAME GOES INSIDE A REPLACEMENT SHELL, not in place of the
+       facade. Swapping the button for the iframe directly drops every
+       rule the button carried: .facade sets the aspect ratio and
+       .facade iframe fills it, and neither can match an iframe that is
+       no longer inside a .facade. The card went from 334x188 to
+       334x154 on play, which is an iframe at its default 150px height.
+       Measured on 2026-08-24, on this page and in the Video room.
+
+       A div rather than the button, because a button holding an iframe
+       is invalid and would swallow the player's own controls. The
+       inline ratio is carried across so a card that is not 16:9 keeps
+       its shape through the swap. */
+    const shell = document.createElement("div");
+    shell.className = "facade is-playing";
+    const ratio = facade.style.getPropertyValue("--facade-ratio");
+    if (ratio) shell.style.setProperty("--facade-ratio", ratio);
+    shell.appendChild(frame);
+
+    facade.replaceWith(shell);
   });
 }
 

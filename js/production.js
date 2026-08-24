@@ -74,7 +74,7 @@ const WORK = [
     roles: ["Hosting", "Tech direction", "Recording", "Editing"],
     thumb: "/assets/img/production/awakening-mind-films.jpg",
     youtubeId: "yDMLz98yCPE",
-    note: "Bill Free, Leif Heimbold and Daniel Schmidt, on one call."
+    note: ""
   },
   {
     title: "Crossing the Bridge",
@@ -145,7 +145,7 @@ const WORK = [
     tile: "Website",
     externalUrl: "https://handsonhealthacupuncture.com",
     externalLabel: "Visit the site",
-    note: "Built with her, then taught her to run it herself."
+    note: ""
   }
 ];
 
@@ -232,7 +232,25 @@ function initFacades(grid) {
     frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
     frame.allowFullscreen = true;
 
-    facade.replaceWith(frame);
+    /* THE IFRAME GOES INSIDE A REPLACEMENT SHELL, not in place of the
+       facade. Swapping the button for the iframe directly drops every
+       rule the button carried: .facade sets the aspect ratio and
+       .facade iframe fills it, and neither can match an iframe that is
+       no longer inside a .facade. The card went from 334x188 to
+       334x154 on play, which is an iframe at its default 150px height.
+       Measured on 2026-08-24, on this page and in the Video room.
+
+       A div rather than the button, because a button holding an iframe
+       is invalid and would swallow the player's own controls. The
+       inline ratio is carried across so a card that is not 16:9 keeps
+       its shape through the swap. */
+    const shell = document.createElement("div");
+    shell.className = "facade is-playing";
+    const ratio = facade.style.getPropertyValue("--facade-ratio");
+    if (ratio) shell.style.setProperty("--facade-ratio", ratio);
+    shell.appendChild(frame);
+
+    facade.replaceWith(shell);
   });
 }
 

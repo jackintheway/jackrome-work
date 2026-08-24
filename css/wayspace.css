@@ -562,7 +562,13 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 }
 .facade:hover .facade-play { transform: translate(-50%, -50%) scale(1.08); }
 /* Once swapped, the iframe fills the same box the thumbnail held, so
-   the card does not jump when the video loads. */
+   the card does not jump when the video loads. The shell that replaces
+   the button keeps the .facade class for exactly this reason: see the
+   note in initFacades. */
+.facade.is-playing {
+  cursor: default;
+  display: block;
+}
 .facade iframe {
   position: absolute;
   inset: 0;
@@ -641,6 +647,80 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   color: var(--text-strong);
   border-bottom-color: var(--room);
 }
+/* ---- The theme row ----
+   Its own row, and deliberately not styled like the kind filter above
+   it. The two do different jobs: kind is one-of, themes are any-of, and
+   eight buttons that look identical to three would read as one set of
+   eleven. So themes are pill-shaped and quieter until chosen. */
+.theme-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-5);
+}
+.theme-btn {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  line-height: 1.2;
+  color: var(--text-muted);
+  background: transparent;
+  border: var(--border-hair) solid var(--outline);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+.theme-btn:hover { color: var(--text-strong); background: var(--bg-sunken); }
+.theme-btn.is-on {
+  background: var(--room);
+  color: var(--room-ink);
+  border-color: var(--outline);
+}
+.theme-clear {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  background: none;
+  border: 0;
+  border-bottom: var(--border-hair) solid var(--outline);
+  padding: 0 0 2px;
+  margin-left: var(--space-2);
+  cursor: pointer;
+}
+.theme-clear:hover { color: var(--text-strong); }
+.theme-clear[hidden] { display: none; }
+
+/* ---- Tags on a card ----
+   Small enough to survive 75 of them in a grid. Not buttons: the filter
+   row is where you choose, and a second way to do the same thing on
+   every card would be noise. */
+.theme-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.theme-tag {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: 10px;
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-sunken);
+  border: var(--border-hair) solid var(--outline);
+  padding: 1px 5px;
+}
+
 .filter-status {
   font-size: var(--fs-caption);
   color: var(--text-muted);

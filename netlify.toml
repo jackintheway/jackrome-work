@@ -78,6 +78,15 @@
   to = "/wayspace"
   status = 301
 
+# Orchard was never a song. It is the index note for the Orchard folder
+# of Jack's Obsidian vault, dragged in by accident during the lyric
+# import, and it surfaced because it was the only entry with no year to
+# sort under. Removed 2026-08-24. The page was live, so this catches it.
+[[redirects]]
+  from = "/wayspace/writing/orchard"
+  to = "/wayspace/writing"
+  status = 301
+
 # Working notes and project instructions are not part of the site.
 # force is required: without it a real file at this path wins over the
 # redirect rule, and the markdown gets served as plain text.

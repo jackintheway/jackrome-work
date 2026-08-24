@@ -784,6 +784,51 @@ fix is a cue on the tile rather than putting the sentence back.
 
 ---
 
+## The production page, and a facade bug on two pages (2026-08-24)
+
+**The played video kept losing its shape, and yesterday's fix only covered half
+of it.** `initFacades` swapped the `<button class="facade">` for the iframe
+directly, which drops every rule the button carried: `.facade` sets the aspect
+ratio and `.facade iframe` fills it, and neither can match an iframe that is no
+longer inside a `.facade`. Cards went from 334x188 to 334x154 on play, which is
+an iframe sitting at its default 150px height.
+
+Yesterday's `--facade-ratio` work fixed the thumbnail's shape and not the
+player's, so In My Head was square until you pressed it. **The bug was on the
+production page and in the Video room, and both are fixed the same way:** the
+iframe goes inside a replacement `<div class="facade is-playing">` that carries
+the class and the inline ratio across. A div rather than the button, because a
+button holding an iframe is invalid and swallows the player's own controls.
+
+Verified by measuring the card before and after the click, which is the check
+that would have caught it the first time.
+
+**Copy changes, all Jack's, 2026-08-24.** "What it's for" removed entirely,
+along with the subtitle under "What this looks like" and the line over "The
+work". His note on the pattern: they were each describing a thing rather than
+letting the thing be there.
+
+**How I work is his own copy**, lightly polished at his invitation. Consulting
+rather than freelancing, grateful rather than proud, and the ICF-accredited
+coach training named because it explains the pace rather than decorating it.
+
+**The bottom CTA is a question now.** "Tell me what you're making" asked a
+visitor to summarise a whole project before saying hello. "What are you working
+on?" is what Jack would actually open a call with, chosen from four auditioned
+options.
+
+**Four testimonials, not three.** Jane Radford, DeAnna Houston, Allan Ishac and
+Maureen Quinn. Seth Power's is the one left out, per Jack: it is about community
+management at Grouped, the least production-shaped of the five. Note the
+spellings, which differ from how Jack said them: **DeAnna** Houston and
+**Allan** Ishac.
+
+Two overstatements came off entries in `js/production.js`: the three names on
+the Awakening Mind interview, and "taught her to run it herself" on Maureen's
+site.
+
+---
+
 ## Pinned for later: the merch store
 
 `https://wayspace-shop.fourthwall.com/` is Jack's store. Raised 2026-08-23 and

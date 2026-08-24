@@ -123,6 +123,11 @@
         <nav class="year-jump" id="writingYears" aria-label="Jump to a year"></nav>
       </div>
 
+      <!-- Themes. Multi-select, and selections widen: picking two shows
+           everything touching either. Assigned by hand across all 75
+           entries; the reasoning is on THEMES in js/wayspace.js. -->
+      <div class="theme-bar" id="writingThemes" role="group" aria-label="Filter by theme"></div>
+
       <!-- Announces the count after a filter, because the change
            happens below the fold for a mouse and out of earshot for a
            screen reader otherwise. -->
@@ -133,6 +138,14 @@
            this markup. Empty the array and the room renders its
            written empty state instead. -->
       <div id="writingList"></div>
+
+      <!-- Kind and theme compose, so a combination can legitimately
+           match nothing even though themes alone never can. Without
+           this the room would just go blank. -->
+      <div class="empty-state" id="writingEmpty" hidden>
+        <p class="empty-title">Nothing matches that combination.</p>
+        <p>Try another theme, or clear them to see everything.</p>
+      </div>
     </section>
 
   </main>
