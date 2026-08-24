@@ -1470,13 +1470,41 @@ cancelled 2026-08-18; the site serves until 2026-09-15.
 
 Verified live, not read off the dashboard:
 
-| Domain | Resolves to | Renews |
-|---|---|---|
-| `jackrome.work` | the Squarespace site (primary) | 2027-06-29 |
-| `jack-rome.com` | 301 to `jackrome.work` | 2027-07-27 |
-| `jackintheway.net` | 301 to `jackrome.work` | 2027-05-02 |
-| `jackintheway.work` | 301 to `jackrome.work` | **2026-09-07** |
-| `jackrome.me` | 301 to `jackrome.work` | 2027-05-16 |
+**Updated 2026-08-24: four of the five moved to Netlify the same day as the cutover.**
+
+| Domain | Resolves to | Served by | Renews |
+|---|---|---|---|
+| `jackrome.work` | the site (primary) | **Netlify** | 2027-06-29 |
+| `jack-rome.com` | 301 to `jackrome.work` | **Netlify** | 2027-07-27 |
+| `jackintheway.work` | 301 to `jackrome.work` | **Netlify** | **2026-09-07** |
+| `jackrome.me` | 301 to `jackrome.work` | **Netlify** | 2027-05-16 |
+| `jackintheway.net` | 301 to `jackrome.work` | Squarespace | 2027-05-02 |
+
+`jackintheway.net` is deliberately last, because it carries the live Google Workspace
+MX for `jack@jackintheway.net`. Moving it is the same preset swap as the others, with
+one rule: delete **only** the Squarespace Defaults preset. Its `netlify.toml` redirects
+are already written and waiting.
+
+### Two things Netlify does that Squarespace did not
+
+**Netlify serves a domain alias at 200 rather than redirecting it.** Squarespace 301d
+all four aliases to `jackrome.work`. Netlify does not, so after moving `jack-rome.com`
+the entire site answered on two addresses. Netlify *does* redirect `www.jackrome.work`
+to the apex on its own, which is what made this easy to miss: it handles www-versus-apex
+within one domain and not a separate domain. Fixed with explicit host rules in
+`netlify.toml`, where a `from` carrying a scheme and host matches on host and `:splat`
+carries the path across. Verified: `jack-rome.com/wayspace` lands on
+`jackrome.work/wayspace`, not the home page.
+
+**Both the bare and the www form of every domain must be added in Netlify's domain
+panel.** The certificate only covers hostnames Netlify knows about, and the Squarespace
+Netlify preset creates a `www` CNAME regardless. So an unregistered form resolves and
+then fails the TLS handshake, which is a browser security warning rather than a clean
+failure. `jackintheway.work` briefly broke this way when its bare form was swapped for
+its www form rather than added alongside it, and the bare form is the one people type.
+
+All ten hostnames verified live 2026-08-24: the apex serves 200, the other nine 301 to
+it, paths survive, and the certificate covers every name.
 | `jackintheway.me` | forwards to Fourthwall | 2027-06-10 |
 | `jackintheway.store` | forwards to Fourthwall | 2027-08-05 |
 | `wayspace.store` | forwards to Fourthwall | 2027-08-05 |
