@@ -52,16 +52,24 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   padding: var(--space-8) var(--space-5);
   text-align: center;
 }
-/* A preview only, per Jack on 2026-08-24: the lobby hero on its own
-   blue instead of paper, to see whether it wants more color. Not
-   applied to the live markup until he has seen it beside the current
-   version. The Video room already runs this exact blue with paper
-   text and reads cleanly, which is the precedent this is testing
-   against. Scoped to the hero only, not the token, so nothing else on
-   the page is affected either way this goes. */
-.ws-hero.is-blue-preview { background: var(--ws-blue); }
-.ws-hero.is-blue-preview .ws-welcome,
-.ws-hero.is-blue-preview .ws-hero-title { color: var(--ws-paper); }
+/* The lobby hero on its own blue instead of paper. Built as a preview
+   on 2026-08-24, screenshotted beside the paper version, and shipped
+   the same day once Jack saw it: the Video room already ran this exact
+   blue with paper text, so the question of whether white text would
+   read was already answered before this was tried.
+
+   Jack's reasoning for keeping it, worth recording because it explains
+   why the Video room stays blue too rather than getting a color of its
+   own to avoid the repeat: orange, yellow and blue at the top of the
+   lobby read as Music, Design and Video, and Podcasts and Writing are
+   already folded into those three in practice. Two rooms sharing blue
+   is the map being accurate, not a collision.
+
+   Scoped to the hero only, not the token, so nothing else on the page
+   depends on this class. */
+.ws-hero.is-blue { background: var(--ws-blue); }
+.ws-hero.is-blue .ws-welcome,
+.ws-hero.is-blue .ws-hero-title { color: var(--ws-paper); }
 .ws-hero-inner {
   max-width: var(--container-narrow);
   margin: 0 auto;

@@ -860,17 +860,23 @@ visible text, `alt=""` on the image itself, and the same
 `transform: translate(-1px, -1px)` hover every other button on the site
 already uses rather than a new motion invented for one element.
 
-## The Wayspace lobby hero, blue: a live preview, not shipped
+## The Wayspace lobby hero is blue (shipped 2026-08-24)
 
 Jack asked whether the "Welcome to WAYSPACE" hero should run on the room's own
 blue instead of paper, and asked to see it before deciding. Built as a scoped
-CSS override, `.ws-hero.is-blue-preview` in `css/wayspace.css`, not applied to
-`wayspace.html` itself: the rule exists in the stylesheet, unused, until Jack
-picks a direction. Screenshots at desktop and 390px went to him directly.
+CSS override, screenshotted at desktop and 390px beside the paper version, and
+shipped the same day once he saw it: `.ws-hero.is-blue` in `css/wayspace.css`.
 
-The Video room already runs this exact blue with paper-colored text, which is
-why "would white text look weird" had an answer before this was even built:
-no, there is already a working example of it on the site.
+**Why blue works, in Jack's own words, and why the Video room keeps it too
+rather than trading it for a color of its own to avoid the repeat:** orange,
+yellow and blue across the top of the lobby read as Music, Design and Video,
+and Podcasts and Writing are already folded into those three in practice. Two
+rooms sharing blue is the map being accurate, not a collision.
+
+The Video room already ran this exact blue with paper-colored text before this
+was built, which is why "would white text look weird" had an answer before the
+question was even tested: no, there was already a working example of it on the
+site.
 
 ---
 
