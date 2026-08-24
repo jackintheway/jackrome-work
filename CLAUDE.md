@@ -829,31 +829,27 @@ site.
 
 ---
 
-## The Wayspace room switcher gets a mark, not text (2026-08-24)
+## The Wayspace room switcher gets a mark, not text (2026-08-24, corrected same day)
 
 `.room-switch-home` used to be the word "Wayspace" as a plain link, on all 66
 pages carrying the switcher. Per Jack: a small version of the actual logo,
 sized to the strip, with the same hover motion the site's buttons already use.
 
-**The mark did not exist pre-built.** Two candidates were ruled out first:
-`assets/puzzle-single.svg` is the site-wide favicon, used on every page and
-not Wayspace-specific, so reusing it here would conflate site identity with
-room identity. `jackintheway-flower.png` is the music-persona mark, not the
-Wayspace one. The right image is the flower-and-spiral badge at the center of
-the Wayspace album cover, captioned in `wayspace/design.html` as "a yellow
-flower carries the Wayspace wordmark at the centre."
+**First pass read "the actual logo" as the flower-and-spiral badge** at the
+center of the Wayspace album cover, and built one from scratch: composited
+fresh from its own transparent layers, `FLOWER.png`, `SPIRAL.png` and
+`WAYSPACE.png` in `_source/design/wayspace-animated-artwork-pieces/`, stacked
+in a throwaway HTML page and screenshotted in headless Chrome since this
+machine has neither ImageMagick nor Pillow, then cropped to the flower's true
+alpha bounding box.
 
-**Built from its own transparent layers**, not cropped from the flattened
-album cover, so the mark stays flat-fill and transparent-background like
-everything else in the design system rather than carrying a gradient
-background it would need to sit on top of. `FLOWER.png`, `SPIRAL.png` and
-`WAYSPACE.png` in `_source/design/wayspace-animated-artwork-pieces/` share one
-1500x1500 canvas and the same registration. This machine has neither
-ImageMagick nor Pillow, so the three were stacked in a throwaway HTML page and
-composited by screenshotting it in headless Chrome, then cropped to the
-flower's true alpha bounding box (measured by hand-parsing the PNG, since
-`sips` cannot crop to an arbitrary offset without knowing it first) and
-downsized to `assets/img/wayspace/wayspace-mark.png`.
+**Jack corrected it the same day: he meant the wordmark**, the one already
+running as the lobby hero on `wayspace.html`, not the album badge. That asset
+already existed, clean, as `assets/img/wayspace-straight.svg`, so the second
+pass needed no building at all, only a size rule: `height: 20px; width: auto`
+rather than a fixed square, since the wordmark's real ratio is 2710x449 and
+forcing it square would have squashed it. The flower composite,
+`assets/img/wayspace/wayspace-mark.png`, is deleted rather than kept unused.
 
 The switcher link keeps the word "Wayspace" as its `aria-label` rather than
 visible text, `alt=""` on the image itself, and the same

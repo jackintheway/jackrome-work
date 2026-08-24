@@ -219,11 +219,14 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   gap: var(--space-2) var(--space-5);
 }
 /* The Wayspace mark, replacing the plain text link, per Jack on
-   2026-08-24. Built from the album cover's own flower badge: the
-   individual FLOWER, SPIRAL and WAYSPACE layers in
-   _source/design/wayspace-animated-artwork-pieces/, composited and
-   cropped to assets/img/wayspace/wayspace-mark.png, since this machine
-   has neither ImageMagick nor Pillow to do it directly.
+   2026-08-24. Points at wayspace-straight.svg, the same wordmark
+   already used as the lobby hero on wayspace.html, at its real
+   2710x449 ratio (height fixed, width auto) rather than forced into a
+   square. This is the second asset built for this spot: the first
+   pass read "a small version of the logo" as the flower-and-spiral
+   album badge, composited fresh from its own layers since no compact
+   mark existed yet. Jack corrected it to the wordmark, which already
+   existed as a clean SVG, so nothing needed building the second time.
 
    align-items on .room-switcher is baseline, which sizes text but not
    an image, so the mark gets its own centering here rather than
@@ -239,8 +242,8 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 }
 .room-switch-mark {
   display: block;
-  width: 32px;
-  height: 32px;
+  height: 20px;
+  width: auto;
   transition: transform var(--dur-fast) var(--ease-out);
 }
 /* The same small lift every other button on the site uses on hover,
