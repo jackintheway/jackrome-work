@@ -10,6 +10,7 @@ One card per page. The Squarespace site shared a single image across nine pages,
 | `card-about.html` | `assets/img/og-about.png` | `/about` |
 | `card-ai-enablement.html` | `assets/img/og-ai-enablement.png` | `/ai-enablement` |
 | `card-wayspace.html` | `assets/img/og-wayspace.png` | `/wayspace` |
+| `card-case-two-track-class-edit-automation.html` | `assets/img/og-case-two-track-class-edit-automation.png` | `/case-studies/two-track-class-edit-automation` |
 | `card-wayspace-music.html` | `assets/img/og-wayspace-music.png` | `/wayspace/music` |
 | `card-wayspace-video.html` | `assets/img/og-wayspace-video.png` | `/wayspace/video` |
 | `card-wayspace-design.html` | `assets/img/og-wayspace-design.png` | `/wayspace/design` |

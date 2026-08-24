@@ -17,3 +17,11 @@ _*.tmp
 # are far too large for a repo that Netlify redeploys on every push.
 # What ships is the web-sized derivative in assets/, committed.
 _source/
+
+# Exhibit packages, the raw output of the /exhibit skill.
+#
+# These are scrubbed and scan-gated, but this repo is public, so a
+# package sits here unpublished until Jack has read it himself. What
+# ships is the page built from it, committed like any other page.
+# Canonical copies go to Claude Creations/exhibitions/ in iCloud.
+_exhibits/

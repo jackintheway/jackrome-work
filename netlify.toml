@@ -59,6 +59,16 @@
   to = "/ai-enablement"
   status = 301
 
+# The case studies are real pages at /case-studies/<slug>, but there is
+# no index at /case-studies yet: one case study does not need a hub, and
+# a hub shaped around a sample of one would be shaped wrong. Until there
+# are three, the bare path goes to the page that actually lists them
+# rather than 404ing on a directory with no index.
+[[redirects]]
+  from = "/case-studies"
+  to = "/ai-portfolio"
+  status = 301
+
 # A lyric page shipped with a typo in its slug: "do-your-hear-that"
 # rather than "do-you-hear-that". Fixed 2026-08-23. The old path was
 # live on staging, so it keeps working rather than 404ing at anyone who

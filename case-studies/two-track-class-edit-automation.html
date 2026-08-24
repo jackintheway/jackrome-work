@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Automating a two-track class edit | Case study | Jack Rome</title>
+  <meta name="description" content="A case study in scripting a professional editing application against its own project file to automate a recurring class edit, safely. The timing rules were derived from the editor's real hand cuts, and every scripted change was verified by reading the saved file.">
+  <link rel="canonical" href="https://jackrome.work/case-studies/two-track-class-edit-automation">
+
+  <!-- Link previews. Same rules as every other page: og:image absolute,
+       twitter:card set to summary_large_image, card generated from
+       tools/og/ so it inherits the design system.
+       Source: tools/og/card-case-two-track-class-edit-automation.html -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Jack Rome">
+  <meta property="og:url" content="https://jackrome.work/case-studies/two-track-class-edit-automation">
+  <meta property="og:title" content="The rules came from the hand cuts.">
+  <meta property="og:description" content="Scripting an edit against a live timeline, with every change checked against the saved file rather than the screen.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-case-two-track-class-edit-automation.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The rules came from the hand cuts. A case study by Jack Rome.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The rules came from the hand cuts.">
+  <meta name="twitter:description" content="Scripting an edit against a live timeline, with every change checked against the saved file rather than the screen.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-case-two-track-class-edit-automation.png">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main">
+    <a class="nav-mark" href="/">Jack Rome</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-link" href="/about">About</a>
+      <div class="nav-group">
+        <span class="nav-group-label">Services</span>
+        <a class="nav-link" href="/ai-enablement">AI Enablement</a>
+        <a class="nav-link" href="/production">Production</a>
+      </div>
+      <a class="nav-link" href="/ai-portfolio">AI Portfolio</a>
+      <a class="nav-link" href="/wayspace">Wayspace</a>
+      <a class="nav-link is-external" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow ws-overline">AI Portfolio &middot; Case study</p>
+      <h1 class="hero-title">Automating a two-track class edit from a transcript.</h1>
+      <!-- The subject is the workflow, so the page says what the workflow
+           was rather than opening on who it was for. An earlier draft led
+           with a withholding line; per Jack it was framing the piece around
+           a client the piece is not actually about. -->
+      <p class="hero-sub">Scripting a recurring edit against a live timeline, with every change checked against the saved project file rather than the screen.</p>
+    </div>
+  </header>
+
+  <main class="page page-narrow" id="main">
+
+    <!-- THE ARC
+         Said about this work before it was written up, and it is a
+         better table of contents than any outline. The piece is built
+         around proving both halves of it. -->
+    <section class="section">
+      <div class="callout">
+        <p>"The skills are the documentation layer, not the exhibit itself. The thing worth showing is that the timing floors came out of your hand cuts rather than out of anyone's taste, and that the miss got caught by ear and then turned into a second detector. That's the arc."</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="problemTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="problemTitle">The problem, as it actually arrived</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="prose prose-lg">
+        <p>A recurring recorded class produces two synchronized picture tracks: the teacher on one, a slide deck on the other, with the deck covering the teacher for the entire runtime. Editing the class down for viewers means deciding, minute by minute, which track should actually be on screen, then removing two kinds of material that never belonged to the audience: a running back-channel where the teacher asks an off-camera collaborator to advance the deck, and a long open discussion block where students talk among themselves. A further private conversation often continues after the formal close of the class and has to be identified and left out entirely, every time, without exception.</p>
+        <p>The constraint that ruled out the obvious answer was the state already living in the timeline. The project's audio track carried a saved Essential Sound preset, a separate enhanced-audio track, and proxy media links, none of which survive a round trip through an interchange format that rebuilds a sequence from scratch rather than editing the one that exists. So this could not be solved by exporting, editing structure elsewhere, and reimporting. It had to be solved by scripting the actual editing application against the actual timeline, without a public API for the operation that mattered most: cutting a clip in place.</p>
+      </div>
+    </section>
+
+    <!-- WHAT WAS REJECTED
+         The most credible section in the piece and the one a freehand
+         write-up drops. Each route dies on a specific, checkable fact
+         rather than a preference. -->
+    <section class="section" aria-labelledby="rejectedTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="rejectedTitle">What was tried and rejected</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="prose prose-lg">
+        <p><strong>An interchange-format round trip.</strong> Reading the project file surfaced the Essential Sound preset (a saved GUID, specific restoration and clarity values), the separate enhanced-audio track, and the proxy links. None of that metadata survives an export-reimport cycle, and an import through that route rebuilds the sequence from its component media rather than editing the one already assembled. This was the most tempting option on paper because it looked like the "clean" engineering answer, and it was rejected specifically because it would have quietly destroyed real, already-finished audio work.</p>
+        <p><strong>Driving the application through simulated screen input.</strong> Considered and explicitly ruled out. A non-linear editor's timeline punishes blind clicking: there is no reliable way to verify that a click landed where intended without watching it happen, and a misplaced click on a timeline can silently damage adjacent material. The scripting layer inside the application, even though undocumented for this specific operation, was the safer route because every action it takes is checkable afterward by reading the saved project file.</p>
+        <p><strong>A single keyword search to find every place the deck needed to change.</strong> This was the first, obvious approach and it looked complete. It was not: it missed cues where a transcription pass had mangled the spoken cue word into something else entirely. The miss was not caught by re-reading the transcript more carefully. It was caught by a person watching the finished cut and hearing an aside that should have been removed but wasn't. That single catch is what forced a second, independently built detector rather than a patch to the first one.</p>
+        <p><strong>Converting seconds to timecode with straight multiplication.</strong> The recording ran at a drop-frame rate, and naive seconds times frame-rate math drifts against real drop-frame timecode: correct for the first minute, about three seconds wrong by the fifty-minute mark. Every cut point computed that way would have landed in slightly the wrong place by the second half of the class. Proper drop-frame conversion was required, and it was verified against two fixed anchors, zero seconds and exactly one hour, before it was trusted for anything else.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="methodTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="methodTitle">The method that emerged</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="prose prose-lg">
+        <p>The idea the rest of it rests on is that the timing rules were <strong>derived from the editor's own prior hand cuts, not invented and not left to a script's default judgment.</strong> Before any classification logic was trusted, an automatic first pass was compared against twenty-one show/hide decisions the editor had already made by hand, unaided, in the first ten minutes of one class. Nineteen of the twenty-one matched outright. The two that didn't each produced a rule rather than a special case: one track's holds were never allowed shorter than the shortest one the editor had actually cut, and the other track's holds carried the same floor with one explicit exception, a much shorter allowance for the specific few seconds where the teacher was mid-request and the deck hadn't changed yet.</p>
+        <p>Applying those two floors as a smoothing pass over an otherwise-raw automatic classification is what turned a flickering, mechanical cut list into something with the editor's actual rhythm. It is the single most transferable piece of the whole workflow, because it does not depend on this class, this teacher, or this subject matter. It depends on there being a real, comparable body of hand-cut work to derive a floor from, which is a condition plenty of recurring-content editing jobs satisfy.</p>
+        <p>The second is <strong>lift, never ripple, until the very last step.</strong> Every removal left a gap rather than shifting everything after it. Because nothing downstream ever moved mid-process, a saved map between the original recording's clock and the list of removed ranges stayed accurate through the entire pass. That map is what let a timecode spotted in the finished cut be walked backward, arithmetically, to the exact point in the original recording and the exact line in the transcript, in one step instead of a scrubbing session. Only after every removal was made and verified did a single native gap-close operation ripple the timeline, once, and it was only allowed to run after a tick-level check confirmed every affected track agreed on where its gaps actually were.</p>
+        <p>The third is <strong>verification against the saved file, not the screen.</strong> After every scripted pass, a small reader (no vendor libraries required, because the project file is just compressed XML) opened the saved project and reported real numbers: clip counts per track, where each track started and ended, how many gaps existed, how many clips were marked hidden. Those numbers were compared against what the pass was supposed to have done before anything else happened. This is what turned a script that could quietly destroy an hour of work into one that was safe to run twice.</p>
+      </div>
+    </section>
+
+    <!-- WHAT WENT WRONG
+         Real bugs with what they cost. A reader who does this work
+         recognizes a real bug immediately, which is the point of
+         including them rather than writing "challenges were encountered." -->
+    <section class="section" aria-labelledby="wrongTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="wrongTitle">What went wrong, and the fix</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="prose prose-lg">
+        <p><strong>The miss that started the second detector.</strong> A single keyword search found most of the places the teacher asked to advance the slide deck, but missed a handful where a transcription pass had rendered the same short spoken cue as an entirely different, unrelated word. The miss was not caught by inspection. It was caught by a person watching the finished cut back and hearing an aside that had been left in. That catch is the reason a second, structural detector exists: instead of matching a keyword, it looks for the shape of the moment itself, a very short cue, a specific minimum trailing silence, followed by an opening word that reliably marks the return to prepared material. Run independently and unioned with the first detector, it caught every one of the keyword search's misses with zero false positives of its own, because the two detectors fail in different, uncorrelated ways.</p>
+        <p>Two more identical misses turned up later, again by ear, after the pass had already run, and both were the same mistranscription pattern. The rule that survives this: a small, repeated pattern of exceptions inside one transcript is more likely to be a transcription artifact than a genuine habit worth modeling as a special case.</p>
+        <p><strong>A track flag with a misleading name.</strong> The scripting layer's clip visibility toggle is stored under a project-file tag that reads, at a glance, like an audio-mute flag. Searching the raw project XML for anything that looked like "disabled" or "enabled" found nothing, which produced an early, wrong conclusion that nothing had actually been hidden. It had been. The fix was tracing what the visible keyboard shortcut for hiding a clip actually wrote to the file, rather than guessing from the tag's name.</p>
+        <p><strong>A stale reference to a mutable collection.</strong> An early version of the razor-and-hide pass fetched a track's list of clips once and reused that reference across many operations. Every cut changes that underlying collection, so counts taken from the cached copy could have been wrong and a later pass could have walked a list that no longer matched the timeline. The fix was to re-fetch the live collection from the active sequence before every read, never caching it across an operation that might have changed it.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="resultTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="resultTitle">The verified result</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="prose prose-lg">
+        <p>Read directly from the saved project file after the last pass, not eyeballed from the timeline: both video tracks and both audio tracks ended with zero gaps and zero mismatched track lengths. The track holding the teacher's picture carried forty-two clips end to end with nothing hidden; the track holding the deck carried eighty-four clips with forty of them marked hidden, which is exactly where the deck should have been covered by the teacher instead. Content duration on every track was identical before and after the final gap-close, which is the proof that only empty space was ever removed. A small fixed graphic on a separate track at the head of the timeline, which does not travel with a native gap-close, was confirmed unmoved afterward.</p>
+        <p>The class ran roughly ninety-two minutes as recorded. The finished cut ran roughly thirty-four minutes. One continuous discussion block accounted for most of what came out, at just over sixteen minutes in a single removal. Twenty short asides to the off-camera collaborator accounted for most of the rest, averaging about three seconds each. Two more were found and removed after the fact, both caught by ear, both walked back through the saved range map to an exact point in the original transcript before they were added to the cut list and reapplied.</p>
+        <p>The map is what made that a one-step lookup rather than a scrubbing session, and it is the piece of this workflow that most directly proves the arc in the quote at the top: a miss that a machine could not have found on its own became a rule the machine could apply the next time, and every one of those rules is checkable, after the fact, against a real saved file.</p>
+      </div>
+    </section>
+
+    <!-- WHAT IS STILL OPEN
+         Costs nothing and is the section that makes the other five
+         believable. Not softened. -->
+    <section class="section" aria-labelledby="openTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="openTitle">What is still open</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="prose prose-lg">
+        <p>Every rule in the method section was derived from a single class. The floor values, the detector thresholds, and the marker word that reliably signals a return to prepared material have not yet been checked against a second recording in the same series, let alone a different speaker or format entirely. The right posture toward a first run on new material is to treat it as a test of the rules, not only of the automation built on top of them.</p>
+        <p>The removal pass is close to safe to re-run, because a lift leaves a gap rather than shifting anything, but it is not truly idempotent, and nothing here has been tested against being applied twice to the same project without care in between.</p>
+        <p>Nothing in this workflow can hear a joke land, notice a tone shift, or judge whether a cut feels right on playback. That judgment stays a person's, on every pass, and the verification step described above checks that the file matches what was intended, not that the result is good to watch.</p>
+      </div>
+    </section>
+
+    <div class="btn-row">
+      <a class="btn" href="/ai-portfolio">&larr; Back to AI Portfolio</a>
+      <a class="btn btn-secondary" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-identity">
+      <span class="footer-line">Jack Rome</span>
+      <span class="footer-line footer-sub">Technology, made human</span>
+      <span class="footer-line footer-sub">Maryland</span>
+    </span>
+    <span class="footer-links">
+      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="mailto:jackintheway@gmail.com?subject=Inquiry%20for%20Jack%20Rome">Reach out</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.linkedin.com/in/jackrome/" target="_blank" rel="noopener">Connect</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.youtube.com/@jackintheway" target="_blank" rel="noopener">Watch</a>
+    </span>
+  </footer>
+
+  <script src="/js/nav.js" defer></script>
+</body>
+</html>

@@ -182,6 +182,31 @@
       </div>
     </section>
 
+    <!-- CLIENT WORK
+         The third category on this site. /production names its clients,
+         everything else on this page is a tool Jack built for himself,
+         and these are client jobs that cannot be named at all. They sit
+         here rather than on /production because what survives them is
+         method rather than a finished video, and they sit after the tool
+         lists rather than among them because the page's set of tools is
+         settled and does not change without Jack. See CLAUDE.md.
+
+         Rendered from js/case-studies.js. Adding one is adding an object
+         there, not editing this markup. -->
+    <section class="section" aria-labelledby="clientTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="clientTitle">The same rules, on client work</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="prose">
+        <p>Everything above I built for myself. That's an honest place to start, and it isn't the whole test. The harder version is someone else's work, someone else's deadline, and a constraint I didn't get to pick.</p>
+        <p>These are those. The client, their subject and their people stay out of it by agreement, so what's here is the reasoning and the method. Each one gets written up the same way: what the problem actually was, what I tried and threw out, what went wrong, what got verified and how it was checked, and what I still don't know.</p>
+      </div>
+
+      <ul class="offer-grid" id="caseStudyGrid"></ul>
+    </section>
+
     <!-- WHAT CARRIES OVER
          The methods, as opposed to the tools. Written by Jack in 2026 as
          a reflection on his own practice, carried across from the earlier
@@ -271,5 +296,6 @@
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/case-studies.js" defer></script>
 </body>
 </html>
