@@ -68,6 +68,12 @@ against the room's original one-line description. The visible hero copy has chan
 twice since (2026-08-23, then again 2026-08-24), and the card never followed. Rebuild
 with `./tools/og/render.sh` before the cutover, once the room's copy has settled.
 
+**0. `/case-studies/two-track-class-edit-automation` is built and not deployed.**
+Committed 2026-08-24, along with `js/case-studies.js`, a section on
+`/ai-portfolio` that renders from it, and a `/case-studies` 301. Verified
+locally: renders, no console errors, no horizontal overflow at 390px, and the
+copy checks pass. Not pushed. See "Case studies" below.
+
 **4. Four `TODO(copy)` markers remain**, all now unblocked since every room they sit
 in has real content: `wayspace.html` (the room-list descriptions), and the hero
 subtitles on `/wayspace/video`, `/wayspace/writing`, `/wayspace/music`. Each wants a
@@ -1016,6 +1022,70 @@ The reasoning behind the selection is recorded outside this repo, in
 **The old portfolio repo is `../ai-work-portfolio/`, it is private, and nothing
 publishes from it.** It stays useful as a design reference and as an archive. Read
 it; do not copy content out of it onto this site.
+
+---
+
+## Case studies (first one built 2026-08-24)
+
+`/case-studies/two-track-class-edit-automation` is the first, built from a
+package the `/exhibit` skill wrote. That is the intended pipeline and it now
+works end to end: Jack runs `/exhibit` on a finished piece of work, the package
+lands in `_exhibits/`, and a page plus an array entry get built from it.
+
+**`_exhibits/` is gitignored, deliberately.** The packages are scrubbed and
+scan-gated, but this repo is public, so a package waits there unread by anyone
+until Jack has read it himself. What ships is the page built from it. Same shape
+as `_source/`: originals stay off the wire, the derivative is committed.
+Canonical copies of cleared packages go to `Claude Creations/exhibitions/` in
+iCloud, matching the archive convention for skills.
+
+**`js/case-studies.js` went in with the first entry rather than the third.**
+`ai-portfolio.html` is hardcoded prose, which was right when the page was one
+settled argument nobody expected to grow. Case studies arrive one at a time on
+no schedule, so hardcoding the first meant hand-editing that page every time
+after. The data file is the expensive thing to retrofit; the hub page is cheap
+to add later, so the expensive thing got built first. Adding a case study is
+adding an object plus a page.
+
+**There is no `/case-studies` index yet, on purpose.** One case study does not
+need a hub, and a hub shaped around a sample of one would be shaped wrong. The
+bare path 301s to `/ai-portfolio` in `netlify.toml` so it does not 404 on a
+directory with no index. Revisit at three. When it exists, the "Back to AI
+Portfolio" button at the foot of each case study becomes "Back to case studies."
+
+**No case study carries a "client details are withheld by agreement" line.** An
+earlier draft of the first one did. Per Jack on 2026-08-24, it framed the piece
+around a client the piece is not actually about: the subject is the workflow.
+
+It was also actively counterproductive here, which is the part worth keeping.
+`/production` on this same site names Foundation for Inner Peace and Jon Mundy,
+and that is who the first case study's work was for. A withholding line two nav
+clicks from a page naming the same client does not conceal anything; it tells a
+reader there is something to work out, and they can. **So the rule is: name a
+client where naming one adds something, and otherwise say nothing about who at
+all.** `client` is nullable in the array for exactly this reason. Do not
+reintroduce a withholding line without Jack.
+
+The `/exhibit` gate itself is unchanged and still runs: the term-list scan
+before drafting, and the shape check, which is Jack's call and not the
+scanner's.
+
+**Open, raised by Jack 2026-08-24:** case studies may want to be their own
+section of the site rather than a subsection of `/ai-portfolio`, because they
+draw from both service lines, `/ai-enablement` and `/production`, rather than
+from either one. That is a better argument for the section than the one it was
+built on and it is probably right. It is not built, and the cost is that a
+seventh nav item touches every page on the site. Most likely shape when it
+lands: the hub links from both service pages and does not take a nav slot until
+it has the weight to earn one. The section currently on `/ai-portfolio` ("The
+same rules, on client work") becomes a teaser pointing out to it rather than
+the home for them.
+
+**The share card was rendered on its own**, not through `./tools/og/render.sh`,
+so the other seventy PNGs stayed out of the diff. Its title needed retuning off
+the `/ai-portfolio` template: at 78px it wrapped to three lines and the yellow
+offset shadow collided with the line above. 64px on a 660px measure sets it in
+two and clears the puzzle art.
 
 ---
 
