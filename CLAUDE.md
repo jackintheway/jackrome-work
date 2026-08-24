@@ -4,7 +4,7 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 
 ---
 
-## Status: the site is built. Wayspace shipped as skeletons on 2026-08-20
+## Status: every page is built and deployed. What's left is content, not construction (2026-08-24)
 
 **The build started 2026-08-15 on Jack's go.** All four blocking decisions are settled and recorded below.
 
@@ -14,9 +14,15 @@ Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` cove
 | Staging | `https://jackrome-work.netlify.app` |
 | Production | Still Squarespace. DNS untouched. |
 
-Built, deployed, and verified: `/`, `/about`, `/ai-enablement`. Tokens, Archivo, nav, footer, share cards, redirects, and headers are all in place and confirmed against the live deploy.
+Every page in scope is built, deployed, and has been iterated on since: `/`, `/about`,
+`/ai-enablement`, `/production`, `/ai-portfolio`, and `/wayspace` with all six rooms.
+Music plays 8 sources through a hidden SoundCloud widget, Writing carries 75 entries
+with theme and kind filters, Design tells the lineage in order with two hover
+animations, Podcasts plays both audio and video. Speaking is deliberately off the live
+site, with a 301, because there is nothing to put in it yet.
 
-Deployed and verified 2026-08-22: `/wayspace` and its six rooms, including a nested lyric page. Built locally and **not yet deployed**: `/ai-portfolio` and `/production`. See "Wayspace, built", "The AI portfolio page", and "The production page" below. **Every page in scope is now built.**
+Tokens, Archivo, nav, footer, share cards, redirects, and headers are in place and
+confirmed against the live deploy.
 
 `INVENTORY.md` is the crawl of the old Squarespace site. `COPY.md` is the copy pulled from it on 2026-08-15, and is the source for the three built pages. Once a page is built its HTML is the source of truth, not `COPY.md`.
 
@@ -43,32 +49,43 @@ charge.
 
 ---
 
-## Where the next session picks up
+## Where the next session picks up (updated 2026-08-24)
 
-Two things, in this order.
+The build is done. What's left is four small, genuinely open items, roughly in
+priority order given the 2026-09-01 cutover target:
 
-**1. `/production`, the service doorway.** The last unbuilt page and the only one
-still 404ing behind a link that exists. It is the sibling to `/ai-enablement`: what
-the third home card ("Creative & production") has been pointing at since 2026-08-18.
-It sells creative production as a service, so it is a service page and not a body of
-work. Copy for it does not exist yet.
+**1. `/toolbox` and `/blog` need a decision: rebuild, redirect, or deliberate 404.**
+Still undecided. See "The cutover note" below. This is critical path, not cleanup: if
+`/toolbox` gets rebuilt it is a whole additional page against a shrinking clock, so
+raise it with Jack before starting rather than assuming.
 
-**2. Filling the Wayspace rooms.** Jack is gathering. Every room renders from an
-array in `js/wayspace.js` and adding real work is adding an object there, never
-editing markup. What is still needed from him is unchanged: the real release list,
-actual files and embeddable links, and material from Wayspace, his Obsidian vault at
-`~/Obsidian/Wayspace`, which holds a lot of the lyrics.
+**2. `/creative-portfolio` still has no 301.** It was a live Squarespace URL, and
+`netlify.toml` doesn't redirect it yet. Most likely target is `/wayspace`, per the
+cutover note, but not yet added.
 
-Two things to hold when the vault comes up:
+**3. The Design room's share card is stale.** `og-wayspace-design.png` was rendered
+against the room's original one-line description. The visible hero copy has changed
+twice since (2026-08-23, then again 2026-08-24), and the card never followed. Rebuild
+with `./tools/og/render.sh` before the cutover, once the room's copy has settled.
+
+**4. Four `TODO(copy)` markers remain**, all now unblocked since every room they sit
+in has real content: `wayspace.html` (the room-list descriptions), and the hero
+subtitles on `/wayspace/video`, `/wayspace/writing`, `/wayspace/music`. Each wants a
+pass with the `jacks-voice` skill, the same treatment Design and Podcasts already got.
+A fifth, in `ai-enablement.html` ("Want to talk it through?"), predates the Wayspace
+work and is still open too.
+
+**Two things to hold if the vault comes up again:**
 
 - The vault has its own `CLAUDE.md` at its root that governs behaviour inside it.
   Read that on arrival rather than assuming this file applies.
 - **`~/Obsidian/Wayspace/Compost/` is the only permitted write destination in the
   vault.** Everything else there is read-only.
 
-The rooms still need writing before they need more building. Every room hero and the
-landing carry a `TODO(copy)` marking a functional line that wants Jack's voice.
-Load the `jacks-voice` skill before drafting any of them.
+**Not urgent, not on the cutover path:** the merch store pin, the bio.site question,
+`flyer-video-headliner-weekof-2018.mp4` still not in the Design room, the cover-art
+lightbox anticipated but not built, and `assets/img/jack-ventnor-2026.jpg` shipping
+unused. All recorded in their own sections below.
 
 ---
 
@@ -944,17 +961,19 @@ of this site, so nothing about the store is on the cutover path. Revisit after.
 
 ## Open items, none blocking
 
-- `/creative-portfolio` 404s and now wants a 301 to `/wayspace` in `netlify.toml` at cutover. The scope question resolved toward two pages, so this path has a successor.
-- ~~`/production` 404s.~~ **Built 2026-08-22, not yet deployed.** It is linked from the nav of every page, the green home card, and a button on `/wayspace`, so it 404s from all of them until the next push.
-- `/ai-portfolio` is built but **not deployed**. Its share card renders and the page passes `check-copy` and the 390px check locally.
-- ~~Wayspace clean URLs unverified.~~ **Closed 2026-08-22.** Checked against the live staging deploy: `/wayspace`, `/wayspace/writing`, `/wayspace/music`, and a nested lyric page all answer 200 with no redirect. The trailing-slash forms 301 back to the clean URLs, which makes the clean form canonical. The `room.html` beside a `room/` directory pattern holds for nested paths.
-- One `TODO(copy)` in `ai-enablement.html`: the closing line "Want to talk it through?" is mine, not Jack's, and wants his voice.
-- `assets/img/jack-ventnor-2026.jpg` ships but is unused.
+The live ones are listed once, in "Where the next session picks up" above, so they
+don't drift out of sync with themselves. This is the closed history:
+
+- ~~`/production` 404s.~~ **Built 2026-08-22, deployed and iterated on since.**
+- ~~`/ai-portfolio` not deployed.~~ **Built 2026-08-21, deployed and iterated on since.**
+- ~~Wayspace clean URLs unverified.~~ **Closed 2026-08-22.** Checked against the live
+  staging deploy: `/wayspace`, `/wayspace/writing`, `/wayspace/music`, and a nested
+  lyric page all answer 200 with no redirect. The trailing-slash forms 301 back to the
+  clean URLs, which makes the clean form canonical. The `room.html` beside a `room/`
+  directory pattern holds for nested paths.
 - ~~**`/ai` breaks at cutover.**~~ **Fixed 2026-08-22.** `netlify.toml` now 301s
   `/ai` straight to `/ai-enablement` instead of out to `ai.jackrome.work`, so the
   vanity path no longer depends on a Squarespace hop that dies on 2026-09-15.
-  Ships with the `/production` deploy.
-- The orphaned Squarespace pages still need a call before DNS moves. `/toolbox` and `/blog` only. See the cutover note below.
 
 ---
 
@@ -1034,9 +1053,10 @@ cards rendered, thirty role tags, zero iframes before click, the right video id
 built on click, both outbound links carrying `rel="noopener"`, and one
 `aria-current`. `check-copy` passes.
 
-**One open question in the file**, marked `TODO(jack)`: the Crossing the Bridge
-podcast is filed under client work but no client is named in the source material,
-so that card currently carries the medium alone.
+~~**One open question in the file**, marked `TODO(jack)`: the Crossing the Bridge
+podcast is filed under client work but no client is named in the source material.~~
+**Resolved.** `js/production.js` now carries `client: "Tribly"` on that entry, and no
+`TODO(jack)` marker remains anywhere in the file.
 
 ---
 
