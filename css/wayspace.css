@@ -750,13 +750,13 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .theme-tag {
   font-family: var(--font-heading);
   font-weight: var(--fw-bold);
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: var(--ls-overline);
   text-transform: uppercase;
   color: var(--text-muted);
   background: var(--bg-sunken);
   border: var(--border-hair) solid var(--outline);
-  padding: 1px 5px;
+  padding: 1px 4px;
 }
 
 .filter-status {
@@ -793,6 +793,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   padding: 0;
 }
 .writing-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -804,6 +805,24 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   transition: transform var(--dur-fast) var(--ease-out),
               box-shadow var(--dur-fast) var(--ease-out);
 }
+/* THE STRETCHED LINK, per Jack on 2026-08-24: click anywhere on a lyric
+   card, not only the title. Built on the title's own <a> rather than a
+   second element, so there is still exactly one real link per card and
+   no nested-anchor problem. A short has no page of its own and its
+   title renders as plain text, so this never applies to one; nothing
+   extra had to be written to keep shorts out of it.
+
+   Positioned relative so a future card that does carry a second
+   interactive element (a crossRef, a watch button) can sit above the
+   overlay rather than being silently covered by it. No lyric entry
+   carries one today, so this is precautionary rather than fixing a
+   present conflict. */
+.writing-card-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.writing-card .entry-actions { position: relative; z-index: 1; }
 .writing-card[hidden] { display: none; }
 .writing-card:hover,
 .writing-card:focus-within {
@@ -1241,6 +1260,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .lyric-body {
   font-family: var(--font-serif);
   font-size: var(--fs-body-lg);
+  font-weight: var(--fw-medium);
   line-height: 1.7;
   color: var(--text-body);
   white-space: pre-line;

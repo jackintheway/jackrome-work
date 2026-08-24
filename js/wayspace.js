@@ -496,10 +496,10 @@ const SINGLES = [
 const DESIGN = [
   {
     title: "The puzzle logo family",
-    meta: "Drawn as one puzzle, then pulled apart",
+    meta: "The pieces float together",
     image: "/assets/img/wayspace/design/logos/puzzle-pieces-trio.png",
     fit: "contain",
-    note: "One shape cut into pieces whose tabs still match. It exists as an Illustrator master and exports in black and white, flat color and gradient. Two of its members are already load bearing on this site: the wordmark on the Wayspace landing, and the single piece in the browser tab.",
+    note: "One shape cut into pieces whose tabs still match. It exists as an Illustrator master and exports in black and white, flat color and gradient.",
     crossRef: null
   },
   {
@@ -507,7 +507,7 @@ const DESIGN = [
     meta: "The flower logo",
     image: "/assets/img/wayspace/design/logos/jackintheway-flower.png",
     fit: "contain",
-    note: "The name before Wayspace was the name. The flower and the spiral behind it both show up again at the centre of the Wayspace album cover, carrying the wordmark.",
+    note: "The first design using the beginnings of the Wayspace color scheme. It wasn't until I made this design that I realized that 'Jackintheway' would become my new moniker.",
     crossRef: null
   },
   {
@@ -696,7 +696,7 @@ const PODCASTS = [
     listenHref: "https://open.spotify.com/show/05E8kMGjWNOmRdK183o3s2",
     watchId: null,
     note: "Built, scripted, hosted and produced for Tribly, as lead producer.",
-    crossRef: { text: "Also <em>in</em> Production", href: "/production", html: true }
+    crossRef: { text: "Also in Production", href: "/production" }
   }
 ];
 
@@ -823,7 +823,7 @@ const WRITING = [
   {
     title: "Your Sun",
     kind: "Lyric",
-    meta: "Released 2026",
+    meta: "Written 2026",
     href: "/wayspace/writing/your-sun",
     note: "",
     crossRef: null,
@@ -2440,9 +2440,16 @@ function initFacades() {
    Under prefers-reduced-motion nothing plays on hover or focus at
    all. The clip is still reachable by clicking, because the rule is
    that motion is never imposed, not that it is withheld.
-   ============================================================ */
+
+   EXTENDED 2026-08-24 to the Wayspace album cover in the lineage
+   above the tool row, same mechanic rather than a second copy of it.
+   Delegated from .lineage, the shared ancestor of both, rather than
+   from #toolRow specifically, so one set of listeners covers every
+   .tool-tile in the section regardless of which step it is in. is-cover
+   on the album's tile is a hook for CSS only; nothing here treats it
+   differently from a tool tile. */
 function initToolClips() {
-  const row = document.getElementById("toolRow");
+  const row = document.querySelector(".lineage");
   if (!row) return;
 
   const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;

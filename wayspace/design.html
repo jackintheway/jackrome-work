@@ -134,11 +134,21 @@
           <div class="step-copy">
             <p>This is the culmination of years of design and music growth, arriving here <em>in</em> Wayspace. This is an arrival, a homecoming. I built out the dimension with characters, and they welcome us!</p>
           </div>
+          <!-- Hover on a desktop, tap on a phone, muted either way: the
+               same mechanic as the tool pack row below, reused rather
+               than rebuilt. is-cover only changes the size; the
+               still/clip crossfade and the hover/tap/reduced-motion
+               logic in initToolClips() are shared with the tool row. -->
           <figure class="step-figure">
-            <img class="step-art" src="/assets/img/wayspace/design/wayspace-album.jpg"
-                 alt="The Wayspace album cover. Two green figures with large eyes flank a blue spire, a bridge crosses a river below, and a yellow flower carries the Wayspace wordmark at the centre."
-                 loading="lazy" width="900" height="900">
-            <figcaption class="step-caption">I drew the cover in separate planes, which is why it can come apart.</figcaption>
+            <button class="tool-tile is-cover" type="button"
+                    data-clip="/assets/video/design/wayspace-album-animated.mp4"
+                    aria-label="Play the Wayspace album cover animation">
+              <img class="tool-still" src="/assets/img/wayspace/design/wayspace-album.jpg"
+                   alt="The Wayspace album cover. Two green figures with large eyes flank a blue spire, a bridge crosses a river below, and a yellow flower carries the Wayspace wordmark at the centre."
+                   loading="lazy" width="900" height="900">
+              <video class="tool-clip" muted loop playsinline preload="none"
+                     aria-hidden="true" tabindex="-1"></video>
+            </button>
           </figure>
           <!-- Rendered from SINGLES in js/wayspace.js. All twelve, in
                track order, because the sequence is a fact about the
@@ -151,7 +161,6 @@
           <h3 class="step-title">The Wayspace podcast cover</h3>
           <div class="step-copy">
             <p>I brought the puzzle pieces forward, rebuilt the wordmark out of those same blocks, and flattened the ground to blue.</p>
-            <p>It’s the most recent piece in the line, and it’s where most of what you’re looking at right now came from.</p>
           </div>
           <figure class="step-figure">
             <img class="step-art" src="/assets/img/wayspace/design/wayspace-podcast.jpg"

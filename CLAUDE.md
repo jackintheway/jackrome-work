@@ -880,6 +880,60 @@ site.
 
 ---
 
+## The Website Materials batch (2026-08-24)
+
+Jack keeps a running note in his Obsidian vault, `Workshop/Website Materials.md`,
+as the gathering point for site feedback. This batch closes out everything
+under its "new edits" heading, plus six more items he sent live while it was
+being reviewed, including a real bug he caught from a screenshot.
+
+**AI Portfolio's ten anonymized skill bullets now carry real slash names**:
+`/sweep`, `/portal`, `/mycelium`, `/orient`, `/harvest`, `/deliver`,
+`/obsidian-layer`, `/conversation-archiver`, `/synthesis`, and the one that
+isn't a Wayspace skill at all, "The verification tool," which stays plain
+text. This settles a tension from the day before: the wiki auditor bullet had
+just been given the invented public name "Weak Wiki Link Auditor" specifically
+so its real skill name, `/mycelium`, stayed private. Jack's instruction to
+"actually name the rest of the skills" reversed that a day later, so it is
+`/mycelium` now, matching the pattern rather than keeping the exception.
+
+**The Wayspace album cover plays on hover now, same mechanic as the tool
+pack.** `wayspace-animated-artwork.mp4` had been estimated in an earlier
+session (10s loop, ~1MB) and never wired in. Rather than build a second hover
+mechanic, `initToolClips()` was generalized to delegate from `.lineage`, the
+shared ancestor of the tool row and the album step, instead of the single
+`#toolRow` it used to bind to. One set of hover/tap/`prefers-reduced-motion`
+listeners now covers every `.tool-tile` in the section. The album's tile
+turned out not to need a size override at all: `.tool-tile` is `width: 100%`
+with no fixed dimension of its own, so it naturally renders at whatever its
+container allows, 560px inside `.step-figure` versus ~170px inside
+`.tool-row`. A real conflict was caught before shipping: giving the image
+both `.step-art` and `.tool-still` doubled its border and shadow on top of
+the button's own, since `.tool-tile` already carries both. Fixed by dropping
+`.step-art` from that one image, since `.tool-still` already provides
+equivalent sizing.
+
+**The whole lyric card opens the lyric now, not just the title**, via a
+stretched link rather than new click-handling JS: the title's own `<a>` gets
+a `::after` stretched with `inset: 0` over the card. One real anchor per
+card, no nested-anchor problem. Verified with an actual click-and-navigate
+test, not just geometry: a click 15px above a card's bottom border, well
+below its title text, navigated the iframe to that card's own href. Only
+applies where a title is a real link, which is every lyric and no short,
+with nothing extra written to keep shorts out of it.
+
+**"Load bearing" is now in the jacks-voice dead-vocabulary list.** Jack
+caught himself reaching for it in a dictated edit and asked that it be banned
+the same way "delve" and "paradigm" already are.
+
+**A real bug, caught from a screenshot mid-review:** Your Sun said "Released
+2026" while also carrying the `Unreleased` flag, a direct contradiction.
+Every other unreleased-and-written-in-2026 lyric (Inflamed, The Help) uses
+"Written 2026" instead. Fixed to match in both the `WRITING` array and the
+page itself.
+
+---
+
 ## Pinned for later: the merch store
 
 `https://wayspace-shop.fourthwall.com/` is Jack's store. Raised 2026-08-23 and
