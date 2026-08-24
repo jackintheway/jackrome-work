@@ -1720,9 +1720,16 @@ down from 560, which brings the upscale to 1.67x. A compromise, not a fix: 240px
 map the clip 1:1 and be genuinely crisp, but the album is the arrival in this lineage
 and 240 does not carry it.
 
-**When the clip is re-cut:** raise the cap in `css/wayspace.css` back to 560px, delete
-the explanatory comment above the rule, and trim the stopgap paragraph from the figure
-comment in `wayspace/design.html`.
+**The podcast cover came down with it.** At 400px the album was reading smaller than the
+flat podcast cover below it at 560, which works against the copy calling the album the
+culmination and the arrival. Jack's call on 2026-08-24: match them rather than leave the
+album as the smallest cover in its own lineage. `.step-figure` is now 400px too. It is
+used exactly twice, both on this page, so nothing else is affected.
+
+**When the clip is re-cut, two numbers go back to 560 together:** `.tool-tile.is-cover`
+and `.step-figure`, both in `css/wayspace.css`. Delete the explanatory comments above
+each rule, and trim the stopgap paragraph from the figure comment in
+`wayspace/design.html`.
 
 **Found alongside it:** `is-cover` had no CSS rule anywhere, despite the comment in
 `design.html` saying it controlled the size. The 560px came from `.step-figure`. The rule

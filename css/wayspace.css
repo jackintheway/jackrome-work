@@ -1474,9 +1474,18 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   margin: var(--space-4) 0 0;
 }
 
+/* 400px, temporarily, and it is not this figure's own idea. The album
+   cover tile next door is capped at 400 until its hover clip is
+   re-cut (see .tool-tile.is-cover below), and at 560 the flat podcast
+   cover was reading larger than the album above it. The album is the
+   arrival in this lineage and should not be the smallest cover in it,
+   so the podcast cover comes down to match rather than the album
+   standing alone at the wrong size.
+
+   Both numbers go back to 560 together once the clip is re-cut. */
 .step-figure {
   margin: 0 0 var(--space-6);
-  max-width: 560px;
+  max-width: 400px;
 }
 .step-art {
   display: block;
