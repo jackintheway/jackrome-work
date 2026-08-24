@@ -58,11 +58,17 @@
 # an alias request should be sent to the canonical domain before any
 # path rule below gets a chance to answer it.
 #
-# Add two rules per domain as the others come over: jackintheway.net,
-# jackintheway.work and jackrome.me are still on Squarespace. Each also
-# needs both its bare and www form added in Netlify's domain panel, or
-# the certificate will not cover the www form and it fails the TLS
-# handshake rather than redirecting.
+# All four aliases are listed, including any whose DNS has not moved yet.
+# A host rule for a domain still pointing at Squarespace never matches,
+# because the request never reaches Netlify, so listing it early is free
+# and saves a deploy later.
+#
+# Each domain still needs BOTH its bare and www form added in Netlify's
+# domain panel. The certificate only covers hostnames Netlify knows about,
+# and the preset creates a www CNAME either way, so a www form that is not
+# registered resolves and then fails the TLS handshake. That is a browser
+# security warning rather than a clean failure, which is worse than not
+# resolving at all.
 [[redirects]]
   from = "https://jack-rome.com/*"
   to = "https://jackrome.work/:splat"
@@ -71,6 +77,46 @@
 
 [[redirects]]
   from = "https://www.jack-rome.com/*"
+  to = "https://jackrome.work/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://jackintheway.work/*"
+  to = "https://jackrome.work/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.jackintheway.work/*"
+  to = "https://jackrome.work/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://jackrome.me/*"
+  to = "https://jackrome.work/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.jackrome.me/*"
+  to = "https://jackrome.work/:splat"
+  status = 301
+  force = true
+
+# jackintheway.net is the one carrying live Google Workspace MX records
+# for jack@jackintheway.net. When its DNS moves, delete ONLY the
+# Squarespace Defaults preset. The Google Workspace preset sits beside it
+# and must stay, or mail stops arriving with no error anywhere.
+[[redirects]]
+  from = "https://jackintheway.net/*"
+  to = "https://jackrome.work/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.jackintheway.net/*"
   to = "https://jackrome.work/:splat"
   status = 301
   force = true
