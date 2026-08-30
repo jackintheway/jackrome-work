@@ -340,7 +340,7 @@ const VIDEO = [
     meta: "Full EP stream with lyrics, 2019",
     thumb: "/assets/img/wayspace/video/jahny-full-album-visualizer-with-lyrics.jpg",
     youtubeId: "N171NTRWvTc",
-    note: "The whole EP in one sitting, lyrics on screen.",
+    note: "The EP in one sitting, lyrics on screen.",
     crossRef: { text: "Jahny is in Music", href: "/wayspace/music" }
   },
   {
