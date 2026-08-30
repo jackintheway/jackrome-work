@@ -84,7 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
     stage.style.setProperty("--stage-ratio", trigger.dataset.ratio || "16 / 9");
 
     const frame = document.createElement("iframe");
-    frame.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0";
+
+    /* data-video-start begins playback that many seconds in, for a
+       video where the piece worth watching starts after a preamble.
+       NaN from a missing attribute fails the > 0 check on its own. */
+    const start = parseInt(trigger.dataset.videoStart, 10);
+    frame.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) +
+      "?autoplay=1&rel=0" + (start > 0 ? "&start=" + start : "");
     frame.title = trigger.dataset.videoTitle || "Video";
     frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
     frame.allowFullscreen = true;

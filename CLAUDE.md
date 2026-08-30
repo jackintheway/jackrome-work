@@ -69,8 +69,10 @@ Every page in scope is built, deployed, and has been iterated on since: `/`, `/a
 `/ai-enablement`, `/production`, `/ai-portfolio`, and `/wayspace` with all six rooms.
 Music plays 8 sources through a hidden SoundCloud widget, Writing carries 75 entries
 with theme and kind filters, Design tells the lineage in order with two hover
-animations, Podcasts plays both audio and video. Speaking is deliberately off the live
-site, with a 301, because there is nothing to put in it yet.
+animations, Podcasts plays both audio and video. Speaking reopened on 2026-08-30 with
+its first real entry, the SpeakEasy talk The Gift of Uselessness; its Watch button
+starts the recording at 8:30 via data-video-start, where the talk begins inside the
+full service video.
 
 Tokens, Archivo, nav, footer, share cards, redirects, and headers are in place and
 confirmed against the live deploy.

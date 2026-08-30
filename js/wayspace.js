@@ -707,25 +707,20 @@ const PODCASTS = [
    says which without a sentence about it.
    ============================================================ */
 const SPEAKING = [
+  /* watchId opens the recording in the modal, like Podcasts. watchStart
+     is where playback begins, in seconds: a talk given at a service
+     sits inside the recording of the whole service, and the offset is
+     what spares a visitor the preamble. */
   {
-    title: "A talk goes here",
-    host: "Where, and for whom",
+    title: "The Gift of Uselessness",
+    host: "SpeakEasy Spiritual Community",
     role: "Speaker",
-    date: "Date",
+    date: "August 30, 2026",
     note: "",
+    watchId: "IB1mBX-s9A8",
+    watchStart: 510,
     videoHref: null,
-    crossRef: null,
-    placeholder: true
-  },
-  {
-    title: "A hosted event goes here",
-    host: "Foundation for Inner Peace, and others",
-    role: "Host",
-    date: "Date",
-    note: "",
-    videoHref: null,
-    crossRef: { text: "Recordings live in Video", href: "/wayspace/video" },
-    placeholder: true
+    crossRef: null
   }
 ];
 
@@ -1816,9 +1811,16 @@ function podcastEntry(item) {
 }
 
 function speakingEntry(item) {
-  const watch = item.videoHref
-    ? `<a class="stream-link" href="${escapeHtml(item.videoHref)}" target="_blank" rel="noopener">Watch</a>`
+  /* Watch prefers the modal, same as Podcasts. videoHref stays as the
+     fallback for a recording that lives somewhere other than YouTube. */
+  const start = Number.isFinite(item.watchStart) && item.watchStart > 0
+    ? ` data-video-start="${item.watchStart}"`
     : "";
+  const watch = item.watchId
+    ? `<button class="watch-btn" type="button" data-video="${escapeHtml(item.watchId)}" data-ratio="16 / 9" data-video-title="${escapeHtml(item.title)}"${start}>Watch</button>`
+    : item.videoHref
+      ? `<a class="stream-link" href="${escapeHtml(item.videoHref)}" target="_blank" rel="noopener">Watch</a>`
+      : "";
 
   return `
     <li class="entry">
@@ -2535,9 +2537,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "No episodes here yet",
     ["Shows Jack hosts and produces land here."]);
 
-  /* Speaking came off the live site on 2026-08-23. The array and this
-     call stay so the room is one file away from coming back, and the
-     call is a quiet no-op with no mount point to find. */
   renderRoom("speakingList", SPEAKING, speakingEntry,
     "No talks here yet",
     ["Talks and hosted events land here."]);

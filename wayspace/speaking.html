@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Music | Wayspace | Jack Rome</title>
-  <meta name="description" content="Music by Jack Rome. Releases, streaming links, and a player that lives in the room.">
-  <link rel="canonical" href="https://jackrome.work/wayspace/music">
+  <title>Speaking | Wayspace | Jack Rome</title>
+  <meta name="description" content="Speaking by Jack Rome. Talks given, and events hosted.">
+  <link rel="canonical" href="https://jackrome.work/wayspace/speaking">
 
   <!-- Link previews. Card source is in tools/og/, rebuilt with
        ./tools/og/render.sh -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Jack Rome">
-  <meta property="og:url" content="https://jackrome.work/wayspace/music">
-  <meta property="og:title" content="Music | Wayspace">
-  <meta property="og:description" content="Releases, streaming links, and a player that lives in the room.">
-  <meta property="og:image" content="https://jackrome.work/assets/img/og-wayspace-music.png">
+  <meta property="og:url" content="https://jackrome.work/wayspace/speaking">
+  <meta property="og:title" content="Speaking | Wayspace">
+  <meta property="og:description" content="Talks given, and events hosted.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-wayspace-speaking.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Music, a room in Wayspace. Releases, streaming links, and a player that lives in the room.">
+  <meta property="og:image:alt" content="Speaking, a room in Wayspace. Talks given, and events hosted.">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Music | Wayspace">
-  <meta name="twitter:description" content="Releases, streaming links, and a player that lives in the room.">
-  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-wayspace-music.png">
+  <meta name="twitter:title" content="Speaking | Wayspace">
+  <meta name="twitter:description" content="Talks given, and events hosted.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-wayspace-speaking.png">
 
   <!-- Root-relative: this page sits one level down from the repo root
        and the four pages above it do not. -->
@@ -35,12 +35,13 @@
        DOMContentLoaded anyway, and it renders into a mount point that
        has to exist before it runs. -->
   <script src="/js/wayspace.js" defer></script>
+  <script src="/js/video-modal.js" defer></script>
 </head>
 <!-- The room's color is set once, here. Every component in
      css/wayspace.css reads it through the --room custom property
      rather than naming a color, so this class is the only thing
      that knows which room this is. -->
-<body class="room-music">
+<body class="room-speaking">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -73,11 +74,11 @@
   <nav class="room-switcher" aria-label="Wayspace rooms">
     <a class="room-switch-home" href="/wayspace" aria-label="Wayspace"><img class="room-switch-mark" src="/assets/img/wayspace-straight.svg" alt="" width="271" height="45" loading="lazy"></a>
     <div class="room-switch-links">
-        <a class="room-switch-link is-music" href="/wayspace/music" aria-current="page">Music</a>
+        <a class="room-switch-link is-music" href="/wayspace/music">Music</a>
         <a class="room-switch-link is-video" href="/wayspace/video">Video</a>
         <a class="room-switch-link is-design" href="/wayspace/design">Design</a>
         <a class="room-switch-link is-podcasts" href="/wayspace/podcasts">Podcasts</a>
-        <a class="room-switch-link is-speaking" href="/wayspace/speaking">Speaking</a>
+        <a class="room-switch-link is-speaking" href="/wayspace/speaking" aria-current="page">Speaking</a>
         <a class="room-switch-link is-writing" href="/wayspace/writing">Writing</a>
     </div>
   </nav>
@@ -85,91 +86,30 @@
   <header class="room-hero">
     <div class="room-hero-inner">
       <p class="room-hero-eyebrow ws-overline">Wayspace</p>
-      <h1 class="room-hero-title">Music</h1>
-      <!-- Voiced 2026-08-24, once the player actually had eight
-           sources to play. -->
-      <p class="room-hero-sub">Every release, streamed properly or played right here without leaving the room.</p>
+      <h1 class="room-hero-title">Speaking</h1>
+      <p class="room-hero-sub">Talks given, and events hosted.</p>
     </div>
   </header>
 
-  <main class="page" id="main">
+  <!-- Narrow measure. This room renders a list rather than a grid, and
+       a list of short titles and dates stretched across the full 1200px
+       container reads as a table with most of its columns missing. The
+       grid rooms keep the full width, because a grid actually uses it. -->
+  <main class="page page-narrow" id="main">
 
     <section class="section" aria-labelledby="roomTitle">
       <div class="section-header">
-        <h2 class="section-title" id="roomTitle">Releases</h2>
+        <h2 class="section-title" id="roomTitle">Talks and events</h2>
         <div class="section-rule" aria-hidden="true"></div>
       </div>
-
-      <!-- Rendered from the MUSIC array in js/wayspace.js.
+      <!-- Rendered from the SPEAKING array in js/wayspace.js.
            Adding real work is adding an object there, not editing
            this markup. Empty the array and the room renders its
            written empty state instead. -->
-      <ul class="work-grid" id="musicGrid"></ul>
+      <ul class="entry-list" id="speakingList"></ul>
     </section>
 
   </main>
-
-  <!-- THE PLAYER
-       One player for the whole room. Every cover is a remote control
-       for it, so two releases can never play over each other.
-
-       It lives in this room and nowhere else. A bar that survives
-       navigation is impossible across six real pages, so the answer
-       is that audio never crosses one: Music owns this player, and
-       each lyric page under Writing owns its own single track.
-
-       Sticky rather than fixed, so it parks at the bottom of the
-       viewport while there is page left and then comes to rest above
-       the footer instead of covering it.
-
-       These controls drive a SoundCloud widget that is never shown.
-       The whole mechanism, and why this room hides the widget while
-       the lyric pages show it, is written up over initPlayer in
-       js/wayspace.js.
-
-       The scrubber is a range input rather than a styled div because
-       it is keyboard operable and screen reader labelled out of the
-       box. That is the property the native <audio> element that stood
-       here had, and it is the usual casualty of a hand-rolled
-       transport. -->
-  <section class="player-bar" id="playerBar" aria-label="Music player">
-
-    <div class="player-head">
-      <span class="player-label">Now playing</span>
-      <p class="player-now" id="playerNow">Nothing loaded yet</p>
-    </div>
-
-    <div class="player-transport">
-      <button class="player-btn" id="playerToggle" type="button" aria-pressed="false">Play</button>
-
-      <!-- Shown only while a playlist is loaded. A release that is one
-           track has nothing to skip to. -->
-      <span class="player-skip" id="playerSkip" hidden>
-        <button class="player-btn is-quiet" type="button" data-skip="prev" aria-label="Previous track">&#9664;&#9664;</button>
-        <button class="player-btn is-quiet" type="button" data-skip="next" aria-label="Next track">&#9654;&#9654;</button>
-      </span>
-
-      <input class="player-seek" id="playerSeek" type="range" min="0" max="0" value="0" step="1000" aria-label="Seek">
-      <span class="player-time" id="playerTime">0:00 / 0:00</span>
-
-      <!-- Required, not decorative. SoundCloud's API terms ask for a
-           clearly visible backlink from the sound to its page, and for
-           SoundCloud to be credited as the source. Hidden until
-           something is playing, because until then it points nowhere. -->
-      <a class="player-link" id="playerLink" href="#" target="_blank" rel="noopener" hidden>On SoundCloud</a>
-    </div>
-
-    <!-- The widget itself. Parked off screen rather than display:none
-         or a zero box: a player with no box gets its media suspended
-         in some browsers, which is how this approach usually breaks.
-         inert keeps it out of the tab order and off the accessibility
-         tree, since the controls above are the real interface.
-
-         Empty on purpose. The iframe is built on the first press, so
-         nothing reaches soundcloud.com until a visitor asks. -->
-    <div id="scHost" inert aria-hidden="true"></div>
-
-  </section>
 
   <footer class="site-footer">
     <span class="footer-identity">
