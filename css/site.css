@@ -228,6 +228,21 @@
   color: var(--text-on-brand);
   margin: 0 0 var(--space-4);
 }
+/* A section name inside the eyebrow that links back to that section.
+   Underlined in black so it reads as a link on the orange, in the same
+   weight as the rest of the eyebrow. Used on case study pages. */
+.hero-eyebrow-link {
+  color: var(--text-on-brand);
+  text-decoration: none;
+  border-bottom: var(--border) solid var(--outline);
+  padding-bottom: 2px;
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.hero-eyebrow-link:hover {
+  color: var(--ws-white);
+  border-bottom-color: var(--ws-white);
+}
 .hero-title {
   font-size: var(--fs-h1);
   color: var(--text-on-brand);
