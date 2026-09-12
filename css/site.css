@@ -534,6 +534,17 @@
   grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
   gap: var(--space-5);
 }
+/* The case study grid is a <ul> so each card is a list item. Without
+   this the browser's default list padding indented the whole grid,
+   so the cards sat 40px right of the prose above them. */
+ul.offer-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* Prose that introduces a grid needs air before the first card;
+   .prose zeroes its own last margin. */
+.prose + .offer-grid { margin-top: var(--space-7); }
 .offer-card {
   display: flex;
   flex-direction: column;
