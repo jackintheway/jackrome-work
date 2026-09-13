@@ -4,8 +4,34 @@ Decided 2026-08-22, with Jack. This file exists so the question does not get
 reopened from scratch, and so the next session knows what is settled, what was
 deliberately taken from elsewhere, and what is not allowed to happen yet.
 
+## Current implementation: 2026-09-12
+
+Jack authorized a local preview of the Wayspace arrival after the August 24 cutover.
+The historical cutover gate below has been satisfied. Publication still needs his go.
+
+`wayspace.html` now puts the album composition beside the six room links. The existing
+blue hero and straight wordmark stay. `js/wayspace-arrival.js` drives six groups through
+one queued animation frame per scroll update. Translation is capped at 32px vertically
+and 8px horizontally. The bridge, flower, spiral, and album wordmark stay registered
+as one group. There is no timer-driven animation, scroll capture, or new dependency.
+
+The figure is sticky on desktop while the room list passes. Below 800px it becomes a
+compact still image above the list, with a direct "Choose a room" anchor in the hero.
+Reduced motion also makes the figure static and removes every layer transform.
+A desktop pause control stops the updates and restores the composed position.
+The six room links remain plain HTML even if the artwork or scripts fail.
+
+The ten 1200px WebP derivatives in `assets/img/arrival/` total 906,830 bytes. Their
+registered canvases and alpha are preserved. The sky uses quality-85 compression;
+the other layers use lossless WebP. The exporter strips source metadata and preserves
+the original files. See `tools/export-arrival-art.py` and README.md before re-exporting.
+
+The references Jack supplied were nateherk.com and uppitai.com. Their layered imagery
+and paced reveals informed the inspection. No source code, copy, or assets were taken.
+The rest of this document records the earlier decision and its reasons.
+
 Short version: **the site stays calm. Scroll-linked motion is admitted in exactly
-one place, the Wayspace landing, and not until after the DNS cutover.**
+one place, the Wayspace landing.**
 
 ---
 
@@ -129,7 +155,7 @@ so they stack directly with no alignment work.
 |---|---|
 | `BACKGROUND.png` | Sky. Furthest back, barely moves. 3.7 MB, the only heavy one. |
 | `TREES.png` | The flanking figures with eyes. |
-| `RIVER&TREES.png` | Water and trees together. Overlaps `TREES.png`, so pick one. |
+| `RIVER&TREES.png` | River, banks, and central blue spire. Used behind `TREES.png`. |
 | `BRIDGE.png` | The curved span across the middle. |
 | `SPIRAL.png` | The spiral carrying the wordmark. |
 | `FLOWER.png` | The yellow bloom. |
@@ -139,10 +165,10 @@ so they stack directly with no alignment work.
 | `BFLY-L1..L5`, `BFLY-R1..R4` | Nine butterflies, individually separated. |
 | `ALL-BUTTERFLIES.png` | All nine flattened, if they move as one. |
 
-Two notes against the earlier description in this file. There is no separate spire
-layer, so the blue tower is either part of `BACKGROUND.png` or is `SPIRAL.png`; check
-before building. And `SWIMMERS.png` and `JACK.png` were not in the original list, so
-there are more planes available than were planned for.
+The September 12 inspection found the blue spire inside `RIVER&TREES.png`.
+`SPIRAL.png` is the round blue badge behind the album wordmark. Both the river
+layer and `TREES.png` are needed to reconstruct the composition. `SWIMMERS.png`
+and `JACK.png` also belong to it.
 
 Excluding the background the whole set is under 2 MB, which is cheap enough to ship
 every layer at full resolution.

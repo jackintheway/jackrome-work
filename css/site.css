@@ -353,6 +353,116 @@
    they are seen and not heard. */
 .footer-dot { opacity: 0.55; }
 
+/* A recorded handoff, stepped through by the reader. */
+.handoff-demo { scroll-margin-top: var(--space-10); }
+.handoff-demo .section-intro { max-width: 68ch; }
+.handoff-walk {
+  border: var(--rule-heavy);
+  box-shadow: var(--elevation-card);
+  background: var(--surface-card);
+}
+.handoff-demo.is-interactive .handoff-walk {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2.4fr);
+}
+.handoff-steps {
+  padding: var(--space-5);
+  background: var(--bg-sunken);
+  border-right: var(--rule-heavy);
+}
+.handoff-step {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  width: 100%;
+  margin-bottom: var(--space-4);
+  padding: var(--space-4);
+  border: var(--rule);
+  background: var(--bg-base);
+  color: var(--text-strong);
+  font: inherit;
+  font-weight: var(--fw-bold);
+  text-align: left;
+  cursor: pointer;
+}
+.handoff-step[aria-pressed="true"] {
+  background: var(--ws-yellow);
+  box-shadow: var(--pop-black-sm);
+}
+.handoff-step small {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-regular);
+}
+.handoff-step-number { font-size: var(--fs-h4); }
+.handoff-panel {
+  padding: var(--space-6);
+  overflow-wrap: anywhere;
+}
+.handoff-demo.is-interactive .handoff-panel { min-height: 540px; }
+.handoff-panel[hidden],
+.handoff-steps[hidden],
+.handoff-copy-row button[hidden] { display: none; }
+.handoff-label {
+  margin: 0 0 var(--space-3);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+.handoff-panel h3 { margin: 0 0 var(--space-5); }
+.handoff-request {
+  margin: var(--space-6) 0;
+  padding: 0 0 0 var(--space-5);
+  border-left: var(--border-heavy) solid var(--ws-orange);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body);
+}
+.handoff-example-link { display: inline-block; padding-block: var(--space-3); }
+.handoff-checks, .handoff-note { margin: 0; }
+.handoff-checks > div {
+  padding-block: var(--space-4);
+  border-top: var(--border-hair) solid var(--outline);
+}
+.handoff-checks dt, .handoff-note dt { font-weight: var(--fw-bold); }
+.handoff-checks dd, .handoff-note dd { margin: var(--space-1) 0 0; }
+.handoff-note {
+  background: var(--bg-base);
+  border: var(--rule);
+  padding: var(--space-5);
+  font-size: var(--fs-small);
+}
+.handoff-note > div + div { margin-top: var(--space-4); }
+.handoff-note-context { font-size: var(--fs-small); }
+.handoff-copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  font-size: var(--fs-small);
+}
+@media (max-width: 760px) {
+  .handoff-demo.is-interactive .handoff-walk { grid-template-columns: 1fr; }
+  .handoff-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border-right: 0;
+    border-bottom: var(--rule-heavy);
+  }
+  .handoff-step {
+    display: block;
+    padding: var(--space-3) var(--space-2);
+    margin: 0;
+    font-size: var(--fs-small);
+  }
+  .handoff-step-number { display: block; margin-bottom: var(--space-2); }
+  .handoff-step small { display: none; }
+  .handoff-panel { padding: var(--space-5); }
+  .handoff-demo.is-interactive .handoff-panel { min-height: 0; }
+}
+
 /* ============================================================
    PROSE
    A readable measure is the whole job here. Long-form text sits in

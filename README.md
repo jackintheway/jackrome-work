@@ -57,6 +57,25 @@ missing or duplicate canonicals. `robots.txt` links to the result. There is stil
 build step. Netlify picks up `404.html` for missing paths and applies the document
 redirects from `netlify.toml`; a basic Python server does not emulate those rules.
 
+## The recorded handoff and Wayspace arrival
+
+`ai-portfolio.html#handoff-demo` presents the saved September 12 link-update checkpoint.
+Keep it dated as an example; its publication status is historical. `js/handoff-demo.js`
+reveals the steps and copies the note. Without scripts, all three steps remain readable.
+
+The landing's artwork is built from the existing registered PNGs in `_source/`.
+Its web exports already ship in `assets/img/arrival/`; running the site needs no Python
+packages. Re-exporting requires Pillow:
+
+```
+python3 tools/export-arrival-art.py
+```
+
+Images are cached as immutable on the host. Before revising a published export, bump
+`VERSION` in the exporter and update the image paths in `wayspace.html`. Do not overwrite
+published `v1` files with different art. The source canvases must stay aligned and square.
+Motion is confined to `js/wayspace-arrival.js` and the landing styles in `css/wayspace.css`.
+
 ## Standing rules
 
 Every page ships with Open Graph tags and its own 1200x630 share image. Not a polish-pass item. The details, and the three things that fail silently, are in `CLAUDE.md`.

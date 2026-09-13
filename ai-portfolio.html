@@ -86,6 +86,72 @@
       </div>
     </section>
 
+    <!-- A shortened, recorded checkpoint. These controls reveal HTML;
+         they do not call an AI service or read the visitor's files. -->
+    <section class="section handoff-demo" id="handoff-demo" aria-labelledby="handoffDemoTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="handoffDemoTitle">See /handoff at work</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <p class="section-intro">This website has a shared handoff that Claude Code and Codex can both read. Here's a recorded example from an update to its links, shortened for this walkthrough.</p>
+
+      <div class="handoff-walk">
+        <div class="handoff-steps" role="group" aria-label="Steps in the handoff example" hidden>
+          <button class="handoff-step" type="button" aria-pressed="true" aria-controls="handoffRequest">
+            <span class="handoff-step-number" aria-hidden="true">1</span>
+            <span>The request<small>What I wanted changed</small></span>
+          </button>
+          <button class="handoff-step" type="button" aria-pressed="false" aria-controls="handoffChecks">
+            <span class="handoff-step-number" aria-hidden="true">2</span>
+            <span>The files checked<small>What the note is based on</small></span>
+          </button>
+          <button class="handoff-step" type="button" aria-pressed="false" aria-controls="handoffNote">
+            <span class="handoff-step-number" aria-hidden="true">3</span>
+            <span>The handoff note<small>What the next agent can use</small></span>
+          </button>
+        </div>
+
+        <div class="handoff-panels">
+          <section class="handoff-panel" id="handoffRequest" aria-labelledby="handoffRequestTitle">
+            <p class="handoff-label">Jack's request, excerpt</p>
+            <h3 id="handoffRequestTitle">Make the links arrive somewhere specific.</h3>
+            <blockquote class="handoff-request">I would love it if you could do all of that if you're able to understand where everything should be going, so that all of them are totally deliberate rather than just going to the general rooms.</blockquote>
+            <p>One example: the Wayspace album in Music should link to its lyrics in Writing.</p>
+            <a class="handoff-example-link" href="/wayspace/writing?collection=wayspace#writingFilters">See where that link goes now <span aria-hidden="true">&rarr;</span></a>
+          </section>
+
+          <section class="handoff-panel" id="handoffChecks" aria-labelledby="handoffChecksTitle">
+            <p class="handoff-label">Before writing the note</p>
+            <h3 id="handoffChecksTitle">Check what changed and what was decided.</h3>
+            <dl class="handoff-checks">
+              <div><dt>js/wayspace.js</dt><dd>The 16 cross-room links have specific destinations. Album membership comes from the catalogue.</dd></div>
+              <div><dt>wayspace/writing.html &amp; css/wayspace.css</dt><dd>Writing has album filters. Linked entries have room to clear the navigation at the top.</dd></div>
+              <div><dt>CLAUDE.md &amp; HANDOFF.md</dt><dd>The shared instructions keep Jack's decisions separate from the current checkpoint.</dd></div>
+              <div><dt>Saved version &amp; browser checks</dt><dd>Save point <code>633121a</code> records the update. All 16 links were followed locally, and Writing showed 6 Feivel Speaks lyrics and 12 Wayspace lyrics.</dd></div>
+            </dl>
+          </section>
+
+          <section class="handoff-panel" id="handoffNote" aria-labelledby="handoffNoteTitle">
+            <p class="handoff-label">September 12, 2026 checkpoint</p>
+            <h3 id="handoffNoteTitle">A note the next session can pick up.</h3>
+            <p class="handoff-note-context">A shortened version of the project's handoff at that point. This records the local review stage of the update.</p>
+            <dl class="handoff-note" id="handoffNoteText">
+              <div><dt>What we're doing</dt><dd>Finish the approved website audit changes and make the cross-room links precise.</dd></div>
+              <div><dt>Verified at this checkpoint</dt><dd>The link update is saved as 633121a. All 16 cross-room links reach their intended destinations in the local preview. Writing's album filters show 6 Feivel Speaks lyrics and 12 Wayspace lyrics.</dd></div>
+              <div><dt>Settled with Jack</dt><dd>Keep the existing public Production credits for credibility. Use explicit catalogue membership for the lyric filters. Publication needs Jack's go.</dd></div>
+              <div><dt>Still open</dt><dd>Jack is reviewing the case study and revised copy. Nothing from this update has been pushed or deployed. Hosting-specific checks need a deployment first.</dd></div>
+              <div><dt>Next action</dt><dd>Review the local changes with Jack before publishing.</dd></div>
+              <div><dt>What travels with it</dt><dd>CLAUDE.md, HANDOFF.md, js/wayspace.js, wayspace/writing.html, css/wayspace.css, and save point 633121a. Recheck the current files and Git state when you resume.</dd></div>
+            </dl>
+            <div class="handoff-copy-row">
+              <button class="btn btn-yellow" id="copyHandoff" type="button" hidden>Copy this note</button>
+              <span id="handoffCopyStatus" role="status"></span>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
     <!-- WHAT THEY REFUSE TO DO
          Lines lifted from the actual skill files. Almost every one of
          these tools has a section in it titled "What this skill is not",
@@ -286,5 +352,6 @@
 
   <script src="/js/nav.js" defer></script>
   <script src="/js/case-studies.js" defer></script>
+  <script src="/js/handoff-demo.js" defer></script>
 </body>
 </html>

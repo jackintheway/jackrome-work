@@ -34,7 +34,7 @@
   <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
+<body class="wayspace-landing">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -58,115 +58,115 @@
     </div>
   </nav>
 
-  <!-- HERO
-       The sentence runs through the logo: "Welcome to" above it,
-       "the home of Jack's creative work" below. So the h1 opens in
-       lower case on purpose. It is not a fragment, it is the second
-       half of a line the wordmark sits inside.
-
-       Paper ground rather than the orange the rest of the site's
-       heroes use. The wordmark contains orange, and on an orange
-       field it would lose those shapes. The design system shows the
-       mark on blue, paper and salmon, and never on orange. -->
+  <!-- The existing wordmark stays on blue. The album artwork below is
+       decorative; the six room links remain the navigation. -->
   <header class="ws-hero is-blue">
     <div class="ws-hero-inner">
       <p class="ws-welcome">Welcome to</p>
       <img class="ws-wordmark" src="/assets/img/wayspace-straight.svg"
            alt="Wayspace" width="2710" height="449" fetchpriority="high">
       <h1 class="ws-hero-title">the home of Jack's creative work.</h1>
+      <a class="ws-room-jump" href="#roomsTitle">Choose a room <span aria-hidden="true">&darr;</span></a>
     </div>
   </header>
 
-  <main class="page page-narrow" id="main">
+  <main class="page" id="main">
 
-    <!-- THE ROOMS
-         Six pieces, one per form the work shows up in.
+    <div class="ws-arrival" id="wayspaceArrival">
+      <figure class="ws-arrival-art">
+        <div class="ws-scene" aria-hidden="true">
+          <div class="ws-scene-canvas">
+            <img class="ws-scene-layer" src="/assets/img/arrival/sky-v1.webp" alt="" width="1200" height="1200">
+            <img class="ws-scene-layer" src="/assets/img/arrival/river-v1.webp" alt="" width="1200" height="1200" data-depth-y="-4">
+            <img class="ws-scene-layer" src="/assets/img/arrival/trees-v1.webp" alt="" width="1200" height="1200" data-depth-y="-16">
+            <img class="ws-scene-layer" src="/assets/img/arrival/jack-v1.webp" alt="" width="1200" height="1200" data-depth-y="-10">
+            <div class="ws-scene-layer" data-depth-y="6">
+              <img class="ws-scene-layer" src="/assets/img/arrival/bridge-v1.webp" alt="" width="1200" height="1200">
+              <img class="ws-scene-layer" src="/assets/img/arrival/flower-v1.webp" alt="" width="1200" height="1200">
+              <img class="ws-scene-layer" src="/assets/img/arrival/spiral-v1.webp" alt="" width="1200" height="1200">
+              <img class="ws-scene-layer" src="/assets/img/arrival/wordmark-v1.webp" alt="" width="1200" height="1200">
+            </div>
+            <img class="ws-scene-layer" src="/assets/img/arrival/swimmers-v1.webp" alt="" width="1200" height="1200" data-depth-y="14">
+            <img class="ws-scene-layer" src="/assets/img/arrival/butterflies-v1.webp" alt="" width="1200" height="1200" data-depth-y="-32" data-depth-x="8">
+          </div>
+        </div>
+        <figcaption class="ws-art-caption">
+          <span>From <a href="/wayspace/music#wayspace">Wayspace, the album</a>.</span>
+          <button class="ws-motion-toggle" id="arrivalMotion" type="button" hidden>Pause artwork</button>
+        </figcaption>
+      </figure>
 
-         This list is the real navigation and it stays the real
-         navigation. When the floating puzzle pieces get drawn they
-         layer over this rather than replacing it: an SVG that fails
-         to load would otherwise leave a visitor with no way into any
-         room at all.
+      <!-- Text links work with or without artwork and JavaScript. -->
+      <section class="ws-arrival-rooms" aria-labelledby="roomsTitle">
+        <div class="section-header">
+          <h2 class="section-title" id="roomsTitle">The rooms</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+        </div>
 
-         Each room carries a color, shown here as a swatch and used
-         again as that room's hero. The color is learned here and
-         recognised on arrival, so the map is already coded before
-         any puzzle art exists.
-
-         Voiced 2026-08-24. Merch dropped from the Design line: it is
-         named in js/wayspace.js's DESIGN comment but not actually in
-         the room, and a tagline should not promise what the room
-         does not yet hold. See "Merch is named ... and is not in it"
-         in CLAUDE.md. -->
-    <section class="section" aria-labelledby="roomsTitle">
-      <div class="section-header">
-        <h2 class="section-title" id="roomsTitle">The rooms</h2>
-        <div class="section-rule" aria-hidden="true"></div>
-      </div>
-
-      <ul class="room-list">
-        <li class="room-item is-music">
-          <a class="room-link" href="/wayspace/music">
-            <span class="room-swatch" aria-hidden="true"></span>
-            <span>
-              <span class="room-name">Music</span>
-              <span class="room-what">Every release, and where to hear it.</span>
-            </span>
-            <span class="room-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </li>
-        <li class="room-item is-video">
-          <a class="room-link" href="/wayspace/video">
-            <span class="room-swatch" aria-hidden="true"></span>
-            <span>
-              <span class="room-name">Video</span>
-              <span class="room-what">Anything that lives as video, live performances included.</span>
-            </span>
-            <span class="room-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </li>
-        <li class="room-item is-design">
-          <a class="room-link" href="/wayspace/design">
-            <span class="room-swatch" aria-hidden="true"></span>
-            <span>
-              <span class="room-name">Design</span>
-              <span class="room-what">Logos, flyers, covers, and the design system itself.</span>
-            </span>
-            <span class="room-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </li>
-        <li class="room-item is-podcasts">
-          <a class="room-link" href="/wayspace/podcasts">
-            <span class="room-swatch" aria-hidden="true"></span>
-            <span>
-              <span class="room-name">Podcasts</span>
-              <span class="room-what">Shows hosted and produced by me.</span>
-            </span>
-            <span class="room-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </li>
-        <li class="room-item is-speaking">
-          <a class="room-link" href="/wayspace/speaking">
-            <span class="room-swatch" aria-hidden="true"></span>
-            <span>
-              <span class="room-name">Speaking</span>
-              <span class="room-what">Talks given and events hosted.</span>
-            </span>
-            <span class="room-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </li>
-        <li class="room-item is-writing">
-          <a class="room-link" href="/wayspace/writing">
-            <span class="room-swatch" aria-hidden="true"></span>
-            <span>
-              <span class="room-name">Writing</span>
-              <span class="room-what">Lyrics, recordings where available, and prose I read aloud in short videos.</span>
-            </span>
-            <span class="room-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </li>
-      </ul>
-    </section>
+        <ul class="room-list">
+          <li class="room-item is-music">
+            <a class="room-link" href="/wayspace/music">
+              <span class="room-swatch" aria-hidden="true"></span>
+              <span>
+                <span class="room-name">Music</span>
+                <span class="room-what">Every release, and where to hear it.</span>
+              </span>
+              <span class="room-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="room-item is-video">
+            <a class="room-link" href="/wayspace/video">
+              <span class="room-swatch" aria-hidden="true"></span>
+              <span>
+                <span class="room-name">Video</span>
+                <span class="room-what">Anything that lives as video, live performances included.</span>
+              </span>
+              <span class="room-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="room-item is-design">
+            <a class="room-link" href="/wayspace/design">
+              <span class="room-swatch" aria-hidden="true"></span>
+              <span>
+                <span class="room-name">Design</span>
+                <span class="room-what">Logos, flyers, covers, and the design system itself.</span>
+              </span>
+              <span class="room-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="room-item is-podcasts">
+            <a class="room-link" href="/wayspace/podcasts">
+              <span class="room-swatch" aria-hidden="true"></span>
+              <span>
+                <span class="room-name">Podcasts</span>
+                <span class="room-what">Shows hosted and produced by me.</span>
+              </span>
+              <span class="room-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="room-item is-speaking">
+            <a class="room-link" href="/wayspace/speaking">
+              <span class="room-swatch" aria-hidden="true"></span>
+              <span>
+                <span class="room-name">Speaking</span>
+                <span class="room-what">Talks given and events hosted.</span>
+              </span>
+              <span class="room-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="room-item is-writing">
+            <a class="room-link" href="/wayspace/writing">
+              <span class="room-swatch" aria-hidden="true"></span>
+              <span>
+                <span class="room-name">Writing</span>
+                <span class="room-what">Lyrics, recordings where available, and prose I read aloud in short videos.</span>
+              </span>
+              <span class="room-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
 
     <!-- THE OTHER DOORWAY
          Wayspace is the proof doorway: it says who Jack is. Someone
@@ -203,5 +203,6 @@
   </footer>
 
   <script src="/js/nav.js" defer></script>
+  <script src="/js/wayspace-arrival.js" defer></script>
 </body>
 </html>

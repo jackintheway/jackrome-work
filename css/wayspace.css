@@ -201,6 +201,96 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .room-link:hover .room-arrow,
 .room-link:focus-visible .room-arrow { transform: translateX(4px); }
 
+/* ---- Wayspace arrival: the album's registered artwork planes ---- */
+.wayspace-landing .ws-hero { padding-block: var(--space-7); }
+.ws-room-jump {
+  display: inline-block;
+  margin-top: var(--space-5);
+  padding: var(--space-2);
+  color: var(--ws-paper);
+  text-underline-offset: var(--space-1);
+}
+.ws-room-jump:hover { color: var(--ws-yellow); }
+.ws-room-jump:focus-visible { outline-color: var(--ws-yellow); }
+.ws-arrival {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-7);
+  margin-bottom: var(--space-9);
+}
+.ws-arrival-art {
+  position: sticky;
+  top: var(--space-9);
+  margin: 0;
+  min-width: 0;
+}
+.ws-scene {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: var(--rule-heavy);
+  box-shadow: var(--elevation-card);
+  background: var(--ws-orange);
+}
+.ws-scene-canvas {
+  position: absolute;
+  inset: -4%;
+}
+.ws-scene-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.ws-art-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+}
+.ws-motion-toggle {
+  font: inherit;
+  color: var(--link);
+  background: transparent;
+  border: 0;
+  padding: var(--space-3) 0;
+  text-decoration: underline;
+  text-underline-offset: var(--space-1);
+  cursor: pointer;
+}
+.ws-motion-toggle[hidden] { display: none; }
+.ws-arrival-rooms { min-width: 0; }
+.ws-arrival-rooms .room-link {
+  gap: var(--space-4);
+  padding-inline: var(--space-3);
+}
+.ws-arrival-rooms .room-name { font-size: var(--fs-h4); }
+#roomsTitle { scroll-margin-top: var(--space-10); }
+
+@media (max-width: 799px) {
+  .ws-arrival { grid-template-columns: 1fr; gap: var(--space-7); }
+  .ws-arrival-art {
+    position: static;
+    width: 100%;
+    max-width: 360px;
+    margin-inline: auto;
+  }
+  .ws-scene-canvas { inset: 0; }
+  .ws-scene-layer[data-depth-y] { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ws-scene-canvas { inset: 0; }
+  .ws-scene-layer[data-depth-y] { transform: none !important; }
+  .ws-motion-toggle { display: none; }
+  .ws-arrival-art { position: static; }
+}
+
 /* ============================================================
    ROOM SWITCHER
    The sub-nav that sits under the site nav on every room page, so

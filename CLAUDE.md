@@ -58,9 +58,15 @@ These decisions from Jack supersede broader or dated wording below.
 - `404.html` provides recovery for missing paths; it stays out of the sitemap.
   `robots.txt` points to `sitemap.xml`. Run `python3 tools/update-sitemap.py` after
   adding or removing public pages. It reads canonical URLs and adds no guessed dates.
-- A public skill demonstration and artwork for the Wayspace arrival remain design
-  proposals. Do not publish private portfolio materials or add a new tool to the
-  public selection just because it was useful during this work.
+- Jack authorized a local /handoff demonstration and the Wayspace artwork arrival
+  on 2026-09-12. The demo uses this website's September 12 link-update checkpoint
+  (633121a), quotes Jack's request, and clearly dates the shortened handoff. It
+  reveals recorded material and copies a note; it does not run an AI model.
+- The arrival uses Jack's separated album artwork beside the six room links. Only
+  this landing gets scroll-linked motion, with a pause control and static layouts
+  below 800px or under reduced motion. Read MOTION.md for the implementation.
+  Both additions await Jack's review and explicit publication go. Keep private
+  portfolio materials out of the example and preserve the existing tool selection.
 
 
 ---
