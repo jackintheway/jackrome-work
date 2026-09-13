@@ -77,6 +77,7 @@ const MUSIC = [
 
   {
     title: "Race Day",
+    anchor: "race-day",
     year: "2026",
     format: "Release",
     cover: "/assets/img/wayspace/music/race-day.jpg",
@@ -86,6 +87,7 @@ const MUSIC = [
   },
   {
     title: "Feivel Speaks (Deluxe)",
+    anchor: "feivel-speaks-deluxe",
     year: "2025",
     format: "Album",
     cover: "/assets/img/wayspace/music/feivel-speaks-deluxe.jpg",
@@ -95,15 +97,17 @@ const MUSIC = [
   },
   {
     title: "Feivel Speaks",
+    anchor: "feivel-speaks",
     year: "2024",
     format: "Album",
     cover: "/assets/img/wayspace/music/feivel-speaks.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/43LSqY2k5sk7KDWkEW0MJk" }],
     sc: null,
-    crossRef: { text: "Lyrics", href: "/wayspace/writing", room: "writing" }
+    crossRef: { text: "Lyrics", href: "/wayspace/writing?collection=feivel-speaks#writingFilters", room: "writing" }
   },
   {
     title: "Wayspace (Deluxe)",
+    anchor: "wayspace-deluxe",
     year: "2023",
     format: "Album",
     cover: "/assets/img/wayspace/music/wayspace-deluxe.jpg",
@@ -113,6 +117,7 @@ const MUSIC = [
   },
   {
     title: "Mystery",
+    anchor: "mystery",
     year: "2023",
     format: "Foster Family single",
     cover: "/assets/img/wayspace/music/mystery.jpg",
@@ -122,6 +127,7 @@ const MUSIC = [
   },
   {
     title: "Moment",
+    anchor: "moment",
     year: "2023",
     format: "Single with Fabrizio and Tally Schwenk",
     cover: "/assets/img/wayspace/music/moment.jpg",
@@ -131,15 +137,17 @@ const MUSIC = [
   },
   {
     title: "Wayspace",
+    anchor: "wayspace",
     year: "2022",
     format: "Album",
     cover: "/assets/img/wayspace/music/wayspace.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/5U1K4wDc75208yey9abs9w" }],
     sc: null,
-    crossRef: { text: "Lyrics", href: "/wayspace/writing", room: "writing" }
+    crossRef: { text: "Lyrics", href: "/wayspace/writing?collection=wayspace#writingFilters", room: "writing" }
   },
   {
     title: "You'll Be Alright",
+    anchor: "you-ll-be-alright",
     year: "2022",
     format: "Foster Family single",
     cover: "/assets/img/wayspace/music/youll-be-alright.jpg",
@@ -149,6 +157,7 @@ const MUSIC = [
   },
   {
     title: "All I Need",
+    anchor: "all-i-need",
     year: "2022",
     format: "Foster Family single",
     cover: "/assets/img/wayspace/music/all-i-need.jpg",
@@ -158,6 +167,7 @@ const MUSIC = [
   },
   {
     title: "Jackpot",
+    anchor: "jackpot",
     year: "2021",
     format: "Project",
     cover: "/assets/img/wayspace/music/jackpot.jpg",
@@ -167,6 +177,7 @@ const MUSIC = [
   },
   {
     title: "The Edge",
+    anchor: "the-edge",
     year: "2021",
     format: "Single with Fabrizio and Tally Schwenk",
     cover: "/assets/img/wayspace/music/the-edge.jpg",
@@ -176,6 +187,7 @@ const MUSIC = [
   },
   {
     title: "You Got Me",
+    anchor: "you-got-me",
     year: "2021",
     format: "Single with Tally Schwenk",
     cover: "/assets/img/wayspace/music/you-got-me.jpg",
@@ -185,6 +197,7 @@ const MUSIC = [
   },
   {
     title: "Answers",
+    anchor: "answers",
     year: "2020",
     format: "Foster Family single",
     cover: "/assets/img/wayspace/music/answers.jpg",
@@ -194,6 +207,7 @@ const MUSIC = [
   },
   {
     title: "Get Lost",
+    anchor: "get-lost",
     year: "2020",
     format: "Project",
     cover: "/assets/img/wayspace/music/get-lost.jpg",
@@ -203,6 +217,7 @@ const MUSIC = [
   },
   {
     title: "Feel",
+    anchor: "feel",
     year: "2020",
     format: "Single with Fabrizio and Josh Grant",
     cover: "/assets/img/wayspace/music/feel.jpg",
@@ -212,6 +227,7 @@ const MUSIC = [
   },
   {
     title: "Only Human (Stripped)",
+    anchor: "only-human-stripped",
     year: "2020",
     format: "Single",
     cover: "/assets/img/wayspace/music/only-human-stripped.jpg",
@@ -221,6 +237,7 @@ const MUSIC = [
   },
   {
     title: "Light of Dawn",
+    anchor: "light-of-dawn",
     year: "2020",
     format: "Single with Noah Kenton",
     cover: "/assets/img/wayspace/music/light-of-dawn.jpg",
@@ -230,6 +247,7 @@ const MUSIC = [
   },
   {
     title: "Looking For More",
+    anchor: "looking-for-more",
     year: "2019",
     format: "Single with Fabrizio",
     cover: "/assets/img/wayspace/music/looking-for-more.jpg",
@@ -239,21 +257,23 @@ const MUSIC = [
   },
   {
     title: "Jahny",
+    anchor: "jahny",
     year: "2019",
     format: "Project",
     cover: "/assets/img/wayspace/music/jahny.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/6RxQiKUC2chQkqFmNUzWP5" }],
     sc: { id: "685445952", kind: "playlist", title: "Jahny" },
-    crossRef: { text: "Watch", href: "/wayspace/video", room: "video" }
+    crossRef: { text: "Watch", href: "/wayspace/video#jahny", room: "video" }
   },
   {
     title: "So Much For So Long",
+    anchor: "so-much-for-so-long",
     year: "2018",
     format: "Project",
     cover: "/assets/img/wayspace/music/so-much-for-so-long.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/78jxFTbCQYcEuoO41cHCl1" }],
     sc: { id: "550795005", kind: "playlist", title: "So Much For So Long" },
-    crossRef: { text: "Watch", href: "/wayspace/video", room: "video" }
+    crossRef: { text: "Watch", href: "/wayspace/video#so-much-for-so-long", room: "video" }
   }
 ];
 
@@ -284,6 +304,7 @@ const VIDEO = [
 
   {
     title: "Live at The Pocket, DC",
+    anchor: "live-at-the-pocket-dc",
     /* 2022, the year of the show, not 2023 when the video went up.
        Jack's call. For a recap the performance date is the true one,
        and this is the room's one case where they differ by a year. */
@@ -291,44 +312,49 @@ const VIDEO = [
     thumb: "/assets/img/wayspace/video/wayspace-album-release-show.jpg",
     youtubeId: "7aSk3jFGKwM",
     note: "Headline performance to celebrate the Wayspace album release.",
-    crossRef: { text: "Wayspace is in Music", href: "/wayspace/music" }
+    crossRef: { text: "Hear Wayspace", href: "/wayspace/music#wayspace" }
   },
   {
     title: "Somewhere Somehow, at Sofar Washington",
+    anchor: "somewhere-somehow-at-sofar-washington",
     meta: "Live session, 2022",
     thumb: "/assets/img/wayspace/video/somewhere-somehow-at-sofar-sounds.jpg",
     youtubeId: "cJBdDMDlxO0",
     note: "",
-    crossRef: { text: "Lyrics are in Writing", href: "/wayspace/writing" }
+    crossRef: { text: "Read the lyrics", href: "/wayspace/writing/somewhere-somehow" }
   },
   {
     title: "In My Head",
+    anchor: "in-my-head",
     meta: "Music video, 2022",
     thumb: "/assets/img/wayspace/video/in-my-head-music-video.jpg",
     youtubeId: "gmTUaUwfmkU",
     /* The only square one in the room. Per Jack, 2026-08-23. */
     ratio: "1 / 1",
     note: "",
-    crossRef: { text: "On Wayspace, in Music", href: "/wayspace/music" }
+    crossRef: { text: "Read the lyrics", href: "/wayspace/writing/all-in-my-head" }
   },
   {
     title: "I Hope You'll Change",
+    anchor: "i-hope-you-ll-change",
     meta: "Audio visualiser, 2020",
     thumb: "/assets/img/wayspace/video/i-hope-youll-change-audio-visualizer.jpg",
     youtubeId: "OMFNBe0LYbg",
     note: "",
-    crossRef: null
+    crossRef: { text: "Read the lyrics", href: "/wayspace/writing/i-hope-youll-change" }
   },
   {
     title: "I Wonder",
+    anchor: "i-wonder",
     meta: "Music video, 2019",
     thumb: "/assets/img/wayspace/video/i-wonder-music-video.jpg",
     youtubeId: "ZgWYWtpDihQ",
     note: "",
-    crossRef: null
+    crossRef: { text: "Read the lyrics", href: "/wayspace/writing/i-wonder" }
   },
   {
     title: "Headlining Baltimore Soundstage",
+    anchor: "headlining-baltimore-soundstage",
     meta: "Live performance, 2019",
     thumb: "/assets/img/wayspace/video/headlining-baltimore-soundstage.jpg",
     youtubeId: "X75WjyZtvpg",
@@ -337,30 +363,34 @@ const VIDEO = [
   },
   {
     title: "Jahny",
+    anchor: "jahny",
     meta: "Full EP stream with lyrics, 2019",
     thumb: "/assets/img/wayspace/video/jahny-full-album-visualizer-with-lyrics.jpg",
     youtubeId: "N171NTRWvTc",
     note: "The EP in one sitting, lyrics on screen.",
-    crossRef: { text: "Jahny is in Music", href: "/wayspace/music" }
+    crossRef: { text: "Hear Jahny", href: "/wayspace/music#jahny" }
   },
   {
     title: "Raindrops",
+    anchor: "raindrops",
     meta: "Lyric video, 2018",
     thumb: "/assets/img/wayspace/video/raindrops-lyric-video.jpg",
     youtubeId: "NCgeeNG8KtI",
     note: "",
-    crossRef: { text: "Lyrics are in Writing", href: "/wayspace/writing" }
+    crossRef: null
   },
   {
     title: "Supporting Wu-Tang at The Anthem",
+    anchor: "supporting-wu-tang-at-the-anthem",
     meta: "Live performance, 2018",
     thumb: "/assets/img/wayspace/video/supporting-wu-tang-in-dc.jpg",
     youtubeId: "xR7jo4R13iw",
     note: "",
-    crossRef: { text: "The music is in Music", href: "/wayspace/music" }
+    crossRef: null
   },
   {
     title: "Ready For More",
+    anchor: "ready-for-more",
     meta: "Music video, 2018",
     thumb: "/assets/img/wayspace/video/ready-for-more-music-video.jpg",
     youtubeId: "CZPfM8Ab-RE",
@@ -369,6 +399,7 @@ const VIDEO = [
   },
   {
     title: "First headlining show, sold out",
+    anchor: "first-headlining-show-sold-out",
     meta: "Live performance, 2018",
     thumb: "/assets/img/wayspace/video/first-headlining-show-sold-out.jpg",
     youtubeId: "Fmub_hieutE",
@@ -377,14 +408,16 @@ const VIDEO = [
   },
   {
     title: "So Much For So Long",
+    anchor: "so-much-for-so-long",
     meta: "Previews, 2018",
     thumb: "/assets/img/wayspace/video/so-much-for-so-long-visualizer.jpg",
     youtubeId: "34e8A5bchlc",
     note: "",
-    crossRef: { text: "The release is in Music", href: "/wayspace/music" }
+    crossRef: { text: "Hear the release", href: "/wayspace/music#so-much-for-so-long" }
   },
   {
     title: "Supporting Dumbfoundead at Soundstage",
+    anchor: "supporting-dumbfoundead-at-soundstage",
     meta: "Live performance, 2018",
     thumb: "/assets/img/wayspace/video/supporting-dumbfoundead-at-soundstage.jpg",
     youtubeId: "hWz2W-lfp4M",
@@ -393,6 +426,7 @@ const VIDEO = [
   },
   {
     title: "Nocturnal: The Making of 24 Hours",
+    anchor: "nocturnal-the-making-of-24-hours",
     meta: "Documentary, 2018",
     thumb: "/assets/img/wayspace/video/nocturnal-documentary.jpg",
     youtubeId: "BZl5AH71kZM",
@@ -401,6 +435,7 @@ const VIDEO = [
   },
   {
     title: "Issues",
+    anchor: "issues",
     meta: "Music video, 2017",
     thumb: "/assets/img/wayspace/video/issues-music-video.jpg",
     youtubeId: "tlPH-ESOkcw",
@@ -409,6 +444,7 @@ const VIDEO = [
   },
   {
     title: "Drexel Spring Jam",
+    anchor: "drexel-spring-jam",
     meta: "Live performance, 2016",
     thumb: "/assets/img/wayspace/video/drexel-spring-jam.jpg",
     youtubeId: "MdSYaaxTHAc",
@@ -496,6 +532,7 @@ const SINGLES = [
 const DESIGN = [
   {
     title: "The puzzle logo family",
+    anchor: "the-puzzle-logo-family",
     meta: "The pieces float together",
     image: "/assets/img/wayspace/design/logos/puzzle-pieces-trio.png",
     fit: "contain",
@@ -504,6 +541,7 @@ const DESIGN = [
   },
   {
     title: "Jackintheway",
+    anchor: "jackintheway",
     meta: "The flower logo",
     image: "/assets/img/wayspace/design/logos/jackintheway-flower.png",
     fit: "contain",
@@ -512,22 +550,25 @@ const DESIGN = [
   },
   {
     title: "Feivel Speaks",
+    anchor: "feivel-speaks",
     meta: "Album logo",
     image: "/assets/img/wayspace/design/logos/feivel-speaks.png",
     fit: "contain",
     note: "",
-    crossRef: { text: "Hear the album in Music", href: "/wayspace/music" }
+    crossRef: { text: "Hear the album", href: "/wayspace/music#feivel-speaks" }
   },
   {
     title: "The Pocket",
+    anchor: "the-pocket",
     meta: "Show flyer, Wayspace, 2022",
     image: "/assets/img/wayspace/design/flyers/wayspace-show-the-pocket.jpg",
     fit: "contain",
     note: "",
-    crossRef: null
+    crossRef: { text: "Watch the set", href: "/wayspace/video#live-at-the-pocket-dc" }
   },
   {
     title: "Livestream release party",
+    anchor: "livestream-release-party",
     meta: "Release flyer, 2022",
     image: "/assets/img/wayspace/design/flyers/livestream-release-party.jpg",
     fit: "contain",
@@ -536,6 +577,7 @@ const DESIGN = [
   },
   {
     title: "Pie Shop",
+    anchor: "pie-shop",
     meta: "Show flyer, DC, 2021",
     image: "/assets/img/wayspace/design/flyers/pie-shop.jpg",
     fit: "contain",
@@ -544,6 +586,7 @@ const DESIGN = [
   },
   {
     title: "Bluebyrd",
+    anchor: "bluebyrd",
     meta: "Show flyer, Songbyrd, DC, 2020",
     image: "/assets/img/wayspace/design/flyers/bluebyrd-at-songbyrd.jpg",
     fit: "contain",
@@ -552,6 +595,7 @@ const DESIGN = [
   },
   {
     title: "Speak Your Truth",
+    anchor: "speak-your-truth",
     meta: "Event flyer, 2019",
     image: "/assets/img/wayspace/design/flyers/speak-your-truth.jpg",
     fit: "contain",
@@ -560,22 +604,25 @@ const DESIGN = [
   },
   {
     title: "Baltimore Soundstage",
+    anchor: "baltimore-soundstage",
     meta: "Show flyer, 2019",
     image: "/assets/img/wayspace/design/flyers/baltimore-soundstage.jpg",
     fit: "contain",
     note: "",
-    crossRef: { text: "The set is in Video", href: "/wayspace/video" }
+    crossRef: { text: "Watch the set", href: "/wayspace/video#headlining-baltimore-soundstage" }
   },
   {
     title: "Wu-Tang show",
+    anchor: "wu-tang-show",
     meta: "Show flyer, 2018, one of three versions",
     image: "/assets/img/wayspace/design/flyers/wutang-show-a.jpg",
     fit: "contain",
     note: "",
-    crossRef: null
+    crossRef: { text: "Watch the set", href: "/wayspace/video#supporting-wu-tang-at-the-anthem" }
   },
   {
     title: "Holiday performance",
+    anchor: "holiday-performance",
     meta: "Show flyer, Songbyrd, DC, 2018",
     image: "/assets/img/wayspace/design/flyers/holiday-performance.jpg",
     fit: "contain",
@@ -584,6 +631,7 @@ const DESIGN = [
   },
   {
     title: "Howard Theatre",
+    anchor: "howard-theatre",
     meta: "Show flyer, DC, 2018",
     image: "/assets/img/wayspace/design/flyers/howard-theatre.jpg",
     fit: "contain",
@@ -592,6 +640,7 @@ const DESIGN = [
   },
   {
     title: "So Much For So Long",
+    anchor: "so-much-for-so-long",
     meta: "Listening party flyer, 2018",
     image: "/assets/img/wayspace/design/flyers/so-much-for-so-long-listening-party.jpg",
     fit: "contain",
@@ -627,6 +676,7 @@ const PODCASTS = [
      Ids came from _source/podcast/podcast-video/. */
   {
     title: "These 8 Habits Made Me Creative Again",
+    anchor: "these-8-habits-made-me-creative-again",
     show: "WAYSPACE",
     role: "Host",
     date: "June 2025",
@@ -638,6 +688,7 @@ const PODCASTS = [
   },
   {
     title: "5 Principles to Transform Your Relationships",
+    anchor: "5-principles-to-transform-your-relationships",
     show: "WAYSPACE",
     role: "Host",
     date: "June 2025",
@@ -649,6 +700,7 @@ const PODCASTS = [
   },
   {
     title: "How to Be a Peace Giver",
+    anchor: "how-to-be-a-peace-giver",
     show: "WAYSPACE",
     role: "Host",
     date: "June 2025",
@@ -660,6 +712,7 @@ const PODCASTS = [
   },
   {
     title: "The Five Question Test",
+    anchor: "the-five-question-test",
     show: "WAYSPACE",
     role: "Host",
     date: "May 2025",
@@ -671,6 +724,7 @@ const PODCASTS = [
   },
   {
     title: "The Anchor List: A Tool for Grounding",
+    anchor: "the-anchor-list-a-tool-for-grounding",
     show: "WAYSPACE",
     role: "Host",
     date: "April 2025",
@@ -689,6 +743,7 @@ const PODCASTS = [
      as something a client can hire rather than something he made. */
   {
     title: "Crossing The Bridge",
+    anchor: "crossing-the-bridge",
     show: "Tribly",
     role: "Host",
     date: "2023",
@@ -696,7 +751,7 @@ const PODCASTS = [
     listenHref: "https://open.spotify.com/show/05E8kMGjWNOmRdK183o3s2",
     watchId: null,
     note: "Built, scripted, hosted and produced for Tribly, as lead producer.",
-    crossRef: { text: "Also in Production", href: "/production" }
+    crossRef: { text: "Production credits", href: "/production#crossing-the-bridge" }
   }
 ];
 
@@ -1655,7 +1710,7 @@ function musicCard(item) {
     : "";
 
   return `
-    <li class="work-card">
+    <li class="work-card" id="${escapeHtml(item.anchor)}">
       ${cover}
       <div class="work-body">
         ${placeholderFlag(item)}
@@ -1695,7 +1750,7 @@ function videoCard(item) {
     : placeholderTile("facade", "Video");
 
   return `
-    <li class="work-card">
+    <li class="work-card" id="${escapeHtml(item.anchor)}">
       ${facade}
       <div class="work-body">
         ${placeholderFlag(item)}
@@ -1719,7 +1774,7 @@ function designCard(item) {
     : placeholderTile("work-cover", "Artwork");
 
   return `
-    <li class="work-card">
+    <li class="work-card" id="${escapeHtml(item.anchor)}">
       ${art}
       <div class="work-body">
         ${placeholderFlag(item)}
@@ -1796,7 +1851,7 @@ function podcastEntry(item) {
     : "";
 
   return `
-    <li class="entry">
+    <li class="entry" id="${escapeHtml(item.anchor)}">
       ${art}
       <div class="entry-body">
         ${placeholderFlag(item)}
@@ -1854,9 +1909,13 @@ function speakingEntry(item) {
    the page fills with empty years. That is the one non obvious part.
    ============================================================ */
 
-/* Undated entries sort last under their own heading. Orchard is the
-   only one today: it has no year because there is no release to date
-   it against. */
+/* Album membership comes from the existing explicit catalogue metadata. */
+const WRITING_COLLECTIONS = [
+  { slug: "wayspace", label: "Wayspace", prefix: "Wayspace ·" },
+  { slug: "feivel-speaks", label: "Feivel Speaks", prefix: "Feivel Speaks ·" }
+];
+
+/* Undated entries sort last under their own heading. */
 const NO_YEAR = "Undated";
 
 function writingYear(item) {
@@ -1902,7 +1961,7 @@ function writingCard(item) {
     : "";
 
   return `
-    <li class="writing-card" data-kind="${escapeHtml(item.kind)}" data-themes="${escapeHtml((item.themes || []).join(" "))}">
+    <li class="writing-card" data-collection="${escapeHtml((WRITING_COLLECTIONS.find(c => item.meta.startsWith(c.prefix)) || {}).slug || "")}" data-kind="${escapeHtml(item.kind)}" data-themes="${escapeHtml((item.themes || []).join(" "))}">
       ${placeholderFlag(item)}
       <span class="role-tag">${escapeHtml(item.kind)}</span>
       <h4 class="writing-card-title">${title}</h4>
@@ -1920,6 +1979,7 @@ function initWriting() {
 
   const filters = document.getElementById("writingFilters");
   const themeBar = document.getElementById("writingThemes");
+  const collections = document.getElementById("writingCollections");
   const yearNav = document.getElementById("writingYears");
   const status = document.getElementById("writingStatus");
   const empty = document.getElementById("writingEmpty");
@@ -1989,8 +2049,33 @@ function initWriting() {
 
   let kind = "all";
   let picked = new Set();
+  const requestedCollection = new URLSearchParams(location.search).get("collection");
+  let collection = WRITING_COLLECTIONS.some(c => c.slug === requestedCollection)
+    ? requestedCollection : "all";
+  collections.innerHTML = `<span class="filter-label ws-overline">Album lyrics:</span>` +
+    [{ slug: "all", label: "All writing" }, ...WRITING_COLLECTIONS].map(c =>
+      `<button type="button" class="filter-btn" data-collection="${c.slug}" aria-pressed="false">${escapeHtml(c.label)}</button>`).join("");
+
+  function drawCollections() {
+    collections.querySelectorAll("button").forEach(btn => {
+      const on = btn.dataset.collection === collection;
+      btn.classList.toggle("is-on", on);
+      btn.setAttribute("aria-pressed", String(on));
+    });
+  }
+  collections.addEventListener("click", e => {
+    const btn = e.target.closest("button[data-collection]");
+    if (!btn) return;
+    collection = btn.dataset.collection;
+    const url = new URL(location.href);
+    if (collection === "all") url.searchParams.delete("collection");
+    else url.searchParams.set("collection", collection);
+    history.replaceState(null, "", url);
+    apply();
+  });
 
   function matches(card) {
+    if (collection !== "all" && card.dataset.collection !== collection) return false;
     if (kind !== "all" && card.dataset.kind !== kind) return false;
     if (!picked.size) return true;
     const has = (card.dataset.themes || "").split(" ");
@@ -2006,6 +2091,7 @@ function initWriting() {
   }
 
   function apply() {
+    drawCollections();
     let shown = 0;
     [...mount.querySelectorAll(".writing-card")].forEach(card => {
       const on = matches(card);
@@ -2025,11 +2111,13 @@ function initWriting() {
 
     const names = [...picked].map(t => (THEMES.find(x => x.slug === t) || {}).label).filter(Boolean);
     const what = kind === "all" ? "entries" : label(kind).toLowerCase();
+    const album = WRITING_COLLECTIONS.find(c => c.slug === collection);
+    const scope = album ? ` from ${album.label}` : "";
     status.textContent = !shown
-      ? `No ${what} match those themes.`
+      ? `No ${what}${scope} match these filters.`
       : names.length
-        ? `Showing ${shown} ${what} in ${names.join(" or ")}.`
-        : `Showing ${shown} ${what}.`;
+        ? `Showing ${shown} ${what}${scope} in ${names.join(" or ")}.`
+        : `Showing ${shown} ${what}${scope}.`;
   }
   apply();
 

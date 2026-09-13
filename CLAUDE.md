@@ -15,6 +15,54 @@ handoff records current context; it does not authorize unfinished work or overri
 Jack's decisions. Read-only evaluations stay read-only unless Jack asks for a
 saved report or handoff.
 
+
+## Current editorial decisions: 2026-09-12
+
+These decisions from Jack supersede broader or dated wording below.
+
+- Preserve the public Production credits and existing About information. Those
+  credits are already public and provide evidence of the work. In AI Portfolio
+  and case-study writing, omit client identities as a courtesy unless Jack has
+  specifically approved naming them. There is no agreement requiring anonymity;
+  do not claim one. Existing attributed testimonials stay as written.
+- Jack wrote the portfolio's opening line about technical ability and willingness.
+  Keep it. He rejected its proposed Red Pen replacement.
+- Lyric em dashes are Jack's own punctuation and stay. Correct imported word joins
+  and missing line breaks without rewriting lyrics. Match the masked word without
+  case sensitivity, including all-caps variants. Still Distracted's two occurrences
+  are lowercase and masked, and the page carries the same explicit-language notice.
+  Published lyrics change; the source archive stays untouched.
+- Italicize the book title *A Course in Miracles* wherever visible text supports
+  formatting. Keep metadata and accessible labels as plain text, not HTML markup.
+- Browser tools have task-specific dependencies. A static reference or calculator
+  can be a standalone file with no login; AI calls require a service. Agree on
+  accounts, access, and running costs for each build. Do not promise no vendor costs.
+- Write boundaries depend on the task. Compost is for new vault material; a Git
+  save point and a project handoff have different destinations. Handoffs may be
+  delivered in chat or in the existing project file and support work across agents.
+- First-call expectations accompany the booking buttons on Home, AI Enablement,
+  and Production: 45 minutes to discuss the work and whether Jack can help, with
+  email as another way to make contact. Do not invent pricing or a free-call claim.
+- Keep the two-track editing case study. Its revised account follows the full
+  session record: end trim, 19 scripted removals (middle discussion plus 18 asides),
+  verified first gap-close, then two late corrections verified as matching gaps.
+  The final closure was predicted but not verified in that record. The outro
+  extends the speaker track beyond the teaching cut. Do not describe equal track
+  lengths, a verified final closure, or a tested safe rerun.
+- Case-study diagrams are schematic and use no client media. Newly written copy
+  remains reviewable locally until Jack authorizes publication.
+- Cross-room links use stable entry anchors or specific lyric URLs. Music's two
+  album lyric links use Writing's `collection` filter. Membership comes only from
+  explicit catalogue metadata. Do not infer a release from a performance date or
+  create missing counterpart entries just to complete a cross-reference.
+- `404.html` provides recovery for missing paths; it stays out of the sitemap.
+  `robots.txt` points to `sitemap.xml`. Run `python3 tools/update-sitemap.py` after
+  adding or removing public pages. It reads canonical URLs and adds no guessed dates.
+- A public skill demonstration and artwork for the Wayspace arrival remain design
+  proposals. Do not publish private portfolio materials or add a new tool to the
+  public selection just because it was useful during this work.
+
+
 ---
 
 ## Status: every page is built and deployed. What's left is content, not construction (2026-08-24)

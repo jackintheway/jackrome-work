@@ -37,11 +37,25 @@ CLAUDE.md             project context and the decisions already made
 
 Full-resolution originals and audio masters live in `_source/`, which is gitignored. What ships is the web-sized derivative.
 
-## Scope
+## Scope and discovery
 
-Four pages: `/`, `/about`, `/ai-enablement`, `/creative-portfolio`.
+74 public content pages: six root pages, six Wayspace rooms, one case study, and
+61 lyric pages. `404.html` is the separate recovery page for missing URLs.
+The creative catalogues render from `js/wayspace.js`; each room stays independently
+curated. Cross-room entry links use authored anchors that should survive title edits.
+Writing accepts `?collection=wayspace` or `?collection=feivel-speaks` to open the
+explicitly catalogued lyrics for that album.
 
-`/toolbox`, `/store`, and `/blog` stay on Squarespace and are out of scope. That holds only while Squarespace still serves the domain.
+After adding or removing a public page, refresh the sitemap:
+
+```
+python3 tools/update-sitemap.py
+```
+
+The script uses each page's canonical URL, excludes `noindex` pages, and fails on
+missing or duplicate canonicals. `robots.txt` links to the result. There is still no
+build step. Netlify picks up `404.html` for missing paths and applies the document
+redirects from `netlify.toml`; a basic Python server does not emulate those rules.
 
 ## Standing rules
 

@@ -27,15 +27,18 @@ section near the top of `CLAUDE.md`. Publication still needs Jack's go.
 
 ### Current work
 
-The first local save point covers service and portfolio claim corrections, the
-case-study rewrite and diagrams, lyric line-break repairs, contrast, book-title
-italics, call expectations, sitemap/robots, and the branded 404. No client identities
-or source media were added to the case study. Public Production records and the
-portfolio sentence Jack wrote remain intact.
+The first local save point, `25f1e48`, covers service and portfolio claim corrections,
+the case-study rewrite and diagrams, lyric repairs, contrast, title italics, call
+expectations, sitemap/robots, and the branded 404. No client identities or source media
+were added to the case study. Public Production records and Jack's willingness line
+remain intact.
 
-Cross-room links and Writing album filters are implemented and verified locally,
-but are being saved separately with the documentation updates. They are the only
-remaining implementation save point from this batch.
+The second save point, titled `Link creative work to precise destinations and add
+album lyric filters`, completes all 16 cross-room references, adds the two Writing
+album filters, corrects Writing's landing and metadata descriptions, and records the
+current decisions. Four newly evidenced connections were added; two unsupported
+references were removed. The case-study metadata was brought into line with its body.
+No requested implementation remains unfinished in this batch.
 
 ### Verification and publication state
 
@@ -53,6 +56,9 @@ remaining implementation save point from this batch.
 - Local checks do not establish Netlify behavior. The new document redirects,
   sitemap, robots and 404 need live HTTP checks after an authorized deployment.
 - No push or deployment. Prior HEAD at intake was `2a75b61` on `main`.
+- A loopback-only preview remains running at `http://127.0.0.1:8642` for Jack's
+  review. Its clean paths and branded 404 are locally emulated; it does not apply
+  Netlify redirects or headers. The temporary share-card renderer was stopped.
 
 ### Existing work and separate deliverable
 
@@ -68,7 +74,11 @@ selection. It audits read-only and uses Jack's Voice and Red Pen for editing rev
 A public demonstration of an existing skill and artwork for the Wayspace arrival
 remain proposals. The recommendation is a handoff walkthrough using this website's
 own work, and a composition from the already separated Wayspace album artwork.
-Neither has been built or authorized for publication.
+Neither has been built or authorized for publication. The proposed handoff example
+would show the request, the file checks, and the note another agent reads, using
+this website's public project rather than private client or employment materials.
+The proposed arrival puts the cover's bridge and portrait beside the room list,
+with a static mobile/reduced-motion composition and optional modest scroll movement.
 
 The private source transcript was read in chat and is not copied into this repo.
 Its final recorded check confirms two late gaps, not their final closure. The case
@@ -76,5 +86,5 @@ study states that evidence limit; do not convert the prediction into a verified 
 
 ### Next action
 
-Finish the cross-room navigation save point, then put the local preview in front of
-Jack for review before asking for a publication go.
+Review the local case study and revised copy with Jack. Publish only after his
+explicit go, then verify the deployed revision and host-specific behavior.
