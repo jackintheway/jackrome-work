@@ -18,43 +18,33 @@ context, not permission to perform unfinished work. Do not include private mater
 
 ## Current checkpoint: 2026-09-12, Codex
 
-Jack supplied the Part 2 follow-up for the second case study. The local draft now
-covers both installments as "Remastering an event with Codex," keeping its existing
-URL. Part 1's timing story remains; Part 2 adds the editable graphics rebuild,
-manual photo treatment continued by automation, guarded repair, and the audit
-that mistakenly reset two deliberate card offsets before they were restored.
+Jack read and approved both case studies and their prose. He approved making them
+easier to find while keeping the list on AI Portfolio for now. A standalone hub
+can wait until he wants a separate destination for prospective clients or the
+collection covers more kinds of work; three entries is not a prerequisite.
 
-The page and portfolio card distinguish each installment's results and open work.
-A new schematic shows 33 default card positions and 2 approved exceptions. The
-share image and its source match the new title. Lasting boundaries are recorded
-in CLAUDE.md: the exception registry is proposed, the English broadcast is
-Jack-reported, Part 2 Spanish remains open, and Part 1's saved listening and
-translated-card approvals remain unfinished. The stale agreement claim from the
-follow-up is omitted. The added prose was drafted from the exhibit evidence and
-needs Jack's voice review; it is not a quotation from his source conversation.
+AI Portfolio now has "See case studies" beside "Book a call," pointing to its
+existing clientTitle heading. Production has the same link in its hero. In
+AI Enablement's "How I work," "See case studies" points to that section, and
+"Explore AI Portfolio" preserves access to the full page. All use existing button
+styles. No new page, nav item, CSS, JavaScript, or case-study copy was added.
+CLAUDE.md records Jack's approval and the hub decision.
 
-Verified local markup, unique anchors, local references, JavaScript syntax,
-whitespace, and canonical token parity. The union of both exhibits' excluded-term
-lists passed against the case, portfolio entry, and share-image source. The first
-case, arrival layout and motion, handoff demo, Production, About, and creative
-catalogue remain unchanged. At measured 390px the diagram and results stack; at 782px and
-1280px the layout has no horizontal overflow. Inspected the diagram, desktop
-results, and 1200 x 630 share image. The portfolio card reaches the right page,
-and the Results anchor works. The temporary phone harness and QA tab were removed.
-A harness-session MutationObserver error did not recur after page reload; no
-matching observer code exists in the case page's scripts.
+Native clicks from all three pages reached the intended section. Keyboard Enter
+activated the portfolio shortcut. Verified 1280px desktop and measured 390px phone
+layouts; buttons wrap without overflow and the destination heading clears the
+fixed navigation. Inspected the three mobile arrivals side by side. Markup, unique
+IDs, metadata, external-link rules, copy checks, and diff whitespace passed. Both
+case studies, Production credits, and styles remain byte-identical to intake HEAD.
+The temporary browser tab and phone harness were removed.
 
-Intake HEAD was e0939e4 on main. This checkpoint accompanies the local follow-up
-save point. No push or deployment. Preview: http://127.0.0.1:56064, with the new
-material at /case-studies/event-remaster-and-language-conform#secondRunTitle.
-Port 8642 remains available for Jack's separate first-case review.
+Intake HEAD was 7f87212 on main. This checkpoint accompanies the local case-study
+navigation save point. No push or deployment. Preview: http://127.0.0.1:56064.
+Port 8642 remains available for the first case study.
 
-The pre-existing separate-exhibit handoff section remains unstaged. The 18 unrelated
-untracked files are untouched: eight Substack images, assets/puzzle-trio.svg, and
-nine files under tools/substack/. Private exhibits and working controls remain
-ignored and uncommitted. Jack also updated assets/img/wayspace-straight.svg during
-this turn to add yellow shadow on the W. The refreshed arrival displays it. His
-asset edit is preserved as-is and remains unstaged outside this case-study commit.
+Jack's updated assets/img/wayspace-straight.svg stays untouched and unstaged, as
+does the pre-existing separate-exhibit handoff above. The 18 unrelated untracked
+Substack and puzzle assets remain untouched. Private exhibits remain ignored.
 
-Next: continue Jack's review of the local case studies. Publishing still requires
-his explicit go; after that, verify the deployed revision and host-specific routes.
+Next: publish only after Jack's explicit go, then verify the deployed revision
+and host-specific routes. The approved case-study copy needs no further rewrite.

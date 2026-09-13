@@ -90,9 +90,13 @@ These decisions from Jack supersede broader or dated wording below.
   Metadata, stream analysis, and saved-state checks are not independent full playback.
   No client media, identifiers, private ledgers, or source dialogue belong in this
   public case. Omit the follow-up package's stale "withheld by agreement" line.
-  The first, two-track case study remains unchanged during Jack's separate review.
-- These additions await Jack's review and explicit publication go. Keep private
-  portfolio materials out of the example and preserve the existing tool selection.
+- Jack has read and approved both case studies, including the Part 2 prose.
+  Publication still requires his explicit go. Keep private portfolio materials
+  out of the example and preserve the existing tool selection.
+- Make the case studies easier to find through links to /ai-portfolio#clientTitle.
+  AI Portfolio's hero uses "See case studies" with a downward arrow. Production
+  links from its hero, and AI Enablement links from "How I work" beside a separate
+  "Explore AI Portfolio" button. Keep the existing section title and main navigation.
 
 
 ---
@@ -1198,11 +1202,13 @@ after. The data file is the expensive thing to retrofit; the hub page is cheap
 to add later, so the expensive thing got built first. Adding a case study is
 adding an object plus a page.
 
-**There is no `/case-studies` index yet, on purpose.** With two local case-study
-pages, the list remains on AI Portfolio. The
-bare path 301s to `/ai-portfolio` in `netlify.toml` so it does not 404 on a
-directory with no index. Revisit at three. When it exists, the "Back to AI
-Portfolio" button at the foot of each case study becomes "Back to case studies."
+**There is no `/case-studies` index yet, on purpose.** Jack approved keeping the
+two case studies on AI Portfolio and adding direct section links from its hero
+and both service pages. The bare path still 301s to `/ai-portfolio`. Revisit the
+hub when Jack wants a standalone destination for prospective clients or the
+collection covers more kinds of work. Three entries is not a prerequisite.
+When it exists, the "Back to AI Portfolio" button at the foot of each case study
+becomes "Back to case studies."
 
 **No case study carries a "client details are withheld by agreement" line.** An
 earlier draft of the first one did. Per Jack on 2026-08-24, it framed the piece
