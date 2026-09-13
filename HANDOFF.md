@@ -150,8 +150,28 @@ Squarespace. The Personal plan cannot scope variables to Functions only;
 accepted, since nothing in the build reads them and the two secrets are marked.
 
 Jack authorized the unlinked production push: "let's do the unlinked production
-push." The page is reachable at jackrome.work/audit and, once DNS resolves, at
-audit.jackrome.work, with no links from the site and a noindex tag. Candidate for later, not planned:
+push." Three production deploys followed on 2026-09-13, each with his go:
+7dfac40 (first assessment deploy), e4c72ad (subdomain root-only rewrite after
+Netlify rejected a rule whose source began with /.netlify, plus the export
+tool's delete command), and 144a58c (email subject field, store listing, and
+the deploy-context stamp: Netlify's CONTEXT is not set in the function runtime,
+so the first live record went to the preview store; the build now stamps the
+context into netlify/functions/score/lib/context.generated.mjs).
+
+Verified live on jackrome.work/audit: two real submissions on the real model
+(sign-in sheet case: level 3, 86; supporter-update case: level 2, 63, matching
+pilot 2), summaries in Netlify Forms with 35 registered fields, honeypot 204,
+GET 405, foreign origin 403, function source and packages 404, rate limit
+observed (90-request burst: 69 allowed, 21 blocked with 429), secret scans
+clean, 25 redirect rules accepted. Jack enabled Forms, set the email
+notification (custom subject left blank so the function's subject wins), and
+deleted the first test record from the preview store. Second test record
+(receipt 91BD485E) awaits deletion from the production store.
+
+audit.jackrome.work: DNS resolves (CNAME to jackrome-work.netlify.app, added by
+Jack in Squarespace), certificate still pending from Netlify at last check; the
+subdomain has not yet been verified over HTTPS. The page stays unlinked and
+noindex. The Personal plan cannot scope env vars to Functions; accepted. Candidate for later, not planned:
 upgrading the site's "Find something" guide to a model-backed helper.
 
 Untouched and still local: the separate-exhibit handoff section above, Jack's
