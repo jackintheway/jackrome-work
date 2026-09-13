@@ -17,7 +17,7 @@
      node tools/audit-export.mjs --id <uuid>     one record
      node tools/audit-export.mjs --reconcile     list unacknowledged summaries
      node tools/audit-export.mjs --verify file   verify a pasted summary (JSON of fields)
-     node tools/audit-export.mjs --delete <uuid> remove one record and its status entry
+     node tools/audit-export.mjs --delete <uuid|receipt> remove one record and its status entry
                                                (the retention step; asks nothing, so
                                                export first if you want a copy)
 
@@ -55,7 +55,13 @@ const store = createBlobsStore(env);
 console.log("Store: " + store.storeName);
 
 if (flag("--delete")) {
-  const id = value("--delete");
+  let id = value("--delete");
+  // A receipt is the first eight characters of the ID, upper-cased.
+  if (id && id.length === 8) {
+    const matches = (await store.list()).filter((x) => x.slice(0, 8).toUpperCase() === id.toUpperCase());
+    if (matches.length !== 1) { console.error(matches.length ? "Receipt matches more than one record; use the full ID." : "No record with receipt " + id); process.exit(1); }
+    id = matches[0];
+  }
   const existing = await store.get(id);
   if (!existing) { console.error("Not found: " + id); process.exit(1); }
   await store.remove(id);

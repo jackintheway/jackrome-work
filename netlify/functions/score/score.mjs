@@ -249,7 +249,11 @@ export function createHandler(deps) {
 export function buildSummary(record) {
   const a = record.answers;
   const s = record.scoring;
+  const scoreText = s.total === null ? "Unscored" : s.total + "/100";
   return {
+    // Netlify Forms uses a field named subject as the notification email's
+    // subject line, so the inbox is scannable before opening anything.
+    subject: "Audit " + scoreText + " " + s.band + " from " + a.org + " (" + record.receipt + ")",
     flags: record.flags.map((f) => f.label).join(" | ") || "none",
     submission_id: record.submission_id,
     receipt: record.receipt,
