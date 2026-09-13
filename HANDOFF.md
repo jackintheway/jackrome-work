@@ -18,51 +18,39 @@ context, not permission to perform unfinished work. Do not include private mater
 
 ## Current checkpoint: 2026-09-13, Codex
 
-Publication authorized: Jack said "PUSH IT!" on September 13. Preparing the 12
-saved commits since origin/main, plus Jack's corrected logo as a versioned SVG.
-The v2 file is byte-identical to his working SVG and wayspace.html references it;
-the original working SVG remains untouched. Local rendering and XML checks pass.
-Git fetch confirmed the remote has not advanced. The public source contains no
-tracked _source or _exhibits files. Push and live verification are pending below.
-Prior local-only delivery notes in this checkpoint describe earlier stages.
+Jack explicitly authorized publication with "PUSH IT!" The reviewed website
+batch was pushed to origin/main through c1f96c6. Netlify published production
+deploy 6aa6233889ac8a000861da9f, with its commit_ref matching
+c1f96c664aca3e25c5039cb5852460f98f0177e5. Live: https://jackrome.work.
 
-Follow-up after ca33f61: Jack found "that's an honest place for curation to start"
-uncomfortable. The sentence now reads "I started by building tools around the
-way I work." Refreshed the guide index and verified the sentence in the browser;
-index freshness and whitespace checks passed. Saved locally, not published.
-The account below describes the preceding collaboration-copy update.
+The batch includes the audit corrections, precise cross-room links and album
+filters, both approved case studies, the recorded handoff example, independent
+Wayspace artwork motion with the mobile simplification, the browser site guide,
+and the revised portfolio/enablement copy. The latest curation sentence is
+"I started by building tools around the way I work." The original video is linked
+as optional personal background; no transcript or Gemini summary is published.
 
-Jack approved the editorial recommendations based on his original video,
-Artificial Intelligence Meets Spirituality (YouTube AYzzTeSOF4Q). Added a short
-portfolio paragraph after his existing opening sentence: thinking aloud, asking
-what might be missing, and continuing to edit. Teaching on AI Enablement now
-explains practicing with the team's work and existing context, asking follow-up
-questions, checking results, and discussing risks. The portfolio's curation
-section has an optional link to the 48-minute video as personal background.
+Jack's corrected Wayspace SVG ships as assets/img/wayspace-straight-v2.svg,
+byte-identical to his working file, and wayspace.html uses that new URL so the
+previous immutable image does not hide his correction. The original working SVG
+remains unchanged and unstaged. The old published filename remains intact.
 
-The new copy is a source-grounded draft, not a quotation. Spoken examples at
-4:17, 9:08, and 26:30 inform the collaborative process. The example at 34:43
-supports the importance of existing material. The video identifies the formal
-manifesto as AI-assisted around 44:02; Gemini's summary was not used. The full
-auto-caption transcript stays in the temporary export outside this repository.
+Production verification passed: 110 page and asset URLs returned the expected
+content byte-for-byte, including all 75 sitemap pages, changed runtime assets,
+new artwork, CSS tokens, robots.txt, and sitemap.xml. Checked relevant MIME types,
+nosniff, HTML revalidation, and immutable image headers. Fourteen redirects passed,
+including AGENTS.md and HANDOFF.md recovery. Three missing/private path probes
+returned 404. No _source or _exhibits files are tracked. The live portfolio renders
+both case studies and the latest copy. The live guide opens in first person and
+its Wayspace-lyrics result reaches the selected album filter with 12 entries.
+The preceding local sessions verified mobile layouts and interaction behavior.
 
-Refreshed js/guide-index.json after the copy changes. All 24 existing search
-tests and the current-index check pass. Copy, unique IDs, accessible label
-references, external-link attributes, share-image references, and whitespace
-checks passed. Browser inspection confirmed the new introduction and video
-invitation in context. Both changed pages were measured at 390px without
-horizontal overflow; the teaching card fits. No CSS, hero, share-card, service
-boundary, or case-study changes were needed. Voice review found no new flags.
-The temporary phone harness was removed.
+This documentation save point records those checks; its only change is this
+handoff, which redirects home on the website. The pre-existing separate-exhibit
+handoff remains outside the staged patch. The original edited SVG and 18 unrelated
+untracked Substack/puzzle files remain untouched. Private exhibits stay ignored.
+Local previews at ports 56064 and 8642 remain available.
 
-Intake HEAD was baf6fc3 on main. This checkpoint accompanies the local
-collaboration-copy save point. Nothing pushed or deployed. Main preview:
-http://127.0.0.1:56064. The earlier site-guide implementation remains in baf6fc3;
-README.md documents its public index and checks. The two case studies and their
-opening/navigation changes remain approved by Jack.
-
-The pre-existing separate-exhibit handoff and Jack's updated
-assets/img/wayspace-straight.svg remain untouched and unstaged. The 18 unrelated
-untracked Substack and puzzle files remain untouched. Private exhibits stay
-ignored. Next: Jack can review the new copy locally. Publish only on his explicit
-go, then verify the deployed revision and host-specific behavior.
+No remaining work is required for this publication. Future content changes need
+a refreshed guide index; README.md describes that process. New changes still
+need Jack's go before publishing.
