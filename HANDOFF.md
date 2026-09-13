@@ -51,10 +51,18 @@ netlify.toml publishes that folder, with functions declared at
 netlify/functions/ outside it. Local checks: the script's own check passed;
 every tracked public file in _site/ was fetched from https://jackrome.work and
 compared byte for byte, 336 identical, 0 different, 0 non-200. README.md and
-CLAUDE.md describe the change. Committed locally, not pushed. The first deploy
-with the new boundary is not yet verified live and must be before assessment
-code is added; the site's existing netlify.toml redirects for root markdown
-files remain and are now redundant but harmless.
+CLAUDE.md describe the change.
+
+Jack authorized pushing the boundary on its own: "Let's push that on its own
+now." Pushed as 349ad6a and verified live on https://jackrome.work after the
+deploy: all 336 tracked public files byte-identical to the commit; the tools
+folder, netlify.toml, .gitignore, the functions path, and _site/ all return
+404 where the tools sources used to be served; the four root markdown redirects
+still 302 home; /home, /ai, and /case-studies still 301; clean URLs serve 200;
+the custom 404 page renders; the jack-rome.com alias still 301s with its path;
+HTML, image, and font cache and security headers unchanged; sitemap still lists
+75 pages. The publish boundary is proven on Netlify. This documentation save
+point is committed locally and rides with the next push.
 
 Untouched and still local: the separate-exhibit handoff section above, Jack's
 modified working SVG, and the untracked Substack and puzzle files. No
