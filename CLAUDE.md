@@ -75,15 +75,22 @@ These decisions from Jack supersede broader or dated wording below.
   "Spoken aloud using Wispr Flow." Its surrounding explanation speaks as Jack:
   "My request" and "our decisions." The recorded agent-to-agent note still uses
   Jack's name to orient its recipient.
-- The second case study, event-remaster-and-language-conform, is a local draft
-  based on the private exhibit. Its three-timeline schematic distinguishes the
-  original recording, the revised edit with gaps, and the final edit. Manual
-  extensions changed the middle timeline. Preserve the limits: listening review
-  and translated-card review remained open in the saved record; the original
-  graphics delivery lacked the promised editable After Effects builder. Saved
-  production reports and later artifact checks have different scopes. No client
-  media, identifiers, private ledgers, or source dialogue belong in the public page.
-  The first case study remains unchanged during Jack's separate review.
+- The second case study keeps the event-remaster-and-language-conform URL and now
+  covers both installments as "Remastering an event with Codex." Part 1's timing
+  map and Spanish review file remain distinct from Part 2's editable graphics
+  rebuild, approved photo treatment, guarded nested-media repair, and restored
+  framing exceptions. The original missing builder belongs to Part 1; the rebuilt
+  editable system belongs to Part 2. Do not collapse those into one delivery.
+- Its two diagrams use generic geometry: three timing coordinates, then 33 default
+  card positions plus 2 approved exceptions. The latter shows corrected framing;
+  a prospective exception registry remains an improvement, not a delivered feature.
+  The follow-up's illustrative pseudocode is not a shipped implementation excerpt.
+- Part 2's English broadcast is Jack-reported. Its Spanish conform is open; Part 1's
+  saved record still stops before listening approval and translated-card approval.
+  Metadata, stream analysis, and saved-state checks are not independent full playback.
+  No client media, identifiers, private ledgers, or source dialogue belong in this
+  public case. Omit the follow-up package's stale "withheld by agreement" line.
+  The first, two-track case study remains unchanged during Jack's separate review.
 - These additions await Jack's review and explicit publication go. Keep private
   portfolio materials out of the example and preserve the existing tool selection.
 

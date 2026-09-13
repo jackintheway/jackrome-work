@@ -18,30 +18,43 @@ context, not permission to perform unfinished work. Do not include private mater
 
 ## Current checkpoint: 2026-09-12, Codex
 
-Jack approved hiding the artwork on narrow screens so the welcome leads directly
-into the rooms. Below 800px, the complete figure is hidden, including the caption,
-puzzle marks, and pause control. "Choose a room" and its unused styles are removed.
-At 800px and wider, the existing artwork stays beside the room list. The JavaScript
-and image assets are unchanged. This is a layout change, not an image-download
-optimization. CLAUDE.md, MOTION.md, and README.md record the new layout decision.
+Jack supplied the Part 2 follow-up for the second case study. The local draft now
+covers both installments as "Remastering an event with Codex," keeping its existing
+URL. Part 1's timing story remains; Part 2 adds the editable graphics rebuild,
+manual photo treatment continued by automation, guarded repair, and the audit
+that mistakenly reset two deliberate card offsets before they were restored.
 
-Verified locally at measured 390px and 799px: figure display none, no space reserved,
-room links immediately after the welcome, no shortcut. At 800px the figure is visible
-beside the rooms and animation is enabled. All six room links remain available;
-no horizontal overflow at the checked widths. Inspected phone and wider screenshots,
-reset the temporary viewport override, and passed diff whitespace checks.
+The page and portfolio card distinguish each installment's results and open work.
+A new schematic shows 33 default card positions and 2 approved exceptions. The
+share image and its source match the new title. Lasting boundaries are recorded
+in CLAUDE.md: the exception registry is proposed, the English broadcast is
+Jack-reported, Part 2 Spanish remains open, and Part 1's saved listening and
+translated-card approvals remain unfinished. The stale agreement claim from the
+follow-up is omitted. The added prose was drafted from the exhibit evidence and
+needs Jack's voice review; it is not a quotation from his source conversation.
 
-Intake HEAD was 01b316a on main. This checkpoint accompanies the local simplified
-mobile arrival save point. No push or deployment. Preview: http://127.0.0.1:56064.
-Port 8642 remains available for Jack's first case-study review.
+Verified local markup, unique anchors, local references, JavaScript syntax,
+whitespace, and canonical token parity. The union of both exhibits' excluded-term
+lists passed against the case, portfolio entry, and share-image source. The first
+case, arrival layout and motion, handoff demo, Production, About, and creative
+catalogue remain unchanged. At measured 390px the diagram and results stack; at 782px and
+1280px the layout has no horizontal overflow. Inspected the diagram, desktop
+results, and 1200 x 630 share image. The portfolio card reaches the right page,
+and the Results anchor works. The temporary phone harness and QA tab were removed.
+A harness-session MutationObserver error did not recur after page reload; no
+matching observer code exists in the case page's scripts.
 
-46b6c55 contains the autonomous artwork, handoff demo revisions, and second case
-study. Its handoff records their broader checks and evidence limits. The two case
-studies remain under Jack's review; neither was changed in this update.
+Intake HEAD was e0939e4 on main. This checkpoint accompanies the local follow-up
+save point. No push or deployment. Preview: http://127.0.0.1:56064, with the new
+material at /case-studies/event-remaster-and-language-conform#secondRunTitle.
+Port 8642 remains available for Jack's separate first-case review.
 
 The pre-existing separate-exhibit handoff section remains unstaged. The 18 unrelated
 untracked files are untouched: eight Substack images, assets/puzzle-trio.svg, and
-nine files under tools/substack/. Private exhibits remain ignored.
+nine files under tools/substack/. Private exhibits and working controls remain
+ignored and uncommitted. Jack also updated assets/img/wayspace-straight.svg during
+this turn to add yellow shadow on the W. The refreshed arrival displays it. His
+asset edit is preserved as-is and remains unstaged outside this case-study commit.
 
-Next: continue Jack's local review. Publish only after his explicit go, then verify
-the deployed revision and host-specific routing, discovery files, and asset headers.
+Next: continue Jack's review of the local case studies. Publishing still requires
+his explicit go; after that, verify the deployed revision and host-specific routes.

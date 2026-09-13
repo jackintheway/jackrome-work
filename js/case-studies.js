@@ -45,12 +45,12 @@ const CASE_STUDIES = [
   },
   {
     slug: "event-remaster-and-language-conform",
-    title: "Keeping an edit and its translation in sync",
+    title: "Remastering an event with Codex",
     meta: "Video post-production, 2026",
     tags: ["Scripting", "Verification", "Video post-production", "Safety design"],
-    lead: "I worked with Codex on a remaster, then mapped an existing Spanish recording to the revised edit.",
-    summary: "The job grew from information cards into visual placement, selective gap closure, and audio conforming. A map kept the original recording, the revised working edit, and the final timeline connected.",
-    result: "Saved reports and retained files support 48 initial visual inserts, 4 selected gap closures, and a technically checked Spanish audio file. Listening approval and translated-card review remained open in the record."
+    lead: "I worked with Codex on two installments of a remaster while continuing to make editing decisions by hand.",
+    summary: "Part 1 mapped an existing Spanish recording to a revised timeline. Part 2 rebuilt the editable graphics system and exposed a mistake in the final check: it reset two card positions I had changed on purpose.",
+    result: "The two positions were restored. Part 2 produced an editable graphics project and 35 card renders, and I reported its English broadcast. Its Spanish conform remains open; Part 1's saved listening approval was also unfinished."
   }
 ];
 
