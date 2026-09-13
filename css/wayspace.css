@@ -203,15 +203,6 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 
 /* ---- Wayspace arrival: the album's registered artwork planes ---- */
 .wayspace-landing .ws-hero { padding-block: var(--space-7); }
-.ws-room-jump {
-  display: none;
-  margin-top: var(--space-5);
-  padding: var(--space-2);
-  color: var(--ws-paper);
-  text-underline-offset: var(--space-1);
-}
-.ws-room-jump:hover { color: var(--ws-yellow); }
-.ws-room-jump:focus-visible { outline-color: var(--ws-yellow); }
 .ws-arrival {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -308,15 +299,8 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 #roomsTitle { scroll-margin-top: var(--space-10); }
 
 @media (max-width: 799px) {
-  .ws-room-jump { display: inline-block; }
   .ws-arrival { grid-template-columns: 1fr; gap: var(--space-7); }
-  .ws-arrival-art {
-    position: static;
-    width: 100%;
-    max-width: 360px;
-    margin-inline: auto;
-  }
-  .ws-scene-canvas { inset: 0; }
+  .ws-arrival-art { display: none; }
   .ws-arrival [data-motion] { animation: none !important; transform: none !important; }
 }
 @media (prefers-reduced-motion: reduce) {

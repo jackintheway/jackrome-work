@@ -77,8 +77,10 @@ published `v1` files with different art. The source canvases must stay aligned a
 Motion is confined to `js/wayspace-arrival.js` and the landing styles in `css/wayspace.css`.
 CSS timelines move the artwork independently of scrolling. Hover pauses the artwork
 and its two puzzle marks; the keyboard pause button appears on focus. Motion stays
-off below 800px, with coarse pointers, and under reduced motion. The room list and
-artwork frame both use normal document flow. The marks reuse `assets/puzzle-single.svg`.
+off with coarse pointers and under reduced motion. Below 800px the artwork figure,
+caption, and puzzle marks are hidden; the welcome leads directly into the rooms.
+The "Choose a room" shortcut is removed. The wider layout stays in normal document
+flow. The marks reuse `assets/puzzle-single.svg`.
 
 ## Standing rules
 

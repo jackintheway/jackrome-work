@@ -63,13 +63,14 @@ These decisions from Jack supersede broader or dated wording below.
   (633121a), quotes Jack's request, and clearly dates the shortened handoff. It
   reveals recorded material and copies a note; it does not run an AI model.
 - After viewing the arrival, Jack preferred normal page scrolling with independent
-  artwork movement. The figure and room list now scroll together; the artwork's
-  layers move on CSS timelines. Hovering the artwork pauses it. A keyboard pause
-  button appears on focus. Phones, coarse pointers, and reduced-motion users get a
-  still composition. Two copies of the existing puzzle mark float at the artwork's
-  corners. Read MOTION.md for the implementation. This remains a local preview.
-  "Choose a room" appears only in the stacked layout, at widths below 800px.
-  Keep its visibility in the same media query as the artwork/list layout.
+  artwork movement. At 800px and wider, the artwork sits beside the rooms; its
+  layers move on CSS timelines and hover pauses them. A keyboard pause button
+  appears on focus. Coarse pointers and reduced-motion users get a still composition.
+  Two copies of the existing puzzle mark float at the artwork's corners.
+- Below 800px, hide the complete artwork figure, including its caption and puzzle
+  marks. The welcome leads directly into the room list. "Choose a room" is removed
+  at every width. This supersedes the earlier stacked-artwork and shortcut previews.
+  Read MOTION.md for the implementation. This remains a local preview.
 - The handoff demo keeps the dictated request verbatim with the italic caption
   "Spoken aloud using Wispr Flow." Its surrounding explanation speaks as Jack:
   "My request" and "our decisions." The recorded agent-to-agent note still uses

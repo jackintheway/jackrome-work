@@ -18,29 +18,30 @@ context, not permission to perform unfinished work. Do not include private mater
 
 ## Current checkpoint: 2026-09-12, Codex
 
-Jack liked the current arrival and asked for "Choose a room" to appear only when
-the album artwork stacks above the room list. The link is now hidden by default,
-and shown inside the same max-width: 799px media query that stacks the layout.
-At 800px and wider it takes no space and is absent from keyboard navigation.
-The durable rule is recorded in CLAUDE.md.
+Jack approved hiding the artwork on narrow screens so the welcome leads directly
+into the rooms. Below 800px, the complete figure is hidden, including the caption,
+puzzle marks, and pause control. "Choose a room" and its unused styles are removed.
+At 800px and wider, the existing artwork stays beside the room list. The JavaScript
+and image assets are unchanged. This is a layout change, not an image-download
+optimization. CLAUDE.md, MOTION.md, and README.md record the new layout decision.
 
-Verified locally at measured 390px and 799px: link visible, single-column layout.
-At 800px: link hidden, two columns. No horizontal overflow. Clicking the phone
-shortcut reached #roomsTitle with the heading visible below the navigation.
-The temporary viewport override was reset. Diff whitespace checks passed.
+Verified locally at measured 390px and 799px: figure display none, no space reserved,
+room links immediately after the welcome, no shortcut. At 800px the figure is visible
+beside the rooms and animation is enabled. All six room links remain available;
+no horizontal overflow at the checked widths. Inspected phone and wider screenshots,
+reset the temporary viewport override, and passed diff whitespace checks.
 
-Intake HEAD was 46b6c55 on main. This checkpoint accompanies the local responsive
-shortcut save point. No push or deployment. The existing preview remains at
-http://127.0.0.1:56064; port 8642 still serves Jack's first case-study review.
+Intake HEAD was 01b316a on main. This checkpoint accompanies the local simplified
+mobile arrival save point. No push or deployment. Preview: http://127.0.0.1:56064.
+Port 8642 remains available for Jack's first case-study review.
 
-The previous save point contains the autonomous arrival with hover/keyboard pause,
-puzzle marks, first-person handoff framing and Wispr Flow caption, plus the second
-case-study draft and its three-timeline diagram. See that commit's handoff for its
-checks and evidence limits. Both case studies remain under Jack's review.
+46b6c55 contains the autonomous artwork, handoff demo revisions, and second case
+study. Its handoff records their broader checks and evidence limits. The two case
+studies remain under Jack's review; neither was changed in this update.
 
 The pre-existing separate-exhibit handoff section remains unstaged. The 18 unrelated
-untracked files remain untouched: eight Substack images, assets/puzzle-trio.svg,
-and nine files under tools/substack/. Private exhibits remain ignored.
+untracked files are untouched: eight Substack images, assets/puzzle-trio.svg, and
+nine files under tools/substack/. Private exhibits remain ignored.
 
 Next: continue Jack's local review. Publish only after his explicit go, then verify
 the deployed revision and host-specific routing, discovery files, and asset headers.

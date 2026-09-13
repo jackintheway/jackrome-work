@@ -20,8 +20,10 @@ mark sit at opposite corners and share the motion controls.
 Hovering the artwork freezes every moving layer in place. There is no visible
 button underneath. Keyboard focus reveals a pause/resume button inside the frame;
 focus itself pauses motion, and activating the button can keep it paused after
-focus leaves. Below 800px, on coarse pointers, and under reduced motion, the
-composition stays still. The six room links remain plain HTML.
+focus leaves. At 800px and wider, coarse pointers and reduced-motion users get a
+still composition. Below 800px, the complete artwork figure is hidden, including
+its caption and puzzle marks, so the welcome leads directly into the rooms.
+"Choose a room" has been removed. The six room links remain plain HTML.
 
 `js/wayspace-arrival.js` enables the CSS clocks only on eligible devices. An
 IntersectionObserver and document visibility suspend them offscreen or in a hidden
