@@ -18,33 +18,50 @@ context, not permission to perform unfinished work. Do not include private mater
 
 ## Current checkpoint: 2026-09-12, Codex
 
-Jack read and approved both case studies and their prose. He approved making them
-easier to find while keeping the list on AI Portfolio for now. A standalone hub
-can wait until he wants a separate destination for prospective clients or the
-collection covers more kinds of work; three entries is not a prerequisite.
+Jack authorized a local "Find something" guide and refined it while trying it:
+first-person language, including "Email me," and live results without a Find
+button. He also asked to broaden the AI Portfolio opening beyond stopping and
+asking. He approved "How I work with AI." and the introduction of personal tools
+alongside client projects. The following "How these tools are built" heading is
+removed at his request; the introduction begins with "As AI tools advance."
+Its patternTitle anchor remains. Both approved case studies remain untouched.
 
-AI Portfolio now has "See case studies" beside "Book a call," pointing to its
-existing clientTitle heading. Production has the same link in its hero. In
-AI Enablement's "How I work," "See case studies" points to that section, and
-"Explore AI Portfolio" preserves access to the full page. All use existing button
-styles. No new page, nav item, CSS, JavaScript, or case-study copy was added.
-CLAUDE.md records Jack's approval and the hub decision.
+The shared nav opens a native dialog that searches 160 public destinations and
+returns at most three links. The index comes from the sitemap's public HTML and
+published Wayspace/Production catalogues, with curated section links. It excludes
+private materials and full lyric bodies. Questions stay in the browser; no model
+or query logging is involved. Unknown topics, rates, and availability offer email.
+This is word/topic matching and can miss unfamiliar phrasing. README.md documents
+index refresh and tests. The menu collapses through 1080px to fit the new control.
 
-Native clicks from all three pages reached the intended section. Keyboard Enter
-activated the portfolio shortcut. Verified 1280px desktop and measured 390px phone
-layouts; buttons wrap without overflow and the destination heading clears the
-fixed navigation. Inspected the three mobile arrivals side by side. Markup, unique
-IDs, metadata, external-link rules, copy checks, and diff whitespace passed. Both
-case studies, Production credits, and styles remain byte-identical to intake HEAD.
-The temporary browser tab and phone harness were removed.
+Added entry IDs to the Speaking talk, 14 spoken-prose entries, and 9 Production
+pieces so results arrive at the work. All 141 catalogue entries and their rendered
+content were verified unchanged except IDs. Updated portfolio metadata and the
+1200x630 v2 share card; the existing published image remains intact. Its renderer
+now writes the versioned filename. CLAUDE.md records the current decisions.
 
-Intake HEAD was 7f87212 on main. This checkpoint accompanies the local case-study
-navigation save point. No push or deployment. Preview: http://127.0.0.1:56064.
-Port 8642 remains available for the first case study.
+Verification: 24 search tests passed; current-index, JavaScript syntax, copy,
+metadata, unique IDs, external links, whitespace, and canonical-token parity
+checks passed. All 75 public pages plus 404 load the shared nav. Browser checks
+covered desktop, the 1081px desktop boundary, and measured 390px/320px phone
+layouts; live search, example buttons, exact album/talk destinations, first-person
+fallback, and Escape/focus return were checked. The new portfolio opening was
+inspected at 390px and a wider window, and its share card was inspected after
+rendering. No full assistive-technology audit was performed.
+
+Intake HEAD was 455c5c6 on main. This checkpoint accompanies the local site-guide
+and portfolio-opening save point. No push or deployment. Main preview:
+http://127.0.0.1:56064. Port 8642 remains available. The phone harness and temporary
+failure-test server were removed; the user-facing preview uses the main server.
 
 Jack's updated assets/img/wayspace-straight.svg stays untouched and unstaged, as
 does the pre-existing separate-exhibit handoff above. The 18 unrelated untracked
 Substack and puzzle assets remain untouched. Private exhibits remain ignored.
 
-Next: publish only after Jack's explicit go, then verify the deployed revision
-and host-specific routes. The approved case-study copy needs no further rewrite.
+Jack also supplied the original manifesto video, AYzzTeSOF4Q. Its timestamped
+English auto-captions were retrieved to a temporary file, outside the repository.
+No manifesto text or Gemini summary has been added to the website.
+
+Next: Jack can try the guide with his own questions. The opening is approved.
+Publish only after his explicit go, then verify the deployed revision and
+host-specific routing/cache behavior.

@@ -38,6 +38,7 @@
 const WORK = [
   {
     title: "Light The World: Celebrating 50 Years of A Course in Miracles",
+    anchor: "light-the-world",
     client: "Foundation for Inner Peace",
     clientUrl: "https://acim.org",
     meta: "Livestream celebration, October 2025, 5.5 hours",
@@ -48,6 +49,7 @@ const WORK = [
   },
   {
     title: "What Does It Mean to Be Truly Helpful? with Jon Mundy, Ph.D.",
+    anchor: "truly-helpful-jon-mundy",
     client: "Foundation for Inner Peace",
     clientUrl: "https://acim.org",
     meta: "Interview, April 2026",
@@ -58,6 +60,7 @@ const WORK = [
   },
   {
     title: "Meet The Speaker: Loch Kelly",
+    anchor: "meet-loch-kelly",
     client: "Center for Awakening",
     clientUrl: null,
     meta: "Interview, 2024",
@@ -68,6 +71,7 @@ const WORK = [
   },
   {
     title: "Interview with the Awakening Mind film makers",
+    anchor: "awakening-mind-filmmakers",
     client: "Awakening Mind Films",
     clientUrl: null,
     meta: "Panel interview, 2024, three guests",
@@ -97,6 +101,7 @@ const WORK = [
   },
   {
     title: "What is Tribly? Collection walkthrough",
+    anchor: "tribly-walkthrough",
     client: "Tribly",
     clientUrl: null,
     meta: "Product walkthrough, 2023",
@@ -107,6 +112,7 @@ const WORK = [
   },
   {
     title: "Take A Turn At the Wheel",
+    anchor: "take-a-turn-at-the-wheel",
     client: "Potters Guild of Frederick",
     clientUrl: null,
     meta: "Class recap, 2023",
@@ -117,6 +123,7 @@ const WORK = [
   },
   {
     title: "Raku Firing",
+    anchor: "raku-firing",
     client: "Potters Guild of Frederick",
     clientUrl: null,
     meta: "Event recap, February 2023",
@@ -127,6 +134,7 @@ const WORK = [
   },
   {
     title: "Wood Firing",
+    anchor: "wood-firing",
     client: "Potters Guild of Frederick",
     clientUrl: null,
     meta: "Event recap, April 2023",
@@ -137,6 +145,7 @@ const WORK = [
   },
   {
     title: "Hands On Health Acupuncture",
+    anchor: "hands-on-health-acupuncture",
     client: "Maureen Quinn",
     clientUrl: null,
     meta: "Website, still live",

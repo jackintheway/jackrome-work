@@ -57,6 +57,39 @@ missing or duplicate canonicals. `robots.txt` links to the result. There is stil
 build step. Netlify picks up `404.html` for missing paths and applies the document
 redirects from `netlify.toml`; a basic Python server does not emulate those rules.
 
+
+## Find something
+
+The shared header opens a browser search panel. It returns up to three links as
+someone types, with "Email me" when it cannot find a close match. Queries stay in
+memory on the current page. No AI service, query logging, or account is involved.
+The guide loads only after someone opens it; normal navigation works independently.
+
+After public copy or catalogue changes, refresh the checked-in index:
+
+```
+python3 tools/build-guide-index.py
+python3 tools/build-guide-index.py --check
+node --test tools/test-guide-search.mjs
+```
+
+The generator needs Python 3 and Node. It reads only canonical pages listed in the
+sitemap and the public arrays in js/wayspace.js and js/production.js. It checks
+paths and section anchors. Lyrics are discoverable through titles and catalogue
+metadata, not their full text. tools/guide-destinations.json supplies selected
+section links and topic vocabulary. Add durable anchors to new catalogue entries.
+Private archives, exhibits, and project instructions are never index sources.
+
+The UI lives in js/site-guide.js and css/site-guide.css; js/guide-search.js holds
+the matching rules. MiniSearch 7.2.0 is vendored with its license under js/vendor/.
+The guide matches words and topics, so it can miss questions phrased differently.
+Its example-query tests cover key routes, typos, unsupported requests, and result
+limits. Questions about pricing or current availability are directed to email.
+
+The AI Portfolio opening and metadata now use "How I work with AI." Its share-card
+source remains tools/og/card-ai-portfolio.html; render.sh writes the versioned
+og-ai-portfolio-v2.png so the previously published immutable image stays intact.
+
 ## The recorded handoff and Wayspace arrival
 
 `ai-portfolio.html#handoff-demo` presents the saved September 12 link-update checkpoint.

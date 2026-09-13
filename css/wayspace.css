@@ -1946,5 +1946,5 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 }
 
 /* Room-to-room links land below the sticky navigation. */
-.work-card[id], .entry[id], #writingFilters { scroll-margin-top: var(--space-10); }
+.work-card[id], .entry[id], .writing-card[id], #writingFilters { scroll-margin-top: var(--space-10); }
 .work-card:target, .entry:target { outline: var(--border) solid var(--ws-blue); outline-offset: var(--space-1); }

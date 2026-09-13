@@ -1,0 +1,18 @@
+[
+  {"url":"/ai-enablement","keywords":"artificial intelligence AI training teaching nonprofit non-profit small team business learn workshop beginner guidance automate workflow assistance consulting overwhelmed"},
+  {"url":"/production","keywords":"hire editor editing video audio podcast webinar livestream filming recording website production help service"},
+  {"url":"/about","keywords":"biography bio background experience who Jack Rome Maryland"},
+  {"url":"/ai-portfolio","keywords":"AI tools skills Claude Code Codex agents personal knowledge systems Obsidian portfolio"},
+  {"url":"/ai-portfolio#clientTitle","title":"Case studies","description":"Projects I worked through with clients: what we needed, what we tried, what changed, and how we checked it.","category":"AI Portfolio","keywords":"case study examples client work automation evidence results"},
+  {"url":"/ai-portfolio#handoff-demo","title":"See /handoff at work","description":"A recorded example from this website: the request, the files checked, and the note the next agent can use.","category":"AI Portfolio","keywords":"handoff demo demonstration Claude Code Codex agents sessions context transfer"},
+  {"url":"/case-studies/two-track-class-edit-automation","keywords":"Claude Code premiere transcript teaching class two track editing automation case study"},
+  {"url":"/case-studies/event-remaster-and-language-conform","keywords":"Codex remaster event editing automation After Effects editable graphics card Spanish translation audio case study"},
+  {"url":"/wayspace/music","keywords":"listen music songs albums discography releases Spotify SoundCloud"},
+  {"url":"/wayspace/video","keywords":"watch video live music performances music videos"},
+  {"url":"/wayspace/design#lineageTitle","title":"The Wayspace design system","description":"How the Wayspace visual language came to be.","category":"Design","keywords":"design system logo puzzle artwork colors palette typography tools"},
+  {"url":"/wayspace/writing","keywords":"writing lyrics poetry spoken prose themes forgiveness healing love surrender"},
+  {"url":"/wayspace/writing?collection=wayspace#writingFilters","title":"Wayspace album lyrics","description":"Lyrics from the Wayspace album.","category":"Writing","keywords":"Wayspace words album lyrics collection"},
+  {"url":"/wayspace/writing?collection=feivel-speaks#writingFilters","title":"Feivel Speaks album lyrics","description":"Lyrics from Feivel Speaks.","category":"Writing","keywords":"Feivel Speaks words album lyrics collection"},
+  {"url":"/wayspace/speaking","keywords":"talks speaker spiritual teaching events A Course in Miracles ACIM"},
+  {"url":"/wayspace/podcasts","keywords":"podcast guest interviews conversation listening"}
+]

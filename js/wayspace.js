@@ -768,6 +768,7 @@ const SPEAKING = [
      what spares a visitor the preamble. */
   {
     title: "The Gift of Uselessness",
+    anchor: "gift-of-uselessness",
     host: "SpeakEasy Spiritual Community",
     role: "Speaker",
     date: "August 30, 2026",
@@ -1462,6 +1463,7 @@ const WRITING = [
   },
   {
     title: "You are safe with me",
+    anchor: "you-are-safe-with-me",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1472,6 +1474,7 @@ const WRITING = [
   },
   {
     title: "Your healing will heal others effortlessly",
+    anchor: "your-healing-will-heal-others-effortlessly",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1482,6 +1485,7 @@ const WRITING = [
   },
   {
     title: "How to remind yourself that you are safe",
+    anchor: "how-to-remind-yourself-that-you-are-safe",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1492,6 +1496,7 @@ const WRITING = [
   },
   {
     title: "How to forgive someone",
+    anchor: "how-to-forgive-someone",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1502,6 +1507,7 @@ const WRITING = [
   },
   {
     title: "Why community is so important",
+    anchor: "why-community-is-so-important",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1512,6 +1518,7 @@ const WRITING = [
   },
   {
     title: "Stop tinkering during meditation",
+    anchor: "stop-tinkering-during-meditation",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1522,6 +1529,7 @@ const WRITING = [
   },
   {
     title: "One day you won’t need discipline",
+    anchor: "one-day-you-won-t-need-discipline",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1532,6 +1540,7 @@ const WRITING = [
   },
   {
     title: "Make time your friend",
+    anchor: "make-time-your-friend",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1542,6 +1551,7 @@ const WRITING = [
   },
   {
     title: "When should you take advice?",
+    anchor: "when-should-you-take-advice",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1552,6 +1562,7 @@ const WRITING = [
   },
   {
     title: "This is devotional non-duality",
+    anchor: "this-is-devotional-non-duality",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1562,6 +1573,7 @@ const WRITING = [
   },
   {
     title: "How your keys are inside you",
+    anchor: "how-your-keys-are-inside-you",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1572,6 +1584,7 @@ const WRITING = [
   },
   {
     title: "How to handle the gross parts of yourself",
+    anchor: "how-to-handle-the-gross-parts-of-yourself",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1582,6 +1595,7 @@ const WRITING = [
   },
   {
     title: "This is what you deserve",
+    anchor: "this-is-what-you-deserve",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1592,6 +1606,7 @@ const WRITING = [
   },
   {
     title: "A poem just for you",
+    anchor: "a-poem-just-for-you",
     kind: "Short",
     meta: "Short video · 2023",
     href: null,
@@ -1878,7 +1893,7 @@ function speakingEntry(item) {
       : "";
 
   return `
-    <li class="entry">
+    <li class="entry"${item.anchor ? ` id="${escapeHtml(item.anchor)}"` : ""}>
       <div class="entry-body">
         ${placeholderFlag(item)}
         <span class="role-tag">${escapeHtml(item.role)}</span>
@@ -1961,7 +1976,7 @@ function writingCard(item) {
     : "";
 
   return `
-    <li class="writing-card" data-collection="${escapeHtml((WRITING_COLLECTIONS.find(c => item.meta.startsWith(c.prefix)) || {}).slug || "")}" data-kind="${escapeHtml(item.kind)}" data-themes="${escapeHtml((item.themes || []).join(" "))}">
+    <li class="writing-card"${item.anchor ? ` id="${escapeHtml(item.anchor)}"` : ""} data-collection="${escapeHtml((WRITING_COLLECTIONS.find(c => item.meta.startsWith(c.prefix)) || {}).slug || "")}" data-kind="${escapeHtml(item.kind)}" data-themes="${escapeHtml((item.themes || []).join(" "))}">
       ${placeholderFlag(item)}
       <span class="role-tag">${escapeHtml(item.kind)}</span>
       <h4 class="writing-card-title">${title}</h4>

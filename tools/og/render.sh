@@ -25,6 +25,8 @@ fail=0
 for card in tools/og/card-*.html; do
   name="$(basename "$card" .html)"           # card-home
   out="assets/img/og-${name#card-}.png"      # assets/img/og-home.png
+  # Preserve the published image: immutable URLs need a new filename.
+  if [ "$name" = "card-ai-portfolio" ]; then out="assets/img/og-ai-portfolio-v2.png"; fi
 
   "$CHROME" --headless --disable-gpu --hide-scrollbars \
     --window-size=1200,630 --virtual-time-budget=4000 \

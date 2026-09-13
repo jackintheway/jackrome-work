@@ -99,6 +99,29 @@ These decisions from Jack supersede broader or dated wording below.
   "Explore AI Portfolio" button. Keep the existing section title and main navigation.
 
 
+- Jack authorized a local "Find something" guide. It searches public pages and
+  published catalogue entries, returns at most three local destinations, and offers
+  email when it cannot find a close match. It makes no AI calls and does not store
+  or transmit queries. No private exhibits, source archives, or agent notes belong
+  in its index. Pricing and current availability questions go to email.
+- The guide speaks in first person: "Email me" and "Prefer to ask me?" Results
+  update as the visitor types. Jack preferred removing the redundant Find button.
+  It opens on request from the shared header, never automatically.
+- The new control moves the collapsed navigation breakpoint to 1080px. nav.js
+  adds it centrally to every public page and the 404 page. The guide uses local
+  MiniSearch, an accessible native dialog, and the existing design tokens.
+  Refresh its checked-in public index with tools/build-guide-index.py after copy
+  or catalogue changes. README.md records the checks and source boundaries.
+- Jack noted that the portfolio has grown beyond tools built to stop and ask.
+  Jack approved "How I work with AI." with personal tools and
+  client projects introduced together. The specific approval boundaries remain
+  in their existing sections. Metadata and the versioned v2 share card follow
+  the new opening; the previous published image remains untouched.
+- The portfolio introduction goes straight to "As AI tools advance" after the
+  hero. Jack removed "How these tools are built" because it repeated the hero
+  framing. Keep patternTitle as a destination on the introductory block.
+
+
 ---
 
 ## Status: every page is built and deployed. What's left is content, not construction (2026-08-24)
@@ -1299,7 +1322,8 @@ podcast is filed under client work but no client is named in the source material
 
 ## The nav (restructured 2026-08-22)
 
-Six items, one row on desktop, a button below 860px.
+Six links, one row on desktop, a collapsed menu through 1080px. The September 12
+site-guide control increased the earlier 860px breakpoint.
 
 **Home was dropped.** The wordmark already links to `/`, so "Home" was a
 duplicate of the thing sitting beside it. On `/` the wordmark carries
@@ -1333,9 +1357,10 @@ about 15% of a phone screen, before any content. It is 74px now. The original
 objection is answered by the panel showing every link rather than nesting any of
 them behind a second tap.
 
-`js/nav.js` is loaded on all twelve pages and handles the button, Escape,
-outside clicks, and clearing the open class when the window widens past the
-breakpoint. Any nav change is a twelve-file edit, so it is worth doing once.
+`js/nav.js` is loaded on all 75 public pages and the 404 page. It handles the menu,
+Escape, outside clicks, and clearing the open class when the window widens past
+the breakpoint. It also inserts the shared site-guide control. Navigation links
+remain in each page's HTML; the guide itself has one implementation.
 
 ---
 

@@ -47,10 +47,10 @@
    358px of room, so they wrapped to two rows and the nav took 135px,
    about 15% of a phone screen, before any content.
 
-   So below 860px it collapses to a button. The panel shows every link
+   With the guide control, below 1081px it collapses to a button. The panel shows every link
    rather than nesting them behind a second tap, which keeps the
    original objection answered: the structure is one tap away, not
-   hidden. Above 860px nothing changed and the row never wraps.
+   hidden. Above 1080px the links and guide share one row.
    ============================================================ */
 .site-nav {
   position: sticky;
@@ -125,7 +125,7 @@
    Hidden above the breakpoint, where the row fits on its own. */
 .nav-toggle { display: none; }
 
-@media (max-width: 860px) {
+@media (max-width: 1080px) {
   .site-nav {
     flex-wrap: nowrap;
     align-items: center;
@@ -534,7 +534,7 @@
   border-bottom-color: var(--ws-orange);
 }
 /* A jumped-to heading lands clear of the sticky nav. */
-.section-title { scroll-margin-top: calc(var(--space-9) + var(--space-4)); }
+.section-title, #patternTitle { scroll-margin-top: calc(var(--space-9) + var(--space-4)); }
 
 /* ============================================================
    CALLOUT
