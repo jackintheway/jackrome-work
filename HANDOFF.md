@@ -120,12 +120,28 @@ be deleted after the pilot; the Netlify key will be a separate one. Pilot 1
 found three firm disagreements; prompts tuned to audit-prompts-2; pilot 2 hit
 39 of 39 with no failures. DECISIONS.md L2 records both. Reports in _private/.
 
-Not done, in order: netlify.toml host rules and esbuild bundler setting for the
-function; Netlify Blobs store and Forms notifier with the HMAC signature; the static
-Forms registration in HTML; operator export and reconciliation command; rate
-limit config; share card; deploy preview and live verification. Account steps
-(API workspace, spending limit, domain alias, DNS CNAME) happen with Jack at
-the keyboard. Publication still needs Jack's explicit go.
+Built after the pilot (commit 72b3f91): Netlify Blobs store (site-wide,
+strong reads, one store per deploy context, create-once with read-back, status
+side record), Forms notifier posting a signed two-layer summary to the site's
+own /audit/ path, the hidden form registration in audit/index.html, the
+function's rate limit (60 per 60 s per IP), esbuild bundler setting, host rules
+for audit.jackrome.work, tools/audit-export.mjs (export, reconcile, verify),
+and netlify/functions/score/OPERATOR.md. Fifteen tests pass, including a fake
+Blobs client that lies about success (issue 741) being caught by read-back. The
+five copy checks from .claude/skills/check-copy pass on the new page; its two
+absolute links to jackrome.work stay same-tab by the standing rule.
+
+Netlify, read through the connector on 2026-09-13: project jackrome-work, ID
+7665c202-431b-4554-8443-bd40f27b0647, team Wayspace; Forms shows "not enabled"
+for the site and must be switched on in the dashboard before the summary form
+is detected.
+
+Not done, in order: with Jack, the function's own Anthropic key, the summary
+signing secret, env vars scoped to functions, Forms enabled, the domain alias
+and DNS CNAME; share card og-audit.png; a deploy preview and live verification
+of both hostnames, the function, Forms delivery, and the rate limit.
+Publication still needs Jack's explicit go. Candidate for later, not planned:
+upgrading the site's "Find something" guide to a model-backed helper.
 
 Untouched and still local: the separate-exhibit handoff section above, Jack's
 modified working SVG, and the untracked Substack and puzzle files.
