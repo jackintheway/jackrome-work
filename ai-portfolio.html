@@ -81,8 +81,8 @@
 
       <div class="prose prose-lg">
         <p>As AI tools advance, the question of using these tools is much less about technical ability and much more about willingness.</p>
-        <p>But most people I talk to that want to work with AI have the same worry about it, and it isn't really about capability. They're afraid of finding out afterward that something went out in their name that they never approved of, or wouldn't have been comfortable putting in front of other people.</p>
-        <p>Every one of these reads first and changes nothing, shows me what it found, and then it waits. <strong>Nothing gets built until I say so. What does get written lands in one folder, and I empty it myself.</strong></p>
+        <p>But most people I talk to that want to work with AI have the same worry about it. They're afraid of finding out afterward that something went out in their name that they never approved of, or wouldn't have been comfortable putting in front of other people.</p>
+        <p>The boundaries are curated to the task. Tools that read my notes can report what they find without changing the source. New material for my Obsidian vault goes into a folder called Compost, which I review myself. A save point changes Git history; a handoff can be a note in chat or an update to a project's existing handoff file. <strong>Each tool spells out where it can write and which actions need my approval.</strong></p>
       </div>
     </section>
 
@@ -145,7 +145,7 @@
         <p>Where a line pulls a few sources together and doesn't have one origin, it says so, so you can always tell what came from your material and what got added to connect it.</p>
 
         <h3>/handoff</h3>
-        <p>A long piece of work usually doesn't finish in one sitting. Handoff writes the note that lets the next session pick up without losing what this one learned: what got decided, what got ruled out and why, what's still open, and the one next thing to do.</p>
+        <p>A long piece of work usually doesn't finish in one sitting. Handoff writes the note that lets the next session pick up without losing what this one learned: what got decided, what got ruled out and why, what's still open, and the one next thing to do. That can be a note I carry into another chat or a shared file that Claude Code and Codex both read. I use both, so the context needs to travel between them.</p>
         <p>It checks its own claims against the files before it writes them down, because notes like this go stale and nobody notices until they've already acted on one. It also marks which lines are verified and which are just the last session's read, so an assumption can't get laundered into a fact three sessions later.</p>
 
         <h3>/ingest-transcript</h3>
@@ -182,26 +182,15 @@
       </div>
     </section>
 
-    <!-- CLIENT WORK
-         The third category on this site. /production names its clients,
-         everything else on this page is a tool Jack built for himself,
-         and these are client jobs that cannot be named at all. They sit
-         here rather than on /production because what survives them is
-         method rather than a finished video, and they sit after the tool
-         lists rather than among them because the page's set of tools is
-         settled and does not change without Jack. See CLAUDE.md.
-
-         Rendered from js/case-studies.js. Adding one is adding an object
-         there, not editing this markup. -->
+    <!-- Case studies describe the work and its evidence. -->
     <section class="section" aria-labelledby="clientTitle">
       <div class="section-header">
-        <h2 class="section-title" id="clientTitle">The same rules, on client work</h2>
+        <h2 class="section-title" id="clientTitle">How this works with clients</h2>
         <div class="section-rule" aria-hidden="true"></div>
       </div>
 
       <div class="prose">
-        <p>Everything above I built for myself. That's an honest place to start, and it isn't the whole test. The harder version is someone else's work, someone else's deadline, and a constraint I didn't get to pick.</p>
-        <p>These are those. The client, their subject and their people stay out of it by agreement, so what's here is the reasoning and the method. Each one gets written up the same way: what the problem actually was, what I tried and threw out, what went wrong, what got verified and how it was checked, and what I still don't know.</p>
+        <p>The tools above support my own work. These case studies follow projects I worked through with clients: what we needed, what we tried, what changed, and how we checked it.</p>
       </div>
 
       <ul class="offer-grid" id="caseStudyGrid"></ul>
@@ -231,7 +220,7 @@
         </article>
 
         <article class="statement-card card-green">
-          <p><strong>Anything irreversible waits for a person.</strong> Filing, sending, writing, syncing: the automation pauses before any of it and asks. That's what stops one mistake from cascading through every step after it, and it's what the section above is describing.</p>
+          <p><strong>Anything irreversible waits for a person.</strong> The approval steps depend on the task and the permission already given. A report can go into an agreed folder; sending it to someone or changing the source calls for its own permission.</p>
         </article>
 
         <article class="statement-card card-green">

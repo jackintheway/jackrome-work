@@ -322,7 +322,6 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .room-hero-eyebrow {
   color: var(--room-ink);
   margin: 0 0 var(--space-4);
-  opacity: 0.8;
 }
 .room-hero-title {
   font-size: var(--fs-h1);
@@ -1836,3 +1835,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
      before anything else has to give up width. */
   .player-link { flex: 1 1 100%; }
 }
+
+/* Room-to-room links land below the sticky navigation. */
+.work-card[id], .entry[id], #writingFilters { scroll-margin-top: var(--space-10); }
+.work-card:target, .entry:target { outline: var(--border) solid var(--ws-blue); outline-offset: var(--space-1); }

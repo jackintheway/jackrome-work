@@ -74,7 +74,7 @@
   text-decoration: none;
   margin-right: auto;
 }
-.nav-mark:hover { color: var(--ws-orange-deep); }
+.nav-mark:hover { color: var(--link); }
 
 .nav-links {
   display: flex;
@@ -97,14 +97,14 @@
               border-color var(--dur-fast) var(--ease-out);
 }
 .nav-link:hover {
-  color: var(--ws-orange-deep);
+  color: var(--link);
   border-bottom-color: var(--ws-orange);
 }
 
 /* The page you are already on. aria-current does the work for screen
    readers; this makes it visible for everyone else. */
 .nav-link[aria-current="page"] {
-  color: var(--ws-orange-deep);
+  color: var(--link);
   border-bottom-color: var(--ws-black);
 }
 
@@ -414,7 +414,7 @@
               border-color var(--dur-fast) var(--ease-out);
 }
 .page-contents a:hover {
-  color: var(--ws-orange-deep);
+  color: var(--link);
   border-bottom-color: var(--ws-orange);
 }
 /* A jumped-to heading lands clear of the sticky nav. */
@@ -633,7 +633,7 @@ ul.offer-grid {
               border-color var(--dur-fast) var(--ease-out);
 }
 .offer-link:hover {
-  color: var(--ws-orange-deep);
+  color: var(--link);
   border-bottom-color: var(--ws-orange);
 }
 
@@ -812,4 +812,69 @@ ul.offer-grid {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Diagrams explain the edit without exposing client media. */
+.edit-diagram {
+  margin: var(--space-6) 0;
+  padding: var(--space-5);
+  border: var(--rule);
+  background: var(--ws-paper-2);
+  box-shadow: var(--pop-yellow);
+}
+.edit-diagram figcaption {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-5);
+}
+.edit-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+  counter-reset: edit-step;
+}
+.edit-stages li { counter-increment: edit-step; }
+.edit-stages li::before {
+  content: counter(edit-step);
+  display: block;
+  width: var(--space-6);
+  text-align: center;
+  margin-bottom: var(--space-3);
+  background: var(--ws-orange);
+  color: var(--ws-black);
+  border: var(--rule);
+  font-weight: var(--fw-bold);
+}
+.edit-stages strong, .edit-stages span { display: block; }
+.edit-stages span { margin-top: var(--space-2); }
+.edit-tracks { margin-top: var(--space-5); }
+.edit-track {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 1.2fr);
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  align-items: stretch;
+  font-size: var(--fs-small);
+}
+.edit-track b { align-self: center; }
+.edit-track span {
+  padding: var(--space-2);
+  background: var(--ws-blue);
+  color: var(--ws-white);
+  border: var(--rule);
+  text-align: center;
+}
+.edit-track .track-hidden {
+  background: var(--ws-paper);
+  color: var(--ws-black);
+  border-style: dashed;
+}
+.speaker-track span { background: var(--ws-green); color: var(--ws-black); }
+.diagram-note { font-size: var(--fs-small); margin: var(--space-4) 0 0; }
+@media (max-width: 600px) {
+  .edit-stages { grid-template-columns: 1fr; }
+  .edit-track { grid-template-columns: 1fr repeat(3, 1.3fr); }
+  .edit-track span { padding: var(--space-2) var(--space-1); }
 }

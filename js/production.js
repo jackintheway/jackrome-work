@@ -78,6 +78,7 @@ const WORK = [
   },
   {
     title: "Crossing the Bridge",
+    anchor: "crossing-the-bridge",
     client: "Tribly",
     clientUrl: null,
     meta: "Podcast series, 2023",
@@ -196,11 +197,11 @@ function workCard(item) {
     : "";
 
   return `
-    <li class="work-card">
+    <li class="work-card"${item.anchor ? ` id="${escapeHtml(item.anchor)}"` : ""}>
       ${media}
       <div class="work-body">
         <div class="work-roles">${roleTags(item.roles)}</div>
-        <h3 class="work-title">${escapeHtml(item.title)}</h3>
+        <h3 class="work-title">${escapeHtml(item.title).replaceAll("A Course in Miracles", "<em>A Course in Miracles</em>")}</h3>
         <p class="work-meta">${clientLine(item)}${escapeHtml(item.meta)}</p>
         ${item.note ? `<p class="work-note">${escapeHtml(item.note)}</p>` : ""}
         ${out}

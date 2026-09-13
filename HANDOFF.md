@@ -20,47 +20,61 @@ context, not permission to perform unfinished work. Do not include private mater
 
 ### What Jack requested and decided
 
-Jack approved a portable orientation for `claude-code-projects` and a shared
-handoff for this website. Projects can be worked on by either Claude Code or Codex
-without moving them between workspaces. This session establishes that continuity;
-no website design or content changes were requested.
+Implement the approved website audit fixes and Red Pen marks, rebuild the editing
+case study from the full working-session transcript, improve cross-room links,
+and create the website-walk skill. Durable decisions are in the current editorial
+section near the top of `CLAUDE.md`. Publication still needs Jack's go.
 
-### Changes in this checkpoint
+### Current work
 
-- Added the parent folder's `AGENTS.md` on The Key. It travels with the drive but
-  is outside this repository and is not included in the website's Git history.
-- Added this repository's `AGENTS.md` for Codex and other visiting agents.
-- Added the shared handoff and a start-of-session pointer near the top of
-  `CLAUDE.md`. Existing project history and decisions remain intact.
+The first local save point covers service and portfolio claim corrections, the
+case-study rewrite and diagrams, lyric line-break repairs, contrast, book-title
+italics, call expectations, sitemap/robots, and the branded 404. No client identities
+or source media were added to the case study. Public Production records and the
+portfolio sentence Jack wrote remain intact.
 
-### Baseline and publication state
+Cross-room links and Writing album filters are implemented and verified locally,
+but are being saved separately with the documentation updates. They are the only
+remaining implementation save point from this batch.
 
-- Branch at intake: `main`. HEAD and the local `origin/main` ref both pointed to
-  `43da541f4eaaa98c26f032b9ecf8525ba506fbf5`. No fetch or live-site check was run.
-- Recent commits already include September 12 AI Enablement copy and AI Portfolio
-  and case-study refinements. Some August status notes in `CLAUDE.md` and `README.md`
-  predate that work; verify them before treating them as current tasks.
-- This checkpoint accompanies the local documentation save point titled
-  `Add shared guidance and handoff for Claude Code and Codex`.
-  Find its hash with `git log -1 --format='%h %s' -- HANDOFF.md`.
-- No push or deployment was performed for this setup. Publication remains pending
-  Jack's go; the live site was not verified in this session.
+### Verification and publication state
 
-### Existing work to preserve
+- 75 pages checked at a measured 390px width without horizontal overflow; the
+  14 main/recovery pages also checked at 1440px. New diagrams inspected visually.
+- All 16 cross-room links reached their intended rendered destinations. Writing
+  showed 6 explicitly catalogued Feivel Speaks lyrics and 12 Wayspace lyrics;
+  kind/theme combinations, empty results, and clearing the album filter passed.
+- Lyric changes preserve all non-whitespace content except the two requested
+  lowercase masks in Still Distracted. The four design-token files match source.
+  All 10 Production data records match the baseline, apart from an added anchor.
+- JavaScript syntax, static content checks, 74 sitemap URLs, the 1200x630 404 share
+  image, and the case-study excluded-term scan passed. No console warnings/errors
+  appeared in the local checks. No formal accessibility certification is implied.
+- Local checks do not establish Netlify behavior. The new document redirects,
+  sitemap, robots and 404 need live HTTP checks after an authorized deployment.
+- No push or deployment. Prior HEAD at intake was `2a75b61` on `main`.
 
-At intake there were no tracked modifications, but 18 untracked files were already
-present: `assets/img/substack-banner-{a,b,c,d,e}.png`,
-`assets/img/substack-cover-{f,g,h}.png`, `assets/puzzle-trio.svg`, and nine files
-under `tools/substack/` (its README and eight HTML sources). These were left
-untouched and excluded from the documentation commit. Their completion and
-publication status have not been assessed.
+### Existing work and separate deliverable
 
-### Verification and next step
+The 18 pre-existing untracked files remain untouched: the Substack image variants,
+`assets/puzzle-trio.svg`, and nine files under `tools/substack/`. Do not stage them.
 
-Documentation checks cover file references, whitespace, preservation of the
-existing `CLAUDE.md` body, and the exact files included in the save point. No
-website code changed, so no browser or application tests were needed.
+The new `website-walk` skill was installed and validated in Codex's local skills
+folder. It is outside this public repository and was not added to the public tool
+selection. It audits read-only and uses Jack's Voice and Red Pen for editing review.
 
-The setup is complete. Continue with the website evaluation or change Jack selects
-next. No particular redesign, content revision, old deadline, or deployment has
-been authorized by this handoff.
+### What remains open
+
+A public demonstration of an existing skill and artwork for the Wayspace arrival
+remain proposals. The recommendation is a handoff walkthrough using this website's
+own work, and a composition from the already separated Wayspace album artwork.
+Neither has been built or authorized for publication.
+
+The private source transcript was read in chat and is not copied into this repo.
+Its final recorded check confirms two late gaps, not their final closure. The case
+study states that evidence limit; do not convert the prediction into a verified result.
+
+### Next action
+
+Finish the cross-room navigation save point, then put the local preview in front of
+Jack for review before asking for a publication go.

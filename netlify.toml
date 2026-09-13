@@ -180,6 +180,18 @@
 # is readable on GitHub either way. The point is that these are not
 # pages and should not answer on the site.
 [[redirects]]
+  from = "/AGENTS.md"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF.md"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
   from = "/CLAUDE.md"
   to = "/"
   status = 302
