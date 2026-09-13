@@ -19,7 +19,7 @@ import { createHash, randomUUID } from "node:crypto";
 import { SCHEMA_VERSION, validateAnswers, LIMITS } from "../../../audit/schema.mjs";
 import { score, flags, RUBRIC_VERSION } from "./lib/scoring.mjs";
 import { assembleResult, FOLLOWUP_QUESTIONS, TEMPLATE_VERSION } from "./lib/copy.mjs";
-import { createProviders, ProviderError } from "./lib/providers.mjs";
+import { createProviders, ProviderError, PROMPT_VERSION } from "./lib/providers.mjs";
 import { createStore, createNotifier } from "./lib/store.mjs";
 
 const BODY_LIMIT = 64 * 1024;
@@ -165,6 +165,7 @@ export function createHandler(deps) {
       schema_version: SCHEMA_VERSION,
       rubric_version: RUBRIC_VERSION,
       template_version: TEMPLATE_VERSION,
+      prompt_version: PROMPT_VERSION,
       privacy_notice_version: PRIVACY_NOTICE_VERSION,
       submission_id,
       receipt,

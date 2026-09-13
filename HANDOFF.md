@@ -112,8 +112,15 @@ to _private/. The key is read only from ANTHROPIC_API_KEY in the shell that
 runs it; a fake key was confirmed to reach the API and map to an auth error. No
 real key exists yet; no credits purchased; no live model call has been made.
 
-Not done, in order: Anthropic account and workspace steps with Jack (then the
-pilot run); netlify.toml host rules and esbuild bundler setting for the
+Account steps done by Jack at the keyboard on 2026-09-13: Console workspace
+"audit-jackrome" with the $10 monthly spend limit set, $20 of credits bought
+(auto-reload declined on purpose), a 30-day key scoped to that workspace for
+the local pilot only. The key was exposed in a pasted screenshot, so it is to
+be deleted after the pilot; the Netlify key will be a separate one. Pilot 1
+found three firm disagreements; prompts tuned to audit-prompts-2; pilot 2 hit
+39 of 39 with no failures. DECISIONS.md L2 records both. Reports in _private/.
+
+Not done, in order: netlify.toml host rules and esbuild bundler setting for the
 function; Netlify Blobs store and Forms notifier with the HMAC signature; the static
 Forms registration in HTML; operator export and reconciliation command; rate
 limit config; share card; deploy preview and live verification. Account steps
