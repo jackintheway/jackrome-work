@@ -17,6 +17,9 @@
      node tools/audit-export.mjs --id <uuid>     one record
      node tools/audit-export.mjs --reconcile     list unacknowledged summaries
      node tools/audit-export.mjs --verify file   verify a pasted summary (JSON of fields)
+     node tools/audit-export.mjs --delete <uuid> remove one record and its status entry
+                                               (the retention step; asks nothing, so
+                                               export first if you want a copy)
 
    Output lands in _private/exports/<timestamp>/, which is gitignored.
    Delete exports at the monthly review along with their records. */
@@ -50,6 +53,15 @@ if (!process.env.NETLIFY_SITE_ID || !process.env.NETLIFY_AUTH_TOKEN) {
 const env = { ...process.env, CONTEXT: process.env.AUDIT_CONTEXT || "production" };
 const store = createBlobsStore(env);
 console.log("Store: " + store.storeName);
+
+if (flag("--delete")) {
+  const id = value("--delete");
+  const existing = await store.get(id);
+  if (!existing) { console.error("Not found: " + id); process.exit(1); }
+  await store.remove(id);
+  console.log("Deleted record " + id + " (" + existing.receipt + ", " + existing.answers.org + "). The Forms submission and any email copy are separate; remove those in the Netlify dashboard and Gmail.");
+  process.exit(0);
+}
 
 const ids = value("--id") ? [value("--id")] : await store.list();
 const records = [];

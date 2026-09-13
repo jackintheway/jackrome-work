@@ -115,6 +115,11 @@ export function createBlobsStore(env, client) {
     async setSummaryStatus(id, summary_status) {
       await store.setJSON(statusKey(id), { summary_status, updated_at: new Date().toISOString() });
     },
+    async remove(id) {
+      // Operator retention only. The function never calls this.
+      await store.delete(recordKey(id));
+      await store.delete(statusKey(id));
+    },
     async list() {
       const ids = [];
       for await (const page of store.list({ prefix: "records/", paginate: true })) {
