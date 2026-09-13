@@ -79,10 +79,14 @@
 # form, no www) and Jack added the CNAME in Squarespace on 2026-09-13.
 # The same page also answers at jackrome.work/audit: one page, two
 # front doors.
+# force is required: index.html exists at the root, and an unforced
+# rewrite loses to a real file (seen live 2026-09-13: the subdomain root
+# served the home page until this was added).
 [[redirects]]
   from = "https://audit.jackrome.work/"
   to = "/audit/index.html"
   status = 200
+  force = true
 
 # The alias domains, sent to the canonical one.
 #
