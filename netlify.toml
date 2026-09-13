@@ -64,39 +64,24 @@
 # Squarespace-style forwards used for profile. and ai. bounce the
 # visitor to another URL, and the spec for this page forbids that.
 #
-# The subdomain has to be added as a domain alias in Netlify's panel
-# (bare form only; no www) and pointed at Netlify with a CNAME in the
-# Squarespace DNS panel before these rules match. Until then a request
-# never reaches Netlify and the rules are inert.
+# One rule, on purpose. The first deploy (2026-09-13) tried a catch-all
+# for the subdomain plus passthroughs for css, assets, audit, and the
+# function path. Netlify rejected the function-path rule as invalid,
+# and without it a catch-all could shadow /.netlify/functions/score on
+# the subdomain. Rewriting only the root means every other path on the
+# subdomain resolves exactly as it does on the main domain: the page's
+# own css, assets, and function all work, and nothing can shadow them.
+# The cost is that audit.jackrome.work/about shows the About page too.
+# Nothing links there, and the page's canonical tag points at the
+# subdomain root, so that is a curiosity rather than a problem.
 #
-# Order matters. Shared assets and the function must be reachable on
-# the subdomain by their normal paths, so those pass through first;
-# the catch-all maps everything else into the audit folder. The same
-# page also answers at jackrome.work/audit, on purpose: one page, two
+# The subdomain was added as a domain alias in Netlify's panel (bare
+# form, no www) and Jack added the CNAME in Squarespace on 2026-09-13.
+# The same page also answers at jackrome.work/audit: one page, two
 # front doors.
 [[redirects]]
-  from = "https://audit.jackrome.work/css/*"
-  to = "/css/:splat"
-  status = 200
-
-[[redirects]]
-  from = "https://audit.jackrome.work/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
-[[redirects]]
-  from = "https://audit.jackrome.work/audit/*"
-  to = "/audit/:splat"
-  status = 200
-
-[[redirects]]
-  from = "https://audit.jackrome.work/.netlify/*"
-  to = "/.netlify/:splat"
-  status = 200
-
-[[redirects]]
-  from = "https://audit.jackrome.work/*"
-  to = "/audit/:splat"
+  from = "https://audit.jackrome.work/"
+  to = "/audit/index.html"
   status = 200
 
 # The alias domains, sent to the canonical one.
