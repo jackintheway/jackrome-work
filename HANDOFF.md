@@ -168,10 +168,22 @@ notification (custom subject left blank so the function's subject wins), and
 deleted the first test record from the preview store. Second test record
 (receipt 91BD485E) awaits deletion from the production store.
 
+Jack then made the assessment public (598ba3f, his go: "push it!"): a
+paragraph and one button in AI Enablement's "What it's for," a one-sentence
+text link in the portfolio's "How this works with clients," both with his
+approved copy ("a few minutes," no measured completion time), the noindex tag
+removed, the guide index refreshed. Verified live. The forced subdomain root
+rewrite (37e1e91) shipped in the same deploy and now serves the assessment at
+the subdomain root; its assets and function answer there too.
+
 audit.jackrome.work: DNS resolves (CNAME to jackrome-work.netlify.app, added by
-Jack in Squarespace), certificate still pending from Netlify at last check; the
-subdomain has not yet been verified over HTTPS. The page stays unlinked and
-noindex. The Personal plan cannot scope env vars to Functions; accepted. Candidate for later, not planned:
+Jack in Squarespace). Netlify was still serving its generic certificate for
+the subdomain about an hour after DNS resolved, so browsers cannot open it
+yet; Jack was asked to use "Verify DNS configuration" or "Renew certificate"
+in the domain panel. Until the certificate lands, the two new links point at a
+name that fails TLS. The portfolio entry proper waits until the assessment
+has a story from real use. The Personal plan cannot scope env vars to
+Functions; accepted. Candidate for later, not planned:
 upgrading the site's "Find something" guide to a model-backed helper.
 
 Untouched and still local: the separate-exhibit handoff section above, Jack's
