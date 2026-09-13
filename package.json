@@ -1,0 +1,16 @@
+{
+  "name": "jackrome-work",
+  "private": true,
+  "description": "jackrome.work. Static site plus one serverless function for the workflow audit readiness assessment.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tools/test-guide-search.mjs tools/test-audit.mjs",
+    "preview": "node tools/audit-dev.mjs",
+    "build": "python3 tools/build-site.py --check",
+    "eval:classifier": "node tools/eval-classifier.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
+    "zod": "^4.3.6"
+  }
+}

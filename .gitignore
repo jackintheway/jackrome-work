@@ -30,3 +30,11 @@ _exhibits/
 # allowlist on every Netlify deploy, so it is output, not source.
 _site/
 _livecheck.tmp.*/
+
+# Installed packages for the assessment function. Netlify installs
+# from package-lock.json at build time.
+node_modules/
+
+# Private working output: model pilot reports, record exports, anything
+# that came out of a real account or a real submission. Never committed.
+_private/

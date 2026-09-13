@@ -11,10 +11,20 @@
                   [slow]                   exceed the deadline
                 Without markers, a small keyword heuristic stands in.
 
-     anthropic  the real provider. Not built yet; throws so nothing can
-                silently pretend a model ran. Lands with the API step.
+     anthropic  the real provider, through the official SDK with
+                structured outputs. Retries are off so the function's
+                own deadlines are the only timing that applies. The
+                model is pinned by AUDIT_MODEL, defaulting to the one
+                the spec names; verify availability in the pilot.
 
    Both return plain data. Respondent text is data, never instructions. */
+
+import Anthropic from "@anthropic-ai/sdk";
+import { z } from "zod";
+import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+import { CLASSIFIER_SYSTEM, classifierUserMessage, FOLLOWUP_SYSTEM, followupUserMessage, PROMPT_VERSION } from "./prompts.mjs";
+
+export { PROMPT_VERSION };
 
 export class ProviderError extends Error {
   constructor(code, message) {
@@ -24,6 +34,10 @@ export class ProviderError extends Error {
 }
 
 const FOLLOWUP_TYPES = ["inputs", "outputs", "steps", "handoff", "none"];
+
+export const DEFAULT_MODEL = "claude-haiku-4-5-20251001";
+
+/* ---------------- mock ---------------- */
 
 function marker(text, name) {
   const m = new RegExp("\\[" + name + "(?::([a-z0-9]+))?\\]", "i").exec(text);
@@ -83,16 +97,91 @@ export function createMockProviders() {
   };
 }
 
-export function createAnthropicProviders() {
-  const notReady = () => {
-    throw new ProviderError("provider_not_configured", "The Anthropic provider is not built yet. Use AUDIT_PROVIDER=mock.");
+/* ---------------- anthropic ---------------- */
+
+const ClassifierOutput = z.object({
+  level: z.number().int().min(0).max(3),
+  excerpt: z.string().max(200),
+});
+
+const FollowupOutput = z.object({
+  type: z.enum(["inputs", "outputs", "steps", "handoff", "none"]),
+});
+
+function mapError(err) {
+  // Most specific first. Connection errors are a subclass of APIError in
+  // this SDK, so they are checked before the general case.
+  if (err instanceof ProviderError) return err;
+  if (err instanceof Anthropic.RateLimitError) return new ProviderError("rate_limited", "Provider rate limit");
+  if (err instanceof Anthropic.AuthenticationError) return new ProviderError("auth", "Provider credential rejected");
+  if (err instanceof Anthropic.NotFoundError) return new ProviderError("model_not_found", "Model not available");
+  if (err instanceof Anthropic.APIConnectionTimeoutError) return new ProviderError("timeout", "Provider deadline exceeded");
+  if (err instanceof Anthropic.APIConnectionError) return new ProviderError("connection", "Provider unreachable");
+  if (err instanceof Anthropic.APIError) return new ProviderError("api_" + (err.status || "error"), err.type || "Provider error");
+  return new ProviderError("error", String(err && err.message));
+}
+
+export function createAnthropicProviders(env, opts) {
+  const model = (env && env.AUDIT_MODEL) || DEFAULT_MODEL;
+  // No apiKey here on purpose: the SDK reads ANTHROPIC_API_KEY from the
+  // environment. The value never passes through application code.
+  const client = new Anthropic({ maxRetries: 0, ...(opts && opts.clientOptions) });
+  const usage = { calls: 0, input_tokens: 0, output_tokens: 0 };
+
+  async function parse(params, timeoutMs) {
+    usage.calls += 1;
+    const response = await client.messages.parse(params, { timeout: timeoutMs });
+    if (response.usage) {
+      usage.input_tokens += response.usage.input_tokens || 0;
+      usage.output_tokens += response.usage.output_tokens || 0;
+    }
+    if (response.stop_reason === "refusal") throw new ProviderError("refusal", "Provider declined the request");
+    if (response.stop_reason === "max_tokens") throw new ProviderError("truncated", "Provider output truncated");
+    if (!response.parsed_output) throw new ProviderError("invalid_output", "Provider output did not match the schema");
+    return response;
+  }
+
+  return {
+    name: "anthropic",
+    model,
+    usage,
+    async followup(q5) {
+      try {
+        const response = await parse({
+          model,
+          max_tokens: 128,
+          temperature: 0,
+          system: FOLLOWUP_SYSTEM,
+          messages: [{ role: "user", content: followupUserMessage(q5) }],
+          output_config: { format: zodOutputFormat(FollowupOutput) },
+        }, 2500);
+        return { type: response.parsed_output.type, model: response.model };
+      } catch (err) {
+        throw mapError(err);
+      }
+    },
+    async classify(q5, followupQuestion, followupAnswer) {
+      try {
+        const response = await parse({
+          model,
+          max_tokens: 256,
+          temperature: 0,
+          system: CLASSIFIER_SYSTEM,
+          messages: [{ role: "user", content: classifierUserMessage(q5, followupQuestion, followupAnswer) }],
+          output_config: { format: zodOutputFormat(ClassifierOutput) },
+        }, 5000);
+        const out = response.parsed_output;
+        return { level: out.level, excerpt: out.excerpt, model: response.model };
+      } catch (err) {
+        throw mapError(err);
+      }
+    },
   };
-  return { name: "anthropic", followup: notReady, classify: notReady };
 }
 
 export function createProviders(env) {
   const which = (env.AUDIT_PROVIDER || "").toLowerCase();
   if (which === "mock") return createMockProviders();
-  if (which === "anthropic") return createAnthropicProviders();
+  if (which === "anthropic") return createAnthropicProviders(env);
   throw new ProviderError("provider_not_configured", "Set AUDIT_PROVIDER to mock or anthropic.");
 }

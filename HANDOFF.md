@@ -102,9 +102,19 @@ status lines, and the review/trouble messages beyond COPY-CATALOGUE.md. The
 share card og-audit.png is referenced but not yet generated. The page carries
 noindex until Jack decides otherwise.
 
-Not done, in order: netlify.toml host rules and esbuild bundler setting for
-the function; the Anthropic provider with the classifier prompt and fixtures;
-Netlify Blobs store and Forms notifier with the HMAC signature; the static
+Added after the preview: package.json with @anthropic-ai/sdk 0.80.0 and zod
+(node_modules and _private/ are gitignored); the Anthropic provider through the
+SDK with structured outputs, retries off, per-call deadlines, and the spec's
+pinned model as default (AUDIT_MODEL overrides); the two prompts as code in
+lib/prompts.mjs (PROMPT_VERSION audit-prompts-1); tools/eval-classifier.mjs,
+which runs the 13 cases N times against the real provider and writes a report
+to _private/. The key is read only from ANTHROPIC_API_KEY in the shell that
+runs it; a fake key was confirmed to reach the API and map to an auth error. No
+real key exists yet; no credits purchased; no live model call has been made.
+
+Not done, in order: Anthropic account and workspace steps with Jack (then the
+pilot run); netlify.toml host rules and esbuild bundler setting for the
+function; Netlify Blobs store and Forms notifier with the HMAC signature; the static
 Forms registration in HTML; operator export and reconciliation command; rate
 limit config; share card; deploy preview and live verification. Account steps
 (API workspace, spending limit, domain alias, DNS CNAME) happen with Jack at
