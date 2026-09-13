@@ -120,6 +120,17 @@ These decisions from Jack supersede broader or dated wording below.
 - The portfolio introduction goes straight to "As AI tools advance" after the
   hero. Jack removed "How these tools are built" because it repeated the hero
   framing. Keep patternTitle as a destination on the introductory block.
+- On 2026-09-13, Jack approved using his original video as the source for small
+  collaboration-focused additions. The portfolio opening describes thinking
+  aloud, asking for another perspective, and continuing to edit. Teaching now
+  describes practicing on the team's work with its context and examples, asking
+  follow-up questions, checking results, and discussing risks.
+- The portfolio's curation section links to Artificial Intelligence Meets
+  Spirituality (YouTube AYzzTeSOF4Q, approximately 48 minutes) as optional personal
+  background. Keep spiritual speculation in that context. These paragraphs are
+  newly drafted from the spoken examples, not quotations from the AI-assisted
+  manifesto or Gemini's summary.
+
 
 
 ---
