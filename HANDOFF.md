@@ -18,6 +18,14 @@ context, not permission to perform unfinished work. Do not include private mater
 
 ## Current checkpoint: 2026-09-13, Codex
 
+Publication authorized: Jack said "PUSH IT!" on September 13. Preparing the 12
+saved commits since origin/main, plus Jack's corrected logo as a versioned SVG.
+The v2 file is byte-identical to his working SVG and wayspace.html references it;
+the original working SVG remains untouched. Local rendering and XML checks pass.
+Git fetch confirmed the remote has not advanced. The public source contains no
+tracked _source or _exhibits files. Push and live verification are pending below.
+Prior local-only delivery notes in this checkpoint describe earlier stages.
+
 Follow-up after ca33f61: Jack found "that's an honest place for curation to start"
 uncomfortable. The sentence now reads "I started by building tools around the
 way I work." Refreshed the guide index and verified the sentence in the browser;

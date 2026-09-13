@@ -130,6 +130,12 @@ These decisions from Jack supersede broader or dated wording below.
   background. Keep spiritual speculation in that context. These paragraphs are
   newly drafted from the spoken examples, not quotations from the AI-assisted
   manifesto or Gemini's summary.
+- On 2026-09-13, Jack explicitly authorized pushing this batch to production.
+  The Wayspace arrival uses wayspace-straight-v2.svg, an unchanged copy of Jack's
+  corrected SVG with the two missing yellow W-shadow polygons. Keep the original
+  published filename intact for existing caches. Other private and unrelated
+  working files are excluded from publication.
+
 
 
 
