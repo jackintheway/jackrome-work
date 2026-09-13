@@ -17,6 +17,7 @@
      node tools/audit-export.mjs --id <uuid>     one record
      node tools/audit-export.mjs --reconcile     list unacknowledged summaries
      node tools/audit-export.mjs --verify file   verify a pasted summary (JSON of fields)
+     node tools/audit-export.mjs --stores        list every Blobs store on the site, with counts
      node tools/audit-export.mjs --delete <uuid|receipt> remove one record and its status entry
                                                (the retention step; asks nothing, so
                                                export first if you want a copy)
@@ -27,6 +28,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { listStores } from "@netlify/blobs";
 import { createBlobsStore, verifySummary } from "../netlify/functions/score/lib/store.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -48,6 +50,17 @@ if (flag("--verify")) {
 if (!process.env.NETLIFY_SITE_ID || !process.env.NETLIFY_AUTH_TOKEN) {
   console.error("NETLIFY_SITE_ID and NETLIFY_AUTH_TOKEN must be set in this shell.");
   process.exit(2);
+}
+
+if (flag("--stores")) {
+  const { stores } = await listStores({ siteID: process.env.NETLIFY_SITE_ID, token: process.env.NETLIFY_AUTH_TOKEN });
+  for (const name of stores) {
+    const ctx = name.endsWith("-production") ? "production" : "preview";
+    const s = createBlobsStore({ ...process.env, CONTEXT: ctx });
+    const ids = name.startsWith("audit-submissions-") ? await s.list() : [];
+    console.log(name + (name.startsWith("audit-submissions-") ? "  records: " + ids.length + (ids.length ? "  receipts: " + ids.map((x) => x.slice(0, 8).toUpperCase()).join(", ") : "") : ""));
+  }
+  process.exit(0);
 }
 
 const env = { ...process.env, CONTEXT: process.env.AUDIT_CONTEXT || "production" };
