@@ -18,6 +18,7 @@
 
 import { createHmac } from "node:crypto";
 import { getStore } from "@netlify/blobs";
+import { BUILD_CONTEXT } from "./context.generated.mjs";
 
 /* ---------------- memory ---------------- */
 
@@ -63,9 +64,12 @@ export function createMemoryNotifier() {
 
 /* ---------------- blobs ---------------- */
 
-export function storeNameFor(env) {
-  // Netlify sets CONTEXT to production, deploy-preview, branch-deploy, or dev.
-  const context = (env.CONTEXT || env.AUDIT_CONTEXT || "dev").toLowerCase();
+export function storeNameFor(env, buildContext) {
+  // The build stamps the deploy context into the bundle (production,
+  // deploy-preview, branch-deploy). Operator tools pass AUDIT_CONTEXT
+  // instead. The runtime's own CONTEXT variable is not set in functions.
+  const stamped = buildContext === undefined ? BUILD_CONTEXT : buildContext;
+  const context = (env.AUDIT_CONTEXT || (stamped !== "dev" ? stamped : "") || env.CONTEXT || "dev").toLowerCase();
   return "audit-submissions-" + (context === "production" ? "production" : "preview");
 }
 

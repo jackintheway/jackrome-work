@@ -318,6 +318,10 @@ test("blobs store: create once, second create returns the winner, status is a si
   const store = createBlobsStore({ CONTEXT: "production" }, client);
   assert.equal(store.storeName, "audit-submissions-production");
   assert.equal(storeNameFor({ CONTEXT: "deploy-preview" }), "audit-submissions-preview");
+  assert.equal(storeNameFor({}, "production"), "audit-submissions-production", "build stamp decides");
+  assert.equal(storeNameFor({}, "deploy-preview"), "audit-submissions-preview");
+  assert.equal(storeNameFor({}, "dev"), "audit-submissions-preview", "local default never touches production");
+  assert.equal(storeNameFor({ AUDIT_CONTEXT: "production" }, "dev"), "audit-submissions-production", "operator override");
   const rec = { submission_id: "id-1", answers: { q16: "  keep\n\nthis  " }, summary_status: "pending", processing_status: "committed" };
   const first = await store.createIfAbsent("id-1", rec);
   assert.equal(first.created, true);

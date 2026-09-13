@@ -32,6 +32,7 @@ import argparse
 import filecmp
 import fnmatch
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -206,10 +207,34 @@ def check():
     print("build-site: check passed")
 
 
+CONTEXT_FILE = os.path.join(ROOT, "netlify", "functions", "score", "lib", "context.generated.mjs")
+
+
+def stamp_context():
+    """Write Netlify's CONTEXT into the function bundle.
+
+    Netlify sets CONTEXT during the build (production, deploy-preview,
+    branch-deploy) but not in the function runtime, so the function
+    cannot tell which deploy it is part of unless the build tells it.
+    Locally CONTEXT is unset and the stamp stays "dev".
+    """
+    context = os.environ.get("CONTEXT", "dev")
+    if not re.fullmatch(r"[a-z-]+", context):
+        sys.exit("build-site: unexpected CONTEXT value")
+    with open(CONTEXT_FILE, encoding="utf-8") as f:
+        current = f.read()
+    updated = re.sub(r'BUILD_CONTEXT = "[a-z-]+"', 'BUILD_CONTEXT = "%s"' % context, current)
+    if updated != current:
+        with open(CONTEXT_FILE, "w", encoding="utf-8") as f:
+            f.write(updated)
+    print("build-site: function context stamped as %s" % context)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--check", action="store_true", help="verify after assembling")
     args = parser.parse_args()
+    stamp_context()
     assemble()
     if args.check:
         check()

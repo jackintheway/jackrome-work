@@ -56,14 +56,14 @@ if (flag("--stores")) {
   const { stores } = await listStores({ siteID: process.env.NETLIFY_SITE_ID, token: process.env.NETLIFY_AUTH_TOKEN });
   for (const name of stores) {
     const ctx = name.endsWith("-production") ? "production" : "preview";
-    const s = createBlobsStore({ ...process.env, CONTEXT: ctx });
+    const s = createBlobsStore({ ...process.env, AUDIT_CONTEXT: ctx });
     const ids = name.startsWith("audit-submissions-") ? await s.list() : [];
     console.log(name + (name.startsWith("audit-submissions-") ? "  records: " + ids.length + (ids.length ? "  receipts: " + ids.map((x) => x.slice(0, 8).toUpperCase()).join(", ") : "") : ""));
   }
   process.exit(0);
 }
 
-const env = { ...process.env, CONTEXT: process.env.AUDIT_CONTEXT || "production" };
+const env = { ...process.env, AUDIT_CONTEXT: process.env.AUDIT_CONTEXT || "production" };
 const store = createBlobsStore(env);
 console.log("Store: " + store.storeName);
 
