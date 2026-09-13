@@ -56,6 +56,7 @@ PUBLIC_FILES = [
 
 PUBLIC_DIRS = [
     "assets",
+    "audit",
     "case-studies",
     "css",
     "js",

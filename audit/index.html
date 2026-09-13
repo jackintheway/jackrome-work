@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Workflow Audit Readiness Assessment | Jack Rome</title>
+  <meta name="description" content="Describe one recurring task your team does and see how ready that description is for a workflow audit conversation with Jack Rome, in Maryland.">
+  <link rel="canonical" href="https://audit.jackrome.work/">
+  <meta name="robots" content="noindex">
+
+  <!-- Link previews. The share card og-audit.png is generated from
+       tools/og/card-audit.html before publication; the tag is here now so
+       the page is never published without it. noindex stays until Jack
+       decides the page should be discoverable by search. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jack Rome">
+  <meta property="og:url" content="https://audit.jackrome.work/">
+  <meta property="og:title" content="Workflow Audit Readiness Assessment">
+  <meta property="og:description" content="Describe one recurring task. See how ready it is for an audit conversation.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-audit.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Workflow Audit Readiness Assessment. Describe one recurring task. See how ready it is for an audit conversation.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Workflow Audit Readiness Assessment">
+  <meta name="twitter:description" content="Describe one recurring task. See how ready it is for an audit conversation.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-audit.png">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/audit/audit.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- A deliberately small header. This page has one job and one
+       booking link at the end, so the main site's full nav and search
+       would compete with it. The mark goes home to the main site. -->
+  <nav class="site-nav audit-nav" aria-label="Site">
+    <a class="nav-mark" href="https://jackrome.work/">Jack Rome</a>
+    <span class="audit-nav-label ws-overline">Workflow Audit Readiness</span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">Workflow Audit Readiness Assessment</h1>
+      <p class="hero-sub">Describe one recurring task your team would like to make easier. You'll get a score and a short explanation to help start an audit conversation. I'll receive your answers so we can talk about the work.</p>
+    </div>
+  </header>
+
+  <main class="page page-narrow" id="main">
+
+    <p id="status" class="audit-status" role="status" aria-live="polite"></p>
+
+    <!-- INTRO -->
+    <section class="section audit-intro" id="intro" aria-labelledby="introTitle">
+      <h2 id="introTitle">Before you start</h2>
+      <div class="prose">
+        <p>Five short stages. Most answers are a choice; a few ask for a sentence or two.</p>
+        <p>You'll enter your email at the end to see your results here. Keep this tab open while you work; unfinished answers aren't saved if you reload or close it.</p>
+        <p>Describe the process without names, individual records, or confidential details. <a href="#privacy">How your answers are handled</a>.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn" type="button" id="startBtn">Start</button>
+      </div>
+    </section>
+
+    <form id="auditForm" class="audit-form" novalidate hidden>
+
+      <div id="errorSummary" class="audit-errors" role="alert" tabindex="-1" hidden>
+        <p class="audit-errors-title">Check the highlighted answers before continuing.</p>
+        <ul id="errorList"></ul>
+      </div>
+
+      <!-- Honeypot. Hidden from sight, keyboard, and assistive tech.
+           A filled value ends the request server-side with no record. -->
+      <div class="hp" aria-hidden="true">
+        <label for="website_confirm">Leave this field empty</label>
+        <input type="text" id="website_confirm" name="website_confirm" tabindex="-1" autocomplete="off">
+      </div>
+
+      <!-- STAGE 1: CONTEXT -->
+      <fieldset class="stage" data-stage="1" hidden>
+        <legend class="stage-legend">
+          <span class="stage-count ws-overline">Stage 1 of 5</span>
+          <h2 class="stage-title" tabindex="-1">Context</h2>
+        </legend>
+
+        <div class="field">
+          <label for="org">Organization name</label>
+          <input type="text" id="org" name="org" maxlength="150" autocomplete="organization" required>
+        </div>
+
+        <div class="field">
+          <label for="website">Website <span class="optional">(optional)</span></label>
+          <input type="url" id="website" name="website" maxlength="500" autocomplete="url" inputmode="url" placeholder="example.org">
+        </div>
+
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" maxlength="150" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="role">Your role</label>
+          <input type="text" id="role" name="role" maxlength="150" autocomplete="organization-title" required>
+        </div>
+
+        <fieldset class="field choice" data-field="staff">
+          <legend>How many people are on staff?</legend>
+          <p class="help">Staff means paid staff, not volunteers. If no one is paid, choose Under 5.</p>
+          <label><input type="radio" name="staff" value="under_5"> Under 5</label>
+          <label><input type="radio" name="staff" value="5_19"> 5 to 19</label>
+          <label><input type="radio" name="staff" value="20_50"> 20 to 50</label>
+          <label><input type="radio" name="staff" value="over_50"> More than 50</label>
+          <label><input type="radio" name="staff" value="unknown"> Not sure</label>
+        </fieldset>
+
+        <div class="btn-row">
+          <button class="btn" type="button" data-next>Continue</button>
+        </div>
+      </fieldset>
+
+      <!-- STAGE 2: THE WORK -->
+      <fieldset class="stage" data-stage="2" hidden>
+        <legend class="stage-legend">
+          <span class="stage-count ws-overline">Stage 2 of 5</span>
+          <h2 class="stage-title" tabindex="-1">The work</h2>
+        </legend>
+
+        <div class="callout audit-notice">
+          <p>Describe the process without names, individual records, or confidential details. If you ask for a follow-up, your description goes to Anthropic to help choose a question. When you submit, your description and any follow-up answer go to Anthropic to assess how specifically you've described the task. <a href="#privacy">Full privacy notice</a>.</p>
+        </div>
+
+        <div class="field">
+          <label for="q5">Think of one thing your team does over and over that takes longer than it should. Describe it in a few sentences.</label>
+          <p class="help" id="q5Help">The more concrete, the better. "Grant reporting" is hard to work with. "Pulling program numbers from three spreadsheets into the quarterly funder template" is something I can actually dig into. Include what you start with and what you're making, if you can.</p>
+          <textarea id="q5" name="q5" rows="6" maxlength="2000" aria-describedby="q5Help q5Count" required></textarea>
+          <p class="count" id="q5Count">At least 40 characters.</p>
+        </div>
+
+        <div class="field followup">
+          <button class="btn btn-secondary" type="button" id="followupBtn" disabled aria-describedby="followupHint">Add a detail (optional)</button>
+          <p class="help" id="followupHint">Asks for one follow-up question based on what you wrote.</p>
+          <p class="audit-inline-status" id="followupStatus" role="status" aria-live="polite"></p>
+
+          <div id="followupBox" hidden>
+            <label for="followupAnswer" id="followupLabel"></label>
+            <textarea id="followupAnswer" name="followupAnswer" rows="3" maxlength="1000"></textarea>
+            <p class="count">Optional. Up to 1,000 characters.</p>
+          </div>
+
+          <div id="followupStale" class="callout audit-stale" hidden>
+            <p>This detail was added to your earlier description. Keep it with the updated answer?</p>
+            <div class="btn-row">
+              <button class="btn btn-secondary" type="button" id="followupKeep">Keep this detail</button>
+              <button class="btn btn-secondary" type="button" id="followupRemove">Remove it</button>
+            </div>
+          </div>
+        </div>
+
+        <fieldset class="field choice" data-field="frequency">
+          <legend>How often does it happen?</legend>
+          <label><input type="radio" name="frequency" value="daily"> Daily</label>
+          <label><input type="radio" name="frequency" value="weekly"> Weekly</label>
+          <label><input type="radio" name="frequency" value="monthly"> Monthly</label>
+          <label><input type="radio" name="frequency" value="quarterly"> Quarterly</label>
+          <label><input type="radio" name="frequency" value="few_per_year"> A few times a year</label>
+          <label><input type="radio" name="frequency" value="unknown"> Not sure</label>
+        </fieldset>
+
+        <fieldset class="field choice" data-field="effort">
+          <legend>Roughly how much staff time goes into one round?</legend>
+          <p class="help">Add up the time people spend doing the work, including volunteers or contractors. Leave out time spent waiting. An estimate is fine.</p>
+          <label><input type="radio" name="effort" value="under_15m"> Under 15 minutes</label>
+          <label><input type="radio" name="effort" value="15m_under_1h"> 15 minutes to under 1 hour</label>
+          <label><input type="radio" name="effort" value="1h_under_4h"> 1 to under 4 hours</label>
+          <label><input type="radio" name="effort" value="4h_plus"> 4 hours or more</label>
+          <label><input type="radio" name="effort" value="unknown"> Not sure</label>
+        </fieldset>
+
+        <div class="field">
+          <label for="effort_note">Anything to add about the time? <span class="optional">(optional)</span></label>
+          <input type="text" id="effort_note" name="effort_note" maxlength="300">
+        </div>
+
+        <fieldset class="field choice" data-field="scope_context">
+          <legend>Is this the main task you'd like help with, or one example of several?</legend>
+          <label><input type="radio" name="scope_context" value="main"> The main task</label>
+          <label><input type="radio" name="scope_context" value="several"> One of several</label>
+          <label><input type="radio" name="scope_context" value="unknown"> Not sure</label>
+        </fieldset>
+
+        <fieldset class="field choice" data-field="people">
+          <legend>How many people usually work on it?</legend>
+          <label><input type="radio" name="people" value="one"> 1 person</label>
+          <label><input type="radio" name="people" value="2_5"> 2 to 5 people</label>
+          <label><input type="radio" name="people" value="6_plus"> 6 or more people</label>
+          <label><input type="radio" name="people" value="unknown"> Not sure</label>
+          <label class="standalone"><input type="checkbox" name="helpers" value="yes"> Volunteers or contractors help with this.</label>
+        </fieldset>
+
+        <div class="btn-row">
+          <button class="btn btn-secondary" type="button" data-back>Back</button>
+          <button class="btn" type="button" data-next>Continue</button>
+        </div>
+      </fieldset>
+
+      <!-- STAGE 3: WHERE IT BREAKS -->
+      <fieldset class="stage" data-stage="3" hidden>
+        <legend class="stage-legend">
+          <span class="stage-count ws-overline">Stage 3 of 5</span>
+          <h2 class="stage-title" tabindex="-1">Where it breaks</h2>
+        </legend>
+
+        <fieldset class="field choice" data-field="stall">
+          <legend>Where does it usually stall?</legend>
+          <p class="help">Choose everything that applies.</p>
+          <label><input type="checkbox" name="stall" value="waiting"> Waiting on someone else</label>
+          <label><input type="checkbox" name="stall" value="chasing"> Chasing down information</label>
+          <label><input type="checkbox" name="stall" value="blank_page"> Starting from a blank page</label>
+          <label><input type="checkbox" name="stall" value="cleanup"> Cleanup and formatting</label>
+          <label><input type="checkbox" name="stall" value="redoing"> Redoing work that was already done</label>
+          <label><input type="checkbox" name="stall" value="elsewhere"> Somewhere else</label>
+          <label><input type="checkbox" name="stall" value="no_stall"> It doesn't usually stall</label>
+          <label><input type="checkbox" name="stall" value="unknown"> Not sure</label>
+          <div class="field reveal" id="stallOtherBox" hidden>
+            <label for="stall_other">Where else?</label>
+            <input type="text" id="stall_other" name="stall_other" maxlength="500">
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="q10">What happens when the person who normally does this is out?</label>
+          <p class="help" id="q10Help">If the work is already shared, tell me how that works. "Not sure" is fine.</p>
+          <textarea id="q10" name="q10" rows="3" maxlength="1000" aria-describedby="q10Help" required></textarea>
+        </div>
+
+        <fieldset class="field choice" data-field="repeatability">
+          <legend>Is the output roughly the same shape every time, or different each round?</legend>
+          <label><input type="radio" name="repeatability" value="same"> Same shape</label>
+          <label><input type="radio" name="repeatability" value="similar"> Similar with variation</label>
+          <label><input type="radio" name="repeatability" value="different"> Different every time</label>
+          <label><input type="radio" name="repeatability" value="unknown"> Not sure</label>
+        </fieldset>
+
+        <div class="btn-row">
+          <button class="btn btn-secondary" type="button" data-back>Back</button>
+          <button class="btn" type="button" data-next>Continue</button>
+        </div>
+      </fieldset>
+
+      <!-- STAGE 4: WHAT'S ALREADY THERE -->
+      <fieldset class="stage" data-stage="4" hidden>
+        <legend class="stage-legend">
+          <span class="stage-count ws-overline">Stage 4 of 5</span>
+          <h2 class="stage-title" tabindex="-1">What's already there</h2>
+        </legend>
+
+        <div class="field">
+          <label for="q12">What tools does your team already use for this?</label>
+          <p class="help" id="q12Help">A short list is fine. Paper, email, or "not sure" are useful answers too.</p>
+          <textarea id="q12" name="q12" rows="3" maxlength="1000" aria-describedby="q12Help" required></textarea>
+        </div>
+
+        <fieldset class="field choice" data-field="sources">
+          <legend>Do you know where the information for this task comes from?</legend>
+          <label><input type="radio" name="sources" value="yes"> Yes</label>
+          <label><input type="radio" name="sources" value="some"> Some of it</label>
+          <label><input type="radio" name="sources" value="unknown"> Not sure</label>
+        </fieldset>
+
+        <div class="field">
+          <label for="q13">Has anyone tried using AI for it? What happened? <span class="optional">(optional)</span></label>
+          <textarea id="q13" name="q13" rows="3" maxlength="1000"></textarea>
+        </div>
+
+        <fieldset class="field choice" data-field="sensitivity">
+          <legend>Does this work touch personal or confidential information, such as donor records, client information, or health data?</legend>
+          <label><input type="radio" name="sensitivity" value="yes"> Yes</label>
+          <label><input type="radio" name="sensitivity" value="no"> No</label>
+          <label><input type="radio" name="sensitivity" value="unknown"> Not sure</label>
+          <p class="help reveal" id="sensitivityNote" hidden>Thanks. Keep describing the process itself; there's no need to include any records.</p>
+        </fieldset>
+
+        <div class="btn-row">
+          <button class="btn btn-secondary" type="button" data-back>Back</button>
+          <button class="btn" type="button" data-next>Continue</button>
+        </div>
+      </fieldset>
+
+      <!-- STAGE 5: READINESS AND REVIEW -->
+      <fieldset class="stage" data-stage="5" hidden>
+        <legend class="stage-legend">
+          <span class="stage-count ws-overline">Stage 5 of 5</span>
+          <h2 class="stage-title" tabindex="-1">Readiness and review</h2>
+        </legend>
+
+        <fieldset class="field choice" data-field="decision">
+          <legend>If a change like this made sense, who decides?</legend>
+          <label><input type="radio" name="decision" value="you"> You</label>
+          <label><input type="radio" name="decision" value="director"> Your director</label>
+          <label><input type="radio" name="decision" value="leadership"> Leadership team</label>
+          <label><input type="radio" name="decision" value="board"> Board or committee</label>
+          <label><input type="radio" name="decision" value="other"> Someone else</label>
+          <label><input type="radio" name="decision" value="unknown"> Not sure</label>
+          <div class="field reveal" id="decisionOtherBox" hidden>
+            <label for="decision_other">What's their role?</label>
+            <input type="text" id="decision_other" name="decision_other" maxlength="150" placeholder="A role, not a name">
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="q16">If this work took less time, what would your team do with those hours?</label>
+          <textarea id="q16" name="q16" rows="4" maxlength="1500" required></textarea>
+        </div>
+
+        <fieldset class="field choice" data-field="preference">
+          <legend>Six months from now, would you rather your team be running this themselves, or have someone running it for you?</legend>
+          <label><input type="radio" name="preference" value="ourselves"> Ourselves</label>
+          <label><input type="radio" name="preference" value="someone_else"> Someone else</label>
+          <label><input type="radio" name="preference" value="not_considered"> Haven't thought about it</label>
+        </fieldset>
+
+        <div class="field">
+          <p class="audit-name-echo" id="nameEcho"></p>
+          <label for="email">Your email</label>
+          <input type="email" id="email" name="email" maxlength="254" autocomplete="email" inputmode="email" required>
+        </div>
+
+        <div class="callout audit-notice">
+          <p>By submitting, you're sending me these answers so I can review them and follow up about this assessment. This won't add you to a mailing list. Your results appear here after submission. <a href="#privacy">Privacy notice</a>.</p>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-secondary" type="button" data-back>Back</button>
+          <button class="btn btn-secondary" type="button" id="reviewBtn" aria-expanded="false" aria-controls="review">Review my answers</button>
+          <button class="btn" type="submit" id="submitBtn">Get my results</button>
+        </div>
+
+        <section id="review" class="audit-review" aria-labelledby="reviewTitle" hidden>
+          <h3 id="reviewTitle">Your answers</h3>
+          <div id="reviewBody"></div>
+        </section>
+
+        <div id="submitTrouble" class="callout audit-trouble" role="alert" hidden>
+          <p id="submitTroubleText"></p>
+          <div class="btn-row">
+            <button class="btn" type="button" id="retryBtn" hidden>Try again</button>
+            <button class="btn btn-secondary" type="button" id="editBtn" hidden>Back to answers</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    <!-- RESULTS -->
+    <section class="section audit-results" id="results" aria-labelledby="resultsTitle" hidden>
+      <p class="ws-overline">Your result</p>
+      <h2 id="resultsTitle" tabindex="-1"></h2>
+      <p class="audit-score" id="resultScore"></p>
+      <p class="lead" id="resultParagraph"></p>
+      <p id="resultReason" hidden></p>
+      <ul class="audit-observations" id="resultObservations"></ul>
+
+      <details class="audit-breakdown">
+        <summary>How the score adds up</summary>
+        <dl id="resultBreakdown"></dl>
+        <p id="resultMethodology"></p>
+      </details>
+
+      <div class="callout audit-book">
+        <p id="resultBookingContext"></p>
+        <div class="btn-row">
+          <a class="btn" id="bookLink" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a conversation</a>
+        </div>
+      </div>
+
+      <p class="audit-receipt">Receipt <span id="resultReceipt"></span></p>
+    </section>
+
+    <!-- PRIVACY NOTICE
+         Draft for Jack's review. Every sentence here is a promise the
+         setup has to keep, so the wording is checked against the actual
+         configuration before publication, not after. -->
+    <section class="section audit-privacy" id="privacy" aria-labelledby="privacyTitle">
+      <h2 id="privacyTitle">How your answers are handled</h2>
+      <div class="prose">
+        <p><strong>Who receives them.</strong> Me, Jack Rome. I use your answers to review the workflow you described and to follow up with you about this assessment and a possible audit conversation. Nothing else. You won't be added to a mailing list.</p>
+        <p><strong>What goes where.</strong> Your answers are stored by Netlify, which hosts this site. A copy is emailed to me through Netlify's form service, which runs its own spam filtering, and lands in my Gmail inbox. Only your task description and any follow-up answer are sent to Anthropic, the AI provider, to choose a follow-up question and to judge how specifically the task is described. Your name, email, organization, and other answers never go to Anthropic. Each provider handles data under its own terms.</p>
+        <p><strong>How long.</strong> I review these records monthly. If we haven't gone on to work together, I delete the stored record, the email copy, and any export within about 90 days of your submission, at the next monthly review.</p>
+        <p><strong>Your choices.</strong> To ask what I hold or to have it deleted, email <a href="mailto:jackintheway@gmail.com?subject=Workflow%20audit%20assessment">jackintheway@gmail.com</a> with the receipt shown on your results.</p>
+        <p><strong>What the score is.</strong> A summary of how you described one workflow, to help start a conversation. It doesn't measure whether AI would help, what it would cost, or what you might save.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-identity">
+      <span class="footer-line">Jack Rome</span>
+      <span class="footer-line footer-sub">Technology, made human</span>
+      <span class="footer-line footer-sub">Maryland</span>
+    </span>
+    <span class="footer-links">
+      <a class="footer-link" href="https://jackrome.work/">jackrome.work</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="mailto:jackintheway@gmail.com?subject=Workflow%20audit%20assessment">Reach out</a>
+    </span>
+  </footer>
+
+  <script type="module" src="/audit/audit.js"></script>
+</body>
+</html>

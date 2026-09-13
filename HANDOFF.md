@@ -64,12 +64,54 @@ HTML, image, and font cache and security headers unchanged; sitemap still lists
 75 pages. The publish boundary is proven on Netlify. This documentation save
 point is committed locally and rides with the next push.
 
+Jack then approved the page location (audit/index.html, served at the root of
+audit.jackrome.work by a host rule, also reachable at jackrome.work/audit) and
+agreed to no main-site nav link for now.
+
+First cut of the assessment, local preview only, committed as a save point:
+
+- audit/ holds the page, its stylesheet, its browser script, and the shared
+  answer schema (enums, limits, validation) that both browser and function
+  import. Styling uses only the site's tokens; the design pass is deferred.
+- netlify/functions/score/ holds the function: request contract, deterministic
+  scoring (mirrors check_scoring.py), fixed copy templates, review flags, the
+  two-layer summary (P1a), atomic create then read-back, identical-retry replay.
+  Providers, store, and notifier are behind interfaces. Only the mock model,
+  memory store, and memory inbox exist so far; the Anthropic provider, Netlify
+  Blobs store, and Forms notifier throw loudly until built.
+- tools/audit-dev.mjs serves the repo root plus the function with mocks
+  (node tools/audit-dev.mjs, http://localhost:8642/audit/). Q5 markers steer the
+  mock: [level:N], [followup:type], [fail], [slow]. AI_ENABLED=false previews
+  AI-off. /__dev/inbox and /__dev/records show what Jack would receive.
+- tools/test-audit.mjs (node --test): 10 tests pass, including all 13
+  calibration cases through the real handler, C09 and C03 end to end, exact
+  Q16 round trip, retry replay and conflict, unscored paths, honeypot, origin,
+  size, forged fields. This is arithmetic and contract coverage, not model
+  evaluation.
+- Verified in the browser against the dev server: validation summary with
+  focus, follow-up request and question, all five stages, review panel with
+  Change links, submission, results for 86 (starting_point), 76 (needs
+  narrowing with the low-specificity headline and reason line), and the
+  unscored path. 375px wide: no horizontal overflow. No console errors.
+- The launch.json entry now runs the node server; it is a superset of the
+  python one. The desktop launcher cached the old entry this session.
+
+Drafted copy awaiting Jack's in-context review: page title and hero, intro
+heading, the privacy notice section, Q5b button and hint text, the count and
+status lines, and the review/trouble messages beyond COPY-CATALOGUE.md. The
+share card og-audit.png is referenced but not yet generated. The page carries
+noindex until Jack decides otherwise.
+
+Not done, in order: netlify.toml host rules and esbuild bundler setting for
+the function; the Anthropic provider with the classifier prompt and fixtures;
+Netlify Blobs store and Forms notifier with the HMAC signature; the static
+Forms registration in HTML; operator export and reconciliation command; rate
+limit config; share card; deploy preview and live verification. Account steps
+(API workspace, spending limit, domain alias, DNS CNAME) happen with Jack at
+the keyboard. Publication still needs Jack's explicit go.
+
 Untouched and still local: the separate-exhibit handoff section above, Jack's
-modified working SVG, and the untracked Substack and puzzle files. No
-assessment code, function, DNS, account, or credit changes have been made.
-Next: the assessment page location and the host rule for audit.jackrome.work,
-then the function skeleton with mocked providers, previewed locally. Publication
-still needs Jack's explicit go.
+modified working SVG, and the untracked Substack and puzzle files.
 
 ## Previous checkpoint: 2026-09-13, Codex
 

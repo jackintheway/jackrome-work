@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "jackrome-work",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8642"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["tools/audit-dev.mjs"],
       "port": 8642
     }
   ]
