@@ -18,6 +18,12 @@ context, not permission to perform unfinished work. Do not include private mater
 
 ## Current checkpoint: 2026-09-13, Codex
 
+Follow-up after ca33f61: Jack found "that's an honest place for curation to start"
+uncomfortable. The sentence now reads "I started by building tools around the
+way I work." Refreshed the guide index and verified the sentence in the browser;
+index freshness and whitespace checks passed. Saved locally, not published.
+The account below describes the preceding collaboration-copy update.
+
 Jack approved the editorial recommendations based on his original video,
 Artificial Intelligence Meets Spirituality (YouTube AYzzTeSOF4Q). Added a short
 portfolio paragraph after his existing opening sentence: thinking aloud, asking
