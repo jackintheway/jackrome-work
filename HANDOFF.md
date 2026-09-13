@@ -136,11 +136,22 @@ Netlify, read through the connector on 2026-09-13: project jackrome-work, ID
 for the site and must be switched on in the dashboard before the summary form
 is detected.
 
-Not done, in order: with Jack, the function's own Anthropic key, the summary
-signing secret, env vars scoped to functions, Forms enabled, the domain alias
-and DNS CNAME; share card og-audit.png; a deploy preview and live verification
-of both hostnames, the function, Forms delivery, and the rate limit.
-Publication still needs Jack's explicit go. Candidate for later, not planned:
+Jack's walkthrough of the preview produced fixes (commit 0ff4a9a): privacy
+notice in a dialog (the anchor jump had tripped the back-button handler),
+first-person stage 5, inline name edit, Back to review, prominent receipt,
+his intro copy. Share card og-audit.png added (98b2ab6).
+
+Account steps done by Jack 2026-09-13: Anthropic key `audit-netlify` (expires
+2027-09-19, 7 pm ET) and the signing secret set in Netlify as secrets for the
+production context only; the seven plain variables imported for all contexts;
+Forms detection enabled; audit.jackrome.work added as a domain alias, pending
+DNS; the CNAME (audit -> jackrome-work.netlify.app) is Jack's to add in
+Squarespace. The Personal plan cannot scope variables to Functions only;
+accepted, since nothing in the build reads them and the two secrets are marked.
+
+Jack authorized the unlinked production push: "let's do the unlinked production
+push." The page is reachable at jackrome.work/audit and, once DNS resolves, at
+audit.jackrome.work, with no links from the site and a noindex tag. Candidate for later, not planned:
 upgrading the site's "Find something" guide to a model-backed helper.
 
 Untouched and still local: the separate-exhibit handoff section above, Jack's

@@ -97,8 +97,8 @@ Nothing deletes automatically in v1.
 
 ## Keys
 
-- The Anthropic key expires on the date set at creation. Note it here
-  when created: expiry ______. A lapsed key means unscored results,
-  not lost submissions.
+- The Anthropic key `audit-netlify` expires 2027-09-19 at 7 pm ET. A
+  lapsed key means unscored results, not lost submissions. Create the
+  replacement in the same workspace and update the Netlify variable.
 - Rotate `AUDIT_SUMMARY_KEY` by adding a new version, not replacing;
   old summaries verify against the old version.
