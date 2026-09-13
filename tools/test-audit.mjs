@@ -284,3 +284,101 @@ test("summary carries verbatim answers below the scannable fields", () => {
   assert.ok(keys.indexOf("score") < keys.indexOf("q5_task"));
   assert.equal(s.q16_hours, baseAnswers().q16);
 });
+
+/* ---------- storage and notification pieces ---------- */
+
+import { createBlobsStore, createFormsNotifier, signSummary, verifySummary, storeNameFor, SIGNED_FIELDS } from "../netlify/functions/score/lib/store.mjs";
+
+// A fake @netlify/blobs client with the same surface the store uses.
+function fakeBlobsClient(opts) {
+  const data = new Map();
+  const o = opts || {};
+  return {
+    data,
+    async setJSON(key, value, options) {
+      if (o.lie) return { modified: true, etag: "x" }; // issue 741 behaviour
+      if (options && options.onlyIfNew && data.has(key)) return { modified: false };
+      data.set(key, JSON.stringify(value));
+      return { modified: true, etag: "e" + data.size };
+    },
+    async get(key, options) {
+      const v = data.get(key);
+      if (v === undefined) return null;
+      return options && options.type === "json" ? JSON.parse(v) : v;
+    },
+    async *list(options) {
+      const prefix = (options && options.prefix) || "";
+      yield { blobs: [...data.keys()].filter((k) => k.startsWith(prefix)).map((key) => ({ key, etag: "e" })) };
+    },
+  };
+}
+
+test("blobs store: create once, second create returns the winner, status is a side record", async () => {
+  const client = fakeBlobsClient();
+  const store = createBlobsStore({ CONTEXT: "production" }, client);
+  assert.equal(store.storeName, "audit-submissions-production");
+  assert.equal(storeNameFor({ CONTEXT: "deploy-preview" }), "audit-submissions-preview");
+  const rec = { submission_id: "id-1", answers: { q16: "  keep\n\nthis  " }, summary_status: "pending", processing_status: "committed" };
+  const first = await store.createIfAbsent("id-1", rec);
+  assert.equal(first.created, true);
+  const second = await store.createIfAbsent("id-1", { ...rec, answers: { q16: "other" } });
+  assert.equal(second.created, false);
+  assert.equal(second.record.answers.q16, "  keep\n\nthis  ");
+  await store.setSummaryStatus("id-1", "acknowledged");
+  const read = await store.get("id-1");
+  assert.equal(read.summary_status, "acknowledged");
+  assert.equal(JSON.parse(client.data.get("records/id-1")).summary_status, "pending", "the immutable record is untouched");
+  assert.deepEqual(await store.list(), ["id-1"]);
+});
+
+test("blobs store: a write that claims success but cannot be read back is an error, never a saved confirmation", async () => {
+  const store = createBlobsStore({ CONTEXT: "production" }, fakeBlobsClient({ lie: true }));
+  await assert.rejects(() => store.createIfAbsent("id-2", { submission_id: "id-2" }), /read back/);
+  const { handler, store: memory } = makeHandler();
+  void memory;
+  const lying = createHandler({ providers: createMockProviders(), store, notifier: createMemoryNotifier(), allowedOrigins: [ORIGIN], aiEnabled: true, log: () => {} });
+  const res = await post(lying, envelope(baseAnswers()));
+  assert.equal(res.status, 503);
+  const body = await res.json();
+  assert.equal(body.retryable, true);
+  void handler;
+});
+
+test("summary signature: round trip, tamper detection, key versions", () => {
+  const fields = { submission_id: "id", receipt: "R", received_at: "t", organization: "Org & Co \"quoted\"", name: "Sam", role: "Mgr", email: "s@e.org", score: "86", band: "starting_point", dimensions: "A=35 B=11 C=20 D=10 E=10", classifier: "ok level 3", flags: "a | b" };
+  const sig = signSummary(fields, "secret-1");
+  assert.equal(verifySummary({ ...fields, signature: sig, signature_key_version: "1" }, { 1: "secret-1" }).ok, true);
+  assert.equal(verifySummary({ ...fields, score: "100", signature: sig, signature_key_version: "1" }, { 1: "secret-1" }).ok, false);
+  assert.equal(verifySummary({ ...fields, signature: sig, signature_key_version: "2" }, { 1: "secret-1" }).reason, "unknown_key_version");
+  assert.equal(verifySummary({ ...fields, signature: sig, signature_key_version: "1", q5_task: "changed verbatim layer" }, { 1: "secret-1" }).ok, true, "verbatim layer is not signed");
+  assert.ok(SIGNED_FIELDS.includes("flags") && !SIGNED_FIELDS.includes("q5_task"));
+});
+
+test("forms notifier: posts url-encoded to the fixed origin with form-name and signature; failures map to statuses", async () => {
+  const calls = [];
+  const fakeFetch = async (url, init) => { calls.push({ url, init }); return { status: 200 }; };
+  const notifier = createFormsNotifier({ AUDIT_FORMS_ORIGIN: "https://jackrome.work", AUDIT_SUMMARY_KEY: "k", AUDIT_SUMMARY_KEY_VERSION: "1" }, fakeFetch);
+  const status = await notifier.send({ submission_id: "id", receipt: "R", received_at: "t", organization: "O", name: "N", role: "r", email: "e", score: "1", band: "b", dimensions: "d", classifier: "c", flags: "f", q16_hours: "  x\n\ny  " });
+  assert.equal(status, "acknowledged");
+  assert.equal(calls[0].url, "https://jackrome.work/audit/");
+  assert.equal(calls[0].init.headers["Content-Type"], "application/x-www-form-urlencoded");
+  const params = new URLSearchParams(calls[0].init.body);
+  assert.equal(params.get("form-name"), "workflow-audit-summary");
+  assert.equal(params.get("q16_hours"), "  x\n\ny  ");
+  assert.equal(params.get("signature_key_version"), "1");
+  assert.match(params.get("signature"), /^[0-9a-f]{64}$/);
+  const failing = createFormsNotifier({ AUDIT_FORMS_ORIGIN: "https://jackrome.work", AUDIT_SUMMARY_KEY: "k" }, async () => ({ status: 500 }));
+  assert.equal(await failing.send({}), "failed");
+  const down = createFormsNotifier({ AUDIT_FORMS_ORIGIN: "https://jackrome.work", AUDIT_SUMMARY_KEY: "k" }, async () => { throw new Error("net"); });
+  assert.equal(await down.send({}), "unknown");
+  assert.throws(() => createFormsNotifier({}, fakeFetch), /AUDIT_FORMS_ORIGIN/);
+});
+
+test("the registered form in audit/index.html has every summary field", () => {
+  const html = fs.readFileSync(path.resolve(HERE, "../audit/index.html"), "utf8");
+  const formHtml = html.slice(html.indexOf('name="workflow-audit-summary"'));
+  const summary = buildSummary({ submission_id: "id", receipt: "R", received_at: "t", answers: baseAnswers(), scoring: score(3, validateAnswers(baseAnswers()).normalized), classifier: { status: "ok", level: 3 }, flags: [], followup: null });
+  for (const key of [...Object.keys(summary), "signature", "signature_key_version"]) {
+    assert.ok(formHtml.includes('name="' + key + '"'), "form is missing " + key);
+  }
+});

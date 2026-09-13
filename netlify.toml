@@ -20,8 +20,11 @@
   command = "python3 tools/build-site.py --check"
 
 # Serverless functions live here, outside the publish folder on purpose.
+# esbuild bundles each function with its imports, including the shared
+# answer schema in audit/ and the npm packages in package.json.
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 # Filenames whose contents never change can be cached hard.
 [[headers]]
@@ -55,6 +58,46 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Content-Security-Policy = "frame-ancestors 'self'"
+
+# audit.jackrome.work serves the assessment at its root, at 200, with
+# the address bar left alone. That is a rewrite, not a redirect: the
+# Squarespace-style forwards used for profile. and ai. bounce the
+# visitor to another URL, and the spec for this page forbids that.
+#
+# The subdomain has to be added as a domain alias in Netlify's panel
+# (bare form only; no www) and pointed at Netlify with a CNAME in the
+# Squarespace DNS panel before these rules match. Until then a request
+# never reaches Netlify and the rules are inert.
+#
+# Order matters. Shared assets and the function must be reachable on
+# the subdomain by their normal paths, so those pass through first;
+# the catch-all maps everything else into the audit folder. The same
+# page also answers at jackrome.work/audit, on purpose: one page, two
+# front doors.
+[[redirects]]
+  from = "https://audit.jackrome.work/css/*"
+  to = "/css/:splat"
+  status = 200
+
+[[redirects]]
+  from = "https://audit.jackrome.work/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "https://audit.jackrome.work/audit/*"
+  to = "/audit/:splat"
+  status = 200
+
+[[redirects]]
+  from = "https://audit.jackrome.work/.netlify/*"
+  to = "/.netlify/:splat"
+  status = 200
+
+[[redirects]]
+  from = "https://audit.jackrome.work/*"
+  to = "/audit/:splat"
+  status = 200
 
 # The alias domains, sent to the canonical one.
 #

@@ -412,6 +412,49 @@
     </span>
   </footer>
 
+  <!-- Netlify Forms registration for the summary the function posts to
+       Jack's inbox. Netlify reads this at deploy time to learn the form's
+       name and fields; visitors never see or use it. The function POSTs
+       URL-encoded data with the same names. Keep in step with
+       buildSummary() in netlify/functions/score/score.mjs. -->
+  <form name="workflow-audit-summary" netlify netlify-honeypot="bot-field" hidden aria-hidden="true">
+    <input type="text" name="bot-field">
+    <input type="text" name="flags">
+    <input type="text" name="submission_id">
+    <input type="text" name="receipt">
+    <input type="text" name="received_at">
+    <input type="text" name="organization">
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <input type="text" name="role">
+    <input type="text" name="score">
+    <input type="text" name="band">
+    <input type="text" name="dimensions">
+    <input type="text" name="classifier">
+    <input type="text" name="q1_org">
+    <input type="text" name="q2_website">
+    <input type="text" name="q3_name_role">
+    <input type="text" name="q4_staff">
+    <textarea name="q5_task"></textarea>
+    <textarea name="q5b_followup"></textarea>
+    <input type="text" name="q6_frequency">
+    <input type="text" name="q7_effort">
+    <input type="text" name="q7b_scope">
+    <input type="text" name="q8_people">
+    <input type="text" name="q9_stall">
+    <textarea name="q10_when_out"></textarea>
+    <input type="text" name="q11_repeatability">
+    <textarea name="q12_tools"></textarea>
+    <input type="text" name="q12b_sources">
+    <textarea name="q13_ai_tried"></textarea>
+    <input type="text" name="q14_sensitivity">
+    <input type="text" name="q15_decision">
+    <textarea name="q16_hours"></textarea>
+    <input type="text" name="q17_preference">
+    <input type="text" name="signature_key_version">
+    <input type="text" name="signature">
+  </form>
+
   <script type="module" src="/audit/audit.js"></script>
 </body>
 </html>

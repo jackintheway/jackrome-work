@@ -303,4 +303,10 @@ export default async function (req) {
   return defaultHandler(req);
 }
 
-export const config = { path: "/.netlify/functions/score" };
+// Netlify's native rate limit, per IP per domain, both modes. Not a
+// spending ceiling; that lives in the Anthropic workspace. Enforcement
+// can lag up to ten seconds per Netlify's docs.
+export const config = {
+  path: "/.netlify/functions/score",
+  rateLimit: { windowLimit: 60, windowSize: 60, aggregateBy: ["ip", "domain"] },
+};

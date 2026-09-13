@@ -76,6 +76,8 @@ EXPECTED_PRIVATE = [
     "netlify.toml",
     "tools/*",
     "netlify/*",
+    "package.json",
+    "package-lock.json",
 ]
 
 
