@@ -60,9 +60,9 @@
     <section class="section audit-intro" id="intro" aria-labelledby="introTitle">
       <h2 id="introTitle">Before you start</h2>
       <div class="prose">
-        <p>Five short stages. Most answers are a choice; a few ask for a sentence or two.</p>
-        <p>You'll enter your email at the end to see your results here. Keep this tab open while you work; unfinished answers aren't saved if you reload or close it.</p>
-        <p>Describe the process without names, individual records, or confidential details. <a href="#privacy">How your answers are handled</a>.</p>
+        <p>This assessment has five short stages. Most answers are a choice, with a few asking for a couple sentences.</p>
+        <p>At the end, you'll enter your email to see your results. Keep this tab open while you work since unfinished answers aren't saved if you reload or close this window.</p>
+        <p>Describe the process without names, individual records, or confidential details. <a href="#privacy" data-open="privacyDialog">How your answers are handled</a>.</p>
       </div>
       <div class="btn-row">
         <button class="btn" type="button" id="startBtn">Start</button>
@@ -122,6 +122,7 @@
 
         <div class="btn-row">
           <button class="btn" type="button" data-next>Continue</button>
+          <button class="btn btn-secondary" type="button" data-back-to-review hidden>Back to review</button>
         </div>
       </fieldset>
 
@@ -133,7 +134,7 @@
         </legend>
 
         <div class="callout audit-notice">
-          <p>Describe the process without names, individual records, or confidential details. If you ask for a follow-up, your description goes to Anthropic to help choose a question. When you submit, your description and any follow-up answer go to Anthropic to assess how specifically you've described the task. <a href="#privacy">Full privacy notice</a>.</p>
+          <p>Describe the process without names, individual records, or confidential details. If you ask for a follow-up, your description goes to Anthropic to help choose a question. When you submit, your description and any follow-up answer go to Anthropic to assess how specifically you've described the task. <a href="#privacy" data-open="privacyDialog">Full privacy notice</a>.</p>
         </div>
 
         <div class="field">
@@ -207,6 +208,7 @@
         <div class="btn-row">
           <button class="btn btn-secondary" type="button" data-back>Back</button>
           <button class="btn" type="button" data-next>Continue</button>
+          <button class="btn btn-secondary" type="button" data-back-to-review hidden>Back to review</button>
         </div>
       </fieldset>
 
@@ -251,6 +253,7 @@
         <div class="btn-row">
           <button class="btn btn-secondary" type="button" data-back>Back</button>
           <button class="btn" type="button" data-next>Continue</button>
+          <button class="btn btn-secondary" type="button" data-back-to-review hidden>Back to review</button>
         </div>
       </fieldset>
 
@@ -290,6 +293,7 @@
         <div class="btn-row">
           <button class="btn btn-secondary" type="button" data-back>Back</button>
           <button class="btn" type="button" data-next>Continue</button>
+          <button class="btn btn-secondary" type="button" data-back-to-review hidden>Back to review</button>
         </div>
       </fieldset>
 
@@ -302,10 +306,10 @@
 
         <fieldset class="field choice" data-field="decision">
           <legend>If a change like this made sense, who decides?</legend>
-          <label><input type="radio" name="decision" value="you"> You</label>
-          <label><input type="radio" name="decision" value="director"> Your director</label>
-          <label><input type="radio" name="decision" value="leadership"> Leadership team</label>
-          <label><input type="radio" name="decision" value="board"> Board or committee</label>
+          <label><input type="radio" name="decision" value="you"> I do</label>
+          <label><input type="radio" name="decision" value="director"> My director</label>
+          <label><input type="radio" name="decision" value="leadership"> Our leadership team</label>
+          <label><input type="radio" name="decision" value="board"> Our board or a committee</label>
           <label><input type="radio" name="decision" value="other"> Someone else</label>
           <label><input type="radio" name="decision" value="unknown"> Not sure</label>
           <div class="field reveal" id="decisionOtherBox" hidden>
@@ -315,25 +319,29 @@
         </fieldset>
 
         <div class="field">
-          <label for="q16">If this work took less time, what would your team do with those hours?</label>
+          <label for="q16">If this work took less time, what would my team do with those hours?</label>
           <textarea id="q16" name="q16" rows="4" maxlength="1500" required></textarea>
         </div>
 
         <fieldset class="field choice" data-field="preference">
-          <legend>Six months from now, would you rather your team be running this themselves, or have someone running it for you?</legend>
+          <legend>Six months from now, would I rather my team be running this ourselves, or have someone running it for us?</legend>
           <label><input type="radio" name="preference" value="ourselves"> Ourselves</label>
           <label><input type="radio" name="preference" value="someone_else"> Someone else</label>
-          <label><input type="radio" name="preference" value="not_considered"> Haven't thought about it</label>
+          <label><input type="radio" name="preference" value="not_considered"> I haven't thought about it</label>
         </fieldset>
 
         <div class="field">
           <p class="audit-name-echo" id="nameEcho"></p>
-          <label for="email">Your email</label>
+          <div class="field reveal" id="nameInlineBox" hidden>
+            <label for="nameInline">My name</label>
+            <input type="text" id="nameInline" maxlength="150" autocomplete="name">
+          </div>
+          <label for="email">My email</label>
           <input type="email" id="email" name="email" maxlength="254" autocomplete="email" inputmode="email" required>
         </div>
 
         <div class="callout audit-notice">
-          <p>By submitting, you're sending me these answers so I can review them and follow up about this assessment. This won't add you to a mailing list. Your results appear here after submission. <a href="#privacy">Privacy notice</a>.</p>
+          <p>By submitting, you're sending me these answers so I can review them and follow up about this assessment. This won't add you to a mailing list. Your results appear here after submission. <a href="#privacy" data-open="privacyDialog">Privacy notice</a>.</p>
         </div>
 
         <div class="btn-row">
@@ -379,23 +387,52 @@
         </div>
       </div>
 
-      <p class="audit-receipt">Receipt <span id="resultReceipt"></span></p>
+      <div class="callout audit-receipt">
+        <p class="ws-overline">Your receipt</p>
+        <p class="audit-receipt-code" id="resultReceipt"></p>
+        <p>Keep this code. If you email me about this assessment, include it so I can find your answers. Nothing is emailed to you automatically; this page is your copy.</p>
+      </div>
     </section>
 
     <!-- PRIVACY NOTICE
-         Draft for Jack's review. Every sentence here is a promise the
-         setup has to keep, so the wording is checked against the actual
+         Lives in a dialog so a visitor mid-form reads it in place and
+         returns to the same stage. The bottom-of-page link opens the same
+         dialog. Draft for Jack's review: every sentence here is a promise
+         the setup has to keep, so the wording is checked against the actual
          configuration before publication, not after. -->
     <section class="section audit-privacy" id="privacy" aria-labelledby="privacyTitle">
       <h2 id="privacyTitle">How your answers are handled</h2>
-      <div class="prose">
-        <p><strong>Who receives them.</strong> Me, Jack Rome. I use your answers to review the workflow you described and to follow up with you about this assessment and a possible audit conversation. Nothing else. You won't be added to a mailing list.</p>
-        <p><strong>What goes where.</strong> Your answers are stored by Netlify, which hosts this site. A copy is emailed to me through Netlify's form service, which runs its own spam filtering, and lands in my Gmail inbox. Only your task description and any follow-up answer are sent to Anthropic, the AI provider, to choose a follow-up question and to judge how specifically the task is described. Your name, email, organization, and other answers never go to Anthropic. Each provider handles data under its own terms.</p>
-        <p><strong>How long.</strong> I review these records monthly. If we haven't gone on to work together, I delete the stored record, the email copy, and any export within about 90 days of your submission, at the next monthly review.</p>
-        <p><strong>Your choices.</strong> To ask what I hold or to have it deleted, email <a href="mailto:jackintheway@gmail.com?subject=Workflow%20audit%20assessment">jackintheway@gmail.com</a> with the receipt shown on your results.</p>
-        <p><strong>What the score is.</strong> A summary of how you described one workflow, to help start a conversation. It doesn't measure whether AI would help, what it would cost, or what you might save.</p>
-      </div>
+      <p><a href="#privacy" data-open="privacyDialog">Read the privacy notice</a>. It opens right here without leaving the page.</p>
     </section>
+
+    <dialog class="audit-dialog" id="privacyDialog" aria-labelledby="privacyDialogTitle">
+      <div class="audit-dialog-inner">
+        <h2 id="privacyDialogTitle">How your answers are handled</h2>
+        <div class="prose">
+          <p><strong>Who receives them.</strong> Me, Jack Rome. I use your answers to review the workflow you described and to follow up with you about this assessment and a possible audit conversation. Nothing else. You won't be added to a mailing list.</p>
+          <p><strong>What goes where.</strong> Your answers are stored by Netlify, which hosts this site. A copy is emailed to me through Netlify's form service, which runs its own spam filtering, and lands in my Gmail inbox. Only your task description and any follow-up answer are sent to Anthropic, the AI provider, to choose a follow-up question and to judge how specifically the task is described. Your name, email, organization, and other answers never go to Anthropic. Each provider handles data under its own terms.</p>
+          <p><strong>How long.</strong> I review these records monthly. If we haven't gone on to work together, I delete the stored record, the email copy, and any export within about 90 days of your submission, at the next monthly review.</p>
+          <p><strong>Your choices.</strong> To ask what I hold or to have it deleted, email <a href="mailto:jackintheway@gmail.com?subject=Workflow%20audit%20assessment">jackintheway@gmail.com</a> with <a href="#receipt-help" data-open="receiptDialog">the receipt shown on your results</a>.</p>
+          <p><strong>What the score is.</strong> A summary of how you described one workflow, to help start a conversation. It doesn't measure whether AI would help, what it would cost, or what you might save.</p>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" type="button" data-close>Close</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="audit-dialog" id="receiptDialog" aria-labelledby="receiptDialogTitle">
+      <div class="audit-dialog-inner">
+        <h2 id="receiptDialogTitle">The receipt</h2>
+        <div class="prose">
+          <p>After you submit, your results end with a box labeled "Your receipt" and an eight-character code, something like <code>A1B2C3D4</code>. That code is the only thing I need to find your answers. Include it when you email me.</p>
+          <p>Nothing is emailed to you automatically, so the results page is your copy. Note the code before you close it.</p>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" type="button" data-close>Close</button>
+        </div>
+      </div>
+    </dialog>
 
   </main>
 

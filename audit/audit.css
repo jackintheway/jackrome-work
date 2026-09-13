@@ -127,7 +127,6 @@
 
 .field.choice label.standalone {
   margin-top: var(--space-3);
-  border-top: var(--border-hair) solid var(--outline);
   border-bottom: 0;
 }
 
@@ -206,7 +205,33 @@
 .audit-breakdown p { margin: 0; font-size: var(--fs-small); }
 .audit-book { margin-bottom: var(--space-5); }
 .audit-book .btn-row { margin-top: var(--space-4); }
-.audit-receipt { font-size: var(--fs-caption); color: var(--text-body); }
+.audit-receipt { margin-bottom: var(--space-5); }
+.audit-receipt > p:first-child { margin-bottom: var(--space-2); }
+.audit-receipt-code {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-h2);
+  letter-spacing: 0.08em;
+  color: var(--text-strong);
+  margin: 0 0 var(--space-3);
+}
+.audit-receipt p:last-child { margin-bottom: 0; }
+
+/* ---- Dialogs ---- */
+.audit-dialog {
+  border: var(--rule-heavy);
+  box-shadow: var(--pop-black);
+  background: var(--bg-base);
+  color: var(--text-body);
+  padding: 0;
+  width: min(68ch, calc(100vw - 2 * var(--space-5)));
+  max-height: calc(100vh - 2 * var(--space-6));
+}
+.audit-dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
+.audit-dialog-inner { padding: var(--space-6); }
+.audit-dialog h2 { margin-bottom: var(--space-4); }
+.audit-dialog .btn-row { margin-top: var(--space-5); }
+.audit-dialog code { font-family: var(--font-heading); font-weight: var(--fw-bold); letter-spacing: 0.08em; }
 
 .audit-privacy { border-top: var(--rule); padding-top: var(--space-7); margin-top: var(--space-9); }
 

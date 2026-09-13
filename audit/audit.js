@@ -33,6 +33,7 @@ const state = {
   followupRequests: 0,
   followupInFlight: null,
   submission: null, // { id, token, snapshotKey }
+  fromReview: false,
   uncertain: false,
   inFlight: false,
   done: false,
@@ -125,17 +126,10 @@ function showStage(n, opts) {
   $("intro").hidden = true;
   form.hidden = false;
   form.querySelectorAll(".stage").forEach((el) => { el.hidden = Number(el.dataset.stage) !== n; });
-  if (n === 5) {
-    const name = $("name").value.trim();
-    $("nameEcho").textContent = name ? "Submitting as " + name + "." : "";
-    if (name) {
-      const change = document.createElement("a");
-      change.href = "#";
-      change.textContent = "Change";
-      change.addEventListener("click", (e) => { e.preventDefault(); showStage(1); $("name").focus(); });
-      $("nameEcho").append(" ", change);
-    }
-  }
+  if (n === 5) renderNameEcho();
+  // A "Back to review" button only makes sense on a stage reached from
+  // the review panel; it goes back with the panel still open.
+  form.querySelectorAll("[data-back-to-review]").forEach((b) => { b.hidden = !state.fromReview; });
   state.stage = n;
   if (push) history.pushState({ stage: n }, "");
   const title = stageEl(n).querySelector(".stage-title");
@@ -144,13 +138,52 @@ function showStage(n, opts) {
 }
 
 window.addEventListener("popstate", (e) => {
+  // Only entries this script pushed carry a stage. Anything else (an
+  // in-page anchor, for instance) is not navigation within the flow.
+  if (!e.state || typeof e.state.stage !== "number") return;
   if (state.done || state.inFlight) {
     history.pushState({ stage: state.stage }, "");
     return;
   }
-  const n = e.state && typeof e.state.stage === "number" ? e.state.stage : 0;
-  showStage(n, { push: false });
+  showStage(e.state.stage, { push: false });
 });
+
+function renderNameEcho() {
+  const name = $("name").value.trim();
+  const echo = $("nameEcho");
+  echo.textContent = name ? "Submitting as " + name + "." : "";
+  if (!name) return;
+  const change = document.createElement("a");
+  change.href = "#";
+  change.textContent = "Change";
+  change.addEventListener("click", (e) => {
+    e.preventDefault();
+    const box = $("nameInlineBox");
+    box.hidden = false;
+    $("nameInline").value = $("name").value;
+    $("nameInline").focus();
+  });
+  echo.append(" ", change);
+}
+
+/* ---------- dialogs ---------- */
+
+function wireDialogs() {
+  document.querySelectorAll("[data-open]").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const dialog = $(a.dataset.open);
+      if (!dialog || typeof dialog.showModal !== "function") return; // fall back to the anchor
+      e.preventDefault();
+      dialog.showModal();
+    });
+  });
+  document.querySelectorAll(".audit-dialog [data-close]").forEach((b) => {
+    b.addEventListener("click", () => b.closest("dialog").close());
+  });
+  document.querySelectorAll(".audit-dialog").forEach((d) => {
+    d.addEventListener("click", (e) => { if (e.target === d) d.close(); });
+  });
+}
 
 /* ---------- validation display ---------- */
 
@@ -356,8 +389,8 @@ const LABELS = {
   repeatability: { same: "Same shape", similar: "Similar with variation", different: "Different every time", unknown: "Not sure" },
   sources: { yes: "Yes", some: "Some of it", unknown: "Not sure" },
   sensitivity: { yes: "Yes", no: "No", unknown: "Not sure" },
-  decision: { you: "You", director: "Your director", leadership: "Leadership team", board: "Board or committee", other: "Someone else", unknown: "Not sure" },
-  preference: { ourselves: "Ourselves", someone_else: "Someone else", not_considered: "Haven't thought about it" },
+  decision: { you: "I do", director: "My director", leadership: "Our leadership team", board: "Our board or a committee", other: "Someone else", unknown: "Not sure" },
+  preference: { ourselves: "Ourselves", someone_else: "Someone else", not_considered: "I haven't thought about it" },
 };
 
 const REVIEW_ROWS = {
@@ -365,7 +398,7 @@ const REVIEW_ROWS = {
   2: [["The task", "q5"], ["Added detail", "followup"], ["How often", "frequency"], ["Staff time per round", "effort"], ["Time note", "effort_note"], ["Main task or one of several", "scope_context"], ["People involved", "people"], ["Volunteers or contractors help", "helpers"]],
   3: [["Where it stalls", "stall"], ["Where else", "stall_other"], ["When the usual person is out", "q10"], ["Output shape", "repeatability"]],
   4: [["Tools", "q12"], ["Know where the information comes from", "sources"], ["AI tried", "q13"], ["Personal or confidential information", "sensitivity"]],
-  5: [["Who decides", "decision"], ["Their role", "decision_other"], ["What you'd do with the hours", "q16"], ["Six months from now", "preference"], ["Email", "email"]],
+  5: [["Who decides", "decision"], ["Their role", "decision_other"], ["What we'd do with the hours", "q16"], ["Six months from now", "preference"], ["Email", "email"]],
 };
 
 function displayValue(field, answers) {
@@ -406,6 +439,7 @@ function renderReview() {
       change.setAttribute("aria-label", "Change " + label.toLowerCase());
       change.addEventListener("click", (e) => {
         e.preventDefault();
+        state.fromReview = true;
         showStage(stage.id);
         const target = fieldAnchor(field === "followup" ? "followup" : field);
         if (target) target.focus();
@@ -597,6 +631,24 @@ function wireNavigation() {
   form.querySelectorAll("[data-back]").forEach((btn) => {
     btn.addEventListener("click", () => showStage(state.stage - 1));
   });
+  form.querySelectorAll("[data-back-to-review]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const errors = validateStage(state.stage);
+      if (errors.length) { showErrors(errors); return; }
+      state.fromReview = false;
+      showStage(5);
+      renderReview();
+      $("review").hidden = false;
+      $("reviewBtn").setAttribute("aria-expanded", "true");
+      $("reviewTitle").setAttribute("tabindex", "-1");
+      $("reviewTitle").focus();
+    });
+  });
+  $("nameInline").addEventListener("input", () => {
+    $("name").value = $("nameInline").value;
+    const name = $("name").value.trim();
+    $("nameEcho").firstChild.textContent = name ? "Submitting as " + name + "." : "";
+  });
   $("reviewBtn").addEventListener("click", () => {
     const panel = $("review");
     const open = panel.hidden;
@@ -625,6 +677,7 @@ function init() {
   wireNavigation();
   wireReveals();
   wireFollowup();
+  wireDialogs();
   updateQ5Count();
   state.q5Snapshot = $("q5").value;
 }
