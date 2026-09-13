@@ -62,10 +62,26 @@ These decisions from Jack supersede broader or dated wording below.
   on 2026-09-12. The demo uses this website's September 12 link-update checkpoint
   (633121a), quotes Jack's request, and clearly dates the shortened handoff. It
   reveals recorded material and copies a note; it does not run an AI model.
-- The arrival uses Jack's separated album artwork beside the six room links. Only
-  this landing gets scroll-linked motion, with a pause control and static layouts
-  below 800px or under reduced motion. Read MOTION.md for the implementation.
-  Both additions await Jack's review and explicit publication go. Keep private
+- After viewing the arrival, Jack preferred normal page scrolling with independent
+  artwork movement. The figure and room list now scroll together; the artwork's
+  layers move on CSS timelines. Hovering the artwork pauses it. A keyboard pause
+  button appears on focus. Phones, coarse pointers, and reduced-motion users get a
+  still composition. Two copies of the existing puzzle mark float at the artwork's
+  corners. Read MOTION.md for the implementation. This remains a local preview.
+- The handoff demo keeps the dictated request verbatim with the italic caption
+  "Spoken aloud using Wispr Flow." Its surrounding explanation speaks as Jack:
+  "My request" and "our decisions." The recorded agent-to-agent note still uses
+  Jack's name to orient its recipient.
+- The second case study, event-remaster-and-language-conform, is a local draft
+  based on the private exhibit. Its three-timeline schematic distinguishes the
+  original recording, the revised edit with gaps, and the final edit. Manual
+  extensions changed the middle timeline. Preserve the limits: listening review
+  and translated-card review remained open in the saved record; the original
+  graphics delivery lacked the promised editable After Effects builder. Saved
+  production reports and later artifact checks have different scopes. No client
+  media, identifiers, private ledgers, or source dialogue belong in the public page.
+  The first case study remains unchanged during Jack's separate review.
+- These additions await Jack's review and explicit publication go. Keep private
   portfolio materials out of the example and preserve the existing tool selection.
 
 
@@ -1172,8 +1188,8 @@ after. The data file is the expensive thing to retrofit; the hub page is cheap
 to add later, so the expensive thing got built first. Adding a case study is
 adding an object plus a page.
 
-**There is no `/case-studies` index yet, on purpose.** One case study does not
-need a hub, and a hub shaped around a sample of one would be shaped wrong. The
+**There is no `/case-studies` index yet, on purpose.** With two local case-study
+pages, the list remains on AI Portfolio. The
 bare path 301s to `/ai-portfolio` in `netlify.toml` so it does not 404 on a
 directory with no index. Revisit at three. When it exists, the "Back to AI
 Portfolio" button at the foot of each case study becomes "Back to case studies."

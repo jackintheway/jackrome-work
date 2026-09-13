@@ -411,11 +411,17 @@
 }
 .handoff-panel h3 { margin: 0 0 var(--space-5); }
 .handoff-request {
-  margin: var(--space-6) 0;
+  margin: var(--space-6) 0 var(--space-3);
   padding: 0 0 0 var(--space-5);
   border-left: var(--border-heavy) solid var(--ws-orange);
   font-size: var(--fs-body-lg);
   line-height: var(--lh-body);
+}
+.handoff-spoken-note {
+  margin: 0 0 var(--space-6);
+  padding-left: calc(var(--space-5) + var(--border-heavy));
+  font-size: var(--fs-small);
+  color: var(--text-muted);
 }
 .handoff-example-link { display: inline-block; padding-block: var(--space-3); }
 .handoff-checks, .handoff-note { margin: 0; }
@@ -983,6 +989,40 @@ ul.offer-grid {
 }
 .speaker-track span { background: var(--ws-green); color: var(--ws-black); }
 .diagram-note { font-size: var(--fs-small); margin: var(--space-4) 0 0; }
+.clock-row + .clock-row { margin-top: var(--space-5); }
+.clock-row h3 { font-size: var(--fs-body); margin: 0; }
+.clock-row p { font-size: var(--fs-small); margin: var(--space-1) 0 var(--space-3); }
+.clock-track {
+  display: grid;
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+  min-height: var(--space-7);
+  border-bottom: var(--rule);
+}
+.clock-segment {
+  display: grid;
+  place-items: center;
+  border: var(--rule);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  min-width: 0;
+}
+.clock-a { background: var(--ws-blue); color: var(--ws-paper); }
+.clock-b { background: var(--ws-green); }
+.clock-c { background: var(--ws-salmon); }
+.clock-added { background: var(--ws-yellow); }
+.clock-cut { background: var(--ws-paper); }
+.clock-gap { border-style: dashed; }
+.clock-pause { border-inline: 0; background: var(--ws-paper); }
+.clock-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  padding: 0;
+  margin: var(--space-5) 0 0;
+  list-style: none;
+  font-size: var(--fs-small);
+}
+.clock-key b { margin-right: var(--space-1); }
 @media (max-width: 600px) {
   .edit-stages { grid-template-columns: 1fr; }
   .edit-track { grid-template-columns: 1fr repeat(3, 1.3fr); }

@@ -9,17 +9,23 @@ deliberately taken from elsewhere, and what is not allowed to happen yet.
 Jack authorized a local preview of the Wayspace arrival after the August 24 cutover.
 The historical cutover gate below has been satisfied. Publication still needs his go.
 
-`wayspace.html` now puts the album composition beside the six room links. The existing
-blue hero and straight wordmark stay. `js/wayspace-arrival.js` drives six groups through
-one queued animation frame per scroll update. Translation is capped at 32px vertically
-and 8px horizontally. The bridge, flower, spiral, and album wordmark stay registered
-as one group. There is no timer-driven animation, scroll capture, or new dependency.
+After seeing the scroll-linked preview, Jack preferred the page's earlier static
+layout and asked to try artwork moving on its own. That supersedes the historical
+scroll-only decision below. The figure and room list now scroll together normally.
+Only the artwork's contents move, using 14-24 second CSS timelines with offsets up
+to 12px vertically and 4px horizontally. The bridge, flower, spiral, and album
+wordmark stay registered as one group. Two small copies of the existing puzzle
+mark sit at opposite corners and share the motion controls.
 
-The figure is sticky on desktop while the room list passes. Below 800px it becomes a
-compact still image above the list, with a direct "Choose a room" anchor in the hero.
-Reduced motion also makes the figure static and removes every layer transform.
-A desktop pause control stops the updates and restores the composed position.
-The six room links remain plain HTML even if the artwork or scripts fail.
+Hovering the artwork freezes every moving layer in place. There is no visible
+button underneath. Keyboard focus reveals a pause/resume button inside the frame;
+focus itself pauses motion, and activating the button can keep it paused after
+focus leaves. Below 800px, on coarse pointers, and under reduced motion, the
+composition stays still. The six room links remain plain HTML.
+
+`js/wayspace-arrival.js` enables the CSS clocks only on eligible devices. An
+IntersectionObserver and document visibility suspend them offscreen or in a hidden
+tab. No scroll listener or animation-frame loop remains. No new dependency was added.
 
 The ten 1200px WebP derivatives in `assets/img/arrival/` total 906,830 bytes. Their
 registered canvases and alpha are preserved. The sky uses quality-85 compression;
@@ -30,8 +36,8 @@ The references Jack supplied were nateherk.com and uppitai.com. Their layered im
 and paced reveals informed the inspection. No source code, copy, or assets were taken.
 The rest of this document records the earlier decision and its reasons.
 
-Short version: **the site stays calm. Scroll-linked motion is admitted in exactly
-one place, the Wayspace landing.**
+**Current boundary:** autonomous artwork motion is a local Wayspace landing preview.
+The room layouts and navigation stay still. The sections below record earlier decisions.
 
 ---
 

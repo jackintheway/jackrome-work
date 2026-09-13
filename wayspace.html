@@ -74,25 +74,29 @@
 
     <div class="ws-arrival" id="wayspaceArrival">
       <figure class="ws-arrival-art">
-        <div class="ws-scene" aria-hidden="true">
-          <div class="ws-scene-canvas">
-            <img class="ws-scene-layer" src="/assets/img/arrival/sky-v1.webp" alt="" width="1200" height="1200">
-            <img class="ws-scene-layer" src="/assets/img/arrival/river-v1.webp" alt="" width="1200" height="1200" data-depth-y="-4">
-            <img class="ws-scene-layer" src="/assets/img/arrival/trees-v1.webp" alt="" width="1200" height="1200" data-depth-y="-16">
-            <img class="ws-scene-layer" src="/assets/img/arrival/jack-v1.webp" alt="" width="1200" height="1200" data-depth-y="-10">
-            <div class="ws-scene-layer" data-depth-y="6">
-              <img class="ws-scene-layer" src="/assets/img/arrival/bridge-v1.webp" alt="" width="1200" height="1200">
-              <img class="ws-scene-layer" src="/assets/img/arrival/flower-v1.webp" alt="" width="1200" height="1200">
-              <img class="ws-scene-layer" src="/assets/img/arrival/spiral-v1.webp" alt="" width="1200" height="1200">
-              <img class="ws-scene-layer" src="/assets/img/arrival/wordmark-v1.webp" alt="" width="1200" height="1200">
+        <div class="ws-art-stage">
+          <div class="ws-scene">
+            <div class="ws-scene-canvas" aria-hidden="true">
+              <img class="ws-scene-layer" src="/assets/img/arrival/sky-v1.webp" alt="" width="1200" height="1200">
+              <img class="ws-scene-layer" src="/assets/img/arrival/river-v1.webp" alt="" width="1200" height="1200" data-motion="river">
+              <img class="ws-scene-layer" src="/assets/img/arrival/trees-v1.webp" alt="" width="1200" height="1200" data-motion="trees">
+              <img class="ws-scene-layer" src="/assets/img/arrival/jack-v1.webp" alt="" width="1200" height="1200" data-motion="jack">
+              <div class="ws-scene-layer" data-motion="bridge">
+                <img class="ws-scene-layer" src="/assets/img/arrival/bridge-v1.webp" alt="" width="1200" height="1200">
+                <img class="ws-scene-layer" src="/assets/img/arrival/flower-v1.webp" alt="" width="1200" height="1200">
+                <img class="ws-scene-layer" src="/assets/img/arrival/spiral-v1.webp" alt="" width="1200" height="1200">
+                <img class="ws-scene-layer" src="/assets/img/arrival/wordmark-v1.webp" alt="" width="1200" height="1200">
+              </div>
+              <img class="ws-scene-layer" src="/assets/img/arrival/swimmers-v1.webp" alt="" width="1200" height="1200" data-motion="swimmers">
+              <img class="ws-scene-layer" src="/assets/img/arrival/butterflies-v1.webp" alt="" width="1200" height="1200" data-motion="butterflies">
             </div>
-            <img class="ws-scene-layer" src="/assets/img/arrival/swimmers-v1.webp" alt="" width="1200" height="1200" data-depth-y="14">
-            <img class="ws-scene-layer" src="/assets/img/arrival/butterflies-v1.webp" alt="" width="1200" height="1200" data-depth-y="-32" data-depth-x="8">
+            <button class="ws-motion-toggle" id="arrivalMotion" type="button" hidden>Pause artwork</button>
           </div>
+          <img class="ws-arrival-piece piece-near" src="/assets/puzzle-single.svg" alt="" width="1170" height="970" data-motion="piece-near" aria-hidden="true">
+          <img class="ws-arrival-piece piece-far" src="/assets/puzzle-single.svg" alt="" width="1170" height="970" data-motion="piece-far" aria-hidden="true">
         </div>
         <figcaption class="ws-art-caption">
           <span>From <a href="/wayspace/music#wayspace">Wayspace, the album</a>.</span>
-          <button class="ws-motion-toggle" id="arrivalMotion" type="button" hidden>Pause artwork</button>
         </figcaption>
       </figure>
 

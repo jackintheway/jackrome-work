@@ -1,51 +1,30 @@
-/* One scroll-linked composition, confined to the Wayspace arrival. */
+/* Independent artwork motion. Scrolling never sets animation progress. */
 (() => {
   const arrival = document.getElementById('wayspaceArrival');
   const button = document.getElementById('arrivalMotion');
   if (!arrival || !button) return;
 
-  const layers = [...arrival.querySelectorAll('[data-depth-y]')];
+  const scene = arrival.querySelector('.ws-scene');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const wideScreen = window.matchMedia('(min-width: 800px)');
+  const wideScreen = window.matchMedia('(min-width: 800px) and (hover: hover) and (pointer: fine)');
   let paused = false;
-  let frame = 0;
-  let start = 0;
-  let distance = 1;
-  let active = false;
-
-  function paint() {
-    frame = 0;
-    if (!active) return;
-    const progress = Math.max(0, Math.min(1, (window.scrollY - start) / distance));
-    layers.forEach(layer => {
-      const x = progress * Number(layer.dataset.depthX || 0);
-      const y = progress * Number(layer.dataset.depthY);
-      layer.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
-    });
-  }
-
-  function requestPaint() {
-    if (active && !frame) frame = window.requestAnimationFrame(paint);
-  }
+  let visible = false;
 
   function configure() {
     const eligible = wideScreen.matches && !reducedMotion.matches;
-    active = eligible && !paused;
+    arrival.classList.toggle('is-animated', eligible);
+    arrival.classList.toggle('is-playing', eligible && !paused && visible && !document.hidden);
     button.hidden = !eligible;
-    button.textContent = paused ? 'Enable artwork motion' : 'Pause artwork';
-    window.cancelAnimationFrame(frame);
-    frame = 0;
-    window.removeEventListener('scroll', requestPaint);
-    if (!active) {
-      layers.forEach(layer => layer.style.removeProperty('transform'));
-      return;
-    }
-    const rect = arrival.getBoundingClientRect();
-    start = Math.max(0, rect.top + window.scrollY - window.innerHeight * 0.5);
-    distance = Math.max(rect.height, window.innerHeight * 0.75);
-    window.addEventListener('scroll', requestPaint, { passive: true });
-    requestPaint();
+    button.textContent = paused ? 'Resume artwork' : 'Pause artwork';
   }
+
+  // Visibility only suspends the clock when the artwork cannot be seen.
+  // It never changes the positions or restarts a paused animation.
+  const observer = new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    configure();
+  });
+  observer.observe(scene);
 
   button.addEventListener('click', () => {
     paused = !paused;
@@ -53,8 +32,7 @@
   });
   reducedMotion.addEventListener('change', configure);
   wideScreen.addEventListener('change', configure);
-  window.addEventListener('resize', configure, { passive: true });
+  document.addEventListener('visibilitychange', configure);
   window.addEventListener('pageshow', configure);
-  document.fonts.ready.then(configure);
   configure();
 })();

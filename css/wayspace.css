@@ -220,11 +220,21 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   margin-bottom: var(--space-9);
 }
 .ws-arrival-art {
-  position: sticky;
-  top: var(--space-9);
   margin: 0;
   min-width: 0;
 }
+.ws-art-stage {
+  position: relative;
+  padding: var(--space-4);
+}
+.ws-arrival-piece {
+  position: absolute;
+  width: 76px;
+  height: auto;
+  pointer-events: none;
+}
+.piece-near { right: 0; bottom: 0; rotate: 16deg; }
+.piece-far { left: 0; top: 0; width: 54px; rotate: -24deg; }
 .ws-scene {
   position: relative;
   aspect-ratio: 1;
@@ -245,6 +255,26 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   height: 100%;
   pointer-events: none;
 }
+/* The frame scrolls with the page. Only its contents drift, on their
+   own timelines. Pausing freezes them in place without a reset. */
+.ws-arrival [data-motion="river"]      { --art-y: -2px; --art-duration: 24s; --art-delay: -4s; }
+.ws-arrival [data-motion="trees"]      { --art-y: -6px; --art-duration: 20s; --art-delay: -8s; }
+.ws-arrival [data-motion="jack"]       { --art-y: -4px; --art-duration: 18s; --art-delay: -6s; }
+.ws-arrival [data-motion="bridge"]     { --art-y: 3px;  --art-duration: 22s; --art-delay: -3s; }
+.ws-arrival [data-motion="swimmers"]   { --art-y: 5px;  --art-duration: 16s; --art-delay: -4s; }
+.ws-arrival [data-motion="butterflies"] { --art-x: 4px; --art-y: -12px; --art-duration: 14s; --art-delay: -1s; }
+.ws-arrival [data-motion="piece-near"] { --art-x: -3px; --art-y: -8px; --art-duration: 19s; --art-delay: -5s; }
+.ws-arrival [data-motion="piece-far"] { --art-x: 2px; --art-y: 5px; --art-duration: 23s; --art-delay: -9s; }
+.ws-arrival.is-animated [data-motion] {
+  animation: ws-art-drift var(--art-duration) ease-in-out var(--art-delay) infinite;
+  animation-play-state: paused;
+}
+.ws-arrival.is-playing [data-motion] { animation-play-state: running; }
+.ws-arrival .ws-art-stage:is(:hover, :focus-within) [data-motion] { animation-play-state: paused; }
+@keyframes ws-art-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(var(--art-x, 0px), var(--art-y), 0); }
+}
 .ws-art-caption {
   display: flex;
   flex-wrap: wrap;
@@ -255,15 +285,19 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
   font-size: var(--fs-small);
 }
 .ws-motion-toggle {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  opacity: 0;
+  pointer-events: none;
   font: inherit;
   color: var(--link);
-  background: transparent;
-  border: 0;
-  padding: var(--space-3) 0;
-  text-decoration: underline;
-  text-underline-offset: var(--space-1);
+  background: var(--bg-base);
+  border: var(--rule);
+  padding: var(--space-3);
   cursor: pointer;
 }
+.ws-motion-toggle:focus-visible { opacity: 1; pointer-events: auto; }
 .ws-motion-toggle[hidden] { display: none; }
 .ws-arrival-rooms { min-width: 0; }
 .ws-arrival-rooms .room-link {
@@ -282,11 +316,11 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
     margin-inline: auto;
   }
   .ws-scene-canvas { inset: 0; }
-  .ws-scene-layer[data-depth-y] { transform: none !important; }
+  .ws-arrival [data-motion] { animation: none !important; transform: none !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ws-scene-canvas { inset: 0; }
-  .ws-scene-layer[data-depth-y] { transform: none !important; }
+  .ws-arrival [data-motion] { animation: none !important; transform: none !important; }
   .ws-motion-toggle { display: none; }
   .ws-arrival-art { position: static; }
 }

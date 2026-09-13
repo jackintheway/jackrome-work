@@ -20,79 +20,74 @@ context, not permission to perform unfinished work. Do not include private mater
 
 ### What Jack requested and decided
 
-Build the /handoff demonstration using this website's own work, and show a Wayspace
-arrival with modest scroll movement using his existing artwork. Jack is reviewing
-the case study separately. Leave it unchanged and keep everything local pending his
-explicit publication go. Durable decisions are in CLAUDE.md and MOTION.md.
+Add the Wispr Flow attribution to the handoff request and use first-person framing
+around it. Replace scroll-driven artwork with autonomous movement, pause on hover,
+and try the existing puzzle mark on the arrival. Use the supplied second exhibit
+for another local case-study draft. The first case study remains unchanged while
+Jack reviews it. Nothing is authorized for publication yet.
 
 ### Current work
 
-- AI Portfolio now has a three-step handoff example: Jack's request, the files
-  checked, and a copyable note. It uses the link-update save point 633121a, clearly
-  dated September 12, and shortens that checkpoint for public reading. The buttons
-  reveal recorded material; they do not run an AI model. With scripts disabled,
-  all three panels remain readable. The explanatory copy is newly drafted from
-  the project record; the request excerpt is Jack's own sentence.
-- Wayspace's blue hero and straight wordmark remain. The separated album artwork
-  sits beside the room list. Six layer groups move by at most 32px vertically and
-  8px horizontally during scrolling, through one queued animation frame. A pause
-  button restores the composed position. Below 800px and with reduced motion,
-  the composition is still. A hero link jumps directly to the rooms.
-- Ten registered 1200px WebP exports total 906,830 bytes. No source files changed.
-  tools/export-arrival-art.py documents the export; version filenames before
-  changing published artwork because image responses are immutable on the host.
-- The case-study page and its card data, Production data, and About are byte-identical
-  to intake. The four design-token files still match the canonical system.
+- The demo keeps Jack's dictated request verbatim, with the italic caption
+  "Spoken aloud using Wispr Flow." Its framing says "My request" and "our decisions."
+  The dated agent handoff still names Jack, since it addresses the next agent.
+- The arrival artwork and room list now scroll together in normal document flow.
+  Eight groups, including two small existing puzzle marks at opposite corners,
+  move on independent CSS timelines. Hover freezes them in place. Keyboard focus
+  reveals a pause/resume button; activating it preserves the pause after focus leaves.
+  Motion stays off below 800px, on coarse pointers, and under reduced motion. Hidden
+  tabs and offscreen artwork suspend their animation clocks. No new asset library.
+- The second page is case-studies/event-remaster-and-language-conform.html, with an
+  entry in js/case-studies.js, its own share-card source and 1200x630 PNG, and a sitemap
+  entry. README now counts 75 content pages plus the separate 404 page.
+- The case study uses a three-timeline schematic, preserves intentional pauses and
+  extensions, and separates saved production reports from later artifact checks.
+  Listening approval and 20 translated-card reviews were still open in the record.
+  The missing editable graphics builder is stated. Most narrative is newly drafted
+  from the exhibit; two passages adapt Jack's own explanation of shifts and pauses.
+- CLAUDE.md and MOTION.md record the new decisions. The first case page, Production,
+  About, and creative catalogue remain byte-identical to intake. Token files still
+  match the canonical design system. Existing arrival images were not re-exported.
 
 ### Checks and limits
 
-- Inspected both references Jack supplied in the browser, then checked the new
-  layouts at measured 390px and 1440px. Also checked the arrival at 799px and 800px.
-  No horizontal overflow. Images loaded with square geometry and room links intact.
-- Followed the new artwork link to the Wayspace album and the example link to its
-  12 filtered lyrics. Both arrived at the intended content below the navigation.
-- Activated handoff steps with clicks and Enter. Copy succeeded and the resulting
-  dated note was pasted into a temporary local field and read back successfully.
-- Scrolled through the artwork at multiple positions. Measured the changing
-  transforms, then confirmed they stayed off after keyboard pause and more scrolling.
-- Forced reduced motion in headless Chrome at 390px and 1440px: all transforms were
-  none, motion controls hidden, and the artwork stayed in normal document flow.
-  Inspected a start/middle/end screenshot strip. No-script checks preserved all
-  six room links and all three demo panels. The temporary harness was removed.
-- JavaScript syntax, diff whitespace, unique IDs, image alt attributes, local asset
-  and link resolution, title/content rules, and token parity checks passed.
-- This is local verification. The preview does not emulate Netlify headers or
-  redirects. No Safari/VoiceOver certification or measured production performance
-  claim is implied.
+- Browser checks at measured 390px, 799px, 800px, and desktop widths: no horizontal
+  overflow. The new schematic remains readable at 390px. Arrival images load, and
+  all six room links remain available. The case-list links resolve to both pages.
+- Scrolling moved the artwork frame and room list by the same measured 352px.
+  Autonomous transforms changed while enabled. Hover paused all eight groups;
+  moving off resumed them. Keyboard focus revealed the control and paused motion;
+  Enter preserved that pause after Tab, and Resume restarted it.
+- The demo's caption renders in italics; its second panel uses "our decisions."
+  The historical note and quote remain intact. Existing step/copy implementation
+  was not changed; prior clipboard verification remains in the previous checkpoint.
+- Forced reduced motion in headless Chrome at 390px and 1440px: no animation or
+  layer transform, normal document flow, hidden motion controls, six room links.
+  With JavaScript disabled, all three handoff panels remained readable.
+- New case metadata, image dimensions, local assets/links, unique IDs, alt attributes,
+  external rel attributes, JavaScript syntax, diff whitespace, and token parity pass.
+  The new page and card pass the exhibit's excluded-term scan. No new case console
+  errors. The temporary verification harness was removed.
+- These are local checks, not a new media audit or a Netlify deployment. No claim
+  of completed Spanish listening approval, translated renders, or production headers.
 
 ### Publication and preview state
 
-Intake HEAD was 633121a on main. This checkpoint accompanies the local save point
-for the demonstration and arrival. No push or deployment was performed.
+Intake HEAD was d28e9b4 on main. This checkpoint accompanies the local save point
+for arrival revisions and the second case study. No push or deployment performed.
+Earlier audit and link work remains in 25f1e48 and 633121a; the demonstration and
+first arrival preview are in d28e9b4. The website-walk skill is installed separately.
 
-The earlier audit work remains in 25f1e48 and 633121a: service/portfolio corrections,
-case-study rewrite, lyric fixes, contrast, italic book titles, call expectations,
-404/discovery files, and precise cross-room links. The locally installed website-walk
-skill remains outside this public repository.
+Loopback preview: http://127.0.0.1:56064, with caching disabled. Port 8642 remains
+available for Jack's first case-study review. Neither emulates Netlify configuration.
 
-A fresh loopback-only preview is running at http://127.0.0.1:56064 with caching disabled
-so imported stylesheet edits appear during review. The earlier preview at port 8642
-is still available for Jack's open case-study tab. Neither applies Netlify config.
-
-The 18 pre-existing untracked files remain untouched: the eight Substack images,
-assets/puzzle-trio.svg, and nine files under tools/substack/. Do not stage them.
-
-### Still open
-
-Jack's review of the new arrival, handoff example, and earlier case-study/copy changes.
-After his publication go, verify the deployed revision plus the new document redirects,
-sitemap, robots, 404, and artwork content types/cache headers against the live host.
-
-The case-study source record confirms two late gaps, not their final closure. That
-limit remains in the copy. No private transcript or employer portfolio material was
-added to the example or repository.
+The pre-existing separate-exhibit handoff section remains an unstaged change from
+another agent. Preserve it. The 18 pre-existing untracked files are also untouched:
+eight Substack images, assets/puzzle-trio.svg, and nine files under tools/substack/.
+The private exhibits and source conversation remain ignored and uncommitted.
 
 ### Next action
 
-Review the local previews with Jack and apply his feedback. Publish only after his
-explicit go, then complete the host-specific checks.
+Review the two case-study drafts and revised arrival with Jack. Apply his feedback
+locally. After an explicit publication go, push deliberately and verify the deployed
+revision, document redirects, sitemap, robots, 404, and artwork headers on the host.

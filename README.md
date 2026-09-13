@@ -39,7 +39,7 @@ Full-resolution originals and audio masters live in `_source/`, which is gitigno
 
 ## Scope and discovery
 
-74 public content pages: six root pages, six Wayspace rooms, one case study, and
+75 public content pages: six root pages, six Wayspace rooms, two case studies, and
 61 lyric pages. `404.html` is the separate recovery page for missing URLs.
 The creative catalogues render from `js/wayspace.js`; each room stays independently
 curated. Cross-room entry links use authored anchors that should survive title edits.
@@ -75,6 +75,10 @@ Images are cached as immutable on the host. Before revising a published export, 
 `VERSION` in the exporter and update the image paths in `wayspace.html`. Do not overwrite
 published `v1` files with different art. The source canvases must stay aligned and square.
 Motion is confined to `js/wayspace-arrival.js` and the landing styles in `css/wayspace.css`.
+CSS timelines move the artwork independently of scrolling. Hover pauses the artwork
+and its two puzzle marks; the keyboard pause button appears on focus. Motion stays
+off below 800px, with coarse pointers, and under reduced motion. The room list and
+artwork frame both use normal document flow. The marks reuse `assets/puzzle-single.svg`.
 
 ## Standing rules
 

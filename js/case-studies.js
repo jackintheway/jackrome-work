@@ -42,6 +42,15 @@ const CASE_STUDIES = [
     lead: "I worked with Claude to turn my hand cuts into timing rules, then checked the scripted edit against the saved Premiere project.",
     summary: "The work combined a transcript cue sheet, in-place editing scripts, and checks across two video and two audio tracks. A slide request I caught on playback led to a second way to detect mistranscribed cues.",
     result: "A 92-minute recording became a verified 34:13 teaching cut after an end trim and scripted removals. Two later corrections were verified as gaps; their final closure remained unverified in the session record."
+  },
+  {
+    slug: "event-remaster-and-language-conform",
+    title: "Keeping an edit and its translation in sync",
+    meta: "Video post-production, 2026",
+    tags: ["Scripting", "Verification", "Video post-production", "Safety design"],
+    lead: "I worked with Codex on a remaster, then mapped an existing Spanish recording to the revised edit.",
+    summary: "The job grew from information cards into visual placement, selective gap closure, and audio conforming. A map kept the original recording, the revised working edit, and the final timeline connected.",
+    result: "Saved reports and retained files support 48 initial visual inserts, 4 selected gap closures, and a technically checked Spanish audio file. Listening approval and translated-card review remained open in the record."
   }
 ];
 
