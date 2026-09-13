@@ -16,7 +16,54 @@ deployments. A remote-tracking ref is cached evidence, not a fresh remote check.
 Inspect the actual files when a dated note disagrees with them. Handoff entries are
 context, not permission to perform unfinished work. Do not include private material.
 
-## Current checkpoint: 2026-09-13, Codex
+## Separate exhibit handoff: 2026-09-12, Codex
+
+Jack requested a second private exhibit package at
+`_exhibits/event-remaster-and-language-conform/`. Start with its
+`exhibit/HANDOFF.md`. It contains an evidence-grounded case study, a full work
+inventory, anonymized workflow specifications, real implementation excerpts,
+and schematic visual briefs. Its adjacent private-reference folder holds the
+verbatim source conversation and exact evidence coordinates, never public copy.
+
+The scrubbed exhibit passed its excluded-term scan. Historical production
+reports are distinguished from fresh artifact checks and unresolved human review.
+This is an ignored private handoff, not an addition to the public tool selection
+or a website implementation. Do not commit the exhibit, source conversation,
+term list, or scan logs. No push or deployment was performed.
+
+Concurrent local website and artwork edits were left untouched. The checkpoint
+below remains the prior website session's account, not a new verification of
+that work. Next: use the new exhibit only when Jack asks for its portfolio page;
+follow current editorial guidance and obtain explicit publication approval.
+
+## Current checkpoint: 2026-09-13 (later), Claude Code
+
+Jack opened the workflow audit readiness assessment work. The preparation
+package lives at ../ai-opportunity-assessment-review/ (start with DECISIONS.md
+and BUILD-SPEC.md). Decisions taken this session are recorded there: P1a, the
+notification email now carries every answer verbatim below a scannable summary
+with Blobs still canonical; L1, calibration labels C09 and C03 reviewed and
+agreed; Q7b scope values to be added to fixtures during implementation.
+
+In this repository, Jack approved a real publish boundary (option A of two
+presented). tools/build-site.py assembles _site/ from an allowlist and
+netlify.toml publishes that folder, with functions declared at
+netlify/functions/ outside it. Local checks: the script's own check passed;
+every tracked public file in _site/ was fetched from https://jackrome.work and
+compared byte for byte, 336 identical, 0 different, 0 non-200. README.md and
+CLAUDE.md describe the change. Committed locally, not pushed. The first deploy
+with the new boundary is not yet verified live and must be before assessment
+code is added; the site's existing netlify.toml redirects for root markdown
+files remain and are now redundant but harmless.
+
+Untouched and still local: the separate-exhibit handoff section above, Jack's
+modified working SVG, and the untracked Substack and puzzle files. No
+assessment code, function, DNS, account, or credit changes have been made.
+Next: the assessment page location and the host rule for audit.jackrome.work,
+then the function skeleton with mocked providers, previewed locally. Publication
+still needs Jack's explicit go.
+
+## Previous checkpoint: 2026-09-13, Codex
 
 Jack explicitly authorized publication with "PUSH IT!" The reviewed website
 batch was pushed to origin/main through c1f96c6. Netlify published production

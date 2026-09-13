@@ -1,12 +1,27 @@
 # Deploy config lives here rather than only in the Netlify UI, so the
 # settings travel with the repo and can be reviewed in a diff.
 #
-# There is no build step. The site is static HTML, CSS and vanilla JS,
-# so Netlify publishes the repo root as-is.
+# There is no compile step. The site is static HTML, CSS and vanilla JS.
+# What changed on 2026-09-13: the site no longer publishes the repo root.
+# tools/build-site.py copies an explicit allowlist of public files into
+# _site/ and that folder is what Netlify publishes. Netlify's own docs
+# require the functions directory to sit outside the publish directory,
+# or its source ships as static files. Publishing the root made that
+# impossible. Everything not on the allowlist (function source, prompts,
+# fixtures, operator tools, project notes, private exports) stays out of
+# the deploy by construction rather than by a redirect rule.
+#
+# Local preview is unchanged: serve the repo root. The copy runs only
+# here. A production deploy still costs the flat 15 credits; Netlify
+# does not meter build time separately (checked 2026-09-13).
 
 [build]
-  publish = "."
-  command = ""
+  publish = "_site"
+  command = "python3 tools/build-site.py --check"
+
+# Serverless functions live here, outside the publish folder on purpose.
+[functions]
+  directory = "netlify/functions"
 
 # Filenames whose contents never change can be cached hard.
 [[headers]]

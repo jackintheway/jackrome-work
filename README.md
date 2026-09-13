@@ -6,7 +6,7 @@ A custom rebuild of `jackrome.work`, replacing Squarespace. Static HTML, CSS, an
 
 ## Running it
 
-There is no build step. Serve the repo root over HTTP:
+There is no compile step. Serve the repo root over HTTP:
 
 ```
 python3 -m http.server 8000
@@ -31,11 +31,31 @@ assets/
   img/                web-sized images and the per-page share cards
 tools/og/             sources for the 1200x630 share images
 netlify.toml          deploy config, headers, redirects
+tools/build-site.py   assembles _site/ (the publish folder) from an allowlist
+netlify/functions/    serverless function source, never published as static files
 INVENTORY.md          crawl of the live Squarespace site
 CLAUDE.md             project context and the decisions already made
 ```
 
 Full-resolution originals and audio masters live in `_source/`, which is gitignored. What ships is the web-sized derivative.
+
+## What Netlify publishes (changed 2026-09-13)
+
+Netlify no longer publishes the repo root. On each deploy it runs
+`python3 tools/build-site.py --check`, which copies an explicit allowlist of
+public files and folders into `_site/` and publishes that. Netlify requires the
+functions directory to sit outside the publish directory, or function source
+ships as static files; publishing the root made that impossible once the site
+needed a serverless function.
+
+The allowlist lives at the top of the script. When a new public page or asset
+folder lands beside the HTML, add it there or it will not deploy. Everything
+else (function source, prompts, fixtures, `tools/`, project notes, private
+exports) stays out of the deploy by construction.
+
+Run the same command locally to see exactly what would ship and to confirm
+every copied file matches its source. Warnings name local files that differ from
+the commit Netlify would build from. `_site/` is gitignored output.
 
 ## Scope and discovery
 
@@ -54,7 +74,7 @@ python3 tools/update-sitemap.py
 
 The script uses each page's canonical URL, excludes `noindex` pages, and fails on
 missing or duplicate canonicals. `robots.txt` links to the result. There is still no
-build step. Netlify picks up `404.html` for missing paths and applies the document
+compile step. Netlify picks up `404.html` for missing paths and applies the document
 redirects from `netlify.toml`; a basic Python server does not emulate those rules.
 
 

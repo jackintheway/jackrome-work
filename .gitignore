@@ -25,3 +25,8 @@ _source/
 # ships is the page built from it, committed like any other page.
 # Canonical copies go to Claude Creations/exhibitions/ in iCloud.
 _exhibits/
+
+# The assembled publish folder. tools/build-site.py rebuilds it from the
+# allowlist on every Netlify deploy, so it is output, not source.
+_site/
+_livecheck.tmp.*/

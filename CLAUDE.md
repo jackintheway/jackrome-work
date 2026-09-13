@@ -135,6 +135,19 @@ These decisions from Jack supersede broader or dated wording below.
   corrected SVG with the two missing yellow W-shadow polygons. Keep the original
   published filename intact for existing caches. Other private and unrelated
   working files are excluded from publication.
+- On 2026-09-13, Jack approved a real publish boundary for the site, ahead of
+  the workflow audit readiness assessment at audit.jackrome.work (preparation
+  package at ../ai-opportunity-assessment-review/). Netlify now publishes
+  `_site/`, assembled by `tools/build-site.py` from an explicit allowlist, with
+  functions in `netlify/functions/` outside it. Reason: Netlify's docs require
+  the functions directory to sit outside the publish directory, and the site
+  published the repo root. Option considered and set aside: moving all 75 pages
+  into a subfolder, which reaches the same place with far more churn. Local
+  preview is unchanged. A production deploy still costs the flat 15 credits;
+  build time is not metered separately. The assembled folder was compared with
+  the live site file for file before this was committed: 336 tracked files,
+  all identical. Not yet deployed; the first deploy with the new boundary must
+  be verified live before assessment code lands on top of it.
 
 
 
@@ -1781,6 +1794,11 @@ need a Pro plan at 5,000 credits or higher, and Pro's base tier is 3,000, so $20
 not buy rollover. Revisit only if deploy volume is consistently near the ceiling.
 
 ### Preview locally, deploy deliberately
+
+**Updated 2026-09-13:** `netlify.toml` now sets `publish = "_site"` and runs
+`python3 tools/build-site.py --check`, a copy step with an allowlist. There is
+still no compile step, and a deploy is still never required to look at a change.
+The original wording follows for history.
 
 `netlify.toml` sets `publish = "."` and `command = ""`. **There is no build step.**
 Netlify copies the folder to a CDN. So a deploy is never required to look at a change.
