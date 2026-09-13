@@ -1,6 +1,19 @@
 # jackrome-work-migration
 
-Project-level context for Claude Code. The user-level `~/.claude/CLAUDE.md` covers working style, tone, and git discipline. This file covers only what is specific to rebuilding `jackrome.work`.
+Project-level context for Claude Code and other agents working with Jack. The user-level `~/.claude/CLAUDE.md` covers Claude Code's working style, tone, and git discipline on the current machine. This file records the website's shared project decisions and history.
+
+## Shared session handoff
+
+At the start of every session, read `HANDOFF.md` and check the current Git status
+and recent commits. After meaningful authorized changes, update the checkpoint
+there using its handoff protocol. Keep durable project decisions in this file.
+Both Claude Code and Codex use the same handoff; Codex's entry point is `AGENTS.md`.
+
+Older status sections below are dated history and may have been superseded by
+later work. Verify the relevant files and Git state before acting on them. The
+handoff records current context; it does not authorize unfinished work or override
+Jack's decisions. Read-only evaluations stay read-only unless Jack asks for a
+saved report or handoff.
 
 ---
 
