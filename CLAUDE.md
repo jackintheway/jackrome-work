@@ -68,6 +68,8 @@ These decisions from Jack supersede broader or dated wording below.
   button appears on focus. Phones, coarse pointers, and reduced-motion users get a
   still composition. Two copies of the existing puzzle mark float at the artwork's
   corners. Read MOTION.md for the implementation. This remains a local preview.
+  "Choose a room" appears only in the stacked layout, at widths below 800px.
+  Keep its visibility in the same media query as the artwork/list layout.
 - The handoff demo keeps the dictated request verbatim with the italic caption
   "Spoken aloud using Wispr Flow." Its surrounding explanation speaks as Jack:
   "My request" and "our decisions." The recorded agent-to-agent note still uses
