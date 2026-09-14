@@ -176,14 +176,21 @@ removed, the guide index refreshed. Verified live. The forced subdomain root
 rewrite (37e1e91) shipped in the same deploy and now serves the assessment at
 the subdomain root; its assets and function answer there too.
 
-audit.jackrome.work: DNS resolves (CNAME to jackrome-work.netlify.app, added by
-Jack in Squarespace). Netlify was still serving its generic certificate for
-the subdomain about an hour after DNS resolved, so browsers cannot open it
-yet; Jack was asked to use "Verify DNS configuration" or "Renew certificate"
-in the domain panel. Until the certificate lands, the two new links point at a
-name that fails TLS. The portfolio entry proper waits until the assessment
-has a story from real use. The Personal plan cannot scope env vars to
-Functions; accepted. Candidate for later, not planned:
+audit.jackrome.work is fully live. Netlify's certificate stalled for about
+ninety minutes after DNS resolved; Jack clicked "Renew certificate" in the
+HTTPS panel and it issued within a minute (jackrome.work certificate now
+covers the subdomain, valid to 2026-12-13). Verified over strict TLS: root
+serves the assessment, its css, script, schema, shared assets, and share card
+all 200, HTTP upgrades to HTTPS, the function answers on the subdomain with
+the real model, no console errors, the main site unchanged. The Squarespace
+forwarding alternative was considered and set aside: it is a redirect, and
+the Squarespace site subscription ends 2026-09-15.
+
+CLAUDE.md now carries the durable decisions from this build. The portfolio
+entry proper waits until the assessment has a story from real use.
+Remaining for Jack: the monthly retention routine in OPERATOR.md; a personal
+access token exists for the export tool. This documentation save point is
+local and rides with the next push. Candidate for later, not planned:
 upgrading the site's "Find something" guide to a model-backed helper.
 
 Untouched and still local: the separate-exhibit handoff section above, Jack's
