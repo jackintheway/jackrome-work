@@ -15,6 +15,9 @@
    Usage:
      node tools/audit-export.mjs                 export everything
      node tools/audit-export.mjs --id <uuid>     one record
+     node tools/audit-export.mjs --review        the monthly retention list: every record
+                                               with its age, the ones past 90 days flagged,
+                                               and a ready-to-paste delete command for each
      node tools/audit-export.mjs --reconcile     list unacknowledged summaries
      node tools/audit-export.mjs --verify file   verify a pasted summary (JSON of fields)
      node tools/audit-export.mjs --stores        list every Blobs store on the site, with counts
@@ -88,6 +91,26 @@ for (const id of ids) {
   const r = await store.get(id);
   if (r) records.push(r);
   else console.error("Not found: " + id);
+}
+
+if (flag("--review")) {
+  const now = Date.now();
+  const days = (r) => Math.floor((now - Date.parse(r.received_at)) / 86400000);
+  const sorted = [...records].sort((a, b) => Date.parse(a.received_at) - Date.parse(b.received_at));
+  console.log("Monthly retention review, " + new Date().toISOString().slice(0, 10) + ". " + records.length + " record(s) in " + store.storeName + ".\n");
+  for (const r of sorted) {
+    const age = days(r);
+    const due = age >= 90;
+    console.log((due ? "DUE  " : "keep ") + r.receipt + "  " + r.received_at.slice(0, 10) + "  " + age + " days  " + r.answers.org + "  " + (r.scoring.total === null ? "unscored" : r.scoring.total + "/100") + "  email " + r.summary_status);
+  }
+  const dueList = sorted.filter((r) => days(r) >= 90);
+  console.log("\n" + dueList.length + " record(s) past 90 days.");
+  if (dueList.length) {
+    console.log("For each one that did not become client work, delete the record, then its Forms submission and email:\n");
+    for (const r of dueList) console.log("  node tools/audit-export.mjs --delete " + r.receipt);
+    console.log("\nGmail search for the matching notifications:\n  from:formresponses@netlify.com subject:Audit older_than:90d");
+  }
+  process.exit(0);
 }
 
 if (flag("--reconcile")) {

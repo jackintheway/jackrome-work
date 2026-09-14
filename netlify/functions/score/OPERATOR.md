@@ -84,16 +84,26 @@ Anthropic workspace's $10 monthly limit is the hard ceiling on spend.
 ## Retention, monthly
 
 The privacy notice promises deletion of unconverted records within
-about 90 days, at a monthly review. Each month:
+about 90 days, at a monthly review. A repeating calendar event on the
+first weekday of each month is the reminder; the tool does the
+thinking. Each month, in your terminal with the two variables set:
 
-1. Export, read, and note any record older than 90 days that has not
-   become client work.
-2. Delete its Blobs record and status entry, its Forms submission in
-   the Netlify dashboard, the notification email in Gmail, and any
-   local export.
-3. Records that became client work move under the client agreement.
+```
+node tools/audit-export.mjs --review
+```
 
-Nothing deletes automatically in v1.
+It lists every record with its age, flags the ones past 90 days, and
+prints a delete command for each, plus the Gmail search that finds the
+matching notification emails. Then:
+
+1. For each flagged record that did not become client work, run its
+   printed delete command.
+2. Delete the same submissions in Netlify (Forms, workflow-audit-summary)
+   and the emails in Gmail using the printed search.
+3. Delete any local export under `_private/exports/`.
+4. Records that became client work move under the client agreement.
+
+Ten minutes on a normal month. Nothing deletes automatically in v1.
 
 ## Keys
 
