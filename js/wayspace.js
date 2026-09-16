@@ -56,19 +56,25 @@ const MUSIC = [
      title is just the title, except where the work is shared, and
      then the people belong on the card.
 
-     EIGHT CARDS CARRY AUDIO, up from three when the room played self
-     hosted MP3s. The twelve without it are mostly collaborations and
+     NINE CARDS CARRY AUDIO, up from three when the room played self
+     hosted MP3s. The eleven without it are mostly collaborations and
      features, which live on the other artists' SoundCloud accounts
      rather than Jack's. That is normal and not a gap.
 
-     TWO CARDS COULD PLAY AND DELIBERATELY DO NOT. Wayspace (2022) is
-     the twelve track album and the only Wayspace set on SoundCloud is
-     the twenty four track deluxe, already wired to the card above it.
-     Feivel Speaks (2024) is the same shape: Jack extended
-     /sets/feivel-speaks to all fifteen tracks on 2026-08-23, which
-     made it the deluxe and left the standard album without a set of
-     its own. Per Jack: two buttons pointing at the same tracks are
-     two buttons doing one thing.
+     WAYSPACE (2022) PLAYS THE DELUXE SET. The twelve track album has
+     no set of its own on SoundCloud; the only Wayspace set there is
+     the twenty four track deluxe, and the standard card points its
+     Play button at that same set. Per Jack 2026-09-15: the arrival
+     page sends people to this card, and they should be able to press
+     play when they get here. The bar names what is actually loaded,
+     so it says "Wayspace (Deluxe)" either way.
+
+     FEIVEL SPEAKS (2024) DELIBERATELY DOES NOT PLAY. Same shape: Jack
+     extended /sets/feivel-speaks to all fifteen tracks on 2026-08-23,
+     which made it the deluxe and left the standard album without a
+     set of its own. Per Jack: two buttons pointing at the same tracks
+     are two buttons doing one thing. Wayspace above is the exception
+     he chose, not a change to the rule.
 
      COVERS: six come from Jack's 3000x3000 originals, the rest from
      Spotify at 640. Both are derived down to 640 here, which covers a
@@ -142,7 +148,7 @@ const MUSIC = [
     format: "Album",
     cover: "/assets/img/wayspace/music/wayspace.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/5U1K4wDc75208yey9abs9w" }],
-    sc: null,
+    sc: { id: "2288049135", kind: "playlist", title: "Wayspace (Deluxe)" },
     crossRef: { text: "Lyrics", href: "/wayspace/writing?collection=wayspace#writingFilters", room: "writing" }
   },
   {
@@ -1703,7 +1709,7 @@ function musicCard(item) {
      one, because there is nothing on SoundCloud to load. A disabled
      button stood here before and made those cards look broken.
 
-     Listen is the way out to Spotify, and every card carries one. That
+     Stream on Spotify is the way out, and every card carries one. That
      is the difference between the two controls, and it is why they are
      both here rather than one standing in for the other: hearing a
      track in the room and going to where the plays count are different
@@ -1716,12 +1722,15 @@ function musicCard(item) {
     ? `<button class="play-btn" data-sc-id="${escapeHtml(item.sc.id)}" data-sc-kind="${escapeHtml(item.sc.kind)}" data-title="${escapeHtml(item.sc.title)}">${item.sc.kind === "playlist" ? "Play album" : "Play"}</button>`
     : "";
 
-  /* The label depends on whether Play is standing next to it. On its
-     own, "Listen" is the plain word for the only thing the card does.
-     Beside a Play button it would read as a second way to do the same
-     thing, so it names the destination instead: Spotify. Per Jack. */
+  /* One label on every card, "Stream on Spotify", per Jack 2026-09-15.
+     It used to be "Listen" alone and "Spotify" beside a Play button.
+     "Listen" was the wrong verb: Play is also listening, and the
+     difference between the two controls is that this one leaves the
+     room for the service where plays count. The verb says what
+     happens and the name says where, so the label reads the same
+     whether or not Play is standing next to it. */
   const listen = item.streams.length
-    ? `<a class="listen-btn" href="${escapeHtml(item.streams[0].href)}" target="_blank" rel="noopener">${item.sc ? "Spotify" : "Listen"}</a>`
+    ? `<a class="listen-btn" href="${escapeHtml(item.streams[0].href)}" target="_blank" rel="noopener">Stream on Spotify</a>`
     : "";
 
   return `
