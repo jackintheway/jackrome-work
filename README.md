@@ -177,6 +177,12 @@ caption, and puzzle marks are hidden; the welcome leads directly into the rooms.
 The "Choose a room" shortcut is removed. The wider layout stays in normal document
 flow. The marks reuse `assets/puzzle-single.svg`.
 
+## License
+
+Split, on purpose. The code is MIT. The writing, lyrics, images, audio, and
+the Wayspace design tokens are copyright Jack Rome, all rights reserved. The
+font and the vendored search library carry their own licenses. See `LICENSE`.
+
 ## Standing rules
 
 Every page ships with Open Graph tags and its own 1200x630 share image. Not a polish-pass item. The details, and the three things that fail silently, are in `CLAUDE.md`.

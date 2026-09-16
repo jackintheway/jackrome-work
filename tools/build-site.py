@@ -79,6 +79,7 @@ EXPECTED_PRIVATE = [
     "netlify/*",
     "package.json",
     "package-lock.json",
+    "LICENSE",
 ]
 
 
