@@ -62,8 +62,8 @@ all in `css/tokens/`, vendored verbatim from the Wayspace design
 system export. A check that cries wolf 10 times is a check nobody runs.
 
 Verified 2026-08-19: with the exclusion in place this returns nothing.
-Those four token files are byte-identical to `../ai-work-portfolio/`'s
-copies, which is worth keeping true. If a value needs changing, change
+Those four token files are vendored verbatim from the design system,
+which is worth keeping true. If a value needs changing, change
 it in the design system and re-copy. Never edit them in place.
 
 ## 2. Location is Maryland, never Frederick

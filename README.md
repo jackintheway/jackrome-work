@@ -39,6 +39,48 @@ CLAUDE.md             project context and the decisions already made
 
 Full-resolution originals and audio masters live in `_source/`, which is gitignored. What ships is the web-sized derivative.
 
+## The workflow audit readiness assessment
+
+Live at [audit.jackrome.work](https://audit.jackrome.work/). Part of the jackrome.work site; the code lives in `audit/` (page) and `netlify/functions/score/` (function).
+
+A five-stage assessment for people at mission-driven organizations. A visitor describes one recurring task, answers a short set of structured questions, and gets a readiness score with a plain-language explanation. The score measures how ready that description is for an audit conversation. It does not claim AI feasibility, savings, or ROI.
+
+### Architecture
+
+One serverless function on Netlify does all of the work. The browser posts the answers to `/.netlify/functions/score` and never contacts Anthropic. The API key is a secret, production-scoped Netlify environment variable. The scoring rubric, the classifier prompt, and storage all sit behind that same boundary, and the function returns only the public result, never the raw answers or internal flags.
+
+```
+browser (audit/)                netlify/functions/score/
+  five stages, in-memory   ->   validate against the shared schema
+  answers, one POST             classify Q5 with the model (structured output)
+                                score deterministically in code
+                                store one immutable record (Netlify Blobs)
+                                post a signed summary (Netlify Forms)
+                           <-   public result only
+```
+
+**The publish boundary.** The site publishes an assembled `_site/` folder built from an explicit allowlist (`tools/build-site.py`), because Netlify requires function source to live outside the publish directory. Function source, prompts, fixtures, and tooling are never served as static files. Verified live: those paths return 404.
+
+**The model does one narrow job.** It classifies how specifically a task is described, on a four-level rubric, and picks one optional follow-up question type. Both calls use structured outputs (`@anthropic-ai/sdk` with a zod schema), `temperature: 0`, no retries, and hard deadlines. The function checks that any evidence excerpt the model returns actually appears in the visitor's text. Every point on the 100-point score is computed in code from the classifier level and the structured answers; the model never produces a number.
+
+**Failure is a designed path.** If the model times out, refuses, or returns something invalid, the record is still saved and the visitor sees an unscored result with the booking link. An `AI_ENABLED` switch turns the model off entirely. A monthly spend limit on the Anthropic workspace is the hard ceiling; a Netlify rate limit (60 per 60 seconds per IP) bounds request volume.
+
+**Data handling.** The page discloses what goes where before the visitor submits: only the task description and follow-up answer go to Anthropic; the full record is stored on Netlify; a copy is emailed to Jack through Netlify Forms. Unconverted records are deleted within about 90 days at a monthly review, with tooling (`tools/audit-export.mjs`) to list, export, verify, and delete. Nothing deletes automatically. Operator notes: `netlify/functions/score/OPERATOR.md`.
+
+### How it was built
+
+In Claude Code, the same way as the rest of the site. A local dev server (`node tools/audit-dev.mjs`) mounts the real function with a stand-in model, an in-memory store, and an in-memory inbox, so every band and failure state can be reviewed without a key. Tests (`node --test tools/test-audit.mjs`) run the real handler: the rubric across all 5,760 arithmetic combinations, thirteen calibration cases, exact round-tripping of free text, retry replay and conflict, the unscored paths, honeypot, origin and size limits, and a fake storage client that lies about success. A live pilot ran the calibration cases three times each against the real model before any deploy, and a second pilot after a prompt revision reached full agreement with the reviewed labels.
+
+### Running it locally
+
+```
+npm install
+node tools/audit-dev.mjs        # http://localhost:8642/audit/
+node --test tools/test-audit.mjs
+```
+
+Type `[level:3]`, `[level:1]`, or `[fail]` into the task description to steer the stand-in model.
+
 ## What Netlify publishes (changed 2026-09-13)
 
 Netlify no longer publishes the repo root. On each deploy it runs
@@ -139,4 +181,4 @@ flow. The marks reuse `assets/puzzle-single.svg`.
 
 Every page ships with Open Graph tags and its own 1200x630 share image. Not a polish-pass item. The details, and the three things that fail silently, are in `CLAUDE.md`.
 
-`../ai-work-portfolio/` is the proven pattern and the design reference. `../wayspace-design-system/` is the token source of truth.
+This site carries the pattern that `ai-work-portfolio` proved before it (static HTML, one data array, pure render functions, Netlify). That project was deleted from Jack's machines on 2026-09-14; only its record survives at `../x-archive/ai-work-portfolio/`. `../wayspace-design-system/` is the token source of truth.

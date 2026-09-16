@@ -435,7 +435,7 @@ that does not exist yet.
 - `css/wayspace.css` imports last from `css/styles.css`. `js/wayspace.js` is the
   first JavaScript on this site.
 - Content lives in six arrays in `js/wayspace.js`, through pure render functions, the
-  same pattern `../ai-work-portfolio/js/app.js` proved. **Adding work is adding an
+  same pattern the old portfolio's `js/app.js` proved. **Adding work is adding an
   object, not editing markup.** An entry flagged `placeholder: true` renders a striped
   tag and disables its controls; an emptied array renders that room's written empty
   state.
@@ -1269,9 +1269,9 @@ tool to this page, and do not name one that is not already on it, without Jack.
 The reasoning behind the selection is recorded outside this repo, in
 `~/.claude/plans/`. It is not written down here on purpose.
 
-**The old portfolio repo is `../ai-work-portfolio/`, it is private, and nothing
-publishes from it.** It stays useful as a design reference and as an archive. Read
-it; do not copy content out of it onto this site.
+**The old portfolio is gone.** Its site and repository were retired and deleted on
+2026-09-14. A record of its decisions is kept outside this repo, at
+`../x-archive/ai-work-portfolio/`. Nothing from it comes onto this site.
 
 ---
 
@@ -1440,7 +1440,7 @@ remain in each page's HTML; the guide itself has one implementation.
 
 A full custom rebuild of `jackrome.work` in the Wayspace design system, replacing Squarespace. Everything in Jack's own style, made together, no platform in between.
 
-The sibling project `../ai-work-portfolio/` is the proven pattern and the design reference. It shipped. Extend what worked there rather than inventing a second approach:
+The earlier `ai-work-portfolio` project is the proven pattern. It shipped, and it has since been deleted from Jack's machines (record at `../x-archive/ai-work-portfolio/`), so this repo is now the only living copy of the approach. Extend what worked there rather than inventing a second approach:
 
 - Static HTML, CSS, vanilla JS. No React, no Tailwind, no build tooling.
 - Data-driven: one array of content objects through pure render functions. Adding a page or a project means adding an object, not editing markup.
@@ -1814,8 +1814,8 @@ still unconfirmed. Not scheduled. Revisit when there is room for it.
 **A production deploy costs real money. Preview locally by default and push in batches.**
 
 Netlify bills in credits, one pool per team, and the team here is `Wayspace`. Both
-`jackrome-work` and `../ai-work-portfolio/` draw from the same pool, so a busy day on
-one spends the other's budget too.
+`jackrome-work` is the only project drawing from it now. The old `ai-work-portfolio`
+Netlify project shared the pool until Jack deleted it on 2026-09-14.
 
 | | |
 |---|---|
@@ -1949,7 +1949,8 @@ now exists, so the comment is true and there is one knob rather than a shared co
 
 ## Working rules
 
-- Read `INVENTORY.md` and `../ai-work-portfolio/CLAUDE.md` before writing any code.
+- Read `INVENTORY.md` before writing any code. The old portfolio's record at
+  `../x-archive/ai-work-portfolio/CLAUDE.md` is background only.
 - Ask before anything hard to reverse. Interrupting with a question is cheaper than silently destroying something.
 - If a plan contradicts a decision in this file, surface it. Lead with the turn, not with "no."
 - Commit in small, described steps.

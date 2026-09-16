@@ -113,10 +113,9 @@ runs it; a fake key was confirmed to reach the API and map to an auth error. No
 real key exists yet; no credits purchased; no live model call has been made.
 
 Account steps done by Jack at the keyboard on 2026-09-13: Console workspace
-"audit-jackrome" with the $10 monthly spend limit set, $20 of credits bought
-(auto-reload declined on purpose), a 30-day key scoped to that workspace for
-the local pilot only. The key was exposed in a pasted screenshot, so it is to
-be deleted after the pilot; the Netlify key will be a separate one. Pilot 1
+"audit-jackrome" with a monthly spend limit set, credits bought (auto-reload
+declined on purpose), and a short-lived key scoped to that workspace for the
+local pilot only, deleted after the pilot; the site uses a separate key. Pilot 1
 found three firm disagreements; prompts tuned to audit-prompts-2; pilot 2 hit
 39 of 39 with no failures. DECISIONS.md L2 records both. Reports in _private/.
 
@@ -131,10 +130,9 @@ Blobs client that lies about success (issue 741) being caught by read-back. The
 five copy checks from .claude/skills/check-copy pass on the new page; its two
 absolute links to jackrome.work stay same-tab by the standing rule.
 
-Netlify, read through the connector on 2026-09-13: project jackrome-work, ID
-7665c202-431b-4554-8443-bd40f27b0647, team Wayspace; Forms shows "not enabled"
-for the site and must be switched on in the dashboard before the summary form
-is detected.
+Netlify, read through the connector on 2026-09-13: Forms showed "not enabled"
+for the site and had to be switched on in the dashboard before the summary form
+was detected.
 
 Jack's walkthrough of the preview produced fixes (commit 0ff4a9a): privacy
 notice in a dialog (the anchor jump had tripped the back-button handler),

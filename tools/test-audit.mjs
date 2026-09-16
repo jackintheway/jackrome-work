@@ -18,7 +18,7 @@ import { score, bandFor, FREQUENCY, EFFORT, REPEATABILITY, SPECIFICITY, SOURCES 
 import { validateAnswers, SCHEMA_VERSION } from "../audit/schema.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const CASES_PATH = path.resolve(HERE, "../../ai-opportunity-assessment-review/calibration-cases.json");
+const CASES_PATH = path.resolve(HERE, "../netlify/functions/score/fixtures/calibration-cases.json");
 const ORIGIN = "http://localhost:8643";
 
 function makeHandler(opts) {

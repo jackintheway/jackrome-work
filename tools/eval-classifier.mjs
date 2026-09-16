@@ -27,7 +27,7 @@ import { score, bandFor } from "../netlify/functions/score/lib/scoring.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
-const CASES = path.resolve(ROOT, "../ai-opportunity-assessment-review/calibration-cases.json");
+const CASES = path.resolve(ROOT, "netlify/functions/score/fixtures/calibration-cases.json");
 const OUT_DIR = path.join(ROOT, "_private");
 
 // Anthropic first-party list price for Haiku 4.5, USD per million tokens.

@@ -38,3 +38,8 @@ node_modules/
 # Private working output: model pilot reports, record exports, anything
 # that came out of a real account or a real submission. Never committed.
 _private/
+
+# No env file has ever existed here; secrets live in Netlify and in the
+# shell that runs the operator tools. This keeps it that way.
+.env
+.env.*
