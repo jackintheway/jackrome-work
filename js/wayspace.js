@@ -1722,15 +1722,17 @@ function musicCard(item) {
     ? `<button class="play-btn" data-sc-id="${escapeHtml(item.sc.id)}" data-sc-kind="${escapeHtml(item.sc.kind)}" data-title="${escapeHtml(item.sc.title)}">${item.sc.kind === "playlist" ? "Play album" : "Play"}</button>`
     : "";
 
-  /* One label on every card, "Stream on Spotify", per Jack 2026-09-15.
-     It used to be "Listen" alone and "Spotify" beside a Play button.
-     "Listen" was the wrong verb: Play is also listening, and the
-     difference between the two controls is that this one leaves the
-     room for the service where plays count. The verb says what
-     happens and the name says where, so the label reads the same
-     whether or not Play is standing next to it. */
+  /* "Stream on Spotify" on its own, "Stream" beside a Play button.
+     Per Jack 2026-09-15. It used to be "Listen" alone and "Spotify"
+     beside Play. "Listen" was the wrong verb: Play is also listening,
+     and the difference between the two controls is that this one
+     leaves the room for the service where plays count. The full label
+     is too wide to sit beside "Play album" in a 340px card, so it
+     stacked three buttons tall; the short form keeps those cards
+     compact, and the orange Play button beside it already says the
+     two are different. */
   const listen = item.streams.length
-    ? `<a class="listen-btn" href="${escapeHtml(item.streams[0].href)}" target="_blank" rel="noopener">Stream on Spotify</a>`
+    ? `<a class="listen-btn" href="${escapeHtml(item.streams[0].href)}" target="_blank" rel="noopener">${item.sc ? "Stream" : "Stream on Spotify"}</a>`
     : "";
 
   return `
