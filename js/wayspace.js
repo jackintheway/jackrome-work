@@ -56,25 +56,22 @@ const MUSIC = [
      title is just the title, except where the work is shared, and
      then the people belong on the card.
 
-     NINE CARDS CARRY AUDIO, up from three when the room played self
-     hosted MP3s. The eleven without it are mostly collaborations and
+     TEN CARDS CARRY AUDIO, up from three when the room played self
+     hosted MP3s. The ten without it are mostly collaborations and
      features, which live on the other artists' SoundCloud accounts
      rather than Jack's. That is normal and not a gap.
 
-     WAYSPACE (2022) PLAYS THE DELUXE SET. The twelve track album has
-     no set of its own on SoundCloud; the only Wayspace set there is
-     the twenty four track deluxe, and the standard card points its
-     Play button at that same set. Per Jack 2026-09-15: the arrival
-     page sends people to this card, and they should be able to press
-     play when they get here. The bar names what is actually loaded,
-     so it says "Wayspace (Deluxe)" either way.
-
-     FEIVEL SPEAKS (2024) DELIBERATELY DOES NOT PLAY. Same shape: Jack
-     extended /sets/feivel-speaks to all fifteen tracks on 2026-08-23,
-     which made it the deluxe and left the standard album without a
-     set of its own. Per Jack: two buttons pointing at the same tracks
-     are two buttons doing one thing. Wayspace above is the exception
-     he chose, not a change to the rule.
+     THE STANDARD ALBUMS PLAY THEIR DELUXE SETS. Wayspace (2022) and
+     Feivel Speaks (2024) have no set of their own on SoundCloud; the
+     only sets there are the deluxe editions (Jack extended
+     /sets/feivel-speaks to all fifteen tracks on 2026-08-23, which
+     made it the deluxe). Each standard card points its Play button at
+     the deluxe set. Per Jack 2026-09-15: the arrival page sends
+     people to the Wayspace card, and they should be able to press
+     play when they get there; Feivel Speaks follows for consistency.
+     This reverses the earlier rule that two buttons pointing at the
+     same tracks are two buttons doing one thing. The bar names what
+     is actually loaded, so it says "(Deluxe)" either way.
 
      COVERS: six come from Jack's 3000x3000 originals, the rest from
      Spotify at 640. Both are derived down to 640 here, which covers a
@@ -108,7 +105,7 @@ const MUSIC = [
     format: "Album",
     cover: "/assets/img/wayspace/music/feivel-speaks.jpg",
     streams: [{ name: "Spotify", href: "https://open.spotify.com/album/43LSqY2k5sk7KDWkEW0MJk" }],
-    sc: null,
+    sc: { id: "1919548507", kind: "playlist", title: "Feivel Speaks (Deluxe)" },
     crossRef: { text: "Lyrics", href: "/wayspace/writing?collection=feivel-speaks#writingFilters", room: "writing" }
   },
   {
@@ -1715,11 +1712,13 @@ function musicCard(item) {
      track in the room and going to where the plays count are different
      things a visitor might want.
 
-     An album says so on the button. "Play album" sets the expectation
-     that pressing it starts a sequence rather than one song, which is
-     the one thing a visitor cannot tell from a cover. */
+     The button says Play whether it starts one song or a sequence.
+     It used to say "Play album" on playlists; per Jack 2026-09-15 the
+     format line under the title already says Album, so the button
+     does not need to repeat it, and the shorter label keeps Play and
+     Stream on one row. */
   const play = item.sc
-    ? `<button class="play-btn" data-sc-id="${escapeHtml(item.sc.id)}" data-sc-kind="${escapeHtml(item.sc.kind)}" data-title="${escapeHtml(item.sc.title)}">${item.sc.kind === "playlist" ? "Play album" : "Play"}</button>`
+    ? `<button class="play-btn" data-sc-id="${escapeHtml(item.sc.id)}" data-sc-kind="${escapeHtml(item.sc.kind)}" data-title="${escapeHtml(item.sc.title)}">Play</button>`
     : "";
 
   /* "Stream on Spotify" on its own, "Stream" beside a Play button.
@@ -1727,7 +1726,7 @@ function musicCard(item) {
      beside Play. "Listen" was the wrong verb: Play is also listening,
      and the difference between the two controls is that this one
      leaves the room for the service where plays count. The full label
-     is too wide to sit beside "Play album" in a 340px card, so it
+     was too wide to sit beside the Play button in a 340px card, so it
      stacked three buttons tall; the short form keeps those cards
      compact, and the orange Play button beside it already says the
      two are different. */
