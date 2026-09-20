@@ -110,5 +110,12 @@ Ten minutes on a normal month. Nothing deletes automatically in v1.
 - The Anthropic key `audit-netlify` expires 2027-09-19 at 7 pm ET. A
   lapsed key means unscored results, not lost submissions. Create the
   replacement in the same workspace and update the Netlify variable.
+- The Netlify personal access token `audit-export` expires too, and
+  Netlify's windows are short. Only the export tool uses it, from your
+  own terminal; the site and the function never touch it. A lapsed
+  token means an authentication error the next time you run a command
+  here, not a broken site or a lost record. Make a new one at User
+  settings > Applications > Personal access tokens, take the longest
+  expiry offered, copy it once, and revoke the old one.
 - Rotate `AUDIT_SUMMARY_KEY` by adding a new version, not replacing;
   old summaries verify against the old version.
