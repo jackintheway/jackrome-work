@@ -50,7 +50,11 @@ personal project. Sitemap (76 pages) and guide index rebuilt.
 
 Checks: build-site check passes; guide search tests pass; no em dashes in the
 new files; no horizontal overflow at 375px; figure and prompt card viewed in
-the local preview. Committed locally, not pushed. Publication needs Jack's go.
+the local preview. Jack then rewrote the page's prose in his own words
+(7fc2f54). On his go ("then we'll be good to push the case study live"), both
+commits were pushed and verified live on https://jackrome.work: the page,
+site.css, case-studies.js, and guide-index.json are byte-identical to the
+commit, the share image answers 200, and the sitemap lists the page.
 Open for Jack: the section heading still reads "How this works with clients".
 
 ## Earlier checkpoint: 2026-09-22, Claude Code
