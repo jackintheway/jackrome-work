@@ -48,9 +48,9 @@ const CASE_STUDIES = [
     title: "Remastering an event with Codex",
     meta: "Video post-production, 2026",
     tags: ["Scripting", "Verification", "Video post-production", "Safety design"],
-    lead: "I worked with Codex on two installments of a remaster while continuing to make editing decisions by hand.",
-    summary: "Part 1 mapped an existing Spanish recording to a revised timeline. Part 2 rebuilt the editable graphics system and exposed a mistake in the final check: it reset two card positions I had changed on purpose.",
-    result: "The two positions were restored. Part 2 produced an editable graphics project and 35 card renders, and I reported its English broadcast. Its Spanish conform remains open; Part 1's saved listening approval was also unfinished."
+    lead: "I worked with Codex on three installments of a remaster while continuing to make editing decisions by hand.",
+    summary: "Part 1 mapped an existing Spanish recording to a revised timeline. Part 2 rebuilt the editable graphics system and exposed a mistake in the final check: it reset two card positions I had changed on purpose. In Part 3, I chose the cut points by ear and Codex closed the gaps around them.",
+    result: "The two positions were restored. Part 2 produced an editable graphics project and 35 card renders, and I reported its English broadcast. Part 3's four automated closures checked out in the saved project, and its English version is exported. The Spanish versions are on hold."
   }
 ];
 

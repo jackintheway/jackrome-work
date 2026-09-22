@@ -1023,6 +1023,31 @@ ul.offer-grid {
   font-size: var(--fs-small);
 }
 .clock-key b { margin-right: var(--space-1); }
+/* Part 3's diagram: who closed each gap, and where transitions landed. */
+.clock-mine { background: var(--ws-yellow); border-style: dashed; }
+.clock-codex { background: var(--ws-orange); border-style: dashed; }
+/* Joins sit on the boundary between two passages, so every item in
+   these tracks shares one row and a join overlaps the passage it opens. */
+.gaps-diagram .clock-track > * { grid-row: 1; }
+/* A finer grid, so a two-column gap still holds its number at 375px. */
+.gaps-diagram .clock-track { grid-template-columns: repeat(30, minmax(0, 1fr)); }
+.clock-join {
+  justify-self: start;
+  align-self: center;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  background: var(--ws-yellow);
+  border: var(--rule);
+  transform: translateX(-50%) rotate(45deg);
+}
+.clock-join.is-existing { background: var(--ws-paper); }
+.clock-key .clock-join {
+  display: inline-block;
+  margin-right: var(--space-2);
+  vertical-align: middle;
+  transform: rotate(45deg);
+}
 .framing-origin {
   padding: var(--space-3);
   border: var(--rule);
@@ -1061,6 +1086,8 @@ ul.offer-grid {
 .case-results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
 .case-results > div { border-top: var(--rule-heavy); padding-top: var(--space-4); }
 .case-results h3 { margin: 0 0 var(--space-3); }
+/* An odd one out spans the row rather than sitting alone in half of it. */
+.case-results > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
 @media (max-width: 600px) {
   .framing-branches, .case-results { grid-template-columns: 1fr; }
   .framing-branch::before { display: none; }

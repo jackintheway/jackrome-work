@@ -36,7 +36,25 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-09-13 (later), Claude Code
+## Current checkpoint: 2026-09-22, Claude Code
+
+Jack brought a re-run exhibit package covering all three remaster installments
+and asked for it as an update to the live remaster case study. Its Parts 1 and 2
+drifted from the approved page, so Part 3 was written from the Codex session
+record and added to `case-studies/event-remaster-and-language-conform.html`:
+three new sections, a "who closed which gap" diagram, a Part 3 results block,
+and an updated "Still open". `js/case-studies.js`, the page's three meta
+descriptions, and the site-guide index follow. The share card names no count,
+so it was not re-rendered; the URL is unchanged, so the sitemap was not rerun.
+Decisions are in `CLAUDE.md` under 2026-09-22.
+
+Checks: page text scanned clean against every term list from the three private
+packages (Jack's own name removed from the list); no em dashes; guide search
+tests pass; `build-site.py --check` passes; no horizontal overflow at 375px;
+diagram checked at 1280px and 375px. Committed locally, not pushed. Next: Jack
+reads the Part 3 prose as a stranger would, then gives an explicit go to publish.
+
+## Earlier checkpoint: 2026-09-13 (later), Claude Code
 
 Jack opened the workflow audit readiness assessment work. The preparation
 package lives at ../ai-opportunity-assessment-review/ (start with DECISIONS.md

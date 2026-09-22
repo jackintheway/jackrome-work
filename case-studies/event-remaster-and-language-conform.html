@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Remastering an event with Codex | Case study | Jack Rome</title>
-  <meta name="description" content="Two installments of a recorded-event remaster: editable graphics, timing maps, and checks that had to preserve the editor's deliberate exceptions.">
+  <meta name="description" content="Three installments of a recorded-event remaster: editable graphics, timing maps, and checks that had to preserve the editor's deliberate exceptions.">
   <link rel="canonical" href="https://jackrome.work/case-studies/event-remaster-and-language-conform">
 
   <!-- Link previews. Same rules as every other page: og:image absolute,
@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="Jack Rome">
   <meta property="og:url" content="https://jackrome.work/case-studies/event-remaster-and-language-conform">
   <meta property="og:title" content="Remastering an event with Codex.">
-  <meta property="og:description" content="Two installments of a recorded-event remaster: editable graphics, timing maps, and checks that had to preserve the editor's deliberate exceptions.">
+  <meta property="og:description" content="Three installments of a recorded-event remaster: editable graphics, timing maps, and checks that had to preserve the editor's deliberate exceptions.">
   <meta property="og:image" content="https://jackrome.work/assets/img/og-case-event-remaster-and-language-conform.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Remastering an event with Codex.">
-  <meta name="twitter:description" content="Two installments of a recorded-event remaster: editable graphics, timing maps, and checks that had to preserve the editor's deliberate exceptions.">
+  <meta name="twitter:description" content="Three installments of a recorded-event remaster: editable graphics, timing maps, and checks that had to preserve the editor's deliberate exceptions.">
   <meta name="twitter:image" content="https://jackrome.work/assets/img/og-case-event-remaster-and-language-conform.png">
 
   <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
@@ -59,7 +59,7 @@
     <div class="hero-inner">
       <p class="hero-eyebrow ws-overline"><a class="hero-eyebrow-link" href="/ai-portfolio">&larr; AI Portfolio</a> &middot; Case study</p>
       <h1 class="hero-title">Remastering an event with Codex.</h1>
-      <p class="hero-sub">I worked with Codex on graphics and timeline automation for two installments of a recorded event. The workflow had to keep up with changes I was making by hand.</p>
+      <p class="hero-sub">I worked with Codex on graphics and timeline automation for three installments of a recorded event. The workflow had to keep up with changes I was making by hand.</p>
     </div>
   </header>
 
@@ -70,6 +70,7 @@
       <a href="#clocksTitle">Three timelines</a>
       <a href="#secondRunTitle">Part 2</a>
       <a href="#exceptionsTitle">Approved exceptions</a>
+      <a href="#thirdRunTitle">Part 3</a>
       <a href="#resultTitle">Results</a>
       <a href="#openTitle">Still open</a>
     </nav>
@@ -245,6 +246,93 @@
       </figure>
     </section>
 
+    <section class="section" aria-labelledby="thirdRunTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="thirdRunTitle">Part 3: following my decisions</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>The third installment had 10 new information cards, a title card for a poem, and 64 supplied images. Codex built the cards with the Part 2 system. I approved the card text and a plan for the edit before anything was rendered, and I approved the renders before anything went into the timeline.</p>
+        <p>For the photos, I asked Codex to repeat what I had set up by hand in Part 2: replace the picture, keep the program audio, and dip to black at each end. Where the editing notes asked for a photo to sit over the video instead, that stayed an exception. In total, 69 visuals went in: 56 photo replacements, the 10 cards, the poem title, a book cover shown beside a speaker, and a card covering a name animation that was built into one interview.</p>
+        <p>This time, the framing exceptions came up before anything was placed. The poem title would have covered a face in the usual position, and one card sat over a speaker's mouth. Codex asked about both, and I approved moving them. It also measured the enhanced speech running 2 frames behind the original at three points, and asked before shifting it.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="gapsTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="gapsTitle">Who closed which gap</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>Codex kept the sequence at its original timing as a reference, and built the final version as a separate copy with the intro and outro. Five removals were still only proposed, because the exact cut points had to be chosen by listening. Codex gave me the timecodes and a short audio excerpt for each one, and left all five alone.</p>
+        <p>I made the five cuts and closed the first gap myself. Codex closed the other four, starting from the end so the earlier gaps kept their times until it reached them. Then it added transitions at those four joins, on the picture track only. One became a cross dissolve, because I had kept a thank-you at the end of one segment. The music, graphics, and audio tracks got no new transitions.</p>
+        <p>After saving, Codex read the project back. The four closures removed 6,548 frames, and every clip's source position, effects, and mute setting had moved exactly as planned. The 12 other sequences in the project were unchanged.</p>
+      </div>
+
+      <figure class="edit-diagram clock-diagram gaps-diagram" aria-labelledby="gapsDiagramTitle">
+        <figcaption id="gapsDiagramTitle">Five gaps, and who closed each one</figcaption>
+        <div class="clock-row">
+          <h3>1. After my five cuts</h3>
+          <p>Each gap is numbered in the order it was closed.</p>
+          <div class="clock-track" role="img" aria-label="Six retained passages separated by five gaps. I closed the first gap. Codex closed the other four, starting with the last gap and working back to the second.">
+            <span class="clock-segment clock-a" style="grid-column: 1 / span 4"></span>
+            <span class="clock-segment clock-mine" style="grid-column: 5 / span 2">1</span>
+            <span class="clock-segment clock-a" style="grid-column: 7 / span 4"></span>
+            <span class="clock-segment clock-codex" style="grid-column: 11 / span 2">5</span>
+            <span class="clock-segment clock-a" style="grid-column: 13 / span 4"></span>
+            <span class="clock-segment clock-codex" style="grid-column: 17 / span 2">4</span>
+            <span class="clock-segment clock-a" style="grid-column: 19 / span 3"></span>
+            <span class="clock-segment clock-codex" style="grid-column: 22 / span 2">3</span>
+            <span class="clock-segment clock-a" style="grid-column: 24 / span 3"></span>
+            <span class="clock-segment clock-codex" style="grid-column: 27 / span 2">2</span>
+            <span class="clock-segment clock-a" style="grid-column: 29 / span 2"></span>
+          </div>
+        </div>
+        <div class="clock-row">
+          <h3>2. Picture track, closed</h3>
+          <p>New transitions sit only at the four joins Codex made.</p>
+          <div class="clock-track" role="img" aria-label="The six passages now run together and the edit is shorter. New transitions sit at the four joins Codex made. The first join, which I made, keeps the transition I had already added.">
+            <span class="clock-segment clock-a" style="grid-column: 1 / span 4"></span>
+            <span class="clock-segment clock-a" style="grid-column: 5 / span 4"></span>
+            <span class="clock-segment clock-a" style="grid-column: 9 / span 4"></span>
+            <span class="clock-segment clock-a" style="grid-column: 13 / span 3"></span>
+            <span class="clock-segment clock-a" style="grid-column: 16 / span 3"></span>
+            <span class="clock-segment clock-a" style="grid-column: 19 / span 2"></span>
+            <span class="clock-join is-existing" style="grid-column: 5"></span>
+            <span class="clock-join" style="grid-column: 9"></span>
+            <span class="clock-join" style="grid-column: 13"></span>
+            <span class="clock-join" style="grid-column: 16"></span>
+            <span class="clock-join" style="grid-column: 19"></span>
+          </div>
+        </div>
+        <div class="clock-row">
+          <h3>3. Music, graphics, and audio, closed</h3>
+          <p>Moved with the picture. Nothing added.</p>
+          <div class="clock-track" role="img" aria-label="The other tracks are the same shorter length as the picture, with no transitions added.">
+            <span class="clock-segment clock-b" style="grid-column: 1 / span 20">No new transitions</span>
+          </div>
+        </div>
+        <ul class="clock-key" aria-label="Diagram key">
+          <li><b>1</b> Closed by me</li>
+          <li><b>2 to 5</b> Closed by Codex, in that order</li>
+          <li><span class="clock-join" aria-hidden="true"></span> New transition</li>
+          <li><span class="clock-join is-existing" aria-hidden="true"></span> My existing transition</li>
+        </ul>
+        <p class="diagram-note">Conceptual example, not the event's timeline or scale. In the saved pass, Codex's 4 closures removed 6,548 frames: 261.92 seconds at 25 fps.</p>
+      </figure>
+    </section>
+
+    <section class="section" aria-labelledby="endpointTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="endpointTitle">What the last check caught</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>Codex had pointed out that my edit opened with about 20 seconds of empty time. I fixed that by moving everything earlier. That left the end point about 20 seconds past the last picture and music, so an export would have run on into black.</p>
+        <p>A final read-only pass caught it, and I moved the end point. The saved project now ends on the same frame as its last picture and audio, at 1:54:17. The same pass flagged two joins where a transition had changed or gone missing. It changed nothing and left those for me to judge by watching.</p>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="resultTitle">
       <div class="section-header">
         <h2 class="section-title" id="resultTitle">What each installment produced</h2>
@@ -261,8 +349,13 @@
           <p>An editable graphics system with 35 renders and previews. All 39 stills were integrated through my manual work and the automated continuation. Final verification matched 10 protected sequences to their reference snapshots.</p>
           <p>I exported the locked English master and reported that it was broadcast. The export's metadata and stream analysis matched the technical delivery format and reported no errors.</p>
         </div>
+        <div>
+          <h3>Part 3</h3>
+          <p>69 visuals placed, including 10 new information cards and 56 photo replacements. Codex marked 57 items in the editing notes as done, meaning applied and checked in the saved project, not yet approved on playback.</p>
+          <p>Codex's 4 closures removed 6,548 frames, with the 12 other sequences unchanged. I exported the English version, and it hasn't aired yet.</p>
+        </div>
       </div>
-      <p class="diagram-note">This account draws on the two exhibit packages and their saved reports and artifact checks. It does not add an independent full-playback review of either installment or independent observation of the broadcast.</p>
+      <p class="diagram-note">This account draws on the exhibit packages, their saved reports and artifact checks, and the Codex session record for Part 3. It does not add an independent full-playback review of any installment or independent observation of the Part 2 broadcast.</p>
     </section>
 
     <section class="section" aria-labelledby="openTitle">
@@ -271,8 +364,8 @@
         <div class="section-rule" aria-hidden="true"></div>
       </div>
       <div class="prose prose-lg">
-        <p>Part 2's Spanish conform is still open. Part 1 produced a technically checked review file, but its saved record also stops before listening approval. The second run doesn't establish that the language workflow has been tested end to end again.</p>
-        <p>The next improvement is to record approved exceptions before running a check: which card changed, the exact setting, why I changed it, and the saved version where I approved it. Once I say an edit is ready to lock, any further change needs my go.</p>
+        <p>The Spanish versions are on hold for now, so that part of the story will come later. Part 1 produced a technically checked review file, but its listening approval and translated-card reviews are still open. Parts 2 and 3 don't have Spanish conforms yet.</p>
+        <p>Part 3 settled its two framing exceptions before placement. The next step is to store each exception as a record that later checks read: which card changed, the exact setting, why I changed it, and the saved version where I approved it. Once I say an edit is ready to lock, any further change needs my go.</p>
         <p>The reusable workflow documents carry those rules forward. Graphics, captions, and language review keep their own approval steps, and a changed final edit needs a new timing map.</p>
       </div>
     </section>

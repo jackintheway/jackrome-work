@@ -93,6 +93,23 @@ These decisions from Jack supersede broader or dated wording below.
 - Jack has read and approved both case studies, including the Part 2 prose.
   Publication still requires his explicit go. Keep private portfolio materials
   out of the example and preserve the existing tool selection.
+- On 2026-09-22 the remaster case study gained Part 3, as an addition to the
+  approved page rather than a replacement. The re-run exhibit package retold
+  Parts 1 and 2 less accurately than the page (it credited Part 2 with an
+  exception registry and softened Part 1's open listening review), so Part 3
+  was written from the Codex session record instead. Part 3's facts: 69 visuals
+  (56 photo replacements, 10 cards, a poem title, a book-cover overlay, and a
+  cover card); two framing exceptions asked about and approved before
+  placement, with no stored registry yet; Jack chose the five cut points by ear
+  and closed the first gap; Codex closed four, latest first, for 6,548 frames,
+  with transitions on the picture track only and 12 other sequences unchanged.
+  The end-point overrun came from Jack moving the edit to remove an empty
+  opening; a read-only pass caught it and Jack set the end point.
+- Part 3's English version is exported and has not aired. The Spanish versions
+  are on hold for now; do not describe any Spanish work as complete. Part 3's
+  diagram uses generic geometry: five numbered gaps, five joins on the picture
+  track, and an unchanged bar for music, graphics, and audio. Its prose awaits
+  Jack's read, and publication still requires his explicit go.
 - Make the case studies easier to find through links to /ai-portfolio#clientTitle.
   AI Portfolio's hero uses "See case studies" with a downward arrow. Production
   links from its hero, and AI Enablement links from "How I work" beside a separate
