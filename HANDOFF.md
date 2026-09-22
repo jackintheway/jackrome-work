@@ -51,8 +51,13 @@ Decisions are in `CLAUDE.md` under 2026-09-22.
 Checks: page text scanned clean against every term list from the three private
 packages (Jack's own name removed from the list); no em dashes; guide search
 tests pass; `build-site.py --check` passes; no horizontal overflow at 375px;
-diagram checked at 1280px and 375px. Committed locally, not pushed. Next: Jack
-reads the Part 3 prose as a stranger would, then gives an explicit go to publish.
+diagram checked at 1280px and 375px. Jack said "Let's push"; 94784f6 was pushed
+alone and verified live on https://jackrome.work: the page, site.css,
+case-studies.js, and guide-index.json are byte-identical to the commit, the share
+image answers 200, and og:description reads "Three installments". The same session
+rewrote the /exhibit skill in every copy (first person as Jack, no withholding
+line, continuations add only the new part, EVIDENCE.md); that lives outside this
+repo. Next: nothing pending here; the Spanish versions come later.
 
 ## Earlier checkpoint: 2026-09-13 (later), Claude Code
 
