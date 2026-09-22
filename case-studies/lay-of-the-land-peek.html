@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Lay of the Land, a peek | Jack Rome</title>
+  <!-- The case study, played as an episode of Lay of the Land. It opens inside a
+       dialog on /case-studies/lay-of-the-land and reads its words from that page,
+       so there is one copy of the text. Kept out of the sitemap and the site guide. -->
+  <meta name="robots" content="noindex">
+  <meta name="description" content="The Lay of the Land case study, presented as an episode of the briefing it describes.">
+  <link rel="canonical" href="https://jackrome.work/case-studies/lay-of-the-land">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Jack Rome">
+  <meta property="og:url" content="https://jackrome.work/case-studies/lay-of-the-land">
+  <meta property="og:title" content="Something to listen to, instead of a feed.">
+  <meta property="og:description" content="The Lay of the Land case study, presented as an episode of the briefing it describes.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-case-lay-of-the-land.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Something to listen to, instead of a feed. A case study by Jack Rome.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-case-lay-of-the-land.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
+  <link rel="stylesheet" href="/css/fonts.css">
+<style>
+  [hidden] { display: none !important; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; }
+  .archive li > a {
+    display: grid; gap: 6px; justify-items: start; text-decoration: none;
+    background: var(--surface); color: var(--ink);
+    border: 3px solid var(--black); border-radius: 16px; padding: 14px 16px;
+    box-shadow: 4px 4px 0 var(--lift);
+  }
+  .archive li > a:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--lift); }
+  /* Wayspace: orange leads, yellow balances, blue answers, black outlines everything.
+     The marbled band borrows from the WAYSPACE DELUXE cover. */
+  :root {
+    --orange: #f77b0b;
+    --orange-deep: #d8650a;
+    --blue: #2769c9;
+    --blue-deep: #1d4f9c;
+    --green: #72b272;
+    --yellow: #efdf4d;
+    --salmon: #e89c82;
+    --brown: #632c1f;
+    --black: #000000;
+    --paper: #f5ecd6;
+    --paper-2: #ece0c2;
+
+    --ground: var(--paper);
+    --surface: #fffaf0;
+    --surface-2: var(--paper-2);
+    --ink: #1a1206;
+    --muted: #5c4c33;
+    --line: #000000;
+    --lift: #000000;
+    --title-pop: var(--yellow);
+    --now: var(--yellow);
+    --now-ink: #1a1206;
+    --link-line: var(--orange);
+    --focus: var(--blue);
+    --pressed: #1a1206;
+    --pressed-ink: var(--paper);
+
+    --heading: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Big Caslon", "BigCaslon", Georgia, "Times New Roman", serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0e1628;
+      --surface: #17223b;
+      --surface-2: #1f2c4a;
+      --ink: #f5ecd6;
+      --muted: #c9b995;
+      --line: #f5ecd6;
+      --lift: var(--yellow);
+      --title-pop: var(--orange);
+      --now: #2c4270;
+      --now-ink: #f5ecd6;
+      --link-line: var(--yellow);
+      --focus: var(--yellow);
+      --pressed: var(--yellow);
+      --pressed-ink: #000000;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #0e1628;
+    --surface: #17223b;
+    --surface-2: #1f2c4a;
+    --ink: #f5ecd6;
+    --muted: #c9b995;
+    --line: #f5ecd6;
+    --lift: var(--yellow);
+    --title-pop: var(--orange);
+    --now: #2c4270;
+    --now-ink: #f5ecd6;
+    --link-line: var(--yellow);
+    --focus: var(--yellow);
+    --pressed: var(--yellow);
+    --pressed-ink: #000000;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.62;
+    padding-inline: 18px;
+    padding-block: 0 112px;
+  }
+  .wrap { max-width: 44rem; margin-inline: auto; padding-top: 16px; }
+  button { font-family: var(--heading); }
+  button:focus-visible, select:focus-visible, a:focus-visible, .para:focus-visible {
+    outline: 3px solid var(--focus); outline-offset: 3px;
+  }
+
+  /* The album spine: the title runs up the left edge, the way it does on the DELUXE cover. */
+  .spine {
+    position: fixed; left: 0; top: 0; bottom: 0; width: 30px; z-index: 3;
+    display: none; align-items: center; justify-content: center;
+    background: var(--black); color: var(--paper);
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-family: var(--heading); font-weight: 800; font-size: 11px;
+    letter-spacing: 0.26em; text-transform: uppercase; white-space: nowrap; overflow: hidden;
+  }
+  @media (min-width: 760px) {
+    .spine { display: flex; }
+    body { padding-left: 50px; }
+  }
+
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 14px;
+    font-family: var(--heading); font-weight: 700; font-size: 12px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  }
+  .coords { font-variant-numeric: tabular-nums; }
+  .theme {
+    display: inline-flex; border: 3px solid var(--black); border-radius: 999px; overflow: hidden;
+    background: var(--surface); box-shadow: 3px 3px 0 var(--lift);
+  }
+  .theme button {
+    border: 0; background: transparent; color: var(--ink); cursor: pointer;
+    font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 11px;
+  }
+  .theme button + button { border-left: 3px solid var(--black); }
+  .theme button[aria-pressed="true"] { background: var(--pressed); color: var(--pressed-ink); }
+
+  .band {
+    position: relative;
+    height: clamp(118px, 20vw, 168px);
+    border: 4px solid var(--black); border-radius: 22px; overflow: hidden;
+    box-shadow: 7px 7px 0 var(--lift);
+    background: var(--orange);
+  }
+  .band canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .wordmark {
+    position: absolute; left: 50%; top: 50%; margin: 0;
+    max-width: calc(100% - 28px); white-space: nowrap;
+    font-family: var(--heading); font-weight: 900; text-transform: uppercase;
+    font-size: clamp(22px, 6vw, 50px); line-height: 1; letter-spacing: -0.01em;
+    color: var(--black); background: var(--orange);
+    border: 3px solid var(--black); border-radius: 12px; padding: 0.14em 0.36em 0.16em;
+    box-shadow: 5px 5px 0 var(--yellow);
+    transform: translate(-50%, -50%);
+  }
+
+  h1 {
+    font-family: var(--heading); font-weight: 900;
+    font-size: clamp(30px, 6.6vw, 50px); line-height: 1.04; letter-spacing: -0.02em;
+    margin: 30px 0 14px; text-wrap: balance;
+    text-shadow: 3px 3px 0 var(--title-pop);
+  }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .meta span {
+    font-family: var(--heading); font-weight: 800; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: 2px solid var(--black); border-radius: 999px; padding: 4px 11px;
+    background: var(--surface); color: var(--ink);
+  }
+  .meta .tag { background: var(--salmon); color: var(--black); }
+  .meta span:last-child { background: var(--green); color: var(--black); }
+
+  .jump { margin-top: 18px; }
+  .linkish {
+    font-weight: 800; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    border: 3px solid var(--black); border-radius: 12px; padding: 9px 15px; cursor: pointer;
+    background: var(--blue); color: #ffffff;
+    box-shadow: 4px 4px 0 var(--lift);
+    transition: transform 110ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 110ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .linkish:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--lift); }
+  .linkish:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--lift); }
+  #read-mode { background: var(--green); color: var(--black); }
+  #select-script { background: var(--surface); color: var(--ink); }
+  #read-done { background: var(--orange); color: var(--black); }
+
+  .player {
+    margin-top: 30px;
+    display: grid; grid-template-columns: auto 1fr; gap: 16px 18px; align-items: center;
+    background: var(--surface); border: 3px solid var(--black); border-radius: 22px;
+    box-shadow: 6px 6px 0 var(--lift); padding: 20px;
+  }
+  .play {
+    width: 74px; height: 74px; border-radius: 50%; cursor: pointer;
+    border: 3px solid var(--black); background: var(--orange); color: var(--black);
+    box-shadow: 5px 5px 0 var(--yellow);
+    display: grid; place-items: center;
+    transition: transform 110ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 110ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 110ms;
+  }
+  .play:hover { background: var(--orange-deep); transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--yellow); }
+  .play:active { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--yellow); }
+  .play svg { width: 28px; height: 28px; }
+  .status { font-family: var(--heading); font-weight: 900; font-size: 20px; letter-spacing: -0.01em; }
+  .status small { display: block; font-weight: 600; font-size: 14px; letter-spacing: 0; color: var(--muted); }
+  .controls {
+    grid-column: 1 / -1;
+    display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center;
+    font-family: var(--heading); font-weight: 800; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  }
+  .speeds { display: inline-flex; border: 3px solid var(--black); border-radius: 999px; overflow: hidden; background: var(--surface-2); }
+  .speeds button {
+    border: 0; background: transparent; color: var(--ink); cursor: pointer;
+    font-weight: 800; font-size: 13px; padding: 6px 11px; font-variant-numeric: tabular-nums;
+  }
+  .speeds button + button { border-left: 3px solid var(--black); }
+  .speeds button[aria-pressed="true"] { background: var(--yellow); color: var(--black); }
+  select {
+    font-family: var(--heading); font-weight: 600; font-size: 14px; letter-spacing: 0; text-transform: none;
+    color: var(--ink); background: var(--surface-2);
+    border: 3px solid var(--black); border-radius: 12px; padding: 6px 9px; max-width: 100%;
+  }
+  .fallback {
+    grid-column: 1 / -1; margin: 0;
+    font-family: var(--heading); font-weight: 500; font-size: 14.5px; line-height: 1.5; color: var(--muted);
+  }
+  .siri {
+    grid-column: 1 / -1;
+    display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center;
+    padding-top: 16px; border-top: 3px dashed var(--line);
+    font-family: var(--heading); font-weight: 500; font-size: 14.5px; line-height: 1.5; color: var(--muted);
+  }
+  .siri span { flex: 1 1 15rem; }
+
+  article { margin-top: 34px; }
+  .opening { font-style: italic; font-size: 22px; line-height: 1.55; }
+  .chip {
+    display: inline-block; margin: 38px 0 12px;
+    font-family: var(--heading); font-weight: 900; font-size: 15px;
+    letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.2;
+    border: 3px solid var(--black); border-radius: 999px; padding: 7px 15px;
+    box-shadow: 3px 3px 0 var(--lift); color: var(--black);
+  }
+  .c0 { background: var(--orange); }
+  .c1 { background: var(--blue); color: #ffffff; transform: rotate(0.8deg); }
+  .c2 { background: var(--green); }
+  .c3 { background: var(--yellow); transform: rotate(-0.8deg); }
+  .c4 { background: var(--salmon); }
+  .c5 { background: var(--brown); color: var(--paper); transform: rotate(0.6deg); }
+  .para {
+    margin: 0 0 16px; padding: 4px 10px; margin-inline: -10px;
+    border-radius: 12px; cursor: pointer;
+    transition: background-color 180ms ease;
+  }
+  .para.now { background: var(--now); color: var(--now-ink); }
+
+  .sources, .archive { margin-top: 48px; }
+  .sources .chip, .archive .chip { margin-top: 0; }
+  .sources ol {
+    margin: 4px 0 0; padding: 20px 22px 20px 46px;
+    background: var(--surface); border: 3px solid var(--black); border-radius: 22px;
+    box-shadow: 6px 6px 0 var(--lift);
+    font-family: var(--heading); font-weight: 600; font-size: 15.5px; line-height: 1.45;
+  }
+  .sources li { margin-bottom: 10px; }
+  .sources li::marker { font-weight: 900; color: var(--orange); }
+  .sources a { color: var(--ink); text-decoration-color: var(--link-line); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .sources .src-meta { font-weight: 500; font-size: 13px; letter-spacing: 0.03em; color: var(--muted); }
+
+  .archive ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 14px; }
+  .archive li > button:not(.back) {
+    width: 100%; text-align: left; cursor: pointer; display: grid; gap: 6px; justify-items: start;
+    background: var(--surface); color: var(--ink);
+    border: 3px solid var(--black); border-radius: 16px; padding: 14px 16px;
+    box-shadow: 4px 4px 0 var(--lift);
+    transition: transform 110ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 110ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .archive li > button:not(.back):hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--lift); }
+  .archive .when {
+    font-weight: 800; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 2px solid var(--black); border-radius: 999px; padding: 3px 9px; color: var(--black); background: var(--orange);
+  }
+  .archive li:nth-child(5n+2) .when { background: var(--blue); color: #ffffff; }
+  .archive li:nth-child(5n+3) .when { background: var(--green); }
+  .archive li:nth-child(5n+4) .when { background: var(--yellow); }
+  .archive li:nth-child(5n+5) .when { background: var(--salmon); }
+  .archive .t { font-family: var(--serif); font-style: italic; font-size: 19px; line-height: 1.3; }
+  .archive .empty { font-family: var(--heading); font-weight: 500; font-size: 15px; color: var(--muted); }
+  .back {
+    font-weight: 800; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    border: 3px solid var(--black); border-radius: 12px; padding: 8px 14px; cursor: pointer;
+    background: var(--yellow); color: var(--black); box-shadow: 4px 4px 0 var(--lift);
+  }
+
+  footer {
+    margin-top: 52px; padding-top: 16px; border-top: 3px solid var(--line);
+    font-family: var(--heading); font-weight: 600; font-size: 13.5px; line-height: 1.55; color: var(--muted);
+  }
+
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 4;
+    display: flex; align-items: center; gap: 12px;
+    background: var(--black); color: var(--paper);
+    padding: 10px 18px calc(10px + env(safe-area-inset-bottom, 0px));
+    font-family: var(--heading); font-weight: 800; font-size: 14px; letter-spacing: 0.04em;
+  }
+  .bar .where { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar button {
+    width: 42px; height: 42px; flex: none; border-radius: 50%; cursor: pointer;
+    border: 3px solid var(--paper); background: var(--orange); color: var(--black);
+    display: grid; place-items: center;
+  }
+  .bar svg { width: 18px; height: 18px; }
+
+  .readbar {
+    position: fixed; left: 0; right: 0; top: 0; z-index: 5;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    background: var(--yellow); color: var(--black); border-bottom: 3px solid var(--black);
+    padding: calc(12px + env(safe-area-inset-top, 0px)) 18px 12px;
+    font-family: var(--heading); font-weight: 700; font-size: 15px;
+    -webkit-user-select: none; user-select: none;
+  }
+  .readbar .hint { flex: 1 1 100%; }
+
+  .reading .wrap { padding-top: 132px; }
+  .reading .spine, .reading .topbar, .reading .band, .reading .meta, .reading .jump, .reading .player,
+  .reading .sources, .reading .archive, .reading footer, .reading .bar { display: none !important; }
+  .reading h1 { margin-top: 0; }
+  .reading .chip { text-transform: none; letter-spacing: 0.02em; transform: none; }
+  .reading .para { cursor: text; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .para, .linkish, .play, .archive li > button { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="spine" aria-hidden="true">Lay of the Land &middot; A morning briefing &middot; jackintheway &middot; 39.41&deg; N 77.41&deg; W</div>
+
+<div class="wrap">
+  <div class="topbar">
+    <span class="coords">39.41&deg; N &middot; 77.41&deg; W</span>
+    <span class="theme" role="group" aria-label="Color theme">
+      <button type="button" id="theme-auto" data-mode="auto" aria-pressed="true">Auto</button>
+      <button type="button" id="theme-light" data-mode="light" aria-pressed="false">Light</button>
+      <button type="button" id="theme-dark" data-mode="dark" aria-pressed="false">Dark</button>
+    </span>
+  </div>
+
+  <header>
+    <div class="band">
+      <canvas id="marble" aria-hidden="true"></canvas>
+      <p class="wordmark">Lay of the Land</p>
+    </div>
+    <h1 id="title"></h1>
+    <div class="meta" id="meta"></div>
+    <div class="jump"><button type="button" class="linkish" id="to-archive">See previous episodes</button></div>
+  </header>
+
+  <section class="player" aria-label="Listen">
+    <button class="play" id="play" type="button" aria-label="Play episode">
+      <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+    </button>
+    <div class="status" id="status" aria-live="polite">Ready<small id="status-sub"></small></div>
+    <div class="controls">
+      <span>Speed</span>
+      <span class="speeds" role="group" aria-label="Reading speed">
+        <button type="button" id="rate-090" data-rate="0.9" aria-pressed="false">0.9×</button>
+        <button type="button" id="rate-100" data-rate="1" aria-pressed="true">1×</button>
+        <button type="button" id="rate-115" data-rate="1.15" aria-pressed="false">1.15×</button>
+        <button type="button" id="rate-130" data-rate="1.3" aria-pressed="false">1.3×</button>
+      </span>
+      <label for="voice">Voice</label>
+      <select id="voice"></select>
+    </div>
+    <p class="fallback" id="fallback" hidden>This view can't read aloud. On iPhone, turn on Speak Screen (Settings, Accessibility, Spoken Content) and swipe down from the top with two fingers.</p>
+    <p class="fallback" id="lock-note">Reading stops if the phone locks, so the page asks to keep your screen awake while it plays. Tap any paragraph to start from there.</p>
+    <div class="siri">
+      <button type="button" class="linkish" id="read-mode">Listen with Siri voice</button>
+      <span>Shows only the script, so Select All and Speak read just the episode in your iPhone's own voice.</span>
+    </div>
+  </section>
+
+  <article id="script" aria-label="Episode script"></article>
+
+  <section class="sources" aria-labelledby="src-h">
+    <h2 class="chip c1" id="src-h">Sources</h2>
+    <ol id="sources"></ol>
+  </section>
+
+  <section class="archive" aria-labelledby="arc-h">
+    <h2 class="chip c5" id="arc-h">Earlier on the land</h2>
+    <ul id="archive"></ul>
+  </section>
+
+  <footer>In the real Lay of the Land, a Claude routine writes a new episode every morning at 7:30 Eastern, and those stay private. This peek plays the case study instead.</footer>
+</div>
+
+<div class="bar" id="bar" hidden>
+  <span class="where" id="bar-where"></span>
+  <button type="button" id="bar-toggle" aria-label="Pause">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+  </button>
+</div>
+
+<div class="readbar" id="readbar" hidden>
+  <span class="hint" id="read-hint">Press and hold any word, tap Select All, then Speak.</span>
+  <button type="button" class="linkish" id="select-script">Select episode</button>
+  <button type="button" class="linkish" id="read-done">Done</button>
+</div>
+
+<script src="/js/case-studies.js"></script>
+<script>
+(function () {
+  var episodes = [];
+  var SOURCES = [
+    { title: "Automate work with routines", publisher: "Claude Code Docs", date: "2026-09-22", url: "https://code.claude.com/docs/en/routines" },
+    { title: "Introducing Claude Opus 5.5", publisher: "Anthropic", date: "2026-09-22", url: "https://www.anthropic.com/claude-opus-5-5" },
+    { title: "Anthropic Academy courses", publisher: "Anthropic", date: "2026-09-22", url: "https://academy.claude.com" },
+    { title: "Human Flourishing and AI: Contemplative Practice, Neuroscience, and Artificial Intelligence", publisher: "Drala Mountain Center", date: "2026-09-22 (listing checked)", url: "https://www.dralamountain.org/program/hf1126-human-flourishing-and-ai-contemplative-practice-neuroscience-and-artificial-intelligence/" }
+  ];
+  function fromDoc(doc) {
+    var t = doc.querySelector(".hero-title"), sub = doc.querySelector(".hero-sub");
+    var sections = [];
+    doc.querySelectorAll("main section.section").forEach(function (sec) {
+      var h = sec.querySelector(".section-title");
+      if (!h || h.id === "ownTitle") return;
+      var ps = [];
+      sec.querySelectorAll(".prose p").forEach(function (p) { var x = p.textContent.trim(); if (x) ps.push(x); });
+      if (ps.length) sections.push({ heading: h.textContent.trim(), paragraphs: ps });
+    });
+    sections.push({ heading: "If you feel like it", paragraphs: [
+      "One small invitation, and the episode is complete without it. Close this peek and scroll to Make your own. The prompt there sets one of these up for you.",
+      "That's the lay of the land for this case study."
+    ] });
+    return { id: "case-study-lay-of-the-land", date: "2026-09-22", label: "Case study",
+      title: t ? t.textContent.trim() : "Lay of the Land",
+      opening: sub ? sub.textContent.trim() : "", sections: sections, sources: SOURCES };
+  }
+  var synth = window.speechSynthesis;
+  var $ = function (id) { return document.getElementById(id); };
+
+  var PLAY = '<path d="M7 4.5v15l13-7.5z"/>';
+  var PAUSE = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
+
+  var state = { ep: 0, chunks: [], pos: 0, playing: false, token: 0, rate: 1, voice: null, wake: null };
+
+  function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  function niceDate(iso) {
+    var parts = String(iso || "").split("-");
+    if (parts.length < 3) return iso || "";
+    var d = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    return d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+  }
+  function shortDate(iso) {
+    var parts = String(iso || "").split("-");
+    if (parts.length < 3) return iso || "";
+    var d = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+  }
+  function sentences(text) {
+    var m = String(text).match(/[^.!?]+[.!?]+["'”’)\]]*\s*|[^.!?]+$/g);
+    return (m || [text]).map(function (s) { return s.trim(); }).filter(Boolean);
+  }
+  function words(ep) {
+    var n = (ep.opening || "").split(/\s+/).length;
+    (ep.sections || []).forEach(function (s) { (s.paragraphs || []).forEach(function (p) { n += p.split(/\s+/).length; }); });
+    return n;
+  }
+
+  function render(index) {
+    stop();
+    state.ep = index;
+    var ep = episodes[index];
+    var script = $("script");
+    script.textContent = "";
+    $("sources").textContent = "";
+    if (!ep) {
+      $("title").textContent = "This peek could not load the case study.";
+      $("meta").textContent = "";
+      return;
+    }
+    $("title").textContent = ep.title || "Today";
+    var meta = $("meta");
+    meta.textContent = "";
+    var when = document.createElement("span");
+    when.textContent = niceDate(ep.date);
+    meta.appendChild(when);
+    if (ep.label) {
+      var tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = ep.label;
+      meta.appendChild(tag);
+    }
+    var mins = document.createElement("span");
+    mins.textContent = "About " + Math.max(1, Math.round(words(ep) / 155)) + " min";
+    meta.appendChild(mins);
+
+    state.chunks = [];
+    var paraCount = 0;
+    function addPara(el, text, sectionName) {
+      var id = "p" + (paraCount++);
+      el.id = id;
+      el.tabIndex = 0;
+      var start = state.chunks.length;
+      sentences(text).forEach(function (s) { state.chunks.push({ text: s, para: id, section: sectionName }); });
+      el.addEventListener("click", function () { if (!reading()) playFrom(start); });
+      el.addEventListener("keydown", function (e) { if (reading()) return; if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playFrom(start); } });
+    }
+
+    if (ep.opening) {
+      var op = document.createElement("p");
+      op.className = "opening para";
+      op.textContent = ep.opening;
+      script.appendChild(op);
+      addPara(op, ep.opening, "Opening");
+    }
+    (ep.sections || []).forEach(function (sec, si) {
+      var h = document.createElement("h2");
+      h.className = "chip c" + (si % 6);
+      h.textContent = sec.heading || "";
+      script.appendChild(h);
+      if (sec.heading) state.chunks.push({ text: sec.heading + ".", para: null, section: sec.heading, pause: true });
+      (sec.paragraphs || []).forEach(function (p) {
+        var el = document.createElement("p");
+        el.className = "para";
+        el.textContent = p;
+        script.appendChild(el);
+        addPara(el, p, sec.heading || "");
+      });
+    });
+
+    (ep.sources || []).forEach(function (s) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = s.url; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = s.title;
+      li.appendChild(a);
+      var m = document.createElement("div");
+      m.className = "src-meta";
+      m.textContent = [s.publisher, s.date].filter(Boolean).join(" · ");
+      li.appendChild(m);
+      $("sources").appendChild(li);
+    });
+
+    var sections = (ep.sections || []).length;
+    $("status").firstChild.nodeValue = "Ready";
+    $("status-sub").textContent = sections + " sections, from the top";
+    renderArchive();
+    drawMarble();
+  }
+
+  function renderArchive() {
+    var list = $("archive");
+    list.textContent = "";
+    var others = (typeof CASE_STUDIES !== "undefined" ? CASE_STUDIES : []).filter(function (c) { return c.slug !== "lay-of-the-land"; });
+    others.forEach(function (c) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = "/case-studies/" + encodeURIComponent(c.slug);
+      a.target = "_top";
+      var w = document.createElement("span"); w.className = "when"; w.textContent = "Case study";
+      var t = document.createElement("span"); t.className = "t"; t.textContent = c.title;
+      a.appendChild(w); a.appendChild(t);
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    if (!others.length) {
+      var li2 = document.createElement("li");
+      li2.className = "empty";
+      li2.textContent = "The other case studies live on the AI Portfolio page.";
+      list.appendChild(li2);
+    }
+  }
+
+  function setIcons(playing) {
+    $("play-icon").innerHTML = playing ? PAUSE : PLAY;
+    $("play").setAttribute("aria-label", playing ? "Pause episode" : "Play episode");
+    $("bar").hidden = !playing && state.pos === 0;
+    $("bar-toggle").innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' + (playing ? PAUSE : PLAY) + "</svg>";
+    $("bar-toggle").setAttribute("aria-label", playing ? "Pause" : "Resume");
+  }
+
+  function highlight(para) {
+    var prev = document.querySelector(".para.now");
+    if (prev && prev.id !== para) prev.classList.remove("now");
+    if (!para) return;
+    var el = document.getElementById(para);
+    if (el && !el.classList.contains("now")) {
+      el.classList.add("now");
+      var r = el.getBoundingClientRect();
+      if (r.top < 0 || r.bottom > window.innerHeight - 80) {
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        el.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+      }
+    }
+  }
+
+  function speakCurrent() {
+    if (!synth) return;
+    if (state.pos >= state.chunks.length) { finish(); return; }
+    var chunk = state.chunks[state.pos];
+    var my = ++state.token;
+    var u = new SpeechSynthesisUtterance(chunk.text);
+    if (state.voice) { u.voice = state.voice; u.lang = state.voice.lang; } else { u.lang = "en-US"; }
+    u.rate = state.rate;
+    u.onend = function () {
+      if (my !== state.token || !state.playing) return;
+      state.pos++;
+      setTimeout(speakCurrent, chunk.pause ? 350 : 60);
+    };
+    u.onerror = function (e) {
+      if (my !== state.token || !state.playing) return;
+      if (e && (e.error === "interrupted" || e.error === "canceled")) return;
+      state.pos++;
+      speakCurrent();
+    };
+    highlight(chunk.para);
+    $("status").firstChild.nodeValue = "Playing";
+    $("status-sub").textContent = chunk.section;
+    $("bar-where").textContent = chunk.section;
+    synth.speak(u);
+  }
+
+  function wakeOn() {
+    try {
+      if (navigator.wakeLock && !state.wake) {
+        navigator.wakeLock.request("screen").then(function (l) { state.wake = l; }).catch(function () {});
+      }
+    } catch (e) {}
+  }
+  function wakeOff() {
+    try { if (state.wake) { state.wake.release(); } } catch (e) {}
+    state.wake = null;
+  }
+
+  function playFrom(pos) {
+    if (!synth) return;
+    state.token++;
+    synth.cancel();
+    state.pos = Math.max(0, Math.min(pos, state.chunks.length - 1));
+    state.playing = true;
+    setIcons(true);
+    wakeOn();
+    speakCurrent();
+  }
+  function pause() {
+    state.playing = false;
+    state.token++;
+    if (synth) synth.cancel();
+    setIcons(false);
+    wakeOff();
+    $("status").firstChild.nodeValue = "Paused";
+  }
+  function stop() {
+    state.playing = false;
+    state.token++;
+    if (synth) synth.cancel();
+    state.pos = 0;
+    highlight(null);
+    var prev = document.querySelector(".para.now");
+    if (prev) prev.classList.remove("now");
+    wakeOff();
+    setIcons(false);
+  }
+  function finish() {
+    stop();
+    $("status").firstChild.nodeValue = "Finished";
+    $("status-sub").textContent = "Tap play to hear it again";
+  }
+  function toggle() {
+    if (state.playing) pause(); else playFrom(state.pos);
+  }
+
+  $("play").addEventListener("click", toggle);
+  $("bar-toggle").addEventListener("click", toggle);
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible" && state.playing) wakeOn();
+  });
+
+  var rateButtons = document.querySelectorAll(".speeds button");
+  function setRate(r) {
+    state.rate = r;
+    rateButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.rate === r)); });
+    store("lotl-rate", String(r));
+    if (state.playing) playFrom(state.pos);
+  }
+  rateButtons.forEach(function (b) { b.addEventListener("click", function () { setRate(+b.dataset.rate); }); });
+  var savedRate = parseFloat(recall("lotl-rate"));
+  if ([0.9, 1, 1.15, 1.3].indexOf(savedRate) > -1) setRate(savedRate);
+
+  function score(v) {
+    var s = 0;
+    if (/premium|enhanced|natural|neural/i.test(v.name)) s += 4;
+    if (/siri/i.test(v.name)) s += 3;
+    if (/google/i.test(v.name)) s += 1;
+    if (/^en[-_]US/i.test(v.lang)) s += 1;
+    if (/novelty|whisper|bells|bubbles|cellos|organ|zarvox|trinoids|bad news|good news|jester|superstar|boing|albert|wobble/i.test(v.name)) s -= 10;
+    return s;
+  }
+  function loadVoices() {
+    if (!synth) return;
+    var all = synth.getVoices().filter(function (v) { return /^en/i.test(v.lang); });
+    if (!all.length) return;
+    all.sort(function (a, b) { return score(b) - score(a); });
+    var sel = $("voice");
+    sel.textContent = "";
+    all.forEach(function (v, i) {
+      var o = document.createElement("option");
+      o.value = v.name;
+      o.textContent = v.name.replace(/\s*\(.*\)$/, "") + " · " + v.lang;
+      sel.appendChild(o);
+    });
+    var saved = recall("lotl-voice");
+    var pick = all.filter(function (v) { return v.name === saved; })[0] || all[0];
+    state.voice = pick;
+    sel.value = pick.name;
+  }
+  $("voice").addEventListener("change", function (e) {
+    var v = synth.getVoices().filter(function (x) { return x.name === e.target.value; })[0];
+    if (v) { state.voice = v; store("lotl-voice", v.name); if (state.playing) playFrom(state.pos); }
+  });
+
+  if (!synth || typeof SpeechSynthesisUtterance === "undefined") {
+    $("fallback").hidden = false;
+    $("lock-note").hidden = true;
+    $("play").disabled = true;
+    $("play").style.opacity = "0.4";
+    document.querySelector(".controls").hidden = true;
+  } else {
+    loadVoices();
+    if ("onvoiceschanged" in synth) synth.addEventListener("voiceschanged", loadVoices);
+  }
+
+  window.addEventListener("pagehide", function () { if (synth) synth.cancel(); });
+
+  function reading() { return document.body.classList.contains("reading"); }
+  function smooth() { return !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+  $("to-archive").addEventListener("click", function () {
+    $("arc-h").scrollIntoView({ block: "start", behavior: smooth() ? "smooth" : "auto" });
+  });
+  function setReading(on) {
+    if (on) stop();
+    document.body.classList.toggle("reading", on);
+    $("readbar").hidden = !on;
+    $("read-hint").textContent = "Press and hold any word, tap Select All, then Speak.";
+    try { window.getSelection().removeAllRanges(); } catch (e) {}
+    window.scrollTo({ top: 0 });
+  }
+  $("read-mode").addEventListener("click", function () { setReading(true); });
+  $("read-done").addEventListener("click", function () { setReading(false); });
+  $("select-script").addEventListener("click", function () {
+    try {
+      window.getSelection().selectAllChildren($("script"));
+      $("read-hint").textContent = "Now tap the highlighted text and choose Speak.";
+    } catch (e) {}
+  });
+
+  function load(done) {
+    try {
+      if (window.parent !== window && window.parent.document.querySelector(".hero-title")) { done(window.parent.document); return; }
+    } catch (e) {}
+    fetch("/case-studies/lay-of-the-land").then(function (r) { return r.text(); })
+      .then(function (t) { done(new DOMParser().parseFromString(t, "text/html")); })
+      .catch(function () { done(null); });
+  }
+  load(function (doc) { if (doc) episodes = [fromDoc(doc)]; render(0); });
+
+  // The marbled band, after the WAYSPACE DELUXE cover: liquid bands of the palette,
+  // each edge outlined in black. The pattern is seeded by the episode, so each morning differs.
+  function drawMarble() {
+    var canvas = document.getElementById("marble");
+    if (!canvas) return;
+    var rect = canvas.getBoundingClientRect();
+    var W = Math.max(1, Math.round(rect.width)), H = Math.max(1, Math.round(rect.height));
+    if (W < 2 || H < 2) return;
+    var ep = episodes[state.ep];
+    var id = ep ? String(ep.id) : "lay-of-the-land";
+    var h = 2166136261;
+    for (var c = 0; c < id.length; c++) { h ^= id.charCodeAt(c); h = Math.imul(h, 16777619); }
+    var seed = (h >>> 0) / 4294967295;
+    function rnd(n) { var x = Math.sin(seed * 9973 + n * 12.9898) * 43758.5453; return x - Math.floor(x); }
+    var k = [];
+    for (var n = 0; n < 8; n++) k.push(rnd(n) * Math.PI * 2);
+    var palette = [
+      [247, 123, 11], [239, 223, 77], [39, 105, 201], [114, 178, 114],
+      [239, 223, 77], [247, 123, 11], [122, 166, 227], [232, 156, 130],
+      [39, 105, 201], [239, 223, 77], [114, 178, 114], [251, 176, 105]
+    ];
+    var band = new Int16Array(W * H);
+    var s = 2.4 / H;
+    for (var y = 0; y < H; y++) {
+      var ny = y * s;
+      for (var x = 0; x < W; x++) {
+        var nx = x * s;
+        var wx = nx + 0.55 * Math.sin(1.7 * ny + k[0]) + 0.25 * Math.sin(3.9 * nx + k[1]);
+        var wy = ny + 0.55 * Math.sin(1.9 * nx + k[2]) + 0.25 * Math.sin(4.3 * ny + k[3]);
+        var f = Math.sin(2.1 * wx + k[4]) + Math.sin(2.4 * wy + k[5]) + 0.7 * Math.sin(1.3 * (wx - wy) + k[6]);
+        band[y * W + x] = Math.floor((f + 2.7) * 2.6);
+      }
+    }
+    var off = document.createElement("canvas");
+    off.width = W; off.height = H;
+    var octx = off.getContext("2d");
+    if (!octx) return;
+    var img = octx.createImageData(W, H);
+    var d = img.data;
+    for (var yy = 0; yy < H; yy++) {
+      for (var xx = 0; xx < W; xx++) {
+        var i2 = yy * W + xx, b = band[i2];
+        var edge = (xx + 1 < W && band[i2 + 1] !== b) || (xx + 2 < W && band[i2 + 2] !== b) ||
+                   (yy + 1 < H && band[i2 + W] !== b) || (yy + 2 < H && band[i2 + 2 * W] !== b);
+        var col = edge ? [0, 0, 0] : palette[((b % palette.length) + palette.length) % palette.length];
+        var o = i2 * 4;
+        d[o] = col[0]; d[o + 1] = col[1]; d[o + 2] = col[2]; d[o + 3] = 255;
+      }
+    }
+    octx.putImageData(img, 0, 0);
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    var ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(off, 0, 0, canvas.width, canvas.height);
+  }
+  var marbleTimer = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(marbleTimer);
+    marbleTimer = setTimeout(drawMarble, 150);
+  });
+
+  // Auto, Light, or Dark. Auto follows the viewer's own setting.
+  var themeButtons = document.querySelectorAll(".theme button");
+  function applyTheme(mode, save) {
+    var root = document.documentElement;
+    if (mode === "light" || mode === "dark") root.setAttribute("data-theme", mode);
+    else root.removeAttribute("data-theme");
+    themeButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.mode === mode)); });
+    if (save) store("lotl-theme", mode);
+  }
+  themeButtons.forEach(function (b) { b.addEventListener("click", function () { applyTheme(b.dataset.mode, true); }); });
+  var savedTheme = recall("lotl-theme");
+  if (savedTheme === "light" || savedTheme === "dark" || savedTheme === "auto") applyTheme(savedTheme, false);
+})();
+</script>
+</body>
+</html>

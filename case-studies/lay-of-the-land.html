@@ -60,6 +60,7 @@
       <p class="hero-eyebrow ws-overline"><a class="hero-eyebrow-link" href="/ai-portfolio">&larr; AI Portfolio</a> &middot; Case study</p>
       <h1 class="hero-title">Lay of the Land, a morning briefing I listen to instead of scrolling.</h1>
       <p class="hero-sub">I worked with Claude Code to build a cloud routine that researches what's changing around my work each morning and writes it into one episode I listen to on my phone.</p>
+      <div class="btn-row"><button class="btn btn-yellow" type="button" data-listen>Listen to this case study</button><button class="btn btn-secondary" type="button" id="peekOpen">Take a peek</button></div>
     </div>
   </header>
 
@@ -67,7 +68,7 @@
 
     <nav class="page-contents" aria-label="On this page">
       <span class="page-contents-label">On this page</span>
-      <a href="#listenTitle">Instead of a feed</a>
+      <a href="#listenTitle">A new kind of feed</a>
       <a href="#pokedexTitle">The Pokédex</a>
       <a href="#routesTitle">Routes I didn&#x27;t take</a>
       <a href="#netTitle">Casting the net</a>
@@ -78,11 +79,9 @@
       <a href="#ownTitle">Make your own</a>
     </nav>
 
-    <div class="prose prose-lg"><p>Built with Claude Code running Opus 5.5 in an afternoon, September 2026.</p></div>
-
     <section class="section" aria-labelledby="listenTitle">
       <div class="section-header">
-        <h2 class="section-title" id="listenTitle">Something to listen to, instead of a feed</h2>
+        <h2 class="section-title" id="listenTitle">A new kind of feed</h2>
         <div class="section-rule" aria-hidden="true"></div>
       </div>
       <div class="prose prose-lg">
@@ -282,7 +281,30 @@ Then run it once now, so I can hear the first episode.</pre>
     </span>
   </footer>
 
+  <!-- The case study, played as an episode of Lay of the Land. The frame loads
+       only when opened and is cleared on close, so nothing plays in the background. -->
+  <dialog class="peek-dialog" id="peekDialog" aria-labelledby="peekLabel">
+    <div class="peek-head">
+      <span id="peekLabel">This case study, as an episode</span>
+      <button class="btn btn-secondary peek-close" type="button" id="peekClose">Close</button>
+    </div>
+    <iframe class="peek-frame" id="peekFrame" title="The case study, played as an episode of Lay of the Land"></iframe>
+  </dialog>
+
   <script>
+    (function () {
+      var dialog = document.getElementById("peekDialog");
+      var frame = document.getElementById("peekFrame");
+      document.getElementById("peekOpen").addEventListener("click", function () {
+        document.dispatchEvent(new Event("listen:stop"));
+        frame.src = "/case-studies/lay-of-the-land-peek";
+        dialog.showModal();
+      });
+      document.getElementById("peekClose").addEventListener("click", function () { dialog.close(); });
+      dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
+      dialog.addEventListener("close", function () { frame.src = "about:blank"; });
+    })();
+
     /* The copy button on the starter prompt. Falls back to selecting the
        text where the clipboard is unavailable. */
     document.querySelectorAll("[data-copy]").forEach(function (btn) {
@@ -307,6 +329,7 @@ Then run it once now, so I can hear the first episode.</pre>
       });
     });
   </script>
+  <script src="/js/listen.js" defer></script>
   <script src="/js/nav.js" defer></script>
 </body>
 </html>

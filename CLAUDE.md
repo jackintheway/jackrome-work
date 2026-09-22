@@ -110,6 +110,12 @@ These decisions from Jack supersede broader or dated wording below.
   diagram uses generic geometry: five numbered gaps, five joins on the picture
   track, and an unchanged bar for music, graphics, and audio. Its prose awaits
   Jack's read, and publication still requires his explicit go.
+- On 2026-09-22 Jack published a third case study, Lay of the Land, a
+  personal tool. Its employer and tradition stay out of the text by his choice.
+  Every case study carries a Listen button (js/listen.js). Lay of the Land also
+  has a Take a peek dialog whose noindex page reads the case study's own text,
+  so edits to the page carry into the peek with nothing to regenerate. After
+  any edit to a js file, run node --check on it before committing.
 - Make the case studies easier to find through links to /ai-portfolio#clientTitle.
   AI Portfolio's hero uses "See case studies" with a downward arrow. Production
   links from its hero, and AI Enablement links from "How I work" beside a separate

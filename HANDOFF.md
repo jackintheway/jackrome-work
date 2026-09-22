@@ -57,6 +57,16 @@ site.css, case-studies.js, and guide-index.json are byte-identical to the
 commit, the share image answers 200, and the sitemap lists the page.
 Open for Jack: the section heading still reads "How this works with clients".
 
+Later the same evening, on Jack's go ("add the play buttons, then push it
+all"): a Take a peek dialog on the Lay of the Land case study plays the page
+as an episode of the private briefing (case-studies/lay-of-the-land-peek.html,
+noindex, reads its text from the case study so there is one copy); every case
+study gains a Listen button (js/listen.js, browser speech, a black bar with
+Pause and Stop; its classes are readaloud-* because .listen-bar already
+belongs to the lyric pages). Also fixed and pushed alone first: adding the
+Lay of the Land entry had dropped a closing brace in js/case-studies.js,
+which emptied the AI Portfolio's case study grid until 842ceeb.
+
 ## Earlier checkpoint: 2026-09-22, Claude Code
 
 Jack brought a re-run exhibit package covering all three remaster installments

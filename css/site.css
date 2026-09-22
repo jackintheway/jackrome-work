@@ -1125,6 +1125,54 @@ ul.offer-grid {
   border: var(--rule);
 }
 .copy-status { display: inline-block; margin-left: var(--space-3); font-size: var(--fs-small); }
+
+/* Listen: a case study read aloud. The paragraph being read is marked,
+   and a bar along the bottom carries the section and the controls. */
+.is-listening {
+  background: var(--ws-yellow);
+  box-shadow: 0 0 0 6px var(--ws-yellow);
+  color: var(--ws-black);
+}
+.readaloud-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-5) calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+  background: var(--ws-black); color: var(--ws-paper);
+  font-family: var(--font-heading); font-weight: var(--fw-bold); font-size: var(--fs-small);
+}
+.readaloud-where { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.readaloud-bar button {
+  font: inherit; text-transform: uppercase; letter-spacing: var(--ls-overline);
+  padding: var(--space-2) var(--space-4); cursor: pointer;
+  border: 2px solid var(--ws-paper); background: var(--ws-orange); color: var(--ws-black);
+}
+.readaloud-bar .readaloud-stop { background: transparent; color: var(--ws-paper); }
+
+/* The Lay of the Land peek: the case study played as an episode, in a
+   phone-sized frame on wide screens and full screen on a phone. */
+.peek-dialog {
+  width: min(430px, calc(100vw - 32px));
+  height: calc(100vh - 48px);
+  height: min(880px, calc(100dvh - 48px));
+  max-width: none; max-height: none;
+  padding: 0; overflow: hidden;
+  border: var(--rule-heavy);
+  background: var(--ws-paper);
+  box-shadow: 8px 8px 0 0 var(--ws-yellow);
+}
+.peek-dialog[open] { display: flex; flex-direction: column; }
+.peek-dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
+.peek-head {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--ws-yellow); border-bottom: var(--rule);
+  font-family: var(--font-heading); font-weight: var(--fw-bold); font-size: var(--fs-small);
+}
+.peek-close { padding: var(--space-2) var(--space-4); box-shadow: var(--pop-black-sm); }
+.peek-frame { flex: 1; width: 100%; border: 0; display: block; background: var(--ws-paper); }
+@media (max-width: 600px) {
+  .peek-dialog { width: 100vw; height: 100vh; height: 100dvh; border: 0; box-shadow: none; }
+}
 .case-results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
 .case-results > div { border-top: var(--rule-heavy); padding-top: var(--space-4); }
 .case-results h3 { margin: 0 0 var(--space-3); }
