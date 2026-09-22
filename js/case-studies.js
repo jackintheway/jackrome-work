@@ -51,6 +51,15 @@ const CASE_STUDIES = [
     lead: "I worked with Codex on three installments of a remaster while continuing to make editing decisions by hand.",
     summary: "Part 1 mapped an existing Spanish recording to a revised timeline. Part 2 rebuilt the editable graphics system and exposed a mistake in the final check: it reset two card positions I had changed on purpose. In Part 3, I chose the cut points by ear and Codex closed the gaps around them.",
     result: "The two positions were restored. Part 2 produced an editable graphics project and 35 card renders, and I reported its English broadcast. Part 3's four automated closures checked out in the saved project, and its English version is exported. The Spanish versions are on hold."
+  ,
+  {
+    slug: "lay-of-the-land",
+    title: "Lay of the Land, a morning briefing to listen to",
+    meta: "Personal tool, 2026",
+    tags: ["Safety design", "Verification"],
+    lead: "I worked with Claude to build a cloud routine that turns each morning's news around my work into one episode I listen to, in place of scrolling.",
+    summary: "A Pokédex from my childhood carried the brief. The routine reads the whole web and holds none of my accounts, writes for the ear, and updates a private listening page with a mode for my iPhone's own voice.",
+    result: "The first test run took 4 minutes and 19 seconds: 1,298 words, 22 sources, a duplicate entry caught before publishing, and a notification on my phone. Whether it changes how much I scroll is still open."
   }
 ];
 

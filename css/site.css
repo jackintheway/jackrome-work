@@ -1083,6 +1083,48 @@ ul.offer-grid {
 .framing-cards { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 3px; }
 .framing-cards span { aspect-ratio: 4 / 3; background: var(--ws-blue); border: 1px solid var(--outline); }
 .framing-exceptions .framing-cards span { background: var(--ws-orange); }
+/* What a routine can reach: the framing diagram's frame and two branches,
+   with a meter for web access and chips for connected accounts. */
+.access-diagram .framing-branch h3 strong { font-weight: var(--fw-black); }
+.access-list { margin: 0; display: grid; gap: var(--space-4); }
+.access-list > div { display: grid; gap: var(--space-2); }
+.access-list dt { font-size: var(--fs-small); font-weight: var(--fw-bold); }
+.access-list dd { margin: 0; font-size: var(--fs-small); }
+.access-meter { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 3px; }
+.access-meter span { height: var(--space-3); background: var(--ws-paper-2); border: 1px solid var(--outline); }
+.access-meter .is-on { background: var(--ws-blue); }
+.access-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.access-chips span { padding: 0 var(--space-2); background: var(--ws-orange); border: var(--rule); font-size: var(--fs-small); }
+.access-chips .is-none { background: transparent; border-style: dashed; }
+
+/* A prompt a reader can take with them. A native details element opens it
+   in place, so the page needs no modal and only a few lines of script for
+   the copy button. The summary wears the site's button. */
+.prompt-card { margin-top: var(--space-5); }
+.prompt-card > summary { list-style: none; cursor: pointer; }
+.prompt-card > summary::-webkit-details-marker { display: none; }
+.prompt-card .when-open, .prompt-card[open] .when-closed { display: none; }
+.prompt-card[open] .when-open { display: inline; }
+.prompt-card-body {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border: var(--rule);
+  background: var(--ws-paper-2);
+  box-shadow: var(--pop-yellow);
+}
+.prompt-card-body > p { margin: 0 0 var(--space-4); }
+.prompt-text {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4);
+  max-height: 26rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  background: var(--surface-card);
+  border: var(--rule);
+}
+.copy-status { display: inline-block; margin-left: var(--space-3); font-size: var(--fs-small); }
 .case-results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
 .case-results > div { border-top: var(--rule-heavy); padding-top: var(--space-4); }
 .case-results h3 { margin: 0 0 var(--space-3); }

@@ -36,7 +36,24 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-09-22, Claude Code
+## Current checkpoint: 2026-09-22 (evening), Claude Code
+
+Jack asked for a third case study page from the Lay of the Land exhibit package
+(canonical copy in iCloud under Claude Creations/exhibitions/lay-of-the-land/).
+Added `case-studies/lay-of-the-land.html`, its share card
+(`tools/og/card-case-lay-of-the-land.html`, rendered alone), a
+`js/case-studies.js` entry, and styles in `css/site.css` for its two new
+pieces: an access diagram built on the framing diagram's frame, and a
+"Make your own" prompt card (native details element, a few lines of inline
+script for Copy). `ai-portfolio.html`'s case study intro now also covers one
+personal project. Sitemap (76 pages) and guide index rebuilt.
+
+Checks: build-site check passes; guide search tests pass; no em dashes in the
+new files; no horizontal overflow at 375px; figure and prompt card viewed in
+the local preview. Committed locally, not pushed. Publication needs Jack's go.
+Open for Jack: the section heading still reads "How this works with clients".
+
+## Earlier checkpoint: 2026-09-22, Claude Code
 
 Jack brought a re-run exhibit package covering all three remaster installments
 and asked for it as an update to the live remaster case study. Its Parts 1 and 2
