@@ -57,7 +57,7 @@ const CASE_STUDIES = [
     title: "Lay of the Land, a morning briefing to listen to",
     meta: "Personal tool, 2026",
     tags: ["Safety design", "Verification"],
-    lead: "I worked with Claude to build a cloud routine that turns each morning's news around my work into one episode I listen to, in place of scrolling.",
+    lead: "I worked with Claude Code to build a cloud routine that turns each morning's news around my work into one episode I listen to, in place of scrolling.",
     summary: "A Pokédex from my childhood carried the brief. The routine reads the whole web and holds none of my accounts, writes for the ear, and updates a private listening page with a mode for my iPhone's own voice.",
     result: "The first test run took 4 minutes and 19 seconds: 1,298 words, 22 sources, a duplicate entry caught before publishing, and a notification on my phone. Whether it changes how much I scroll is still open."
   }
