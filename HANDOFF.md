@@ -55,7 +55,7 @@ the local preview. Jack then rewrote the page's prose in his own words
 commits were pushed and verified live on https://jackrome.work: the page,
 site.css, case-studies.js, and guide-index.json are byte-identical to the
 commit, the share image answers 200, and the sitemap lists the page.
-Open for Jack: the section heading still reads "How this works with clients".
+The section heading now reads "How this works" (252280e, committed, not pushed).
 
 Later the same evening, on Jack's go ("add the play buttons, then push it
 all"): a Take a peek dialog on the Lay of the Land case study plays the page
