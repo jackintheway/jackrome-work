@@ -36,7 +36,25 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-09-22 (evening), Claude Code
+## Current checkpoint: 2026-09-23, Claude Code
+
+Jack asked to add the Lay of the Land archive and the new episode notes to the
+case study. Added two sections after "The first run" ("An archive in my vault"
+and "Notes back to the routine"), two contents links, and a "Still open" line
+saying the notes are untested until the routine's September 24 run. Guide
+index rebuilt. Committed as 4978e5d, not pushed. The branch is ahead of
+origin by 3 (252280e and 188b83a were already waiting). The peek reads the
+page's text, so it follows automatically; the share card and meta
+descriptions were left alone.
+
+Most of the new prose was drafted by Claude, apart from the notes paragraph,
+which follows Jack's own description. It is waiting for his read and his go.
+Checks: build-site check passes; guide index current; 24 guide search tests
+pass; no em dashes. Not previewed in a browser (this session could not start
+the dev server). Unrelated working-tree files (wayspace-straight.svg, substack
+images, tools/substack/) were left untouched and unstaged.
+
+## Earlier checkpoint: 2026-09-22 (evening), Claude Code
 
 Jack asked for a third case study page from the Lay of the Land exhibit package
 (canonical copy in iCloud under Claude Creations/exhibitions/lay-of-the-land/).
