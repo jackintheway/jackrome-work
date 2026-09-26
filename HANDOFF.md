@@ -36,7 +36,32 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-09-26, Claude Code
+## Current checkpoint: 2026-09-26 (afternoon), Claude Code cloud session
+
+This was the first Claude Code cloud session on this repo. It tested the loop:
+work on a branch, open a PR, Jack merges, Netlify deploys, then `git pull` on
+the Mac. Jack picked the task: make the share-card renderer work off the Mac.
+
+- `tools/og/render.sh` now runs on macOS and Linux. It uses a headless shell
+  first, then Chrome, then Chromium, and `CHROME=` overrides the choice. It adds
+  `--no-sandbox` when running as root, and
+  `./tools/og/render.sh card-<name>` renders only the named cards.
+- New `tools/og/check-card.py` (standard library only) checks each card's size
+  and that its 14px black border reaches all four edges. The reason: full
+  Chromium's new headless mode on Linux left an 87px blank strip across the
+  bottom, and the file was still 1200x630, so the old size check would have
+  passed it.
+- Checks: all 79 committed PNGs pass the new check. All 78 cards rendered and
+  passed in the cloud. Both clipped test renders failed, as intended. The
+  re-rendered PNGs were discarded, so no images change. `build-site --check`
+  passes. `tools/` is not on the publish allowlist, so the live site does not
+  change, though a merge still costs a 15-credit deploy.
+- Not verified on the Mac. The first Mac run will show whether current Chrome
+  there clips. If it does, the check now fails loudly.
+- Cloud sessions can't reach `_source/`, `_exhibits/`, `_private/`, or
+  uncommitted Mac files. Work that needs masters stays on the Mac.
+
+## Earlier checkpoint: 2026-09-26 (morning), Claude Code
 
 The Lay of the Land case study gained two sections after "The first run":
 "An archive in my vault" and "Capturing my notes", in Jack's own wording
