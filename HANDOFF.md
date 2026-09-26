@@ -36,23 +36,25 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-09-23, Claude Code
+## Current checkpoint: 2026-09-26, Claude Code
 
-Jack asked to add the Lay of the Land archive and the new episode notes to the
-case study. Added two sections after "The first run" ("An archive in my vault"
-and "Notes back to the routine"), two contents links, and a "Still open" line
-saying the notes are untested until the routine's September 24 run. Guide
-index rebuilt. Committed as 4978e5d, not pushed. The branch is ahead of
-origin by 3 (252280e and 188b83a were already waiting). The peek reads the
-page's text, so it follows automatically; the share card and meta
-descriptions were left alone.
+The Lay of the Land case study gained two sections after "The first run":
+"An archive in my vault" and "Capturing my notes", in Jack's own wording
+(d56c946; Claude's earlier draft was 4978e5d). Two small slips in his text
+were fixed on the way in: "wiki links for my words" (the "my" was missing)
+and "a way to give the routine feedback through the episode itself" (the
+phrase had both "talk to" and "feedback"). The drafted "Still open" line
+saying the notes were untested was removed, because the routine's September
+24 run read two notes and both shaped that episode.
 
-Most of the new prose was drafted by Claude, apart from the notes paragraph,
-which follows Jack's own description. It is waiting for his read and his go.
-Checks: build-site check passes; guide index current; 24 guide search tests
-pass; no em dashes. Not previewed in a browser (this session could not start
-the dev server). Unrelated working-tree files (wayspace-straight.svg, substack
-images, tools/substack/) were left untouched and unstaged.
+On Jack's go ("then we're good to push"), pushed with the two commits that
+were already waiting (252280e, 188b83a). Verified live on
+https://jackrome.work: the case study and guide-index.json are byte-identical
+to the commit. Checks before pushing: build-site check, guide index current,
+24 guide search tests pass, no em dashes. This handoff entry is committed
+but not pushed, to avoid a deploy for a docs-only change. Unrelated
+working-tree files (wayspace-straight.svg, substack images, tools/substack/)
+were left untouched.
 
 ## Earlier checkpoint: 2026-09-22 (evening), Claude Code
 
