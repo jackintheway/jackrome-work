@@ -40,10 +40,17 @@ The design system shows the mark on blue, paper and salmon, never orange.
 From the repo root:
 
 ```bash
-./tools/og/render.sh
+./tools/og/render.sh                  # every card
+./tools/og/render.sh card-home        # only the cards you name
 ```
 
-It serves the repo, renders every `card-*.html` to `assets/img/og-<name>.png`, checks each result is exactly 1200x630, and cleans up after itself. It exits non-zero if any card came out the wrong size.
+It serves the repo, renders each `card-*.html` to `assets/img/og-<name>.png`, checks each result, and cleans up after itself. It exits non-zero if any card fails.
+
+Render only the card you changed. The other PNGs stay out of the diff, and a different machine's font rendering would otherwise rewrite every image for no visible reason.
+
+The check is `tools/og/check-card.py`, and it confirms two things: the image is exactly 1200x630, and the card's 14px black border reaches all four edges. The size check alone is not enough. A clipped render is still 1200x630, with white where the bottom of the card should be. The border check catches that. It uses only the Python standard library, so it can check any PNG on its own: `python3 tools/og/check-card.py assets/img/og-home.png`.
+
+It runs on macOS and Linux, including a Claude Code cloud session. It uses a headless shell when it finds one (Playwright ships one), then Chrome, then Chromium. Set `CHROME=/path/to/binary` to choose. Full Chromium on Linux leaves an 87px blank strip across the bottom in its new headless mode. That was seen on 2026-09-26, and the border check fails it.
 
 The cards pull real tokens and the real Archivo file from the site, which is why they have to be served rather than opened from disk.
 
