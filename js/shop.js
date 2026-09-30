@@ -146,8 +146,40 @@ document.addEventListener("DOMContentLoaded", () => {
       </li>`;
   }
 
+  /* Arriving from a design (?design=<anchor>) shows only the pieces
+     that design is printed on, in the order its `shop` field lists
+     them, with a way back to the design and a way out to everything.
+     An unknown anchor, or one with nothing in stock here, quietly
+     shows the whole shop instead. */
+  function designFilter() {
+    const anchor = new URL(location.href).searchParams.get("design");
+    if (!anchor || typeof DESIGN === "undefined") return null;
+    const design = DESIGN.find(d => d.anchor === anchor && Array.isArray(d.shop));
+    if (!design) return null;
+    const picked = design.shop.map(slug => products.find(p => p.slug === slug)).filter(Boolean);
+    return picked.length ? { design, picked } : null;
+  }
+
   function renderGrid() {
-    grid.innerHTML = products.map(productCard).join("");
+    const filter = designFilter();
+    const title = document.getElementById("shopTitle");
+    let bar = document.getElementById("shopFilter");
+    if (filter) {
+      title.textContent = filter.design.title;
+      if (!bar) {
+        bar = document.createElement("p");
+        bar.id = "shopFilter";
+        bar.className = "shop-filter";
+        grid.before(bar);
+      }
+      bar.innerHTML = `Everything carrying this design.
+        <a class="watch-btn crossref-btn to-design" href="/wayspace/design#${esc(filter.design.anchor)}">See the design</a>
+        <a class="watch-btn crossref-btn to-shop" href="/wayspace/shop">Everything in the shop</a>`;
+      grid.innerHTML = filter.picked.map(productCard).join("");
+    } else {
+      if (bar) bar.remove();
+      grid.innerHTML = products.map(productCard).join("");
+    }
   }
 
   grid.addEventListener("click", e => {
@@ -412,7 +444,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="shop-subtotal"><span>Subtotal</span> <strong>${esc(FW.formatMoney(subtotal))}</strong></p>
         <p class="shop-checkout-note">Checkout happens on Fourthwall, where you pay and add shipping. Tax and shipping are worked out there.</p>
         <div class="shop-actions">
-          <a class="btn shop-checkout" href="${esc(checkout)}">Check out on Fourthwall</a>
+          <a class="btn shop-checkout" href="${esc(checkout)}" target="_blank" rel="noopener"
+            aria-label="Check out on Fourthwall (opens in a new tab)">Check out on Fourthwall&nbsp;&#8599;</a>
           <button type="button" class="btn btn-secondary" data-close>Keep browsing</button>
         </div>` : `
         <p class="shop-empty">Your cart is empty.</p>
@@ -432,6 +465,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   cartOpen.addEventListener("click", openCart);
+
+  /* Checkout opens in a new tab, per Jack on 2026-09-30, so this page
+     stays where the visitor left it. When they come back to it, ask
+     Fourthwall for the cart again: after a finished order it may have
+     changed or gone, and the count should say so. */
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState !== "visible" || !FW.isOpen() || busy) return;
+    FW.getCart().then(fresh => {
+      cart = fresh;
+      renderCartButton();
+      if (cartDialog.open) renderCart();
+    }).catch(() => {});
+  });
 
   function cartChange(promise, focusSelector) {
     busy = true;

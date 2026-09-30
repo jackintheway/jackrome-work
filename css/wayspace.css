@@ -1963,6 +1963,18 @@ body.room-shop     { --room: var(--ws-black);  --room-ink: var(--ws-paper); }
    work grid; product photos are portrait, so the cover is 3:4 here
    rather than the square the other rooms use.
    ============================================================ */
+/* THE PHOTO BACKDROP
+   Measured 2026-09-30: 18 of the shop's 23 lead photos carry a light
+   gray studio ground baked in (226 to 231, near #e4e4e4), and the other
+   5 are transparent squares. The page used to show its beige well
+   through the transparent ones, so the grid alternated gray and beige.
+   Every photo surface now sits on the photos' own gray, and photos are
+   contained rather than cropped, so a square shot shows whole on the
+   same gray instead of losing its sides to the 3:4 box. Jack chose gray
+   over re-exporting every mockup on paper. If the mockups are ever
+   re-exported on another color, change this one value to match. */
+body.room-shop { --shop-photo: #e4e4e4; }
+
 .shop-header { flex-wrap: wrap; }
 .shop-cart-btn {
   font-family: var(--font-heading);
@@ -1993,6 +2005,13 @@ body.room-shop     { --room: var(--ws-black);  --room-ink: var(--ws-paper); }
   text-align: center;
 }
 .shop-status { margin: 0 0 var(--space-5); }
+.shop-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin: calc(-1 * var(--space-2)) 0 var(--space-6);
+}
 .shop-status[hidden] { display: none; }
 
 .shop-card { position: relative; }
@@ -2001,9 +2020,9 @@ body.room-shop     { --room: var(--ws-black);  --room-ink: var(--ws-paper); }
   width: 100%;
   height: auto;
   aspect-ratio: 3 / 4;
-  object-fit: cover;
+  object-fit: contain;
   border-bottom: var(--rule);
-  background: var(--bg-well);
+  background: var(--shop-photo);
 }
 .shop-cover.is-placeholder {
   display: grid;
@@ -2083,9 +2102,9 @@ body.room-shop     { --room: var(--ws-black);  --room-ink: var(--ws-paper); }
   width: 100%;
   height: auto;
   aspect-ratio: 3 / 4;
-  object-fit: cover;
+  object-fit: contain;
   border: var(--rule);
-  background: var(--bg-well);
+  background: var(--shop-photo);
 }
 .shop-thumbs {
   display: flex;
@@ -2096,11 +2115,11 @@ body.room-shop     { --room: var(--ws-black);  --room-ink: var(--ws-paper); }
 .shop-thumb {
   padding: 0;
   border: var(--border-hair) solid var(--outline);
-  background: var(--bg-well);
+  background: var(--shop-photo);
   cursor: pointer;
   width: 56px;
 }
-.shop-thumb img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
+.shop-thumb img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; }
 .shop-thumb[aria-pressed="true"] { outline: var(--border) solid var(--ws-black); outline-offset: 2px; }
 
 .shop-product-name {
@@ -2192,9 +2211,9 @@ body.room-shop     { --room: var(--ws-black);  --room-ink: var(--ws-paper); }
   display: block;
   width: 72px;
   height: 96px;
-  object-fit: cover;
+  object-fit: contain;
   border: var(--border-hair) solid var(--outline);
-  background: var(--bg-well);
+  background: var(--shop-photo);
 }
 .shop-line-name {
   font-family: var(--font-heading);

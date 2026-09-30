@@ -56,8 +56,10 @@ in CLAUDE.md under "The Shop room".
   tests pass, no em dashes.
 - Not pushed and not deployed. The first deploy should confirm the token
   reaches `_site/js/fourthwall.config.js` on Netlify.
-- Next: Jack's copy for the two `TODO(copy)` lines, his call on same-tab
-  checkout, and design-to-product slugs for the Design-room links.
+- Follow-up the same day: checkout opens in a new tab (Jack's call), every
+  shop photo sits on the photos' own gray, and the puzzle logo family's
+  Design card links to its five pieces through `?design=`.
+- Next: Jack's copy for the two `TODO(copy)` lines, then his go to push.
 
 ## Earlier checkpoint: 2026-09-26 (afternoon), Claude Code cloud session
 

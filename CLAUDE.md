@@ -253,13 +253,22 @@ session that led here live outside this repo in `../wayspace-store/`.
 - **The room is black with paper text**, per Jack. Fourthwall's own checkout
   is also black with the Wayspace logo, so the handoff feels continuous.
 - **Designs and garments cross-link through one field**: a DESIGN entry in
-  `js/wayspace.js` may carry `shop: ["<fourthwall-slug>", ...]`. The Shop
-  reads it backwards for "See the design". The Design-side link is not built
-  yet, and Jack supplies the slugs.
+  `js/wayspace.js` may carry `shop: ["<fourthwall-slug>", ...]`. The Design
+  card shows a black "Wear it" button: one product links to it, several link
+  to `/wayspace/shop?design=<anchor>`, which shows only those pieces. The
+  Shop reads the field backwards for "See the design". Only the puzzle logo
+  family is mapped (hoodie, tank, tee, hat, trucker), per Jack: "That's
+  really it."
+- **Checkout opens in a new tab**, following the standing rule, per Jack:
+  a visitor should always be able to get back to the site. The Shop
+  refreshes the cart when its tab becomes visible again.
+- **Photos sit on gray, `#e4e4e4`.** 18 of 23 lead photos have that studio
+  gray baked in and 5 are transparent squares, which showed the page's
+  beige through them. Jack chose gray over re-exporting the mockups on
+  paper. Photos are contained, not cropped. One value, `--shop-photo`.
 - **Still open:** Jack's copy for the hero and the lobby row (`TODO(copy)`),
-  same-tab checkout (built same-tab, pending Jack's word against the
-  new-tab rule), the Design-side links, and what Fourthwall's "External
-  Store URL" setting does before anyone sets it.
+  and what Fourthwall's "External Store URL" setting does before anyone
+  sets it.
 - This supersedes the merch pin below: the store is a room, not a lobby
   section linking out.
 

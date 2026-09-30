@@ -540,7 +540,8 @@ const DESIGN = [
     image: "/assets/img/wayspace/design/logos/puzzle-pieces-trio.png",
     fit: "contain",
     note: "One shape cut into pieces whose tabs still match. It exists as an Illustrator master and exports in black and white, flat color and gradient.",
-    crossRef: null
+    crossRef: null,
+    shop: ["puzzle-hoodie", "puzzle-tank", "puzzle-tee", "puzzle-hat", "puzzle-trucker"]
   },
   {
     title: "Jackintheway",
@@ -1788,6 +1789,21 @@ function videoCard(item) {
   `;
 }
 
+/* ---- Into the Shop ----
+   A design entry may carry `shop: [slugs]`, the Fourthwall products it
+   is printed on. One product links straight to it; several link to the
+   Shop showing only those, via ?design=<anchor>. js/shop.js reads the
+   same field backwards, so this is the whole design-to-product map.
+   Black, the Shop's room color, the way every cross-room button wears
+   its destination's color. */
+function shopLink(item) {
+  if (!Array.isArray(item.shop) || !item.shop.length) return "";
+  const href = item.shop.length === 1
+    ? "/wayspace/shop?product=" + encodeURIComponent(item.shop[0])
+    : "/wayspace/shop?design=" + encodeURIComponent(item.anchor);
+  return `<a class="watch-btn crossref-btn to-shop" href="${escapeHtml(href)}">Wear it</a>`;
+}
+
 /* A poster is portrait and a wordmark is wide. Both would be cut by
    the 1:1 crop every other room's cover uses, so an item can ask to be
    contained instead. The box stays square either way, which is what
@@ -1806,7 +1822,7 @@ function designCard(item) {
         <h3 class="work-title">${escapeHtml(item.title)}</h3>
         <p class="work-meta">${escapeHtml(item.meta)}</p>
         ${item.note ? `<p class="work-note">${escapeHtml(item.note)}</p>` : ""}
-        <div class="work-foot">${crossRef(item)}</div>
+        <div class="work-foot">${crossRef(item)}${shopLink(item)}</div>
       </div>
     </li>
   `;
