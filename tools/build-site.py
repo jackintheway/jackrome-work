@@ -64,8 +64,15 @@ PUBLIC_DIRS = [
     "wayspace",
 ]
 
-# Never copied, even from inside a public directory.
-SKIP_NAMES = {".DS_Store"}
+# Never copied, even from inside a public directory. The Fourthwall
+# config holds the shop's storefront token. A local copy is gitignored
+# and must never ride along into a deploy; the build writes the real one
+# from Netlify's environment instead (see write_fourthwall_config).
+SKIP_NAMES = {".DS_Store", "fourthwall.config.js"}
+
+# Files the build writes into _site/ rather than copies, so the check
+# does not look for a source to compare them against.
+GENERATED = {"js/fourthwall.config.js"}
 
 # Tracked files that are expected to stay out of the deploy. The check
 # fails if a tracked file is neither published nor matched here, so a
@@ -149,7 +156,7 @@ def check():
     published = set(published_paths())
 
     # 1. Byte identity between source and copy.
-    for path in sorted(published):
+    for path in sorted(published - GENERATED):
         if not filecmp.cmp(
             os.path.join(ROOT, path), os.path.join(OUT, path), shallow=False
         ):
@@ -189,7 +196,7 @@ def check():
     modified = set(
         line[3:] for line in git_lines("status", "--porcelain") if line[:2].strip() == "M"
     )
-    for path in sorted(published):
+    for path in sorted(published - GENERATED):
         if path in untracked:
             warnings.append("untracked, copied locally, would not deploy: {}".format(path))
         elif path in modified:
@@ -231,12 +238,37 @@ def stamp_context():
     print("build-site: function context stamped as %s" % context)
 
 
+FOURTHWALL_TOKEN_VAR = "FW_STOREFRONT_TOKEN"
+
+
+def write_fourthwall_config():
+    """Write the Shop room's storefront token into the publish folder.
+
+    The token is designed to be public (it can only read the shop and
+    keep carts), but the repository is public too, and a token in git
+    history cannot be taken back. So it lives in a Netlify environment
+    variable and reaches the site only here, in _site/, never in the
+    repo. With the variable unset the file still exists and the Shop
+    room says it is closed rather than breaking.
+    """
+    token = os.environ.get(FOURTHWALL_TOKEN_VAR, "").strip()
+    if token and not re.fullmatch(r"ptkn_[A-Za-z0-9_-]+", token):
+        sys.exit("build-site: {} does not look like a storefront token".format(FOURTHWALL_TOKEN_VAR))
+    path = os.path.join(OUT, "js", "fourthwall.config.js")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("/* Written by tools/build-site.py. Not in the repo. */\n")
+        f.write("window.FOURTHWALL_CONFIG = {{ token: {} }};\n".format(
+            '"%s"' % token if token else "null"))
+    print("build-site: shop token {}".format("written" if token else "absent, shop shows closed"))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--check", action="store_true", help="verify after assembling")
     args = parser.parse_args()
     stamp_context()
     assemble()
+    write_fourthwall_config()
     if args.check:
         check()
 

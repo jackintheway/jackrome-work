@@ -43,3 +43,9 @@ _private/
 # shell that runs the operator tools. This keeps it that way.
 .env
 .env.*
+
+# The Shop room's Fourthwall storefront token, for local preview only.
+# Netlify writes the deployed copy from FW_STOREFRONT_TOKEN at build
+# time. Create this file by hand to preview the shop locally:
+#   window.FOURTHWALL_CONFIG = { token: "ptkn_..." };
+js/fourthwall.config.js
