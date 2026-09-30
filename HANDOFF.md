@@ -36,7 +36,30 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-09-26 (afternoon), Claude Code cloud session
+## Current checkpoint: 2026-09-30, Claude Code
+
+Jack started the Wayspace Shop from two planning files in
+`../wayspace-store/`. Plan approved in plan mode. Decisions are recorded
+in CLAUDE.md under "The Shop room".
+
+- ef4acd9: `js/fourthwall.js` (shared Fourthwall layer) and the build-time
+  token step in `tools/build-site.py`, with the local config gitignored.
+- b441674: `/wayspace/shop`, `js/shop.js`, black room styles, Shop in all
+  67 room switchers and the lobby list, share card, sitemap, guide index.
+- Jack created the Storefront token, added `FW_STOREFRONT_TOKEN` in Netlify
+  (all scopes and contexts, not secret), and saved the gitignored local
+  config. The token was never shown in chat.
+- Checked locally against the real shop: 23 products, product dialog with
+  its own `?product=` address, add, change and remove, cart kept across a
+  reload, checkout arriving on Fourthwall with the item, 375px with no
+  sideways scroll, no console errors, `build-site --check` passes, 24 guide
+  tests pass, no em dashes.
+- Not pushed and not deployed. The first deploy should confirm the token
+  reaches `_site/js/fourthwall.config.js` on Netlify.
+- Next: Jack's copy for the two `TODO(copy)` lines, his call on same-tab
+  checkout, and design-to-product slugs for the Design-room links.
+
+## Earlier checkpoint: 2026-09-26 (afternoon), Claude Code cloud session
 
 This was the first Claude Code cloud session on this repo. It tested the loop:
 work on a branch, open a PR, Jack merges, Netlify deploys, then `git pull` on

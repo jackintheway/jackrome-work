@@ -219,6 +219,52 @@ section records only what the website side settled.
 
 ---
 
+## The Shop room (built 2026-09-30, not deployed)
+
+A seventh Wayspace room at `/wayspace/shop`, drawn live from Jack's
+Fourthwall shop through the Storefront API. Fourthwall stays the backend:
+products, samples, payment, tax, fulfillment. Planning notes from the
+session that led here live outside this repo in `../wayspace-store/`.
+
+- **Two front-ends, one backend.** Phase 1 is this room. Phase 2 is a
+  standalone wayspace.store in a "deluxe" expression of the design system,
+  with a footer link back here. wayspace.store keeps redirecting to
+  Fourthwall until Phase 2 ships. Carts do not cross domains, by design.
+- **`js/fourthwall.js` holds every Fourthwall call and no page code**, so
+  Phase 2 reuses it unchanged. `js/shop.js` draws the room.
+- **Live fetch is a scoped exception to the facade rule.** Opening the room
+  counts as the visitor asking, like pressing play. No other page calls
+  Fourthwall; other rooms only link to the Shop.
+- **The token never enters this public repo.** `build-site.py` writes
+  `js/fourthwall.config.js` into `_site/` from the Netlify variable
+  `FW_STOREFRONT_TOKEN` (not marked secret: Netlify's secret scanning would
+  fail a deploy that publishes it, and publishing it is the point; the
+  token can only read the shop and keep carts). Locally the same file is
+  gitignored. Without a token the room says it is closed.
+- **Fourthwall's docs are wrong in two places, checked live:** the token is a
+  `storefront_token` query parameter, not a Bearer header, and a product's
+  `state` and `access` arrive as `{ type: "..." }`, not a string. Cart add,
+  change and remove are POSTs to `/carts/{id}/add`, `/change`, `/remove`.
+  There is no product-level price; the room shows the lowest variant price.
+- **No webhook in Phase 1.** Live fetch shows a new product the moment it is
+  published. A webhook only matters for a pre-rendered catalog, where each
+  change would cost a 15-credit deploy.
+- **No Open API user.** Jack manages products in Fourthwall's dashboard.
+- **The room is black with paper text**, per Jack. Fourthwall's own checkout
+  is also black with the Wayspace logo, so the handoff feels continuous.
+- **Designs and garments cross-link through one field**: a DESIGN entry in
+  `js/wayspace.js` may carry `shop: ["<fourthwall-slug>", ...]`. The Shop
+  reads it backwards for "See the design". The Design-side link is not built
+  yet, and Jack supplies the slugs.
+- **Still open:** Jack's copy for the hero and the lobby row (`TODO(copy)`),
+  same-tab checkout (built same-tab, pending Jack's word against the
+  new-tab rule), the Design-side links, and what Fourthwall's "External
+  Store URL" setting does before anyone sets it.
+- This supersedes the merch pin below: the store is a room, not a lobby
+  section linking out.
+
+---
+
 ## Status: every page is built and deployed. What's left is content, not construction (2026-08-24)
 
 **The build started 2026-08-15 on Jack's go.** All four blocking decisions are settled and recorded below.
