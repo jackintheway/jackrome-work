@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Video | Wayspace | Jack Rome</title>
-  <meta name="description" content="Video by Jack Rome. YouTube work, live performance, and anything else whose form is video.">
-  <link rel="canonical" href="https://jackrome.work/wayspace/video">
+  <title>Shop | Wayspace | Jack Rome</title>
+  <meta name="description" content="The Wayspace shop by Jack Rome. Clothing and pieces carrying Wayspace designs.">
+  <link rel="canonical" href="https://jackrome.work/wayspace/shop">
 
   <!-- Link previews. Card source is in tools/og/, rebuilt with
        ./tools/og/render.sh -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Jack Rome">
-  <meta property="og:url" content="https://jackrome.work/wayspace/video">
-  <meta property="og:title" content="Video | Wayspace">
-  <meta property="og:description" content="YouTube work, live performance, and anything else whose form is video.">
-  <meta property="og:image" content="https://jackrome.work/assets/img/og-wayspace-video.png">
+  <meta property="og:url" content="https://jackrome.work/wayspace/shop">
+  <meta property="og:title" content="Shop | Wayspace">
+  <meta property="og:description" content="Clothing and pieces carrying Wayspace designs.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-wayspace-shop.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Video, a room in Wayspace. YouTube work, live performance, and anything else whose form is video.">
+  <meta property="og:image:alt" content="Shop, a room in Wayspace. Clothing and pieces carrying Wayspace designs.">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Video | Wayspace">
-  <meta name="twitter:description" content="YouTube work, live performance, and anything else whose form is video.">
-  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-wayspace-video.png">
+  <meta name="twitter:title" content="Shop | Wayspace">
+  <meta name="twitter:description" content="Clothing and pieces carrying Wayspace designs.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-wayspace-shop.png">
 
   <!-- Root-relative: this page sits one level down from the repo root
        and the four pages above it do not. -->
@@ -34,13 +34,21 @@
   <!-- defer so the parser is never blocked. The script waits on
        DOMContentLoaded anyway, and it renders into a mount point that
        has to exist before it runs. -->
+  <!-- The config file does not exist in the repo. tools/build-site.py
+       writes it at deploy time with the storefront token; locally it is
+       a gitignored file. Order matters: the config, then the shared
+       Fourthwall layer that reads it, then the room that draws with it.
+       wayspace.js is loaded for the design-to-product map in DESIGN. -->
+  <script src="/js/fourthwall.config.js" defer></script>
+  <script src="/js/fourthwall.js" defer></script>
   <script src="/js/wayspace.js" defer></script>
+  <script src="/js/shop.js" defer></script>
 </head>
 <!-- The room's color is set once, here. Every component in
      css/wayspace.css reads it through the --room custom property
      rather than naming a color, so this class is the only thing
      that knows which room this is. -->
-<body class="room-video">
+<body class="room-shop">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -74,43 +82,55 @@
     <a class="room-switch-home" href="/wayspace" aria-label="Wayspace"><img class="room-switch-mark" src="/assets/img/wayspace-straight.svg" alt="" width="271" height="45" loading="lazy"></a>
     <div class="room-switch-links">
         <a class="room-switch-link is-music" href="/wayspace/music">Music</a>
-        <a class="room-switch-link is-video" href="/wayspace/video" aria-current="page">Video</a>
+        <a class="room-switch-link is-video" href="/wayspace/video">Video</a>
         <a class="room-switch-link is-design" href="/wayspace/design">Design</a>
         <a class="room-switch-link is-podcasts" href="/wayspace/podcasts">Podcasts</a>
         <a class="room-switch-link is-speaking" href="/wayspace/speaking">Speaking</a>
         <a class="room-switch-link is-writing" href="/wayspace/writing">Writing</a>
-        <a class="room-switch-link is-shop" href="/wayspace/shop">Shop</a>
+        <a class="room-switch-link is-shop" href="/wayspace/shop" aria-current="page">Shop</a>
     </div>
   </nav>
 
   <header class="room-hero">
     <div class="room-hero-inner">
       <p class="room-hero-eyebrow ws-overline">Wayspace</p>
-      <h1 class="room-hero-title">Video</h1>
-      <!-- Voiced 2026-08-24. -->
-      <p class="room-hero-sub">If it exists as video, a music video or a set from a stage, it lives here.</p>
+      <h1 class="room-hero-title">Shop</h1>
+      <!-- TODO(copy): Jack's own line for the room. The second sentence
+           stays in some form: he wants visitors told plainly that
+           checkout happens on Fourthwall. -->
+      <p class="room-hero-sub">Clothing and pieces carrying Wayspace designs. Browse and fill your cart here. Checkout happens on Fourthwall, which handles payment, tax and shipping.</p>
     </div>
   </header>
 
+  <!-- THIRD PARTIES, AND WHY THIS ROOM IS DIFFERENT
+       The site's rule is that no third party is contacted until a
+       visitor asks. This room loads products and images from Fourthwall
+       as it opens, because walking into a shop is the asking, the same
+       way pressing play is. Decided with Jack, 2026-09-30. No other page
+       calls Fourthwall: the Design room only links here. -->
   <main class="page" id="main">
 
-    <section class="section" aria-labelledby="roomTitle">
-      <div class="section-header">
-        <h2 class="section-title" id="roomTitle">Videos</h2>
+    <section class="section" aria-labelledby="shopTitle">
+      <div class="section-header shop-header">
+        <h2 class="section-title" id="shopTitle">Everything in the shop</h2>
         <div class="section-rule" aria-hidden="true"></div>
+        <button class="shop-cart-btn" id="cartOpen" type="button" hidden>
+          Cart <span class="shop-cart-count" id="cartCount">0</span>
+        </button>
       </div>
-      <!-- Video embeds use a facade: the thumbnail ships as a static image
-           and YouTube is contacted only when a visitor clicks. Standing rule
-           on this site. -->
-
-      <!-- Rendered from the VIDEO array in js/wayspace.js.
-           Adding real work is adding an object there, not editing
-           this markup. Empty the array and the room renders its
-           written empty state instead. -->
-      <ul class="work-grid" id="videoGrid"></ul>
+      <!-- Status first, so a screen reader hears "loading" or "closed"
+           before an empty grid. js/shop.js fills both. -->
+      <p class="shop-status" id="shopStatus" role="status">Opening the shop&hellip;</p>
+      <ul class="work-grid shop-grid" id="shopGrid"></ul>
     </section>
 
   </main>
+
+  <!-- The product view and the cart, both native dialogs for the same
+       reasons js/video-modal.js gives: focus trap, Escape, inert page
+       and returned focus, all for free. Filled by js/shop.js. -->
+  <dialog class="shop-dialog shop-product" id="productDialog" aria-labelledby="productName"></dialog>
+  <dialog class="shop-dialog shop-cart" id="cartDialog" aria-labelledby="cartTitle"></dialog>
 
   <footer class="site-footer">
     <span class="footer-identity">

@@ -38,6 +38,11 @@ body.room-design   { --room: var(--ws-yellow); --room-ink: var(--ws-black); }
 body.room-podcasts { --room: var(--ws-green);  --room-ink: var(--ws-black); }
 body.room-speaking { --room: var(--ws-salmon); --room-ink: var(--ws-black); }
 body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
+/* The Shop is black, per Jack on 2026-09-30. Black is not one of the
+   palette's room colors, which suits a room that sells rather than
+   shows: it reads as the frame around the work, not another room of
+   it. Paper text on it, the same pairing the blue lobby hero uses. */
+body.room-shop     { --room: var(--ws-black);  --room-ink: var(--ws-paper); }
 
 /* ============================================================
    LANDING HERO
@@ -160,6 +165,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .room-item.is-podcasts { --room: var(--ws-green);  --room-ink: var(--ws-black); }
 .room-item.is-speaking { --room: var(--ws-salmon); --room-ink: var(--ws-black); }
 .room-item.is-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
+.room-item.is-shop     { --room: var(--ws-black);  --room-ink: var(--ws-paper); }
 
 /* A solid block of the room's color. Decorative: the room's name is
    right beside it in text, so this is marked aria-hidden and adds
@@ -399,6 +405,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .room-switch-link.is-podcasts { --switch: var(--ws-green);  --switch-ink: var(--ws-green-deep); }
 .room-switch-link.is-speaking { --switch: var(--ws-salmon); --switch-ink: var(--ws-salmon-deep); }
 .room-switch-link.is-writing  { --switch: var(--ws-brown);  --switch-ink: var(--ws-brown); }
+.room-switch-link.is-shop     { --switch: var(--ws-black);  --switch-ink: var(--ws-black); }
 
 .room-switch-link:hover,
 .room-switch-link:focus-visible {
@@ -618,6 +625,7 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 .crossref-btn.to-design   { --to-room: var(--ws-yellow); --to-room-ink: var(--ws-black); }
 .crossref-btn.to-podcasts { --to-room: var(--ws-green);  --to-room-ink: var(--ws-black); }
 .crossref-btn.to-speaking { --to-room: var(--ws-salmon); --to-room-ink: var(--ws-black); }
+.crossref-btn.to-shop     { --to-room: var(--ws-black);  --to-room-ink: var(--ws-paper); }
 
 .play-btn,
 .listen-btn,
@@ -1948,3 +1956,285 @@ body.room-writing  { --room: var(--ws-brown);  --room-ink: var(--ws-paper); }
 /* Room-to-room links land below the sticky navigation. */
 .work-card[id], .entry[id], .writing-card[id], #writingFilters { scroll-margin-top: var(--space-10); }
 .work-card:target, .entry:target { outline: var(--border) solid var(--ws-blue); outline-offset: var(--space-1); }
+
+/* ============================================================
+   SHOP
+   The room js/shop.js draws from Fourthwall. The grid is the site's
+   work grid; product photos are portrait, so the cover is 3:4 here
+   rather than the square the other rooms use.
+   ============================================================ */
+.shop-header { flex-wrap: wrap; }
+.shop-cart-btn {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-small);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--ws-paper);
+  background: var(--ws-black);
+  border: var(--rule);
+  box-shadow: var(--pop-black-sm);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.shop-cart-btn[hidden] { display: none; }
+.shop-cart-btn:hover,
+.shop-cart-btn:focus-visible { transform: translate(-1px, -1px); }
+.shop-cart-count {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 0 var(--space-1);
+  background: var(--ws-paper);
+  color: var(--ws-black);
+  text-align: center;
+}
+.shop-status { margin: 0 0 var(--space-5); }
+.shop-status[hidden] { display: none; }
+
+.shop-card { position: relative; }
+.shop-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-bottom: var(--rule);
+  background: var(--bg-well);
+}
+.shop-cover.is-placeholder {
+  display: grid;
+  place-items: center;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.shop-card-open {
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+/* The title's button covers the whole card, so the photo opens the
+   product too, with one control for a keyboard or screen reader. */
+.shop-card-open::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.shop-card-open:focus-visible { outline: none; }
+.shop-card:has(.shop-card-open:focus-visible) {
+  outline: var(--border) solid var(--ws-black);
+  outline-offset: 4px;
+}
+.shop-card { transition: transform var(--dur-fast) var(--ease-out); }
+.shop-card:hover { transform: translate(-2px, -2px); }
+.shop-card-price { margin: 0; }
+.shop-card.is-sold-out .shop-cover { opacity: 0.55; }
+
+/* ---- The two dialogs ---- */
+.shop-dialog {
+  border: var(--rule);
+  box-shadow: var(--elevation-raised);
+  background: var(--surface-card);
+  color: var(--text-body);
+  padding: var(--space-5);
+  max-height: 92dvh;
+  overflow: auto;
+}
+.shop-dialog::backdrop { background: rgb(0 0 0 / 0.72); }
+.shop-product { width: min(94vw, 1000px); max-width: 94vw; }
+.shop-cart { width: min(94vw, 560px); max-width: 94vw; }
+.shop-close {
+  display: block;
+  margin: 0 0 var(--space-4) auto;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ws-paper);
+  background: var(--ws-black);
+  border: var(--border-hair) solid var(--ws-black);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+}
+
+.shop-product-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .shop-product-layout { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
+  .shop-dialog { padding: var(--space-4); }
+}
+.shop-gallery-main {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: var(--rule);
+  background: var(--bg-well);
+}
+.shop-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+.shop-thumb {
+  padding: 0;
+  border: var(--border-hair) solid var(--outline);
+  background: var(--bg-well);
+  cursor: pointer;
+  width: 56px;
+}
+.shop-thumb img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
+.shop-thumb[aria-pressed="true"] { outline: var(--border) solid var(--ws-black); outline-offset: 2px; }
+
+.shop-product-name {
+  font-size: var(--fs-h2);
+  margin: 0 0 var(--space-2);
+  overflow-wrap: anywhere;
+}
+.shop-product-price {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  margin: 0 0 var(--space-5);
+}
+.shop-compare { color: var(--text-muted); font-weight: var(--fw-regular, 400); }
+.shop-desc { margin: 0 0 var(--space-5); }
+
+.shop-options {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--space-5);
+}
+.shop-options legend {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  padding: 0;
+  margin-bottom: var(--space-2);
+}
+.shop-picked { text-transform: none; letter-spacing: normal; font-weight: var(--fw-regular, 400); }
+.shop-option-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.shop-swatch {
+  width: 40px;
+  height: 40px;
+  background: var(--swatch);
+  border: var(--border-hair) solid var(--outline);
+  cursor: pointer;
+  padding: 0;
+}
+.shop-swatch[aria-pressed="true"] { outline: var(--border) solid var(--ws-black); outline-offset: 3px; }
+.shop-size {
+  min-width: 48px;
+  min-height: 44px;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-small);
+  color: var(--text-strong);
+  background: var(--surface-card);
+  border: var(--border-hair) solid var(--outline);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+}
+.shop-size[aria-pressed="true"] { background: var(--ws-black); color: var(--ws-paper); }
+.shop-size:disabled { opacity: 0.4; text-decoration: line-through; cursor: not-allowed; }
+
+.shop-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin: 0 0 var(--space-4); }
+.shop-actions [hidden] { display: none; }
+.shop-add { background: var(--ws-black); color: var(--ws-paper); cursor: pointer; }
+.shop-add:hover { color: var(--ws-paper); }
+.shop-add:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: var(--pop-black); }
+.shop-actions .btn-secondary { cursor: pointer; }
+.shop-note { min-height: 1.5em; margin: 0 0 var(--space-4); font-size: var(--fs-small); }
+.shop-design-link { margin: 0 0 var(--space-5); }
+.shop-design-link .crossref-btn { display: inline-block; }
+
+.shop-details { border-top: var(--rule); padding: var(--space-3) 0; }
+.shop-details:last-child { border-bottom: var(--rule); }
+.shop-details summary {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+}
+.shop-details-body { padding-top: var(--space-3); font-size: var(--fs-small); }
+.shop-details-body ul { padding-left: 1.2em; margin: 0; }
+
+/* ---- Cart ---- */
+.shop-cart-title { font-size: var(--fs-h3); margin: 0 0 var(--space-5); }
+.shop-lines { list-style: none; margin: 0 0 var(--space-5); padding: 0; }
+.shop-line {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-top: var(--border-hair) solid var(--outline);
+}
+.shop-line:last-child { border-bottom: var(--border-hair) solid var(--outline); }
+.shop-line-img {
+  display: block;
+  width: 72px;
+  height: 96px;
+  object-fit: cover;
+  border: var(--border-hair) solid var(--outline);
+  background: var(--bg-well);
+}
+.shop-line-name {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  margin: 0 0 var(--space-1);
+  overflow-wrap: anywhere;
+}
+.shop-line-meta { font-size: var(--fs-small); color: var(--text-muted); margin: 0 0 var(--space-1); }
+.shop-qty { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-top: var(--space-2); }
+.shop-qty button {
+  min-width: 36px;
+  min-height: 36px;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  color: var(--text-strong);
+  background: var(--surface-card);
+  border: var(--border-hair) solid var(--outline);
+  cursor: pointer;
+}
+.shop-qty button:disabled { opacity: 0.5; cursor: wait; }
+.shop-qty .shop-remove {
+  margin-left: var(--space-2);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  padding: 0 var(--space-3);
+}
+.shop-qty-n { min-width: 2ch; text-align: center; font-weight: var(--fw-bold); }
+.shop-subtotal {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-heading);
+  font-size: var(--fs-h4);
+  margin: 0 0 var(--space-3);
+}
+.shop-checkout-note { font-size: var(--fs-small); margin: 0 0 var(--space-5); }
+.shop-checkout { background: var(--ws-black); color: var(--ws-paper); }
+.shop-checkout:hover { color: var(--ws-paper); }
+.shop-empty { margin: 0 0 var(--space-5); }
+
+@media (prefers-reduced-motion: reduce) {
+  .shop-card, .shop-card:hover, .shop-cart-btn:hover { transform: none; transition: none; }
+}
