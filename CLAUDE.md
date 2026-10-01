@@ -219,7 +219,7 @@ section records only what the website side settled.
 
 ---
 
-## The Shop room (built 2026-09-30, not deployed)
+## The Shop room (built and deployed 2026-09-30)
 
 A seventh Wayspace room at `/wayspace/shop`, drawn live from Jack's
 Fourthwall shop through the Storefront API. Fourthwall stays the backend:
