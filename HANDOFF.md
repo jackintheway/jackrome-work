@@ -60,6 +60,14 @@ in CLAUDE.md under "The Shop room".
   shop photo sits on the photos' own gray, and the puzzle logo family's
   Design card links to its five pieces through `?design=`.
 - Jack chose the hero and lobby copy and said "then we're ready to push."
+  Pushed af76211..c843e5a on his go. Verified live on https://jackrome.work:
+  the Shop renders all 23 products with no console errors, the built config
+  carries the token (checked without printing it), the copy, puzzle links
+  and share card are live, and js/shop.js and js/fourthwall.js match the
+  commit byte for byte. This entry is committed but not pushed, to avoid a
+  deploy for a docs-only change.
+- Next: watch the first real order to see what happens to the stored cart
+  afterward, and map more designs to products when Jack wants them.
 
 ## Earlier checkpoint: 2026-09-26 (afternoon), Claude Code cloud session
 
