@@ -266,9 +266,12 @@ session that led here live outside this repo in `../wayspace-store/`.
   gray baked in and 5 are transparent squares, which showed the page's
   beige through them. Jack chose gray over re-exporting the mockups on
   paper. Photos are contained, not cropped. One value, `--shop-photo`.
-- **Still open:** Jack's copy for the hero and the lobby row (`TODO(copy)`),
-  and what Fourthwall's "External Store URL" setting does before anyone
-  sets it.
+- **Copy is Jack's choice (2026-09-30):** hero "These are pieces I designed
+  and wear myself. You can browse and fill your cart here, and when you're
+  ready, checkout opens on Fourthwall in a new tab." Lobby row "Wayspace
+  designs you can wear."
+- **Still open:** what Fourthwall's "External Store URL" setting does
+  before anyone sets it.
 - This supersedes the merch pin below: the store is a room, not a lobby
   section linking out.
 

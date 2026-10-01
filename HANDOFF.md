@@ -59,7 +59,7 @@ in CLAUDE.md under "The Shop room".
 - Follow-up the same day: checkout opens in a new tab (Jack's call), every
   shop photo sits on the photos' own gray, and the puzzle logo family's
   Design card links to its five pieces through `?design=`.
-- Next: Jack's copy for the two `TODO(copy)` lines, then his go to push.
+- Jack chose the hero and lobby copy and said "then we're ready to push."
 
 ## Earlier checkpoint: 2026-09-26 (afternoon), Claude Code cloud session
 
