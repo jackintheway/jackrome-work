@@ -1367,7 +1367,7 @@ lands in `_exhibits/`, and a page plus an array entry get built from it.
 scan-gated, but this repo is public, so a package waits there unread by anyone
 until Jack has read it himself. What ships is the page built from it. Same shape
 as `_source/`: originals stay off the wire, the derivative is committed.
-Canonical copies of cleared packages go to `Claude Creations/exhibitions/` in
+Canonical copies of cleared packages go to `claude-creations/exhibitions/` in
 iCloud, matching the archive convention for skills.
 
 **`js/case-studies.js` went in with the first entry rather than the third.**

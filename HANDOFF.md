@@ -117,7 +117,7 @@ were left untouched.
 ## Earlier checkpoint: 2026-09-22 (evening), Claude Code
 
 Jack asked for a third case study page from the Lay of the Land exhibit package
-(canonical copy in iCloud under Claude Creations/exhibitions/lay-of-the-land/).
+(canonical copy in iCloud under claude-creations/exhibitions/lay-of-the-land/).
 Added `case-studies/lay-of-the-land.html`, its share card
 (`tools/og/card-case-lay-of-the-land.html`, rendered alone), a
 `js/case-studies.js` entry, and styles in `css/site.css` for its two new
