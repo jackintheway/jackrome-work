@@ -1927,7 +1927,7 @@ The original wording follows for history.
 Netlify copies the folder to a CDN. So a deploy is never required to look at a change.
 
 ```
-cd /Volumes/Key/workspace/claude-code-projects/jackrome-work-migration
+cd /Users/jack/workspace/claude-code-projects/jackrome-work-migration
 python3 -m http.server 8000
 ```
 
