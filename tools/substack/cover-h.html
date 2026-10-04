@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  /* box-sizing is required here. This file links colors.css and fonts.css
+     but not base.css, where the global border-box rule lives. Without it
+     the border pushes the cover past 1344x256 and the render clips. */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { width: 1344px; height: 256px; overflow: hidden; }
+  .cover {
+    position: relative;
+    width: 1344px; height: 256px;
+    background: var(--ws-orange);
+    border: 12px solid var(--ws-black);
+    padding: 0 58px;
+    font-family: var(--font-heading);
+    display: flex; align-items: center; justify-content: space-between;
+    overflow: hidden;
+  }
+  .lockup { display: flex; flex-direction: column; gap: 14px; }
+  .eyebrow {
+    font-size: 22px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ws-black); margin: 0;
+  }
+  .title {
+    font-size: 94px; font-weight: 900; line-height: 1;
+    letter-spacing: -0.03em; color: var(--ws-black);
+    text-shadow: 6px 6px 0 var(--ws-yellow);
+    margin: 0;
+  }
+  /* The trio is 2060x745, so height drives the width: 170px tall lands at
+     about 470px wide, which spans the empty field the 21:4 ratio creates. */
+  .puzzle { height: 170px; width: auto; flex-shrink: 0; }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="lockup">
+      <p class="eyebrow">Spirituality &middot; Technology &middot; Creativity</p>
+      <h1 class="title">Jack Rome</h1>
+    </div>
+    <img class="puzzle" src="../../assets/puzzle-trio.svg" alt="">
+  </div>
+</body>
+</html>

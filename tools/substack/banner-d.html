@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  /* box-sizing is required here. This file links colors.css and fonts.css
+     but not base.css, where the global border-box rule lives. Without it
+     the 10px border pushes the banner past 1100x220 and the render clips. */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { width: 1100px; height: 220px; overflow: hidden; }
+  .banner {
+    position: relative;
+    width: 1100px; height: 220px;
+    background: var(--ws-orange);
+    border: 10px solid var(--ws-black);
+    padding: 0 48px;
+    font-family: var(--font-heading);
+    display: flex; align-items: center; justify-content: space-between;
+    overflow: hidden;
+  }
+  .lockup { display: flex; flex-direction: column; gap: 12px; }
+  /* Solid black, no opacity: the palette rule is that black text holds on
+     the orange field, and a knocked-back black just reads muddy here. */
+  .eyebrow {
+    font-size: 19px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ws-black); margin: 0;
+  }
+  .title {
+    font-size: 80px; font-weight: 900; line-height: 1;
+    letter-spacing: -0.03em; color: var(--ws-black);
+    text-shadow: 5px 5px 0 var(--ws-yellow);
+    margin: 0;
+  }
+  .puzzle { width: 140px; transform: rotate(-7deg); flex-shrink: 0; }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <div class="lockup">
+      <p class="eyebrow">Spirituality &middot; Technology &middot; The nuance in between</p>
+      <h1 class="title">Jack Rome</h1>
+    </div>
+    <img class="puzzle" src="../../assets/puzzle-single.svg" alt="">
+  </div>
+</body>
+</html>

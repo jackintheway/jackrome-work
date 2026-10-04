@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { width: 1100px; height: 220px; overflow: hidden; }
+  .banner {
+    position: relative;
+    width: 1100px; height: 220px;
+    background: var(--ws-orange);
+    border: 10px solid var(--ws-black);
+    padding: 0 48px;
+    font-family: var(--font-heading);
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .title {
+    flex: 0 0 auto;
+    font-size: 92px; font-weight: 900; line-height: 1;
+    letter-spacing: -0.03em; color: var(--ws-black);
+    text-shadow: 5px 5px 0 var(--ws-yellow);
+    margin: 0;
+  }
+  .rule { flex: 1 1 auto; min-width: 40px; height: 7px; background: var(--ws-black); margin: 0 36px; }
+  .url {
+    flex: 0 0 auto;
+    font-size: 26px; font-weight: 900; color: var(--ws-black);
+    letter-spacing: -0.01em; white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <h1 class="title">Jack Rome</h1>
+    <div class="rule"></div>
+    <span class="url">jackintheway.substack.com</span>
+  </div>
+</body>
+</html>
