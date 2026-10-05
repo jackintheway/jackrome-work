@@ -70,7 +70,7 @@ These decisions from Jack supersede broader or dated wording below.
 - Below 800px, hide the complete artwork figure, including its caption and puzzle
   marks. The welcome leads directly into the room list. "Choose a room" is removed
   at every width. This supersedes the earlier stacked-artwork and shortcut previews.
-  Read MOTION.md for the implementation. This remains a local preview.
+  Read MOTION.md for the implementation. This is live on jackrome.work.
 - The handoff demo keeps the dictated request verbatim with the italic caption
   "Spoken aloud using Wispr Flow." Its surrounding explanation speaks as Jack:
   "My request" and "our decisions." The recorded agent-to-agent note still uses
@@ -321,9 +321,8 @@ component in `css/wayspace.css` reads that property rather than naming a color.
   contains only the children.
 - Pages here link `/css/styles.css` **root-relative**, because they sit a level down
   and the four root pages do not.
-- `css/wayspace.css` imports last from `css/styles.css`. `js/wayspace.js` is the
-  first JavaScript on this site.
-- Content lives in six arrays in `js/wayspace.js`, through pure render functions, the
+- `css/wayspace.css` imports last from `css/styles.css`.
+- Content lives in arrays in `js/wayspace.js` (one per room or list: `MUSIC`, `VIDEO`, `WRITING` and so on), through pure render functions, the
   same pattern the old portfolio's `js/app.js` proved. **Adding work is adding an
   object, not editing markup.** An entry flagged `placeholder: true` renders a striped
   tag and disables its controls; an emptied array renders that room's written empty
@@ -603,7 +602,7 @@ about 15% of a phone screen, before any content. It is 74px now. The original
 objection is answered by the panel showing every link rather than nesting any of
 them behind a second tap.
 
-`js/nav.js` is loaded on all 75 public pages and the 404 page. It handles the menu,
+`js/nav.js` is loaded on every public page and the 404 page. It handles the menu,
 Escape, outside clicks, and clearing the open class when the window widens past
 the breakpoint. It also inserts the shared site-guide control. Navigation links
 remain in each page's HTML; the guide itself has one implementation.

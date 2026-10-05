@@ -60,8 +60,8 @@ first said, and `jackintheway.store`'s target was still unconfirmed.]
 
 | Domain | Forwards to | Renews |
 |---|---|---|
-| `jackintheway.me` | `bio.site/jackintheway` (confirmed 2026-08-24) | 2027-06-10 |
-| `jackintheway.store` | Fourthwall (unconfirmed as of 2026-08-24) | 2027-08-05 |
+| `jackintheway.me` | `jackintheway.store`, then the Fourthwall shop (confirmed by Jack and a live check, 2026-10-05) | 2027-06-10 |
+| `jackintheway.store` | `wayspace-shop.fourthwall.com` (confirmed by a live check, 2026-10-05) | 2027-08-05 |
 | `wayspace.store` | Fourthwall | 2027-08-05 |
 
 ### What this means for the cutover
@@ -126,6 +126,8 @@ redirects: add each as a domain alias and write a host-scoped rule in `netlify.t
    stale, the forward is not.
 
 ### bio.site and Wayspace, an open question (raised 2026-08-18)
+
+[Note 2026-10-05: settled. `jackintheway.me` now 301s to `jackintheway.store`, which 301s to the Fourthwall shop. Neither points at bio.site any more, so the bio.site notes below are history, and the plan to point `.me` at a replacement page no longer applies as written.]
 
 `bio.site/jackintheway` is Jack's de facto music and video home, and his link-in-bio.
 It became that when he cancelled the old `jackintheway.net` site. `jackintheway.me`

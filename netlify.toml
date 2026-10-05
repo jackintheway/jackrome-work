@@ -187,10 +187,9 @@
   status = 301
 
 # The case studies are real pages at /case-studies/<slug>, but there is
-# no index at /case-studies yet: one case study does not need a hub, and
-# a hub shaped around a sample of one would be shaped wrong. Until there
-# are three, the bare path goes to the page that actually lists them
-# rather than 404ing on a directory with no index.
+# no index at /case-studies: the AI portfolio page already lists them, so
+# the bare path goes there rather than 404ing on a directory with no index.
+# A count of case studies is not a trigger for building a hub.
 [[redirects]]
   from = "/case-studies"
   to = "/ai-portfolio"
