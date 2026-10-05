@@ -16,6 +16,70 @@ deployments. A remote-tracking ref is cached evidence, not a fresh remote check.
 Inspect the actual files when a dated note disagrees with them. Handoff entries are
 context, not permission to perform unfinished work. Do not include private material.
 
+## Open items
+
+### The album clip is a 480px cut of a 1500px master (open, 2026-08-24)
+
+Moved from `CLAUDE.md` on 2026-10-05. **The old blocker is gone:** this was
+parked for the Mac mini because the Air had no Homebrew, but `ffmpeg` is now at
+`/opt/homebrew/bin/ffmpeg` on Jack's MacBook Pro.
+
+Jack noticed the Wayspace album cover on `/wayspace/design` going soft the moment the
+hover animation starts. Measured rather than guessed:
+
+| | |
+|---|---|
+| Tile renders at | 560 x 560 CSS px, so 1120 device px on a retina display |
+| Still behind it | 900 x 900, near enough to sharp |
+| Clip | **480 x 480**, upscaled **2.33x** |
+| Tool row clips | same 480px source, in 170px tiles, and they look fine |
+
+The six tool-pack clips are the control: identical resolution, no complaint, because
+they are displayed small. This is a scaling problem, not an encoding problem.
+
+**The 480 was never a decision.** Re-encoding the master with
+`avconvert --preset PresetMediumQuality` reproduces the shipped file's specs exactly:
+480x480, 1.09MB, 10 seconds. That preset caps at 480. The resolution came from a preset
+choice rather than from anyone deciding how big the clip should be.
+
+**The good pixels still exist.** `_source/design/wayspace-animated-artwork.mp4` is
+**1500 x 1500**, 42 seconds, 101MB. The shipped clip is a 10 second cut of it. Which 10
+seconds has not been determined and needs checking against the master before a re-cut.
+
+**Why `avconvert` cannot finish the job.** Its presets fit within their box preserving
+aspect, so a square source does come out square, but there is no bitrate control and the
+files are far too heavy for something that fires on hover:
+
+| Preset | Output | Size for 10s |
+|---|---|---|
+| `PresetMediumQuality` | 480x480 | 1.09MB (what shipped) |
+| `Preset640x480` | 640x640 | 5.36MB |
+| `Preset960x540` | 960x960 | 9.86MB |
+| `Preset1280x720` | 1280x1280 | 13.37MB |
+| `PresetHighestQuality` | 1500x1500 | 15.12MB |
+
+`ffmpeg` gets 1080x1080 at roughly 1.5 to 2.5MB, which is the version worth shipping.
+
+**Interim fix, shipped 2026-08-24.** `.tool-tile.is-cover` caps the tile at **400px**,
+down from 560, which brings the upscale to 1.67x. A compromise, not a fix: 240px would
+map the clip 1:1 and be genuinely crisp, but the album is the arrival in this lineage
+and 240 does not carry it.
+
+**The podcast cover came down with it.** At 400px the album was reading smaller than the
+flat podcast cover below it at 560, which works against the copy calling the album the
+culmination and the arrival. Jack's call on 2026-08-24: match them rather than leave the
+album as the smallest cover in its own lineage. `.step-figure` is now 400px too. It is
+used exactly twice, both on this page, so nothing else is affected.
+
+**When the clip is re-cut, two numbers go back to 560 together:** `.tool-tile.is-cover`
+and `.step-figure`, both in `css/wayspace.css`. Delete the explanatory comments above
+each rule, and trim the stopgap paragraph from the figure comment in
+`wayspace/design.html`.
+
+**Found alongside it:** `is-cover` had no CSS rule anywhere, despite the comment in
+`design.html` saying it controlled the size. The 560px came from `.step-figure`. The rule
+now exists, so the comment is true and there is one knob rather than a shared container.
+
 ## Separate exhibit handoff: 2026-09-12, Codex
 
 Jack requested a second private exhibit package at
@@ -36,7 +100,25 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-09-30, Claude Code
+## Current checkpoint: 2026-10-05, Claude Code
+
+Jack approved an ablation of `CLAUDE.md` (about 19,000 words, mostly finished
+build history loading every session). A snapshot of the old file sits in iCloud.
+
+- Dated history moved, verbatim under original headings, to `docs/history.md`.
+  The Music room player record moved to `docs/decisions/music-player.md` and the
+  domain map to `docs/decisions/domains.md`. The album clip task moved into
+  "Open items" above.
+- Cut: the merch pin (superseded by the Shop), link-preview rationale that
+  repeats the user-level rule, and working rules that repeat user-level rules.
+- Fixed stale facts: seven rooms, 61 lyric pages, 68 pages with the room
+  switcher, Speaking live, the build step, the Calendly URL being hand-typed,
+  and the client-naming rule (Jack's new wording).
+- Jack confirmed: the Squarespace website subscription ended 2026-09-15 as
+  planned, the domains are fine, and the migration is complete.
+- Committed, not pushed (a push deploys).
+
+## Earlier checkpoint: 2026-09-30, Claude Code
 
 Jack started the Wayspace Shop from two planning files in
 `../wayspace-store/`. Plan approved in plan mode. Decisions are recorded

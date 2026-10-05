@@ -21,9 +21,11 @@ agents collaborate here with Jack and share context with Claude Code.
 - Explain meaningful changes in plain language. Be warm, grounded, and concise.
   Do not use em dashes in prose, code comments, documentation, or commit messages.
 - Preserve the established static HTML, CSS, vanilla JavaScript, and Wayspace
-  design system. Follow `CLAUDE.md`'s prerequisite reading before writing code.
-- Preview locally and run checks appropriate to the change. There is no build
-  step; `README.md` describes local serving and its clean-URL limitations.
+  design system.
+- Preview locally and run checks appropriate to the change. There is no compile
+  step, but Netlify publishes `_site/`, which `tools/build-site.py` assembles
+  from an allowlist; new public pages must be added to it. `README.md` describes
+  local serving and its clean-URL limitations.
 - Commit completed working milestones in small, clearly described save points.
   Stage only the files belonging to the task.
 - Nothing goes live without Jack's explicit go. Pushes can trigger Netlify
