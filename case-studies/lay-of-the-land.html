@@ -77,6 +77,7 @@
       <a href="#runTitle">The first run</a>
       <a href="#archiveTitle">The archive</a>
       <a href="#notesTitle">Notes</a>
+      <a href="#audioTitle">A real play button</a>
       <a href="#openTitle">Still open</a>
       <a href="#ownTitle">Make your own</a>
     </nav>
@@ -116,7 +117,7 @@
       <div class="prose prose-lg">
         <p>A scheduled task on my computer was ruled out first since it runs on the machine, meaning my Mac would have had to be awake every morning. A cloud routine (a scheduled task in the cloud would have also worked fine) runs on Anthropic's servers instead.</p>
         <p>A morning email could totally work and would have been an easy notification, but then the routine would need access to my Gmail while it also read the open web with nobody watching, and a page with hidden instructions could, in principle, tell it to send something. So the routine got no connected accounts at all. The only thing it can change is one private listening page.</p>
-        <p>A really nice sounding text-to-speech voice is deferred for now. It would need an API key and a small cost per episode, and the routine can update the page without asking me only when it sends the page file alone. Audio would have to live inside the page. That said, it has a built in way to easily select the text, allowing me to just use Siri's speak functionality to listen with a better voice than the default text-to-speech voices. More on this in the "What went wrong" section below.</p>
+        <p>A really nice sounding text-to-speech voice was deferred at first. A paid voice service would need an API key and a small cost per episode. In the meantime, the page has a built in way to easily select the text, allowing me to just use Siri's speak functionality to listen with a better voice than the default text-to-speech voices. More on this in the "What went wrong" section below, and on the voice I landed on in "A real play button."</p>
       </div>
     </section>
 
@@ -138,7 +139,7 @@
         <div class="section-rule" aria-hidden="true"></div>
       </div>
       <div class="prose prose-lg">
-        <p>Claude built a private page that stores each episode as structured data, newest first, with a cap of seven. A Play button reads the script aloud one sentence at a time, highlighting each paragraph as it goes. Before the routine ever ran, Claude wrote a pilot episode in the session to test the page: 1,130 words and 11 sources.</p>
+        <p>Claude built a private page that stores each episode as structured data, newest first, with a cap of seven. At first, a Play button read the script aloud one sentence at a time in the browser's own voice, highlighting each paragraph as it went. Before the routine ever ran, Claude wrote a pilot episode in the session to test the page: 1,130 words and 11 sources.</p>
       </div>
     </section>
 
@@ -230,6 +231,24 @@
       </div>
     </section>
 
+    <section class="section" aria-labelledby="audioTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="audioTitle">A real play button</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>The Play button stopped as soon as my phone locked. I had just built a Claude Code mod called /listen that reads text aloud on my Mac in Siri's voice, so I asked Claude whether it could help.</p>
+        <p>A mod lives inside Claude Code on my computer, and Lay of the Land is a web page on my phone, so neither can reach the other. The idea could move, though. If each episode became an audio file, the page could play it like a podcast, and recorded audio keeps going with the screen off.</p>
+        <p>A job on my Mac could record each episode, but that needs my Mac awake every morning, the same reason I kept the routine itself off my computer. So the cloud routine records the episode itself. Paid voice services were still out, so Claude tested free voices that run offline in the routine's workspace. Their usual download site was blocked where we tested, and the same files on GitHub were not.</p>
+        <p>Claude recorded the opening of a recent episode in three voices, two from a model called Kokoro and one from Piper. Piper was faster and sounded more synthetic. I picked Kokoro's "Heart" voice. That morning's full episode ran 7 minutes 50 seconds, took about three and a half minutes to record, and came to 4.1 MB.</p>
+        <p>While it records, the script notes the second each paragraph begins. Those timestamps keep the highlight in step with the audio and let a tapped paragraph jump the playback there. The page also tells the phone what is playing, for lock-screen controls. Older episodes fall back to the device voice, and the Siri listening mode stays.</p>
+        <p>The routine now writes the episode, records it, attaches the audio, and publishes. If recording fails, the episode still goes out on time.</p>
+        <p>A few things needed working around. The page's file storage doesn't accept MP3, so the audio ships inside an MP4 file, which my iPhone plays fine. Claude wasn't allowed to edit my routine, since I had created it outside an agent session, so I pasted the new prompt in. Before handing it over, Claude compared it line by line with the old one and caught its own mistake: the heading it was replacing also appeared earlier in the prompt, and its first edit had cut out everything in between. It rebuilt the prompt, then tested the recording script by running it straight out of the prompt text.</p>
+        <p>Deleting old recordings stayed out of the daily routine, because a delete can wait for my approval and nobody is there at 7:30. A separate monthly routine handles cleanup.</p>
+        <p>The Listen button at the top of this page, and the Take a peek episode, now play recordings in the same voice too. They're made on my Mac with the same paragraph timestamps, and if I edit the page later, they fall back to the device voice until I record it again.</p>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="openTitle">
       <div class="section-header">
         <h2 class="section-title" id="openTitle">Still open</h2>
@@ -237,7 +256,8 @@
       </div>
       <div class="prose prose-lg">
         <p>I haven't lived with it long enough to say whether it changes how much I scroll just yet, but I'll update this page as I get a feel for those results.</p>
-        <p>The Play button and Speak function both stop when my phone locks, so dependable lock-screen audio would need the voice service I've deferred for now.</p>
+        <p>I haven't confirmed on my iPhone that playback continues with the screen locked. The browser tests covered play, pause, speed and tap to jump. October 7 is the routine's first recorded episode, and the thing to watch is whether the audio upload runs without asking for approval.</p>
+        <p>A page that stores files can only be shared inside my account. Storage holds 1 GB, about eight months of episodes, and cleanup first runs November 1.</p>
         <p>The routine can't send or delete anything, but it can rewrite its own page, so a bad source could put bad text there. The dated sources are how I check.</p>
         <p>I haven't measured what a daily run costs just yet, so I'll update this page once I have a solid sense of cost over time.</p>
         <p>So far, the notes have been working well, and the following episode makes direct references to them, ensuring that it provides me with new themes or content based on my requests the next day.</p>

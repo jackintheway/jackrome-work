@@ -242,6 +242,33 @@
     grid-column: 1 / -1; margin: 0;
     font-family: var(--heading); font-weight: 500; font-size: 14.5px; line-height: 1.5; color: var(--muted);
   }
+  .scrub {
+    grid-column: 1 / -1;
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--heading); font-weight: 800; font-size: 13px; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .scrub input[type=range] {
+    flex: 1; min-width: 0; height: 30px; margin: 0; background: transparent; cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+  }
+  .scrub input[type=range]::-webkit-slider-runnable-track {
+    height: 10px; border: 3px solid var(--black); border-radius: 999px;
+    background: linear-gradient(to right, var(--orange) var(--fill, 0%), var(--surface-2) var(--fill, 0%));
+  }
+  .scrub input[type=range]::-moz-range-track {
+    height: 10px; border: 3px solid var(--black); border-radius: 999px; background: var(--surface-2);
+  }
+  .scrub input[type=range]::-moz-range-progress { height: 10px; border-radius: 999px; background: var(--orange); }
+  .scrub input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 22px; height: 22px; margin-top: -9px; border-radius: 50%;
+    border: 3px solid var(--black); background: var(--yellow);
+  }
+  .scrub input[type=range]::-moz-range-thumb {
+    width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--black); background: var(--yellow);
+  }
+  .scrub input[type=range]:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  #credit { font-size: 12.5px; }
   .siri {
     grid-column: 1 / -1;
     display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center;
@@ -380,6 +407,12 @@
       <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
     </button>
     <div class="status" id="status" aria-live="polite">Ready<small id="status-sub"></small></div>
+    <div class="scrub" id="scrub" hidden>
+      <span id="t-now">0:00</span>
+      <input type="range" id="seek" min="0" max="1000" step="1" value="0" aria-label="Position in episode">
+      <span id="t-total">0:00</span>
+    </div>
+    <audio id="audio" preload="none" playsinline></audio>
     <div class="controls">
       <span>Speed</span>
       <span class="speeds" role="group" aria-label="Reading speed">
@@ -388,11 +421,12 @@
         <button type="button" id="rate-115" data-rate="1.15" aria-pressed="false">1.15×</button>
         <button type="button" id="rate-130" data-rate="1.3" aria-pressed="false">1.3×</button>
       </span>
-      <label for="voice">Voice</label>
+      <label for="voice" id="voice-label">Voice</label>
       <select id="voice"></select>
     </div>
     <p class="fallback" id="fallback" hidden>This view can't read aloud. On iPhone, turn on Speak Screen (Settings, Accessibility, Spoken Content) and swipe down from the top with two fingers.</p>
     <p class="fallback" id="lock-note">Reading stops if the phone locks, so the page asks to keep your screen awake while it plays. Tap any paragraph to start from there.</p>
+    <p class="fallback" id="credit" hidden></p>
     <div class="siri">
       <button type="button" class="linkish" id="read-mode">Listen with Siri voice</button>
       <span>Shows only the script, so Select All and Speak read just the episode in your iPhone's own voice.</span>
@@ -436,6 +470,7 @@
 ] }
 </script>
 <script src="/js/case-studies.js"></script>
+<script src="/js/recording.js"></script>
 <script>
 var CLOSING = JSON.parse(document.getElementById("closing").textContent);
 (function () {
@@ -467,7 +502,11 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
   var PLAY = '<path d="M7 4.5v15l13-7.5z"/>';
   var PAUSE = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
 
-  var state = { ep: 0, chunks: [], pos: 0, playing: false, token: 0, rate: 1, voice: null, wake: null };
+  var state = { ep: 0, chunks: [], pos: 0, playing: false, token: 0, rate: 1, voice: null, wake: null,
+    lines: [], marks: null, line: -1 };
+  // The recorded reading, made by tools/record-case-study.py. Used only while
+  // every line on the page still matches it; otherwise the device voice reads.
+  var R = window.RECORDING, recording = null, player = $("audio");
 
   function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -523,15 +562,18 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
     meta.appendChild(mins);
 
     state.chunks = [];
+    state.lines = [];
     var paraCount = 0;
     function addPara(el, text, sectionName) {
       var id = "p" + (paraCount++);
       el.id = id;
       el.tabIndex = 0;
-      var start = state.chunks.length;
+      var start = state.chunks.length, line = state.lines.length;
+      state.lines.push({ el: el, text: text, section: sectionName });
       sentences(text).forEach(function (s) { state.chunks.push({ text: s, para: id, section: sectionName }); });
-      el.addEventListener("click", function () { if (!reading()) playFrom(start); });
-      el.addEventListener("keydown", function (e) { if (reading()) return; if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playFrom(start); } });
+      function go() { if (state.marks) playLine(line); else playFrom(start); }
+      el.addEventListener("click", function () { if (!reading()) go(); });
+      el.addEventListener("keydown", function (e) { if (reading()) return; if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
     }
 
     if (ep.opening) {
@@ -546,7 +588,10 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
       h.className = "chip c" + (si % 6);
       h.textContent = sec.heading || "";
       script.appendChild(h);
-      if (sec.heading) state.chunks.push({ text: sec.heading + ".", para: null, section: sec.heading, pause: true });
+      if (sec.heading) {
+        state.chunks.push({ text: sec.heading + ".", para: null, section: sec.heading, pause: true });
+        state.lines.push({ el: h, text: sec.heading, section: sec.heading });
+      }
       (sec.paragraphs || []).forEach(function (p) {
         var el = document.createElement("p");
         el.className = "para";
@@ -574,6 +619,7 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
     $("status-sub").textContent = sections + " sections, from the top";
     renderArchive();
     drawMarble();
+    applyRecording();
   }
 
   function renderArchive() {
@@ -602,7 +648,7 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
   function setIcons(playing) {
     $("play-icon").innerHTML = playing ? PAUSE : PLAY;
     $("play").setAttribute("aria-label", playing ? "Pause episode" : "Play episode");
-    $("bar").hidden = !playing && state.pos === 0;
+    $("bar").hidden = !playing && state.pos === 0 && !(state.marks && player.currentTime > 0);
     $("bar-toggle").innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' + (playing ? PAUSE : PLAY) + "</svg>";
     $("bar-toggle").setAttribute("aria-label", playing ? "Pause" : "Resume");
   }
@@ -683,6 +729,8 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
     state.token++;
     if (synth) synth.cancel();
     state.pos = 0;
+    state.line = -1;
+    if (state.marks) { player.pause(); try { player.currentTime = 0; } catch (e) {} }
     highlight(null);
     var prev = document.querySelector(".para.now");
     if (prev) prev.classList.remove("now");
@@ -695,8 +743,103 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
     $("status-sub").textContent = "Tap play to hear it again";
   }
   function toggle() {
+    if (state.marks) { if (player.paused) playAudio(); else player.pause(); return; }
     if (state.playing) pause(); else playFrom(state.pos);
   }
+
+  /* ---------- The recording ---------- */
+
+  function applyRecording() {
+    state.marks = R ? R.match(recording, state.lines) : null;
+    var on = !!state.marks;
+    $("scrub").hidden = !on;
+    $("voice").hidden = on;
+    $("voice-label").hidden = on;
+    $("lock-note").textContent = on
+      ? "A recorded reading. It keeps playing when your phone locks. Tap any paragraph to jump there."
+      : "Reading stops if the phone locks, so the page asks to keep your screen awake while it plays. Tap any paragraph to start from there.";
+    var canPlay = on || !!synth;
+    $("play").disabled = !canPlay;
+    $("play").style.opacity = canPlay ? "" : "0.4";
+    $("fallback").hidden = canPlay;
+    $("lock-note").hidden = !canPlay;
+    document.querySelector(".controls").hidden = !canPlay;
+    if (!on) return;
+    $("t-total").textContent = R.clock(recording.duration);
+    $("t-now").textContent = "0:00";
+    $("seek").value = 0;
+    $("seek").style.setProperty("--fill", "0%");
+    $("status-sub").textContent = "About " + Math.max(1, Math.round(recording.duration / 60)) + " minutes, recorded";
+  }
+  function playAudio() {
+    if (player.getAttribute("src") !== recording.audio) player.src = recording.audio;
+    player.playbackRate = state.rate;
+    $("credit").textContent = R.CREDIT + ".";
+    $("credit").hidden = false;
+    if ("mediaSession" in navigator) {
+      try {
+        var ep = episodes[state.ep];
+        navigator.mediaSession.metadata = new MediaMetadata({ title: ep.title, artist: "Lay of the Land", album: "Case study" });
+        navigator.mediaSession.setActionHandler("play", playAudio);
+        navigator.mediaSession.setActionHandler("pause", function () { player.pause(); });
+        navigator.mediaSession.setActionHandler("seekbackward", function () { player.currentTime = Math.max(0, player.currentTime - 15); });
+        navigator.mediaSession.setActionHandler("seekforward", function () { player.currentTime = Math.min(player.duration || 1e9, player.currentTime + 15); });
+      } catch (e) {}
+    }
+    var p = player.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  function playLine(i) {
+    if (player.getAttribute("src") !== recording.audio) player.src = recording.audio;
+    try { player.currentTime = state.marks[i].t; } catch (e) {}
+    playAudio();
+  }
+  function syncAudio() {
+    if (!state.marks) return;
+    var t = player.currentTime, total = player.duration || recording.duration || 0;
+    $("t-now").textContent = R.clock(t);
+    if (total) {
+      var pct = Math.min(100, t / total * 100);
+      $("seek").value = Math.round(pct * 10);
+      $("seek").style.setProperty("--fill", pct + "%");
+    }
+    var i = R.at(state.marks, t);
+    if (i === state.line) return;
+    state.line = i;
+    if (i < 0) return;
+    var line = state.lines[i];
+    highlight(line.el.classList.contains("para") ? line.el.id : null);
+    $("status-sub").textContent = line.section;
+    $("bar-where").textContent = line.section;
+  }
+  player.addEventListener("play", function () {
+    if (!state.marks) return;
+    state.playing = true; setIcons(true); wakeOff();
+    $("status").firstChild.nodeValue = "Playing";
+  });
+  player.addEventListener("pause", function () {
+    if (!state.marks || player.ended || player.currentTime === 0) return;
+    state.playing = false; setIcons(false);
+    $("status").firstChild.nodeValue = "Paused";
+  });
+  player.addEventListener("timeupdate", syncAudio);
+  player.addEventListener("seeked", syncAudio);
+  player.addEventListener("ended", function () { if (state.marks) finish(); });
+  player.addEventListener("error", function () {
+    if (!state.marks || !player.getAttribute("src")) return;
+    recording = null;
+    stop();
+    applyRecording();
+    $("status").firstChild.nodeValue = "Ready";
+    $("status-sub").textContent = "The recording didn't load, so this reads with your device voice";
+  });
+  $("seek").addEventListener("input", function (e) {
+    var total = player.duration || (recording && recording.duration) || 0;
+    if (!total) return;
+    if (player.getAttribute("src") !== recording.audio) player.src = recording.audio;
+    try { player.currentTime = total * (+e.target.value) / 1000; } catch (err) {}
+    e.target.style.setProperty("--fill", (+e.target.value / 10) + "%");
+  });
 
   $("play").addEventListener("click", toggle);
   $("bar-toggle").addEventListener("click", toggle);
@@ -709,7 +852,8 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
     state.rate = r;
     rateButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.rate === r)); });
     store("lotl-rate", String(r));
-    if (state.playing) playFrom(state.pos);
+    if (state.marks) player.playbackRate = r;
+    else if (state.playing) playFrom(state.pos);
   }
   rateButtons.forEach(function (b) { b.addEventListener("click", function () { setRate(+b.dataset.rate); }); });
   var savedRate = parseFloat(recall("lotl-rate"));
@@ -747,13 +891,8 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
     if (v) { state.voice = v; store("lotl-voice", v.name); if (state.playing) playFrom(state.pos); }
   });
 
-  if (!synth || typeof SpeechSynthesisUtterance === "undefined") {
-    $("fallback").hidden = false;
-    $("lock-note").hidden = true;
-    $("play").disabled = true;
-    $("play").style.opacity = "0.4";
-    document.querySelector(".controls").hidden = true;
-  } else {
+  if (typeof SpeechSynthesisUtterance === "undefined") synth = null;
+  if (synth) {
     loadVoices();
     if ("onvoiceschanged" in synth) synth.addEventListener("voiceschanged", loadVoices);
   }
@@ -790,7 +929,11 @@ var CLOSING = JSON.parse(document.getElementById("closing").textContent);
       .then(function (t) { done(new DOMParser().parseFromString(t, "text/html")); })
       .catch(function () { done(null); });
   }
-  load(function (doc) { if (doc) episodes = [fromDoc(doc)]; render(0); });
+  load(function (doc) {
+    if (doc) episodes = [fromDoc(doc)];
+    (R ? R.load("/assets/audio/lay-of-the-land-peek.json") : Promise.resolve(null))
+      .then(function (data) { recording = data; render(0); });
+  });
 
   // The marbled band, after the WAYSPACE DELUXE cover: liquid bands of the palette,
   // each edge outlined in black. The pattern is seeded by the episode, so each morning differs.

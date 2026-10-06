@@ -100,7 +100,28 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-10-05, Claude Code
+## Current checkpoint: 2026-10-06, Claude Code
+
+Recorded audio for every case study, and the Lay of the Land audio story.
+
+- The real Lay of the Land now plays a Kokoro recording each morning. Jack
+  chose not to show a real episode publicly; instead the case study itself is
+  recorded in the same voice (Kokoro af_heart), on this Mac.
+- `tools/record-case-study.py` records each case study plus the peek, with
+  per-line fingerprints. `js/recording.js` matches them; `js/listen.js` and the
+  peek play the recording with scrubber, speed, lock-screen controls and tap
+  to jump, falling back to the device voice when text has changed. Rules are
+  in CLAUDE.md, "Case study recordings".
+- Lay of the Land copy: new "A real play button" section from the exhibit in
+  `_exhibits/lay-of-the-land-audio/` (Jack's), plus fixes to "Routes I didn't
+  take", "A page that plays" and "Still open". Awaiting Jack's read.
+- Two "Still open" lines are left as published for Jack's own update: whether
+  it changed how much he scrolls, and daily cost.
+- Checked locally: playback, jump, speed, stale fallback, 375px width, build
+  check. Not checked: iPhone lock screen, live Netlify serving.
+- Committed, not pushed (a push deploys). Needs Jack's go.
+
+## Earlier checkpoint: 2026-10-05, Claude Code
 
 Jack approved an ablation of `CLAUDE.md` (about 19,000 words, mostly finished
 build history loading every session). A snapshot of the old file sits in iCloud.

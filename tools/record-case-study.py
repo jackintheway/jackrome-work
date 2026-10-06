@@ -50,10 +50,13 @@ RATE = 24000
 # listener hears the section change.
 GAP = {"title": 0.8, "sub": 0.6, "heading": 0.6, "para": 0.45}
 
-# Spoken spellings for words the voice gets wrong. Keys are matched as
-# whole words. Only the audio changes; the page text and fingerprint stay.
+# Spoken spellings for words the voice gets wrong. Keys are regular
+# expressions. Only the audio changes; the page text and fingerprint stay.
 SAY = {
-    "LotL": "Lay of the Land",
+    r"\bLotL\b": "Lay of the Land",
+    r"(\d) MB\b": r"\1 megabytes",
+    r"(\d) GB\b": r"\1 gigabyte",
+    r"(?<!\w)/listen\b": "slash listen",
 }
 
 
@@ -121,8 +124,8 @@ def lines_for(path, peek=False):
 
 def spoken(line):
     text = line["text"]
-    for word, say in SAY.items():
-        text = re.sub(r"\b%s\b" % re.escape(word), say, text)
+    for pattern, say in SAY.items():
+        text = re.sub(pattern, say, text)
     if line["kind"] in ("title", "heading") and not re.search(r"[.!?]$", text):
         text += "."
     return text

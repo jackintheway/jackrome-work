@@ -114,8 +114,9 @@ These decisions from Jack supersede broader or dated wording below.
   personal tool. Its employer and tradition stay out of the text by his choice.
   Every case study carries a Listen button (js/listen.js). Lay of the Land also
   has a Take a peek dialog whose noindex page reads the case study's own text,
-  so edits to the page carry into the peek with nothing to regenerate. After
-  any edit to a js file, run node --check on it before committing.
+  so edits to the page carry into the peek's text automatically. Its recording
+  does not; see "Case study recordings" below. After any edit to a js file,
+  run node --check on it before committing.
 - Make the case studies easier to find through links to /ai-portfolio#clientTitle.
   AI Portfolio's hero uses "See case studies" with a downward arrow. Production
   links from its hero, and AI Enablement links from "How I work" beside a separate
@@ -542,6 +543,34 @@ hub when Jack wants a standalone destination for prospective clients or the
 collection covers more kinds of work. Three entries is not a prerequisite.
 When it exists, the "Back to AI Portfolio" button at the foot of each case study
 becomes "Back to case studies."
+
+### Case study recordings (added 2026-10-06)
+
+**After editing any case study's prose, re-record it before deploying.**
+Every case study's Listen button, and the Lay of the Land peek, plays a
+Kokoro recording (voice af_heart, Apache 2.0) from `assets/audio/`. Jack
+chose this on 2026-10-06 so the site sounds like the real Lay of the Land.
+
+```
+.venv-kokoro/bin/python tools/record-case-study.py --check
+.venv-kokoro/bin/python tools/record-case-study.py <slug>
+```
+
+`--check` names any recording whose page has changed. Recording takes about a
+minute, and only changed paragraphs are rendered (cache in `.audio-cache/`).
+An edit never breaks a page: each line carries a fingerprint, and if any line
+no longer matches, the players use the device voice until it is re-recorded.
+A new case study needs `data-recording="/assets/audio/<slug>.json"` on its
+Listen button, `js/recording.js` loaded before `js/listen.js`, and a recording.
+
+- The voice credit appears only after a visitor presses play, per Jack.
+- The peek's closing section lives in a JSON block in the peek page so the
+  page and the recording script read the same words.
+- Audio is not cache-forever: a re-recording keeps its filename.
+- `.venv-kokoro/` is local setup (Kokoro 0.9.4, espeak-ng from Homebrew),
+  gitignored. Rebuild with `python3 -m venv .venv-kokoro` and
+  `.venv-kokoro/bin/pip install kokoro soundfile beautifulsoup4`.
+- The dev server answers byte ranges so audio can scrub in local preview.
 
 **Client naming.** Clients are named when the work has already been published
 publicly or they have shared a testimonial. Otherwise, the default is to keep

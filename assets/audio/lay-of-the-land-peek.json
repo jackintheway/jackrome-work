@@ -1,0 +1,355 @@
+{
+ "voice": "Kokoro (af_heart), Apache 2.0",
+ "audio": "/assets/audio/lay-of-the-land-peek.mp3",
+ "duration": 847.35,
+ "marks": [
+  {
+   "t": 0.0,
+   "key": "e606a935",
+   "kind": "sub",
+   "where": "Introduction"
+  },
+  {
+   "t": 11.0,
+   "key": "72e451d7",
+   "kind": "heading",
+   "where": "A new kind of feed"
+  },
+  {
+   "t": 13.38,
+   "key": "aea0e7de",
+   "kind": "para",
+   "where": "A new kind of feed"
+  },
+  {
+   "t": 26.65,
+   "key": "3aaf5be3",
+   "kind": "para",
+   "where": "A new kind of feed"
+  },
+  {
+   "t": 58.3,
+   "key": "09861a7d",
+   "kind": "para",
+   "where": "A new kind of feed"
+  },
+  {
+   "t": 81.4,
+   "key": "90f9b0db",
+   "kind": "para",
+   "where": "A new kind of feed"
+  },
+  {
+   "t": 106.28,
+   "key": "5299cf55",
+   "kind": "para",
+   "where": "A new kind of feed"
+  },
+  {
+   "t": 113.15,
+   "key": "267cbb9a",
+   "kind": "heading",
+   "where": "Explaining it with a Pokédex"
+  },
+  {
+   "t": 116.05,
+   "key": "6df4e8da",
+   "kind": "para",
+   "where": "Explaining it with a Pokédex"
+  },
+  {
+   "t": 140.8,
+   "key": "9083c35f",
+   "kind": "para",
+   "where": "Explaining it with a Pokédex"
+  },
+  {
+   "t": 152.6,
+   "key": "4a5199aa",
+   "kind": "para",
+   "where": "Explaining it with a Pokédex"
+  },
+  {
+   "t": 172.18,
+   "key": "3822ee7f",
+   "kind": "para",
+   "where": "Explaining it with a Pokédex"
+  },
+  {
+   "t": 185.88,
+   "key": "0c568cdd",
+   "kind": "heading",
+   "where": "Routes I didn't take"
+  },
+  {
+   "t": 188.2,
+   "key": "4e94f80b",
+   "kind": "para",
+   "where": "Routes I didn't take"
+  },
+  {
+   "t": 204.1,
+   "key": "4edc3855",
+   "kind": "para",
+   "where": "Routes I didn't take"
+  },
+  {
+   "t": 226.97,
+   "key": "4754e1d4",
+   "kind": "para",
+   "where": "Routes I didn't take"
+  },
+  {
+   "t": 254.07,
+   "key": "61b2552a",
+   "kind": "heading",
+   "where": "Casting the net"
+  },
+  {
+   "t": 256.38,
+   "key": "3a22597f",
+   "kind": "para",
+   "where": "Casting the net"
+  },
+  {
+   "t": 265.75,
+   "key": "f29e982d",
+   "kind": "para",
+   "where": "Casting the net"
+  },
+  {
+   "t": 291.77,
+   "key": "9a86308f",
+   "kind": "para",
+   "where": "Casting the net"
+  },
+  {
+   "t": 305.62,
+   "key": "2d315c1f",
+   "kind": "heading",
+   "where": "A page that plays"
+  },
+  {
+   "t": 308.1,
+   "key": "a0c8cbbe",
+   "kind": "para",
+   "where": "A page that plays"
+  },
+  {
+   "t": 332.28,
+   "key": "677c8dea",
+   "kind": "heading",
+   "where": "What went wrong"
+  },
+  {
+   "t": 334.43,
+   "key": "ca538656",
+   "kind": "para",
+   "where": "What went wrong"
+  },
+  {
+   "t": 354.78,
+   "key": "d741e340",
+   "kind": "para",
+   "where": "What went wrong"
+  },
+  {
+   "t": 379.0,
+   "key": "353a48ab",
+   "kind": "para",
+   "where": "What went wrong"
+  },
+  {
+   "t": 399.5,
+   "key": "74a4e677",
+   "kind": "heading",
+   "where": "The first run"
+  },
+  {
+   "t": 401.73,
+   "key": "d963bffe",
+   "kind": "para",
+   "where": "The first run"
+  },
+  {
+   "t": 413.48,
+   "key": "da24b479",
+   "kind": "para",
+   "where": "The first run"
+  },
+  {
+   "t": 441.85,
+   "key": "5487dc3b",
+   "kind": "heading",
+   "where": "An archive in my vault"
+  },
+  {
+   "t": 444.48,
+   "key": "75e806c3",
+   "kind": "para",
+   "where": "An archive in my vault"
+  },
+  {
+   "t": 460.88,
+   "key": "072d6416",
+   "kind": "para",
+   "where": "An archive in my vault"
+  },
+  {
+   "t": 486.2,
+   "key": "797e82ec",
+   "kind": "para",
+   "where": "An archive in my vault"
+  },
+  {
+   "t": 507.95,
+   "key": "805f7365",
+   "kind": "heading",
+   "where": "Capturing my notes"
+  },
+  {
+   "t": 510.33,
+   "key": "907bade2",
+   "kind": "para",
+   "where": "Capturing my notes"
+  },
+  {
+   "t": 533.23,
+   "key": "5973adbd",
+   "kind": "para",
+   "where": "Capturing my notes"
+  },
+  {
+   "t": 555.93,
+   "key": "8eed34ca",
+   "kind": "para",
+   "where": "Capturing my notes"
+  },
+  {
+   "t": 566.3,
+   "key": "24580fee",
+   "kind": "para",
+   "where": "Capturing my notes"
+  },
+  {
+   "t": 583.65,
+   "key": "05e896c6",
+   "kind": "heading",
+   "where": "A real play button"
+  },
+  {
+   "t": 586.13,
+   "key": "495d071c",
+   "kind": "para",
+   "where": "A real play button"
+  },
+  {
+   "t": 598.9,
+   "key": "5bcd1a73",
+   "kind": "para",
+   "where": "A real play button"
+  },
+  {
+   "t": 617.3,
+   "key": "35729b04",
+   "kind": "para",
+   "where": "A real play button"
+  },
+  {
+   "t": 642.75,
+   "key": "5c7b3e14",
+   "kind": "para",
+   "where": "A real play button"
+  },
+  {
+   "t": 664.6,
+   "key": "684fc855",
+   "kind": "para",
+   "where": "A real play button"
+  },
+  {
+   "t": 685.35,
+   "key": "96b4fbc8",
+   "kind": "para",
+   "where": "A real play button"
+  },
+  {
+   "t": 695.35,
+   "key": "fb1152a3",
+   "kind": "para",
+   "where": "A real play button"
+  },
+  {
+   "t": 730.5,
+   "key": "520f9681",
+   "kind": "para",
+   "where": "A real play button"
+  },
+  {
+   "t": 742.48,
+   "key": "862edc09",
+   "kind": "para",
+   "where": "A real play button"
+  },
+  {
+   "t": 758.85,
+   "key": "7c0a4e0f",
+   "kind": "heading",
+   "where": "Still open"
+  },
+  {
+   "t": 761.0,
+   "key": "b9ffe85b",
+   "kind": "para",
+   "where": "Still open"
+  },
+  {
+   "t": 770.28,
+   "key": "066e0286",
+   "kind": "para",
+   "where": "Still open"
+  },
+  {
+   "t": 788.88,
+   "key": "5be9b259",
+   "kind": "para",
+   "where": "Still open"
+  },
+  {
+   "t": 800.35,
+   "key": "bcc16417",
+   "kind": "para",
+   "where": "Still open"
+  },
+  {
+   "t": 810.9,
+   "key": "b7027be7",
+   "kind": "para",
+   "where": "Still open"
+  },
+  {
+   "t": 819.33,
+   "key": "24333743",
+   "kind": "para",
+   "where": "Still open"
+  },
+  {
+   "t": 831.83,
+   "key": "6e690f2b",
+   "kind": "heading",
+   "where": "If you feel like it"
+  },
+  {
+   "t": 834.23,
+   "key": "0ef425ca",
+   "kind": "para",
+   "where": "If you feel like it"
+  },
+  {
+   "t": 843.95,
+   "key": "c408fea8",
+   "kind": "para",
+   "where": "If you feel like it"
+  }
+ ]
+}
