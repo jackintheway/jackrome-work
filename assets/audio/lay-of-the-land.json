@@ -1,7 +1,7 @@
 {
  "voice": "Kokoro (af_heart), Apache 2.0",
  "audio": "/assets/audio/lay-of-the-land.mp3",
- "duration": 858.65,
+ "duration": 863.28,
  "marks": [
   {
    "t": 0.0,
@@ -311,42 +311,42 @@
   },
   {
    "t": 774.75,
-   "key": "066e0286",
+   "key": "2fdfbefc",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 793.35,
-   "key": "5be9b259",
+   "t": 790.98,
+   "key": "06cb09e6",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 804.83,
+   "t": 809.45,
    "key": "bcc16417",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 815.38,
+   "t": 820.0,
    "key": "b7027be7",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 823.8,
+   "t": 828.43,
    "key": "24333743",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 836.3,
+   "t": 840.93,
    "key": "4e2147ee",
    "kind": "heading",
    "where": "Make your own"
   },
   {
-   "t": 838.45,
+   "t": 843.08,
    "key": "4c711aae",
    "kind": "para",
    "where": "Make your own"

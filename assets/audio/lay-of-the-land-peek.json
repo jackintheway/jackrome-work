@@ -1,7 +1,7 @@
 {
  "voice": "Kokoro (af_heart), Apache 2.0",
  "audio": "/assets/audio/lay-of-the-land-peek.mp3",
- "duration": 846.65,
+ "duration": 851.28,
  "marks": [
   {
    "t": 0.0,
@@ -305,48 +305,48 @@
   },
   {
    "t": 769.58,
-   "key": "066e0286",
+   "key": "2fdfbefc",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 788.18,
-   "key": "5be9b259",
+   "t": 785.8,
+   "key": "06cb09e6",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 799.65,
+   "t": 804.28,
    "key": "bcc16417",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 810.2,
+   "t": 814.83,
    "key": "b7027be7",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 818.63,
+   "t": 823.25,
    "key": "24333743",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 831.13,
+   "t": 835.75,
    "key": "6e690f2b",
    "kind": "heading",
    "where": "If you feel like it"
   },
   {
-   "t": 833.53,
+   "t": 838.15,
    "key": "0ef425ca",
    "kind": "para",
    "where": "If you feel like it"
   },
   {
-   "t": 843.25,
+   "t": 847.88,
    "key": "c408fea8",
    "kind": "para",
    "where": "If you feel like it"
