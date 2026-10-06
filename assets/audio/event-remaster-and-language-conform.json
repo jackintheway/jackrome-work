@@ -1,0 +1,259 @@
+{
+ "voice": "Kokoro (af_heart), Apache 2.0",
+ "audio": "/assets/audio/event-remaster-and-language-conform.mp3",
+ "duration": 515.23,
+ "marks": [
+  {
+   "t": 0.0,
+   "key": "67035322",
+   "kind": "title",
+   "where": "Introduction"
+  },
+  {
+   "t": 3.25,
+   "key": "ac4159f7",
+   "kind": "sub",
+   "where": "Introduction"
+  },
+  {
+   "t": 14.62,
+   "key": "9d91229e",
+   "kind": "heading",
+   "where": "Part 1: keeping the timing traceable"
+  },
+  {
+   "t": 18.1,
+   "key": "ecd479c4",
+   "kind": "para",
+   "where": "Part 1: keeping the timing traceable"
+  },
+  {
+   "t": 31.25,
+   "key": "5648c15c",
+   "kind": "para",
+   "where": "Part 1: keeping the timing traceable"
+  },
+  {
+   "t": 40.77,
+   "key": "79798eba",
+   "kind": "para",
+   "where": "Part 1: keeping the timing traceable"
+  },
+  {
+   "t": 53.88,
+   "key": "62ef5c77",
+   "kind": "heading",
+   "where": "Three timelines to keep track of"
+  },
+  {
+   "t": 56.88,
+   "key": "cc75a68c",
+   "kind": "para",
+   "where": "Three timelines to keep track of"
+  },
+  {
+   "t": 69.47,
+   "key": "49110e30",
+   "kind": "para",
+   "where": "Three timelines to keep track of"
+  },
+  {
+   "t": 81.15,
+   "key": "082e0b82",
+   "kind": "heading",
+   "where": "A map between the versions"
+  },
+  {
+   "t": 83.85,
+   "key": "8fa23bd0",
+   "kind": "para",
+   "where": "A map between the versions"
+  },
+  {
+   "t": 99.62,
+   "key": "aae1c3e0",
+   "kind": "para",
+   "where": "A map between the versions"
+  },
+  {
+   "t": 116.9,
+   "key": "4a75968a",
+   "kind": "para",
+   "where": "A map between the versions"
+  },
+  {
+   "t": 135.45,
+   "key": "9a7a7ac1",
+   "kind": "para",
+   "where": "A map between the versions"
+  },
+  {
+   "t": 146.73,
+   "key": "83662cf0",
+   "kind": "heading",
+   "where": "What needed another pass"
+  },
+  {
+   "t": 149.28,
+   "key": "8045e97e",
+   "kind": "para",
+   "where": "What needed another pass"
+  },
+  {
+   "t": 162.08,
+   "key": "324704b7",
+   "kind": "para",
+   "where": "What needed another pass"
+  },
+  {
+   "t": 174.55,
+   "key": "bc3d23f7",
+   "kind": "heading",
+   "where": "Part 2: rebuilding the editable system"
+  },
+  {
+   "t": 178.15,
+   "key": "4356f3c4",
+   "kind": "para",
+   "where": "Part 2: rebuilding the editable system"
+  },
+  {
+   "t": 194.65,
+   "key": "a103b2dd",
+   "kind": "para",
+   "where": "Part 2: rebuilding the editable system"
+  },
+  {
+   "t": 212.43,
+   "key": "c3117c28",
+   "kind": "para",
+   "where": "Part 2: rebuilding the editable system"
+  },
+  {
+   "t": 228.13,
+   "key": "2008231b",
+   "kind": "para",
+   "where": "Part 2: rebuilding the editable system"
+  },
+  {
+   "t": 241.23,
+   "key": "5b98e404",
+   "kind": "para",
+   "where": "Part 2: rebuilding the editable system"
+  },
+  {
+   "t": 256.95,
+   "key": "da06daac",
+   "kind": "heading",
+   "where": "The two cards I had moved"
+  },
+  {
+   "t": 259.63,
+   "key": "217dbd14",
+   "kind": "para",
+   "where": "The two cards I had moved"
+  },
+  {
+   "t": 273.33,
+   "key": "00f7fbf0",
+   "kind": "para",
+   "where": "The two cards I had moved"
+  },
+  {
+   "t": 286.18,
+   "key": "8523ddf3",
+   "kind": "heading",
+   "where": "Part 3: following my decisions"
+  },
+  {
+   "t": 289.4,
+   "key": "42fa8ef8",
+   "kind": "para",
+   "where": "Part 3: following my decisions"
+  },
+  {
+   "t": 308.73,
+   "key": "f4b7e49d",
+   "kind": "para",
+   "where": "Part 3: following my decisions"
+  },
+  {
+   "t": 335.98,
+   "key": "38a85d36",
+   "kind": "para",
+   "where": "Part 3: following my decisions"
+  },
+  {
+   "t": 357.55,
+   "key": "948696fc",
+   "kind": "heading",
+   "where": "Who closed which gap"
+  },
+  {
+   "t": 359.93,
+   "key": "bdd22cf9",
+   "kind": "para",
+   "where": "Who closed which gap"
+  },
+  {
+   "t": 381.28,
+   "key": "99559a04",
+   "kind": "para",
+   "where": "Who closed which gap"
+  },
+  {
+   "t": 405.15,
+   "key": "f6601966",
+   "kind": "para",
+   "where": "Who closed which gap"
+  },
+  {
+   "t": 422.35,
+   "key": "9e8ab100",
+   "kind": "heading",
+   "where": "What the last check caught"
+  },
+  {
+   "t": 424.78,
+   "key": "82c02727",
+   "kind": "para",
+   "where": "What the last check caught"
+  },
+  {
+   "t": 440.58,
+   "key": "4f2a0205",
+   "kind": "para",
+   "where": "What the last check caught"
+  },
+  {
+   "t": 460.93,
+   "key": "78febe21",
+   "kind": "heading",
+   "where": "What each installment produced"
+  },
+  {
+   "t": 463.75,
+   "key": "a26923e9",
+   "kind": "heading",
+   "where": "What still needs work"
+  },
+  {
+   "t": 466.13,
+   "key": "fa734174",
+   "kind": "para",
+   "where": "What still needs work"
+  },
+  {
+   "t": 482.85,
+   "key": "9f76749e",
+   "kind": "para",
+   "where": "What still needs work"
+  },
+  {
+   "t": 503.05,
+   "key": "89f31a7c",
+   "kind": "para",
+   "where": "What still needs work"
+  }
+ ]
+}

@@ -1,0 +1,151 @@
+{
+ "voice": "Kokoro (af_heart), Apache 2.0",
+ "audio": "/assets/audio/two-track-class-edit-automation.mp3",
+ "duration": 279.98,
+ "marks": [
+  {
+   "t": 0.0,
+   "key": "a572d1cc",
+   "kind": "title",
+   "where": "Introduction"
+  },
+  {
+   "t": 4.33,
+   "key": "fa644362",
+   "kind": "sub",
+   "where": "Introduction"
+  },
+  {
+   "t": 13.4,
+   "key": "a31bba50",
+   "kind": "heading",
+   "where": "The edit"
+  },
+  {
+   "t": 15.45,
+   "key": "37641cc7",
+   "kind": "para",
+   "where": "The edit"
+  },
+  {
+   "t": 33.6,
+   "key": "4edd31bb",
+   "kind": "para",
+   "where": "The edit"
+  },
+  {
+   "t": 45.0,
+   "key": "9d8af45b",
+   "kind": "heading",
+   "where": "The rules came from my hand cuts"
+  },
+  {
+   "t": 48.02,
+   "key": "b9d09129",
+   "kind": "para",
+   "where": "The rules came from my hand cuts"
+  },
+  {
+   "t": 68.02,
+   "key": "c6e9336d",
+   "kind": "para",
+   "where": "The rules came from my hand cuts"
+  },
+  {
+   "t": 83.15,
+   "key": "d5171e78",
+   "kind": "para",
+   "where": "The rules came from my hand cuts"
+  },
+  {
+   "t": 100.1,
+   "key": "56277ffd",
+   "kind": "para",
+   "where": "The rules came from my hand cuts"
+  },
+  {
+   "t": 119.95,
+   "key": "383d8dc3",
+   "kind": "para",
+   "where": "The rules came from my hand cuts"
+  },
+  {
+   "t": 136.97,
+   "key": "3aab10fe",
+   "kind": "heading",
+   "where": "What I caught on playback"
+  },
+  {
+   "t": 139.4,
+   "key": "0ade6028",
+   "kind": "para",
+   "where": "What I caught on playback"
+  },
+  {
+   "t": 148.75,
+   "key": "18ed79d8",
+   "kind": "para",
+   "where": "What I caught on playback"
+  },
+  {
+   "t": 167.43,
+   "key": "f8a604c3",
+   "kind": "para",
+   "where": "What I caught on playback"
+  },
+  {
+   "t": 181.98,
+   "key": "9a8f9f86",
+   "kind": "para",
+   "where": "What I caught on playback"
+  },
+  {
+   "t": 196.78,
+   "key": "a60b91cf",
+   "kind": "heading",
+   "where": "What we verified"
+  },
+  {
+   "t": 199.1,
+   "key": "f95c5b9e",
+   "kind": "para",
+   "where": "What we verified"
+  },
+  {
+   "t": 218.63,
+   "key": "d33ff5da",
+   "kind": "para",
+   "where": "What we verified"
+  },
+  {
+   "t": 227.7,
+   "key": "65eca824",
+   "kind": "para",
+   "where": "What we verified"
+  },
+  {
+   "t": 246.75,
+   "key": "b4909f04",
+   "kind": "heading",
+   "where": "What still needs checking"
+  },
+  {
+   "t": 249.23,
+   "key": "fd05ca16",
+   "kind": "para",
+   "where": "What still needs checking"
+  },
+  {
+   "t": 258.75,
+   "key": "d1abfccd",
+   "kind": "para",
+   "where": "What still needs checking"
+  },
+  {
+   "t": 271.48,
+   "key": "5eb35db8",
+   "kind": "para",
+   "where": "What still needs checking"
+  }
+ ]
+}

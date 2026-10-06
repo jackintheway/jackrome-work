@@ -49,3 +49,5 @@ _private/
 # time. Create this file by hand to preview the shop locally:
 #   window.FOURTHWALL_CONFIG = { token: "ptkn_..." };
 js/fourthwall.config.js
+.venv-kokoro/
+.audio-cache/

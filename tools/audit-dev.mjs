@@ -122,7 +122,19 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(404, { "Content-Type": "text/html; charset=utf-8" });
       return res.end(fs.readFileSync(notFound));
     }
-    res.writeHead(200, { "Content-Type": TYPES[path.extname(file).toLowerCase()] || "application/octet-stream", "Cache-Control": "no-store" });
+    const type = TYPES[path.extname(file).toLowerCase()] || "application/octet-stream";
+    // Browsers seek in audio by asking for a byte range. Netlify answers
+    // those; without this, the case study recordings could not scrub here.
+    const size = fs.statSync(file).size;
+    const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || "");
+    if (range && (range[1] || range[2])) {
+      const start = range[1] ? +range[1] : Math.max(0, size - +range[2]);
+      const end = range[1] && range[2] ? Math.min(+range[2], size - 1) : size - 1;
+      res.writeHead(206, { "Content-Type": type, "Cache-Control": "no-store", "Accept-Ranges": "bytes",
+        "Content-Range": `bytes ${start}-${end}/${size}`, "Content-Length": end - start + 1 });
+      return fs.createReadStream(file, { start, end }).pipe(res);
+    }
+    res.writeHead(200, { "Content-Type": type, "Cache-Control": "no-store", "Accept-Ranges": "bytes", "Content-Length": size });
     fs.createReadStream(file).pipe(res);
   } catch (err) {
     console.error(err);

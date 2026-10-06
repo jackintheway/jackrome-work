@@ -427,8 +427,17 @@
   <button type="button" class="linkish" id="read-done">Done</button>
 </div>
 
+<!-- The peek's own closing section. tools/record-case-study.py reads it too,
+     so the recording and the page say the same words. -->
+<script type="application/json" id="closing">
+{ "heading": "If you feel like it", "paragraphs": [
+  "One small invitation, and the episode is complete without it. Close this peek and scroll to Make your own. The prompt there sets one of these up for you.",
+  "That's the lay of the land for this case study."
+] }
+</script>
 <script src="/js/case-studies.js"></script>
 <script>
+var CLOSING = JSON.parse(document.getElementById("closing").textContent);
 (function () {
   var episodes = [];
   var SOURCES = [
@@ -447,10 +456,7 @@
       sec.querySelectorAll(".prose p").forEach(function (p) { var x = p.textContent.trim(); if (x) ps.push(x); });
       if (ps.length) sections.push({ heading: h.textContent.trim(), paragraphs: ps });
     });
-    sections.push({ heading: "If you feel like it", paragraphs: [
-      "One small invitation, and the episode is complete without it. Close this peek and scroll to Make your own. The prompt there sets one of these up for you.",
-      "That's the lay of the land for this case study."
-    ] });
+    sections.push(CLOSING);
     return { id: "case-study-lay-of-the-land", date: "2026-09-22", label: "Case study",
       title: t ? t.textContent.trim() : "Lay of the Land",
       opening: sub ? sub.textContent.trim() : "", sections: sections, sources: SOURCES };

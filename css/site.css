@@ -1148,6 +1148,48 @@ ul.offer-grid {
 }
 .readaloud-bar .readaloud-stop { background: transparent; color: var(--ws-paper); }
 
+/* A recorded reading adds a second row: time, scrubber, speed, and the
+   voice credit, which only appears here, once someone has pressed play. */
+.readaloud-bar { flex-wrap: wrap; }
+.readaloud-track {
+  flex: 1 1 100%;
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3);
+  font-variant-numeric: tabular-nums;
+}
+.readaloud-track[hidden] { display: none; }
+.readaloud-track input[type=range] {
+  flex: 1 1 8rem; min-width: 0; height: 28px; margin: 0; cursor: pointer;
+  background: transparent; -webkit-appearance: none; appearance: none;
+}
+.readaloud-track input[type=range]::-webkit-slider-runnable-track {
+  height: 8px; border: 2px solid var(--ws-paper); border-radius: 999px;
+  background: linear-gradient(to right, var(--ws-orange) var(--fill, 0%), transparent var(--fill, 0%));
+}
+.readaloud-track input[type=range]::-moz-range-track {
+  height: 8px; border: 2px solid var(--ws-paper); border-radius: 999px; background: transparent;
+}
+.readaloud-track input[type=range]::-moz-range-progress { height: 8px; border-radius: 999px; background: var(--ws-orange); }
+.readaloud-track input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 18px; height: 18px; margin-top: -7px; border-radius: 50%;
+  border: 2px solid var(--ws-black); background: var(--ws-yellow);
+}
+.readaloud-track input[type=range]::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ws-black); background: var(--ws-yellow);
+}
+.readaloud-track input[type=range]:focus-visible { outline: 3px solid var(--ws-yellow); outline-offset: 3px; }
+.readaloud-bar .readaloud-rate { padding: var(--space-1) var(--space-3); background: var(--ws-yellow); text-transform: none; }
+.readaloud-credit {
+  flex: 1 1 100%;
+  font-weight: var(--fw-medium, 500); font-size: 12px; letter-spacing: 0.02em; opacity: 0.75;
+}
+/* While a recording plays, any paragraph can be tapped to jump there. */
+.is-recorded main .section-title,
+.is-recorded main .prose p,
+.is-recorded main .prose li,
+.is-recorded .hero-title,
+.is-recorded .hero-sub { cursor: pointer; }
+body.is-recorded { padding-bottom: 140px; }
+
 /* The Lay of the Land peek: the case study played as an episode, in a
    phone-sized frame on wide screens and full screen on a phone. */
 .peek-dialog {
