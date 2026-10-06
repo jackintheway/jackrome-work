@@ -1,7 +1,7 @@
 {
  "voice": "Kokoro (af_heart), Apache 2.0",
  "audio": "/assets/audio/lay-of-the-land.mp3",
- "duration": 859.35,
+ "duration": 858.65,
  "marks": [
   {
    "t": 0.0,
@@ -101,252 +101,252 @@
   },
   {
    "t": 232.15,
-   "key": "4754e1d4",
+   "key": "781af657",
    "kind": "para",
    "where": "Routes I didn't take"
   },
   {
-   "t": 259.25,
+   "t": 256.75,
    "key": "61b2552a",
    "kind": "heading",
    "where": "Casting the net"
   },
   {
-   "t": 261.55,
+   "t": 259.05,
    "key": "3a22597f",
    "kind": "para",
    "where": "Casting the net"
   },
   {
-   "t": 270.93,
+   "t": 268.43,
    "key": "f29e982d",
    "kind": "para",
    "where": "Casting the net"
   },
   {
-   "t": 296.95,
+   "t": 294.45,
    "key": "9a86308f",
    "kind": "para",
    "where": "Casting the net"
   },
   {
-   "t": 310.8,
+   "t": 308.3,
    "key": "2d315c1f",
    "kind": "heading",
    "where": "A page that plays"
   },
   {
-   "t": 313.28,
+   "t": 310.78,
    "key": "a0c8cbbe",
    "kind": "para",
    "where": "A page that plays"
   },
   {
-   "t": 337.45,
+   "t": 334.95,
    "key": "677c8dea",
    "kind": "heading",
    "where": "What went wrong"
   },
   {
-   "t": 339.6,
+   "t": 337.1,
    "key": "ca538656",
    "kind": "para",
    "where": "What went wrong"
   },
   {
-   "t": 359.95,
+   "t": 357.45,
    "key": "d741e340",
    "kind": "para",
    "where": "What went wrong"
   },
   {
-   "t": 384.18,
+   "t": 381.68,
    "key": "353a48ab",
    "kind": "para",
    "where": "What went wrong"
   },
   {
-   "t": 404.68,
+   "t": 402.18,
    "key": "74a4e677",
    "kind": "heading",
    "where": "The first run"
   },
   {
-   "t": 406.9,
+   "t": 404.4,
    "key": "d963bffe",
    "kind": "para",
    "where": "The first run"
   },
   {
-   "t": 418.65,
+   "t": 416.15,
    "key": "da24b479",
    "kind": "para",
    "where": "The first run"
   },
   {
-   "t": 447.03,
+   "t": 444.53,
    "key": "5487dc3b",
    "kind": "heading",
    "where": "An archive in my vault"
   },
   {
-   "t": 449.65,
+   "t": 447.15,
    "key": "75e806c3",
    "kind": "para",
    "where": "An archive in my vault"
   },
   {
-   "t": 466.05,
+   "t": 463.55,
    "key": "072d6416",
    "kind": "para",
    "where": "An archive in my vault"
   },
   {
-   "t": 491.38,
+   "t": 488.88,
    "key": "797e82ec",
    "kind": "para",
    "where": "An archive in my vault"
   },
   {
-   "t": 513.12,
+   "t": 510.63,
    "key": "805f7365",
    "kind": "heading",
    "where": "Capturing my notes"
   },
   {
-   "t": 515.5,
+   "t": 513.0,
    "key": "907bade2",
    "kind": "para",
    "where": "Capturing my notes"
   },
   {
-   "t": 538.4,
+   "t": 535.9,
    "key": "5973adbd",
    "kind": "para",
    "where": "Capturing my notes"
   },
   {
-   "t": 561.1,
+   "t": 558.6,
    "key": "8eed34ca",
    "kind": "para",
    "where": "Capturing my notes"
   },
   {
-   "t": 571.48,
+   "t": 568.98,
    "key": "24580fee",
    "kind": "para",
    "where": "Capturing my notes"
   },
   {
-   "t": 588.83,
+   "t": 586.33,
    "key": "05e896c6",
    "kind": "heading",
    "where": "A real play button"
   },
   {
-   "t": 591.3,
+   "t": 588.8,
    "key": "495d071c",
    "kind": "para",
    "where": "A real play button"
   },
   {
-   "t": 604.08,
-   "key": "5bcd1a73",
+   "t": 601.58,
+   "key": "503469ef",
    "kind": "para",
    "where": "A real play button"
   },
   {
-   "t": 622.48,
-   "key": "35729b04",
+   "t": 621.4,
+   "key": "2c497a47",
    "kind": "para",
    "where": "A real play button"
   },
   {
-   "t": 647.93,
+   "t": 647.28,
    "key": "5c7b3e14",
    "kind": "para",
    "where": "A real play button"
   },
   {
-   "t": 669.78,
+   "t": 669.13,
    "key": "684fc855",
    "kind": "para",
    "where": "A real play button"
   },
   {
-   "t": 690.53,
+   "t": 689.88,
    "key": "96b4fbc8",
    "kind": "para",
    "where": "A real play button"
   },
   {
-   "t": 700.53,
+   "t": 699.88,
    "key": "fb1152a3",
    "kind": "para",
    "where": "A real play button"
   },
   {
-   "t": 735.68,
+   "t": 735.03,
    "key": "520f9681",
    "kind": "para",
    "where": "A real play button"
   },
   {
-   "t": 747.65,
-   "key": "862edc09",
+   "t": 747.0,
+   "key": "cd9e4d92",
    "kind": "para",
    "where": "A real play button"
   },
   {
-   "t": 764.03,
+   "t": 763.33,
    "key": "7c0a4e0f",
    "kind": "heading",
    "where": "Still open"
   },
   {
-   "t": 766.18,
+   "t": 765.48,
    "key": "b9ffe85b",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 775.45,
+   "t": 774.75,
    "key": "066e0286",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 794.05,
+   "t": 793.35,
    "key": "5be9b259",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 805.53,
+   "t": 804.83,
    "key": "bcc16417",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 816.08,
+   "t": 815.38,
    "key": "b7027be7",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 824.5,
+   "t": 823.8,
    "key": "24333743",
    "kind": "para",
    "where": "Still open"
   },
   {
-   "t": 837.0,
+   "t": 836.3,
    "key": "4e2147ee",
    "kind": "heading",
    "where": "Make your own"
   },
   {
-   "t": 839.15,
+   "t": 838.45,
    "key": "4c711aae",
    "kind": "para",
    "where": "Make your own"
