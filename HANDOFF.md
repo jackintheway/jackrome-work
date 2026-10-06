@@ -114,12 +114,13 @@ Recorded audio for every case study, and the Lay of the Land audio story.
   in CLAUDE.md, "Case study recordings".
 - Lay of the Land copy: new "A real play button" section from the exhibit in
   `_exhibits/lay-of-the-land-audio/` (Jack's), plus fixes to "Routes I didn't
-  take", "A page that plays" and "Still open". Awaiting Jack's read.
+  take", "A page that plays" and "Still open". Jack ran red-pen on it and
+  applied all four flags; he chose to leave "That morning's" as written.
 - Two "Still open" lines are left as published for Jack's own update: whether
   it changed how much he scrolls, and daily cost.
-- Checked locally: playback, jump, speed, stale fallback, 375px width, build
-  check. Not checked: iPhone lock screen, live Netlify serving.
-- Committed, not pushed (a push deploys). Needs Jack's go.
+- Pushed 090eda5 on Jack's go and verified live: all four JSON files match,
+  MP3s serve as audio/mpeg with range support (206), pages 200, and playback
+  plus tap to jump work on jackrome.work. Still not checked: iPhone lock screen.
 
 ## Earlier checkpoint: 2026-10-05, Claude Code
 
