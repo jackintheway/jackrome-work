@@ -558,6 +558,12 @@ chose this on 2026-10-06 so the site sounds like the real Lay of the Land.
 
 `--check` names any recording whose page has changed. Recording takes about a
 minute, and only changed paragraphs are rendered (cache in `.audio-cache/`).
+
+**Tell Jack, too.** Run `--check` at the start of any session that touches a
+case study and before any push, since Jack sometimes edits pages by hand. If a
+recording is stale, say which one and offer to re-record it. When a session
+edits case study prose, end by telling Jack the recordings were re-recorded (or
+that they need it), with the two commands above, so he knows the step exists.
 An edit never breaks a page: each line carries a fingerprint, and if any line
 no longer matches, the players use the device voice until it is re-recorded.
 A new case study needs `data-recording="/assets/audio/<slug>.json"` on its
