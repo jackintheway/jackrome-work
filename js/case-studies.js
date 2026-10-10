@@ -28,6 +28,9 @@
    client needs his specific approval. Public Production credits and
    attributed testimonials remain as previously approved.
 
+   ORDER is newest first: a new case study goes at the top of this
+   array, unless Jack asks for a different order (his call, 2026-10-10).
+
    TAGS come from a small fixed vocabulary so they stay scannable
    down the page, the same discipline `production.js` uses for roles:
    Scripting, Rule derivation, Verification, Transcript analysis,
@@ -35,22 +38,13 @@
    ============================================================ */
 const CASE_STUDIES = [
   {
-    slug: "two-track-class-edit-automation",
-    title: "Automating a two-track class edit from a transcript",
-    meta: "Video post-production, 2026",
-    tags: ["Scripting", "Rule derivation", "Verification", "Video post-production"],
-    lead: "I worked with Claude to turn my hand cuts into timing rules, then checked the scripted edit against the saved Premiere project.",
-    summary: "The work combined a transcript cue sheet, in-place editing scripts, and checks across two video and two audio tracks. A slide request I caught on playback led to a second way to detect mistranscribed cues.",
-    result: "A 92-minute recording became a verified 34:13 teaching cut after an end trim and scripted removals. Two later corrections were verified as gaps; their final closure remained unverified in the session record."
-  },
-  {
-    slug: "event-remaster-and-language-conform",
-    title: "Remastering an event with Codex",
-    meta: "Video post-production, 2026",
-    tags: ["Scripting", "Verification", "Video post-production", "Safety design"],
-    lead: "I worked with Codex on three installments of a remaster while continuing to make editing decisions by hand.",
-    summary: "Part 1 mapped an existing Spanish recording to a revised timeline. Part 2 rebuilt the editable graphics system and exposed a mistake in the final check: it reset two card positions I had changed on purpose. In Part 3, I chose the cut points by ear and Codex closed the gaps around them.",
-    result: "The two positions were restored. Part 2 produced an editable graphics project and 35 card renders, and I reported its English broadcast. Part 3's four automated closures checked out in the saved project, and its English version is exported. The Spanish versions are on hold."
+    slug: "fair-share",
+    title: "/fair-share, AI work that respects the reader",
+    meta: "Personal tool, 2026",
+    tags: ["Verification"],
+    lead: "I worked with Claude to build a skill that checks AI-assisted work from both sides of a handoff: the person who received it and the person about to send it.",
+    summary: "Inbound pulls out the point and the asks. Outbound traces weak output back to gaps in the prompt that made it, and returns a better prompt. Testing it on my own draft led to a third direction, crossbound, for shared drafts still in progress.",
+    result: "Three tests gave three verdicts, and each one added a rule. It hasn't been tested yet on a long internal document from a coworker, the case it was designed for."
   },
   {
     slug: "lay-of-the-land",
@@ -62,13 +56,22 @@ const CASE_STUDIES = [
     result: "The first test run took 4 minutes and 19 seconds: 1,298 words, 22 sources, a duplicate entry caught before publishing, and a notification on my phone. Whether it changes how much I scroll is still open."
   },
   {
-    slug: "fair-share",
-    title: "/fair-share, AI work that respects the reader",
-    meta: "Personal tool, 2026",
-    tags: ["Verification"],
-    lead: "I worked with Claude to build a skill that checks AI-assisted work from both sides of a handoff: the person who received it and the person about to send it.",
-    summary: "Inbound pulls out the point and the asks. Outbound traces weak output back to gaps in the prompt that made it, and returns a better prompt. Testing it on my own draft led to a third direction, crossbound, for shared drafts still in progress.",
-    result: "Three tests gave three verdicts, and each one added a rule. It hasn't been tested yet on a long internal document from a coworker, the case it was designed for."
+    slug: "event-remaster-and-language-conform",
+    title: "Remastering an event with Codex",
+    meta: "Video post-production, 2026",
+    tags: ["Scripting", "Verification", "Video post-production", "Safety design"],
+    lead: "I worked with Codex on three installments of a remaster while continuing to make editing decisions by hand.",
+    summary: "Part 1 mapped an existing Spanish recording to a revised timeline. Part 2 rebuilt the editable graphics system and exposed a mistake in the final check: it reset two card positions I had changed on purpose. In Part 3, I chose the cut points by ear and Codex closed the gaps around them.",
+    result: "The two positions were restored. Part 2 produced an editable graphics project and 35 card renders, and I reported its English broadcast. Part 3's four automated closures checked out in the saved project, and its English version is exported. The Spanish versions are on hold."
+  },
+  {
+    slug: "two-track-class-edit-automation",
+    title: "Automating a two-track class edit from a transcript",
+    meta: "Video post-production, 2026",
+    tags: ["Scripting", "Rule derivation", "Verification", "Video post-production"],
+    lead: "I worked with Claude to turn my hand cuts into timing rules, then checked the scripted edit against the saved Premiere project.",
+    summary: "The work combined a transcript cue sheet, in-place editing scripts, and checks across two video and two audio tracks. A slide request I caught on playback led to a second way to detect mistranscribed cues.",
+    result: "A 92-minute recording became a verified 34:13 teaching cut after an end trim and scripted removals. Two later corrections were verified as gaps; their final closure remained unverified in the session record."
   }
 ];
 

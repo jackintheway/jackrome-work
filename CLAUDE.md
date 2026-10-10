@@ -536,6 +536,10 @@ after. The data file is the expensive thing to retrofit; the hub page is cheap
 to add later, so the expensive thing got built first. Adding a case study is
 adding an object plus a page.
 
+**Newest first.** The case study list runs in reverse order of creation, so
+a new case study goes at the top of the array, unless Jack asks for a
+different order (his call, 2026-10-10).
+
 **There is no `/case-studies` index yet, on purpose.** Jack approved keeping the
 case studies on AI Portfolio and adding direct section links from its hero
 and both service pages. The bare path still 301s to `/ai-portfolio`. Revisit the
