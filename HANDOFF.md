@@ -100,7 +100,14 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-10-06, Claude Code
+## Current checkpoint: 2026-10-10, Claude Code
+
+- **Added `/stdare-publisher-privacy`** (Jack's go, Oct 10): the privacy policy Google requires before the ST. DARE Publisher OAuth app (the YouTube tool in the st-dare repo) can leave Testing. Built from the 404 shell; noindex and out of the sitemap; its own share card (`card-stdare-publisher-privacy`); added to the build allowlist. Contact jackintheway@gmail.com.
+- **Committed and pushed** as 7ef763e, together with the two earlier unpushed commits (edca2ff, b497cab). One production deploy.
+- **Verified live:** the page and its card both return 200 at jackrome.work.
+- **Next:** nothing on the site. The page is linked from the Google Cloud consent screen's Branding page; if the tool's data use changes, update the page text.
+
+## Earlier checkpoint: 2026-10-06, Claude Code
 
 Recorded audio for every case study, and the Lay of the Land audio story.
 
