@@ -100,7 +100,17 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-10-10, Claude Code
+## Current checkpoint: 2026-10-10 (evening), Claude Code
+
+- **Built the fourth case study, `/case-studies/fair-share`**, from `_exhibits/fair-share/CASE-STUDY.md` after Jack's line-by-line read (his gate). The skill is styled `/fair-share` everywhere, per Jack. One typo fixed on the page and in the source ("can already handles" to "handle"). Sources link out in new tabs (HBR, The Decoder, The Knowledge Project, arXiv 2609.13786). The newsletter stays unnamed.
+- **Two diagrams in HTML and CSS** (Jack chose this over the exhibit's PNG): three directions on one handoff, which stacks into one flow on phones, and three tests with their verdicts and the rule each added. Checked at desktop and 375px with no horizontal scroll.
+- **Kokoro recording** (6:48); the recorder now says /fair-share as "slash fair share". `--check` reports all five recordings current.
+- **Share card** `card-case-fair-share` (same green family), full Open Graph set checked; sitemap (78 pages) and Find something index refreshed; `build-site.py --check` passes.
+- **Case studies now list newest first** (Jack's default from now on, recorded in CLAUDE.md). /fair-share is at the top.
+- **Commits a17b557 to 411048f, local only. Not pushed:** Jack's go is needed for the deploy.
+- **Next:** Jack reviews the local preview, then says go to push. After the Substack essay is live (late October), the two can link to each other.
+
+## Earlier checkpoint: 2026-10-10, Claude Code
 
 - **Added `/jackintheway-youtube-privacy`** (Jack's go, Oct 10): the same kind of page for jackintheway-youtube, the YouTube tool for Jack's own channel (`~/workspace/jackintheway-youtube`, its own Google Cloud project). Copied from the ST. DARE page with the names and the single owner changed; noindex, out of the sitemap, own share card, on the build allowlist. Pushed with the ST. DARE handoff commit (one deploy).
 - **Added `/stdare-publisher-privacy`** (Jack's go, Oct 10): the privacy policy Google requires before the ST. DARE Publisher OAuth app (the YouTube tool in the st-dare repo) can leave Testing. Built from the 404 shell; noindex and out of the sitemap; its own share card (`card-stdare-publisher-privacy`); added to the build allowlist. Contact jackintheway@gmail.com.
