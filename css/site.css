@@ -1097,6 +1097,130 @@ ul.offer-grid {
 .access-chips span { padding: 0 var(--space-2); background: var(--ws-orange); border: var(--rule); font-size: var(--fs-small); }
 .access-chips .is-none { background: transparent; border-style: dashed; }
 
+/* /fair-share: three directions on one handoff. Sender, the work and the
+   reader sit in a row with a check above or below each arrow, the same
+   layout as the exhibit's SVG. Source order is the mobile reading order
+   (sender, outbound, the work, crossbound, inbound, reader), so phones and
+   screen readers get the handoff as one flow. */
+.handoff-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--space-7) minmax(0, 1fr) var(--space-7) minmax(0, 1fr);
+  grid-template-areas:
+    "out out . in in"
+    "snd a1 wrk a2 rdr"
+    ". cross cross cross .";
+  row-gap: var(--space-6);
+  align-items: center;
+}
+.handoff-party {
+  padding: var(--space-4) var(--space-3);
+  border: var(--rule);
+  text-align: center;
+  font-size: var(--fs-small);
+}
+.handoff-party strong { display: block; font-family: var(--font-heading); font-weight: var(--fw-black); font-size: var(--fs-h3); }
+.handoff-party.is-sender { grid-area: snd; background: var(--ws-orange); }
+.handoff-party.is-work { grid-area: wrk; background: var(--ws-paper); }
+.handoff-party.is-reader { grid-area: rdr; background: var(--ws-blue); color: var(--ws-white); }
+.handoff-arrow { position: relative; height: 2px; background: var(--ws-black); }
+.handoff-arrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 7px solid transparent;
+  border-left: 10px solid var(--ws-black);
+  border-right: 0;
+}
+.handoff-arrow span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border: var(--rule);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.handoff-arrow.is-a1 { grid-area: a1; }
+.handoff-arrow.is-a2 { grid-area: a2; }
+.handoff-arrow.is-a1 span { background: var(--ws-orange); }
+.handoff-arrow.is-a2 span { background: var(--ws-blue); }
+.handoff-check {
+  position: relative;
+  align-self: stretch;
+  border: var(--rule);
+  background: var(--ws-white);
+  font-size: var(--fs-small);
+}
+.handoff-check h3 {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--rule);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-black);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.handoff-check p { margin: 0; padding: var(--space-3); }
+.handoff-check p strong { display: block; }
+.handoff-check.is-out { grid-area: out; }
+.handoff-check.is-in { grid-area: in; }
+.handoff-check.is-cross { grid-area: cross; }
+.handoff-check.is-out h3 { background: var(--ws-orange); }
+.handoff-check.is-in h3 { background: var(--ws-blue); color: var(--ws-white); }
+.handoff-check.is-cross h3 { background: var(--ws-green); }
+/* Dashed leads from each check to the point it watches: the dot on its
+   arrow, or the work itself for crossbound. */
+.handoff-check::after {
+  content: "";
+  position: absolute;
+  height: var(--space-6);
+  border-left: 2px dashed var(--ws-black);
+}
+.handoff-check.is-out::after { top: 100%; right: calc(var(--space-7) / 2 - 1px); }
+.handoff-check.is-in::after { top: 100%; left: calc(var(--space-7) / 2 - 1px); }
+.handoff-check.is-cross::after { bottom: 100%; left: calc(50% - 1px); }
+.handoff-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0 var(--space-3) var(--space-3); }
+.verdict-pill {
+  display: inline-block;
+  padding: 0 var(--space-3);
+  border: var(--rule);
+  border-radius: 999px;
+  background: var(--ws-paper);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+}
+
+/* /fair-share: three tests, each with its verdict and the rule it added. */
+.tests-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.tests-list > li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) auto minmax(0, 2fr);
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--space-4);
+  border: var(--rule);
+  background: var(--ws-paper);
+}
+.tests-sample strong { display: block; font-family: var(--font-heading); font-size: var(--fs-body); }
+.tests-mode {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  padding: 0 var(--space-2);
+  border: var(--rule);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.tests-mode.is-in { background: var(--ws-blue); color: var(--ws-white); }
+.tests-mode.is-out { background: var(--ws-orange); }
+.tests-change { margin: 0; display: grid; gap: var(--space-3); font-size: var(--fs-small); }
+.tests-change dt { font-weight: var(--fw-bold); }
+.tests-change dd { margin: 0; }
+
 /* A prompt a reader can take with them. A native details element opens it
    in place, so the page needs no modal and only a few lines of script for
    the copy button. The summary wears the site's button. */
@@ -1226,4 +1350,24 @@ body.is-recorded { padding-bottom: 140px; }
   .edit-stages { grid-template-columns: 1fr; }
   .edit-track { grid-template-columns: 1fr repeat(3, 1.3fr); }
   .edit-track span { padding: var(--space-2) var(--space-1); }
+  /* The handoff becomes one column read top to bottom, arrows pointing down. */
+  .handoff-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "snd" "out" "a1" "wrk" "cross" "a2" "in" "rdr";
+    row-gap: var(--space-4);
+  }
+  .handoff-check::after { display: none; }
+  .handoff-arrow { justify-self: center; width: 2px; height: var(--space-7); }
+  .handoff-arrow::after {
+    right: auto;
+    top: auto;
+    left: 50%;
+    bottom: -2px;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top: 10px solid var(--ws-black);
+    border-bottom: 0;
+  }
+  .tests-list > li { grid-template-columns: minmax(0, 1fr) auto; }
+  .tests-change { grid-column: 1 / -1; }
 }
