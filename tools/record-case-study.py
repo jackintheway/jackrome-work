@@ -57,6 +57,7 @@ SAY = {
     r"(\d) MB\b": r"\1 megabytes",
     r"(\d) GB\b": r"\1 gigabyte",
     r"(?<!\w)/listen\b": "slash listen",
+    r"(?<!\w)/fair-share\b": "slash fair share",
 }
 
 
