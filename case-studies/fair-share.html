@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>/fair-share | Case study | Jack Rome</title>
+  <meta name="description" content="Building a Claude skill that checks AI-assisted work from both sides of a handoff, and the test that turned out to be about me.">
+  <link rel="canonical" href="https://jackrome.work/case-studies/fair-share">
+
+  <!-- Link previews. Same rules as every other page: og:image absolute,
+       twitter:card set to summary_large_image, card generated from
+       tools/og/ so it inherits the design system.
+       Source: tools/og/card-case-fair-share.html -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Jack Rome">
+  <meta property="og:url" content="https://jackrome.work/case-studies/fair-share">
+  <meta property="og:title" content="AI work that respects the reader.">
+  <meta property="og:description" content="Building a Claude skill that checks AI-assisted work from both sides of a handoff, and the test that turned out to be about me.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-case-fair-share.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AI work that respects the reader. A case study by Jack Rome.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI work that respects the reader.">
+  <meta name="twitter:description" content="Building a Claude skill that checks AI-assisted work from both sides of a handoff, and the test that turned out to be about me.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-case-fair-share.png">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main">
+    <a class="nav-mark" href="/">Jack Rome</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-link" href="/about">About</a>
+      <div class="nav-group">
+        <span class="nav-group-label">Services</span>
+        <a class="nav-link" href="/ai-enablement">AI Enablement</a>
+        <a class="nav-link" href="/production">Production</a>
+      </div>
+      <a class="nav-link" href="/ai-portfolio">AI Portfolio</a>
+      <a class="nav-link" href="/wayspace">Wayspace</a>
+      <a class="nav-link is-external" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow ws-overline"><a class="hero-eyebrow-link" href="/ai-portfolio">&larr; AI Portfolio</a> &middot; Case study</p>
+      <h1 class="hero-title">/fair-share: AI work that respects the reader.</h1>
+      <p class="hero-sub">/fair-share is a Claude skill that checks AI-assisted work from both sides of a handoff: the person who received it and the person about to send it. Most of what makes it worth showing came from testing it, including the test that turned out to be about me.</p>
+      <div class="btn-row"><button class="btn btn-yellow" type="button" data-listen data-recording="/assets/audio/fair-share.json">Listen to this case study</button></div>
+    </div>
+  </header>
+
+  <main class="page page-narrow" id="main">
+
+    <nav class="page-contents" aria-label="On this page">
+      <span class="page-contents-label">On this page</span>
+      <a href="#phraseTitle">The phrase</a>
+      <a href="#routesTitle">Routes I didn&#x27;t keep</a>
+      <a href="#madeTitle">Where it&#x27;s made</a>
+      <a href="#testsTitle">Three tests</a>
+      <a href="#meTitle">The test about me</a>
+      <a href="#wrongTitle">What went wrong</a>
+      <a href="#openTitle">Still open</a>
+    </nav>
+
+    <section class="section" aria-labelledby="phraseTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="phraseTitle">A phrase that named something I already knew</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>A newsletter I read used a term I'd started seeing everywhere: the slop grenade. The phrase comes from Shopify, where Harry Brundage coined it and the CEO, Tobi Lütke, made it public on <a href="https://fs.blog/knowledge-project-podcast/tobi-lutke-3/" target="_blank" rel="noopener">a podcast</a>. Someone asks AI for a lot, gets a lot, and passes it along unread. The person who receives it then absorbs the cost of figuring out what it says.</p>
+        <p><a href="https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity" target="_blank" rel="noopener">Researchers at Stanford and BetterUp</a> have a broader name for it, workslop: AI output that looks finished but doesn't move a task forward. In their survey, roughly four in ten U.S. desk workers had received some in the past month, and each one took close to two hours to deal with. But what really stuck out to me was that <a href="https://the-decoder.com/ai-generated-workslop-is-costing-companies-millions-and-hurting-team-morale-study-finds/" target="_blank" rel="noopener">42 percent</a> said they trusted the coworker who sent it less.</p>
+        <p>I think most people who send it are overworked, and a tool that writes 15 pages in a minute feels like relief. I do want people to have that relief, but I also want us to be able to trust the work we hand each other.</p>
+        <p>The newsletter's author offered a rule I liked: never send AI work that takes the reader longer to understand than it took you to make. I wanted a tool that applied it.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="routesTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="routesTitle">Names and routes I didn't keep</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>My first two names, Slop Mop and Slop Guard, were both taken, four times between them. Every one of those tools works on style (does this sound like AI?) or on feeds. None of them looked at the handoff between two colleagues, which is the relationship, where the focus should really be.</p>
+        <p>I also set aside a rewriting editor for the sending side. A rewrite that happens without the writer seeing it doesn't teach them anything, and a red-pen skill can already handle line edits, so /fair-share diagnoses and hands revisions there.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="madeTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="madeTitle">When the grenade is actually made</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>Claude's first sketch split the idea into two tools, one for each side. I wanted one skill that starts with a single intake question: did you receive this, or are you about to send it? Inbound and outbound run on the same diagnosis, with different outputs.</p>
+        <p>Slop grenades usually come from an incomplete prompt that asks for a lot, so the sending side should coach rather than just edit. Outbound mode traces weak output back to likely gaps in the prompt that made it: no audience named, no length, no source material, nothing marked as most important. It returns a better prompt along with the diagnosis. It presents those causes as likely, never as verdicts, because inferring a prompt from its output is the least reliable thing the skill does.</p>
+        <p>So inbound protects the person receiving, and outbound helps the person sending get better.</p>
+        <p>Claude offered a list of skill names, and I chose /fair-share because working with AI is still working with colleagues. A <a href="https://arxiv.org/abs/2609.13786" target="_blank" rel="noopener">recent paper on etiquette for AI-supported work</a> describes what recipients expect from coworkers: a review pass before sharing, and a declaration of how much the tool did and how finished the work is. That's close to the sending side of this skill, written as research.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="testsTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="testsTitle">Three tests</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p><strong>A tight newsletter.</strong> I ran inbound mode on the newsletter that started this. It passed. That exposed the first gap: the output template assumed something was wrong. The /fair-share skill now has three verdicts (Passes, Mixed, Slop), and "this is fine" counts as a useful result. Public content also gets "what to verify before you repeat it" instead of questions to send back to a colleague.</p>
+        <p><strong>A padded news post.</strong> I asked Claude to find a real example online instead of writing a fake one. It found an agency's news post about slop grenades, where the real reporting sat under a ten-question FAQ that restated the body almost line for line. That became the Mixed verdict and a repetition check. The post also confirmed a figure the first test had marked unverified, so the skill now says plainly that unverified doesn't mean false.</p>
+        <p><strong>My own first draft.</strong> For outbound mode I didn't want to stage a fake mistake. I needed this case study anyway, so I gave a separate Claude chat a one-line prompt for it and pasted back the result untouched. /fair-share labeled it Draft. The structure and voice were good, but five claims about the skill were wrong. It said the skill "never grades," about a skill that issues verdicts. It said the skill doesn't guess at authorship, two paragraphs after saying it flags writing that "looks like it was generated." The prompt trace found the cause: the skill file was never in front of the chat that wrote about it. That test added a contradiction check.</p>
+      </div>
+
+      <figure class="edit-diagram tests-diagram" aria-labelledby="testsCaption">
+        <figcaption id="testsCaption">Each test broke something, and each break became a rule</figcaption>
+        <ol class="tests-list">
+          <li>
+            <div class="tests-sample"><span class="tests-mode is-in">Inbound</span><strong>A tight newsletter</strong></div>
+            <div class="tests-verdict"><span class="verdict-pill">Passes</span></div>
+            <dl class="tests-change">
+              <div><dt>What broke</dt><dd>The output assumed something was wrong.</dd></div>
+              <div><dt>What it added</dt><dd>A Passes verdict, and "what to verify before you repeat it" for public content.</dd></div>
+            </dl>
+          </li>
+          <li>
+            <div class="tests-sample"><span class="tests-mode is-in">Inbound</span><strong>A padded news post</strong></div>
+            <div class="tests-verdict"><span class="verdict-pill">Mixed</span></div>
+            <dl class="tests-change">
+              <div><dt>What broke</dt><dd>Real reporting sat under an FAQ that restated it.</dd></div>
+              <div><dt>What it added</dt><dd>A Mixed verdict, a repetition check, and "unverified doesn't mean false."</dd></div>
+            </dl>
+          </li>
+          <li>
+            <div class="tests-sample"><span class="tests-mode is-out">Outbound</span><strong>My own first draft</strong></div>
+            <div class="tests-verdict"><span class="verdict-pill">Draft</span></div>
+            <dl class="tests-change">
+              <div><dt>What broke</dt><dd>Five claims about the skill were wrong, and two contradicted each other.</dd></div>
+              <div><dt>What it added</dt><dd>A contradiction check, and crossbound.</dd></div>
+            </dl>
+          </li>
+        </ol>
+        <p class="diagram-note">Schematic, not a reproduction of any tested text.</p>
+      </figure>
+    </section>
+
+    <section class="section" aria-labelledby="meTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="meTitle">The test that was about me</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>That draft also included the line "some of my own drafts went out sounding like I hadn't read them." /fair-share flagged it as a claim only I could confirm.</p>
+        <p>Honestly, it isn't quite true. I prepare carefully before any task, with voice skills, context files, and examples. But in shared drafts that everyone knows are unfinished, I rely too much on the grace of my peers to catch what I didn't check.</p>
+        <p>That work is neither inbound nor outbound, so I named it crossbound. /fair-share now gives a crossbound draft a short handoff note: how rough it is, what I need from the reader, and what I didn't check. My collaborators were already giving me that grace, and the note just says it out loud so we've both agreed to it.</p>
+      </div>
+
+      <figure class="edit-diagram handoff-diagram" aria-labelledby="handoffCaption">
+        <figcaption id="handoffCaption">Three directions on one handoff</figcaption>
+        <div class="handoff-grid">
+          <div class="handoff-party is-sender"><strong>Sender</strong><span>the person sending it</span></div>
+          <div class="handoff-check is-out">
+            <h3>Outbound</h3>
+            <p><strong>Finished work, before you send it</strong> Returns a verdict, the likely prompt gap, and a better prompt</p>
+            <div class="handoff-pills"><span class="verdict-pill">Ready</span><span class="verdict-pill">Draft</span><span class="verdict-pill">Not yet</span></div>
+          </div>
+          <div class="handoff-arrow is-a1" aria-hidden="true"><span></span></div>
+          <div class="handoff-party is-work"><strong>The work</strong><span>a doc, an email, a draft</span></div>
+          <div class="handoff-check is-cross">
+            <h3>Crossbound</h3>
+            <p><strong>A shared draft, still in progress</strong> Returns a short handoff note: how rough it is, what I need from you, and what I didn't check</p>
+          </div>
+          <div class="handoff-arrow is-a2" aria-hidden="true"><span></span></div>
+          <div class="handoff-check is-in">
+            <h3>Inbound</h3>
+            <p><strong>Work you received</strong> Returns the point, the asks, the claims to check, and kind questions back</p>
+            <div class="handoff-pills"><span class="verdict-pill">Passes</span><span class="verdict-pill">Mixed</span><span class="verdict-pill">Slop</span></div>
+          </div>
+          <div class="handoff-party is-reader"><strong>Reader</strong><span>the person receiving it</span></div>
+        </div>
+        <p class="diagram-note">Schematic. The labels are the skill's own; no tested text appears here.</p>
+      </figure>
+    </section>
+
+    <section class="section" aria-labelledby="wrongTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="wrongTitle">What went wrong along the way</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>Claude's own read-time estimates were loose. It called the newsletter about 330 words and my draft about 450. Counted, they were about 305 and 362. Those are small misses, but this is a tool that measures other people's padding, so word counts should be computed.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="openTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="openTitle">Still open</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>It has been tested on three samples (actually four, if you include this case study!): one newsletter, one news post, and one of my own drafts. None was a long internal document from a coworker, which is the case it was designed for.</p>
+        <p>I haven't measured how often the prompt trace guesses right.</p>
+        <p>Nobody but me has used it yet, and the threshold that keeps it quiet on short items (about 250 words) is a starting guess.</p>
+      </div>
+    </section>
+
+    <div class="btn-row">
+      <a class="btn" href="/ai-portfolio">&larr; Back to AI Portfolio</a>
+      <a class="btn btn-secondary" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-identity">
+      <span class="footer-line">Jack Rome</span>
+      <span class="footer-line footer-sub">Technology, made human</span>
+      <span class="footer-line footer-sub">Maryland</span>
+    </span>
+    <span class="footer-links">
+      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="mailto:jackintheway@gmail.com?subject=Inquiry%20for%20Jack%20Rome">Reach out</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.linkedin.com/in/jackrome/" target="_blank" rel="noopener">Connect</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.youtube.com/@jackintheway" target="_blank" rel="noopener">Watch</a>
+    </span>
+  </footer>
+
+  <script src="/js/recording.js" defer></script>
+  <script src="/js/listen.js" defer></script>
+  <script src="/js/nav.js" defer></script>
+</body>
+</html>

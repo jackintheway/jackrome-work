@@ -60,6 +60,15 @@ const CASE_STUDIES = [
     lead: "I worked with Claude Code to build a cloud routine that turns each morning's news around my work into one episode I listen to, in place of scrolling.",
     summary: "A Pokédex from my childhood carried the brief. The routine reads the whole web and holds none of my accounts, writes for the ear, and updates a private listening page with a mode for my iPhone's own voice.",
     result: "The first test run took 4 minutes and 19 seconds: 1,298 words, 22 sources, a duplicate entry caught before publishing, and a notification on my phone. Whether it changes how much I scroll is still open."
+  },
+  {
+    slug: "fair-share",
+    title: "/fair-share, AI work that respects the reader",
+    meta: "Personal tool, 2026",
+    tags: ["Verification"],
+    lead: "I worked with Claude to build a skill that checks AI-assisted work from both sides of a handoff: the person who received it and the person about to send it.",
+    summary: "Inbound pulls out the point and the asks. Outbound traces weak output back to gaps in the prompt that made it, and returns a better prompt. Testing it on my own draft led to a third direction, crossbound, for shared drafts still in progress.",
+    result: "Three tests gave three verdicts, and each one added a rule. It hasn't been tested yet on a long internal document from a coworker, the case it was designed for."
   }
 ];
 
