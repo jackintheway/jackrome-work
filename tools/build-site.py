@@ -49,6 +49,7 @@ PUBLIC_FILES = [
     "ai-enablement.html",
     "ai-portfolio.html",
     "index.html",
+    "jackintheway-youtube-privacy.html",
     "production.html",
     "stdare-publisher-privacy.html",
     "wayspace.html",

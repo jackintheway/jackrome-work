@@ -102,6 +102,7 @@ follow current editorial guidance and obtain explicit publication approval.
 
 ## Current checkpoint: 2026-10-10, Claude Code
 
+- **Added `/jackintheway-youtube-privacy`** (Jack's go, Oct 10): the same kind of page for jackintheway-youtube, the YouTube tool for Jack's own channel (`~/workspace/jackintheway-youtube`, its own Google Cloud project). Copied from the ST. DARE page with the names and the single owner changed; noindex, out of the sitemap, own share card, on the build allowlist. Pushed with the ST. DARE handoff commit (one deploy).
 - **Added `/stdare-publisher-privacy`** (Jack's go, Oct 10): the privacy policy Google requires before the ST. DARE Publisher OAuth app (the YouTube tool in the st-dare repo) can leave Testing. Built from the 404 shell; noindex and out of the sitemap; its own share card (`card-stdare-publisher-privacy`); added to the build allowlist. Contact jackintheway@gmail.com.
 - **Committed and pushed** as 7ef763e, together with the two earlier unpushed commits (edca2ff, b497cab). One production deploy.
 - **Verified live:** the page and its card both return 200 at jackrome.work.
