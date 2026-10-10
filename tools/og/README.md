@@ -19,6 +19,7 @@ One card per page. The Squarespace site shared a single image across nine pages,
 | `card-wayspace-speaking.html` | `assets/img/og-wayspace-speaking.png` | `/wayspace/speaking` |
 | `card-wayspace-writing.html` | `assets/img/og-wayspace-writing.png` | `/wayspace/writing`, and the lyric pages under it |
 | `card-audit.html` | `assets/img/og-audit.png` | `audit.jackrome.work`, also served at `/audit` |
+| `card-stdare-publisher-privacy.html` | `assets/img/og-stdare-publisher-privacy.png` | `/stdare-publisher-privacy` |
 
 ## The Wayspace set
 

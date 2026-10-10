@@ -50,6 +50,7 @@ PUBLIC_FILES = [
     "ai-portfolio.html",
     "index.html",
     "production.html",
+    "stdare-publisher-privacy.html",
     "wayspace.html",
     "robots.txt",
     "sitemap.xml",
