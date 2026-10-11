@@ -986,3 +986,29 @@ Netlify copies the folder to a CDN. So a deploy is never required to look at a c
 - **URL Mappings die with the platform.** The redirect table in Squarespace does not transfer. `INVENTORY.md` has the `netlify.toml` equivalent.
 - **Paths carry over one-to-one.** No redirects are strictly needed for the ten content URLs. `/home` needs a 301 to `/`, and `/cart` and `/blog/category/Toolbox` are platform-generated with no successor.
 - **Export images from the Squarespace asset manager, not the CDN URLs on the page.** The page serves resized derivatives; the originals are what to keep. Rename the four placeholder-named files at export.
+
+## Netlify billing, and the August credit scare (settled 2026-08-18)
+
+Moved out of `CLAUDE.md` on 2026-10-11 during an instruction-file audit, so it loads only when a task touches it. Dated decisions; verify against the current files before acting on them.
+
+Netlify bills in credits, one pool per team, and the team here is `Wayspace`. Both
+`jackrome-work` is the only project drawing from it now. The old `ai-work-portfolio`
+Netlify project shared the pool until Jack deleted it on 2026-09-14.
+
+| | |
+|---|---|
+| Production deploy | 15 credits |
+| Bandwidth | 20 credits per GB |
+| Web requests | 2 credits per 10k |
+| Free plan | 300 credits/month, so about 20 deploys |
+| Personal plan | $9/month, 1,000 credits |
+
+On 2026-08-17 the free tier ran dry after three days of building, deploys paused, and
+the team dropped onto operational credits. Those are the reserve that keeps published
+sites answering; they cannot be spent on builds, and **if they run out too, live sites
+serve a "Site not available" page.** That put `ai.jackrome.work` at real risk, which is
+what forced the plan decision.
+
+**Decision: Netlify Personal at $9/month.** Not Pro. Rollover credits sound useful but
+need a Pro plan at 5,000 credits or higher, and Pro's base tier is 3,000, so $20 does
+not buy rollover. Revisit only if deploy volume is consistently near the ceiling.

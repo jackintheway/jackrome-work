@@ -100,7 +100,14 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-10-10 (evening), Claude Code
+## Current checkpoint: 2026-10-11, Claude Code
+
+- **CLAUDE.md audited and trimmed** (`/audit-claude-md`, every item approved by Jack): 8,026 words to 5,883. Nothing was dropped. Build history moved one hop away into `docs/decisions/` (new: `audit.md`, `shop.md`, `lyrics.md`, `lyric-audio.md`, `nav.md`) and `docs/history.md` (Netlify billing), with a pointer left in CLAUDE.md for each. The three client-naming passages are merged into one, the arrival points to MOTION.md, and stale counts are fixed (Calendly count dropped, 50 thumbnails, "How the site is built").
+- **Private details now live outside the repo**, on Jack's call: the two-track and remaster case-study facts and the mail-domain note are in `~/.claude/plans/jackrome-work-private-notes.md`. They remain in this public repo's Git history, and `docs/decisions/domains.md` still names the mail address; both are open questions for Jack.
+- Snapshot of the old CLAUDE.md: iCloud `claude-creations/Claude Code Assets/ablation-2026-10-11-before/`. Committed locally, not pushed.
+- Untracked `assets/img/diagram-uselessness-*.png` and `tools/diagrams/` belong to another session and were left alone.
+
+## Earlier checkpoint: 2026-10-10 (evening), Claude Code
 
 - **Built the fourth case study, `/case-studies/fair-share`**, from `_exhibits/fair-share/CASE-STUDY.md` after Jack's line-by-line read (his gate). The skill is styled `/fair-share` everywhere, per Jack. One typo fixed on the page and in the source ("can already handles" to "handle"). Sources link out in new tabs (HBR, The Decoder, The Knowledge Project, arXiv 2609.13786). The newsletter stays unnamed.
 - **Two diagrams in HTML and CSS** (Jack chose this over the exhibit's PNG): three directions on one handoff, which stacks into one flow on phones, and three tests with their verdicts and the rule each added. Checked at desktop and 375px with no horizontal scroll.

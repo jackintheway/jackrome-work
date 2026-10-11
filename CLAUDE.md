@@ -18,17 +18,10 @@ saved report or handoff.
 Dated build history lives in `docs/history.md` and `docs/decisions/`. Read it
 when the task touches it; it is evidence, not instructions.
 
-
 ## Current editorial decisions: 2026-09-12
 
 These decisions from Jack supersede broader or dated wording below.
 
-- Preserve the public Production credits and existing About information. Those
-  credits are already public and provide evidence of the work. Clients are named
-  when the work has already been published publicly or they have shared a
-  testimonial. Otherwise, the default is to keep their identity private in case
-  studies. There is no agreement requiring anonymity; do not claim one. Existing
-  attributed testimonials stay as written.
 - Jack wrote the portfolio's opening line about technical ability and willingness.
   Keep it. He rejected its proposed Red Pen replacement.
 - Lyric em dashes are Jack's own punctuation and stay. Correct imported word joins
@@ -47,69 +40,14 @@ These decisions from Jack supersede broader or dated wording below.
 - First-call expectations accompany the booking buttons on Home, AI Enablement,
   and Production: 45 minutes to discuss the work and whether Jack can help, with
   email as another way to make contact. Do not invent pricing or a free-call claim.
-- Keep the two-track editing case study. Its revised account follows the full
-  session record: end trim, 19 scripted removals (middle discussion plus 18 asides),
-  verified first gap-close, then two late corrections verified as matching gaps.
-  The final closure was predicted but not verified in that record. The outro
-  extends the speaker track beyond the teaching cut. Do not describe equal track
-  lengths, a verified final closure, or a tested safe rerun.
-- Case-study diagrams are schematic and use no client media. Newly written copy
-  remains reviewable locally until Jack authorizes publication.
-- Cross-room links use stable entry anchors or specific lyric URLs. Music's two
-  album lyric links use Writing's `collection` filter. Membership comes only from
-  explicit catalogue metadata. Do not infer a release from a performance date or
-  create missing counterpart entries just to complete a cross-reference.
-- `404.html` provides recovery for missing paths; it stays out of the sitemap.
-  `robots.txt` points to `sitemap.xml`. Run `python3 tools/update-sitemap.py` after
-  adding or removing public pages. It reads canonical URLs and adds no guessed dates.
-- After viewing the arrival, Jack preferred normal page scrolling with independent
-  artwork movement. At 800px and wider, the artwork sits beside the rooms; its
-  layers move on CSS timelines and hover pauses them. A keyboard pause button
-  appears on focus. Coarse pointers and reduced-motion users get a still composition.
-  Two copies of the existing puzzle mark float at the artwork's corners.
-- Below 800px, hide the complete artwork figure, including its caption and puzzle
-  marks. The welcome leads directly into the room list. "Choose a room" is removed
-  at every width. This supersedes the earlier stacked-artwork and shortcut previews.
-  Read MOTION.md for the implementation. This is live on jackrome.work.
+- Facts for the two-track edit and remaster case studies (what the session
+  records support, and what not to claim) are kept outside this public repo in
+  `~/.claude/plans/jackrome-work-private-notes.md`. Read it before editing either page.
+- The Wayspace arrival's motion is settled and live. See `MOTION.md`.
 - The handoff demo keeps the dictated request verbatim with the italic caption
   "Spoken aloud using Wispr Flow." Its surrounding explanation speaks as Jack:
   "My request" and "our decisions." The recorded agent-to-agent note still uses
   Jack's name to orient its recipient.
-- The second case study keeps the event-remaster-and-language-conform URL and now
-  covers both installments as "Remastering an event with Codex." Part 1's timing
-  map and Spanish review file remain distinct from Part 2's editable graphics
-  rebuild, approved photo treatment, guarded nested-media repair, and restored
-  framing exceptions. The original missing builder belongs to Part 1; the rebuilt
-  editable system belongs to Part 2. Do not collapse those into one delivery.
-- Its two diagrams use generic geometry: three timing coordinates, then 33 default
-  card positions plus 2 approved exceptions. The latter shows corrected framing;
-  a prospective exception registry remains an improvement, not a delivered feature.
-  The follow-up's illustrative pseudocode is not a shipped implementation excerpt.
-- Part 2's English broadcast is Jack-reported. Its Spanish conform is open; Part 1's
-  saved record still stops before listening approval and translated-card approval.
-  Metadata, stream analysis, and saved-state checks are not independent full playback.
-  No client media, identifiers, private ledgers, or source dialogue belong in this
-  public case. Omit the follow-up package's stale "withheld by agreement" line.
-- Jack has read and approved both case studies, including the Part 2 prose.
-  Publication still requires his explicit go. Keep private portfolio materials
-  out of the example and preserve the existing tool selection.
-- On 2026-09-22 the remaster case study gained Part 3, as an addition to the
-  approved page rather than a replacement. The re-run exhibit package retold
-  Parts 1 and 2 less accurately than the page (it credited Part 2 with an
-  exception registry and softened Part 1's open listening review), so Part 3
-  was written from the Codex session record instead. Part 3's facts: 69 visuals
-  (56 photo replacements, 10 cards, a poem title, a book-cover overlay, and a
-  cover card); two framing exceptions asked about and approved before
-  placement, with no stored registry yet; Jack chose the five cut points by ear
-  and closed the first gap; Codex closed four, latest first, for 6,548 frames,
-  with transitions on the picture track only and 12 other sequences unchanged.
-  The end-point overrun came from Jack moving the edit to remove an empty
-  opening; a read-only pass caught it and Jack set the end point.
-- Part 3's English version is exported and has not aired. The Spanish versions
-  are on hold for now; do not describe any Spanish work as complete. Part 3's
-  diagram uses generic geometry: five numbered gaps, five joins on the picture
-  track, and an unchanged bar for music, graphics, and audio. Its prose awaits
-  Jack's read, and publication still requires his explicit go.
 - On 2026-09-22 Jack published a third case study, Lay of the Land, a
   personal tool. Its employer and tradition stay out of the text by his choice.
   Every case study carries a Listen button (js/listen.js). Lay of the Land also
@@ -121,7 +59,6 @@ These decisions from Jack supersede broader or dated wording below.
   AI Portfolio's hero uses "See case studies" with a downward arrow. Production
   links from its hero, and AI Enablement links from "How I work" beside a separate
   "Explore AI Portfolio" button. Keep the existing section title and main navigation.
-
 
 - Jack authorized a local "Find something" guide. It searches public pages and
   published catalogue entries, returns at most three local destinations, and offers
@@ -172,33 +109,12 @@ section records only what the website side settled.
   allowlist.** Netlify requires the functions directory outside the publish
   directory. Add new public pages or folders to the allowlist or they do not
   deploy. `_site/` is gitignored output.
-- **One serverless function**, `netlify/functions/score/`, with the shared
-  answer schema in `audit/schema.mjs` imported by both browser and function.
-  Mock model, memory store, and memory inbox for local preview
-  (`node tools/audit-dev.mjs`, port 8642); real Anthropic provider, Netlify
-  Blobs, and Netlify Forms in production. `OPERATOR.md` beside the function
-  is the running guide (keys, env var names, retention, export).
 - **The deploy context is stamped at build time** into
   `lib/context.generated.mjs` because Netlify's CONTEXT variable is absent
   from the function runtime. Without the stamp, records go to the preview
   store. Do not remove that step from `build-site.py`.
-- **The subdomain uses one forced root rewrite**, not a catch-all. Netlify
-  rejects rules whose source begins with `/.netlify`, and a catch-all could
-  shadow the function. `force` is required because `index.html` exists at
-  the root. Every other path on the subdomain resolves as on the main site.
-- **The summary email is a two-layer Forms submission**: signed scannable
-  fields, then every answer verbatim. The function sends a `subject` field,
-  so the Netlify notification's custom subject must stay blank.
-- **Rate limit** is code-defined on the function: 60 per 60 seconds per IP.
-  Observed live: 69 of 90 burst requests allowed, then 429s.
-- **Secrets** live in Netlify as production-only secret variables; the plan
-  cannot scope them to Functions and that was accepted. The Anthropic key
-  expires 2027-09-19. Pilot keys were deleted after use.
-- **Copy rules carried over**: the page's absolute links to `jackrome.work`
-  open in the same tab; the subdomain is the same site.
-- **Deferred by choice**: a visitor result email, a nav link, the Wayspace
-  design pass on the form, a portfolio entry once real use gives it a story,
-  and a model-backed upgrade of the site's "Find something" guide.
+- Everything else (the function, the subdomain rewrite, the summary email,
+  rate limit, secrets, deferred items) is in `docs/decisions/audit.md`.
 
 ---
 
@@ -209,52 +125,15 @@ Fourthwall shop through the Storefront API. Fourthwall stays the backend:
 products, samples, payment, tax, fulfillment. Planning notes from the
 session that led here live outside this repo in `../wayspace-store/`.
 
-- **Two front-ends, one backend.** Phase 1 is this room. Phase 2 is a
-  standalone wayspace.store in a "deluxe" expression of the design system,
-  with a footer link back here. wayspace.store keeps redirecting to
-  Fourthwall until Phase 2 ships. Carts do not cross domains, by design.
-- **`js/fourthwall.js` holds every Fourthwall call and no page code**, so
-  Phase 2 reuses it unchanged. `js/shop.js` draws the room.
-- **Live fetch is a scoped exception to the facade rule.** Opening the room
-  counts as the visitor asking, like pressing play. No other page calls
-  Fourthwall; other rooms only link to the Shop.
 - **The token never enters this public repo.** `build-site.py` writes
   `js/fourthwall.config.js` into `_site/` from the Netlify variable
   `FW_STOREFRONT_TOKEN` (not marked secret: Netlify's secret scanning would
   fail a deploy that publishes it, and publishing it is the point; the
   token can only read the shop and keep carts). Locally the same file is
   gitignored. Without a token the room says it is closed.
-- **Fourthwall's docs are wrong in two places, checked live:** the token is a
-  `storefront_token` query parameter, not a Bearer header, and a product's
-  `state` and `access` arrive as `{ type: "..." }`, not a string. Cart add,
-  change and remove are POSTs to `/carts/{id}/add`, `/change`, `/remove`.
-  There is no product-level price; the room shows the lowest variant price.
-- **No webhook in Phase 1.** Live fetch shows a new product the moment it is
-  published. A webhook only matters for a pre-rendered catalog, where each
-  change would cost a 15-credit deploy.
-- **No Open API user.** Jack manages products in Fourthwall's dashboard.
-- **The room is black with paper text**, per Jack. Fourthwall's own checkout
-  is also black with the Wayspace logo, so the handoff feels continuous.
-- **Designs and garments cross-link through one field**: a DESIGN entry in
-  `js/wayspace.js` may carry `shop: ["<fourthwall-slug>", ...]`. The Design
-  card shows a black "Wear it" button: one product links to it, several link
-  to `/wayspace/shop?design=<anchor>`, which shows only those pieces. The
-  Shop reads the field backwards for "See the design". Only the puzzle logo
-  family is mapped (hoodie, tank, tee, hat, trucker), per Jack: "That's
-  really it."
-- **Checkout opens in a new tab**, following the standing rule, per Jack:
-  a visitor should always be able to get back to the site. The Shop
-  refreshes the cart when its tab becomes visible again.
-- **Photos sit on gray, `#e4e4e4`.** 18 of 23 lead photos have that studio
-  gray baked in and 5 are transparent squares, which showed the page's
-  beige through them. Jack chose gray over re-exporting the mockups on
-  paper. Photos are contained, not cropped. One value, `--shop-photo`.
-- **Copy is Jack's choice (2026-09-30):** hero "These are pieces I designed
-  and wear myself. You can browse and fill your cart here, and when you're
-  ready, checkout opens on Fourthwall in a new tab." Lobby row "Wayspace
-  designs you can wear."
-- **Still open:** what Fourthwall's "External Store URL" setting does
-  before anyone sets it.
+- Phase plans, Fourthwall API quirks checked live, the design cross-link field,
+  photo background and Jack's copy are in `docs/decisions/shop.md`. Read it before
+  touching the Shop or `js/fourthwall.js`.
 
 ---
 
@@ -341,22 +220,9 @@ animated, and do not reopen it from scratch.
 Lyric pages live at `/wayspace/writing/{slug}`. The non-album lyrics came from
 the vault export in `_source/writing/lyrics/`.
 
-Three things in those files are vault furniture rather than song, and
-all three reached a public page before being caught:
-
-1. **Vault annotation.** 44 of the 53 end with a `---` rule and then
-   `**Claude's Commentary**` or `**Notes worth creating from this
-   entry:**`, left by earlier delivery runs. These rendered as closing
-   verses. Anything from that marker down is cut.
-2. **Front matter inside the body.** 30 files repeat title, written,
-   released and album as the opening lines of the body as well as in
-   the YAML above it. That rendered as the first verse.
-3. **`[[wikilinks]]`**, in all fifty. They point at vault notes that do
-   not exist on this site, so they are flattened to their text.
-   `[[a|b]]` keeps `b`. Bare `#tag` lines go entirely.
-
-**Any future import from the vault must do all three.** The generator
-is not kept as a script, so this is the record of what it had to do.
+**Any future import from the vault must strip three kinds of vault furniture**
+(annotations, repeated front matter, wikilinks). The steps are in
+`docs/decisions/lyrics.md`; the generator was not kept as a script.
 
 **Em dashes in lyrics stay.** Three do: `choose-again`, `poof`, and
 `strawberry-sauce-all-the-same`. The house rule governs copy written
@@ -459,40 +325,14 @@ carries a facade: one `<button>` bar reading "Click play to listen" that is
 replaced by the SoundCloud widget, already playing, on click. How that shape was
 chosen is in `docs/history.md`.
 
-Widget parameters, all confirmed live: `color=#000000` per Jack,
-`auto_play=true` because the click is the gesture, `hide_related=true` and
-`show_teaser=false` which together are what answer "no auto-play after", and
-`show_comments=false`.
-
-**The thumbnail is self hosted** at `/assets/img/wayspace/writing/`, 49 files at
+**The thumbnail is self hosted** at `/assets/img/wayspace/writing/`, 50 files at
 128px for 416 KB total. It has to be: pulling it from SoundCloud's CDN would
 contact a third party on page load, which is exactly what the facade exists to
 prevent.
 
-**Album tracks are pinned to the album's own upload, not matched by title.**
-Several songs exist on SoundCloud twice, once as an older standalone upload and
-again inside a 2026-08-23 album set. A title match alone sent `little-things`
-and `try` at the older uploads. The playlist at
-`https://soundcloud.com/jackintheway/sets/{set}` carries an ordered list of
-track ids in its `__sc_hydration` payload, and pinning from that is what makes
-the lyric page play the version the page is actually about.
-
-**The ads are off.** Jack turned SoundCloud monetization off on 2026-08-23, and
-nothing a visitor can reach on this site serves an ad.
-
-**How this works, so it is not relitigated.** Ads ride on per-track monetization,
-not on embedding. A search summary Jack found claimed ads cannot be disabled on
-embedded tracks; that is wrong as stated, and SoundCloud's own help centre says
-an embedded track carries an ad when its owner "is part of the revenue sharing
-level of our creator partner program **and has enabled ads on their content**,"
-disableable per track from the track's edit page. The API agreed before Jack
-touched anything: 9 of 104 uploads carried the flag, and if embeds served ads
-unconditionally it would not vary.
-
-**If a new upload ever gets monetized, it can serve an ad.** The check is
-`monetization_model` on `api-v2.soundcloud.com/users/110417764/tracks`, held
-against the `sc` ids in `js/wayspace.js` and the `data-track` ids under
-`wayspace/writing/`.
+SoundCloud widget parameters, how album tracks are pinned to the right upload,
+and the ads check (monetization is off; how to verify) are in
+`docs/decisions/lyric-audio.md`.
 
 ---
 
@@ -597,8 +437,12 @@ Listen button, `js/recording.js` loaded before `js/listen.js`, and a recording.
 **Client naming.** Clients are named when the work has already been published
 publicly or they have shared a testimonial. Otherwise, the default is to keep
 their identity private in case studies. There is no agreement requiring
-anonymity, so no case study carries a "withheld by agreement" line. `client` is
-nullable in the array for this reason.
+anonymity, so no case study carries a "withheld by agreement" line, and
+existing attributed testimonials stay as written. `client` is nullable in the
+array for this reason. Everything in `_source/client-work/` is public (settled
+2026-08-22), so `/production` names its clients: Foundation for Inner Peace,
+Potter's Guild of Frederick, Tribly, Awakening Mind Films, Center for Awakening,
+and Hands On Health Acupuncture.
 
 ---
 
@@ -621,10 +465,6 @@ not decoration, and why a new entry must carry its roles.
 Six links, one row on desktop, a collapsed menu through 1080px. The September 12
 site-guide control increased the earlier 860px breakpoint.
 
-**Home was dropped.** The wordmark already links to `/`, so "Home" was a
-duplicate of the thing sitting beside it. On `/` the wordmark carries
-`aria-current="page"` instead.
-
 **Contact was added**, pointing at Calendly. It is the site's named conversion
 path and it was previously reachable only from the hero, the footer, and one
 home card. It leaves the domain, so it carries `is-external`, `target`, and
@@ -637,36 +477,23 @@ the wrapper were not there. Below the breakpoint the wrapper becomes a column
 with a "Services" label above it. One piece of markup, two layouts, and no
 second set of links that could drift out of sync with the first.
 
-**The page stayed `/production` rather than becoming `/studio`.** Studio was
-tried and reverted the same day. A studio is a place and Jack does not have
-one, and its sibling `/ai-enablement` is named for an activity, so naming this
-one for a place broke the parallel inside a group headed "Services". The green
-home card also already says "Creative & production", so card, label, and URL
-now all use one word.
-
-**The hamburger reversed an earlier decision, and the premise is why.** The nav
-comment in `css/site.css` argued against collapsing, on the grounds that five
-items fit at narrow widths and a menu would hide the structure to save nothing.
-That was true at five. Measured at 390px on 2026-08-22 with six: the labels need
-533px against 358px of room, so they wrapped to two rows and the nav took 135px,
-about 15% of a phone screen, before any content. It is 74px now. The original
-objection is answered by the panel showing every link rather than nesting any of
-them behind a second tap.
-
 `js/nav.js` is loaded on every public page and the 404 page. It handles the menu,
 Escape, outside clicks, and clearing the open class when the window widens past
 the breakpoint. It also inserts the shared site-guide control. Navigation links
 remain in each page's HTML; the guide itself has one implementation.
 
+The reasoning (why Home was dropped, why `/production` and not `/studio`, why the
+menu collapses) is in `docs/decisions/nav.md`.
+
 ---
 
-## What this will be
+## How the site is built
 
 A full custom rebuild of `jackrome.work` in the Wayspace design system, replacing Squarespace. Everything in Jack's own style, made together, no platform in between.
 
 The earlier `ai-work-portfolio` project is the proven pattern. It shipped, and it has since been deleted from Jack's machines (record at `../x-archive/ai-work-portfolio/`), so this repo is now the only living copy of the approach. Extend what worked there rather than inventing a second approach:
 
-- Static HTML, CSS, vanilla JS. No React, no Tailwind, no build tooling.
+- Static HTML, CSS, vanilla JS. No React, no Tailwind, no compile step. `tools/build-site.py` only copies an allowlist into `_site/`.
 - Data-driven: one array of content objects through pure render functions. Adding a page or a project means adding an object, not editing markup.
 - Deployed to Netlify from GitHub, config in `netlify.toml` so settings travel with the repo.
 - Self-hosted fonts, no CDN, no third-party requests.
@@ -747,16 +574,6 @@ Practical consequence for the build: do not generate a Design entry from a Music
 entry, or vice versa. Three separate arrays, populated by hand from what is actually
 good, and cross-referenced afterwards.
 
-### Client work can be named
-
-Settled 2026-08-22. Everything in `_source/client-work/` is public, published on
-YouTube or a live client site, with Jack either credited or under no agreement
-restricting him from claiming it. That explicitly includes the Foundation for Inner
-Peace material. So `/production` names clients: Foundation for Inner Peace, Potter's
-Guild of Frederick, Tribly, Awakening Mind Films, Center for Awakening, and Hands On
-Health Acupuncture. Named clients are the strongest proof a service page carries, and
-the links make the attribution self evident anyway.
-
 ---
 
 ## Every page ships with link previews
@@ -806,11 +623,11 @@ full set is in `docs/history.md`.
 
 1. **Typeface: Archivo.** Same face as the AI portfolio, self-hosted, SIL Open Font License, licence text shipped beside the file. It stands in for Ballinger, which is licensed for Squarespace hosting only and cannot travel. The AI portfolio is the proof of concept for the whole site on questions like this: where it settled something, that answer carries here rather than getting relitigated.
 
-2. **Editing workflow: same as the AI portfolio.** Edit a file, commit, push. Jack chose this knowingly and wants it as a learning surface, not just a shipping mechanism. Teach as you go when a git or web pattern comes up for the first time.
+2. **Editing workflow: same as the AI portfolio.** Edit a file, commit, push. Jack chose this knowingly and wants it as a learning surface, not just a shipping mechanism.
 
 ## Calendly is the conversion path (approved 2026-08-15)
 
-Booking a call is the named primary conversion for the whole site, decided deliberately rather than inherited from Squarespace. Every page carries a route to it. Treat it as a real dependency: one URL, `https://calendly.com/jackintheway/chat-with-jack-rome`. It is hand-typed into every page that links to it (79 files as of 2026-10-05), so changing it means a find-and-replace across the repo.
+Booking a call is the named primary conversion for the whole site, decided deliberately rather than inherited from Squarespace. Every page carries a route to it. Treat it as a real dependency: one URL, `https://calendly.com/jackintheway/chat-with-jack-rome`. It is hand-typed into every page that links to it, so changing it means a find-and-replace across the repo.
 
 ---
 
@@ -818,27 +635,9 @@ Booking a call is the named primary conversion for the whole site, decided delib
 
 **A production deploy costs real money. Preview locally by default and push in batches.**
 
-Netlify bills in credits, one pool per team, and the team here is `Wayspace`. Both
-`jackrome-work` is the only project drawing from it now. The old `ai-work-portfolio`
-Netlify project shared the pool until Jack deleted it on 2026-09-14.
-
-| | |
-|---|---|
-| Production deploy | 15 credits |
-| Bandwidth | 20 credits per GB |
-| Web requests | 2 credits per 10k |
-| Free plan | 300 credits/month, so about 20 deploys |
-| Personal plan | $9/month, 1,000 credits |
-
-On 2026-08-17 the free tier ran dry after three days of building, deploys paused, and
-the team dropped onto operational credits. Those are the reserve that keeps published
-sites answering; they cannot be spent on builds, and **if they run out too, live sites
-serve a "Site not available" page.** That put `ai.jackrome.work` at real risk, which is
-what forced the plan decision.
-
-**Decision: Netlify Personal at $9/month.** Not Pro. Rollover credits sound useful but
-need a Pro plan at 5,000 credits or higher, and Pro's base tier is 3,000, so $20 does
-not buy rollover. Revisit only if deploy volume is consistently near the ceiling.
+The site is on Netlify's Personal plan ($9/month, 1,000 credits), team `Wayspace`.
+A production deploy costs 15 credits. Pricing and the August 2026 credit scare that
+forced the plan choice are in `docs/history.md`.
 
 ### Preview locally, deploy deliberately
 
@@ -878,11 +677,9 @@ and Squarespace serves its DNS (`ns01-04.squarespacedns.com`).
 - **The website subscription ended 2026-09-15**, as planned, after the site had
   been live on Netlify for three weeks.
 
-The full domain map and cutover record are in `docs/decisions/domains.md`. Two
-facts stay loaded:
+The full domain map and cutover record are in `docs/decisions/domains.md`. One
+fact stays loaded:
 
-- `jackintheway.net` carries live Google Workspace MX for `jack@jackintheway.net`.
-  If its DNS changes, delete **only** the Squarespace Defaults preset.
 - A Netlify site answering 401 with a "Login Redirect" body means the project is
   marked **Private**. The switch is "Make public" on the project page.
 
