@@ -100,7 +100,15 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-10-11, Claude Code
+## Current checkpoint: 2026-10-11 (afternoon), Claude Code
+
+- **First Claude Security scan** (`claude-security` plugin, whole repo, medium effort, focused on reachable code), at commit 46b2b77. Status `verified`. **Four findings, all LOW. None are in the deployed site:** three are in the local preview server and one is in the operator export tool. The report is at `CLAUDE-SECURITY-20261011-194611/` on Jack's Mac only. It is gitignored on purpose (its own ignore file, plus `CLAUDE-SECURITY-*/` in `.gitignore`, commit fbd7041), because this repo is public. Read the report there; don't copy its details into this file.
+- **The commit history is clean of keys.** A separate read-only search of all 192 commits found no key-shaped strings, no committed env or config files, and no hardcoded secret assignments. (The scan itself reads only the current files.)
+- **Patches not yet discussed.** Jack is reviewing the findings first. Nothing was changed in response to them.
+- **Footer gained "Read"** after "Watch", linking to `https://jackintheway.substack.com/` in a new tab, on all 81 pages with the footer (22a7903). Checked at 390px: the links wrap, with no horizontal scroll. `build-site.py --check` passes. A Substack section in the Writing room waits until there is more than one essay (Jack, 2026-10-11).
+- Committed locally, not pushed. With the three earlier unpushed commits, the next push carries everything (one deploy).
+
+## Earlier checkpoint: 2026-10-11, Claude Code
 
 - **CLAUDE.md audited and trimmed** (`/audit-claude-md`, every item approved by Jack): 8,026 words to 5,883. Nothing was dropped. Build history moved one hop away into `docs/decisions/` (new: `audit.md`, `shop.md`, `lyrics.md`, `lyric-audio.md`, `nav.md`) and `docs/history.md` (Netlify billing), with a pointer left in CLAUDE.md for each. The three client-naming passages are merged into one, the arrival points to MOTION.md, and stale counts are fixed (Calendly count dropped, 50 thumbnails, "How the site is built").
 - **Private details now live outside the repo**, on Jack's call: the two-track and remaster case-study facts and the mail-domain note are in `~/.claude/plans/jackrome-work-private-notes.md`. They remain in this public repo's Git history, and `docs/decisions/domains.md` still names the mail address; both are open questions for Jack.
