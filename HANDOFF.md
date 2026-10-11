@@ -107,7 +107,8 @@ follow current editorial guidance and obtain explicit publication approval.
 - **Kokoro recording** (6:48); the recorder now says /fair-share as "slash fair share". `--check` reports all five recordings current.
 - **Share card** `card-case-fair-share` (same green family), full Open Graph set checked; sitemap (78 pages) and Find something index refreshed; `build-site.py --check` passes.
 - **Case studies now list newest first** (Jack's default from now on, recorded in CLAUDE.md). /fair-share is at the top.
-- **Commits a17b557 to 411048f, local only. Not pushed:** Jack's go is needed for the deploy.
+- **Follow-ups the same evening:** /fair-share tagged Collaboration (new tag in the fixed vocabulary) and labeled "Collaborative tool, 2026"; AI Portfolio gained an On this page menu (Overview, See /handoff at work, Key refusals, Skills, Case studies, Principles) and a /fair-share entry leading A few of the skills, linking to its case study. A mockup of two case study layouts (two across, or one row each) is in `_private/` (gitignored), waiting on Jack's pick.
+- **Commits a17b557 onward, local only. Not pushed:** Jack's go is needed for the deploy.
 - **Next:** Jack reviews the local preview, then says go to push. After the Substack essay is live (late October), the two can link to each other.
 
 ## Earlier checkpoint: 2026-10-10, Claude Code
