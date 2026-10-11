@@ -51,3 +51,8 @@ _private/
 js/fourthwall.config.js
 .venv-kokoro/
 .audio-cache/
+
+# Claude Security scan reports. Each report folder also carries its own
+# ignore file; this is a second lock, because the repo is public and a
+# report lists the site's weak spots.
+CLAUDE-SECURITY-*/
