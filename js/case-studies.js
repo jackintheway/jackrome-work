@@ -101,15 +101,17 @@ function caseCard(item) {
   const href = `/case-studies/${encodeURIComponent(item.slug)}`;
   return `
     <li class="offer-card">
-      <div class="work-roles">${caseTags(item.tags)}</div>
-      <p class="offer-for">${caseClientLine(item)}</p>
-      <h3 class="offer-title">${escapeHtml(item.title)}</h3>
+      <div class="case-row-head">
+        <div class="work-roles">${caseTags(item.tags)}</div>
+        <p class="offer-for">${caseClientLine(item)}</p>
+        <h3 class="offer-title">${escapeHtml(item.title)}</h3>
+        <a class="offer-link" href="${href}">Read the case study &rarr;</a>
+      </div>
       <div class="offer-body">
         <p><strong>${escapeHtml(item.lead)}</strong></p>
         <p>${escapeHtml(item.summary)}</p>
         <p class="work-note">${escapeHtml(item.result)}</p>
       </div>
-      <a class="offer-link" href="${href}">Read the case study &rarr;</a>
     </li>
   `;
 }

@@ -715,7 +715,39 @@ ul.offer-grid {
 }
 /* Prose that introduces a grid needs air before the first card;
    .prose zeroes its own last margin. */
-.prose + .offer-grid { margin-top: var(--space-7); }
+.prose + .offer-grid, .prose + .case-rows { margin-top: var(--space-7); }
+
+/* Case studies on AI Portfolio: one row each, Jack's pick on 2026-10-10
+   over four thin columns. The heading block sits left with its link at
+   the foot, and the three paragraphs read across the right. A row keeps
+   working as the list grows one case study at a time, where a two-up
+   grid would leave a card alone on every odd count. */
+.case-rows {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-6);
+}
+.case-rows .offer-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  column-gap: var(--space-7);
+  align-items: start;
+}
+.case-row-head { display: flex; flex-direction: column; height: 100%; }
+.case-row-head .offer-title { margin-bottom: var(--space-5); }
+.case-row-head .offer-link { margin-top: auto; }
+.case-rows .offer-body { margin-bottom: 0; }
+.case-rows .offer-body p:first-child { margin-top: 0; }
+/* Narrower than this, the left column gets too thin for a title, so a
+   row becomes the familiar card: heading, paragraphs, then the link. */
+@media (max-width: 760px) {
+  .case-rows .offer-card { display: flex; flex-direction: column; }
+  .case-row-head { display: contents; }
+  .case-rows .offer-body { margin-bottom: var(--space-5); }
+  .case-row-head .offer-link { order: 1; margin-top: 0; }
+}
 .offer-card {
   display: flex;
   flex-direction: column;

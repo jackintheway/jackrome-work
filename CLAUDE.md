@@ -548,6 +548,18 @@ collection covers more kinds of work. Three entries is not a prerequisite.
 When it exists, the "Back to AI Portfolio" button at the foot of each case study
 becomes "Back to case studies."
 
+**Planned (Jack, 2026-10-10): the hub arrives with the sixth case study.**
+Once there are 6, build a real `jackrome.work/case-studies` lobby that lists
+every case study, and replace the bare path's 301 to `/ai-portfolio`. AI
+Portfolio then shows only three: Jack's picks, or by default the three most
+recent, followed by a "See more case studies" link to the lobby. Raise this
+with Jack when a sixth case study is being built.
+
+**Layout (2026-10-10):** on AI Portfolio each case study is one row
+(`.case-rows`), with the heading on the left and the three paragraphs across
+the right. Jack chose this over four thin columns and over a two-up grid.
+Below 760px a row becomes a stacked card.
+
 ### Case study recordings (added 2026-10-06)
 
 **After editing any case study's prose, re-record it before deploying.**
