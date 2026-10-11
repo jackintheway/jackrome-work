@@ -104,9 +104,9 @@ follow current editorial guidance and obtain explicit publication approval.
 
 - **First Claude Security scan** (`claude-security` plugin, whole repo, medium effort, focused on reachable code), at commit 46b2b77. Status `verified`. **Four findings, all LOW. None are in the deployed site:** three are in the local preview server and one is in the operator export tool. The report is at `CLAUDE-SECURITY-20261011-194611/` on Jack's Mac only. It is gitignored on purpose (its own ignore file, plus `CLAUDE-SECURITY-*/` in `.gitignore`, commit fbd7041), because this repo is public. Read the report there; don't copy its details into this file.
 - **The commit history is clean of keys.** A separate read-only search of all 192 commits found no key-shaped strings, no committed env or config files, and no hardcoded secret assignments. (The scan itself reads only the current files.)
-- **Patches not yet discussed.** Jack is reviewing the findings first. Nothing was changed in response to them.
+- **Patches (same day, on Jack's go):** the plugin's patch step wrote verified patches for three findings, and they apply cleanly together. These are in the gitignored report folder under `patches/` (see `PATCHES.md`), not applied yet. The fourth (the network-binding one) was declined after two attempts. The report's own recommendation stands for it: a small, hand-made fix is the next step.
 - **Footer gained "Read"** after "Watch", linking to `https://jackintheway.substack.com/` in a new tab, on all 81 pages with the footer (22a7903). Checked at 390px: the links wrap, with no horizontal scroll. `build-site.py --check` passes. A Substack section in the Writing room waits until there is more than one essay (Jack, 2026-10-11).
-- Committed locally, not pushed. With the three earlier unpushed commits, the next push carries everything (one deploy).
+- **Pushed on Jack's go** (8486f5f..cd86af5, one deploy). **Verified live:** the Read link is in the footer on `/` and `/wayspace/writing/salt`. The security-scan trailhead on the Overlook is marked walked.
 
 ## Earlier checkpoint: 2026-10-11, Claude Code
 
