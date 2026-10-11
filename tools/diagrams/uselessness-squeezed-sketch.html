@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Same stuff, squeezed (comparison sketch)</title>
+<!-- The Gift of Uselessness, comparison sketch for figure 1, from the
+     9/13 idea note's first direction. Not planned for the post: it maps the
+     compression spectrum paragraph directly, but four sizes in a row can read
+     as rungs. Kept so the choice gets made by looking. -->
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/tokens/spacing.css">
+<link rel="stylesheet" href="../../css/tokens/typography.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 600px; height: 330px; background: var(--ws-paper); }
+  body { padding: 16px 20px 20px 16px; font-family: var(--font-sans); color: var(--text-body); }
+  .edit-diagram {
+    height: 100%; margin: 0; padding: var(--space-5);
+    border: var(--rule); background: var(--ws-paper-2); box-shadow: var(--pop-yellow);
+    display: flex; flex-direction: column;
+  }
+  figcaption {
+    font-family: var(--font-heading); font-weight: var(--fw-bold);
+    font-size: var(--fs-body-lg); color: var(--text-strong); margin-bottom: var(--space-4);
+  }
+  .row { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+  .cell {
+    display: grid; grid-template-rows: 1fr auto;
+    background: var(--ws-paper); border: var(--rule);
+    padding: var(--space-3) var(--space-2) var(--space-3); text-align: center;
+  }
+  .stage { display: grid; place-items: center; }
+  .shape { border-radius: var(--radius-blob); border: var(--rule); background: var(--ws-orange-soft); }
+  .c1 .shape { width: 96px; height: 76px; }
+  .c2 .shape { width: 72px; height: 57px; background: var(--ws-orange); border-width: 4px; }
+  .c3 .shape { width: 52px; height: 41px; background: var(--ws-orange-deep); border-width: 5px; }
+  .c4 .shape { width: 36px; height: 29px; background: var(--ws-orange-dim); border-width: 6px; }
+  .cell b { font-family: var(--font-heading); font-size: var(--fs-body); color: var(--text-strong); }
+</style>
+</head>
+<body>
+  <figure class="edit-diagram" aria-labelledby="t">
+    <figcaption id="t">One substance, squeezed harder</figcaption>
+    <div class="row" role="img" aria-label="The same shape shown four times, each held tighter than the last: sensation, friction, pain, suffering.">
+      <div class="cell c1"><div class="stage"><div class="shape"></div></div><b>Sensation</b></div>
+      <div class="cell c2"><div class="stage"><div class="shape"></div></div><b>Friction</b></div>
+      <div class="cell c3"><div class="stage"><div class="shape"></div></div><b>Pain</b></div>
+      <div class="cell c4"><div class="stage"><div class="shape"></div></div><b>Suffering</b></div>
+    </div>
+  </figure>
+</body>
+</html>

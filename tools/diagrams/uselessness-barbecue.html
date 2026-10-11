@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fence up / Fence down</title>
+<!-- The Gift of Uselessness, figure 2. Sits in "Keep the barbecue going",
+     after "...keep the barbecue going, and let people come."
+     Top-down plan, squares and circles only. Same barbecue and the same
+     people in both panels: the form continues, the fence is what changes.
+     The dashed paper fence is the case studies' "not there" grammar. -->
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/tokens/spacing.css">
+<link rel="stylesheet" href="../../css/tokens/typography.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 600px; height: 420px; background: var(--ws-paper); }
+  body { padding: 16px 20px 20px 16px; font-family: var(--font-sans); color: var(--text-body); }
+
+  .edit-diagram {
+    height: 100%; margin: 0; padding: var(--space-5);
+    border: var(--rule); background: var(--ws-paper-2); box-shadow: var(--pop-yellow);
+    display: flex; flex-direction: column;
+  }
+  figcaption {
+    font-family: var(--font-heading); font-weight: var(--fw-bold);
+    font-size: var(--fs-body-lg); line-height: var(--lh-snug);
+    color: var(--text-strong); margin-bottom: var(--space-4);
+  }
+  .panels { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  .panel { display: grid; grid-template-rows: 1fr auto; }
+  .panel h3 {
+    font-family: var(--font-heading); font-weight: var(--fw-black);
+    font-size: var(--fs-h4); letter-spacing: var(--ls-heading);
+    color: var(--text-strong); margin: var(--space-3) 0 0; text-align: center;
+  }
+
+  /* The lot: yard above, sidewalk strip below. */
+  .lot { position: relative; border: var(--rule); background: var(--ws-paper-3); }
+  .yard {
+    position: absolute; left: 14px; right: 14px; top: 14px; bottom: 58px;
+    background: var(--ws-green);
+  }
+  .fence-up .yard { border: var(--border-mega) solid var(--ws-black); }
+  .fence-down .yard { border: var(--border) dashed var(--ws-grey); }
+  .house {
+    position: absolute; left: 50%; top: 18px; transform: translateX(-50%);
+    width: 74px; height: 58px; background: var(--ws-white); border: var(--rule);
+  }
+
+  /* The barbecue and the people. Same count, same arrangement. */
+  .gathering { position: absolute; width: 96px; height: 40px; left: 50%; transform: translateX(-50%); }
+  .fence-up .gathering { bottom: 9px; left: 66%; }
+  .fence-down .gathering { bottom: 76px; }
+  .bbq {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--ws-orange); border: var(--rule);
+  }
+  .person {
+    position: absolute; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--ws-blue); border: var(--border-hair) solid var(--ws-black);
+  }
+  .p1 { left: 4px;  top: 4px; }   .p2 { left: 16px; top: 23px; }
+  .p3 { right: 4px; top: 4px; }   .p4 { right: 16px; top: 23px; }
+  .p5 { left: 41px; top: -6px; }
+
+  /* Labels, on the first panel only. */
+  .label {
+    position: absolute; font-family: var(--font-heading); font-weight: var(--fw-bold);
+    font-size: var(--fs-caption); letter-spacing: var(--ls-overline); text-transform: uppercase;
+    color: var(--text-strong);
+  }
+  .l-house { left: 50%; top: 40px; transform: translateX(-50%); }
+  .l-yard  { left: 30px; top: 108px; }
+  .l-fence { right: 22px; top: 108px; background: var(--ws-paper); padding: 0 4px; border: var(--border-hair) solid var(--ws-black); }
+  .l-walk  { left: 14px; bottom: 21px; }
+</style>
+</head>
+<body>
+  <figure class="edit-diagram" aria-labelledby="t">
+    <figcaption id="t">Same barbecue. The fence is what changed.</figcaption>
+    <div class="panels" role="img" aria-label="Two top-down plans of a house, yard and fence. On the left the fence is solid and the barbecue sits outside it on the sidewalk, with people gathered outside. On the right the fence is dashed, almost gone, and the same barbecue and the same people are inside the yard.">
+      <div class="panel fence-up">
+        <div class="lot">
+          <div class="yard"></div>
+          <div class="house"></div>
+          <span class="label l-house">House</span>
+          <span class="label l-yard">Yard</span>
+          <span class="label l-fence">Fence</span>
+          <span class="label l-walk">Sidewalk</span>
+          <div class="gathering"><span class="bbq"></span><span class="person p1"></span><span class="person p2"></span><span class="person p3"></span><span class="person p4"></span><span class="person p5"></span></div>
+        </div>
+        <h3>Fence up</h3>
+      </div>
+      <div class="panel fence-down">
+        <div class="lot">
+          <div class="yard"></div>
+          <div class="house"></div>
+          <div class="gathering"><span class="bbq"></span><span class="person p1"></span><span class="person p2"></span><span class="person p3"></span><span class="person p4"></span><span class="person p5"></span></div>
+        </div>
+        <h3>Fence down</h3>
+      </div>
+    </div>
+  </figure>
+</body>
+</html>

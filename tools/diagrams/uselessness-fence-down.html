@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fence open</title>
+<!-- The Gift of Uselessness. Second half of the split barbecue figure. Sits in "Keep the barbecue going", after "...and let people come join." Same plan as uselessness-fence-up.html. The fence is still there; the gate marked FENCE has swung open on its hinge, and the same barbecue and the same five people are now in the yard. Matches the essay: "I can let the fence gate open." -->
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/tokens/spacing.css">
+<link rel="stylesheet" href="../../css/tokens/typography.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 600px; height: 520px; background: var(--ws-paper); }
+  body { padding: 16px 20px 20px 16px; font-family: var(--font-sans); color: var(--text-body); }
+
+  .edit-diagram {
+    height: 100%; margin: 0; padding: 22px;
+    border: var(--rule); background: var(--ws-paper-2); box-shadow: var(--pop-yellow);
+    display: flex; flex-direction: column;
+  }
+  figcaption {
+    font-family: var(--font-heading); font-weight: var(--fw-black);
+    font-size: 34px; letter-spacing: var(--ls-heading); line-height: 1;
+    color: var(--text-strong); margin-bottom: 18px;
+  }
+  figcaption span { font-weight: var(--fw-bold); color: var(--ws-grey); }
+
+  /* The lot: yard above, sidewalk strip below. */
+  .lot { position: relative; flex: 1; border: var(--rule); background: var(--ws-paper-3); }
+  .yard {
+    position: absolute; left: 18px; right: 18px; top: 18px; bottom: 92px;
+    background: var(--ws-green); border: 9px solid var(--ws-black);
+  }
+  .house {
+    position: absolute; left: 50%; top: 18px; transform: translateX(-50%);
+    width: 150px; height: 92px; background: var(--ws-white); border: var(--rule-heavy);
+    display: grid; place-items: center;
+  }
+  .label {
+    font-family: var(--font-heading); font-weight: var(--fw-bold);
+    font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-strong);
+  }
+  .l-yard { position: absolute; left: 26px; top: 50%; transform: translateY(-50%); }
+  .l-walk { position: absolute; left: 18px; bottom: 28px; }
+
+  /* The gate: a section of the bottom fence line with the word FENCE on it.
+     Centered on the line, so the fence runs straight into it. */
+  .gate {
+    position: absolute; left: 70px; bottom: -26px; width: 136px; height: 44px;
+    background: var(--ws-black); color: var(--ws-paper);
+    display: grid; place-items: center; padding-left: 0.14em;
+    font-family: var(--font-heading); font-weight: var(--fw-black);
+    font-size: 24px; letter-spacing: 0.14em; text-transform: uppercase;
+    transform-origin: 0 50%;
+  }
+  /* Open: the gate swings in on its left hinge, and its stretch of fence is a gap. */
+  .gap {
+    position: absolute; left: 70px; bottom: -9px; width: 136px; height: 9px;
+    background: var(--ws-paper-3);
+  }
+  .open .gate { transform: rotate(-62deg); }
+
+  /* The barbecue and the people. Same count, same arrangement, both figures. */
+  .gathering { position: absolute; width: 150px; height: 66px; }
+  .bbq {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--ws-orange); border: var(--rule-heavy);
+  }
+  .person {
+    position: absolute; width: 24px; height: 24px; border-radius: 50%;
+    background: var(--ws-blue); border: var(--border) solid var(--ws-black);
+  }
+  .p1 { left: 8px;  top: 6px; }   .p2 { left: 30px; top: 40px; }
+  .p3 { right: 8px; top: 6px; }   .p4 { right: 30px; top: 40px; }
+  .p5 { left: 63px; top: -14px; }
+  .closed .gathering { right: 54px; bottom: 12px; }
+  .open .gathering { right: 70px; bottom: 130px; }
+</style>
+</head>
+<body>
+  <figure class="edit-diagram open" aria-labelledby="t">
+    <figcaption id="t">Fence open. <span>Same barbecue.</span></figcaption>
+    <div class="lot" role="img" aria-label="Fence open. Same barbecue. The same top-down plan. The fence is still there, but its gate, marked Fence, has swung open, leaving a gap. The same barbecue and the same five people are inside the yard.">
+      <div class="yard"><span class="label l-yard">Yard</span><span class="gap"></span><span class="gate">Fence</span></div>
+      <div class="house"><span class="label">House</span></div>
+      <span class="label l-walk">Sidewalk</span>
+      <div class="gathering"><span class="bbq"></span><span class="person p1"></span><span class="person p2"></span><span class="person p3"></span><span class="person p4"></span><span class="person p5"></span></div>
+    </div>
+  </figure>
+</body>
+</html>

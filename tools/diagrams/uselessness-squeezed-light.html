@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The same light</title>
+<!-- The Gift of Uselessness. A rethink of uselessness-squeezed-sketch.html,
+     from Jack's note (2026-10-11): it's the same substance, it's light always,
+     it just feels like it's not once compressed. At the tightest, the outlines
+     are thick dots pushed up against each other and you can't see the light
+     they're made of: the compression hides it.
+     So the light disk is identical in all four panels. Only the dots change,
+     pressing in from the rim. In Suffering they cover it, and the light still
+     shows in the gaps between them.
+     A 2x2 grid, not a row, so it reads less like a ladder.
+     Not placed in the post (option A). Kept for the website or a later piece. -->
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/tokens/spacing.css">
+<link rel="stylesheet" href="../../css/tokens/typography.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 600px; height: 664px; background: var(--ws-paper); }
+  body { padding: 16px 20px 20px 16px; font-family: var(--font-sans); color: var(--text-body); }
+
+  .edit-diagram {
+    height: 100%; margin: 0; padding: 22px;
+    border: var(--rule); background: var(--ws-paper-2); box-shadow: var(--pop-yellow);
+    display: flex; flex-direction: column;
+  }
+  figcaption {
+    font-family: var(--font-heading); font-weight: var(--fw-black);
+    font-size: 30px; line-height: 1.1; letter-spacing: var(--ls-heading);
+    color: var(--text-strong); margin-bottom: 18px;
+  }
+  .panels { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 14px; align-content: start; }
+  .panel {
+    display: grid; grid-template-rows: 1fr auto;
+    background: var(--ws-paper); border: var(--rule);
+    padding: 8px 8px 12px; text-align: center;
+  }
+  svg { width: 190px; height: 190px; display: block; margin: 0 auto; }
+  .panel h3 {
+    font-family: var(--font-heading); font-weight: var(--fw-black);
+    font-size: 26px; letter-spacing: var(--ls-heading); line-height: 1;
+    color: var(--text-strong); margin: 4px 0 0;
+  }
+</style>
+</head>
+<body>
+  <figure class="edit-diagram" aria-labelledby="t">
+    <figcaption id="t">Resistance compresses our experience.</figcaption>
+    <div class="panels" role="img" aria-label="Resistance compresses our experience. Four panels showing the same disk of yellow light. Sensation: the light alone. Friction: a few small black dots press in at its edge. Pain: larger dots crowd in from the edge, covering much of it. Suffering: thick black dots packed against each other cover the whole disk, and the light shows only in the small gaps between them.">
+      <div class="panel"><svg data-level="0" viewBox="0 0 200 200"></svg><h3>Sensation</h3></div>
+      <div class="panel"><svg data-level="1" viewBox="0 0 200 200"></svg><h3>Friction</h3></div>
+      <div class="panel"><svg data-level="2" viewBox="0 0 200 200"></svg><h3>Pain</h3></div>
+      <div class="panel"><svg data-level="3" viewBox="0 0 200 200"></svg><h3>Suffering</h3></div>
+    </div>
+  </figure>
+<script>
+  const NS = "http://www.w3.org/2000/svg";
+  const css = getComputedStyle(document.documentElement);
+  const LIGHT = css.getPropertyValue("--ws-yellow").trim() || "#efdf4d";
+  const INK = "#000";
+  const C = 100, R = 72;  // the light: same center, same radius, every panel
+
+  function circle(svg, cx, cy, r, fill, stroke, sw) {
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", cx); c.setAttribute("cy", cy); c.setAttribute("r", r);
+    c.setAttribute("fill", fill);
+    if (stroke) { c.setAttribute("stroke", stroke); c.setAttribute("stroke-width", sw); }
+    svg.appendChild(c);
+  }
+
+  // Hex-packed dots whose centers fall between radii inner and outer.
+  function packed(svg, r, gap, inner, outer) {
+    const step = 2 * r + gap, rowH = step * Math.sqrt(3) / 2;
+    for (let row = -20; row <= 20; row++) {
+      const y = C + row * rowH, shift = (row & 1) ? step / 2 : 0;
+      for (let col = -20; col <= 20; col++) {
+        const x = C + col * step + shift, d = Math.hypot(x - C, y - C);
+        if (d >= inner && d <= outer) circle(svg, x, y, r, INK);
+      }
+    }
+  }
+
+  // Dots in a single ring on the rim.
+  function ring(svg, r, count, radius) {
+    for (let i = 0; i < count; i++) {
+      const a = (i / count) * Math.PI * 2;
+      circle(svg, C + radius * Math.cos(a), C + radius * Math.sin(a), r, INK);
+    }
+  }
+
+  document.querySelectorAll("svg[data-level]").forEach(svg => {
+    const level = +svg.dataset.level;
+    circle(svg, C, C, R, LIGHT, INK, level === 0 ? 3 : 0);
+    if (level === 1) ring(svg, 6, 16, R);
+    if (level === 2) { ring(svg, 9, 22, R); packed(svg, 9, 1.5, R - 34, R - 8); }
+    if (level === 3) packed(svg, 10.5, 1.2, 0, R + 4);
+  });
+</script>
+</body>
+</html>

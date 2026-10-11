@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Braced / Open (v2)</title>
+<!-- The Gift of Uselessness. Sits in "Friction", after
+     "...there was nothing doing the compressing."
+     v2 of uselessness-braced-open.html: same idea, sized for a phone (nothing
+     under 22px), and the squeeze now visibly comes from outside: wedges pressing
+     inward, so the pressure has a direction and the shape is what's pressed. -->
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/tokens/spacing.css">
+<link rel="stylesheet" href="../../css/tokens/typography.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 600px; height: 410px; background: var(--ws-paper); }
+  body { padding: 16px 20px 20px 16px; font-family: var(--font-sans); color: var(--text-body); }
+
+  .edit-diagram {
+    height: 100%; margin: 0; padding: 22px;
+    border: var(--rule); background: var(--ws-paper-2); box-shadow: var(--pop-yellow);
+    display: flex; flex-direction: column;
+  }
+  figcaption {
+    font-family: var(--font-heading); font-weight: var(--fw-black);
+    font-size: 30px; line-height: 1.1; letter-spacing: var(--ls-heading);
+    color: var(--text-strong); margin-bottom: 18px;
+  }
+  .panels { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .panel {
+    display: grid; grid-template-rows: 1fr auto;
+    background: var(--ws-paper); border: var(--rule);
+    padding: 10px 10px 16px; text-align: center;
+  }
+  .stage { position: relative; display: grid; place-items: center; }
+  .panel h3 {
+    font-family: var(--font-heading); font-weight: var(--fw-black);
+    font-size: 34px; letter-spacing: var(--ls-heading); line-height: 1;
+    color: var(--text-strong); margin: 8px 0 4px;
+  }
+  .panel p { margin: 0; font-size: 22px; line-height: 1.2; color: var(--text-strong); }
+
+  .shape { border-radius: var(--radius-blob); border: var(--rule-heavy); }
+  .braced .shape { width: 66px; height: 52px; background: var(--ws-orange-dim); border-width: 7px; }
+  .open .shape   { width: 196px; height: 156px; background: var(--ws-orange-soft); }
+
+  /* The squeeze: black wedges, every tip pointing at the shape. */
+  .press { position: absolute; left: 50%; top: 50%; width: 200px; height: 200px;
+           transform: translate(-50%, -50%); fill: var(--ws-black); }
+</style>
+</head>
+<body>
+  <figure class="edit-diagram" aria-labelledby="t">
+    <figcaption id="t">Same signal, different reactions</figcaption>
+    <div class="panels" role="img" aria-label="Same signal, different reactions. Two panels. On the left, a small dark shape with black wedges pressing in on it from every side, labeled Braced. On the right, the same shape drawn wide and light with nothing pressing on it, labeled Open.">
+      <div class="panel braced">
+        <div class="stage">
+          <div class="shape"></div>
+          <svg class="press" viewBox="0 0 200 200" aria-hidden="true"><polygon points="150.0,100.0 174.0,112.0 174.0,88.0"/><polygon points="138.2,138.2 146.7,163.6 163.6,146.7"/><polygon points="100.0,150.0 88.0,174.0 112.0,174.0"/><polygon points="61.8,138.2 36.4,146.7 53.3,163.6"/><polygon points="50.0,100.0 26.0,88.0 26.0,112.0"/><polygon points="61.8,61.8 53.3,36.4 36.4,53.3"/><polygon points="100.0,50.0 112.0,26.0 88.0,26.0"/><polygon points="138.2,61.8 163.6,53.3 146.7,36.4"/></svg>
+        </div>
+        <h3>Braced</h3>
+      </div>
+      <div class="panel open">
+        <div class="stage"><div class="shape"></div></div>
+        <h3>Open</h3>
+      </div>
+    </div>
+  </figure>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Braced / Open</title>
+<!-- The Gift of Uselessness, figure 1. Sits in "Friction", after
+     "...there was nothing doing the compressing."
+     Rendered at 600px wide, 2x. The same shape in both panels; the only
+     variable is the squeeze. No scale, no arrow between the panels: the
+     reader is shown two ways of holding one thing, not a path to walk. -->
+<link rel="stylesheet" href="../../css/tokens/colors.css">
+<link rel="stylesheet" href="../../css/tokens/spacing.css">
+<link rel="stylesheet" href="../../css/tokens/typography.css">
+<link rel="stylesheet" href="../../css/fonts.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 600px; height: 380px; background: var(--ws-paper); }
+  body { padding: 16px 20px 20px 16px; font-family: var(--font-sans); color: var(--text-body); }
+
+  .edit-diagram {
+    height: 100%;
+    margin: 0;
+    padding: var(--space-5);
+    border: var(--rule);
+    background: var(--ws-paper-2);
+    box-shadow: var(--pop-yellow);
+    display: flex;
+    flex-direction: column;
+  }
+  figcaption {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-snug);
+    color: var(--text-strong);
+    margin-bottom: var(--space-4);
+  }
+  .panels {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+  .panel {
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+    background: var(--ws-paper);
+    border: var(--rule);
+    padding: var(--space-3) var(--space-3) var(--space-4);
+    text-align: center;
+  }
+  .stage { position: relative; display: grid; place-items: center; }
+  .panel h3 {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-black);
+    font-size: var(--fs-h4);
+    letter-spacing: var(--ls-heading);
+    color: var(--text-strong);
+    margin: var(--space-2) 0 var(--space-1);
+  }
+  .panel p { margin: 0; font-size: var(--fs-small); line-height: 1.35; }
+
+  /* One shape, two holdings. Same radius, same proportions. */
+  .shape { border-radius: var(--radius-blob); border: var(--rule); }
+  .braced .shape {
+    width: 58px; height: 46px;
+    background: var(--ws-orange-dim);
+    border-width: var(--border-mega);
+  }
+  .open .shape {
+    width: 168px; height: 134px;
+    background: var(--ws-orange-soft);
+  }
+
+  /* The squeeze: short bars pressing in from every side. */
+  .press { position: absolute; inset: 0; display: grid; place-items: center; }
+  .press span { position: absolute; background: var(--ws-black); }
+  .press .n, .press .s { width: 4px; height: 18px; }
+  .press .e, .press .w { width: 18px; height: 4px; }
+  .press .n { transform: translateY(-48px); }
+  .press .s { transform: translateY(48px); }
+  .press .w { transform: translateX(-56px); }
+  .press .e { transform: translateX(56px); }
+  .press .n.l, .press .s.l { margin-left: -36px; }
+  .press .n.r, .press .s.r { margin-left: 36px; }
+  .press .w.t, .press .e.t { margin-top: -26px; }
+  .press .w.b, .press .e.b { margin-top: 26px; }
+</style>
+</head>
+<body>
+  <figure class="edit-diagram" aria-labelledby="t">
+    <figcaption id="t">The same sensation, with and without the squeeze</figcaption>
+    <div class="panels" role="img" aria-label="Two panels. On the left, a small dense shape pressed in from every side, labeled Braced. On the right, the same shape drawn wide and light with room around it, labeled Open. Both are the same signal; only the pressure differs.">
+      <div class="panel braced">
+        <div class="stage">
+          <div class="shape"></div>
+          <div class="press" aria-hidden="true">
+            <span class="n l"></span><span class="n"></span><span class="n r"></span>
+            <span class="s l"></span><span class="s"></span><span class="s r"></span>
+            <span class="w t"></span><span class="w"></span><span class="w b"></span>
+            <span class="e t"></span><span class="e"></span><span class="e b"></span>
+          </div>
+        </div>
+        <h3>Braced</h3>
+        <p>Same signal. Held tight.</p>
+      </div>
+      <div class="panel open">
+        <div class="stage"><div class="shape"></div></div>
+        <h3>Open</h3>
+        <p>Same signal. Given room.</p>
+      </div>
+    </div>
+  </figure>
+</body>
+</html>
