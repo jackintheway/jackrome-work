@@ -38,6 +38,10 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
 const flag = (name) => args.includes(name);
 const value = (name) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : undefined; };
+// Submitters type the organization name, so show any control characters
+// (escape sequences, carriage returns, newlines) as visible \xNN text
+// rather than letting the terminal act on them.
+const shown = (s) => String(s).replace(/[\x00-\x1f\x7f-\x9f]/g, (c) => "\\x" + c.charCodeAt(0).toString(16).padStart(2, "0"));
 
 if (flag("--verify")) {
   const file = value("--verify");
@@ -81,7 +85,7 @@ if (flag("--delete")) {
   const existing = await store.get(id);
   if (!existing) { console.error("Not found: " + id); process.exit(1); }
   await store.remove(id);
-  console.log("Deleted record " + id + " (" + existing.receipt + ", " + existing.answers.org + "). The Forms submission and any email copy are separate; remove those in the Netlify dashboard and Gmail.");
+  console.log("Deleted record " + id + " (" + existing.receipt + ", " + shown(existing.answers.org) + "). The Forms submission and any email copy are separate; remove those in the Netlify dashboard and Gmail.");
   process.exit(0);
 }
 
@@ -101,7 +105,7 @@ if (flag("--review")) {
   for (const r of sorted) {
     const age = days(r);
     const due = age >= 90;
-    console.log((due ? "DUE  " : "keep ") + r.receipt + "  " + r.received_at.slice(0, 10) + "  " + age + " days  " + r.answers.org + "  " + (r.scoring.total === null ? "unscored" : r.scoring.total + "/100") + "  email " + r.summary_status);
+    console.log((due ? "DUE  " : "keep ") + r.receipt + "  " + r.received_at.slice(0, 10) + "  " + age + " days  " + shown(r.answers.org) + "  " + (r.scoring.total === null ? "unscored" : r.scoring.total + "/100") + "  email " + r.summary_status);
   }
   const dueList = sorted.filter((r) => days(r) >= 90);
   console.log("\n" + dueList.length + " record(s) past 90 days.");
@@ -116,7 +120,7 @@ if (flag("--review")) {
 if (flag("--reconcile")) {
   const pending = records.filter((r) => r.summary_status !== "acknowledged");
   console.log(pending.length + " of " + records.length + " records without an acknowledged summary:");
-  for (const r of pending) console.log("  " + r.submission_id + "  " + r.received_at + "  " + r.summary_status + "  " + r.answers.org);
+  for (const r of pending) console.log("  " + r.submission_id + "  " + r.received_at + "  " + r.summary_status + "  " + shown(r.answers.org));
   process.exit(0);
 }
 

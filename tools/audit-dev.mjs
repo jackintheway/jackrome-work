@@ -33,6 +33,16 @@ import { createMemoryStore, createMemoryNotifier } from "../netlify/functions/sc
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PORT = Number(process.env.PORT || 8642);
 const ORIGIN = "http://localhost:" + PORT;
+// Answer only requests addressed to this machine by a loopback name. A
+// page on another site can repoint its own hostname at 127.0.0.1 (DNS
+// rebinding) and read our responses as if same origin, but its requests
+// still carry its hostname in the Host header, so they stop here.
+const ALLOWED_HOSTS = new Set(["localhost:" + PORT, "127.0.0.1:" + PORT, "[::1]:" + PORT]);
+// Folders that are gitignored because they are private, never published:
+// source archives, unreviewed exhibits, real-account output, secrets, scan
+// reports, and Git's own store. Everything else under the repo is served,
+// including the _verify-harness.html style pages sessions write.
+const PRIVATE = /^(\.git|\.env(\..*)?|_source|_exhibits|_private|claude-security-.*)$/i;
 
 const store = createMemoryStore();
 const notifier = createMemoryNotifier();
@@ -73,7 +83,8 @@ function resolveStatic(urlPath) {
   let p = decodeURIComponent(urlPath.split("?")[0]);
   if (p.endsWith("/")) p += "index.html";
   const full = path.join(ROOT, p);
-  if (!full.startsWith(ROOT)) return null;
+  if (full !== ROOT && !full.startsWith(ROOT + path.sep)) return null;
+  if (path.relative(ROOT, full).split(path.sep).some((s) => PRIVATE.test(s))) return null;
   if (fs.existsSync(full) && fs.statSync(full).isFile()) return full;
   if (!path.extname(full) && fs.existsSync(full + ".html")) return full + ".html";
   return null;
@@ -100,6 +111,10 @@ async function fromResponse(response, res) {
 
 const server = http.createServer(async (req, res) => {
   const url = req.url || "/";
+  if (!ALLOWED_HOSTS.has(String(req.headers.host || "").toLowerCase())) {
+    res.writeHead(403, { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" });
+    return res.end("Host not allowed. Open " + ORIGIN + "/audit/\n");
+  }
   try {
     if (url.startsWith("/.netlify/functions/score")) {
       return await fromResponse(await handler(await toRequest(req)), res);
@@ -130,6 +145,13 @@ const server = http.createServer(async (req, res) => {
     if (range && (range[1] || range[2])) {
       const start = range[1] ? +range[1] : Math.max(0, size - +range[2]);
       const end = range[1] && range[2] ? Math.min(+range[2], size - 1) : size - 1;
+      // Refuse a range the file cannot satisfy before any headers go out:
+      // createReadStream throws on it, and the catch below cannot answer
+      // once a 206 has been sent, which used to take the server down.
+      if (!(Number.isSafeInteger(start) && Number.isSafeInteger(end) && start <= end && end < size)) {
+        res.writeHead(416, { "Cache-Control": "no-store", "Accept-Ranges": "bytes", "Content-Range": `bytes */${size}` });
+        return res.end();
+      }
       res.writeHead(206, { "Content-Type": type, "Cache-Control": "no-store", "Accept-Ranges": "bytes",
         "Content-Range": `bytes ${start}-${end}/${size}`, "Content-Length": end - start + 1 });
       return fs.createReadStream(file, { start, end }).pipe(res);
@@ -142,6 +164,7 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
+// Loopback only, so other devices on the same network cannot reach it.
+server.listen(PORT, "127.0.0.1", () => {
   console.log("audit preview at " + ORIGIN + "/audit/  (mock model, memory store)");
 });
