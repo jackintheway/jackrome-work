@@ -648,7 +648,7 @@ to look at a change.
 
 ```
 cd /Users/jack/workspace/claude-code-projects/jackrome-work-migration
-python3 -m http.server 8000
+python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
 Two things local preview does not reproduce, and they are the only reasons to spend a

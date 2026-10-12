@@ -9,7 +9,7 @@ A custom rebuild of `jackrome.work`, replacing Squarespace. Static HTML, CSS, an
 There is no compile step. Serve the repo root over HTTP:
 
 ```
-python3 -m http.server 8000
+python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
 Then open `http://localhost:8000`. Opening `index.html` as a `file://` path will not work, because the CSS uses `@import` and the browser blocks those across the file protocol.
