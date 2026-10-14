@@ -100,7 +100,11 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-10-11 (afternoon), Claude Code
+## Current checkpoint: 2026-10-14, Claude Code
+
+- **AI Enablement copy revisions (Jack's wording):** removed the "Three options" intro under "What this looks like"; "Most teams I meet are doing the work of ten people with five" is now "Most teams I work with are stretched thin"; the assessment line ends "Click below." instead of the few-minutes sentence; "The short, specific answer" is now "The easy, contextual answer". Guide index refreshed. Pushed on Jack's go.
+
+## Earlier checkpoint: 2026-10-11 (afternoon), Claude Code
 
 - **First Claude Security scan** (`claude-security` plugin, whole repo, medium effort, focused on reachable code), at commit 46b2b77. Status `verified`. **Four findings, all LOW. None are in the deployed site:** three are in the local preview server and one is in the operator export tool. The report is at `CLAUDE-SECURITY-20261011-194611/` on Jack's Mac only. It is gitignored on purpose (its own ignore file, plus `CLAUDE-SECURITY-*/` in `.gitignore`, commit fbd7041), because this repo is public. Read the report there; don't copy its details into this file.
 - **The commit history is clean of keys.** A separate read-only search of all 192 commits found no key-shaped strings, no committed env or config files, and no hardcoded secret assignments. (The scan itself reads only the current files.)
