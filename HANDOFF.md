@@ -100,7 +100,13 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-10-14, Claude Code
+## Current checkpoint: 2026-10-17, Claude Code
+
+- **Folder renamed to `jackrome-work`** (was `jackrome-work-migration`), on Jack's go, so the local folder matches the GitHub repo. The GitHub repo name is unchanged. Live references were updated: user-level instructions and their archive copies, skills, scheduled tasks, the workspace repo map, sibling project notes, this `CLAUDE.md` (title and preview `cd` line), and the parent `launch.json`. Dated history (`docs/history.md`, past reports, transcripts) keeps the old name on purpose.
+- **Local setup moved with it:** `.venv-kokoro` had the old absolute path in its scripts; those were rewritten in place rather than rebuilt, and Kokoro imports cleanly from the new path. Claude Code's per-folder settings and transcripts were carried to the new path.
+- **Checked:** `./tools/og/render.sh card-home` renders and passes its own check from the new folder, byte-identical to the committed image. Note: a stray `python -m http.server 8642` left running since 2026-10-11 can hold the render port and make the cards render a 404 page; stop it before rendering if `check-card.py` reports a clipped card.
+
+## Earlier checkpoint: 2026-10-14, Claude Code
 
 - **AI Enablement copy revisions (Jack's wording):** removed the "Three options" intro under "What this looks like"; "Most teams I meet are doing the work of ten people with five" is now "Most teams I work with are stretched thin"; the assessment line ends "Click below." instead of the few-minutes sentence; "The short, specific answer" is now "The easy, contextual answer". Guide index refreshed. Pushed on Jack's go.
 

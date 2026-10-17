@@ -1,4 +1,4 @@
-# jackrome-work-migration
+# jackrome-work
 
 Project-level context for Claude Code and other agents working with Jack. The user-level `~/.claude/CLAUDE.md` covers Claude Code's working style, tone, and git discipline on the current machine. This file records the website's shared project decisions and history.
 
@@ -647,7 +647,7 @@ audit section above). There is no compile step, and a deploy is never required
 to look at a change.
 
 ```
-cd /Users/jack/workspace/claude-code-projects/jackrome-work-migration
+cd /Users/jack/workspace/claude-code-projects/jackrome-work
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
