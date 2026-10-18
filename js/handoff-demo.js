@@ -1,22 +1,26 @@
-/* Reveal a recorded example. All content remains readable without JavaScript. */
+/* Reveal a recorded example. All content remains readable without JavaScript.
+   Every .handoff-demo section on the page is a walkthrough with its own steps. */
 (() => {
+  document.querySelectorAll('.handoff-demo').forEach(demo => {
+    const steps = [...demo.querySelectorAll('.handoff-step')];
+    const panels = [...demo.querySelectorAll('.handoff-panel')];
+    if (!steps.length) return;
+
+    function selectStep(selected) {
+      steps.forEach(step => step.setAttribute('aria-pressed', String(step === selected)));
+      panels.forEach(panel => { panel.hidden = panel.id !== selected.getAttribute('aria-controls'); });
+    }
+
+    steps.forEach(step => step.addEventListener('click', () => selectStep(step)));
+    selectStep(steps[0]);
+    demo.querySelector('.handoff-steps').hidden = false;
+    demo.classList.add('is-interactive');
+  });
+
   const demo = document.getElementById('handoff-demo');
-  if (!demo) return;
-  const steps = [...demo.querySelectorAll('.handoff-step')];
-  const panels = [...demo.querySelectorAll('.handoff-panel')];
-
-  function selectStep(selected) {
-    steps.forEach(step => step.setAttribute('aria-pressed', String(step === selected)));
-    panels.forEach(panel => { panel.hidden = panel.id !== selected.getAttribute('aria-controls'); });
-  }
-
-  steps.forEach(step => step.addEventListener('click', () => selectStep(step)));
-  selectStep(steps[0]);
-  demo.querySelector('.handoff-steps').hidden = false;
-  demo.classList.add('is-interactive');
-
   const copy = document.getElementById('copyHandoff');
   const status = document.getElementById('handoffCopyStatus');
+  if (!demo || !copy) return;
   copy.hidden = false;
   copy.addEventListener('click', async () => {
     const parts = [...demo.querySelectorAll('.handoff-note > div')].map(part =>

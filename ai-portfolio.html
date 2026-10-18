@@ -179,7 +179,7 @@
         </article>
 
         <article class="statement-card card-blue">
-          <p><strong>No hooks, no scheduled runs, no committing behind my back.</strong> The tool that version-controls my writing never runs on its own. Every save point is taken on purpose.</p>
+          <p><strong>No hooks, scheduled runs, or commits behind my back.</strong> The tool that version-controls my writing never runs on its own. Every save point is taken on purpose.</p>
         </article>
 
         <article class="statement-card card-blue">
@@ -205,6 +205,93 @@
         <h2 class="section-title" id="fewTitle">A few of the skills</h2>
         <div class="section-rule" aria-hidden="true"></div>
       </div>
+
+      <div class="prose">
+        <h3>/synthesize and /graft</h3>
+        <p>I like to consume as little as possible so I can practice as much as possible. I’ll watch or read just enough of something to see there’s value in it, and then I bring it to Claude and run one of these two skills over it as a filter, so we can act on what’s useful.</p>
+        <p>/synthesize reads a source for what it means to me: the core idea in one line, what checks out and what doesn’t, where it resonates with how I work, and where it rubs against it. The friction is often the most useful part. /graft asks a narrower question, which is what should change in my setup, if anything. It breaks the source into items, checks each one against what I already have, and gives it a verdict: already covered, borrow, install, or skip. Borrowing usually wins, so a good idea becomes a line in a skill I control instead of someone else’s tool running in every session.</p>
+        <p>Every verdict goes into a ledger, so nothing gets reviewed twice. Since October 11 it has logged 86 verdicts across 11 sources, and half of them are skips. Twelve borrowed ideas became real changes.</p>
+        <p>One of those changes was to /synthesize itself. Below is the run where it happened.</p>
+      </div>
+
+      <!-- A shortened, recorded graft run from 2026-10-18. Same pattern as the
+           handoff walkthrough: the controls reveal HTML already on the page;
+           nothing calls an AI service or reads the visitor's files. -->
+      <section class="handoff-demo is-nested" id="graft-demo" aria-labelledby="graftDemoTitle">
+        <h3 id="graftDemoTitle">See /graft at work</h3>
+        <p class="section-intro">Here’s a recorded run from October 18, shortened for this walkthrough. I’d watched a few minutes of a video about learning with AI, and it made a confident case that most people do it wrong.</p>
+
+        <div class="handoff-walk">
+          <div class="handoff-steps" role="group" aria-label="Steps in the graft example" hidden>
+            <button class="handoff-step" type="button" aria-pressed="true" aria-controls="graftRequest">
+              <span class="handoff-step-number" aria-hidden="true">1</span>
+              <span>The request<small>What I brought in</small></span>
+            </button>
+            <button class="handoff-step" type="button" aria-pressed="false" aria-controls="graftCheck">
+              <span class="handoff-step-number" aria-hidden="true">2</span>
+              <span>The check<small>What I already had</small></span>
+            </button>
+            <button class="handoff-step" type="button" aria-pressed="false" aria-controls="graftVerdicts">
+              <span class="handoff-step-number" aria-hidden="true">3</span>
+              <span>The verdicts<small>What was worth taking</small></span>
+            </button>
+            <button class="handoff-step" type="button" aria-pressed="false" aria-controls="graftChanged">
+              <span class="handoff-step-number" aria-hidden="true">4</span>
+              <span>What changed<small>Two lines, and a realization</small></span>
+            </button>
+          </div>
+
+          <div class="handoff-panels">
+            <section class="handoff-panel" id="graftRequest" aria-labelledby="graftRequestTitle">
+              <p class="handoff-label">My request</p>
+              <h4 id="graftRequestTitle">Graft this video.</h4>
+              <blockquote class="handoff-request">Could you /graft this video transcript please? (Recognizing that we already have graft and synthesis and mapmaker here so interesting to use graft on a video about these kinds of skills)</blockquote>
+              <p>The video argues that you learn by producing (recalling, explaining back, attempting) instead of by reading, and lists ten roles AI can play in learning. Claude read the full transcript from YouTube’s captions.</p>
+            </section>
+
+            <section class="handoff-panel" id="graftCheck" aria-labelledby="graftCheckTitle">
+              <p class="handoff-label">Before any verdict</p>
+              <h4 id="graftCheckTitle">Six of the ten roles were already here.</h4>
+              <dl class="handoff-checks">
+                <div><dt>Interviewer</dt><dd>Ask me questions before teaching me. Covered by the assumptions-first rule in my global instructions, question cards, and plan mode.</dd></div>
+                <div><dt>Mapmaker</dt><dd>Covered, by a different job. His builds a curriculum for a subject you don’t know yet; mine maps a pile I already have.</dd></div>
+                <div><dt>Checker</dt><dd>Check my process, don’t rewrite it. Covered by /red-pen, which flags and never rewrites, and a second model as an outside reviewer.</dd></div>
+                <div><dt>Diagnostician</dt><dd>Find the one root mistake behind repeated ones. Covered by the “seen twice is a rule” habit in my editing loop.</dd></div>
+                <div><dt>Sparring partner</dt><dd>Covered by /readers, for talks.</dd></div>
+                <div><dt>Clerk</dt><dd>Organize my notes, add nothing. Covered by /obsidian-layer and the skills that deliver and gather notes.</dd></div>
+              </dl>
+              <p class="handoff-note-context">Each “already covered” names what covers it, checked that day against the files, not from memory.</p>
+            </section>
+
+            <section class="handoff-panel" id="graftVerdicts" aria-labelledby="graftVerdictsTitle">
+              <p class="handoff-label">The report, excerpt</p>
+              <h4 id="graftVerdictsTitle">What’s missing is the production side.</h4>
+              <dl class="handoff-checks">
+                <div><dt>Explainer, then redo it without help</dt><dd><span class="verdict">Borrow.</span> My teaching lines were all the explainer role. One line in my global instructions: now and then, ask me to guess before explaining.</dd></div>
+                <div><dt>Listener (explain it back in your own words)</dt><dd><span class="verdict">Borrow.</span> /synthesize gets an optional “Say it back” step at the end.</dd></div>
+                <div><dt>Socratic questioner</dt><dd><span class="verdict">Skip.</span> A way of prompting, not a setup change.</dd></div>
+                <div><dt>Examiner (quiz me, harder each time)</dt><dd><span class="verdict">Skip.</span> Nothing in my setup is exam-style learning.</dd></div>
+              </dl>
+              <blockquote class="handoff-excerpt"><p><strong>The short version:</strong> your setup already covers most of his ten roles. What it lacks is the production side: anything that asks <em>you</em> to say it back. Two small borrows would fill that gap.</p></blockquote>
+              <p class="handoff-note-context">Past the list, it pointed out that /graft, /synthesize and the map skill were all explainers too. Each hands me something to read, and none asks me to produce anything.</p>
+            </section>
+
+            <section class="handoff-panel" id="graftChanged" aria-labelledby="graftChangedTitle">
+              <p class="handoff-label">After I said yes</p>
+              <h4 id="graftChangedTitle">Consume little, practice much.</h4>
+              <p class="handoff-excerpt-label">/synthesize now ends with an offer</p>
+              <blockquote class="handoff-excerpt"><p>Want to say it back? Talk through what you took from this, and I’ll tell you what you caught, what you missed, and what’s yours.</p></blockquote>
+              <p class="handoff-excerpt-label">A new line in my global instructions</p>
+              <blockquote class="handoff-excerpt"><p>Now and then, before explaining a command or change, ask him to guess what it will do first. A guess is production, and production is what sticks; an explanation alone only feels like learning.</p></blockquote>
+              <p class="handoff-note-context">Written to Claude, so it calls me him. Both changes went in the same morning, each on its own yes, and both are logged in the ledger as acted on.</p>
+              <p class="handoff-excerpt-label">What I noticed afterward</p>
+              <blockquote class="handoff-request">I’ve barely even gone through much of the Claude Academy trainings, and I’ve done way more actual practice and learning</blockquote>
+              <p class="handoff-spoken-note"><em>Spoken aloud using Wispr Flow.</em></p>
+              <a class="handoff-example-link is-external" href="https://github.com/jackintheway/utilities" target="_blank" rel="noopener">Use /synthesize and /graft yourself, free on GitHub <span aria-hidden="true">&rarr;</span></a>
+            </section>
+          </div>
+        </div>
+      </section>
 
       <div class="prose">
         <h3>/fair-share</h3>
@@ -249,7 +336,6 @@
         <p><strong>/deliver</strong> runs with a confirmation at every stage, which flags a file that looks miscategorized instead of silently reclassifying it, and never overwrites anything.</p>
         <p><strong>/obsidian-layer</strong> adds structure and cross-references to raw text without altering a word of it.</p>
         <p><strong>/conversation-archiver</strong> records both halves of a dialogue with an AI, and cross-references only my words, so the record has both of us in it and the connections through it are mine.</p>
-        <p><strong>/synthesis</strong> returns what's useful, what doesn't fit, and where the source and I actually disagree, on the theory that friction is more useful than agreement.</p>
         <p><strong>The verification tool</strong> holds the checks that catch what a browser hides: a stylesheet returning the wrong content type, an import that 404s without breaking the page, a phone-width test that was never actually testing a phone. This one came out of me pointing Claude Code at the last couple of months of my project history and asking what was worth building, based on the repetitive work we were doing.</p>
       </div>
     </section>

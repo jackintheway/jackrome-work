@@ -100,7 +100,16 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-10-17, Claude Code
+## Current checkpoint: 2026-10-18, Claude Code
+
+- **AI Portfolio, on Jack's go:** a new entry, "/synthesize and /graft", at the top of "A few of the skills", with a nested walkthrough under it, "See /graft at work" (`#graft-demo`): four steps through a recorded graft run, built on the handoff walkthrough's pattern. Built from the exhibit package `_exhibits/graft-and-synthesize/`, which Jack read and approved. Jack approved naming /red-pen and /readers in step 2.
+- **The one-line `/synthesis` mention under "Some more skills" is gone**; the new entry covers the skill under its current name. Copy edit Jack asked for: "No hooks, scheduled runs, or commits behind my back."
+- **`js/handoff-demo.js` now runs every `.handoff-demo` on the page**, not just one; the copy button still belongs to the handoff example only. On phones the step buttons take one column per step (`grid-auto-flow: column`), so a four-step walkthrough fits beside the three-step one.
+- **The walkthrough links to `github.com/jackintheway/utilities`**, a new public repo (MIT) made the same day, holding generic copies of fair-share, graft and synthesize.
+- **Checked locally:** `node --check`; guide index rebuilt (163 destinations); both walkthroughs step correctly at 1280px and 390px, no horizontal scroll, no console errors. **Not pushed or deployed.**
+- **Next, planned with Jack:** a layout pass on AI Portfolio. An exhibit area under the intro gathering the walkthroughs and skill entries, then "What they refuse to do", then the remaining skills as collapsible cards (possibly mods too), and a decision on what "How this works" should name.
+
+## Earlier checkpoint: 2026-10-17, Claude Code
 
 - **Folder renamed to `jackrome-work`** (was `jackrome-work-migration`), on Jack's go, so the local folder matches the GitHub repo. The GitHub repo name is unchanged. Live references were updated: user-level instructions and their archive copies, skills, scheduled tasks, the workspace repo map, sibling project notes, this `CLAUDE.md` (title and preview `cd` line), and the parent `launch.json`. Dated history (`docs/history.md`, past reports, transcripts) keeps the old name on purpose.
 - **Local setup moved with it:** `.venv-kokoro` had the old absolute path in its scripts; those were rewritten in place rather than rebuilt, and Kokoro imports cleanly from the new path. Claude Code's per-folder settings and transcripts were carried to the new path.

@@ -410,6 +410,10 @@
   color: var(--text-muted);
 }
 .handoff-panel h3 { margin: 0 0 var(--space-5); }
+/* A walkthrough nested under a skill entry: one heading level down. */
+.handoff-demo.is-nested { margin-block: var(--space-8); }
+.handoff-demo.is-nested > h3 { margin: 0 0 var(--space-4); }
+.handoff-panel h4 { margin: 0 0 var(--space-5); font-size: var(--fs-h3); line-height: 1.2; }
 .handoff-request {
   margin: var(--space-6) 0 var(--space-3);
   padding: 0 0 0 var(--space-5);
@@ -424,6 +428,19 @@
   color: var(--text-muted);
 }
 .handoff-example-link { display: inline-block; padding-block: var(--space-3); }
+.handoff-panel blockquote.handoff-excerpt {
+  margin: var(--space-4) 0;
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-base);
+  border: var(--rule);
+}
+.handoff-excerpt p { margin: 0; }
+.handoff-excerpt-label {
+  margin: var(--space-5) 0 0;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+}
+.handoff-checks dd .verdict { font-weight: var(--fw-bold); }
 .handoff-checks, .handoff-note { margin: 0; }
 .handoff-checks > div {
   padding-block: var(--space-4);
@@ -451,7 +468,9 @@
   .handoff-demo.is-interactive .handoff-walk { grid-template-columns: 1fr; }
   .handoff-steps {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* One column per step, however many steps a walkthrough has. */
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
     gap: var(--space-2);
     padding: var(--space-3);
     border-right: 0;
