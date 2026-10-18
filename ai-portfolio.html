@@ -72,10 +72,11 @@
     <nav class="page-contents" aria-label="On this page">
       <span class="page-contents-label">On this page</span>
       <a href="#patternTitle">Overview</a>
-      <a href="#refuseTitle">Key refusals</a>
-      <a href="#fewTitle">Skills</a>
-      <a href="#clientTitle">Case studies</a>
       <a href="#carryTitle">Principles</a>
+      <a href="#exhibitsTitle">Exhibits</a>
+      <a href="#clientTitle">Case studies</a>
+      <a href="#refuseTitle">Guardrails</a>
+      <a href="#restTitle">More skills</a>
     </nav>
 
     <!-- The opening statement follows the hero without a second heading. -->
@@ -83,277 +84,8 @@
       <div class="prose prose-lg">
         <p>As AI tools advance, the question of using these tools is much less about technical ability and much more about willingness.</p>
         <p>I often start by speaking my thoughts aloud and asking what I might be missing. The conversation helps me work through an idea before I know exactly what I want to make, and I keep editing as it takes shape.</p>
-        <p>But most people I talk to that want to work with AI have the same worry about it. They're afraid of finding out afterward that something went out in their name that they never approved of, or wouldn't have been comfortable putting in front of other people.</p>
-        <p>The boundaries are curated to the task. Tools that read my notes can report what they find without changing the source. New material for my Obsidian vault goes into a folder called Compost, which I review myself. A save point changes Git history; a handoff can be a note in chat or an update to a project's existing handoff file. <strong>Each tool spells out where it can write and which actions need my approval.</strong></p>
       </div>
     </div>
-
-    <!-- A shortened, recorded checkpoint. These controls reveal HTML;
-         they do not call an AI service or read the visitor's files. -->
-    <section class="section handoff-demo" id="handoff-demo" aria-labelledby="handoffDemoTitle">
-      <div class="section-header">
-        <h2 class="section-title" id="handoffDemoTitle">See /handoff at work</h2>
-        <div class="section-rule" aria-hidden="true"></div>
-      </div>
-      <p class="section-intro">This website has a shared handoff that Claude Code and Codex can both read. Here's a recorded example from an update to its links, shortened for this walkthrough.</p>
-
-      <div class="handoff-walk">
-        <div class="handoff-steps" role="group" aria-label="Steps in the handoff example" hidden>
-          <button class="handoff-step" type="button" aria-pressed="true" aria-controls="handoffRequest">
-            <span class="handoff-step-number" aria-hidden="true">1</span>
-            <span>The request<small>What I wanted changed</small></span>
-          </button>
-          <button class="handoff-step" type="button" aria-pressed="false" aria-controls="handoffChecks">
-            <span class="handoff-step-number" aria-hidden="true">2</span>
-            <span>The files checked<small>What the note is based on</small></span>
-          </button>
-          <button class="handoff-step" type="button" aria-pressed="false" aria-controls="handoffNote">
-            <span class="handoff-step-number" aria-hidden="true">3</span>
-            <span>The handoff note<small>What the next agent can use</small></span>
-          </button>
-        </div>
-
-        <div class="handoff-panels">
-          <section class="handoff-panel" id="handoffRequest" aria-labelledby="handoffRequestTitle">
-            <p class="handoff-label">My request, excerpt</p>
-            <h3 id="handoffRequestTitle">Make the links arrive somewhere specific.</h3>
-            <blockquote class="handoff-request">I would love it if you could do all of that if you're able to understand where everything should be going, so that all of them are totally deliberate rather than just going to the general rooms.</blockquote>
-            <p class="handoff-spoken-note"><em>Spoken aloud using Wispr Flow.</em></p>
-            <p>One example: the Wayspace album in Music should link to its lyrics in Writing.</p>
-            <a class="handoff-example-link" href="/wayspace/writing?collection=wayspace#writingFilters">See where that link goes now <span aria-hidden="true">&rarr;</span></a>
-          </section>
-
-          <section class="handoff-panel" id="handoffChecks" aria-labelledby="handoffChecksTitle">
-            <p class="handoff-label">Before writing the note</p>
-            <h3 id="handoffChecksTitle">Check what changed and what was decided.</h3>
-            <dl class="handoff-checks">
-              <div><dt>js/wayspace.js</dt><dd>The 16 cross-room links have specific destinations. Album membership comes from the catalogue.</dd></div>
-              <div><dt>wayspace/writing.html &amp; css/wayspace.css</dt><dd>Writing has album filters. Linked entries have room to clear the navigation at the top.</dd></div>
-              <div><dt>CLAUDE.md &amp; HANDOFF.md</dt><dd>The shared instructions keep our decisions separate from the current checkpoint.</dd></div>
-              <div><dt>Saved version &amp; browser checks</dt><dd>Save point <code>633121a</code> records the update. All 16 links were followed locally, and Writing showed 6 Feivel Speaks lyrics and 12 Wayspace lyrics.</dd></div>
-            </dl>
-          </section>
-
-          <section class="handoff-panel" id="handoffNote" aria-labelledby="handoffNoteTitle">
-            <p class="handoff-label">September 12, 2026 checkpoint</p>
-            <h3 id="handoffNoteTitle">A note the next session can pick up.</h3>
-            <p class="handoff-note-context">A shortened version of the project's handoff at that point. This records the local review stage of the update.</p>
-            <dl class="handoff-note" id="handoffNoteText">
-              <div><dt>What we're doing</dt><dd>Finish the approved website audit changes and make the cross-room links precise.</dd></div>
-              <div><dt>Verified at this checkpoint</dt><dd>The link update is saved as 633121a. All 16 cross-room links reach their intended destinations in the local preview. Writing's album filters show 6 Feivel Speaks lyrics and 12 Wayspace lyrics.</dd></div>
-              <div><dt>Settled with Jack</dt><dd>Keep the existing public Production credits for credibility. Use explicit catalogue membership for the lyric filters. Publication needs Jack's go.</dd></div>
-              <div><dt>Still open</dt><dd>Jack is reviewing the case study and revised copy. Nothing from this update has been pushed or deployed. Hosting-specific checks need a deployment first.</dd></div>
-              <div><dt>Next action</dt><dd>Review the local changes with Jack before publishing.</dd></div>
-              <div><dt>What travels with it</dt><dd>CLAUDE.md, HANDOFF.md, js/wayspace.js, wayspace/writing.html, css/wayspace.css, and save point 633121a. Recheck the current files and Git state when you resume.</dd></div>
-            </dl>
-            <div class="handoff-copy-row">
-              <button class="btn btn-yellow" id="copyHandoff" type="button" hidden>Copy this note</button>
-              <span id="handoffCopyStatus" role="status"></span>
-            </div>
-          </section>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHAT THEY REFUSE TO DO
-         Lines lifted from the actual skill files. Almost every one of
-         these tools has a section in it titled "What this skill is not",
-         and those sections turned out to be the most interesting thing
-         in the whole set. Pronouns adjusted where a line referred to me
-         in the third person; otherwise these are as written. -->
-    <section class="section" aria-labelledby="refuseTitle">
-      <div class="section-header">
-        <h2 class="section-title" id="refuseTitle">What they refuse to do</h2>
-        <div class="section-rule" aria-hidden="true"></div>
-      </div>
-      <p class="section-intro">Almost every one of these tools has a section in it titled "What this skill is not." These are lines from those sections, as written.</p>
-
-      <div class="offer-grid">
-
-        <article class="statement-card card-blue">
-          <p><strong>Findings are observations, not action items.</strong> A tool that walks through my notes reports what it sees and stops there. It doesn't hand me a task list I didn't ask for.</p>
-        </article>
-
-        <article class="statement-card card-blue">
-          <p><strong>Never a guilt engine.</strong> One of these finds the parts of my archive I've stopped visiting. If a finding would land as "you neglected this," it gets reframed or dropped.</p>
-        </article>
-
-        <article class="statement-card card-blue">
-          <p><strong>No hooks, scheduled runs, or commits behind my back.</strong> The tool that version-controls my writing never runs on its own. Every save point is taken on purpose.</p>
-        </article>
-
-        <article class="statement-card card-blue">
-          <p><strong>It never invents something the material didn't ask for.</strong> The tool that proposes new notes can only propose what the sources already pointed at twice.</p>
-        </article>
-
-        <article class="statement-card card-blue">
-          <p><strong>It never creates missing files, edits links, renames anything, or updates the registry.</strong> It reads, it reports, and any repair is a separate job I have to authorize.</p>
-        </article>
-
-        <article class="statement-card card-blue">
-          <p><strong>The raw text is preserved exactly. Nothing is rewritten, summarized, or cleaned up.</strong> The annotation tool adds structure around my words and never touches the words.</p>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- A FEW OF THEM
-         Worked examples, newest first. /fair-share also has a case
-         study, so its entry ends with a link there: two ways in. -->
-    <section class="section" aria-labelledby="fewTitle">
-      <div class="section-header">
-        <h2 class="section-title" id="fewTitle">A few of the skills</h2>
-        <div class="section-rule" aria-hidden="true"></div>
-      </div>
-
-      <div class="prose">
-        <h3>/synthesize and /graft</h3>
-        <p>I like to consume as little as possible so I can practice as much as possible. I’ll watch or read just enough of something to see there’s value in it, and then I bring it to Claude and run one of these two skills over it as a filter, so we can act on what’s useful.</p>
-        <p>/synthesize reads a source for what it means to me: the core idea in one line, what checks out and what doesn’t, where it resonates with how I work, and where it rubs against it. The friction is often the most useful part. /graft asks a narrower question, which is what should change in my setup, if anything. It breaks the source into items, checks each one against what I already have, and gives it a verdict: already covered, borrow, install, or skip. Borrowing usually wins, so a good idea becomes a line in a skill I control instead of someone else’s tool running in every session.</p>
-        <p>Every verdict goes into a ledger, so nothing gets reviewed twice. Since October 11 it has logged 86 verdicts across 11 sources, and half of them are skips. Twelve borrowed ideas became real changes.</p>
-        <p>One of those changes was to /synthesize itself. Below is the run where it happened.</p>
-      </div>
-
-      <!-- A shortened, recorded graft run from 2026-10-18. Same pattern as the
-           handoff walkthrough: the controls reveal HTML already on the page;
-           nothing calls an AI service or reads the visitor's files. -->
-      <section class="handoff-demo is-nested" id="graft-demo" aria-labelledby="graftDemoTitle">
-        <h3 id="graftDemoTitle">See /graft at work</h3>
-        <p class="section-intro">Here’s a recorded run from October 18, shortened for this walkthrough. I’d watched a few minutes of a video about learning with AI, and it made a confident case that most people do it wrong.</p>
-
-        <div class="handoff-walk">
-          <div class="handoff-steps" role="group" aria-label="Steps in the graft example" hidden>
-            <button class="handoff-step" type="button" aria-pressed="true" aria-controls="graftRequest">
-              <span class="handoff-step-number" aria-hidden="true">1</span>
-              <span>The request<small>What I brought in</small></span>
-            </button>
-            <button class="handoff-step" type="button" aria-pressed="false" aria-controls="graftCheck">
-              <span class="handoff-step-number" aria-hidden="true">2</span>
-              <span>The check<small>What I already had</small></span>
-            </button>
-            <button class="handoff-step" type="button" aria-pressed="false" aria-controls="graftVerdicts">
-              <span class="handoff-step-number" aria-hidden="true">3</span>
-              <span>The verdicts<small>What was worth taking</small></span>
-            </button>
-            <button class="handoff-step" type="button" aria-pressed="false" aria-controls="graftChanged">
-              <span class="handoff-step-number" aria-hidden="true">4</span>
-              <span>What changed<small>Two lines, and a realization</small></span>
-            </button>
-          </div>
-
-          <div class="handoff-panels">
-            <section class="handoff-panel" id="graftRequest" aria-labelledby="graftRequestTitle">
-              <p class="handoff-label">My request</p>
-              <h4 id="graftRequestTitle">Graft this video.</h4>
-              <blockquote class="handoff-request">Could you /graft this video transcript please? (Recognizing that we already have graft and synthesis and mapmaker here so interesting to use graft on a video about these kinds of skills)</blockquote>
-              <p>The video argues that you learn by producing (recalling, explaining back, attempting) instead of by reading, and lists ten roles AI can play in learning. Claude read the full transcript from YouTube’s captions.</p>
-            </section>
-
-            <section class="handoff-panel" id="graftCheck" aria-labelledby="graftCheckTitle">
-              <p class="handoff-label">Before any verdict</p>
-              <h4 id="graftCheckTitle">Six of the ten roles were already here.</h4>
-              <dl class="handoff-checks">
-                <div><dt>Interviewer</dt><dd>Ask me questions before teaching me. Covered by the assumptions-first rule in my global instructions, question cards, and plan mode.</dd></div>
-                <div><dt>Mapmaker</dt><dd>Covered, by a different job. His builds a curriculum for a subject you don’t know yet; mine maps a pile I already have.</dd></div>
-                <div><dt>Checker</dt><dd>Check my process, don’t rewrite it. Covered by /red-pen, which flags and never rewrites, and a second model as an outside reviewer.</dd></div>
-                <div><dt>Diagnostician</dt><dd>Find the one root mistake behind repeated ones. Covered by the “seen twice is a rule” habit in my editing loop.</dd></div>
-                <div><dt>Sparring partner</dt><dd>Covered by /readers, for talks.</dd></div>
-                <div><dt>Clerk</dt><dd>Organize my notes, add nothing. Covered by /obsidian-layer and the skills that deliver and gather notes.</dd></div>
-              </dl>
-              <p class="handoff-note-context">Each “already covered” names what covers it, checked that day against the files, not from memory.</p>
-            </section>
-
-            <section class="handoff-panel" id="graftVerdicts" aria-labelledby="graftVerdictsTitle">
-              <p class="handoff-label">The report, excerpt</p>
-              <h4 id="graftVerdictsTitle">What’s missing is the production side.</h4>
-              <dl class="handoff-checks">
-                <div><dt>Explainer, then redo it without help</dt><dd><span class="verdict">Borrow.</span> My teaching lines were all the explainer role. One line in my global instructions: now and then, ask me to guess before explaining.</dd></div>
-                <div><dt>Listener (explain it back in your own words)</dt><dd><span class="verdict">Borrow.</span> /synthesize gets an optional “Say it back” step at the end.</dd></div>
-                <div><dt>Socratic questioner</dt><dd><span class="verdict">Skip.</span> A way of prompting, not a setup change.</dd></div>
-                <div><dt>Examiner (quiz me, harder each time)</dt><dd><span class="verdict">Skip.</span> Nothing in my setup is exam-style learning.</dd></div>
-              </dl>
-              <blockquote class="handoff-excerpt"><p><strong>The short version:</strong> your setup already covers most of his ten roles. What it lacks is the production side: anything that asks <em>you</em> to say it back. Two small borrows would fill that gap.</p></blockquote>
-              <p class="handoff-note-context">Past the list, it pointed out that /graft, /synthesize and the map skill were all explainers too. Each hands me something to read, and none asks me to produce anything.</p>
-            </section>
-
-            <section class="handoff-panel" id="graftChanged" aria-labelledby="graftChangedTitle">
-              <p class="handoff-label">After I said yes</p>
-              <h4 id="graftChangedTitle">Consume little, practice much.</h4>
-              <p class="handoff-excerpt-label">/synthesize now ends with an offer</p>
-              <blockquote class="handoff-excerpt"><p>Want to say it back? Talk through what you took from this, and I’ll tell you what you caught, what you missed, and what’s yours.</p></blockquote>
-              <p class="handoff-excerpt-label">A new line in my global instructions</p>
-              <blockquote class="handoff-excerpt"><p>Now and then, before explaining a command or change, ask him to guess what it will do first. A guess is production, and production is what sticks; an explanation alone only feels like learning.</p></blockquote>
-              <p class="handoff-note-context">Written to Claude, so it calls me him. Both changes went in the same morning, each on its own yes, and both are logged in the ledger as acted on.</p>
-              <p class="handoff-excerpt-label">What I noticed afterward</p>
-              <blockquote class="handoff-request">I’ve barely even gone through much of the Claude Academy trainings, and I’ve done way more actual practice and learning</blockquote>
-              <p class="handoff-spoken-note"><em>Spoken aloud using Wispr Flow.</em></p>
-              <a class="handoff-example-link is-external" href="https://github.com/jackintheway/utilities" target="_blank" rel="noopener">Use /synthesize and /graft yourself, free on GitHub <span aria-hidden="true">&rarr;</span></a>
-            </section>
-          </div>
-        </div>
-      </section>
-
-      <div class="prose">
-        <h3>/fair-share</h3>
-        <p>/fair-share checks AI-assisted work from both sides of a handoff: the person who received it and the person about to send it. Inbound pulls out the point, the asks, and the claims worth checking. Outbound traces weak output back to likely gaps in the prompt that made it, and returns a better prompt along with the diagnosis.</p>
-        <p>Testing it on my own draft led to a third direction, crossbound, for shared drafts still in progress. <a href="/case-studies/fair-share">Read more about it in case studies &rarr;</a></p>
-
-        <h3>/map-maker</h3>
-        <p>When you have piles of material, whether files, pages, transcripts, a folder nobody has opened in a year, map-maker reads all of it and gives you one place to read it from, in whatever format you want: a web page, a Word doc, a PDF, a deck.</p>
-        <p>Every statement on the map carries a coordinate back to where it came from, precise enough to act on: a filename and a heading, a page number, a timestamp. So you read the consolidated view, hit something you want to be sure about, and go straight to the exact spot in the source.</p>
-        <p>Where a line pulls a few sources together and doesn't have one origin, it says so, so you can always tell what came from your material and what got added to connect it.</p>
-
-        <h3>/handoff</h3>
-        <p>A long piece of work usually doesn't finish in one sitting. Handoff writes the note that lets the next session pick up without losing what this one learned: what got decided, what got ruled out and why, what's still open, and the one next thing to do. That can be a note I carry into another chat or a shared file that Claude Code and Codex both read. I use both, so the context needs to travel between them.</p>
-        <p>It checks its own claims against the files before it writes them down, because notes like this go stale and nobody notices until they've already acted on one. It also marks which lines are verified and which are just the last session's read, so an assumption can't get laundered into a fact three sessions later.</p>
-
-        <h3>/ingest-transcript</h3>
-        <p>Anyone publishing long recorded conversations runs into the same thing, which is that somebody has to get through a two hour transcript and decide what to cut before it ships. This reads the whole thing and hands back one timestamped report covering what has to come out because a speaker asked for it on the record, what's worth listening to again before deciding, the standout lines worth pulling as clips, and any passage where someone recited from a published text long enough to earn a quote card on screen.</p>
-        <p>It asks one question before it starts, which is what comes before this transcript in the finished file and how long that runs. Every time it reports is offset to match the editor's timeline instead of the transcript's. Without that, somebody does the arithmetic by hand for every entry, which is worse than getting no timestamps at all.</p>
-
-        <h3>/save-points</h3>
-        <p>I'm not a professional developer, and version control is one of the most useful things I've picked up. Most people never get near it, because the tooling assumes you already speak the language.</p>
-        <p>This skill makes the process simple and easy to understand, and the skill ensures that the save points resemble save states of a video game. It tells me what changed since last time in ordinary words, proposes a description, and commits when I say yes. Anything that could lose work gets explained in full before it runs, and it teaches me one small thing per session when there's a natural opening.</p>
-      </div>
-    </section>
-
-    <!-- THE REST
-         One line each, on the design decision rather than the subject.
-         The subjects are personal; the decisions are the transferable
-         part, and the decisions are what a client is actually buying. -->
-    <section class="section" aria-labelledby="restTitle">
-      <div class="section-header">
-        <h2 class="section-title" id="restTitle">Some more skills</h2>
-        <div class="section-rule" aria-hidden="true"></div>
-      </div>
-      
-      <div class="prose">
-        <p><strong>/sweep</strong> walks a section of the archive and reports what it notices, with an explicit guard against drifting from noticing into telling me what to build.</p>
-        <p><strong>/portal</strong> surfaces what I've stopped paying attention to, written so that going quiet is never framed as a failure.</p>
-        <p><strong>/mycelium</strong> reads the wikilinks running through my notes: the connective tissue I use in Obsidian for writing, journaling, documentation, lyrics, and drawing themes and parallels across years of material. It never fixes a link itself, and it weighs the ones I made by hand more heavily than the ones an assistant added, so an assistant's habits can't masquerade as my own intent.</p>
-        <p><strong>/orient</strong> finds where my written instructions have drifted from reality, and revises only the lines that actually drifted. Every sentence still true stays untouched, word for word.</p>
-        <p><strong>/harvest</strong> gathers ideas flagged across months of work and ranks them by how often the material asked, rather than by how good they sound.</p>
-        <p><strong>/deliver</strong> runs with a confirmation at every stage, which flags a file that looks miscategorized instead of silently reclassifying it, and never overwrites anything.</p>
-        <p><strong>/obsidian-layer</strong> adds structure and cross-references to raw text without altering a word of it.</p>
-        <p><strong>/conversation-archiver</strong> records both halves of a dialogue with an AI, and cross-references only my words, so the record has both of us in it and the connections through it are mine.</p>
-        <p><strong>The verification tool</strong> holds the checks that catch what a browser hides: a stylesheet returning the wrong content type, an import that 404s without breaking the page, a phone-width test that was never actually testing a phone. This one came out of me pointing Claude Code at the last couple of months of my project history and asking what was worth building, based on the repetitive work we were doing.</p>
-      </div>
-    </section>
-
-    <!-- Case studies describe the work and its evidence. -->
-    <section class="section" aria-labelledby="clientTitle">
-      <div class="section-header">
-        <h2 class="section-title" id="clientTitle">How this works</h2>
-        <div class="section-rule" aria-hidden="true"></div>
-      </div>
-
-      <div class="prose">
-        <p>The tools above support my own work. These case studies follow projects I worked through with clients, and two I built for myself: what was needed, what we tried, what changed, and how we checked it.</p>
-        <p>If you'd like to see what an audit conversation would start from, <a href="https://audit.jackrome.work/">the readiness assessment</a> is a few minutes' way to find out.</p>
-      </div>
-
-      <ul class="case-rows" id="caseStudyGrid"></ul>
-    </section>
 
     <!-- WHAT CARRIES OVER
          The methods, as opposed to the tools. Written by Jack in 2026 as
@@ -390,6 +122,356 @@
           <p><strong>Reference that people actually open.</strong> Scattered documents become one page with search and filters, so the answer is findable in the moment someone needs it. It replaces the folder nobody opens with a page people keep in a tab.</p>
         </article>
 
+      </div>
+    </section>
+
+    <!-- EXHIBITS
+         A shelf of worked examples. Pick a tile and its exhibit opens below
+         (js/exhibit-shelf.js); without JavaScript every exhibit shows,
+         stacked. Each holds its entry, its walkthrough if it has one, and
+         its links onward. The walkthroughs reveal HTML already on the page;
+         nothing calls an AI service or reads the visitor's files.
+         id="fewTitle" keeps old links to "A few of the skills" landing here. -->
+    <section class="section exhibit-shelf" id="fewTitle" aria-labelledby="exhibitsTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="exhibitsTitle">How this works</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <p class="section-intro">A few of the skills I use most, each with what it does and, for some, a recorded run you can step through.</p>
+
+      <div class="shelf-tiles" role="group" aria-label="Exhibits" hidden>
+        <button class="shelf-tile" type="button" aria-pressed="true" aria-controls="exhibit-handoff">
+          <span class="shelf-tile-name">/handoff</span>
+          <span class="shelf-tile-hook">The note that lets the next session pick up where this one left off.</span>
+        </button>
+        <button class="shelf-tile" type="button" aria-pressed="false" aria-controls="exhibit-graft">
+          <span class="shelf-tile-name">/synthesize and /graft</span>
+          <span class="shelf-tile-hook">Taking in just enough, then filtering it for what’s worth acting on.</span>
+        </button>
+        <button class="shelf-tile" type="button" aria-pressed="false" aria-controls="exhibit-fair-share">
+          <span class="shelf-tile-name">/fair-share</span>
+          <span class="shelf-tile-hook">Checking AI-assisted work from both sides of a handoff.</span>
+        </button>
+        <button class="shelf-tile" type="button" aria-pressed="false" aria-controls="exhibit-map-maker">
+          <span class="shelf-tile-name">/map-maker</span>
+          <span class="shelf-tile-hook">One place to read a pile of material, with a way back to every source.</span>
+        </button>
+        <button class="shelf-tile" type="button" aria-pressed="false" aria-controls="exhibit-ingest-transcript">
+          <span class="shelf-tile-name">/ingest-transcript</span>
+          <span class="shelf-tile-hook">A timestamped first pass on a long recorded conversation.</span>
+        </button>
+        <button class="shelf-tile" type="button" aria-pressed="false" aria-controls="exhibit-save-points">
+          <span class="shelf-tile-name">/save-points</span>
+          <span class="shelf-tile-hook">Version control in ordinary words, like save states in a game.</span>
+        </button>
+      </div>
+
+      <div class="shelf-panels">
+      <article class="shelf-panel" id="exhibit-handoff" aria-labelledby="exhibitHandoffTitle">
+        <div class="prose">
+          <h3 id="exhibitHandoffTitle">/handoff</h3>
+          <p>A long piece of work usually doesn't finish in one sitting. Handoff writes the note that lets the next session pick up without losing what this one learned: what got decided, what got ruled out and why, what's still open, and the one next thing to do. That can be a note I carry into another chat or a shared file that Claude Code and Codex both read. I use both, so the context needs to travel between them.</p>
+          <p>It checks its own claims against the files before it writes them down, because notes like this go stale and nobody notices until they've already acted on one. It also marks which lines are verified and which are just the last session's read, so an assumption can't get laundered into a fact three sessions later.</p>
+        </div>
+        <!-- A shortened, recorded checkpoint. These controls reveal HTML;
+             they do not call an AI service or read the visitor's files. -->
+        <section class="handoff-demo is-nested" id="handoff-demo" aria-labelledby="handoffDemoTitle">
+          <h4 id="handoffDemoTitle">See /handoff at work</h4>
+          <p class="section-intro">This website has a shared handoff that Claude Code and Codex can both read. Here's a recorded example from an update to its links, shortened for this walkthrough.</p>
+
+          <div class="handoff-walk">
+            <div class="handoff-steps" role="group" aria-label="Steps in the handoff example" hidden>
+              <button class="handoff-step" type="button" aria-pressed="true" aria-controls="handoffRequest">
+                <span class="handoff-step-number" aria-hidden="true">1</span>
+                <span>The request<small>What I wanted changed</small></span>
+              </button>
+              <button class="handoff-step" type="button" aria-pressed="false" aria-controls="handoffChecks">
+                <span class="handoff-step-number" aria-hidden="true">2</span>
+                <span>The files checked<small>What the note is based on</small></span>
+              </button>
+              <button class="handoff-step" type="button" aria-pressed="false" aria-controls="handoffNote">
+                <span class="handoff-step-number" aria-hidden="true">3</span>
+                <span>The handoff note<small>What the next agent can use</small></span>
+              </button>
+            </div>
+
+            <div class="handoff-panels">
+              <section class="handoff-panel" id="handoffRequest" aria-labelledby="handoffRequestTitle">
+                <p class="handoff-label">My request, excerpt</p>
+                <h5 id="handoffRequestTitle">Make the links arrive somewhere specific.</h5>
+                <blockquote class="handoff-request">I would love it if you could do all of that if you're able to understand where everything should be going, so that all of them are totally deliberate rather than just going to the general rooms.</blockquote>
+                <p class="handoff-spoken-note"><em>Spoken aloud using Wispr Flow.</em></p>
+                <p>One example: the Wayspace album in Music should link to its lyrics in Writing.</p>
+                <a class="handoff-example-link" href="/wayspace/writing?collection=wayspace#writingFilters">See where that link goes now <span aria-hidden="true">&rarr;</span></a>
+              </section>
+
+              <section class="handoff-panel" id="handoffChecks" aria-labelledby="handoffChecksTitle">
+                <p class="handoff-label">Before writing the note</p>
+                <h5 id="handoffChecksTitle">Check what changed and what was decided.</h5>
+                <dl class="handoff-checks">
+                  <div><dt>js/wayspace.js</dt><dd>The 16 cross-room links have specific destinations. Album membership comes from the catalogue.</dd></div>
+                  <div><dt>wayspace/writing.html &amp; css/wayspace.css</dt><dd>Writing has album filters. Linked entries have room to clear the navigation at the top.</dd></div>
+                  <div><dt>CLAUDE.md &amp; HANDOFF.md</dt><dd>The shared instructions keep our decisions separate from the current checkpoint.</dd></div>
+                  <div><dt>Saved version &amp; browser checks</dt><dd>Save point <code>633121a</code> records the update. All 16 links were followed locally, and Writing showed 6 Feivel Speaks lyrics and 12 Wayspace lyrics.</dd></div>
+                </dl>
+              </section>
+
+              <section class="handoff-panel" id="handoffNote" aria-labelledby="handoffNoteTitle">
+                <p class="handoff-label">September 12, 2026 checkpoint</p>
+                <h5 id="handoffNoteTitle">A note the next session can pick up.</h5>
+                <p class="handoff-note-context">A shortened version of the project's handoff at that point. This records the local review stage of the update.</p>
+                <dl class="handoff-note" id="handoffNoteText">
+                  <div><dt>What we're doing</dt><dd>Finish the approved website audit changes and make the cross-room links precise.</dd></div>
+                  <div><dt>Verified at this checkpoint</dt><dd>The link update is saved as 633121a. All 16 cross-room links reach their intended destinations in the local preview. Writing's album filters show 6 Feivel Speaks lyrics and 12 Wayspace lyrics.</dd></div>
+                  <div><dt>Settled with Jack</dt><dd>Keep the existing public Production credits for credibility. Use explicit catalogue membership for the lyric filters. Publication needs Jack's go.</dd></div>
+                  <div><dt>Still open</dt><dd>Jack is reviewing the case study and revised copy. Nothing from this update has been pushed or deployed. Hosting-specific checks need a deployment first.</dd></div>
+                  <div><dt>Next action</dt><dd>Review the local changes with Jack before publishing.</dd></div>
+                  <div><dt>What travels with it</dt><dd>CLAUDE.md, HANDOFF.md, js/wayspace.js, wayspace/writing.html, css/wayspace.css, and save point 633121a. Recheck the current files and Git state when you resume.</dd></div>
+                </dl>
+                <div class="handoff-copy-row">
+                  <button class="btn btn-yellow" id="copyHandoff" type="button" hidden>Copy this note</button>
+                  <span id="handoffCopyStatus" role="status"></span>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+      </article>
+
+      <article class="shelf-panel" id="exhibit-graft" aria-labelledby="exhibitGraftTitle">
+        <div class="prose">
+          <h3 id="exhibitGraftTitle">/synthesize and /graft</h3>
+          <p>I like to consume as little as possible so I can practice as much as possible. I’ll watch or read just enough of something to see there’s value in it, and then I bring it to Claude and run one of these two skills over it as a filter, so we can act on what’s useful.</p>
+          <p>/synthesize reads a source for what it means to me: the core idea in one line, what checks out and what doesn’t, where it resonates with how I work, and where it rubs against it. The friction is often the most useful part. /graft asks a narrower question, which is what should change in my setup, if anything. It breaks the source into items, checks each one against what I already have, and gives it a verdict: already covered, borrow, install, or skip. Borrowing usually wins, so a good idea becomes a line in a skill I control instead of someone else’s tool running in every session.</p>
+          <p>Every verdict goes into a ledger, so nothing gets reviewed twice. Since October 11 it has logged 86 verdicts across 11 sources, and half of them are skips. Twelve borrowed ideas became real changes.</p>
+          <p>One of those changes was to /synthesize itself. Below is the run where it happened.</p>
+        </div>
+          <!-- A shortened, recorded graft run from 2026-10-18. Same pattern as the
+               handoff walkthrough: the controls reveal HTML already on the page;
+               nothing calls an AI service or reads the visitor's files. -->
+          <section class="handoff-demo is-nested" id="graft-demo" aria-labelledby="graftDemoTitle">
+            <h4 id="graftDemoTitle">See /graft at work</h4>
+            <p class="section-intro">Here’s a recorded run from October 18, shortened for this walkthrough. I’d watched a few minutes of a video about learning with AI, and it made a confident case that most people do it wrong.</p>
+
+            <div class="handoff-walk">
+              <div class="handoff-steps" role="group" aria-label="Steps in the graft example" hidden>
+                <button class="handoff-step" type="button" aria-pressed="true" aria-controls="graftRequest">
+                  <span class="handoff-step-number" aria-hidden="true">1</span>
+                  <span>The request<small>What I brought in</small></span>
+                </button>
+                <button class="handoff-step" type="button" aria-pressed="false" aria-controls="graftCheck">
+                  <span class="handoff-step-number" aria-hidden="true">2</span>
+                  <span>The check<small>What I already had</small></span>
+                </button>
+                <button class="handoff-step" type="button" aria-pressed="false" aria-controls="graftVerdicts">
+                  <span class="handoff-step-number" aria-hidden="true">3</span>
+                  <span>The verdicts<small>What was worth taking</small></span>
+                </button>
+                <button class="handoff-step" type="button" aria-pressed="false" aria-controls="graftChanged">
+                  <span class="handoff-step-number" aria-hidden="true">4</span>
+                  <span>What changed<small>Two lines, and a realization</small></span>
+                </button>
+              </div>
+
+              <div class="handoff-panels">
+                <section class="handoff-panel" id="graftRequest" aria-labelledby="graftRequestTitle">
+                  <p class="handoff-label">My request</p>
+                  <h5 id="graftRequestTitle">Graft this video.</h5>
+                  <blockquote class="handoff-request">Could you /graft this video transcript please? (Recognizing that we already have graft and synthesis and mapmaker here so interesting to use graft on a video about these kinds of skills)</blockquote>
+                  <p>The video argues that you learn by producing (recalling, explaining back, attempting) instead of by reading, and lists ten roles AI can play in learning. Claude read the full transcript from YouTube’s captions.</p>
+                </section>
+
+                <section class="handoff-panel" id="graftCheck" aria-labelledby="graftCheckTitle">
+                  <p class="handoff-label">Before any verdict</p>
+                  <h5 id="graftCheckTitle">Six of the ten roles were already here.</h5>
+                  <dl class="handoff-checks">
+                    <div><dt>Interviewer</dt><dd>Ask me questions before teaching me. Covered by the assumptions-first rule in my global instructions, question cards, and plan mode.</dd></div>
+                    <div><dt>Mapmaker</dt><dd>Covered, by a different job. His builds a curriculum for a subject you don’t know yet; mine maps a pile I already have.</dd></div>
+                    <div><dt>Checker</dt><dd>Check my process, don’t rewrite it. Covered by /red-pen, which flags and never rewrites, and a second model as an outside reviewer.</dd></div>
+                    <div><dt>Diagnostician</dt><dd>Find the one root mistake behind repeated ones. Covered by the “seen twice is a rule” habit in my editing loop.</dd></div>
+                    <div><dt>Sparring partner</dt><dd>Covered by /readers, for talks.</dd></div>
+                    <div><dt>Clerk</dt><dd>Organize my notes, add nothing. Covered by /obsidian-layer and the skills that deliver and gather notes.</dd></div>
+                  </dl>
+                  <p class="handoff-note-context">Each “already covered” names what covers it, checked that day against the files, not from memory.</p>
+                </section>
+
+                <section class="handoff-panel" id="graftVerdicts" aria-labelledby="graftVerdictsTitle">
+                  <p class="handoff-label">The report, excerpt</p>
+                  <h5 id="graftVerdictsTitle">What’s missing is the production side.</h5>
+                  <dl class="handoff-checks">
+                    <div><dt>Explainer, then redo it without help</dt><dd><span class="verdict">Borrow.</span> My teaching lines were all the explainer role. One line in my global instructions: now and then, ask me to guess before explaining.</dd></div>
+                    <div><dt>Listener (explain it back in your own words)</dt><dd><span class="verdict">Borrow.</span> /synthesize gets an optional “Say it back” step at the end.</dd></div>
+                    <div><dt>Socratic questioner</dt><dd><span class="verdict">Skip.</span> A way of prompting, not a setup change.</dd></div>
+                    <div><dt>Examiner (quiz me, harder each time)</dt><dd><span class="verdict">Skip.</span> Nothing in my setup is exam-style learning.</dd></div>
+                  </dl>
+                  <blockquote class="handoff-excerpt"><p><strong>The short version:</strong> your setup already covers most of his ten roles. What it lacks is the production side: anything that asks <em>you</em> to say it back. Two small borrows would fill that gap.</p></blockquote>
+                  <p class="handoff-note-context">Past the list, it pointed out that /graft, /synthesize and the map skill were all explainers too. Each hands me something to read, and none asks me to produce anything.</p>
+                </section>
+
+                <section class="handoff-panel" id="graftChanged" aria-labelledby="graftChangedTitle">
+                  <p class="handoff-label">After I said yes</p>
+                  <h5 id="graftChangedTitle">Consume little, practice much.</h5>
+                  <p class="handoff-excerpt-label">/synthesize now ends with an offer</p>
+                  <blockquote class="handoff-excerpt"><p>Want to say it back? Talk through what you took from this, and I’ll tell you what you caught, what you missed, and what’s yours.</p></blockquote>
+                  <p class="handoff-excerpt-label">A new line in my global instructions</p>
+                  <blockquote class="handoff-excerpt"><p>Now and then, before explaining a command or change, ask him to guess what it will do first. A guess is production, and production is what sticks; an explanation alone only feels like learning.</p></blockquote>
+                  <p class="handoff-note-context">Written to Claude, so it calls me him. Both changes went in the same morning, each on its own yes, and both are logged in the ledger as acted on.</p>
+                  <p class="handoff-excerpt-label">What I noticed afterward</p>
+                  <blockquote class="handoff-request">I’ve barely even gone through much of the Claude Academy trainings, and I’ve done way more actual practice and learning</blockquote>
+                  <p class="handoff-spoken-note"><em>Spoken aloud using Wispr Flow.</em></p>
+                  <a class="handoff-example-link is-external" href="https://github.com/jackintheway/utilities" target="_blank" rel="noopener">Use /synthesize and /graft yourself, free on GitHub <span aria-hidden="true">&rarr;</span></a>
+                </section>
+              </div>
+            </div>
+          </section>
+      </article>
+
+      <article class="shelf-panel" id="exhibit-fair-share" aria-labelledby="exhibitFairShareTitle">
+        <div class="prose">
+          <h3 id="exhibitFairShareTitle">/fair-share</h3>
+          <p>/fair-share checks AI-assisted work from both sides of a handoff: the person who received it and the person about to send it. Inbound pulls out the point, the asks, and the claims worth checking. Outbound traces weak output back to likely gaps in the prompt that made it, and returns a better prompt along with the diagnosis.</p>
+          <p>Testing it on my own draft led to a third direction, crossbound, for shared drafts still in progress. <a href="/case-studies/fair-share">Read more about it in case studies &rarr;</a></p>
+        </div>
+          <p class="shelf-links"><a class="is-external" href="https://github.com/jackintheway/utilities" target="_blank" rel="noopener">Use /fair-share yourself, free on GitHub <span aria-hidden="true">&rarr;</span></a></p>
+      </article>
+
+      <article class="shelf-panel" id="exhibit-map-maker" aria-labelledby="exhibitMapMakerTitle">
+        <div class="prose">
+          <h3 id="exhibitMapMakerTitle">/map-maker</h3>
+          <p>When you have piles of material, whether files, pages, transcripts, a folder nobody has opened in a year, map-maker reads all of it and gives you one place to read it from, in whatever format you want: a web page, a Word doc, a PDF, a deck.</p>
+          <p>Every statement on the map carries a coordinate back to where it came from, precise enough to act on: a filename and a heading, a page number, a timestamp. So you read the consolidated view, hit something you want to be sure about, and go straight to the exact spot in the source.</p>
+          <p>Where a line pulls a few sources together and doesn't have one origin, it says so, so you can always tell what came from your material and what got added to connect it.</p>
+        </div>
+      </article>
+
+      <article class="shelf-panel" id="exhibit-ingest-transcript" aria-labelledby="exhibitIngestTranscriptTitle">
+        <div class="prose">
+          <h3 id="exhibitIngestTranscriptTitle">/ingest-transcript</h3>
+          <p>Anyone publishing long recorded conversations runs into the same thing, which is that somebody has to get through a two hour transcript and decide what to cut before it ships. This reads the whole thing and hands back one timestamped report covering what has to come out because a speaker asked for it on the record, what's worth listening to again before deciding, the standout lines worth pulling as clips, and any passage where someone recited from a published text long enough to earn a quote card on screen.</p>
+          <p>It asks one question before it starts, which is what comes before this transcript in the finished file and how long that runs. Every time it reports is offset to match the editor's timeline instead of the transcript's. Without that, somebody does the arithmetic by hand for every entry, which is worse than getting no timestamps at all.</p>
+        </div>
+      </article>
+
+      <article class="shelf-panel" id="exhibit-save-points" aria-labelledby="exhibitSavePointsTitle">
+        <div class="prose">
+          <h3 id="exhibitSavePointsTitle">/save-points</h3>
+          <p>I'm not a professional developer, and version control is one of the most useful things I've picked up. Most people never get near it, because the tooling assumes you already speak the language.</p>
+          <p>This skill makes the process simple and easy to understand, and the skill ensures that the save points resemble save states of a video game. It tells me what changed since last time in ordinary words, proposes a description, and commits when I say yes. Anything that could lose work gets explained in full before it runs, and it teaches me one small thing per session when there's a natural opening.</p>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <!-- Case studies describe the work and its evidence. -->
+    <section class="section" aria-labelledby="clientTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="clientTitle">Case studies</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="prose">
+        <p>The tools above support my own work. These case studies follow projects I worked through with clients, and two I built for myself: what was needed, what we tried, what changed, and how we checked it.</p>
+        <p>If you'd like to see what an audit conversation would start from, <a href="https://audit.jackrome.work/">the readiness assessment</a> is a few minutes' way to find out.</p>
+      </div>
+
+      <ul class="case-rows" id="caseStudyGrid"></ul>
+    </section>
+
+    <!-- WHAT THEY REFUSE TO DO
+         Lines lifted from the actual skill files. Almost every one of
+         these tools has a section in it titled "What this skill is not",
+         and those sections turned out to be the most interesting thing
+         in the whole set. Pronouns adjusted where a line referred to me
+         in the third person; otherwise these are as written. -->
+    <section class="section" aria-labelledby="refuseTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="refuseTitle">What they refuse to do</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg guard-lead">
+        <p>Most people I talk to that want to work with AI have the same worry about it. They're afraid of finding out afterward that something went out in their name that they never approved of, or wouldn't have been comfortable putting in front of other people.</p>
+        <p>The boundaries are curated to the task. Tools that read my notes can report what they find without changing the source. New material for my Obsidian vault goes into a folder called Compost, which I review myself. A save point changes Git history; a handoff can be a note in chat or an update to a project's existing handoff file. <strong>Each tool spells out where it can write and which actions need my approval.</strong></p>
+      </div>
+      <p class="section-intro">Almost every one of these tools has a section in it titled "What this skill is not." These are lines from those sections, as written.</p>
+
+      <div class="offer-grid">
+
+        <article class="statement-card card-blue">
+          <p><strong>Findings are observations, not action items.</strong> A tool that walks through my notes reports what it sees and stops there. It doesn't hand me a task list I didn't ask for.</p>
+        </article>
+
+        <article class="statement-card card-blue">
+          <p><strong>Never a guilt engine.</strong> One of these finds the parts of my archive I've stopped visiting. If a finding would land as "you neglected this," it gets reframed or dropped.</p>
+        </article>
+
+        <article class="statement-card card-blue">
+          <p><strong>No hooks, scheduled runs, or commits behind my back.</strong> The tool that version-controls my writing never runs on its own. Every save point is taken on purpose.</p>
+        </article>
+
+        <article class="statement-card card-blue">
+          <p><strong>It never invents something the material didn't ask for.</strong> The tool that proposes new notes can only propose what the sources already pointed at twice.</p>
+        </article>
+
+        <article class="statement-card card-blue">
+          <p><strong>It never creates missing files, edits links, renames anything, or updates the registry.</strong> It reads, it reports, and any repair is a separate job I have to authorize.</p>
+        </article>
+
+        <article class="statement-card card-blue">
+          <p><strong>The raw text is preserved exactly. Nothing is rewritten, summarized, or cleaned up.</strong> The annotation tool adds structure around my words and never touches the words.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- THE REST
+         Collapsible cards (native details, no script): the name shows,
+         the line opens on click. One line each, on the design decision rather than the subject.
+         The subjects are personal; the decisions are the transferable
+         part, and the decisions are what a client is actually buying. -->
+    <section class="section" aria-labelledby="restTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="restTitle">More skills and resources</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="more-grid">
+        <details class="more-card">
+          <summary>/sweep</summary>
+          <p>/sweep walks a section of the archive and reports what it notices, with an explicit guard against drifting from noticing into telling me what to build.</p>
+        </details>
+        <details class="more-card">
+          <summary>/portal</summary>
+          <p>/portal surfaces what I've stopped paying attention to, written so that going quiet is never framed as a failure.</p>
+        </details>
+        <details class="more-card">
+          <summary>/mycelium</summary>
+          <p>/mycelium reads the wikilinks running through my notes: the connective tissue I use in Obsidian for writing, journaling, documentation, lyrics, and drawing themes and parallels across years of material. It never fixes a link itself, and it weighs the ones I made by hand more heavily than the ones an assistant added, so an assistant's habits can't masquerade as my own intent.</p>
+        </details>
+        <details class="more-card">
+          <summary>/orient</summary>
+          <p>/orient finds where my written instructions have drifted from reality, and revises only the lines that actually drifted. Every sentence still true stays untouched, word for word.</p>
+        </details>
+        <details class="more-card">
+          <summary>/harvest</summary>
+          <p>/harvest gathers ideas flagged across months of work and ranks them by how often the material asked, rather than by how good they sound.</p>
+        </details>
+        <details class="more-card">
+          <summary>/deliver</summary>
+          <p>/deliver runs with a confirmation at every stage, which flags a file that looks miscategorized instead of silently reclassifying it, and never overwrites anything.</p>
+        </details>
+        <details class="more-card">
+          <summary>/obsidian-layer</summary>
+          <p>/obsidian-layer adds structure and cross-references to raw text without altering a word of it.</p>
+        </details>
+        <details class="more-card">
+          <summary>/conversation-archiver</summary>
+          <p>/conversation-archiver records both halves of a dialogue with an AI, and cross-references only my words, so the record has both of us in it and the connections through it are mine.</p>
+        </details>
+        <details class="more-card">
+          <summary>The verification tool</summary>
+          <p>The verification tool holds the checks that catch what a browser hides: a stylesheet returning the wrong content type, an import that 404s without breaking the page, a phone-width test that was never actually testing a phone. This one came out of me pointing Claude Code at the last couple of months of my project history and asking what was worth building, based on the repetitive work we were doing.</p>
+        </details>
       </div>
     </section>
 
@@ -448,6 +530,7 @@
 
   <script src="/js/nav.js" defer></script>
   <script src="/js/case-studies.js" defer></script>
+  <script src="/js/exhibit-shelf.js" defer></script>
   <script src="/js/handoff-demo.js" defer></script>
 </body>
 </html>

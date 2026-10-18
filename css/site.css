@@ -412,8 +412,8 @@
 .handoff-panel h3 { margin: 0 0 var(--space-5); }
 /* A walkthrough nested under a skill entry: one heading level down. */
 .handoff-demo.is-nested { margin-block: var(--space-8); }
-.handoff-demo.is-nested > h3 { margin: 0 0 var(--space-4); }
-.handoff-panel h4 { margin: 0 0 var(--space-5); font-size: var(--fs-h3); line-height: 1.2; }
+.handoff-demo.is-nested > h4 { margin: 0 0 var(--space-4); font-size: var(--fs-h4); }
+.handoff-panel h5 { margin: 0 0 var(--space-5); font-size: var(--fs-h4); line-height: 1.2; }
 .handoff-request {
   margin: var(--space-6) 0 var(--space-3);
   padding: 0 0 0 var(--space-5);
@@ -487,6 +487,103 @@
   .handoff-panel { padding: var(--space-5); }
   .handoff-demo.is-interactive .handoff-panel { min-height: 0; }
 }
+
+/* The exhibit shelf: tiles above, one open exhibit below. Without
+   JavaScript the tiles stay hidden and every exhibit shows, stacked. */
+.shelf-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.shelf-tiles[hidden] { display: none; }
+.shelf-tile {
+  display: block;
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  border: var(--rule);
+  background: var(--surface-card);
+  color: var(--text-strong);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.shelf-tile:hover { background: var(--bg-sunken); }
+.shelf-tile[aria-pressed="true"] {
+  background: var(--ws-yellow);
+  box-shadow: var(--pop-black-sm);
+}
+.shelf-tile-name {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  line-height: 1.2;
+}
+.shelf-tile-hook {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--fs-small);
+}
+.shelf-panel + .shelf-panel { margin-top: var(--space-8); }
+.exhibit-shelf.is-interactive .shelf-panel {
+  margin-top: 0;
+  padding: var(--space-6);
+  border: var(--rule-heavy);
+  background: var(--bg-base);
+}
+.shelf-panel[hidden] { display: none; }
+.shelf-panel .handoff-demo.is-nested { margin-bottom: 0; }
+.shelf-links { margin-top: var(--space-5); }
+@media (max-width: 760px) {
+  .shelf-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+  .shelf-tile { padding: var(--space-3); }
+  .shelf-tile-name { font-size: var(--fs-body-lg); }
+  .exhibit-shelf.is-interactive .shelf-panel { padding: var(--space-4); }
+}
+
+/* More skills and resources: native details cards, name first. */
+.more-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr));
+  gap: var(--space-4);
+  align-items: start;
+}
+.more-card {
+  background: var(--surface-card);
+  border: var(--rule);
+  box-shadow: var(--elevation-card);
+}
+.more-card summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h4);
+  line-height: 1.2;
+  cursor: pointer;
+  list-style: none;
+}
+.more-card summary::-webkit-details-marker { display: none; }
+.more-card summary::after {
+  content: "+";
+  flex: none;
+  font-size: var(--fs-h3);
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+.more-card[open] summary::after { transform: rotate(45deg); }
+.more-card[open] { background: var(--bg-base); }
+.more-card p { margin: 0; padding: 0 var(--space-5) var(--space-5); }
+@media (prefers-reduced-motion: reduce) {
+  .more-card summary::after { transition: none; }
+}
+
+/* Guardrails opens with the two intro paragraphs it answers. */
+.guard-lead { margin-bottom: var(--space-6); }
 
 /* ============================================================
    PROSE
