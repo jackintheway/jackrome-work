@@ -340,13 +340,87 @@
           <p class="shelf-links"><a class="is-external" href="https://github.com/jackintheway/utilities" target="_blank" rel="noopener">Use /fair-share yourself, free on GitHub <span aria-hidden="true">&rarr;</span></a></p>
       </article>
 
-      <article class="shelf-panel" id="exhibit-map-maker" aria-labelledby="exhibitMapMakerTitle">
+      <article class="shelf-panel has-figure" id="exhibit-map-maker" aria-labelledby="exhibitMapMakerTitle">
         <div class="prose">
           <h3 id="exhibitMapMakerTitle">/map-maker</h3>
           <p>When you have piles of material, whether files, pages, transcripts, a folder nobody has opened in a year, map-maker reads all of it and gives you one place to read it from, in whatever format you want: a web page, a Word doc, a PDF, a deck.</p>
           <p>Every statement on the map carries a coordinate back to where it came from, precise enough to act on: a filename and a heading, a page number, a timestamp. So you read the consolidated view, hit something you want to be sure about, and go straight to the exact spot in the source.</p>
           <p>Where a line pulls a few sources together and doesn't have one origin, it says so, so you can always tell what came from your material and what got added to connect it.</p>
         </div>
+        <figure class="shelf-figure" aria-labelledby="mapMakerCaption">
+          <svg viewBox="0 0 480 380" role="img" aria-labelledby="mapMakerSvgTitle mapMakerSvgDesc">
+            <title id="mapMakerSvgTitle">Many sources, one map</title>
+            <desc id="mapMakerSvgDesc">Four kinds of source on the left: files, pages, a transcript and an old folder. On the right, one map page. Each line on the map has a dot in its source's color and a dashed line back to that source. One line has two dots, because it joins two sources.</desc>
+            <defs>
+              <marker id="mmArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 z" class="fig-ink"/>
+              </marker>
+            </defs>
+
+            <!-- The pile: four sources, each in its own color. -->
+            <g class="fig-shape">
+              <rect x="26" y="26" width="128" height="58" class="fig-shadow"/>
+              <path d="M20 20 H130 L148 38 V78 H20 Z" style="fill: var(--ws-orange)"/>
+              <path d="M130 20 V38 H148" class="fig-line"/>
+              <text x="34" y="56">files</text>
+
+              <rect x="26" y="106" width="128" height="58" class="fig-shadow"/>
+              <rect x="20" y="100" width="128" height="58" style="fill: var(--ws-blue-soft)"/>
+              <line x1="34" y1="120" x2="134" y2="120" class="fig-line"/>
+              <text x="34" y="146">pages</text>
+
+              <rect x="26" y="186" width="128" height="58" class="fig-shadow"/>
+              <rect x="20" y="180" width="128" height="58" style="fill: var(--ws-green)"/>
+              <text x="34" y="214">transcript</text>
+              <text x="34" y="230" class="fig-small">12:04</text>
+
+              <rect x="26" y="266" width="128" height="58" class="fig-shadow"/>
+              <path d="M20 268 H64 L74 260 H148 V318 H20 Z" style="fill: var(--ws-salmon)"/>
+              <text x="34" y="300">old folder</text>
+            </g>
+
+            <!-- The way back: every line on the map points to its source. -->
+            <g class="fig-trail">
+              <path d="M308 120 C 240 120, 220 49, 152 49" marker-end="url(#mmArrow)"/>
+              <path d="M308 162 C 240 162, 220 129, 152 129" marker-end="url(#mmArrow)"/>
+              <path d="M308 204 C 240 204, 220 209, 152 209" marker-end="url(#mmArrow)"/>
+              <path d="M300 246 C 240 246, 210 70, 152 64" marker-end="url(#mmArrow)"/>
+              <path d="M300 246 C 240 246, 220 222, 152 222" marker-end="url(#mmArrow)"/>
+              <path d="M308 288 C 240 288, 220 289, 152 289" marker-end="url(#mmArrow)"/>
+            </g>
+
+            <!-- The map: one page to read from. -->
+            <g class="fig-shape">
+              <rect x="300" y="48" width="168" height="290" class="fig-shadow"/>
+              <rect x="292" y="40" width="168" height="290" style="fill: var(--ws-white)"/>
+              <rect x="292" y="40" width="168" height="40" style="fill: var(--ws-yellow)"/>
+              <text x="306" y="66">the map</text>
+            </g>
+            <g class="fig-rows">
+              <circle cx="316" cy="120" r="7" style="fill: var(--ws-orange)"/>
+              <text x="330" y="116" class="fig-small">files › Goals</text>
+              <rect x="330" y="122" width="110" height="5" class="fig-bar"/>
+
+              <circle cx="316" cy="162" r="7" style="fill: var(--ws-blue-soft)"/>
+              <text x="330" y="158" class="fig-small">pages › p. 4</text>
+              <rect x="330" y="164" width="96" height="5" class="fig-bar"/>
+
+              <circle cx="316" cy="204" r="7" style="fill: var(--ws-green)"/>
+              <text x="330" y="200" class="fig-small">transcript › 12:04</text>
+              <rect x="330" y="206" width="104" height="5" class="fig-bar"/>
+
+              <circle cx="310" cy="246" r="7" style="fill: var(--ws-orange)"/>
+              <circle cx="322" cy="246" r="7" style="fill: var(--ws-green)"/>
+              <text x="334" y="242" class="fig-small">joined: two sources</text>
+              <rect x="334" y="248" width="100" height="5" class="fig-bar"/>
+
+              <circle cx="316" cy="288" r="7" style="fill: var(--ws-salmon)"/>
+              <text x="330" y="284" class="fig-small">old folder › notes</text>
+              <rect x="330" y="290" width="88" height="5" class="fig-bar"/>
+            </g>
+          </svg>
+          <figcaption id="mapMakerCaption" class="diagram-note">Schematic. Many sources go in, I read one page, and every line points back to where it came from.</figcaption>
+        </figure>
       </article>
 
       <article class="shelf-panel" id="exhibit-ingest-transcript" aria-labelledby="exhibitIngestTranscriptTitle">

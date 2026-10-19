@@ -604,6 +604,36 @@
   .offer-grid.grid-three { grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr)); }
 }
 
+/* Micro exhibits: a small schematic drawing beside an entry that has no
+   walkthrough. Drawn in SVG with the site's palette, black outlines and
+   the hard offset shadow, so they stay sharp and load with the page. */
+.shelf-figure { margin: var(--space-6) 0 0; }
+.shelf-figure svg { display: block; width: 100%; max-width: 520px; height: auto; }
+.shelf-figure .fig-shape > :not(text):not(.fig-shadow):not(.fig-line) { stroke: var(--outline); stroke-width: 3; }
+.shelf-figure .fig-shadow { fill: var(--outline); }
+.shelf-figure .fig-line { fill: none; stroke: var(--outline); stroke-width: 3; }
+.shelf-figure .fig-ink { fill: var(--outline); }
+.shelf-figure .fig-trail path { fill: none; stroke: var(--outline); stroke-width: 2; stroke-dasharray: 5 5; }
+.shelf-figure .fig-rows circle { stroke: var(--outline); stroke-width: 2; }
+.shelf-figure .fig-bar { fill: var(--ws-paper-3); }
+.shelf-figure text {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: 17px;
+  fill: var(--ws-black);
+}
+.shelf-figure text.fig-small { font-size: 13px; font-weight: var(--fw-regular); }
+@media (min-width: 980px) {
+  .shelf-panel.has-figure:not([hidden]) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: var(--space-7);
+    align-items: center;
+  }
+  .shelf-panel.has-figure .shelf-figure { margin: 0; }
+  .shelf-panel.has-figure .shelf-links { grid-column: 1; }
+}
+
 /* Guardrails opens with the two intro paragraphs it answers. */
 .guard-lead { margin-bottom: var(--space-6); }
 
