@@ -171,12 +171,74 @@
       </div>
 
       <div class="shelf-panels">
-      <article class="shelf-panel" id="exhibit-handoff" aria-labelledby="exhibitHandoffTitle">
+      <article class="shelf-panel has-figure" id="exhibit-handoff" aria-labelledby="exhibitHandoffTitle">
         <div class="prose">
           <h3 id="exhibitHandoffTitle">/handoff</h3>
           <p>A long piece of work usually doesn't finish in one sitting. Handoff writes the note that lets the next session pick up without losing what this one learned: what got decided, what got ruled out and why, what's still open, and the one next thing to do. That can be a note I carry into another chat or a shared file that Claude Code and Codex both read. I use both, so the context needs to travel between them.</p>
           <p>It checks its own claims against the files before it writes them down, because notes like this go stale and nobody notices until they've already acted on one. It also marks which lines are verified and which are just the last session's read, so an assumption can't get laundered into a fact three sessions later.</p>
         </div>
+        <figure class="shelf-figure" aria-labelledby="handoffFigCaption">
+          <svg viewBox="0 0 480 380" role="img" aria-labelledby="handoffSvgTitle handoffSvgDesc">
+            <title id="handoffSvgTitle">A note between two sessions</title>
+            <desc id="handoffSvgDesc">One session, in Claude Code, writes a handoff note that the next session, in Codex, picks up. The note has four parts: what was decided, what was ruled out, what is still open, and the next thing to do. Lines checked against the files carry a check mark; lines that are only the last session's read carry a hollow circle.</desc>
+            <defs>
+              <marker id="hoArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" class="fig-ink"/>
+              </marker>
+            </defs>
+
+            <!-- Two sessions, either harness. -->
+            <g class="fig-shape">
+              <rect x="26" y="66" width="110" height="130" class="fig-shadow"/>
+              <rect x="20" y="60" width="110" height="130" style="fill: var(--ws-white)"/>
+              <rect x="20" y="60" width="110" height="28" style="fill: var(--ws-orange)"/>
+              <rect x="350" y="66" width="110" height="130" class="fig-shadow"/>
+              <rect x="344" y="60" width="110" height="130" style="fill: var(--ws-white)"/>
+              <rect x="344" y="60" width="110" height="28" style="fill: var(--ws-blue-soft)"/>
+            </g>
+            <text x="30" y="80" class="fig-small fig-button">this session</text>
+            <text x="354" y="80" class="fig-small fig-button">the next one</text>
+            <rect x="32" y="102" width="80" height="5" class="fig-bar"/>
+            <rect x="32" y="116" width="64" height="5" class="fig-bar"/>
+            <rect x="32" y="130" width="86" height="5" class="fig-bar"/>
+            <text x="32" y="176" class="fig-small">Claude Code</text>
+            <rect x="356" y="102" width="70" height="5" class="fig-bar"/>
+            <rect x="356" y="116" width="86" height="5" class="fig-bar"/>
+            <text x="356" y="176" class="fig-small">Codex</text>
+            <line x1="134" y1="126" x2="164" y2="126" class="fig-line" marker-end="url(#hoArrow)"/>
+            <line x1="316" y1="126" x2="340" y2="126" class="fig-line" marker-end="url(#hoArrow)"/>
+
+            <!-- The note itself. -->
+            <g class="fig-shape">
+              <rect x="176" y="28" width="140" height="290" class="fig-shadow"/>
+              <rect x="170" y="22" width="140" height="290" style="fill: var(--ws-yellow)"/>
+            </g>
+            <text x="184" y="48">handoff</text>
+            <g class="fig-rows">
+              <text x="184" y="84" class="fig-small fig-button">decided</text>
+              <path d="M186 98 l5 5 l9 -11" class="fig-check"/>
+              <rect x="206" y="96" width="88" height="5" class="fig-bar-ink"/>
+              <text x="184" y="136" class="fig-small fig-button">ruled out, and why</text>
+              <path d="M186 150 l5 5 l9 -11" class="fig-check"/>
+              <rect x="206" y="148" width="76" height="5" class="fig-bar-ink"/>
+              <text x="184" y="188" class="fig-small fig-button">still open</text>
+              <circle cx="193" cy="201" r="6" class="fig-hollow"/>
+              <rect x="206" y="200" width="82" height="5" class="fig-bar-ink"/>
+              <text x="184" y="240" class="fig-small fig-button">next</text>
+              <path d="M186 254 l5 5 l9 -11" class="fig-check"/>
+              <rect x="206" y="252" width="60" height="5" class="fig-bar-ink"/>
+            </g>
+
+            <!-- The key: checked against the files, or only a read. -->
+            <path d="M24 262 l5 5 l9 -11" class="fig-check"/>
+            <text x="44" y="268" class="fig-small">checked against</text>
+            <text x="44" y="284" class="fig-small">the files</text>
+            <circle cx="31" cy="312" r="6" class="fig-hollow"/>
+            <text x="44" y="310" class="fig-small">the last session's</text>
+            <text x="44" y="326" class="fig-small">read, marked so</text>
+          </svg>
+          <figcaption id="handoffFigCaption" class="diagram-note">Schematic. What one session learned, carried to the next, with every line marked checked or not.</figcaption>
+        </figure>
         <!-- A shortened, recorded checkpoint. These controls reveal HTML;
              they do not call an AI service or read the visitor's files. -->
         <section class="handoff-demo is-nested" id="handoff-demo" aria-labelledby="handoffDemoTitle">
@@ -243,7 +305,7 @@
 
       </article>
 
-      <article class="shelf-panel" id="exhibit-graft" aria-labelledby="exhibitGraftTitle">
+      <article class="shelf-panel has-figure" id="exhibit-graft" aria-labelledby="exhibitGraftTitle">
         <div class="prose">
           <h3 id="exhibitGraftTitle">/synthesize and /graft</h3>
           <p>I like to consume as little as possible so I can practice as much as possible. I’ll watch or read just enough of something to see there’s value in it, and then I bring it to Claude and run one of these two skills over it as a filter, so we can act on what’s useful.</p>
@@ -251,6 +313,63 @@
           <p>Every verdict goes into a ledger, so nothing gets reviewed twice. Since October 11 it has logged 86 verdicts across 11 sources, and half of them are skips. Twelve borrowed ideas became real changes.</p>
           <p>One of those changes was to /synthesize itself. Below is the run where it happened.</p>
         </div>
+        <figure class="shelf-figure" aria-labelledby="graftFigCaption">
+          <svg viewBox="0 0 480 380" role="img" aria-labelledby="graftSvgTitle graftSvgDesc">
+            <title id="graftSvgTitle">A filter between a source and my setup</title>
+            <desc id="graftSvgDesc">A source, such as a video, goes into two skills. Synthesize reads it for what it means to me: resonance and friction. Graft gives each item a verdict: already covered, borrow, install or skip. Only the borrows and the rare install reach my setup, and the rest stops at the filter. A loop runs from my setup back to synthesize, because one borrow changed synthesize itself.</desc>
+            <defs>
+              <marker id="sgArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" class="fig-ink"/>
+              </marker>
+            </defs>
+
+            <!-- The source. -->
+            <g class="fig-shape">
+              <rect x="26" y="146" width="88" height="70" class="fig-shadow"/>
+              <rect x="20" y="140" width="88" height="70" style="fill: var(--ws-salmon)"/>
+              <path d="M54 160 L80 175 L54 190 Z" style="fill: var(--ws-white)"/>
+            </g>
+            <text x="64" y="234" class="fig-small" text-anchor="middle">a source</text>
+            <path d="M110 166 C 130 166, 130 96, 150 96" class="fig-line" marker-end="url(#sgArrow)"/>
+            <path d="M110 186 C 130 186, 130 246, 150 246" class="fig-line" marker-end="url(#sgArrow)"/>
+
+            <!-- Two ways of reading it. -->
+            <g class="fig-shape">
+              <rect x="162" y="56" width="160" height="88" class="fig-shadow"/>
+              <rect x="156" y="50" width="160" height="88" style="fill: var(--ws-green)"/>
+              <rect x="162" y="196" width="160" height="128" class="fig-shadow"/>
+              <rect x="156" y="190" width="160" height="128" style="fill: var(--ws-orange)"/>
+            </g>
+            <text x="168" y="74">/synthesize</text>
+            <text x="168" y="94" class="fig-small">what it means for me</text>
+            <text x="168" y="116" class="fig-small">resonance · friction</text>
+            <text x="168" y="214">/graft</text>
+            <text x="168" y="234" class="fig-small">what should change</text>
+            <g class="fig-verdicts">
+              <rect x="168" y="246" width="66" height="24" class="fig-pill"/><text x="201" y="262" class="fig-small" text-anchor="middle">covered</text>
+              <rect x="240" y="246" width="64" height="24" class="fig-pill fig-pick"/><text x="272" y="262" class="fig-small fig-button" text-anchor="middle">borrow</text>
+              <rect x="168" y="278" width="66" height="24" class="fig-pill"/><text x="201" y="294" class="fig-small" text-anchor="middle">install</text>
+              <rect x="240" y="278" width="64" height="24" class="fig-pill"/><text x="272" y="294" class="fig-small" text-anchor="middle">skip</text>
+            </g>
+
+            <!-- Only what earns it lands in the setup. -->
+            <path d="M318 258 C 340 258, 340 206, 360 206" class="fig-line" marker-end="url(#sgArrow)"/>
+            <g class="fig-shape">
+              <rect x="372" y="128" width="90" height="140" class="fig-shadow"/>
+              <rect x="366" y="122" width="90" height="140" style="fill: var(--ws-white)"/>
+              <rect x="376" y="160" width="70" height="20" style="fill: var(--ws-paper-2)"/>
+              <rect x="376" y="186" width="70" height="20" style="fill: var(--ws-paper-2)"/>
+              <rect x="376" y="212" width="70" height="20" style="fill: var(--ws-yellow)"/>
+            </g>
+            <text x="376" y="146" class="fig-small fig-button">my setup</text>
+            <text x="411" y="226" class="fig-small" text-anchor="middle">+ one line</text>
+
+            <!-- And one borrow came back around to synthesize. -->
+            <path d="M411 120 C 411 30, 300 22, 260 46" class="fig-trail-line" marker-end="url(#sgArrow)"/>
+            <text x="366" y="30" class="fig-small">say it back</text>
+          </svg>
+          <figcaption id="graftFigCaption" class="diagram-note">Schematic. A little intake, a filter, and only what earns it lands in my setup. One borrow came back around to /synthesize itself.</figcaption>
+        </figure>
           <!-- A shortened, recorded graft run from 2026-10-18. Same pattern as the
                handoff walkthrough: the controls reveal HTML already on the page;
                nothing calls an AI service or reads the visitor's files. -->
@@ -364,10 +483,10 @@
             </g>
             <text x="34" y="46">Outbound</text>
             <text x="34" y="66" class="fig-small">finished work, before I send it</text>
-            <rect x="34" y="84" width="56" height="24" class="fig-pill"/><text x="62" y="100" class="fig-small" text-anchor="middle">Ready</text><rect x="98" y="84" width="56" height="24" class="fig-pill"/><text x="126" y="100" class="fig-small" text-anchor="middle">Draft</text><rect x="162" y="84" width="71" height="24" class="fig-pill"/><text x="198" y="100" class="fig-small" text-anchor="middle">Not yet</text>
+            <rect x="34" y="84" width="49" height="24" class="fig-pill"/><text x="58" y="100" class="fig-small" text-anchor="middle">Ready</text><rect x="89" y="84" width="49" height="24" class="fig-pill"/><text x="114" y="100" class="fig-small" text-anchor="middle">Draft</text><rect x="144" y="84" width="63" height="24" class="fig-pill"/><text x="176" y="100" class="fig-small" text-anchor="middle">Not yet</text>
             <text x="268" y="46">Inbound</text>
             <text x="268" y="66" class="fig-small">work I received</text>
-            <rect x="268" y="84" width="63" height="24" class="fig-pill"/><text x="300" y="100" class="fig-small" text-anchor="middle">Passes</text><rect x="339" y="84" width="56" height="24" class="fig-pill"/><text x="367" y="100" class="fig-small" text-anchor="middle">Mixed</text><rect x="403" y="84" width="48" height="24" class="fig-pill"/><text x="427" y="100" class="fig-small" text-anchor="middle">Slop</text>
+            <rect x="268" y="84" width="56" height="24" class="fig-pill"/><text x="296" y="100" class="fig-small" text-anchor="middle">Passes</text><rect x="330" y="84" width="49" height="24" class="fig-pill"/><text x="354" y="100" class="fig-small" text-anchor="middle">Mixed</text><rect x="385" y="84" width="42" height="24" class="fig-pill"/><text x="406" y="100" class="fig-small" text-anchor="middle">Slop</text>
             <text x="124" y="292">Crossbound</text>
             <text x="124" y="312" class="fig-small">a shared draft, still in progress</text>
             <text x="124" y="336" class="fig-small">returns a short handoff note</text>

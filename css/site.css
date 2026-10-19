@@ -630,6 +630,11 @@
 .shelf-figure text.fig-light { fill: var(--ws-white); letter-spacing: 0.08em; }
 .shelf-figure text.fig-button { font-weight: var(--fw-bold); }
 .shelf-figure .fig-pill { fill: var(--ws-white); stroke: var(--outline); stroke-width: 2; }
+.shelf-figure .fig-pill.fig-pick { fill: var(--ws-yellow); }
+.shelf-figure .fig-check { fill: none; stroke: var(--outline); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.shelf-figure .fig-hollow { fill: none; stroke: var(--outline); stroke-width: 2.5; }
+.shelf-figure .fig-bar-ink { fill: rgba(0, 0, 0, 0.35); }
+.shelf-figure .fig-trail-line { fill: none; stroke: var(--outline); stroke-width: 2; stroke-dasharray: 5 5; }
 .shelf-figure .fig-proposed { fill: var(--ws-white); stroke: var(--outline); stroke-width: 3; stroke-dasharray: 8 6; }
 @media (min-width: 980px) {
   .shelf-panel.has-figure:not([hidden]) {
@@ -640,6 +645,8 @@
   }
   .shelf-panel.has-figure .shelf-figure { margin: 0; }
   .shelf-panel.has-figure .shelf-links { grid-column: 1; }
+  /* A walkthrough runs the full width under the entry and its drawing. */
+  .shelf-panel.has-figure > .handoff-demo { grid-column: 1 / -1; }
 }
 
 /* Guardrails opens with the two intro paragraphs it answers. */
