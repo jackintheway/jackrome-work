@@ -612,6 +612,7 @@ Always pair `target="_blank"` with `rel="noopener"`. Modern browsers imply this,
 - Every page works at 390px wide with no horizontal scroll.
 - Visible keyboard focus states. Respect `prefers-reduced-motion`.
 - No em dashes in any user-facing copy. Applies to visible text, `<title>`, and meta descriptions.
+- **Every "On this page" bar freezes as the reader scrolls** (Jack, 2026-10-18). Any `.page-contents` bar sits just under the site nav, stays one row (a long one slides sideways, with a fade at the edge that has more), and underlines the section in view. It is automatic: `js/nav.js` handles it on every page that has the bar, and `css/site.css` holds the look, so a new page only needs the bar's markup.
 - Embeds use a facade: ship a static thumbnail, swap in the real iframe on click. No third party is contacted until the visitor asks.
 
 ---

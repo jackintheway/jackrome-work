@@ -640,13 +640,13 @@
   .shelf-panel.has-figure:not([hidden]) {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-    gap: var(--space-7);
+    gap: var(--space-5) var(--space-7);
     align-items: center;
   }
   .shelf-panel.has-figure .shelf-figure { margin: 0; }
   .shelf-panel.has-figure .shelf-links { grid-column: 1; }
   /* A walkthrough runs the full width under the entry and its drawing. */
-  .shelf-panel.has-figure > .handoff-demo { grid-column: 1 / -1; }
+  .shelf-panel.has-figure > .handoff-demo { grid-column: 1 / -1; margin-top: var(--space-4); }
 }
 
 /* Guardrails opens with the two intro paragraphs it answers. */
@@ -719,11 +719,11 @@
 /* A jumped-to heading lands clear of the sticky nav. */
 .section-title, #patternTitle { scroll-margin-top: calc(var(--space-9) + var(--space-4)); }
 
-/* AI Portfolio freezes its contents bar under the site nav, so a reader
-   can jump anywhere from anywhere (Jack, 2026-10-18). js/page-contents.js
-   sets --site-nav-h and marks the section in view. The shadow and clip
+/* Every contents bar freezes under the site nav, so a reader can jump
+   anywhere from anywhere: a standing rule for the site (Jack, 2026-10-18).
+   js/nav.js sets --site-nav-h and marks the section in view. The shadow and clip
    let the bar's paper run edge to edge while its links stay in the column. */
-.page-contents.is-sticky {
+.page-contents {
   position: sticky;
   top: var(--site-nav-h, 76px);
   z-index: 40;
@@ -733,20 +733,31 @@
   box-shadow: 0 0 0 100vmax var(--bg-base);
   clip-path: inset(0 -100vmax);
   border-bottom: var(--border-hair) solid var(--outline);
+  /* One row, always: a long bar slides sideways instead of wrapping
+     into a tall block that covers the page. */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
-.page-contents.is-sticky a[aria-current="true"] { border-bottom-color: var(--ws-orange); }
-.page:has(.page-contents.is-sticky) .section-title {
-  scroll-margin-top: calc(var(--site-nav-h, 76px) + var(--space-9));
+.page-contents::-webkit-scrollbar { display: none; }
+.page-contents.has-more::after {
+  content: "";
+  position: sticky;
+  right: 0;
+  flex: none;
+  align-self: stretch;
+  width: 64px;
+  margin-left: -64px;
+  background: linear-gradient(to right, transparent, var(--bg-base));
+  pointer-events: none;
+}
+.page-contents a, .page-contents-label { white-space: nowrap; flex: none; }
+.page-contents a[aria-current="true"] { border-bottom-color: var(--ws-orange); }
+.page:has(.page-contents) .section-title {
+  scroll-margin-top: calc(var(--site-nav-h, 76px) + var(--page-contents-h, 52px) + var(--space-6));
 }
 @media (max-width: 760px) {
-  .page-contents.is-sticky {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .page-contents.is-sticky::-webkit-scrollbar { display: none; }
-  .page-contents.is-sticky .page-contents-label { display: none; }
-  .page-contents.is-sticky a { white-space: nowrap; }
+  .page-contents .page-contents-label { display: none; }
 }
 
 /* ============================================================

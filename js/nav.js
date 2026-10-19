@@ -85,3 +85,73 @@
     wide.addListener(onChange);
   }
 })();
+
+/* Contents bar.
+   Standing rule (Jack, 2026-10-18): any "On this page" bar freezes just
+   under the site nav while the reader scrolls, so they can jump anywhere
+   from anywhere. This keeps the bar under the nav whatever the nav's
+   height, and underlines the section in view. Runs on every page that
+   has a .page-contents bar; the freezing itself is in css/site.css. */
+(function () {
+  "use strict";
+
+  var bar = document.querySelector(".page-contents");
+  var nav = document.querySelector(".site-nav");
+  if (!bar) return;
+
+  // Both heights feed the scroll margin, so a jumped-to heading lands
+  // just below the bar instead of under it.
+  function setNavHeight() {
+    var root = document.documentElement.style;
+    if (nav) root.setProperty("--site-nav-h", nav.offsetHeight + "px");
+    root.setProperty("--page-contents-h", bar.offsetHeight + "px");
+    showMore();
+  }
+
+  // A bar too long for the screen fades at the edge that has more to it.
+  function showMore() {
+    var more = bar.scrollWidth - bar.clientWidth - bar.scrollLeft > 2;
+    bar.classList.toggle("has-more", more);
+  }
+  bar.addEventListener("scroll", showMore, { passive: true });
+  setNavHeight();
+  window.addEventListener("resize", setNavHeight);
+
+  var links = Array.prototype.slice.call(bar.querySelectorAll('a[href^="#"]'));
+  var targets = links
+    .map(function (link) { return document.getElementById(link.getAttribute("href").slice(1)); })
+    .filter(Boolean);
+  if (!targets.length) return;
+
+  var lastActive = null;
+
+  // The section in view is the last heading that has passed under the bar.
+  function mark() {
+    var line = bar.getBoundingClientRect().bottom + Math.min(160, window.innerHeight / 4);
+    var current = null;
+    targets.forEach(function (t) { if (t.getBoundingClientRect().top <= line) current = t; });
+    var active = null;
+    links.forEach(function (link) {
+      if (current && link.getAttribute("href") === "#" + current.id) {
+        link.setAttribute("aria-current", "true");
+        active = link;
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+    // On a phone the bar scrolls sideways; keep the marked link in view
+    // without touching the page's own scroll.
+    if (active && active !== lastActive && bar.scrollWidth > bar.clientWidth) {
+      bar.scrollLeft = active.offsetLeft - bar.offsetLeft - 16;
+    }
+    lastActive = active;
+  }
+
+  var queued = false;
+  window.addEventListener("scroll", function () {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { queued = false; mark(); });
+  }, { passive: true });
+  mark();
+})();
