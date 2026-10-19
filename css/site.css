@@ -582,6 +582,18 @@
   .more-card summary::after { transition: none; }
 }
 
+/* AI Portfolio lets its text run the full width of the page when the
+   window allows (Jack, 2026-10-18), instead of the site's usual measure. */
+.page.is-wide .prose,
+.page.is-wide .section-intro,
+.page.is-wide .handoff-demo .section-intro { max-width: none; }
+
+/* Two rows of three, even on the widest screens. */
+.offer-grid.grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 980px) {
+  .offer-grid.grid-three { grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr)); }
+}
+
 /* Guardrails opens with the two intro paragraphs it answers. */
 .guard-lead { margin-bottom: var(--space-6); }
 
