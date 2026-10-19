@@ -674,6 +674,36 @@
 /* A jumped-to heading lands clear of the sticky nav. */
 .section-title, #patternTitle { scroll-margin-top: calc(var(--space-9) + var(--space-4)); }
 
+/* AI Portfolio freezes its contents bar under the site nav, so a reader
+   can jump anywhere from anywhere (Jack, 2026-10-18). js/page-contents.js
+   sets --site-nav-h and marks the section in view. The shadow and clip
+   let the bar's paper run edge to edge while its links stay in the column. */
+.page-contents.is-sticky {
+  position: sticky;
+  top: var(--site-nav-h, 76px);
+  z-index: 40;
+  margin-bottom: var(--space-8);
+  padding-block: var(--space-3);
+  background: var(--bg-base);
+  box-shadow: 0 0 0 100vmax var(--bg-base);
+  clip-path: inset(0 -100vmax);
+  border-bottom: var(--border-hair) solid var(--outline);
+}
+.page-contents.is-sticky a[aria-current="true"] { border-bottom-color: var(--ws-orange); }
+.page:has(.page-contents.is-sticky) .section-title {
+  scroll-margin-top: calc(var(--site-nav-h, 76px) + var(--space-9));
+}
+@media (max-width: 760px) {
+  .page-contents.is-sticky {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .page-contents.is-sticky::-webkit-scrollbar { display: none; }
+  .page-contents.is-sticky .page-contents-label { display: none; }
+  .page-contents.is-sticky a { white-space: nowrap; }
+}
+
 /* ============================================================
    CALLOUT
    A passage lifted out of the flow. Deeper paper, heavy outline,
