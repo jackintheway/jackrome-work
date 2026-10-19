@@ -474,9 +474,36 @@
           <p>/conversation-archiver records both halves of a dialogue with an AI, and cross-references only my words, so the record has both of us in it and the connections through it are mine.</p>
         </details>
         <details class="more-card">
+          <summary>/trailhead</summary>
+          <p>/trailhead saves a good idea for later as a prompt that stands on its own, onto the Overlook, a private page pinned in my Claude sidebar. Claude offers it once, when a session ends on a new idea, and never brings trailheads up at the start of a session. I go to the Overlook on purpose.</p>
+        </details>
+        <details class="more-card">
           <summary>The verification tool</summary>
           <p>The verification tool holds the checks that catch what a browser hides: a stylesheet returning the wrong content type, an import that 404s without breaking the page, a phone-width test that was never actually testing a phone. This one came out of me pointing Claude Code at the last couple of months of my project history and asking what was worth building, based on the repetitive work we were doing.</p>
         </details>
+      </div>
+
+      <div class="more-group">
+        <h3 class="more-group-title" id="modsTitle">Mods</h3>
+        <p class="more-group-intro">A mod changes Claude Code itself instead of adding a skill to it. The two guards can only stop Claude and say why. Everything else waits for me to choose it.</p>
+        <div class="more-grid" aria-labelledby="modsTitle">
+          <details class="more-card">
+            <summary>The vault fence</summary>
+            <p>The vault fence enforces the Compost rule in code instead of trusting Claude to remember it. A write anywhere else in my vault is stopped and pointed to Compost, and only I can open the fence, for a few minutes at a time. It catches file edits and most shell commands, but not a script that writes files on its own.</p>
+          </details>
+          <details class="more-card">
+            <summary>The file guard</summary>
+            <p>The file guard is for when I run two Claude sessions in the same project. If one is about to write over a file the other changed since it last looked, the guard stops it once, so it re-reads the file and merges instead of overwriting.</p>
+          </details>
+          <details class="more-card">
+            <summary>The tool belt</summary>
+            <p>The tool belt is a row of buttons above where I type: save a trailhead, take a save point, write a handoff, ask Claude to explain what it just did.</p>
+          </details>
+          <details class="more-card">
+            <summary>The puzzle</summary>
+            <p>Every new session starts with most of my mods asleep, and the puzzle offers the usual pieces, a pane to choose from, or none. The guards are always in. Everything else is opt-in so that I don't end up with a cluttered screen of mods in every session. Some of my mods are project-specific.</p>
+          </details>
+        </div>
       </div>
     </section>
 

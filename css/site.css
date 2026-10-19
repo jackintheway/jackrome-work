@@ -581,6 +581,16 @@
 @media (prefers-reduced-motion: reduce) {
   .more-card summary::after { transition: none; }
 }
+/* Mods sit together after the skills, under one line saying what a mod is. */
+.more-group { margin-top: var(--space-7); }
+.more-group-title {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+}
+.more-group-intro { margin: 0 0 var(--space-5); max-width: 62ch; }
 
 /* AI Portfolio lets its text run the full width of the page when the
    window allows (Jack, 2026-10-18), instead of the site's usual measure. */
