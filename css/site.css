@@ -590,7 +590,7 @@
   font-size: var(--fs-h3);
   line-height: 1.2;
 }
-.more-group-intro { margin: 0 0 var(--space-5); max-width: 62ch; }
+.more-group-intro { margin: 0 0 var(--space-5); }
 
 /* AI Portfolio lets its text run the full width of the page when the
    window allows (Jack, 2026-10-18), instead of the site's usual measure. */
