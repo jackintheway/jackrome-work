@@ -423,12 +423,67 @@
         </figure>
       </article>
 
-      <article class="shelf-panel" id="exhibit-ingest-transcript" aria-labelledby="exhibitIngestTranscriptTitle">
+      <article class="shelf-panel has-figure" id="exhibit-ingest-transcript" aria-labelledby="exhibitIngestTranscriptTitle">
         <div class="prose">
           <h3 id="exhibitIngestTranscriptTitle">/ingest-transcript</h3>
           <p>Anyone publishing long recorded conversations runs into the same thing, which is that somebody has to get through a two hour transcript and decide what to cut before it ships. This reads the whole thing and hands back one timestamped report covering what has to come out because a speaker asked for it on the record, what's worth listening to again before deciding, the standout lines worth pulling as clips, and any passage where someone recited from a published text long enough to earn a quote card on screen.</p>
           <p>It asks one question before it starts, which is what comes before this transcript in the finished file and how long that runs. Every time it reports is offset to match the editor's timeline instead of the transcript's. Without that, somebody does the arithmetic by hand for every entry, which is worse than getting no timestamps at all.</p>
         </div>
+        <figure class="shelf-figure" aria-labelledby="ingestCaption">
+          <svg viewBox="0 0 480 380" role="img" aria-labelledby="ingestSvgTitle ingestSvgDesc">
+            <title id="ingestSvgTitle">One pass through a long recording</title>
+            <desc id="ingestSvgDesc">A long recording drawn as a strip on the editor's timeline, after an intro. The transcript's own 0:00 lines up with 1:30 on the timeline, so every time in the report matches the edit. Four kinds of mark sit on the strip: a cut someone asked for on the record, a passage to listen to again, a clip worth pulling with its in and out points, and a quote card for a recited passage.</desc>
+
+            <!-- The editor's clock, with the intro before the recording. -->
+            <text x="20" y="34" class="fig-small">the editor's timeline</text>
+            <line x1="20" y1="48" x2="460" y2="48" class="fig-line"/>
+            <line x1="30" y1="42" x2="30" y2="54" class="fig-line"/>
+            <line x1="110" y1="42" x2="110" y2="54" class="fig-line"/>
+            <text x="30" y="70" class="fig-small" text-anchor="middle">0:00</text>
+            <text x="110" y="70" class="fig-small" text-anchor="middle">1:30</text>
+            <g class="fig-shape">
+              <rect x="34" y="114" width="80" height="52" class="fig-shadow"/>
+              <rect x="30" y="108" width="80" height="52" style="fill: var(--ws-orange)"/>
+              <text x="44" y="139">intro</text>
+            </g>
+
+            <!-- The recording itself, with its marks. -->
+            <g class="fig-shape">
+              <rect x="114" y="114" width="350" height="52" class="fig-shadow"/>
+              <rect x="110" y="108" width="350" height="52" style="fill: var(--ws-white)"/>
+            </g>
+            <g><rect x="118" y="125" width="3" height="30" class="fig-wave"/><rect x="124" y="132" width="3" height="16" class="fig-wave"/><rect x="130" y="129" width="3" height="22" class="fig-wave"/><rect x="136" y="136" width="3" height="8" class="fig-wave"/><rect x="142" y="134" width="3" height="12" class="fig-wave"/><rect x="148" y="134" width="3" height="12" class="fig-wave"/><rect x="154" y="125" width="3" height="30" class="fig-wave"/><rect x="160" y="136" width="3" height="8" class="fig-wave"/><rect x="166" y="130" width="3" height="20" class="fig-wave"/><rect x="172" y="136" width="3" height="8" class="fig-wave"/><rect x="178" y="134" width="3" height="12" class="fig-wave"/><rect x="184" y="129" width="3" height="22" class="fig-wave"/><rect x="190" y="129" width="3" height="22" class="fig-wave"/><rect x="196" y="134" width="3" height="12" class="fig-wave"/><rect x="202" y="130" width="3" height="20" class="fig-wave"/><rect x="208" y="134" width="3" height="12" class="fig-wave"/><rect x="214" y="129" width="3" height="22" class="fig-wave"/><rect x="220" y="136" width="3" height="8" class="fig-wave"/><rect x="226" y="134" width="3" height="12" class="fig-wave"/><rect x="232" y="130" width="3" height="20" class="fig-wave"/><rect x="238" y="136" width="3" height="8" class="fig-wave"/><rect x="244" y="129" width="3" height="22" class="fig-wave"/><rect x="250" y="136" width="3" height="8" class="fig-wave"/><rect x="256" y="130" width="3" height="20" class="fig-wave"/><rect x="262" y="136" width="3" height="8" class="fig-wave"/><rect x="268" y="132" width="3" height="16" class="fig-wave"/><rect x="274" y="127" width="3" height="26" class="fig-wave"/><rect x="280" y="129" width="3" height="22" class="fig-wave"/><rect x="286" y="132" width="3" height="16" class="fig-wave"/><rect x="292" y="134" width="3" height="12" class="fig-wave"/><rect x="298" y="127" width="3" height="26" class="fig-wave"/><rect x="304" y="132" width="3" height="16" class="fig-wave"/><rect x="310" y="134" width="3" height="12" class="fig-wave"/><rect x="316" y="130" width="3" height="20" class="fig-wave"/><rect x="322" y="125" width="3" height="30" class="fig-wave"/><rect x="328" y="134" width="3" height="12" class="fig-wave"/><rect x="334" y="134" width="3" height="12" class="fig-wave"/><rect x="340" y="136" width="3" height="8" class="fig-wave"/><rect x="346" y="130" width="3" height="20" class="fig-wave"/><rect x="352" y="133" width="3" height="14" class="fig-wave"/><rect x="358" y="129" width="3" height="22" class="fig-wave"/><rect x="364" y="125" width="3" height="30" class="fig-wave"/><rect x="370" y="133" width="3" height="14" class="fig-wave"/><rect x="376" y="133" width="3" height="14" class="fig-wave"/><rect x="382" y="125" width="3" height="30" class="fig-wave"/><rect x="388" y="127" width="3" height="26" class="fig-wave"/><rect x="394" y="130" width="3" height="20" class="fig-wave"/><rect x="400" y="132" width="3" height="16" class="fig-wave"/><rect x="406" y="130" width="3" height="20" class="fig-wave"/><rect x="412" y="134" width="3" height="12" class="fig-wave"/><rect x="418" y="127" width="3" height="26" class="fig-wave"/><rect x="424" y="133" width="3" height="14" class="fig-wave"/><rect x="430" y="125" width="3" height="30" class="fig-wave"/><rect x="436" y="133" width="3" height="14" class="fig-wave"/><rect x="442" y="127" width="3" height="26" class="fig-wave"/><rect x="448" y="134" width="3" height="12" class="fig-wave"/></g>
+            <g class="fig-marks">
+              <rect x="150" y="108" width="34" height="52" style="fill: var(--ws-salmon)"/>
+              <rect x="226" y="108" width="34" height="52" style="fill: var(--ws-yellow)"/>
+              <rect x="300" y="108" width="62" height="52" style="fill: var(--ws-green)"/>
+              <rect x="396" y="108" width="40" height="52" style="fill: var(--ws-blue-soft)"/>
+            </g>
+            <line x1="300" y1="96" x2="300" y2="172" class="fig-line"/>
+            <line x1="362" y1="96" x2="362" y2="172" class="fig-line"/>
+            <text x="300" y="90" class="fig-small" text-anchor="middle">in</text>
+            <text x="362" y="90" class="fig-small" text-anchor="middle">out</text>
+
+            <!-- The transcript's own clock starts where the recording does. -->
+            <line x1="110" y1="78" x2="110" y2="194" class="fig-dash"/>
+            <line x1="110" y1="188" x2="460" y2="188" class="fig-line"/>
+            <text x="110" y="208" class="fig-small" text-anchor="middle">0:00</text>
+            <text x="460" y="208" class="fig-small" text-anchor="end">the transcript's clock</text>
+
+            <!-- What each mark means. -->
+            <g class="fig-shape">
+              <rect x="20" y="236" width="22" height="22" style="fill: var(--ws-salmon)"/>
+              <rect x="20" y="272" width="22" height="22" style="fill: var(--ws-yellow)"/>
+              <rect x="20" y="308" width="22" height="22" style="fill: var(--ws-green)"/>
+              <rect x="20" y="344" width="22" height="22" style="fill: var(--ws-blue-soft)"/>
+            </g>
+            <text x="54" y="253" class="fig-label">cut: asked for on the record</text>
+            <text x="54" y="289" class="fig-label">listen again before deciding</text>
+            <text x="54" y="325" class="fig-label">a clip worth pulling, in to out</text>
+            <text x="54" y="361" class="fig-label">quote card: recited from a published text</text>
+          </svg>
+          <figcaption id="ingestCaption" class="diagram-note">Schematic. One report for the whole recording, and every time in it matches the edit, not the transcript.</figcaption>
+        </figure>
       </article>
 
       <article class="shelf-panel" id="exhibit-save-points" aria-labelledby="exhibitSavePointsTitle">
