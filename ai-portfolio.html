@@ -486,12 +486,55 @@
         </figure>
       </article>
 
-      <article class="shelf-panel" id="exhibit-save-points" aria-labelledby="exhibitSavePointsTitle">
+      <article class="shelf-panel has-figure" id="exhibit-save-points" aria-labelledby="exhibitSavePointsTitle">
         <div class="prose">
           <h3 id="exhibitSavePointsTitle">/save-points</h3>
           <p>I'm not a professional developer, and version control is one of the most useful things I've picked up. Most people never get near it, because the tooling assumes you already speak the language.</p>
           <p>This skill makes the process simple and easy to understand, and the skill ensures that the save points resemble save states of a video game. It tells me what changed since last time in ordinary words, proposes a description, and commits when I say yes. Anything that could lose work gets explained in full before it runs, and it teaches me one small thing per session when there's a natural opening.</p>
         </div>
+        <figure class="shelf-figure" aria-labelledby="savePointsCaption">
+          <svg viewBox="0 0 480 380" role="img" aria-labelledby="saveSvgTitle saveSvgDesc">
+            <title id="saveSvgTitle">Save points, like a game's save menu</title>
+            <desc id="saveSvgDesc">A save menu with three save points, newest first, each described in ordinary words. Below them, a proposed new save point with its description and two choices, Yes and Not yet. Nothing is saved until the answer is yes.</desc>
+
+            <g class="fig-shape">
+              <rect x="28" y="28" width="440" height="340" class="fig-shadow"/>
+              <rect x="20" y="20" width="440" height="340" style="fill: var(--ws-paper-2)"/>
+              <rect x="20" y="20" width="440" height="40" style="fill: var(--ws-blue)"/>
+            </g>
+            <text x="36" y="46" class="fig-light">SAVE POINTS</text>
+
+            <g class="fig-shape">
+              <rect x="46" y="82" width="400" height="50" class="fig-shadow"/><rect x="40" y="76" width="400" height="50" style="fill: var(--ws-yellow)"/>
+              <rect x="54" y="89" width="24" height="24" style="fill: var(--ws-orange)"/>
+              <text x="92" y="98" class="fig-small">SAVE 3</text>
+              <text x="92" y="116" class="fig-label">Album filters in Writing</text>
+              <text x="426" y="107" class="fig-small" text-anchor="end">today</text>
+              <rect x="40" y="138" width="400" height="50" style="fill: var(--ws-white)"/>
+              <rect x="54" y="151" width="24" height="24" style="fill: var(--ws-green)"/>
+              <text x="92" y="160" class="fig-small">SAVE 2</text>
+              <text x="92" y="178" class="fig-label">Every lyric gets its own page</text>
+              <text x="426" y="169" class="fig-small" text-anchor="end">yesterday</text>
+              <rect x="40" y="200" width="400" height="50" style="fill: var(--ws-white)"/>
+              <rect x="54" y="213" width="24" height="24" style="fill: var(--ws-blue-soft)"/>
+              <text x="92" y="222" class="fig-small">SAVE 1</text>
+              <text x="92" y="240" class="fig-label">First save</text>
+              <text x="426" y="231" class="fig-small" text-anchor="end">Sept 12</text>
+            </g>
+
+            <!-- The next one waits for a yes. -->
+            <rect x="40" y="270" width="400" height="74" class="fig-proposed"/>
+            <text x="54" y="292" class="fig-small">NEW SAVE POINT?</text>
+            <text x="54" y="312" class="fig-label">Links go somewhere specific</text>
+            <g class="fig-shape">
+              <rect x="300" y="302" width="58" height="30" style="fill: var(--ws-orange)"/>
+              <rect x="366" y="302" width="64" height="30" style="fill: var(--ws-white)"/>
+            </g>
+            <text x="329" y="322" class="fig-small fig-button" text-anchor="middle">Yes</text>
+            <text x="398" y="322" class="fig-small fig-button" text-anchor="middle">Not yet</text>
+          </svg>
+          <figcaption id="savePointsCaption" class="diagram-note">Schematic. Each save point in ordinary words, and a new one only when I say yes.</figcaption>
+        </figure>
       </article>
       </div>
     </section>
