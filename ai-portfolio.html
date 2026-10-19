@@ -331,13 +331,64 @@
           </section>
       </article>
 
-      <article class="shelf-panel" id="exhibit-fair-share" aria-labelledby="exhibitFairShareTitle">
+      <article class="shelf-panel has-figure" id="exhibit-fair-share" aria-labelledby="exhibitFairShareTitle">
         <div class="prose">
           <h3 id="exhibitFairShareTitle">/fair-share</h3>
           <p>/fair-share checks AI-assisted work from both sides of a handoff: the person who received it and the person about to send it. Inbound pulls out the point, the asks, and the claims worth checking. Outbound traces weak output back to likely gaps in the prompt that made it, and returns a better prompt along with the diagnosis.</p>
           <p>Testing it on my own draft led to a third direction, crossbound, for shared drafts still in progress. <a href="/case-studies/fair-share">Read more about it in case studies &rarr;</a></p>
-        </div>
           <p class="shelf-links"><a class="is-external" href="https://github.com/jackintheway/utilities" target="_blank" rel="noopener">Use /fair-share yourself, free on GitHub <span aria-hidden="true">&rarr;</span></a></p>
+        </div>
+        <figure class="shelf-figure" aria-labelledby="fairShareCaption">
+          <svg viewBox="0 0 480 380" role="img" aria-labelledby="fairSvgTitle fairSvgDesc">
+            <title id="fairSvgTitle">Three directions on one handoff</title>
+            <desc id="fairSvgDesc">The sender, the work and the reader in a row, with arrows from sender to work to reader. Outbound checks the work before it is sent and returns Ready, Draft or Not yet. Inbound decodes work that was received and returns Passes, Mixed or Slop. Crossbound sits under the work, for a shared draft still in progress, and returns a short handoff note.</desc>
+            <defs>
+              <marker id="fsArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" class="fig-ink"/>
+              </marker>
+            </defs>
+
+            <!-- The checks, each pointing at its part of the handoff. -->
+            <g class="fig-trail">
+              <path d="M125 128 L 150 186"/>
+              <path d="M355 128 L 330 186"/>
+              <path d="M240 266 L 240 236"/>
+            </g>
+            <g class="fig-shape">
+              <rect x="26" y="26" width="206" height="102" class="fig-shadow"/>
+              <rect x="20" y="20" width="206" height="102" style="fill: var(--ws-orange)"/>
+              <rect x="260" y="26" width="206" height="102" class="fig-shadow"/>
+              <rect x="254" y="20" width="206" height="102" style="fill: var(--ws-blue-soft)"/>
+              <rect x="116" y="272" width="254" height="86" class="fig-shadow"/>
+              <rect x="110" y="266" width="254" height="86" style="fill: var(--ws-green)"/>
+            </g>
+            <text x="34" y="46">Outbound</text>
+            <text x="34" y="66" class="fig-small">finished work, before I send it</text>
+            <rect x="34" y="84" width="56" height="24" class="fig-pill"/><text x="62" y="100" class="fig-small" text-anchor="middle">Ready</text><rect x="98" y="84" width="56" height="24" class="fig-pill"/><text x="126" y="100" class="fig-small" text-anchor="middle">Draft</text><rect x="162" y="84" width="71" height="24" class="fig-pill"/><text x="198" y="100" class="fig-small" text-anchor="middle">Not yet</text>
+            <text x="268" y="46">Inbound</text>
+            <text x="268" y="66" class="fig-small">work I received</text>
+            <rect x="268" y="84" width="63" height="24" class="fig-pill"/><text x="300" y="100" class="fig-small" text-anchor="middle">Passes</text><rect x="339" y="84" width="56" height="24" class="fig-pill"/><text x="367" y="100" class="fig-small" text-anchor="middle">Mixed</text><rect x="403" y="84" width="48" height="24" class="fig-pill"/><text x="427" y="100" class="fig-small" text-anchor="middle">Slop</text>
+            <text x="124" y="292">Crossbound</text>
+            <text x="124" y="312" class="fig-small">a shared draft, still in progress</text>
+            <text x="124" y="336" class="fig-small">returns a short handoff note</text>
+
+            <!-- The handoff itself. -->
+            <g class="fig-shape">
+              <rect x="26" y="174" width="96" height="56" class="fig-shadow"/>
+              <rect x="20" y="168" width="96" height="56" style="fill: var(--ws-white)"/>
+              <rect x="198" y="174" width="96" height="56" class="fig-shadow"/>
+              <rect x="192" y="168" width="96" height="56" style="fill: var(--ws-yellow)"/>
+              <rect x="370" y="174" width="96" height="56" class="fig-shadow"/>
+              <rect x="364" y="168" width="96" height="56" style="fill: var(--ws-white)"/>
+            </g>
+            <text x="68" y="202" text-anchor="middle">sender</text>
+            <text x="240" y="202" text-anchor="middle">the work</text>
+            <text x="412" y="202" text-anchor="middle">reader</text>
+            <line x1="120" y1="196" x2="186" y2="196" class="fig-line" marker-end="url(#fsArrow)"/>
+            <line x1="292" y1="196" x2="358" y2="196" class="fig-line" marker-end="url(#fsArrow)"/>
+          </svg>
+          <figcaption id="fairShareCaption" class="diagram-note">Schematic. One check, three directions: before I send, after I receive, and while we're still drafting together.</figcaption>
+        </figure>
       </article>
 
       <article class="shelf-panel has-figure" id="exhibit-map-maker" aria-labelledby="exhibitMapMakerTitle">

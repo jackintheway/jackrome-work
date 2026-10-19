@@ -629,6 +629,7 @@
 .shelf-figure text.fig-label { font-size: 15px; font-weight: var(--fw-regular); }
 .shelf-figure text.fig-light { fill: var(--ws-white); letter-spacing: 0.08em; }
 .shelf-figure text.fig-button { font-weight: var(--fw-bold); }
+.shelf-figure .fig-pill { fill: var(--ws-white); stroke: var(--outline); stroke-width: 2; }
 .shelf-figure .fig-proposed { fill: var(--ws-white); stroke: var(--outline); stroke-width: 3; stroke-dasharray: 8 6; }
 @media (min-width: 980px) {
   .shelf-panel.has-figure:not([hidden]) {
