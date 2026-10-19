@@ -725,7 +725,8 @@
    let the bar's paper run edge to edge while its links stay in the column. */
 .page-contents {
   position: sticky;
-  top: var(--site-nav-h, 76px);
+  /* Tucked 1px under the nav so no sliver of page shows between them. */
+  top: calc(var(--site-nav-h, 76px) - 1px);
   z-index: 40;
   margin-bottom: var(--space-8);
   padding-block: var(--space-3);

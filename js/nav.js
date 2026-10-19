@@ -103,8 +103,8 @@
   // just below the bar instead of under it.
   function setNavHeight() {
     var root = document.documentElement.style;
-    if (nav) root.setProperty("--site-nav-h", nav.offsetHeight + "px");
-    root.setProperty("--page-contents-h", bar.offsetHeight + "px");
+    if (nav) root.setProperty("--site-nav-h", nav.getBoundingClientRect().height + "px");
+    root.setProperty("--page-contents-h", bar.getBoundingClientRect().height + "px");
     showMore();
   }
 
@@ -116,6 +116,14 @@
   bar.addEventListener("scroll", showMore, { passive: true });
   setNavHeight();
   window.addEventListener("resize", setNavHeight);
+  // The nav can change height after first paint (the web font arriving,
+  // the menu wrapping), so measure again whenever either bar changes size.
+  if (window.ResizeObserver) {
+    var watch = new ResizeObserver(setNavHeight);
+    if (nav) watch.observe(nav);
+    watch.observe(bar);
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(setNavHeight);
 
   var links = Array.prototype.slice.call(bar.querySelectorAll('a[href^="#"]'));
   var targets = links
