@@ -58,6 +58,8 @@ SAY = {
     r"(\d) GB\b": r"\1 gigabyte",
     r"(?<!\w)/listen\b": "slash listen",
     r"(?<!\w)/fair-share\b": "slash fair share",
+    r"\b[Ff]rame\.io\b": "frame I O",
+    r"\bA- to an A\+": "A minus to an A plus",
 }
 
 

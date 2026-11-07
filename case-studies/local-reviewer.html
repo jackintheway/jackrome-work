@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Local Reviewer | Case study | Jack Rome</title>
+  <meta name="description" content="A video review app on my Mac, built with Claude Code: a transcript beside playback, notes on exact frames, and markers from the assistant that made the cut.">
+  <link rel="canonical" href="https://jackrome.work/case-studies/local-reviewer">
+
+  <!-- Link previews. Same rules as every other page: og:image absolute,
+       twitter:card set to summary_large_image, card generated from
+       tools/og/ so it inherits the design system.
+       Source: tools/og/card-case-local-reviewer.html -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Jack Rome">
+  <meta property="og:url" content="https://jackrome.work/case-studies/local-reviewer">
+  <meta property="og:title" content="Notes on exact frames.">
+  <meta property="og:description" content="A video review app on my Mac, built with Claude Code: a transcript beside playback, notes on exact frames, and markers from the assistant that made the cut.">
+  <meta property="og:image" content="https://jackrome.work/assets/img/og-case-local-reviewer.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Notes on exact frames. A case study by Jack Rome.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Notes on exact frames.">
+  <meta name="twitter:description" content="A video review app on my Mac, built with Claude Code: a transcript beside playback, notes on exact frames, and markers from the assistant that made the cut.">
+  <meta name="twitter:image" content="https://jackrome.work/assets/img/og-case-local-reviewer.png">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/puzzle-single.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main">
+    <a class="nav-mark" href="/">Jack Rome</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-link" href="/about">About</a>
+      <div class="nav-group">
+        <span class="nav-group-label">Services</span>
+        <a class="nav-link" href="/ai-enablement">AI Enablement</a>
+        <a class="nav-link" href="/production">Production</a>
+      </div>
+      <a class="nav-link" href="/ai-portfolio">AI Portfolio</a>
+      <a class="nav-link" href="/wayspace">Wayspace</a>
+      <a class="nav-link is-external" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow ws-overline"><a class="hero-eyebrow-link" href="/ai-portfolio">&larr; AI Portfolio</a> &middot; Case study</p>
+      <h1 class="hero-title">Local Reviewer: notes on exact frames, with the assistant that made the cut</h1>
+      <p class="hero-sub">Local Reviewer is a small app on my Mac for reviewing video drafts. I built it with Claude Code, the same assistant I edit with, and we keep changing it as the work asks for more.</p>
+      <div class="btn-row"><button class="btn btn-yellow" type="button" data-listen data-recording="/assets/audio/local-reviewer.json">Listen to this case study</button></div>
+    </div>
+  </header>
+
+  <main class="page page-narrow" id="main">
+
+    <nav class="page-contents" aria-label="On this page">
+      <span class="page-contents-label">On this page</span>
+      <a href="#aloneTitle">Reviewing alone</a>
+      <a href="#partsTitle">The best parts</a>
+      <a href="#markersTitle">Markers</a>
+      <a href="#sayingTitle">Saying what I want</a>
+      <a href="#momentsTitle">Exact moments</a>
+      <a href="#newTitle">Only what's new</a>
+      <a href="#wrongTitle">What went wrong</a>
+      <a href="#openTitle">Still open</a>
+      <a href="#imaginationTitle">Imagination</a>
+    </nav>
+
+    <section class="section" aria-labelledby="aloneTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="aloneTitle">Reviewing alone, through a service built for teams</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>I've been editing video for 15 years. Until October, my review loop for my own drafts still ran through Frame.io: export, upload, wait, then pin comments to frames for the assistant to pull. But on a lot of my work I'm the only reviewer, sitting at the same Mac the draft was exported on, and as I put it at the time, "between you and me we don't need frame.io if I'm at my computer."</p>
+        <p>So I asked Claude Code for something that would let me "comment at any point, and then it gives you the timestamps the same way frame.io works." About ten minutes later the first version was committed. It plays the export straight from its folder, shows timecode to the frame and saves each note into a file the assistant reads. Frame.io stayed for reviews away from my desk or with anyone else, and Claude asks me which one at every draft.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="partsTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="partsTitle">The best parts of the tools I love</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>Each piece came from somewhere: a transcript next to playback like Riverside and Descript, comments pinned to frames like Frame.io, and in and out points like Premiere.</p>
+        <p>I left editing out. Premiere is still the best place to cut, and keeping the review tool to one job is part of why it works. A local editor with this as its review mode might be my next project.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="markersTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="markersTitle">Markers from the assistant that made the cut</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>The surprise was the markers. Since November 5 it has been a standing rule: whenever Claude finishes an edit, it puts a marker on every change, every call it made that I might make differently, and everything it couldn't check from the file, before telling me the draft is ready. On one recorded class that came to 85 markers, 68 of them slide switches, each set 2 seconds before the cut so I can press play and watch it happen. I ticked 82 and left 2 notes.</p>
+        <p>Because the assistant that cuts the video also builds the tool, the exact edits between cuts show up as markers for me to check. It's the best use of markers I've ever seen.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="sayingTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="sayingTitle">Saying exactly what I want</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>Since I can't change the cut from inside the reviewer, I have to put into words what I want. That can sound inconvenient. On several recent edits, describing exactly what I wanted moved a cut by a few frames, and that difference took the edit from an A- to an A+. The articulation was worth it, and it's making me a better director.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="momentsTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="momentsTitle">Exact moments without scrubbing</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>On November 7 I asked for two things. Giving Claude a precise moment meant scrubbing to find it, and I wanted something closer to the Descript experience, without the editing. And on a second cut, the markers I had already ticked were all still there, so I scrolled past dozens of them to find the two things I needed.</p>
+        <p>Claude read my saved notes before building anything. Across 27 notes in 11 reviews, none used the range control, about five quoted the spoken words by hand, and two had a second timecode typed into the text. So the reviewer now shows a transcript beside the video. Clicking a word jumps there, and highlighting words makes a note with their exact range and wording. The range button came out.</p>
+        <p>Two routes were ruled out early. The transcripts I already had came from the recordings, so they ran on the recording's clock and stopped matching after the first cut. Each transcript is now made from the export itself, on my laptop, in about 30 seconds for 44 minutes. Whisper's finer word timing returned nothing on this install, so timing is good to about a second.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="newTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="newTitle">Showing only what's new</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>Comparing the text of two drafts can't show what changed by itself, because the same speech transcribes a little differently once anything around it is cut. On a real pair of 8-minute drafts, the text differed in 13 places and only 2 were cuts. So a change only counts when the timing moves. The two cuts added up to 19.0 seconds, and the draft got 18.8 seconds shorter.</p>
+        <p>On a later draft, a marker now stays out of the list if I ticked it last time, left no note on it, and it's the same kind at the same place in the speech with nothing changed near it. Each cut gets a marker of its own, with the removed words shown in the transcript. When I tried it on a real review, it worked well.</p>
+      </div>
+
+      <figure class="edit-diagram review-diagram" aria-labelledby="reviewCaption">
+        <figcaption id="reviewCaption">On a second cut, the list shrinks to what still needs me</figcaption>
+        <div class="clock-row">
+          <h3>Draft 2, before</h3>
+          <p>All 85 markers, every one shown again</p>
+          <svg class="review-strip" viewBox="0 0 850 56" preserveAspectRatio="none" role="img" aria-label="Draft 2, before: 85 markers along the timeline, all shown.">
+          <rect class="rv-bar" x="1" y="42" width="848" height="12"/>
+          <rect class="rv-mk" x="46" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="55" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="57" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="58" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="67" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="68" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="69" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="71" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="72" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="79" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="82" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="91" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="96" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="100" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="104" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="107" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="113" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="128" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="134" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="144" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="155" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="162" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="192" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="193" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="200" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="218" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="227" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="234" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="236" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="254" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="257" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="262" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="302" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="304" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="314" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="315" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="323" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="329" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="339" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="359" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="378" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="382" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="389" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="412" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="414" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="436" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="437" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="442" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="445" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="452" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="467" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="472" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="484" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="514" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="516" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="527" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="545" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="552" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="556" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="561" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="568" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="572" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="578" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="581" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="585" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="587" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="592" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="596" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="598" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="603" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="604" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="607" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="641" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="650" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="653" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="662" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="674" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="704" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="706" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="723" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="737" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="754" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="803" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="806" y="10" width="3" height="32"/>
+          <rect class="rv-mk" x="821" y="10" width="3" height="32"/>
+          </svg>
+        </div>
+        <div class="clock-row">
+          <h3>Draft 2, now</h3>
+          <p>The same 85, with the ones I okayed greyed into the bar</p>
+          <svg class="review-strip" viewBox="0 0 850 56" preserveAspectRatio="none" role="img" aria-label="Draft 2, now: most markers greyed into the bar, four still shown, one fix for my note, and two cuts.">
+          <rect class="rv-bar" x="1" y="42" width="848" height="12"/>
+          <rect class="rv-ok" x="46" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="55" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="57" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="58" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="67" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="68" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="69" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="71" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="72" y="42" width="3" height="12"/>
+          <rect class="rv-mk" x="79" y="10" width="3" height="32"/>
+          <rect class="rv-ok" x="82" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="91" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="96" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="100" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="104" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="107" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="113" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="128" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="134" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="144" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="155" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="162" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="192" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="193" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="200" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="218" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="227" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="234" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="236" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="254" y="42" width="3" height="12"/>
+          <rect class="rv-mk" x="257" y="10" width="3" height="32"/>
+          <rect class="rv-ok" x="262" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="302" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="304" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="314" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="315" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="323" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="329" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="339" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="359" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="378" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="382" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="389" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="412" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="414" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="436" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="437" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="442" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="445" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="452" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="467" y="42" width="3" height="12"/>
+          <rect class="rv-mk" x="472" y="10" width="3" height="32"/>
+          <rect class="rv-ok" x="484" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="514" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="516" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="527" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="545" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="552" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="556" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="561" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="568" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="572" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="578" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="581" y="42" width="3" height="12"/>
+          <rect class="rv-fix" x="585" y="10" width="6" height="32"/>
+          <rect class="rv-ok" x="587" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="592" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="596" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="598" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="603" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="604" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="607" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="641" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="650" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="653" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="662" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="674" y="42" width="3" height="12"/>
+          <rect class="rv-mk" x="704" y="10" width="3" height="32"/>
+          <rect class="rv-ok" x="706" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="723" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="737" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="754" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="803" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="806" y="42" width="3" height="12"/>
+          <rect class="rv-ok" x="821" y="42" width="3" height="12"/>
+          <rect class="rv-cut" x="318" y="0" width="8" height="42"/>
+          <rect class="rv-cut" x="611" y="0" width="8" height="42"/>
+          </svg>
+        </div>
+        <ul class="review-key">
+          <li class="is-ok">Ticked last time, no note, same place in the speech</li>
+          <li class="is-mk">Still needs me</li>
+          <li class="is-fix">A fix for my note</li>
+          <li class="is-cut">A cut</li>
+        </ul>
+        <p class="diagram-note">Schematic. A conceptual example, not the real timeline or scale.</p>
+      </figure>
+    </section>
+
+    <section class="section" aria-labelledby="wrongTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="wrongTitle">What went wrong</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>Claude tested the hiding against two real consecutive drafts before I used it, and 2 of the 10 markers it hid were fixes for my own notes. They sat where old markers I had ticked used to be, and neither set had a kind label, so "no kind" counted as the same kind. I would have skipped the exact things I'd asked to see. Now a marker about a note always shows, and that pair hides none of its 10.</p>
+        <p>Claude's first noise check proved nothing, because the same audio transcribes the same way every time, and it said so and ran the real draft pairs instead. Testing also caught two off-by-ones: a grabbed still was one frame late, and clicking a word could land one word early. Grabbed stills now match the exact frame at the five spots checked.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="openTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="openTitle">Still open</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>The transcript is English only, with no speaker names. Hiding okayed markers has been through one live review so far. The comparison only hears speech, so a picture-only change at the same spot needs Claude to flag it, which is now part of the marker rule. All of the timings come from one laptop.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="imaginationTitle">
+      <div class="section-header">
+        <h2 class="section-title" id="imaginationTitle">Leaning into imagination</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="prose prose-lg">
+        <p>The people best equipped to get the most out of AI for a craft are the ones who have been doing that craft. I feel lucky to have all those years of editing, because I know exactly what to ask for. Now I can work with Claude Code to make an app of my own that works the way I want and changes the way I want.</p>
+        <p>AI tools can look like something for the technically minded. What this asks of me is to lean into what I want and into my imagination, and I think that's a big part of AI enablement, whatever the industry or team.</p>
+      </div>
+    </section>
+
+    <div class="btn-row">
+      <a class="btn" href="/ai-portfolio">&larr; Back to AI Portfolio</a>
+      <a class="btn btn-secondary" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn btn-secondary" href="https://github.com/jackintheway/utilities/tree/main/local-review" target="_blank" rel="noopener">Get Local Reviewer on GitHub</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-identity">
+      <span class="footer-line">Jack Rome</span>
+      <span class="footer-line footer-sub">Technology, made human</span>
+      <span class="footer-line footer-sub">Maryland</span>
+    </span>
+    <span class="footer-links">
+      <a class="footer-link" href="https://calendly.com/jackintheway/chat-with-jack-rome" target="_blank" rel="noopener">Book a call</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="mailto:jackintheway@gmail.com?subject=Inquiry%20for%20Jack%20Rome">Reach out</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.linkedin.com/in/jackrome/" target="_blank" rel="noopener">Connect</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://www.youtube.com/@jackintheway" target="_blank" rel="noopener">Watch</a>
+      <span class="footer-line footer-dot" aria-hidden="true">&middot;</span>
+      <a class="footer-link" href="https://jackintheway.substack.com/" target="_blank" rel="noopener">Read</a>
+    </span>
+  </footer>
+
+  <script src="/js/recording.js" defer></script>
+  <script src="/js/listen.js" defer></script>
+  <script src="/js/nav.js" defer></script>
+</body>
+</html>

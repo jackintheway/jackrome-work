@@ -1249,6 +1249,28 @@ ul.offer-grid {
 .clock-row + .clock-row { margin-top: var(--space-5); }
 .clock-row h3 { font-size: var(--fs-body); margin: 0; }
 .clock-row p { font-size: var(--fs-small); margin: var(--space-1) 0 var(--space-3); }
+/* Local Reviewer: the second cut, before and now. Each strip is a timeline
+   of markers; the ticks stretch with the width, the labels stay in HTML so
+   they read at phone width. Schematic, drawn by tools, not from a review. */
+.review-strip { display: block; width: 100%; height: 56px; }
+.review-strip .rv-bar { fill: var(--ws-paper); stroke: var(--ws-black); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.review-strip .rv-mk { fill: var(--ws-black); }
+.review-strip .rv-ok { fill: var(--ws-grey); opacity: 0.45; }
+.review-strip .rv-fix { fill: var(--ws-blue); }
+.review-strip .rv-cut { fill: var(--ws-orange); stroke: var(--ws-black); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.review-key {
+  display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5);
+  margin: var(--space-5) 0 0; padding: 0; list-style: none;
+  font-size: var(--fs-small);
+}
+.review-key li { display: flex; align-items: center; gap: var(--space-2); }
+.review-key li::before {
+  content: ""; flex: none; width: 10px; height: 18px;
+  border: 1px solid var(--ws-black); background: var(--ws-black);
+}
+.review-key .is-ok::before { height: 8px; background: var(--ws-grey); opacity: 0.45; }
+.review-key .is-fix::before { background: var(--ws-blue); }
+.review-key .is-cut::before { background: var(--ws-orange); }
 .clock-track {
   display: grid;
   grid-template-columns: repeat(20, minmax(0, 1fr));

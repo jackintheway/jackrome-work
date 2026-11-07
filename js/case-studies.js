@@ -39,6 +39,15 @@
    ============================================================ */
 const CASE_STUDIES = [
   {
+    slug: "local-reviewer",
+    title: "Local Reviewer, notes on exact frames with my editing assistant",
+    meta: "Personal tool, 2026",
+    tags: ["Video post-production", "Collaboration", "Transcript analysis", "Verification"],
+    lead: "I worked with Claude Code to build a review app for my video drafts that runs on my Mac, so I can leave notes on exact frames without uploading anything.",
+    summary: "It takes a transcript beside playback from Riverside and Descript, comments pinned to frames from Frame.io, and in and out points from Premiere. Because the assistant that cuts the video also builds the tool, every edit it makes arrives as a marker for me to check, and a later draft shows only what's new.",
+    result: "Claude tested it on real consecutive drafts and caught a bug before I used it: 2 of 10 hidden markers were fixes for my notes. Now none are. It doesn't edit, and that's on purpose for now."
+  },
+  {
     slug: "fair-share",
     title: "/fair-share, AI work that respects the reader",
     meta: "Collaborative tool, 2026",

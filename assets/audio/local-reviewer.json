@@ -1,0 +1,175 @@
+{
+ "voice": "Kokoro (af_heart), Apache 2.0",
+ "audio": "/assets/audio/local-reviewer.mp3",
+ "duration": 389.57,
+ "marks": [
+  {
+   "t": 0.0,
+   "key": "c1af24d4",
+   "kind": "title",
+   "where": "Introduction"
+  },
+  {
+   "t": 5.9,
+   "key": "ef406d75",
+   "kind": "sub",
+   "where": "Introduction"
+  },
+  {
+   "t": 18.0,
+   "key": "ef0db068",
+   "kind": "heading",
+   "where": "Reviewing alone, through a service built for teams"
+  },
+  {
+   "t": 22.02,
+   "key": "0d878590",
+   "kind": "para",
+   "where": "Reviewing alone, through a service built for teams"
+  },
+  {
+   "t": 46.17,
+   "key": "365d69ad",
+   "kind": "para",
+   "where": "Reviewing alone, through a service built for teams"
+  },
+  {
+   "t": 71.7,
+   "key": "21f7afda",
+   "kind": "heading",
+   "where": "The best parts of the tools I love"
+  },
+  {
+   "t": 74.77,
+   "key": "5ae97895",
+   "kind": "para",
+   "where": "The best parts of the tools I love"
+  },
+  {
+   "t": 86.3,
+   "key": "38d0e565",
+   "kind": "para",
+   "where": "The best parts of the tools I love"
+  },
+  {
+   "t": 99.58,
+   "key": "8f0df072",
+   "kind": "heading",
+   "where": "Markers from the assistant that made the cut"
+  },
+  {
+   "t": 103.15,
+   "key": "7b96714e",
+   "kind": "para",
+   "where": "Markers from the assistant that made the cut"
+  },
+  {
+   "t": 130.93,
+   "key": "135c2643",
+   "kind": "para",
+   "where": "Markers from the assistant that made the cut"
+  },
+  {
+   "t": 142.58,
+   "key": "68551cdd",
+   "kind": "heading",
+   "where": "Saying exactly what I want"
+  },
+  {
+   "t": 145.38,
+   "key": "e22292f0",
+   "kind": "para",
+   "where": "Saying exactly what I want"
+  },
+  {
+   "t": 167.08,
+   "key": "3a4527c4",
+   "kind": "heading",
+   "where": "Exact moments without scrubbing"
+  },
+  {
+   "t": 169.98,
+   "key": "a675599f",
+   "kind": "para",
+   "where": "Exact moments without scrubbing"
+  },
+  {
+   "t": 189.38,
+   "key": "48a9ecb9",
+   "kind": "para",
+   "where": "Exact moments without scrubbing"
+  },
+  {
+   "t": 214.53,
+   "key": "1014e10f",
+   "kind": "para",
+   "where": "Exact moments without scrubbing"
+  },
+  {
+   "t": 237.55,
+   "key": "f7c555d0",
+   "kind": "heading",
+   "where": "Showing only what's new"
+  },
+  {
+   "t": 240.13,
+   "key": "4606ace3",
+   "kind": "para",
+   "where": "Showing only what's new"
+  },
+  {
+   "t": 264.45,
+   "key": "6c43e277",
+   "kind": "para",
+   "where": "Showing only what's new"
+  },
+  {
+   "t": 283.65,
+   "key": "677c8dea",
+   "kind": "heading",
+   "where": "What went wrong"
+  },
+  {
+   "t": 285.8,
+   "key": "f3dcff8a",
+   "kind": "para",
+   "where": "What went wrong"
+  },
+  {
+   "t": 309.88,
+   "key": "578433ae",
+   "kind": "para",
+   "where": "What went wrong"
+  },
+  {
+   "t": 332.07,
+   "key": "7c0a4e0f",
+   "kind": "heading",
+   "where": "Still open"
+  },
+  {
+   "t": 334.22,
+   "key": "861be671",
+   "kind": "para",
+   "where": "Still open"
+  },
+  {
+   "t": 353.7,
+   "key": "da786b6d",
+   "kind": "heading",
+   "where": "Leaning into imagination"
+  },
+  {
+   "t": 356.57,
+   "key": "3b2a5ba4",
+   "kind": "para",
+   "where": "Leaning into imagination"
+  },
+  {
+   "t": 375.22,
+   "key": "5dacd19f",
+   "kind": "para",
+   "where": "Leaning into imagination"
+  }
+ ]
+}
