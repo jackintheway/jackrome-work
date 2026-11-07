@@ -100,7 +100,20 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-10-18, Claude Code
+## Current checkpoint: 2026-11-07, Claude Code
+
+- **Fifth case study, `/case-studies/local-reviewer`**, built from `_exhibits/local-review/` (cleared, scan-clean). Jack trimmed it with Claude first: all four proposed cuts, 1,156 to 1,071 words; his own lines untouched. Headings are the package's.
+- **Diagram:** the second cut, before and now (85 markers against the few that still need Jack), inline SVG strips with HTML labels and a legend (`.review-strip`, `.review-key` in `css/site.css`, reusing `.clock-row`). Orange marks cuts, since the palette has no red. Carries the schematic note.
+- **Entry** at the top of `js/case-studies.js`; its result line credits Claude with catching the hiding bug. AI Portfolio intro now says "three I built for myself".
+- **Share card** `card-case-local-reviewer` ("Notes on exact frames.", green); **recording** 6:29 with new spoken spellings for Frame.io and A- / A+; `--check` reports all six current. Sitemap 79 pages, guide index 165 destinations, `build-site.py --check` passes.
+- **Foot button** "Get Local Reviewer on GitHub" links to `github.com/jackintheway/utilities/tree/main/local-review`, which exists only once the utilities repo is pushed. Push both together.
+- **The app is now named Local Reviewer** (Jack, today); the skill stays `local-review`. Renamed in Jack's skills repo (bc1e793, pushed to the Ark) and in the public copy. Jack needs to drag the rebuilt `Local Reviewer.app` onto his Dock.
+- **Utilities repo:** `local-review/` placed, README row added, "four Claude skills"; second discretion scan clean on the placed copy and the README. Committed locally (b34604f), **not pushed**.
+- **Checked locally:** discretion scan clean on the page content, entry, card and recording map (the only hits were the shared nav's Wayspace link and the footer email); check-copy passes; head tags complete; Listen plays the recording; all nine contents links land; no horizontal scroll at 375px; no failed requests.
+- **Archived:** the package (rescanned, SCAN.txt refreshed) is in iCloud `claude-creations/exhibitions/local-review/`.
+- **Not pushed or deployed.** Next: Jack reads the page as a stranger, then on his go push this repo and the utilities repo in one batch and verify live.
+
+## Earlier checkpoint: 2026-10-18, Claude Code
 
 - **AI Portfolio, on Jack's go:** a new entry, "/synthesize and /graft", at the top of "A few of the skills", with a nested walkthrough under it, "See /graft at work" (`#graft-demo`): four steps through a recorded graft run, built on the handoff walkthrough's pattern. Built from the exhibit package `_exhibits/graft-and-synthesize/`, which Jack read and approved. Jack approved naming /red-pen and /readers in step 2.
 - **The one-line `/synthesis` mention under "Some more skills" is gone**; the new entry covers the skill under its current name. Copy edit Jack asked for: "No hooks, scheduled runs, or commits behind my back."
