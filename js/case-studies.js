@@ -44,8 +44,7 @@ const CASE_STUDIES = [
     meta: "Personal tool, 2026",
     tags: ["Video post-production", "Collaboration", "Transcript analysis", "Verification"],
     lead: "I worked with Claude Code to build a review app for my video drafts that runs on my Mac, so I can leave notes on exact frames without uploading anything.",
-    summary: "It takes a transcript beside playback from Riverside and Descript, comments pinned to frames from Frame.io, and in and out points from Premiere. Because the assistant that cuts the video also builds the tool, every edit it makes arrives as a marker for me to check, and a later draft shows only what's new.",
-    result: "Claude tested it on real consecutive drafts and caught a bug before I used it: 2 of 10 hidden markers were fixes for my notes. Now none are. It doesn't edit, and that's on purpose for now."
+    summary: "It borrows the best of the editing tools I love: a transcript that follows along beside the video, like Riverside and Descript; notes pinned to exact frames, like Frame.io; and in and out points to mark a stretch of video, like Premiere. Because the assistant that cuts the video also builds the tool, every edit it makes arrives as a marker for me to check, and a later draft shows only what's new."
   },
   {
     slug: "fair-share",
@@ -119,7 +118,7 @@ function caseCard(item) {
       <div class="offer-body">
         <p><strong>${escapeHtml(item.lead)}</strong></p>
         <p>${escapeHtml(item.summary)}</p>
-        <p class="work-note">${escapeHtml(item.result)}</p>
+        ${item.result ? `<p class="work-note">${escapeHtml(item.result)}</p>` : ""}
       </div>
     </li>
   `;
