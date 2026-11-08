@@ -1619,6 +1619,7 @@ body.is-recorded { padding-bottom: 140px; }
 .peek-dialog.is-wide { width: min(1320px, calc(100vw - 32px)); }
 @media (max-width: 600px) { .peek-dialog.is-wide { width: 100vw; } }
 .peek-row { margin-top: var(--space-5); }
+[data-peek]:hover, [data-peek]:focus-visible { background: var(--ws-yellow); }
 @media (max-width: 600px) {
   .peek-dialog { width: 100vw; height: 100vh; height: 100dvh; border: 0; box-shadow: none; }
 }
