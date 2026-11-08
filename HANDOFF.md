@@ -107,7 +107,7 @@ follow current editorial guidance and obtain explicit publication approval.
 - **Built from `_exhibits/trailhead/`** (walkthrough level, approved by Jack; discretion scan clean). The `/trailhead` one-liner in More skills is gone (Jack's choice); the tool belt card stays.
 - **New:** `.trail-card` in `css/site.css` (a static copy of one Overlook card, reusing `.verdict-pill`); a `#trailhead-demo` guide destination (166). No script changes.
 - **Checked locally** (this session's server on 8643; another session held 8642): every tile opens its exhibit, the deep link opens /trailhead, all four steps reveal their panels, no console errors, no horizontal scroll at 1280px and 390px, step labels fit at 390px (step 2 renamed "The prompt" for that), drawing reads at 760px, no em dashes, `build-site.py --check` passes. The site has no dark mode to check.
-- **Shelf now 3 + 3 + 1 on desktop** (2 + 2 + 2 + 1 on phones), with /save-points alone on the last row. Jack's call whether that's fine.
+- **Shelf layout, Jack's pick:** four across from 1100px (4 + 3), three across on tablets (3 + 3 + 1), two on phones with the odd last tile spanning both columns. Checked at 1280, 1100, 1099, 820 and 390px: tiles fit, no names overflow, no horizontal scroll.
 - **The Overlook:** `trailhead-exhibit` marked walked today. **Committed, not pushed.**
 
 ## Earlier checkpoint: 2026-11-07, Claude Code

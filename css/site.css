@@ -548,8 +548,15 @@
 .shelf-panel[hidden] { display: none; }
 .shelf-panel .handoff-demo.is-nested { margin-bottom: 0; }
 .shelf-links { margin-top: var(--space-5); }
+/* Four across on wide screens, so seven tiles sit in two rows (4 + 3)
+   rather than leaving one alone on a third. Tablets keep three. */
+@media (min-width: 1100px) {
+  .shelf-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 @media (max-width: 760px) {
   .shelf-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+  /* An odd last tile spans both columns, closing the shelf. */
+  .shelf-tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .shelf-tile { padding: var(--space-3); }
   .shelf-tile-name { font-size: var(--fs-body-lg); }
   .exhibit-shelf.is-interactive .shelf-panel { padding: var(--space-4); }
