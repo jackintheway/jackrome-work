@@ -88,6 +88,7 @@
         <p>I've been editing video for 15 years. Until October, my review loop for my own drafts still ran through Frame.io: export, upload, wait, then pin comments to frames for the assistant to pull. But on a lot of my work I'm the only reviewer, sitting at the same Mac the draft was exported on, and as I put it at the time, "between you and me we don't need frame.io if I'm at my computer."</p>
         <p>So I asked Claude Code for something that would let me "comment at any point, and then it gives you the timestamps the same way frame.io works." About ten minutes later the first version was committed. It plays the export straight from its folder, shows timecode to the frame and saves each note into a file the assistant reads. Frame.io stayed for reviews away from my desk or with anyone else, and Claude asks me which one at every draft.</p>
       </div>
+      <div class="btn-row peek-row"><button class="btn btn-secondary" type="button" data-peek="1">Take a peek</button></div>
     </section>
 
     <section class="section" aria-labelledby="partsTitle">
@@ -108,7 +109,7 @@
       </div>
       <div class="prose prose-lg">
         <p>The surprise was the markers. Since November 5 it has been a standing rule: whenever Claude finishes an edit, it puts a marker on every change, every call it made that I might make differently, and everything it couldn't check from the file, before telling me the draft is ready. On one recorded class that came to 85 markers, 68 of them slide switches, each set 2 seconds before the cut so I can press play and watch it happen. I ticked 82 and left 2 notes.</p>
-        <p>Because the assistant that cuts the video also builds the tool, the exact edits between cuts show up as markers for me to check. It's the best use of markers I've ever seen.</p>
+        <p>Because the assistant that cuts the video also builds the tool, the exact edits between cuts show up as markers for me to check. It's the best use of markers I've ever seen!</p>
       </div>
     </section>
 
@@ -118,7 +119,7 @@
         <div class="section-rule" aria-hidden="true"></div>
       </div>
       <div class="prose prose-lg">
-        <p>Since I can't change the cut from inside the reviewer, I have to put into words what I want. That can sound inconvenient. On several recent edits, describing exactly what I wanted moved a cut by a few frames, and that difference took the edit from an A- to an A+. The articulation was worth it, and it's making me a better director.</p>
+        <p>Since I can't change the cut from inside the reviewer, I have to put into words what I want. On one hand, that can be inconvenient compared to just editing it myself, but on the other, being forced to articulate what I really want is making me a better director and collaborator.</p>
       </div>
     </section>
 
@@ -340,6 +341,7 @@
         </ul>
         <p class="diagram-note">Schematic. A conceptual example, not the real timeline or scale.</p>
       </figure>
+      <div class="btn-row peek-row"><button class="btn btn-secondary" type="button" data-peek="2">Take a peek at draft 2</button></div>
     </section>
 
     <section class="section" aria-labelledby="wrongTitle">
@@ -399,6 +401,38 @@
       <a class="footer-link" href="https://jackintheway.substack.com/" target="_blank" rel="noopener">Read</a>
     </span>
   </footer>
+
+  <!-- A working miniature of Local Reviewer, reviewing this case study read
+       aloud. The frame loads only when opened and is cleared on close, so
+       nothing plays in the background. data-peek="2" opens the second cut. -->
+  <dialog class="peek-dialog is-wide" id="peekDialog" aria-labelledby="peekLabel">
+    <div class="peek-head">
+      <span id="peekLabel">Local Reviewer, reviewing this case study</span>
+      <button class="btn btn-secondary peek-close" type="button" id="peekClose">Close</button>
+    </div>
+    <iframe class="peek-frame" id="peekFrame" title="A working miniature of Local Reviewer"></iframe>
+  </dialog>
+
+  <script>
+    (function () {
+      var dialog = document.getElementById("peekDialog");
+      var frame = document.getElementById("peekFrame");
+      var label = document.getElementById("peekLabel");
+      var local = location.port ? ".html" : "";
+      document.querySelectorAll("[data-peek]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var two = btn.dataset.peek === "2";
+          document.dispatchEvent(new Event("listen:stop"));
+          label.textContent = two ? "Local Reviewer, on draft 2 of this case study" : "Local Reviewer, reviewing this case study";
+          frame.src = "/case-studies/local-reviewer-peek" + local + (two ? "?draft=2" : "");
+          dialog.showModal();
+        });
+      });
+      document.getElementById("peekClose").addEventListener("click", function () { dialog.close(); });
+      dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
+      dialog.addEventListener("close", function () { frame.src = "about:blank"; });
+    })();
+  </script>
 
   <script src="/js/recording.js" defer></script>
   <script src="/js/listen.js" defer></script>
