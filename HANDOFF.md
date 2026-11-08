@@ -100,7 +100,17 @@ below remains the prior website session's account, not a new verification of
 that work. Next: use the new exhibit only when Jack asks for its portfolio page;
 follow current editorial guidance and obtain explicit publication approval.
 
-## Current checkpoint: 2026-11-07, Claude Code
+## Current checkpoint: 2026-11-07 (later), Claude Code
+
+- **A seventh shelf exhibit, /trailhead, on Jack's go.** Tile second on the shelf, after /handoff (hook, Jack's pick: "Saving a good idea for later, so it outlives the session."). Entry, a micro drawing (session > the Overlook > Start > next session in its folder), and a four-step walkthrough, "See /trailhead at work" (`#trailhead-demo`): the idea, the prompt, the wait, the start. The example is this exhibit's own trailhead, saved 2026-10-18 and started 2026-11-07. Other trailheads appear only as counts (43 saved: 16 walked, 23 waiting, 4 composted, read from the Overlook today).
+- **Honest detail Jack approved:** on Oct 18 the idea came from Jack's own question and he typed the request; the tool belt's "Create Trailhead?" row was not used. Step 1 says so and names the usual path.
+- **Built from `_exhibits/trailhead/`** (walkthrough level, approved by Jack; discretion scan clean). The `/trailhead` one-liner in More skills is gone (Jack's choice); the tool belt card stays.
+- **New:** `.trail-card` in `css/site.css` (a static copy of one Overlook card, reusing `.verdict-pill`); a `#trailhead-demo` guide destination (166). No script changes.
+- **Checked locally** (this session's server on 8643; another session held 8642): every tile opens its exhibit, the deep link opens /trailhead, all four steps reveal their panels, no console errors, no horizontal scroll at 1280px and 390px, step labels fit at 390px (step 2 renamed "The prompt" for that), drawing reads at 760px, no em dashes, `build-site.py --check` passes. The site has no dark mode to check.
+- **Shelf now 3 + 3 + 1 on desktop** (2 + 2 + 2 + 1 on phones), with /save-points alone on the last row. Jack's call whether that's fine.
+- **The Overlook:** `trailhead-exhibit` marked walked today. **Committed, not pushed.**
+
+## Earlier checkpoint: 2026-11-07, Claude Code
 
 - **Fifth case study, `/case-studies/local-reviewer`**, built from `_exhibits/local-review/` (cleared, scan-clean). Jack trimmed it with Claude first: all four proposed cuts, 1,156 to 1,071 words; his own lines untouched. Headings are the package's.
 - **Diagram:** the second cut, before and now (85 markers against the few that still need Jack), inline SVG strips with HTML labels and a legend (`.review-strip`, `.review-key` in `css/site.css`, reusing `.clock-row`). Orange marks cuts, since the palette has no red. Carries the schematic note.

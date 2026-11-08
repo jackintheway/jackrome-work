@@ -148,6 +148,10 @@
           <span class="shelf-tile-name">/handoff</span>
           <span class="shelf-tile-hook">The note that lets the next session pick up where this one left off.</span>
         </button>
+        <button class="shelf-tile" type="button" aria-pressed="false" aria-controls="exhibit-trailhead">
+          <span class="shelf-tile-name">/trailhead</span>
+          <span class="shelf-tile-hook">Saving a good idea for later, so it outlives the session.</span>
+        </button>
         <button class="shelf-tile" type="button" aria-pressed="false" aria-controls="exhibit-graft">
           <span class="shelf-tile-name">/synthesize and /graft</span>
           <span class="shelf-tile-hook">Taking in just enough, then filtering it for what’s worth acting on.</span>
@@ -303,6 +307,163 @@
           </div>
         </section>
 
+      </article>
+
+      <article class="shelf-panel has-figure" id="exhibit-trailhead" aria-labelledby="exhibitTrailheadTitle">
+        <div class="prose">
+          <h3 id="exhibitTrailheadTitle">/trailhead</h3>
+          <p>A session often ends on a good idea for a different session, one I can't start yet. Once that session is archived, the idea is gone unless I saved it somewhere.</p>
+          <p>/trailhead saves it as a prompt that stands on its own, written the way I'd start the session myself: what the idea is, where to work, what to read first, what we already decided, and to talk the shape through with me before building. It lands on the Overlook, a private page pinned in my Claude sidebar, with a rough time estimate and how big a lift it is. Claude offers it once, when a session ends on a new idea, and a button above where I type saves it.</p>
+          <p>It never comes up at the start of a session. When I open one, I already know what I want to do. I go to the Overlook on purpose, and when I'm ready, Start opens a new session in the right folder with the prompt already typed in.</p>
+          <p>Since October 6 I've saved 43. Sixteen have been started, 23 are waiting, and 4 were retired. Nothing gets deleted. This exhibit began as one of them.</p>
+        </div>
+        <figure class="shelf-figure" aria-labelledby="trailheadFigCaption">
+          <svg viewBox="0 0 480 380" role="img" aria-labelledby="trailheadSvgTitle trailheadSvgDesc">
+            <title id="trailheadSvgTitle">An idea saved in one session, started in another</title>
+            <desc id="trailheadSvgDesc">At the end of one session, a row asks Trailhead? with a Yes button. The idea goes onto the Overlook, a page of saved trailheads, as one bright card with a level and a Start button among dimmer cards. A dotted path marked days later runs from Start to a new session, which opens in its own folder.</desc>
+            <defs>
+              <marker id="thArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" class="fig-ink"/>
+              </marker>
+            </defs>
+
+            <!-- The session where the idea came up. -->
+            <g class="fig-shape">
+              <rect x="26" y="66" width="130" height="150" class="fig-shadow"/>
+              <rect x="20" y="60" width="130" height="150" style="fill: var(--ws-white)"/>
+              <rect x="20" y="60" width="130" height="28" style="fill: var(--ws-orange)"/>
+            </g>
+            <text x="30" y="80" class="fig-small fig-button">this session</text>
+            <rect x="32" y="102" width="80" height="5" class="fig-bar"/>
+            <rect x="32" y="116" width="64" height="5" class="fig-bar"/>
+            <rect x="32" y="130" width="96" height="5" class="fig-bar"/>
+            <text x="32" y="172" class="fig-small fig-button">Trailhead?</text>
+            <rect x="104" y="157" width="36" height="22" class="fig-pill fig-pick"/>
+            <text x="122" y="172" class="fig-small fig-button" text-anchor="middle">Yes</text>
+            <text x="32" y="200" class="fig-small">near its end</text>
+            <line x1="152" y1="168" x2="178" y2="168" class="fig-line" marker-end="url(#thArrow)"/>
+
+            <!-- The Overlook: the saved idea among the others. -->
+            <g class="fig-shape">
+              <rect x="192" y="26" width="120" height="260" class="fig-shadow"/>
+              <rect x="186" y="20" width="120" height="260" style="fill: var(--ws-white)"/>
+              <rect x="186" y="20" width="120" height="28" style="fill: var(--ws-blue-soft)"/>
+              <rect x="196" y="60" width="100" height="34" style="fill: var(--ws-paper-2)"/>
+              <rect x="196" y="102" width="100" height="34" style="fill: var(--ws-paper-2)"/>
+              <rect x="196" y="144" width="100" height="70" style="fill: var(--ws-yellow)"/>
+              <rect x="196" y="222" width="100" height="34" style="fill: var(--ws-paper-2)"/>
+            </g>
+            <text x="196" y="40" class="fig-small fig-button">the Overlook</text>
+            <rect x="204" y="152" width="52" height="18" class="fig-pill"/>
+            <text x="230" y="165" class="fig-small" text-anchor="middle">Level 3</text>
+            <rect x="204" y="180" width="40" height="5" class="fig-bar-ink"/>
+            <rect x="244" y="189" width="44" height="18" class="fig-pill" style="fill: var(--ws-orange)"/>
+            <text x="266" y="202" class="fig-small fig-button" text-anchor="middle">Start</text>
+
+            <!-- Days later, on purpose. -->
+            <path d="M290 198 C 340 198, 326 270, 352 270" class="fig-trail-line" marker-end="url(#thArrow)"/>
+            <text x="196" y="312" class="fig-small">days later,</text>
+            <text x="196" y="328" class="fig-small">when I choose</text>
+
+            <!-- The new session, opened in its folder. -->
+            <g class="fig-shape">
+              <rect x="360" y="184" width="44" height="18" style="fill: var(--ws-yellow)"/>
+              <rect x="366" y="208" width="108" height="140" class="fig-shadow"/>
+              <rect x="360" y="202" width="108" height="140" style="fill: var(--ws-white)"/>
+              <rect x="360" y="202" width="108" height="28" style="fill: var(--ws-green)"/>
+            </g>
+            <text x="370" y="222" class="fig-small fig-button">next session</text>
+            <rect x="372" y="246" width="70" height="5" class="fig-bar"/>
+            <rect x="372" y="260" width="84" height="5" class="fig-bar"/>
+            <rect x="372" y="274" width="58" height="5" class="fig-bar"/>
+            <text x="372" y="330" class="fig-small">in its folder</text>
+          </svg>
+          <figcaption id="trailheadFigCaption" class="diagram-note">Schematic. An idea saved at the end of one session waits on the Overlook until I start the next one on purpose.</figcaption>
+        </figure>
+        <!-- A shortened, recorded trailhead, from the evening it was saved to the
+             session where it was started. Same pattern as the handoff walkthrough:
+             the controls reveal HTML already on the page; nothing calls an AI
+             service or reads the visitor's files. -->
+        <section class="handoff-demo is-nested" id="trailhead-demo" aria-labelledby="trailheadDemoTitle">
+          <h4 id="trailheadDemoTitle">See /trailhead at work</h4>
+          <p class="section-intro">Here's the trailhead this exhibit grew from, followed from the evening it was saved to the session where I started it, 20 days later. Shortened for this walkthrough, with file paths taken out.</p>
+
+          <div class="handoff-walk">
+            <div class="handoff-steps" role="group" aria-label="Steps in the trailhead example" hidden>
+              <button class="handoff-step" type="button" aria-pressed="true" aria-controls="trailheadIdea">
+                <span class="handoff-step-number" aria-hidden="true">1</span>
+                <span>The idea<small>Where it came up</small></span>
+              </button>
+              <button class="handoff-step" type="button" aria-pressed="false" aria-controls="trailheadSaved">
+                <span class="handoff-step-number" aria-hidden="true">2</span>
+                <span>The prompt<small>What got saved</small></span>
+              </button>
+              <button class="handoff-step" type="button" aria-pressed="false" aria-controls="trailheadWait">
+                <span class="handoff-step-number" aria-hidden="true">3</span>
+                <span>The wait<small>Twenty days on the Overlook</small></span>
+              </button>
+              <button class="handoff-step" type="button" aria-pressed="false" aria-controls="trailheadStart">
+                <span class="handoff-step-number" aria-hidden="true">4</span>
+                <span>The start<small>A new session, in the right folder</small></span>
+              </button>
+            </div>
+
+            <div class="handoff-panels">
+              <section class="handoff-panel" id="trailheadIdea" aria-labelledby="trailheadIdeaTitle">
+                <p class="handoff-label">October 18, near the end of a session</p>
+                <h5 id="trailheadIdeaTitle">An exhibit, but not tonight.</h5>
+                <p class="handoff-excerpt-label">My question, excerpt</p>
+                <blockquote class="handoff-request">for the trailheads workflow with the overlook (though perhaps that's more than just a mod but could still be in this section? or is that an exhibit candidate maybe)</blockquote>
+                <p class="handoff-excerpt-label">Claude's answer, excerpt</p>
+                <blockquote class="handoff-excerpt"><p>It would make a good exhibit, because it's the one workflow that crosses surfaces: Claude offers it in a session, a button saves it, and the idea waits on a page you can open from your phone. ... A card now keeps the momentum, and the exhibit can grow from it later.</p></blockquote>
+                <p class="handoff-excerpt-label">My reply, excerpt</p>
+                <blockquote class="handoff-request">let's write them in and save the trailhead workflow exhibit as a trailhead</blockquote>
+                <p class="handoff-note-context">That session was adding small cards to this page. Usually Claude makes the offer, once, in one line, and the row above where I type turns into “Create Trailhead?” with Yes and Not now. This time I asked first.</p>
+              </section>
+
+              <section class="handoff-panel" id="trailheadSaved" aria-labelledby="trailheadSavedTitle">
+                <p class="handoff-label">Saved to the Overlook</p>
+                <h5 id="trailheadSavedTitle">A prompt that stands on its own.</h5>
+                <div class="trail-card">
+                  <p class="trail-card-pills"><span class="verdict-pill">Build</span><span class="verdict-pill trail-level">Level 3</span></p>
+                  <p class="trail-card-title">Trailhead exhibit for the AI Portfolio</p>
+                  <p>Turn the /trailhead card into a shelf exhibit, since it is the one workflow that crosses surfaces: offered in a session, saved by a button, waiting on a page I can open from my phone.</p>
+                  <p class="trail-card-meta"><b>~1.5 hr</b> · Saved Oct 18 · from AI Portfolio mods cards session</p>
+                </div>
+                <p class="handoff-excerpt-label">The prompt, excerpt</p>
+                <blockquote class="handoff-excerpt">
+                  <p>I want to turn my trailhead workflow into an exhibit on the AI Portfolio shelf ... A card can say what /trailhead does. An exhibit can show it: Claude offers it once when a session ends on a new idea, a button on the tool belt saves it, the idea waits on the Overlook (my pinned claude.ai page), and a Start button opens the new session in the right folder. It never comes up at the start of a session; I go to the Overlook on purpose.</p>
+                  <p>The rawest source to start from is real trailheads on the Overlook and a real session where one was offered and saved, not a description of the workflow. ... The Overlook's contents are private, so the exhibit needs a cleaned-up example: real in shape, with no private project names, people, or prompts. I read the package myself before anything goes on the page.</p>
+                  <p>... Don't push: a push deploys the site and needs my go.</p>
+                  <p>Talk the shape through with me before building</p>
+                </blockquote>
+                <p class="handoff-note-context">Claude writes the prompt in my voice, so it reads as if I'm starting the session myself. The full prompt also names the folder to work in and what to read first. The page sorts by the time estimate and the level, from 1 for one short sitting up to 5 for a project across many sessions.</p>
+              </section>
+
+              <section class="handoff-panel" id="trailheadWait" aria-labelledby="trailheadWaitTitle">
+                <p class="handoff-label">The Overlook, November 7</p>
+                <h5 id="trailheadWaitTitle">It waits until I go looking.</h5>
+                <dl class="handoff-checks">
+                  <div><dt>Waiting: 23</dt><dd>Including this one, until the day I started it.</dd></div>
+                  <div><dt>Walked: 16</dt><dd>Started in a later session.</dd></div>
+                  <div><dt>Composted: 4</dt><dd>Retired: let go, or folded into another trailhead. Nothing is deleted.</dd></div>
+                </dl>
+                <p class="handoff-excerpt-label">From the skill</p>
+                <blockquote class="handoff-excerpt"><p>Never bring trailheads to the start of a session.</p></blockquote>
+                <p class="handoff-note-context">No session mentions a trailhead when it starts. When I open one, I already know what I want to do. A session can add a note to a waiting trailhead when something relevant comes up, and the note travels with the prompt. This one had none.</p>
+              </section>
+
+              <section class="handoff-panel" id="trailheadStart" aria-labelledby="trailheadStartTitle">
+                <p class="handoff-label">November 7</p>
+                <h5 id="trailheadStartTitle">Start.</h5>
+                <p>On the Mac, Start opens a new Claude Code session in the folder the trailhead names, with the prompt typed in and not yet sent. The app asks me to trust the folder each time. The page adds a short footer, so the new session knows where it came from.</p>
+                <p class="handoff-excerpt-label">The footer, excerpt</p>
+                <blockquote class="handoff-excerpt"><p>(Started from the Overlook: trailheads/trailhead-exhibit ... Don't mark it walked yet. Once it's clear we've actually begun this work, offer once to mark it walked</p></blockquote>
+                <p class="handoff-note-context">The prompt said to talk the shape through first, so the session asked four questions before building anything: whether this should be a walkthrough, which real trailhead to follow, the line on the shelf tile, and what happens to the old one-line card. This walkthrough is my answer to the first two.</p>
+              </section>
+            </div>
+          </div>
+        </section>
       </article>
 
       <article class="shelf-panel has-figure" id="exhibit-graft" aria-labelledby="exhibitGraftTitle">
@@ -813,10 +974,6 @@
         <details class="more-card">
           <summary>/conversation-archiver</summary>
           <p>/conversation-archiver records both halves of a dialogue with an AI, and cross-references only my words, so the record has both of us in it and the connections through it are mine.</p>
-        </details>
-        <details class="more-card">
-          <summary>/trailhead</summary>
-          <p>/trailhead saves a good idea for later as a prompt that stands on its own, onto the Overlook, a private page pinned in my Claude sidebar. Claude offers it once, when a session ends on a new idea, and never brings trailheads up at the start of a session. I go to the Overlook on purpose.</p>
         </details>
         <details class="more-card">
           <summary>The verification tool</summary>

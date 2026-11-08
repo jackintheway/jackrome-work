@@ -456,6 +456,19 @@
 }
 .handoff-note > div + div { margin-top: var(--space-4); }
 .handoff-note-context { font-size: var(--fs-small); }
+/* /trailhead: a static copy of one card as the Overlook shows it. */
+.trail-card {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-base);
+  border: var(--rule);
+}
+.trail-card p { margin: 0 0 var(--space-2); }
+.trail-card p:last-child { margin-bottom: 0; }
+.trail-card-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.trail-card .trail-level { margin-left: auto; }
+.trail-card-title { font-family: var(--font-heading); font-weight: var(--fw-bold); font-size: var(--fs-body-lg); }
+.trail-card-meta { font-size: var(--fs-small); color: var(--text-muted); }
 .handoff-copy-row {
   display: flex;
   flex-wrap: wrap;
